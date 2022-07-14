@@ -14,24 +14,51 @@ featsArray: any;
 startingFeats: Array<string> = [];
 selectedFeats: Array<string> = [];
 selectedHeroicClass = this.choices.selectedClass;
-
+heroicClass: string = '';
 
   ngOnInit(): void {
     this.swApiService.getFeats().subscribe(payload =>{
       this.featsArray = payload;
       console.log("feats: ", this.featsArray);
     })
+    this.choices.setStartingFeats.subscribe(() => {   
+      this.acquireFeats();
+    });    
     
   }
 
   // Acquires the Starting Feats for the chosen class
-acquireFeats(heroicClass: string){
-let tempString = '';
-let bab;
-let int = 13;
-let  con = 13;
-let skillArray = this.choices.skills;
-  switch (heroicClass) {
+acquireSkillsArray(){
+  return this.choices.skills;
+}
+
+//getter for bab
+acquireBab(){
+ return this.choices.bab;
+}
+// getter for int
+acquireInt(){
+  return 13;
+}
+// getter for con
+acquireCon(){
+  return 13;
+}
+// getter for class
+setClass(heroicClass: string){
+  this.heroicClass = heroicClass;
+}
+
+async acquireFeats(){
+  let tempString = '';
+let heroClass = this.heroicClass;
+let skillArray = await this.acquireSkillsArray();
+console.log("here's the feats skill array: ",skillArray)
+let bab = await this.acquireBab();
+let int = await this.acquireInt();
+let con = await this.acquireCon();
+ 
+  switch (heroClass) {
     case "Jedi":
       bab = 1;
       tempString = "Force Sensitivity, Weapon Proficiency (Lightsabers), Weapon Proficiency (Simple Weapons)";

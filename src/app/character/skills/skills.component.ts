@@ -111,12 +111,10 @@ console.log("this is the class selected:" , selection);
     this.uncheckAll();
     
   }
-   
+  // connects with the service to intitate the starting feats 
 submit(){
-  console.log("the chosen class",this.chosenClass);
- 
-    
-  console.log(this.form.value.selectedSkills)
+  this.choices.setStartFeats();
+     
 }
 
 skillTrained(event: any){

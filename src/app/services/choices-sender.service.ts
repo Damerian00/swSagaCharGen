@@ -5,10 +5,17 @@ import { Subscription } from 'rxjs/internal/Subscription';
   providedIn: 'root'
 })
 export class ChoicesSenderService {
-// this servies as a medium to connect all the components
+// this servies as a medium to connect sibling component events
 invokeAbilitiesFunction = new EventEmitter ();
   subsVar: Subscription = new Subscription;
+setStartingFeats = new EventEmitter();
 
+// middleware function to display starting feats
+setStartFeats(){
+  this.setStartingFeats.emit();
+}
+
+// middleware function to show abilitie points and final ability values
 onSelection() {
   this.invokeAbilitiesFunction.emit();
 }
@@ -18,8 +25,8 @@ onSelection() {
   public abilities: any;
   public selectedClass: string = "Jedi";
   public validate: any;
-  public bab: any;
-  public skills: any;
+  public bab: number = 0;
+  public skills: Array<string> = [];
 
   
   constructor() { }
