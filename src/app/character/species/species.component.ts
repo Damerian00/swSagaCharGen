@@ -10,6 +10,7 @@ import { CharSheetComponent } from '../char-sheet/char-sheet.component';
   templateUrl: './species.component.html',
   styleUrls: ['./species.component.scss']
 })
+
 export class SpeciesComponent implements OnInit {
   constructor(private swApiService: SwapiService, private choices: ChoicesSenderService) { }
   speciesArray: any;
@@ -19,32 +20,41 @@ export class SpeciesComponent implements OnInit {
   selectedSpecies: string = 'Human';
   @Output () speciesSelected: EventEmitter<string> = new EventEmitter<string>()
   ngOnInit(): void {
-this.swApiService.getSpecies().subscribe(payload =>{
+// utilizes swapi service to retriueve the data from the species endpoint
+    this.swApiService.getSpecies().subscribe(payload =>{
   this.speciesArray = payload;
   console.log("Species: ", this.speciesArray);  
 })
 
   }
   
+// function to handle the dropdown and watch for changes
  selected(selection: any){
    for (let i=0; i<this.speciesArray.length; i++){
+    /*
+     compares the value selected with the imported array created from the api endpoint
+    */
      if (selection.value == this.speciesArray[i].species_name){
        this.ab_modifiers = this.speciesArray[i].traits['Ability Modifiers'];
        this.speciesName = selection.value;
       }
 
     }
+  // passes off the values to the choices service corresponding variable
    this.choices.speciesAbilityModifiers = this.ab_modifiers;
    this.choices.speciesSelected = selection.value;
    console.log("here's your species",this.choices.speciesSelected)
+  
+  /*
+   uses  an event emmiter to emit the species name which is required for another component
+  */
   this.speciesSelected.emit(this.speciesName);
+
+  // this uses another event emitter to call a sibling function
   this.choices.onSelection();
   
 }
-abilityResetAbilities(){
-  console.log('hit me')
 
-}
  
 
   

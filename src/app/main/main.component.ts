@@ -20,7 +20,9 @@ intModifier: number = 0;
 
   ngOnInit(): void {
   }
-
+/* 
+the below functions are used to display the choices that the user selects on to the character sheet
+*/
   updateSpecies(chosenSpecies: string) {
     this.species = chosenSpecies;
   }
@@ -32,6 +34,8 @@ intModifier: number = 0;
   updateClass(chosenClass: any){
     this.class = chosenClass;
   }
+
+
   getAbilityModifier(chosenAbilities: any){
    const char = chosenAbilities.Charisma;
    this.calcModifier('Charisma', char)
@@ -48,6 +52,9 @@ intModifier: number = 0;
 
   }
 
+  /* 
+  calculates the ability modifier score based on what the ability score is
+   */
 calcModifier(ability: string, score: number){
   let tempScore = 0;
   switch (score) {

@@ -13,10 +13,15 @@ import { ChoicesSenderService } from 'src/app/services/choices-sender.service';
 
 export class AbilitiesComponent implements OnInit {
 
-  
+  // variables used in this component
+  /*
+   max amount of points available for abilities which is adjustable
+  */
   maxPoints: number = 25;
   abModifierImport: any= {};
-  keys = Object.keys;
+/* 
+holds the abilities and their values for starting
+ */
   charAbilities: any= {
     Charisma: 8,
     Constitution: 8,
@@ -25,7 +30,7 @@ export class AbilitiesComponent implements OnInit {
     Strength: 8,
     Wisdom: 8
   }
-
+// holds the abilities and their values after being selected including species modifiers
   finalAbilities: any= {
     Charisma: 8,
     Constitution: 8,
@@ -36,19 +41,24 @@ export class AbilitiesComponent implements OnInit {
   }
   // validate: boolean = true;
  
+  // creates and intializes points setting them to 0
   points = 0;
   
   constructor(private choices: ChoicesSenderService) { }
   @Output () abilitiesSelected: EventEmitter<any> = new EventEmitter<any>()
   @Output () abilityModifiers: EventEmitter<any> = new EventEmitter<any>()
   ngOnInit(): void {
-    this.choices.invokeAbilitiesFunction.subscribe(() => { 
-        console.log('Hello')   
+    this.choices.invokeAbilitiesFunction.subscribe(() => {   
         this.saveAbilities();
       });    
           
   }
+  // flag
   startAbilities: boolean = false;
+
+  /*
+  resets the abilites both starting and final to their orignal stats as well as resets points to maxpoints
+  */
   resetAbilites(){
     this.finalAbilities = {
       Charisma: 8,
@@ -68,6 +78,10 @@ export class AbilitiesComponent implements OnInit {
     }
     this.points = this.maxPoints;
   }
+
+  /*
+  updates the ability values when adding or subtracting points
+  */
   update(){
   this.resetAbilites();
   this.abModifierImport = this.choices.speciesAbilityModifiers;
@@ -101,10 +115,13 @@ export class AbilitiesComponent implements OnInit {
     this.finalAbilities.Wisdom += wisA;
   }
 
-console.log('this is final:',this.finalAbilities)
+// console.log('this is final:',this.finalAbilities) // for testing
 
  }
 
+ /*
+ performs the adjusting of the points and uses a validator function from the choices service to calculate points and see if there are enough points or not and will display if you don't have enough points takes in to parameters one is the ability type and the otehr the operand being used
+  */
  checkPoints(ability: string, operand: string){
    console.log('check points',ability, this.finalAbilities, this.charAbilities.Charisma);
    let pointAdjust = 0;
@@ -363,7 +380,9 @@ console.log('this is final:',this.finalAbilities)
    }
   
  }
-
+/* 
+adds ability point if it successfully clears the checkpoints function with no errros then emits the changes to main component to be displayed
+*/
 addAbility(clicked: any){
   this.abModifierImport = this.choices.speciesAbilityModifiers;
  if (this.points > 0){
@@ -427,6 +446,9 @@ addAbility(clicked: any){
 }
 
 }
+/* 
+subtracts ability point if it successfully clears the checkpoints function with no errros then emits the changes to main component to be displayed
+*/
 subAbility(clicked: any){
  
   if (this.points < this.maxPoints){
@@ -490,11 +512,12 @@ subAbility(clicked: any){
 }
 
 }
-
+// calls the update function then emits the finalabilities to the main component for evaluation
 saveAbilities(){
   this.update();
   this.abilitiesSelected.emit(this.finalAbilities);
 }
+// same as saveAbilitiesw minus the update function
 calcModifier(){
   this.abilityModifiers.emit(this.finalAbilities);
 }

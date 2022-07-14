@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
   providedIn: 'root'
 })
 export class ChoicesSenderService {
-
+// this servies as a medium to connect all the components
 invokeAbilitiesFunction = new EventEmitter ();
   subsVar: Subscription = new Subscription;
 
@@ -23,7 +23,7 @@ onSelection() {
 
   
   constructor() { }
-
+// function set up to handle validtion and responses based on parameter inputs
 validator(value1 :any, value2: any, operand:string, type: string){
 switch (type) {
   case "abilities":
@@ -41,7 +41,9 @@ switch (type) {
       console.log("can't do")
     }
     break;
+    case "skills":
 
+    break;
   default:
     break;
 } 
