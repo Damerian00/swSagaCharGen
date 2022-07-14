@@ -1,0 +1,44 @@
+section{
+    display: flex;
+    
+}
+.outsideWrapper{
+    
+}
+.abilityContainer{
+    display: flex;
+    margin:.5rem;
+    justify-content: flex-start;
+    align-items: center;
+
+    .abilityName{
+       width: 7rem; 
+    }
+    .abilityValue {
+        width: 5rem;
+        font-size: 1.5rem;
+        text-align: center;
+        border: black solid .05rem;
+        border-radius: 10px;
+        margin:.5rem;
+    }
+
+    .buttonContainer{
+        display: flex;
+        flex-direction: column;
+    }
+}
+.resultsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    p {
+        width: 5rem;
+        font-size: 1.5rem;
+        text-align: center;
+        border: black solid .05rem;
+        border-radius: 10px;
+        margin:.5rem;
+    }
+}

@@ -1,0 +1,24 @@
+
+<h3>Select Your Abilities</h3>
+<h5>Points remaining: {{points}}</h5>
+<p *ngIf="points == 0">Select a species then press 'Select Species' button to add or reset ability points.</p>
+<section>
+    <div class="outsideWrapper">
+        <div class="abilityContainer" *ngFor="let ability of charAbilities | keyvalue">
+            <p #ability class="abilityName">{{ability.key}} :</p>
+            <p class="abilityValue">{{ability.value}}</p>
+          <div class="buttonContainer">
+              <button (click)='addAbility(ability)'>+</button>
+              <button (click)='subAbility(ability)'>-</button>
+          </div>  
+        </div>
+    </div>
+</section>
+
+
+
+<header>
+    <h1>Character Generator</h1>
+
+</header>
+

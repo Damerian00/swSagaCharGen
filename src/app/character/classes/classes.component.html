@@ -1,0 +1,5 @@
+<h2>Chose Your Starting Heroic Class</h2>
+<label>Class: </label> <select value="selectedClass" #selectedClass (change)="selected(selectedClass)">
+    <option>Select a Starting Class</option>
+    <option *ngFor="let class of classesArray">{{class}}</option>
+</select>

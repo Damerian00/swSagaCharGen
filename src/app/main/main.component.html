@@ -1,0 +1,35 @@
+<header>
+    <h1>Character Generator</h1>
+
+</header>
+
+<main>
+
+    <div class="selectors">
+        <species (speciesSelected)="updateSpecies($event)"></species>
+        <abilities (abilitiesSelected)="updateAbilities($event)" (abilityModifiers)="getAbilityModifier($event)"></abilities>
+        <classes (classSelected)="[updateClass($event), skills.showSkills($event), feats.acquireFeats($event)]"></classes>
+        <skills #skills [intModifier]="intModifier"></skills>
+        <feats #feats  ></feats>
+        <talents></talents>
+    </div>
+    <div class="display">
+        <h2>Name Goes Here</h2>
+        <h3>{{class}}</h3>
+        <label>Species: <p>{{species}}</p></label>
+        <section *ngIf="showAbilities" class="abilityWrapper">
+            <div class="abilitiesContainer">
+                <h3>Hero Abilities</h3>
+                <div class="abilities" *ngFor="let ability of abilities | keyvalue">
+                    <p>{{ability.key}}</p>
+                    <p>{{ability.value}}</p>
+                </div>
+            </div>
+            <div class="scoresContainer">
+                <h3>Ability Modifier</h3>
+                <p *ngFor="let score of abilityModifier | keyvalue">{{score.value}}</p>
+            </div>
+        </section>
+        </div>
+
+</main>

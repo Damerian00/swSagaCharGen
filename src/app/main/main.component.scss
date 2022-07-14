@@ -1,0 +1,47 @@
+main{
+    display: flex;
+}
+.selectors{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    margin:1rem;
+    overflow-y: auto;
+}
+.display{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    border:1px solid black;
+    height: 85vh;
+    border-radius:20px;
+    margin: 1rem;
+    overflow-y: auto;
+}
+.abilityWrapper{
+    display: flex;
+    .abilitiesContainer{
+        display: flex;
+        flex-direction: column;
+        .abilities {
+            display: flex;
+            p{
+                margin:1rem;
+                text-align: center;
+                
+            }
+            p:first-child{
+                text-align: justify;
+                width: 100px;
+            }
+        }
+    }
+    .scoresContainer{
+        display:flex;
+        flex-direction: column;
+        p{
+            margin:1rem;
+
+        }
+    }
+}
