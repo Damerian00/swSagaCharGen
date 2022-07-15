@@ -36,13 +36,13 @@ acquireSkillsArray(){
 acquireBab(){
  return this.choices.bab;
 }
-// getter for int
+// getter for intelligence
 acquireInt(){
-  return 13;
+  return this.choices.abilities.Intelligence;
 }
-// getter for con
+// getter for constitution
 acquireCon(){
-  return 13;
+  return this.choices.abilities.Constitution;
 }
 // getter for class
 setClass(heroicClass: string){
@@ -60,23 +60,23 @@ let con = await this.acquireCon();
  
   switch (heroClass) {
     case "Jedi":
-      bab = 1;
+      
       tempString = "Force Sensitivity, Weapon Proficiency (Lightsabers), Weapon Proficiency (Simple Weapons)";
       break;
     case "Noble":
       if (int >= 13){
-        bab = 0;
+       
         tempString = "Linguist, Weapon Proficiency (Pistols), Weapon Proficiency (Simple Weapons)";
       }else {
         tempString = "Weapon Proficiency (Pistols), Weapon Proficiency (Simple Weapons)";
       }
       break;
       case "Scoundrel":
-        bab = 0;
+       
         tempString = "Point-Blank Shot, Weapon Proficiency (Pistols), Weapon Proficiency (Simple Weapons)";
       break;
       case "Scout":
-        bab = 0;
+       
       if (con >= 13 && skillArray.includes("Endurance")){
         tempString = "Shake It Off, Weapon Proficiency (Pistols), Weapon Proficiency (Rifles), Weapon Proficiency (Simple Weapons)";
 
@@ -85,16 +85,16 @@ let con = await this.acquireCon();
       }
       break;
       case "Soldier":
-        bab = 1;
+       
         tempString = "Armor Proficiency (Light), Armor Proficiency (Medium), Weapon Proficiency (Pistols), Weapon Proficiency (Rifles), Weapon Proficiency (Simple Weapons)";
       break;
     default:
       tempString = ",";
       break;
   }
-    this.choices.bab = bab;
+   
     this.startingFeats = tempString.split(",");
-    console.log('starting feats', this.startingFeats, this.choices.bab)
+    console.log('starting feats', this.startingFeats, bab)
   
 }
 

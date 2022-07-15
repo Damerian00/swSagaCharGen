@@ -1,1 +1,11 @@
-<p>feats works!</p>
+<div *ngIf="startingFeats.length > 1">
+    <section class="startFeats">
+        <p *ngFor = "let feat of startingFeats">{{feat}}</p>
+
+    </section>
+    <section>
+        <form>
+            
+        </form>
+    </section>
+</div>
