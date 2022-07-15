@@ -37,18 +37,18 @@ the below functions are used to display the choices that the user selects on to 
 
 
   getAbilityModifier(chosenAbilities: any){
-   const char = chosenAbilities.Charisma;
-   this.calcModifier('Charisma', char)
-    const con = chosenAbilities.Constitution;
-    this.calcModifier('Constitution', con)
-    const dex = chosenAbilities.Dexterity;
-    this.calcModifier('Dexterity', dex)
-    const int = chosenAbilities.Intelligence;
-    this.calcModifier('Intelligence', int)
     const str = chosenAbilities.Strength;
-    this.calcModifier('Strength', str)
+    this.calcModifier('Strength', str);
+    const dex = chosenAbilities.Dexterity;
+    this.calcModifier('Dexterity', dex);
+    const con = chosenAbilities.Constitution;
+    this.calcModifier('Constitution', con);
+    const int = chosenAbilities.Intelligence;
+    this.calcModifier('Intelligence', int);
+    const char = chosenAbilities.Charisma;
+    this.calcModifier('Charisma', char);
     const wis = chosenAbilities.Wisdom;
-    this.calcModifier('Wisdom', wis)
+    this.calcModifier('Wisdom', wis);
 
   }
 

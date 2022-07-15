@@ -27,6 +27,7 @@ onSelection() {
   public validate: any;
   public bab: number = 0;
   public skills: Array<string> = [];
+  public maxPoints: number = 25;
 
   
   constructor() { }
@@ -38,10 +39,11 @@ switch (type) {
     if (operand == 'add'){
      compute = value1 - value2;
    } else {
-    compute = value1 + value2;
+     compute = value1 + value2;
+    
    }
    console.log('this is computed',compute)
-    if (compute <= 25 && compute >= 0){
+    if (compute <= this.maxPoints && compute >= 0){
       this.validate = true;
     }else{
       this.validate=false;
@@ -50,6 +52,9 @@ switch (type) {
     break;
     case "skills":
 
+    break;
+    case "feats":
+    
     break;
   default:
     break;

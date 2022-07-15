@@ -23,6 +23,11 @@ console.log('this is the selection', selection.value)
 this.choices.selectedClass = selection.value;
 this.heroicClass = selection.value
 this.classSelected.emit(this.heroicClass)
+if (selection.value === "Jedi" || selection.value === "Soldier"){
+  this.choices.bab = 1;
+} else {
+  this.choices.bab = 0;
+}
 
 }
 

@@ -1,7 +1,9 @@
 
 <h3>Select Your Abilities</h3>
 <h5>Points remaining: {{points}}</h5>
-<p *ngIf="points == 0">Select a species then press 'Select Species' button to add or reset ability points.</p>
+<p *ngIf="points == 0">Select a species</p>
+<label>Max points: <input type="number" #maxPoints value="maxPoints" placeholder="25" min=10 max=50/></label>
+<button (click)="setMaxPoints(maxPoints.value)">Set Max Points</button>
 <section>
     <div class="outsideWrapper">
         <div class="abilityContainer" *ngFor="let ability of charAbilities | keyvalue">

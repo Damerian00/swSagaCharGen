@@ -23,20 +23,20 @@ export class AbilitiesComponent implements OnInit {
 holds the abilities and their values for starting
  */
   charAbilities: any= {
-    Charisma: 8,
-    Constitution: 8,
-    Dexterity: 8,
-    Intelligence: 8,
     Strength: 8,
+    Dexterity: 8,
+    Constitution: 8,
+    Intelligence: 8,
+    Charisma: 8,
     Wisdom: 8
   }
 // holds the abilities and their values after being selected including species modifiers
   finalAbilities: any= {
-    Charisma: 8,
-    Constitution: 8,
-    Dexterity: 8,
-    Intelligence: 8,
     Strength: 8,
+    Dexterity: 8,
+    Constitution: 8,
+    Intelligence: 8,
+    Charisma: 8,
     Wisdom: 8
   }
   // validate: boolean = true;
@@ -56,25 +56,36 @@ holds the abilities and their values for starting
   // flag
   startAbilities: boolean = false;
 
+  //sets max points 
+  setMaxPoints(mxpts: any){
+    if (mxpts <= 50 && mxpts >= 10){
+      console.log("setting max:", mxpts);
+      this.choices.maxPoints = mxpts;
+      this.points = mxpts;
+      this.maxPoints = mxpts;
+      console.log("changed max:",this.choices.maxPoints);
+    }
+  }
+
   /*
   resets the abilites both starting and final to their orignal stats as well as resets points to maxpoints
   */
   resetAbilites(){
     this.finalAbilities = {
-      Charisma: 8,
-      Constitution: 8,
-      Dexterity: 8,
-      Intelligence: 8,
       Strength: 8,
-      Wisdom: 8
+      Dexterity: 8,
+      Constitution: 8,
+      Intelligence: 8,
+      Wisdom: 8,
+      Charisma: 8,
     }
     this.charAbilities= {
-      Charisma: 8,
-      Constitution: 8,
-      Dexterity: 8,
-      Intelligence: 8,
       Strength: 8,
-      Wisdom: 8
+      Dexterity: 8,
+      Constitution: 8,
+      Intelligence: 8,
+      Charisma: 8,
+      Wisdom: 8,
     }
     this.points = this.maxPoints;
   }
@@ -116,12 +127,14 @@ holds the abilities and their values for starting
   }
 
 // console.log('this is final:',this.finalAbilities) // for testing
-
+ 
  }
 
  /*
  performs the adjusting of the points and uses a validator function from the choices service to calculate points and see if there are enough points or not and will display if you don't have enough points takes in to parameters one is the ability type and the otehr the operand being used
   */
+ /*
+ == old code ==
  checkPoints(ability: string, operand: string){
    console.log('check points',ability, this.finalAbilities, this.charAbilities.Charisma);
    let pointAdjust = 0;
@@ -380,6 +393,7 @@ holds the abilities and their values for starting
    }
   
  }
+ */
 /* 
 adds ability point if it successfully clears the checkpoints function with no errros then emits the changes to main component to be displayed
 */
@@ -389,7 +403,8 @@ addAbility(clicked: any){
   switch (clicked.key){
   case "Charisma":
     if (this.finalAbilities.Charisma < 20){
-      this.checkPoints(clicked.key, "add")
+      //this.checkPoints(clicked.key, "add")
+      this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
         this.charAbilities.Charisma += 1;
         this.finalAbilities.Charisma +=1;
@@ -398,7 +413,8 @@ addAbility(clicked: any){
   break;
   case "Constitution":
     if (this.finalAbilities.Constitution < 20){
-      this.checkPoints(clicked.key , "add");
+      //this.checkPoints(clicked.key , "add");
+      this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
         this.charAbilities.Constitution += 1;
         this.finalAbilities.Constitution +=1;
@@ -407,7 +423,8 @@ addAbility(clicked: any){
   break;
   case "Dexterity":
     if (this.finalAbilities.Dexterity < 20){
-      this.checkPoints(clicked.key , "add");
+      //this.checkPoints(clicked.key , "add");
+      this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
         this.charAbilities.Dexterity += 1;
         this.finalAbilities.Dexterity +=1; 
@@ -416,7 +433,8 @@ addAbility(clicked: any){
   break;
   case "Intelligence":
     if (this.finalAbilities.Intelligence < 20){
-      this.checkPoints(clicked.key , "add");
+      //this.checkPoints(clicked.key , "add");
+      this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
         this.charAbilities.Intelligence += 1;
         this.finalAbilities.Intelligence +=1;
@@ -425,7 +443,8 @@ addAbility(clicked: any){
   break;
   case "Strength":
     if (this.finalAbilities.Strength < 20){
-      this.checkPoints(clicked.key , "add");
+      //this.checkPoints(clicked.key , "add");
+      this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
         this.charAbilities.Strength += 1;
         this.finalAbilities.Strength +=1;
@@ -434,7 +453,8 @@ addAbility(clicked: any){
   break;
   case "Wisdom":
     if (this.finalAbilities.Wisdom < 20){
-      this.checkPoints(clicked.key , "add");
+      //this.checkPoints(clicked.key , "add");
+      this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
         this.charAbilities.Wisdom += 1;
         this.finalAbilities.Wisdom +=1;
@@ -454,7 +474,8 @@ subAbility(clicked: any){
   if (this.points < this.maxPoints){
     switch (clicked.key){
     case "Charisma":
-      this.checkPoints(clicked.key, "subtract")
+    //  this.checkPoints(clicked.key, "subtract")
+      this.pointChecker(clicked.key, "subtract")
       if (this.choices.validate == true && this.charAbilities.Charisma > 8){
         this.finalAbilities.Charisma -= 1;
         this.charAbilities.Charisma -= 1;
@@ -462,7 +483,8 @@ subAbility(clicked: any){
       
     break;
     case "Constitution":
-      this.checkPoints(clicked.key, "subtract")
+     // this.checkPoints(clicked.key, "subtract")
+      this.pointChecker(clicked.key, "subtract")
       if (this.choices.validate == true && this.charAbilities.Constitution > 8){
         this.charAbilities.Constitution -= 1;
         this.finalAbilities.Constitution -= 1;
@@ -471,7 +493,8 @@ subAbility(clicked: any){
       
     break;
     case "Dexterity":
-      this.checkPoints(clicked.key, "subtract")
+     // this.checkPoints(clicked.key, "subtract")
+      this.pointChecker(clicked.key, "subtract")
       if (this.choices.validate == true && this.charAbilities.Dexterity > 8){
         this.charAbilities.Dexterity -= 1;
         this.finalAbilities.Dexterity -= 1;
@@ -480,7 +503,8 @@ subAbility(clicked: any){
       
     break;
     case "Intelligence":
-      this.checkPoints(clicked.key, "subtract")
+     // this.checkPoints(clicked.key, "subtract")
+      this.pointChecker(clicked.key, "subtract")
       if (this.choices.validate == true && this.charAbilities.Intelligence > 8){
         this.charAbilities.Intelligence -= 1;
         this.finalAbilities.Intelligence -= 1;
@@ -489,7 +513,8 @@ subAbility(clicked: any){
       
     break;
     case "Strength":
-      this.checkPoints(clicked.key, "subtract")  
+      //this.checkPoints(clicked.key, "subtract")
+      this.pointChecker(clicked.key, "subtract")  
       if (this.choices.validate == true && this.charAbilities.Strength > 8){
         this.charAbilities.Strength -= 1;
         this.finalAbilities.Strength -= 1;
@@ -498,7 +523,9 @@ subAbility(clicked: any){
       
     break;
     case "Wisdom":
-      this.checkPoints(clicked.key, "subtract")
+      //this.checkPoints(clicked.key, "subtract")
+      this.pointChecker(clicked.key, "subtract")
+      
       if (this.choices.validate == true && this.charAbilities.Wisdom > 8){
         this.charAbilities.Wisdom -= 1;
         this.finalAbilities.Wisdom -= 1;
@@ -520,5 +547,42 @@ saveAbilities(){
 // same as saveAbilitiesw minus the update function
 calcModifier(){
   this.abilityModifiers.emit(this.finalAbilities);
+  this.choices.abilities = this.finalAbilities;
+  console.log('the abilities :', this.choices.abilities);
 }
+
+pointChecker(selection: string, operand: string){
+  let pointBuy = [-1,-1,-1,-1,-1,-1,-1,0,1,2,3,4,5,6,8,10,13,16];
+  let value =  operand === "add" ? 0:-1;
+  switch (selection) {
+  case "Strength":
+    value += this.charAbilities.Strength; 
+  break;
+  case "Dexterity":
+    value += this.charAbilities.Dexterity
+  break;
+  case "Constitution":
+    value += this.charAbilities.Constitution;
+  break;
+  case "Intelligence":
+    value += this.charAbilities.Intelligence;
+  break;
+  case "Wisdom":
+    value += this.charAbilities.Wisdom;
+  break;
+  case "Charisma":
+    value += this.finalAbilities.Charisma;
+  break;
+  default:
+  break;
+}
+this.choices.validator(this.points, pointBuy[value], operand, 'abilities');
+if (this.choices.validate == true){
+  operand == "add"?  this.points -= pointBuy[value] : this.points += pointBuy[value]
+     console.log('the points', this.points)
+      }
+
+}
+
+
 }

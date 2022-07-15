@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, Output, EventEmitter, Input, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChoicesSenderService } from 'src/app/services/choices-sender.service';
@@ -34,10 +35,13 @@ export class SkillsComponent implements OnInit {
   form: FormGroup;
   // sets the number of points that are available for a character
   skillPoints: number = 0;
-
+  
 // sets the new variable equal to the variable in the choices service
   selectedSpecies: string = this.choices.speciesSelected;
  
+  // sa flag to show button when abilities are available
+  buttonIf: string = "hide";
+
   // utilizes event emitter to emit the skills selected
   @Output () skillsSelected: EventEmitter<any> = new EventEmitter<any>()
 
@@ -51,6 +55,7 @@ export class SkillsComponent implements OnInit {
   @Input () chosenClass: string = this.choices.selectedClass;
   @Input () intModifier = 0;
   ngOnInit(): void {
+    
   }
 
   @ViewChildren("checkboxes") checkboxes:QueryList<ElementRef> | undefined;
@@ -93,7 +98,10 @@ console.log("this is the class selected:" , selection);
   }
   /// shows the skills available based on previous choices
   showSkills(selection : string){
-   
+    //checks to see if abilities were selected and if button is still set to hide
+   if (this.choices.abilities != undefined && this.buttonIf == "hide"){
+      this.buttonIf = "show"
+   }
    this.calcModifier(selection);
     while (this.skillsArray.length) { 
       this.skillsArray.pop(); 
@@ -114,19 +122,23 @@ console.log("this is the class selected:" , selection);
   // connects with the service to intitate the starting feats 
 submit(){
   this.choices.setStartFeats();
-     
+    console.log("button if",this.choices.abilities)
 }
 
 skillTrained(event: any){
+  
   let selectedSkills: FormArray = this.form.get('selectedSkills') as FormArray;
   
+
+  /* 
+  ======old code=====
   //if (this.skillPoints <= 0  ){
     // const index = selectedSkills.controls.findIndex(x => x.value === event.target.value);
       //   selectedSkills.removeAt(index);
      //  && this.skillPoints-lenth > 0
    //  event.target.checked = false;
    // }else {
-      
+  */
       if (this.clear == "clear"){
         selectedSkills.clear(); 
         this.clear = 'ok';
@@ -163,6 +175,6 @@ skillTrained(event: any){
   sets the skill array in the choices service to the array created by the users choices in skills
   */
   this.choices.skills = this.form.value.selectedSkills;
-  console.log('skills:',this.choices.skills)
+  
 }
 }
