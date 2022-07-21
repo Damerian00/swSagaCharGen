@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, Output, EventEmitter, Input, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChoicesSenderService } from 'src/app/services/choices-sender.service';

@@ -3,9 +3,15 @@
         <p *ngFor = "let feat of startingFeats">{{feat}}</p>
 
     </section>
-    <section>
+    <section *ngIf="extraFeat == 'yes'" >
         <form>
+            <label>Feats: </label> <select value="selectedFeat" #selectedFeat (change)="selected(selectedFeat)">
+                <option>Select a Feat</option>
+                <option *ngFor="let feat of selectableFeats">{{feat}}</option>
+            </select>
             
         </form>
+        <h2>Feat: {{selectedFeatName}}</h2>
+        <p>Description: {{selectedFeatDescription}}</p>
     </section>
 </div>
