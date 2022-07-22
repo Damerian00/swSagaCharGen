@@ -1,1 +1,8 @@
-<p>talents works!</p>
+<section *ngIf="showTalents == true">
+    <h2>Please Select a Starting Talent for your Hero.</h2>
+    <label>Talents: </label> <select value="selectedTalents" #selectedTalents (change)="selectedTalent(selectedTalents)">
+        <option>Select a Talent</option>
+        <option *ngFor="let talent of talentsArray">{{talent.name}}</option>
+    </select>
+
+</section>

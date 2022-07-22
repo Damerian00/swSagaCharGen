@@ -29,7 +29,7 @@ export class SkillsComponent implements OnInit {
   // clear is a flag
   clear: string = 'ok';
   // array that will dynamically hold the skills that are permissable defaults with a message
-  skillsArray: any = ["Please Select a class first!"];
+  skillsArray: any = ["Please Select your abilities and class first!"];
   // holds the form group for the checkboxes
   form: FormGroup;
   // sets the number of points that are available for a character
@@ -122,6 +122,11 @@ console.log("this is the class selected:" , selection);
 submit(){
   this.choices.setStartFeats();
     console.log("button if",this.choices.abilities)
+  if (this.choices.getSpecies() != "Human"){
+    this.choices.startTalentComponent();
+  }
+  
+    
 }
 
 skillTrained(event: any){

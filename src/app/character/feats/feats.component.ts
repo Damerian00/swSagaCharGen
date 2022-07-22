@@ -30,41 +30,23 @@ selectableFeats: Array<string> = [];
     
   }
 
-  // Acquires the Starting Feats for the chosen class
-acquireSkillsArray(){
-  return this.choices.skills;
-}
-
-//getter for bab
-acquireBab(){
- return this.choices.bab;
-}
-// getter for intelligence
-acquireInt(){
-  return this.choices.abilities.Intelligence;
-}
-// getter for constitution
-acquireCon(){
-  return this.choices.abilities.Constitution;
-}
+ 
 // getter for class
 setClass(heroicClass: string){
   this.heroicClass = heroicClass;
 }
-getSpecies(){
-  return this.choices.speciesSelected;
-}
+
 
 // checks requirements and class to display starting feats
 async acquireFeats(){
 let tempString = '';
 let heroClass = this.heroicClass;
-let skillArray = await this.acquireSkillsArray();
+let skillArray = await this.choices.acquireSkillsArray();
 console.log("here's the feats skill array: ",skillArray)
-let bab = await this.acquireBab();
-let int = await this.acquireInt();
-let con = await this.acquireCon();
-let species = await this.getSpecies();
+let bab = await this.choices.acquireBab();
+let int = await this.choices.acquireInt();
+let con = await this.choices.acquireCon();
+let species = await this.choices.getSpecies();
 
   switch (heroClass) {
     case "Jedi":
@@ -121,15 +103,7 @@ async showAvailable(){
   // holds the keywords for further down
 
 // pulls in the values
-let BAB = await this.acquireBab();
-let int = await this.acquireInt();
-let con = await this.acquireCon();
-let str = await this.choices.abilities.Strength;
-let dex = await this.choices.abilities.Dexterity;
-let wis = await this.choices.abilities.Wisdom;
-let chr = await this.choices.abilities.Charisma;
-// pulls in the selected skills array
-let skills = await this.acquireSkillsArray();
+let BAB = await this.choices.acquireBab();
 // for loop to look through the imported array fro the api
  for (let i=0; i< this.featsArray.length; i++){
   console.log("in i loop: ", i )
@@ -233,67 +207,7 @@ let skills = await this.acquireSkillsArray();
       if (this.validated == false) break;
       }
         
-   
   
-
-    
-
-
-
-/*
-    for (let p =0; p < prop.length; p++){
-      for (let j=0; j < reqsArray.length; j++){
-        console.log("in j loop:", j, this.featsArray[i].name, vals)
-      if (vals[p].includes(reqsArray[j])){
-        vals.forEach((el: any) => {
-        if (el.includes(reqsArray[j])){
-          let check = el[1];
-          console.log("this is check: ", check, reqsArray[j], this.featsArray[i].name)
-          switch (reqsArray[j]){
-            case "BAB":
-              check >= BAB ? this.validated=true : this.validated = false;
-            break;
-            case "feat":
-             this.featsArray.includes(check) ? this.validated=true : this.validated = false;
-            break;
-            case "trained":
-              skills.includes(check) ? this.validated=true : this.validated = false;
-            break;
-            case "Strength":
-              check >= str ? this.validated=true : this.validated = false; 
-            break;
-            case "Dexterity":
-              check >= dex ? this.validated=true : this.validated = false;      
-            break;
-            case "Constitution":
-              check >= con ? this.validated=true : this.validated = false;
-            break;
-            case "Intelligence":
-              check >= int ? this.validated=true : this.validated = false   
-            break;
-            case "Wisdom":
-              check >= wis ? this.validated=true : this.validated = false;         
-            break;
-            case "Charisma":
-              check >= chr ? this.validated=true : this.validated = false;         
-            break;
-          }
-          console.log("valid?: ", this.validated, reqsArray[j])
-          return;
-          // if any requirements doesn't meet the minimums it returns nothing and breaks out of the loop and the check
-        } else {
-          this.validated = false
-        }
-      })
-    }    
-    if (this.validated == false) break;
-  }
-
-    }
-*/
-
-
-
 
 if(this.validated == true){ 
   console.log('pushed',this.featsArray[i].name);
@@ -342,14 +256,14 @@ async selected(selection: any){
 
 
 async chkReqs (apiValue: any, keyword: string){
-let BAB = await this.acquireBab();
-let int = await this.acquireInt();
-let con = await this.acquireCon();
+let BAB = await this.choices.acquireBab();
+let int = await this.choices.acquireInt();
+let con = await this.choices.acquireCon();
 let str = await this.choices.abilities.Strength;
 let dex = await this.choices.abilities.Dexterity;
 let wis = await this.choices.abilities.Wisdom;
 let chr = await this.choices.abilities.Charisma;
-let skills = await this.acquireSkillsArray();
+let skills = await this.choices.acquireSkillsArray();
 console.log("check these values: ",apiValue, keyword)
   switch (keyword){
     case "BAB":
@@ -384,6 +298,11 @@ console.log("check these values: ",apiValue, keyword)
       this.validated = false;
     break;
   }
+}
+
+
+submit(){
+  this.choices.startTalentComponent();
 }
 
 }

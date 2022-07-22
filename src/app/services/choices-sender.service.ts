@@ -9,13 +9,19 @@ export class ChoicesSenderService {
 invokeAbilitiesFunction = new EventEmitter ();
   subsVar: Subscription = new Subscription;
 setStartingFeats = new EventEmitter();
+intiializeTalents = new EventEmitter();
 
 // middleware function to display starting feats
 setStartFeats(){
   this.setStartingFeats.emit();
 }
 
-// middleware function to show abilitie points and final ability values
+//middleware function to show talents
+startTalentComponent(){
+  this.intiializeTalents.emit();
+}
+
+// middleware function to show ability points and final ability values
 onSelection() {
   this.invokeAbilitiesFunction.emit();
 }
@@ -63,8 +69,30 @@ switch (type) {
 
 }
 
+/*
+Getters and Setters
+*/
+getSpecies(){
+  return this.speciesSelected;
+}
 
+ // Acquires the Starting Feats for the chosen class
+ acquireSkillsArray(){
+  return this.skills;
+}
 
+//getter for bab
+acquireBab(){
+ return this.bab;
+}
+// getter for intelligence
+acquireInt(){
+  return this.abilities.Intelligence;
+}
+// getter for constitution
+acquireCon(){
+  return this.abilities.Constitution;
+}
 
 
 }
