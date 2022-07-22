@@ -2,7 +2,7 @@
     <h2>Please Select a Starting Talent for your Hero.</h2>
     <label>Talents: </label> <select value="selectedTalents" #selectedTalents (change)="selectedTalent(selectedTalents)">
         <option>Select a Talent</option>
-        <option *ngFor="let talent of talentsArray">{{talent.name}}</option>
+        <option *ngFor="let talent of availableTalents">{{talent.name}}</option>
     </select>
 
 </section>

@@ -23,4 +23,8 @@ swApitUrl: string = "https://swsagaapi.herokuapp.com/"
     return this.http.get(this.swApitUrl + 'talents');
   }
 
+  getTalentTree(): Observable<any> {
+    return this.http.get(this.swApitUrl + 'talenttree');
+  }
+
 }

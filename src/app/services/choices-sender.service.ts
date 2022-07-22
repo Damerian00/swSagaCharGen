@@ -93,6 +93,8 @@ acquireInt(){
 acquireCon(){
   return this.abilities.Constitution;
 }
-
+getClass(){
+  return this.selectedClass;
+}
 
 }
