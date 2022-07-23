@@ -17,6 +17,7 @@ selectedHeroicClass = this.choices.selectedClass;
 heroicClass: string = '';
 extraFeat: string = 'no';
 selectableFeats: Array<string> = [];
+selectedFeat: string = "";
 
 
   ngOnInit(): void {
@@ -51,32 +52,32 @@ let species = await this.choices.getSpecies();
   switch (heroClass) {
     case "Jedi":
       
-      tempString = "Force Sensitivity, Weapon Proficiency (Lightsabers), Weapon Proficiency (Simple Weapons)";
+      tempString = "Force Sensitivity,Weapon Proficiency (Lightsabers),Weapon Proficiency (Simple Weapons)";
       break;
     case "Noble":
       if (int >= 13){
        
-        tempString = "Linguist, Weapon Proficiency (Pistols), Weapon Proficiency (Simple Weapons)";
+        tempString = "Linguist,Weapon Proficiency (Pistols),Weapon Proficiency (Simple Weapons)";
       }else {
-        tempString = "Weapon Proficiency (Pistols), Weapon Proficiency (Simple Weapons)";
+        tempString = "Weapon Proficiency (Pistols),Weapon Proficiency (Simple Weapons)";
       }
       break;
       case "Scoundrel":
        
-        tempString = "Point-Blank Shot, Weapon Proficiency (Pistols), Weapon Proficiency (Simple Weapons)";
+        tempString = "Point-Blank Shot,Weapon Proficiency (Pistols),Weapon Proficiency (Simple Weapons)";
       break;
       case "Scout":
        
       if (con >= 13 && skillArray.includes("Endurance")){
-        tempString = "Shake It Off, Weapon Proficiency (Pistols), Weapon Proficiency (Rifles), Weapon Proficiency (Simple Weapons)";
+        tempString = "Shake It Off,Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
 
       } else {
-        tempString = "Weapon Proficiency (Pistols), Weapon Proficiency (Rifles), Weapon Proficiency (Simple Weapons)";
+        tempString = "Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
       }
       break;
       case "Soldier":
        
-        tempString = "Armor Proficiency (Light), Armor Proficiency (Medium), Weapon Proficiency (Pistols), Weapon Proficiency (Rifles), Weapon Proficiency (Simple Weapons)";
+        tempString = "Armor Proficiency (Light),Armor Proficiency (Medium),Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
       break;
     default:
       tempString = ",";
@@ -88,6 +89,15 @@ let species = await this.choices.getSpecies();
     if (species === "Human"){
       this.showAvailable();
       this.extraFeat = "yes";
+      
+    }else{
+      if (this.choices.featsArray.length !=0){
+        // if it isn't empty we use pop method to empty it out
+          while(this.choices.featsArray.length){
+            this.choices.featsArray.pop()
+          }
+        }
+      this.choices.setFeatsArray(this.startingFeats);
 
     }
 }
@@ -106,7 +116,7 @@ async showAvailable(){
 let BAB = await this.choices.acquireBab();
 // for loop to look through the imported array fro the api
  for (let i=0; i< this.featsArray.length; i++){
-  console.log("in i loop: ", i )
+  
   // indicates each req and it's values from the feats array at the given index
   let prop = Object.keys(this.featsArray[i].prereqs);
   let vals: any = Object.values(this.featsArray[i].prereqs);
@@ -134,7 +144,7 @@ let BAB = await this.choices.acquireBab();
     for (let v = 0; v < vals.length; v++){    
       console.log("what is v:" , v)
         for (let j=0; j < reqsArray.length; j++){
-            console.log("in j loop:", j, this.featsArray[i].name, "here are keys: ",prop, "here are values: ",vals[v][0], reqsArray[j])
+            console.log("in j loop:", j, this.featsArray[i].name, "here are keys: ",prop, "here are values: ",vals, reqsArray[j])
         if (vals[v].includes("or")){
           for(let c=2; c< vals.length; c++ ){
             this.chkReqs(vals[v][c], vals[v][0])
@@ -246,7 +256,7 @@ selectedFeatName: string = ""
 selectedFeatDescription: string = ""
 // humans can select an aditional feat
 async selected(selection: any){
-
+this.selectedFeat = selection.value;
  const index =  await this.featsArray.findIndex((el: any) => el.name == selection.value);
  // console.log("this is the selected id: ", this.featsArray.findIndex(index))
   this.selectedFeatName = await this.featsArray[index].name;
@@ -264,14 +274,14 @@ let dex = await this.choices.abilities.Dexterity;
 let wis = await this.choices.abilities.Wisdom;
 let chr = await this.choices.abilities.Charisma;
 let skills = await this.choices.acquireSkillsArray();
-console.log("check these values: ",apiValue, keyword)
+// console.log("check these values: ", apiValue, keyword)
   switch (keyword){
     case "BAB":
       apiValue <= BAB ? this.validated=true : this.validated = false;
     break;
     case "feat":
       this.startingFeats.includes(apiValue) ? this.validated=true : this.validated = false;
-      console.log(this.startingFeats.includes(apiValue),this.startingFeats, this.validated);
+      // console.log(this.startingFeats.includes(apiValue),this.startingFeats, this.validated);
     break;
     case "trained":
       skills.includes(apiValue) ? this.validated=true : this.validated = false;
@@ -302,6 +312,18 @@ console.log("check these values: ",apiValue, keyword)
 
 
 submit(){
+  if (this.choices.featsArray.length != 0){
+    while (this.choices.featsArray.length){
+      this.choices.featsArray.pop();
+    }
+  }
+  if (this.selectedFeat == ""){
+    this.choices.featsArray = this.startingFeats;
+  }else{
+    let choosenFeats = this.startingFeats.push(this.selectedFeat);
+    this.choices.featsArray = choosenFeats;
+  }  
+  
   this.choices.startTalentComponent();
 }
 

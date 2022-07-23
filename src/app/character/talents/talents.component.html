@@ -4,5 +4,6 @@
         <option>Select a Talent</option>
         <option *ngFor="let talent of availableTalents">{{talent.name}}</option>
     </select>
-
+        <h3>Talent: {{selectedTalentName}}</h3>
+        <p>Description: {{selectedTalentDescription}}</p>
 </section>

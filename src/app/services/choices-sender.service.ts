@@ -34,6 +34,7 @@ onSelection() {
   public bab: number = 0;
   public skills: Array<string> = [];
   public maxPoints: number = 25;
+  public featsArray: any = [];
 
   
   constructor() { }
@@ -95,6 +96,21 @@ acquireCon(){
 }
 getClass(){
   return this.selectedClass;
+}
+setFeatsArray(importArray: Array<string>){
+  if (this.featsArray.length !=0){
+    // if it isn't empty we use pop method to empty it out
+      while(this.featsArray.length){
+        this.featsArray.pop()
+      }
+    }
+    for (let i =0; i< importArray.length; i++){
+      this.featsArray.push(importArray[i])
+    }
+    console.log("loaded the feats", this.featsArray, importArray)
+}
+getFeatsArray(){
+  return this.featsArray;
 }
 
 }
