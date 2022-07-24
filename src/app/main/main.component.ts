@@ -15,7 +15,8 @@ abilities: object = {};
 class: string = "";
 abilityModifier: any = {};
 showAbilities: boolean = false
-intModifier: number = 0;  
+intModifier: number = 0;
+chosenSkills: Array <string> = [];
   constructor(private choices: ChoicesSenderService) { }
 
   ngOnInit(): void {
@@ -34,7 +35,9 @@ the below functions are used to display the choices that the user selects on to 
   updateClass(chosenClass: any){
     this.class = chosenClass;
   }
-
+  updateSkills(chosenSkills: any){
+    this.chosenSkills = chosenSkills;
+  }
 
   getAbilityModifier(chosenAbilities: any){
     const str = chosenAbilities.Strength;

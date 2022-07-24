@@ -9,14 +9,14 @@
         <species (speciesSelected)="updateSpecies($event)"></species>
         <abilities (abilitiesSelected)="updateAbilities($event)" (abilityModifiers)="getAbilityModifier($event)"></abilities>
         <classes (classSelected)="[updateClass($event), skills.showSkills($event), feats.setClass($event)]"></classes>
-        <skills #skills [intModifier]="intModifier"></skills>
+        <skills #skills [intModifier]="intModifier" (heroSkillsSelected)="updateSkills($event)"></skills>
         <feats #feats ></feats>
         <talents></talents>
     </div>
     <div class="display">
         <h2>Name Goes Here</h2>
-        <h3>{{class}}</h3>
-        <label>Species: <p>{{species}}</p></label>
+       <h3> <span>Species:  </span> {{species}}</h3>
+        <h3><span>Class: </span>{{class}} </h3>
         <section *ngIf="showAbilities" class="abilityWrapper">
             <div class="abilitiesContainer">
                 <h3>Hero Abilities</h3>
@@ -28,6 +28,12 @@
             <div class="scoresContainer">
                 <h3>Ability Modifier</h3>
                 <p *ngFor="let score of abilityModifier | keyvalue">{{score.value}}</p>
+            </div>
+        </section>
+        <section *ngIf="showAbilities" class="skillWrapper">
+            <div class="skillsContainer">
+                <h3>Selected Skills</h3>
+                <h4 *ngFor="let skill of chosenSkills">{{skill}}</h4>
             </div>
         </section>
         </div>

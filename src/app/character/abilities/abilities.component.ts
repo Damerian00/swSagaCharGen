@@ -407,7 +407,7 @@ addAbility(clicked: any){
       this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
         this.charAbilities.Charisma += 1;
-        this.finalAbilities.Charisma +=1;
+        this.finalAbilities.Charisma += 1;
       }
     }
   break;
@@ -571,7 +571,7 @@ pointChecker(selection: string, operand: string){
     value += this.charAbilities.Wisdom;
   break;
   case "Charisma":
-    value += this.finalAbilities.Charisma;
+    value += this.charAbilities.Charisma;
   break;
   default:
   break;

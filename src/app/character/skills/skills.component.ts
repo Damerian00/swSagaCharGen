@@ -125,10 +125,10 @@ submit(){
   if (this.choices.getSpecies() != "Human"){
     this.choices.startTalentComponent();
   }
-  
+  this.heroSkillsSelected.emit(this.form.value.selectedSkills)
     
 }
-
+@Output () heroSkillsSelected: EventEmitter<any> = new EventEmitter()
 skillTrained(event: any){
   
   let selectedSkills: FormArray = this.form.get('selectedSkills') as FormArray;
