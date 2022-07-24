@@ -17,6 +17,8 @@ abilityModifier: any = {};
 showAbilities: boolean = false
 intModifier: number = 0;
 chosenSkills: Array <string> = [];
+heroName: string = "Name Goes Here...";
+chosenFeats: any = [];
   constructor(private choices: ChoicesSenderService) { }
 
   ngOnInit(): void {
@@ -37,6 +39,10 @@ the below functions are used to display the choices that the user selects on to 
   }
   updateSkills(chosenSkills: any){
     this.chosenSkills = chosenSkills;
+  }
+  updateFeats(chosenFeats: Array<string>){
+    console.log("here are the choosen ones: ", chosenFeats)
+    this.chosenFeats = chosenFeats;
   }
 
   getAbilityModifier(chosenAbilities: any){

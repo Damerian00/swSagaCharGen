@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ChoicesSenderService } from 'src/app/services/choices-sender.service';
 import { SwapiService } from 'src/app/services/swapi.service';
+
 
 @Component({
   selector: 'feats',
@@ -18,6 +19,8 @@ heroicClass: string = '';
 extraFeat: string = 'no';
 selectableFeats: Array<string> = [];
 selectedFeat: string = "";
+
+@Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
 
 
   ngOnInit(): void {
@@ -91,6 +94,7 @@ let species = await this.choices.getSpecies();
       this.extraFeat = "yes";
       
     }else{
+      this.extraFeat = "no";
       if (this.choices.featsArray.length !=0){
         // if it isn't empty we use pop method to empty it out
           while(this.choices.featsArray.length){
@@ -98,7 +102,7 @@ let species = await this.choices.getSpecies();
           }
         }
       this.choices.setFeatsArray(this.startingFeats);
-
+      this.heroFeatsSelected.emit(this.choices.featsArray)
     }
 }
 
@@ -142,9 +146,9 @@ let BAB = await this.choices.acquireBab();
     const reqsArray = ["BAB", "feat", "trained", "talent","trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" ]
     
     for (let v = 0; v < vals.length; v++){    
-      console.log("what is v:" , v)
+      
         for (let j=0; j < reqsArray.length; j++){
-            console.log("in j loop:", j, this.featsArray[i].name, "here are keys: ",prop, "here are values: ",vals, reqsArray[j])
+          
         if (vals[v].includes("or")){
           for(let c=2; c< vals.length; c++ ){
             this.chkReqs(vals[v][c], vals[v][0])
@@ -152,7 +156,7 @@ let BAB = await this.choices.acquireBab();
           }
         } else if (vals[v][0] == reqsArray[j]){
           let check = vals[v][1];
-          console.log("this is check: ", vals[v][0], reqsArray[j], this.featsArray[i].name)
+         
           let temp = reqsArray[j];
           switch (reqsArray[j]){
             case "BAB":
@@ -208,7 +212,7 @@ let BAB = await this.choices.acquireBab();
             break;
             
           }
-          console.log("valid?: ", this.validated, temp)
+          // console.log("valid?: ", this.validated, temp)
           
           // if any requirements doesn't meet the minimums it returns nothing and breaks out of the loop and the check
         } 
@@ -261,7 +265,6 @@ this.selectedFeat = selection.value;
  // console.log("this is the selected id: ", this.featsArray.findIndex(index))
   this.selectedFeatName = await this.featsArray[index].name;
   this.selectedFeatDescription =  await this.featsArray[index].description;
-  console.log(index);
 }
 
 
@@ -311,19 +314,20 @@ let skills = await this.choices.acquireSkillsArray();
 }
 
 
-submit(){
+submit(selection: any){
   if (this.choices.featsArray.length != 0){
     while (this.choices.featsArray.length){
       this.choices.featsArray.pop();
     }
   }
-  if (this.selectedFeat == ""){
-    this.choices.featsArray = this.startingFeats;
-  }else{
-    let choosenFeats = this.startingFeats.push(this.selectedFeat);
-    this.choices.featsArray = choosenFeats;
-  }  
-  
+  this.selectedFeats.pop();
+  this.selectedFeats.push(selection);
+ 
+  const tempArr =  this.startingFeats.concat(this.selectedFeats)
+  for (let i=0; i<tempArr.length; i++){
+    this.choices.featsArray.push(tempArr[i]);
+  }
+  this.heroFeatsSelected.emit(this.choices.featsArray);
   this.choices.startTalentComponent();
 }
 

@@ -69,7 +69,7 @@ async showAvailable(){
 }
 
 async checkRequirements(talent: any){
-  console.log("talent in check",talent)
+//  console.log("talent in check",talent)
     
    let preReqs = await talent.preReqs;
     let vals: any = Object.values(preReqs);
@@ -82,7 +82,7 @@ async checkRequirements(talent: any){
         this.validated = false;
         i = vals.length;  
       }else if (vals[i].includes("currentArmor")){
-        console.log("checkedArmor")
+    //    console.log("checkedArmor")
         this.validated = true;
       }else if (vals[i].includes("feat")){
           if (vals[i].includes("or")){
@@ -119,7 +119,7 @@ async checkRequirements(talent: any){
       }
       
     }
-    console.log(talent.name, this.validated)
+//    console.log(talent.name, this.validated)
 }
 
 selectedTalentName: string = "";
@@ -129,7 +129,7 @@ async selectedTalent(selection: any){
   // console.log("this is the selected id: ", this.featsArray.findIndex(index))
    this.selectedTalentName = await this.availableTalents[index].name;
    this.selectedTalentDescription =  await this.availableTalents[index].description;
-   console.log(index);
+ //  console.log(index);
  }
 
 
