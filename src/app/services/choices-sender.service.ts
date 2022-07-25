@@ -27,6 +27,7 @@ onSelection() {
 }
 
   public speciesSelected: any
+  public speciesSelectedObject: object = {};
   public speciesAbilityModifiers: any
   public abilities: any;
   public selectedClass: string = "Jedi";
@@ -73,10 +74,17 @@ switch (type) {
 /*
 Getters and Setters
 */
+setSpecies(selection: object){
+  // if (this.speciesSelectedObject == undefined || this.speciesSelectedObject.id > 0){
+  //   for (const key in this.speciesSelectedObject) {
+  //     delete this.speciesSelectedObject[key];
+  //   }
+  // }
+  this.speciesSelectedObject = selection;
+}
 getSpecies(){
   return this.speciesSelected;
 }
-
  // Acquires the Starting Feats for the chosen class
  acquireSkillsArray(){
   return this.skills;

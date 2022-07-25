@@ -324,9 +324,9 @@ submit(selection: any){
   this.selectedFeats.push(selection);
  
   const tempArr =  this.startingFeats.concat(this.selectedFeats)
-  for (let i=0; i<tempArr.length; i++){
-    this.choices.featsArray.push(tempArr[i]);
-  }
+  
+    this.choices.setFeatsArray(tempArr);
+ 
   this.heroFeatsSelected.emit(this.choices.featsArray);
   this.choices.startTalentComponent();
 }

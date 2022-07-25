@@ -17,6 +17,14 @@
         <input type="text" value="{{heroName}}">
        <h3> <span>Species:  </span> {{species}}</h3>
         <h3><span>Class: </span>{{class}} </h3>
+        <section *ngIf="showAbilities" class="stats">
+            <label>HP <p>{{healthPoints}}</p></label>
+            <div class="defensesBox">
+                <label>Reflex Defense: <p> {{reflexDefense}}</p></label>
+                <label>Fortitude Defense: <p> {{fortitudeDefense}}</p></label>
+                <label>Will Defense: <p> {{willDefense}}</p></label>
+            </div>
+        </section>
         <section *ngIf="showAbilities" class="abilityWrapper">
             <div class="abilitiesContainer">
                 <h3>Hero Abilities</h3>

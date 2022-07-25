@@ -53,9 +53,18 @@ export class SpeciesComponent implements OnInit {
   // this uses another event emitter to call a sibling function
   this.choices.onSelection();
   
+  // creates the speciesObject on the choices service
+  this.createSpeciesObject(selection);
 }
 
- 
+async createSpeciesObject(selection: any){
+
+  const index =  await this.speciesArray.findIndex((el: any) => el.species_name == selection.value);
+  // console.log("this is the selected id: ", this.speciesArray.findIndex(index))
+  await this.choices.setSpecies(this.speciesArray[index]);
+ console.log("here's the stored species:", index, this.choices.speciesSelectedObject)
+
+} 
 
   
 }

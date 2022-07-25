@@ -19,6 +19,10 @@ intModifier: number = 0;
 chosenSkills: Array <string> = [];
 heroName: string = "Name Goes Here...";
 chosenFeats: any = [];
+healthPoints: number = 0;
+reflexDefense:number = 10;
+fortitudeDefense: number = 10;
+willDefense:number = 10;
   constructor(private choices: ChoicesSenderService) { }
 
   ngOnInit(): void {
@@ -32,10 +36,12 @@ the below functions are used to display the choices that the user selects on to 
   updateAbilities(chosenAbilities: any){
     this.showAbilities = true;
     this.abilities = chosenAbilities;
+    
   }
 
   updateClass(chosenClass: any){
     this.class = chosenClass;
+    this.updateStats();
   }
   updateSkills(chosenSkills: any){
     this.chosenSkills = chosenSkills;
@@ -44,6 +50,32 @@ the below functions are used to display the choices that the user selects on to 
     console.log("here are the choosen ones: ", chosenFeats)
     this.chosenFeats = chosenFeats;
   }
+
+  updateStats(){
+    this.calcHP();
+
+
+  }
+
+  async calcHP(){
+    const heroicClass = await this.choices.getClass();
+    const conModifier = await this.abilityModifier.Constitution;
+    let offset;
+    if (heroicClass == "Jedi" || heroicClass == "Soldier"){
+      offset = 30;
+    }else if(heroicClass == "Scout"){
+      offset = 24
+    }else {
+      offset = 18
+    }
+    this.healthPoints = offset + conModifier;
+
+  }
+
+calcReflexDefense(){
+  
+}
+
 
   getAbilityModifier(chosenAbilities: any){
     const str = chosenAbilities.Strength;
