@@ -12,14 +12,18 @@
     </section>
     <section *ngIf="extraFeat == 'yes'" >
         <form>
-            <label>Feats: </label> <select value="selectedFeat" #selectedFeat (change)="selected(selectedFeat)">
+            <label>Feats: </label> <select value="selectedFeat" #selectedFeat (change)="selected(selectedFeat.value)">
                 <option>Select a Feat</option>
                 <option *ngFor="let feat of selectableFeats">{{feat}}</option>
-            </select>
-            
+            </select>     
         </form>
         <h2>Feat: {{selectedFeatName}}</h2>
         <p>Description: {{selectedFeatDescription}}</p>
+        <div *ngIf="specifyFeat == 'yes'">
+            <select value="specialFeat" #specialFeat (change)="setFeatOption((specialFeat.value))" >
+                <option *ngFor="let featOption of specialFeatOptions">{{featOption}}</option>
+            </select>
+        </div>
         <button (click)="submit(selectedFeat.value)">Select Feat</button>
     </section>
 </div>

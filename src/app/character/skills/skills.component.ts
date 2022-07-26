@@ -115,6 +115,7 @@ console.log("this is the class selected:" , selection);
     }
     
     console.log('skills:',this.skillsArray)
+    this.choices.classSkills = this.skillsArray;
     this.uncheckAll();
     
   }

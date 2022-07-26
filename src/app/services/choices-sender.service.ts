@@ -36,6 +36,7 @@ onSelection() {
   public skills: Array<string> = [];
   public maxPoints: number = 25;
   public featsArray: any = [];
+  public classSkills: any;
 
   
   constructor() { }
@@ -88,7 +89,7 @@ acquireSpeciesTraits(){
 getSpecies(){
   return this.speciesSelected;
 }
- // Acquires the Starting Feats for the chosen class
+ // Acquires the Starting skills for the chosen class
  acquireSkillsArray(){
   return this.skills;
 }
@@ -105,9 +106,11 @@ acquireInt(){
 acquireCon(){
   return this.abilities.Constitution;
 }
+// returns the selected class
 getClass(){
   return this.selectedClass;
 }
+// sets the featsArray
 setFeatsArray(importArray: Array<string>){
   if (this.featsArray.length !=0){
     // if it isn't empty we use pop method to empty it out
@@ -120,6 +123,7 @@ setFeatsArray(importArray: Array<string>){
     }
     console.log("loaded the feats", this.featsArray, importArray)
 }
+//returns the feats array
 getFeatsArray(){
   return this.featsArray;
 }

@@ -20,6 +20,11 @@ extraFeat: string = 'no';
 selectableFeats: Array<string> = [];
 selectedFeat: string = "";
 additionalFeatsArray: Array<string> = [];
+specifyFeat: string = "no"
+specifyFeatButtonName = "default"
+specialFeatOptions: Array<string> = [];
+specialOptionSelected: string = "";
+
 
 @Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
 
@@ -96,7 +101,7 @@ let species = await this.choices.getSpecies();
   }
    
     this.startingFeats = tempString.split(",");
-    this.startingFeats.push(bonusFeat);
+    if (this.choices.getSpecies() != "Tof")this.startingFeats.push(bonusFeat);
     console.log('starting feats', this.startingFeats, bab)
     // check if the selected species has a conditional bonus feat trait
     this.checkConditionals();
@@ -274,11 +279,23 @@ selectedFeatName: string = ""
 selectedFeatDescription: string = ""
 // humans can select an aditional feat
 async selected(selection: any){
-this.selectedFeat = selection.value;
- const index =  await this.featsArray.findIndex((el: any) => el.name == selection.value);
- // console.log("this is the selected id: ", this.featsArray.findIndex(index))
-  this.selectedFeatName = await this.featsArray[index].name;
-  this.selectedFeatDescription =  await this.featsArray[index].description;
+if (selection.value != "Select a Feat"){
+  this.selectedFeat = selection;
+  if (selection == "Skill Focus" || selection == "Skill Training" || selection == "Weapon Proficiency"){
+    this.specifyFeat = "yes";
+    this.submitSpecialFeat(selection);
+  }else{
+    this.selectedFeats.push(selection);
+  }
+   const index =  await this.featsArray.findIndex((el: any) => el.name == selection);
+   // console.log("this is the selected id: ", this.featsArray.findIndex(index))
+    this.selectedFeatName = await this.featsArray[index].name;
+    this.selectedFeatDescription =  await this.featsArray[index].description;
+
+}else {
+  this.selectedFeatName = "";
+  this.selectedFeatDescription = "Select a Feat";
+}
 }
 
 
@@ -326,6 +343,7 @@ let skills = await this.choices.acquireSkillsArray();
     break;
   }
 }
+// checks to see if a selected species has conditional bonus feats
 async checkConditionals(){
   if (this.additionalFeatsArray.length > 0) {
     while (this.additionalFeatsArray.length){
@@ -363,7 +381,47 @@ async checkConditionals(){
     }
   } 
 }
-
+setFeatOption(selected: string){
+  this.specialOptionSelected = selected;
+}
+async submitSpecialFeat(feat: string) {
+  console.log("the feat: " , feat)
+  if (this.specialFeatOptions.length != 0){
+    console.log("clear out loop");
+    while(this.specialFeatOptions.length){
+      this.specialFeatOptions.pop();
+    }
+  }
+    let skillArray = await this.choices.acquireSkillsArray();
+    console.log("the skillsArray", skillArray)
+  if (feat == "Skill Focus"){
+    this.specifyFeatButtonName = "Select Skill"
+    for(let i=0; i<skillArray.length; i++){
+      this.specialFeatOptions.push(skillArray[i]);
+    }
+  }else if (feat == "Skill Training"){
+      this.specifyFeatButtonName = "Select Skill"
+      let finalArr: Array<string> = [];
+      for (let i =0; i<this.choices.classSkills.length; i++){
+        if (skillArray.includes(this.choices.classSkills[i])== false ){
+          finalArr.push(this.choices.classSkills[i]);
+        }
+      }  
+      console.log("feats finalArr: ", finalArr)
+         for(let i=0; i<finalArr.length; i++){
+        this.specialFeatOptions.push(finalArr[i]);
+      }
+    }else if (feat == "Weapon Proficiency"){
+      this.specifyFeatButtonName = "Select Weapon Group"
+      let weaponOptions = ["Simple Weapons", "Pistols", "Rifles", "Lightsabers", "Heavy Weapons", "Advanced Melee Weapons" ]
+      for(let i=0; i<weaponOptions.length; i++){
+        this.specialFeatOptions.push(weaponOptions[i]);
+      }
+      console.log("the weaponsArray", weaponOptions)
+    }
+  
+  console.log("the specials array", this.specialFeatOptions)
+}
 submit(selection: any){
   if (this.choices.featsArray.length != 0){
     while (this.choices.featsArray.length){
@@ -371,7 +429,13 @@ submit(selection: any){
     }
   }
   this.selectedFeats.pop();
+if (selection == "Skill Focus" || selection == "Skill Training" || selection == "Weapon Proficiency"){
+  let modSelection = `${selection} (${this.specialOptionSelected})`
+  this.selectedFeats.push(modSelection);
+}else{
   this.selectedFeats.push(selection);
+}
+  
  
   const tempArr =  this.startingFeats.concat(this.selectedFeats)
   
