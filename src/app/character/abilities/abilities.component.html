@@ -6,7 +6,7 @@
 <button (click)="setMaxPoints(maxPoints.value)">Set Max Points</button>
 <section>
     <div class="outsideWrapper">
-        <div class="abilityContainer" *ngFor="let ability of charAbilities | keyvalue">
+        <div class="abilityContainer" *ngFor="let ability of charAbilities | keyvalue : unsorted">
             <p #ability class="abilityName">{{ability.key}} :</p>
             <p class="abilityValue">{{ability.value}}</p>
           <div class="buttonContainer">

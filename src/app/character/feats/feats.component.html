@@ -3,6 +3,13 @@
         <p *ngFor = "let feat of startingFeats">{{feat}}</p>
 
     </section>
+    <section *ngIf="additionalFeatsArray.length > 0">
+        <label>Select one Skill Focus to add:</label>
+            <select value="additionalFeat" #additionalFeat>
+<option *ngFor="let addFeat of additionalFeatsArray">{{addFeat}}</option>
+            </select>
+            <button (click)="submit(additionalFeat.value)">Add this Bonus Feat</button>
+    </section>
     <section *ngIf="extraFeat == 'yes'" >
         <form>
             <label>Feats: </label> <select value="selectedFeat" #selectedFeat (change)="selected(selectedFeat)">

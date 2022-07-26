@@ -19,6 +19,7 @@ heroicClass: string = '';
 extraFeat: string = 'no';
 selectableFeats: Array<string> = [];
 selectedFeat: string = "";
+additionalFeatsArray: Array<string> = [];
 
 @Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
 
@@ -97,6 +98,7 @@ let species = await this.choices.getSpecies();
     this.startingFeats = tempString.split(",");
     this.startingFeats.push(bonusFeat);
     console.log('starting feats', this.startingFeats, bab)
+    // check if the selected species has a conditional bonus feat trait
     this.checkConditionals();
     if (species === "Human" || species == "Nyriaanan" || species == "Anarrian" || species == "Tof"){
       this.showAvailable();
@@ -325,6 +327,11 @@ let skills = await this.choices.acquireSkillsArray();
   }
 }
 async checkConditionals(){
+  if (this.additionalFeatsArray.length > 0) {
+    while (this.additionalFeatsArray.length){
+      this.additionalFeatsArray.pop();
+   };
+};
   const selectedSpeciesTraits = await this.choices.acquireSpeciesTraits();
   if (Object.keys(selectedSpeciesTraits).includes("Conditional Bonus Feat")){
     for (let i =0 ; i < selectedSpeciesTraits["Conditional Bonus Feat"].length; i++){
@@ -343,10 +350,14 @@ async checkConditionals(){
       if (keyword == "trained skill"){
         keyword = "trained"
       }
-      console.log("after checks before check", value, keyword )
-          this.chkReqs(value, keyword);
+        console.log("after checks before check", value, keyword )
+        await this.chkReqs(value, keyword);
           if (this.validated == true) {
-            this.submit(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
+            if (this.choices.getSpecies() == "Arkanian Offshoot (str)" || this.choices.getSpecies() == "Arkanian Offshoot (dex)"){
+              this.additionalFeatsArray.push(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
+            }else{
+              this.submit(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
+            }
           }
       
     }

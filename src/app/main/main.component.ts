@@ -23,6 +23,10 @@ healthPoints: number = 0;
 reflexDefense:number = 10;
 fortitudeDefense: number = 10;
 willDefense:number = 10;
+// tells the html not to sort
+unsorted = (a:any, b:any) => {
+  return a;
+}
   constructor(private choices: ChoicesSenderService) { }
 
   ngOnInit(): void {
@@ -86,10 +90,10 @@ calcReflexDefense(){
     this.calcModifier('Constitution', con);
     const int = chosenAbilities.Intelligence;
     this.calcModifier('Intelligence', int);
-    const char = chosenAbilities.Charisma;
-    this.calcModifier('Charisma', char);
     const wis = chosenAbilities.Wisdom;
     this.calcModifier('Wisdom', wis);
+    const char = chosenAbilities.Charisma;
+    this.calcModifier('Charisma', char);
 
   }
 
@@ -150,25 +154,25 @@ calcModifier(ability: string, score: number){
       break;
   }
   switch (ability) {
-    case "Charisma":
-      this.abilityModifier.Charisma = tempScore;
-    break;
-    case "Constitution":
-      this.abilityModifier.Constitution = tempScore;
+    case "Strength":
+      this.abilityModifier.Strength = tempScore;
     break;
     case "Dexterity":
       this.abilityModifier.Dexterity = tempScore;
+    break;
+    case "Constitution":
+      this.abilityModifier.Constitution = tempScore;
     break;
     case "Intelligence":
       this.abilityModifier.Intelligence = tempScore;
       this.intModifier = tempScore;
     break;
-    case "Strength":
-      this.abilityModifier.Strength = tempScore;
-    break;
     case "Wisdom":
       this.abilityModifier.Wisdom = tempScore;
-    break;
+      break;
+      case "Charisma":
+        this.abilityModifier.Charisma = tempScore;
+      break;
 
     default:
       break;

@@ -28,7 +28,7 @@
         <section *ngIf="showAbilities" class="abilityWrapper">
             <div class="abilitiesContainer">
                 <h3>Hero Abilities</h3>
-                <div class="abilities" *ngFor="let ability of abilities | keyvalue">
+                <div class="abilities" *ngFor="let ability of abilities | keyvalue : unsorted">
                     <p>{{ability.key}}</p>
                     <p>{{ability.value}}</p>
                 </div>

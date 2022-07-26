@@ -12,7 +12,10 @@ import { ChoicesSenderService } from 'src/app/services/choices-sender.service';
 
 
 export class AbilitiesComponent implements OnInit {
-
+  // tells it not to sort 
+  unsorted = (a:any, b:any) => {
+    return a;
+  }
   // variables used in this component
   /*
    max amount of points available for abilities which is adjustable
@@ -27,8 +30,8 @@ holds the abilities and their values for starting
     Dexterity: 8,
     Constitution: 8,
     Intelligence: 8,
+    Wisdom: 8,
     Charisma: 8,
-    Wisdom: 8
   }
 // holds the abilities and their values after being selected including species modifiers
   finalAbilities: any= {
@@ -36,8 +39,8 @@ holds the abilities and their values for starting
     Dexterity: 8,
     Constitution: 8,
     Intelligence: 8,
+    Wisdom: 8,
     Charisma: 8,
-    Wisdom: 8
   }
   // validate: boolean = true;
  
@@ -84,8 +87,8 @@ holds the abilities and their values for starting
       Dexterity: 8,
       Constitution: 8,
       Intelligence: 8,
-      Charisma: 8,
       Wisdom: 8,
+      Charisma: 8,
     }
     this.points = this.maxPoints;
   }
@@ -97,34 +100,30 @@ holds the abilities and their values for starting
   this.resetAbilites();
   this.abModifierImport = this.choices.speciesAbilityModifiers;
   console.log('the ability modifiers:',this.abModifierImport)
-   let chaA = this.abModifierImport.Charisma;
-   if (chaA != 0){
-     this.finalAbilities.Charisma += chaA;
-      }
-   let conA =  this.abModifierImport.Constitution;
-   if (conA != 0){
-    this.finalAbilities.Constitution += conA;
-  }
-   
-   let dexA =  this.abModifierImport.Dexterity;
-   if (dexA != 0){
-    this.finalAbilities.Dexterity += dexA;
-  }
-   
-   let intA =  this.abModifierImport.Intelligence;
-   if (intA != 0){
-    this.finalAbilities.Intelligence += intA;
-  }
-  
-   let strA =  this.abModifierImport.Strength;
-   if (strA != 0){
+  let strA =  this.abModifierImport.Strength;
+  if (strA != 0){
     this.finalAbilities.Strength += strA;
   }
- 
-   let wisA =  this.abModifierImport.Wisdom;
-   if (wisA != 0){
+  let dexA =  this.abModifierImport.Dexterity;
+  if (dexA != 0){
+    this.finalAbilities.Dexterity += dexA;
+  }
+  let conA =  this.abModifierImport.Constitution;
+  if (conA != 0){
+    this.finalAbilities.Constitution += conA;
+  } 
+  let intA =  this.abModifierImport.Intelligence;
+  if (intA != 0){
+    this.finalAbilities.Intelligence += intA;
+  }
+  let wisA =  this.abModifierImport.Wisdom;
+  if (wisA != 0){
     this.finalAbilities.Wisdom += wisA;
   }
+  let chaA = this.abModifierImport.Charisma;
+    if (chaA != 0){
+      this.finalAbilities.Charisma += chaA;
+       }
 
 // console.log('this is final:',this.finalAbilities) // for testing
  
@@ -401,66 +400,66 @@ addAbility(clicked: any){
   this.abModifierImport = this.choices.speciesAbilityModifiers;
  if (this.points > 0){
   switch (clicked.key){
-  case "Charisma":
-    if (this.finalAbilities.Charisma < 20){
-      //this.checkPoints(clicked.key, "add")
-      this.pointChecker(clicked.key , "add");
-      if (this.choices.validate == true){
-        this.charAbilities.Charisma += 1;
-        this.finalAbilities.Charisma += 1;
+    case "Strength":
+      if (this.finalAbilities.Strength < 20){
+        //this.checkPoints(clicked.key , "add");
+        this.pointChecker(clicked.key , "add");
+        if (this.choices.validate == true){
+          this.charAbilities.Strength += 1;
+          this.finalAbilities.Strength +=1;
+        }
+        }
+    break;
+    case "Dexterity":
+      if (this.finalAbilities.Dexterity < 20){
+        //this.checkPoints(clicked.key , "add");
+        this.pointChecker(clicked.key , "add");
+        if (this.choices.validate == true){
+          this.charAbilities.Dexterity += 1;
+          this.finalAbilities.Dexterity +=1; 
+        }
+        }
+    break;
+    case "Constitution":
+      if (this.finalAbilities.Constitution < 20){
+        //this.checkPoints(clicked.key , "add");
+        this.pointChecker(clicked.key , "add");
+        if (this.choices.validate == true){
+          this.charAbilities.Constitution += 1;
+          this.finalAbilities.Constitution +=1;
+        }
       }
-    }
-  break;
-  case "Constitution":
-    if (this.finalAbilities.Constitution < 20){
-      //this.checkPoints(clicked.key , "add");
-      this.pointChecker(clicked.key , "add");
-      if (this.choices.validate == true){
-        this.charAbilities.Constitution += 1;
-        this.finalAbilities.Constitution +=1;
-      }
-    }
-  break;
-  case "Dexterity":
-    if (this.finalAbilities.Dexterity < 20){
-      //this.checkPoints(clicked.key , "add");
-      this.pointChecker(clicked.key , "add");
-      if (this.choices.validate == true){
-        this.charAbilities.Dexterity += 1;
-        this.finalAbilities.Dexterity +=1; 
-      }
-      }
-  break;
-  case "Intelligence":
-    if (this.finalAbilities.Intelligence < 20){
-      //this.checkPoints(clicked.key , "add");
+    break;
+    case "Intelligence":
+      if (this.finalAbilities.Intelligence < 20){
+        //this.checkPoints(clicked.key , "add");
       this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
         this.charAbilities.Intelligence += 1;
         this.finalAbilities.Intelligence +=1;
       }
       }
-  break;
-  case "Strength":
-    if (this.finalAbilities.Strength < 20){
-      //this.checkPoints(clicked.key , "add");
-      this.pointChecker(clicked.key , "add");
-      if (this.choices.validate == true){
-        this.charAbilities.Strength += 1;
-        this.finalAbilities.Strength +=1;
-      }
-      }
-  break;
-  case "Wisdom":
-    if (this.finalAbilities.Wisdom < 20){
-      //this.checkPoints(clicked.key , "add");
-      this.pointChecker(clicked.key , "add");
+      break;
+      case "Wisdom":
+        if (this.finalAbilities.Wisdom < 20){
+          //this.checkPoints(clicked.key , "add");
+          this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
         this.charAbilities.Wisdom += 1;
         this.finalAbilities.Wisdom +=1;
       }
+    }
+    break;
+    case "Charisma":
+      if (this.finalAbilities.Charisma < 20){
+        //this.checkPoints(clicked.key, "add")
+        this.pointChecker(clicked.key , "add");
+        if (this.choices.validate == true){
+          this.charAbilities.Charisma += 1;
+          this.finalAbilities.Charisma += 1;
+        }
       }
-  break;
+    break;
   }
  this.calcModifier();
 }
@@ -473,35 +472,36 @@ subAbility(clicked: any){
  
   if (this.points < this.maxPoints){
     switch (clicked.key){
-    case "Charisma":
-    //  this.checkPoints(clicked.key, "subtract")
-      this.pointChecker(clicked.key, "subtract")
-      if (this.choices.validate == true && this.charAbilities.Charisma > 8){
-        this.finalAbilities.Charisma -= 1;
-        this.charAbilities.Charisma -= 1;
-      }
-      
-    break;
-    case "Constitution":
-     // this.checkPoints(clicked.key, "subtract")
-      this.pointChecker(clicked.key, "subtract")
-      if (this.choices.validate == true && this.charAbilities.Constitution > 8){
-        this.charAbilities.Constitution -= 1;
-        this.finalAbilities.Constitution -= 1;
-
-      }  
-      
-    break;
-    case "Dexterity":
-     // this.checkPoints(clicked.key, "subtract")
-      this.pointChecker(clicked.key, "subtract")
-      if (this.choices.validate == true && this.charAbilities.Dexterity > 8){
-        this.charAbilities.Dexterity -= 1;
-        this.finalAbilities.Dexterity -= 1;
-
-      }   
-      
-    break;
+      case "Strength":
+        //this.checkPoints(clicked.key, "subtract")
+        this.pointChecker(clicked.key, "subtract")  
+        if (this.choices.validate == true && this.charAbilities.Strength > 8){
+          this.charAbilities.Strength -= 1;
+          this.finalAbilities.Strength -= 1;
+  
+        } 
+        
+      break;
+      case "Dexterity":
+        // this.checkPoints(clicked.key, "subtract")
+        this.pointChecker(clicked.key, "subtract")
+        if (this.choices.validate == true && this.charAbilities.Dexterity > 8){
+          this.charAbilities.Dexterity -= 1;
+          this.finalAbilities.Dexterity -= 1;
+          
+        }   
+        
+        break;
+        case "Constitution":
+         // this.checkPoints(clicked.key, "subtract")
+          this.pointChecker(clicked.key, "subtract")
+          if (this.choices.validate == true && this.charAbilities.Constitution > 8){
+            this.charAbilities.Constitution -= 1;
+            this.finalAbilities.Constitution -= 1;
+    
+          }  
+          
+        break;
     case "Intelligence":
      // this.checkPoints(clicked.key, "subtract")
       this.pointChecker(clicked.key, "subtract")
@@ -512,16 +512,7 @@ subAbility(clicked: any){
       }   
       
     break;
-    case "Strength":
-      //this.checkPoints(clicked.key, "subtract")
-      this.pointChecker(clicked.key, "subtract")  
-      if (this.choices.validate == true && this.charAbilities.Strength > 8){
-        this.charAbilities.Strength -= 1;
-        this.finalAbilities.Strength -= 1;
-
-      } 
-      
-    break;
+   
     case "Wisdom":
       //this.checkPoints(clicked.key, "subtract")
       this.pointChecker(clicked.key, "subtract")
@@ -531,6 +522,15 @@ subAbility(clicked: any){
         this.finalAbilities.Wisdom -= 1;
 
       }   
+      
+    break;
+    case "Charisma":
+    //  this.checkPoints(clicked.key, "subtract")
+      this.pointChecker(clicked.key, "subtract")
+      if (this.choices.validate == true && this.charAbilities.Charisma > 8){
+        this.finalAbilities.Charisma -= 1;
+        this.charAbilities.Charisma -= 1;
+      }
       
     break;
   }

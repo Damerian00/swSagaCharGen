@@ -15,6 +15,7 @@ export class SpeciesComponent implements OnInit {
   constructor(private swApiService: SwapiService, private choices: ChoicesSenderService) { }
   speciesArray: any;
   speciesName: string = "";
+  speciesNames: Array<string> = [];
   ab_modifiers: object = {};
   charSheetComponent = new CharSheetComponent(this.choices);
   selectedSpecies: string = 'Human';
@@ -24,10 +25,28 @@ export class SpeciesComponent implements OnInit {
     this.swApiService.getSpecies().subscribe(payload =>{
   this.speciesArray = payload;
   console.log("Species: ", this.speciesArray);  
+// sorts the array by species name
+  this.speciesArray.sort(this.sortNames("species_name"));
 })
 
   }
-  
+  // a sorting function to arrange an array of objects by prop parameter
+  sortNames(prop: string){
+    let sortOrder = 1;
+
+    if(prop[0] === "-") {
+        sortOrder = -1;
+        prop = prop.substr(1);
+    }
+
+    return function (a:any,b:any) {
+        if(sortOrder == -1){
+            return b[prop].localeCompare(a[prop]);
+        }else{
+            return a[prop].localeCompare(b[prop]);
+        }        
+    }
+  }
 // function to handle the dropdown and watch for changes
  selected(selection: any){
    for (let i=0; i<this.speciesArray.length; i++){
