@@ -43,6 +43,13 @@ setClass(heroicClass: string){
 
 // checks requirements and class to display starting feats
 async acquireFeats(){
+let traits = this.choices.acquireSpeciesTraits();
+let bonusFeat = "";
+if (Object.keys(traits).includes("Bonus Feat")){
+ if (traits["Bonus Feat"] != "1 additional") {
+  bonusFeat = traits["Bonus Feat"];
+}
+}
 let tempString = '';
 let heroClass = this.heroicClass;
 let skillArray = await this.choices.acquireSkillsArray();
@@ -88,8 +95,10 @@ let species = await this.choices.getSpecies();
   }
    
     this.startingFeats = tempString.split(",");
+    this.startingFeats.push(bonusFeat);
     console.log('starting feats', this.startingFeats, bab)
-    if (species === "Human"){
+    this.checkConditionals();
+    if (species === "Human" || species == "Nyriaanan" || species == "Anarrian" || species == "Tof"){
       this.showAvailable();
       this.extraFeat = "yes";
       
@@ -141,8 +150,7 @@ let BAB = await this.choices.acquireBab();
     - first for loop will go through each of the different requirements 1-4
     - second loop will to check if any of the keywords are present in the requirements
     - uses a forEach to break down the multiarray's values "vals" into each index to be checked for the keyword's value to see if the player meets the minimum reqs then it is marked as validated
-*/
-  
+*/ 
     const reqsArray = ["BAB", "feat", "trained", "talent","trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" ]
     
     for (let v = 0; v < vals.length; v++){    
@@ -214,22 +222,26 @@ let BAB = await this.choices.acquireBab();
           }
           // console.log("valid?: ", this.validated, temp)
           
-          // if any requirements doesn't meet the minimums it returns nothing and breaks out of the loop and the check
         } 
         
       }
+      // if any requirements doesn't meet the minimums it returns nothing and breaks out of the loop and the check
       if (this.validated == false) break;
       }
-        
+  if(this.validated == true){ 
+    console.log('pushed',this.featsArray[i].name);
+    this.selectableFeats.push(this.featsArray[i].name);}
   
-
-if(this.validated == true){ 
-  console.log('pushed',this.featsArray[i].name);
-  this.selectableFeats.push(this.featsArray[i].name);}
   
 }
  }
-
+ if (this.choices.getSpecies() == "Tof"){
+  while (this.selectableFeats.length){
+    this.selectableFeats.pop();
+  }
+  this.selectableFeats.push("Rapid Shot");
+  this.selectableFeats.push("Rapid Strike")
+}
 console.log("what's available: ",this.selectableFeats)
 
 }
@@ -312,7 +324,34 @@ let skills = await this.choices.acquireSkillsArray();
     break;
   }
 }
-
+async checkConditionals(){
+  const selectedSpeciesTraits = await this.choices.acquireSpeciesTraits();
+  if (Object.keys(selectedSpeciesTraits).includes("Conditional Bonus Feat")){
+    for (let i =0 ; i < selectedSpeciesTraits["Conditional Bonus Feat"].length; i++){
+      let conditionalFeat = await Object.keys(selectedSpeciesTraits["Conditional Bonus Feat"][i]);
+      let value;
+      let keyword;
+      if (conditionalFeat[0] == "bonus feat"){
+        console.log("checking before chk",selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[1]], conditionalFeat[1])
+        value = selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[1]];
+        keyword = conditionalFeat[1];
+      }else{
+        value = selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[0]];
+        keyword = conditionalFeat[0];
+        console.log("checking before chk",selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[0]], conditionalFeat[0])
+      }
+      if (keyword == "trained skill"){
+        keyword = "trained"
+      }
+      console.log("after checks before check", value, keyword )
+          this.chkReqs(value, keyword);
+          if (this.validated == true) {
+            this.submit(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
+          }
+      
+    }
+  } 
+}
 
 submit(selection: any){
   if (this.choices.featsArray.length != 0){

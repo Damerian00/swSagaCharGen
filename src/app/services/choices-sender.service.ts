@@ -27,7 +27,7 @@ onSelection() {
 }
 
   public speciesSelected: any
-  public speciesSelectedObject: object = {};
+  public speciesSelectedObject: any = {};
   public speciesAbilityModifiers: any
   public abilities: any;
   public selectedClass: string = "Jedi";
@@ -81,6 +81,9 @@ setSpecies(selection: object){
   //   }
   // }
   this.speciesSelectedObject = selection;
+}
+acquireSpeciesTraits(){
+  return this.speciesSelectedObject.traits;
 }
 getSpecies(){
   return this.speciesSelected;
