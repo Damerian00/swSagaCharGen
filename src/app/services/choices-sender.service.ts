@@ -37,7 +37,7 @@ onSelection() {
   public maxPoints: number = 25;
   public featsArray: any = [];
   public classSkills: any;
-
+  private startingFeatsLength: number = 0;
   
   constructor() { }
 // function set up to handle validtion and responses based on parameter inputs
@@ -75,12 +75,14 @@ switch (type) {
 /*
 Getters and Setters
 */
+setStartFeatsLength(num: number){
+  console.log(num, "the number of length")
+    this.startingFeatsLength = num;
+}
+getStartFeatsLength(){
+  return this.startingFeatsLength;
+}
 setSpecies(selection: object){
-  // if (this.speciesSelectedObject == undefined || this.speciesSelectedObject.id > 0){
-  //   for (const key in this.speciesSelectedObject) {
-  //     delete this.speciesSelectedObject[key];
-  //   }
-  // }
   this.speciesSelectedObject = selection;
 }
 acquireSpeciesTraits(){
@@ -112,6 +114,7 @@ getClass(){
 }
 // sets the featsArray
 setFeatsArray(importArray: Array<string>){
+  console.log('the import:', importArray)
   if (this.featsArray.length !=0){
     // if it isn't empty we use pop method to empty it out
       while(this.featsArray.length){
@@ -119,9 +122,9 @@ setFeatsArray(importArray: Array<string>){
       }
     }
     for (let i =0; i< importArray.length; i++){
-      this.featsArray.push(importArray[i])
+      if (importArray[i] != ""){this.featsArray.push(importArray[i])}
     }
-    console.log("loaded the feats", this.featsArray, importArray)
+    console.log("loaded the feats", this.featsArray)
 }
 //returns the feats array
 getFeatsArray(){

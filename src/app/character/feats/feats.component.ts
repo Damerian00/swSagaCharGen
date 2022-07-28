@@ -65,6 +65,7 @@ let int = await this.choices.acquireInt();
 let con = await this.choices.acquireCon();
 let species = await this.choices.getSpecies();
 
+
   switch (heroClass) {
     case "Jedi":
       
@@ -96,15 +97,16 @@ let species = await this.choices.getSpecies();
         tempString = "Armor Proficiency (Light),Armor Proficiency (Medium),Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
       break;
     default:
-      tempString = ",";
+      
       break;
   }
-   
+   console.log("temp string",tempString.split(","))
     this.startingFeats = tempString.split(",");
-    if (this.choices.getSpecies() != "Tof")this.startingFeats.push(bonusFeat);
+    this.choices.setStartFeatsLength(tempString.split(",").length);
     console.log('starting feats', this.startingFeats, bab)
+    if (this.choices.getSpecies() != "Tof"){this.startingFeats.push(bonusFeat)};
     // check if the selected species has a conditional bonus feat trait
-    this.checkConditionals();
+    this.clearConditionals();
     if (species === "Human" || species == "Nyriaanan" || species == "Anarrian" || species == "Tof"){
       this.showAvailable();
       this.extraFeat = "yes";
@@ -117,8 +119,8 @@ let species = await this.choices.getSpecies();
             this.choices.featsArray.pop()
           }
         }
-      this.choices.setFeatsArray(this.startingFeats);
-      this.heroFeatsSelected.emit(this.choices.featsArray)
+      this.choices.setFeatsArray(tempString.split(","));
+      this.heroFeatsSelected.emit(this.choices.getFeatsArray())
     }
 }
 
@@ -171,8 +173,6 @@ let BAB = await this.choices.acquireBab();
           }
         } else if (vals[v][0] == reqsArray[j]){
           let check = vals[v][1];
-         
-          let temp = reqsArray[j];
           switch (reqsArray[j]){
             case "BAB":
               await this.chkReqs(check, "BAB");
@@ -235,11 +235,9 @@ let BAB = await this.choices.acquireBab();
       // if any requirements doesn't meet the minimums it returns nothing and breaks out of the loop and the check
       if (this.validated == false) break;
       }
-  if(this.validated == true){ 
+  if(this.validated == true && this.startingFeats.includes(this.featsArray[i].name)== false){ 
     console.log('pushed',this.featsArray[i].name);
     this.selectableFeats.push(this.featsArray[i].name);}
-  
-  
 }
  }
  if (this.choices.getSpecies() == "Tof"){
@@ -249,48 +247,35 @@ let BAB = await this.choices.acquireBab();
   this.selectableFeats.push("Rapid Shot");
   this.selectableFeats.push("Rapid Strike")
 }
+this.choices.setFeatsArray(this.startingFeats);
 console.log("what's available: ",this.selectableFeats)
 
 }
 
 validated: boolean = true;
-checkReqs(selectedValue: any, reqValue:any, reqKey:any ){
-  switch (reqKey) {
-    case "BAB":
-      if (reqValue == selectedValue){
-        this.validated = true;
-      } else {
-        this.validated = false;
-      }
-      break;
-      case "trained":
 
-      break;
-      case "feat":
-      
-      break;
-
-    default:
-      break;
-  }
-  
-}
 selectedFeatName: string = ""
 selectedFeatDescription: string = ""
 // humans can select an aditional feat
 async selected(selection: any){
+  this.specialOptionSelected = ""
 if (selection.value != "Select a Feat"){
   this.selectedFeat = selection;
   if (selection == "Skill Focus" || selection == "Skill Training" || selection == "Weapon Proficiency"){
     this.specifyFeat = "yes";
     this.submitSpecialFeat(selection);
   }else{
+    this.specifyFeat = "no";
     this.selectedFeats.push(selection);
   }
    const index =  await this.featsArray.findIndex((el: any) => el.name == selection);
    // console.log("this is the selected id: ", this.featsArray.findIndex(index))
-    this.selectedFeatName = await this.featsArray[index].name;
-    this.selectedFeatDescription =  await this.featsArray[index].description;
+   if (selection.value != undefined){
+
+     this.selectedFeatName = await this.featsArray[index].name;
+     this.selectedFeatDescription =  await this.featsArray[index].description;
+   }
+  
 
 }else {
   this.selectedFeatName = "";
@@ -343,8 +328,8 @@ let skills = await this.choices.acquireSkillsArray();
     break;
   }
 }
-// checks to see if a selected species has conditional bonus feats
-async checkConditionals(){
+// clears out the additionalFeats Array
+async clearConditionals(){
   if (this.additionalFeatsArray.length > 0) {
     while (this.additionalFeatsArray.length){
       this.additionalFeatsArray.pop();
@@ -381,9 +366,11 @@ async checkConditionals(){
     }
   } 
 }
+// sets the option to what is selected
 setFeatOption(selected: string){
   this.specialOptionSelected = selected;
 }
+
 async submitSpecialFeat(feat: string) {
   console.log("the feat: " , feat)
   if (this.specialFeatOptions.length != 0){
@@ -413,35 +400,86 @@ async submitSpecialFeat(feat: string) {
       }
     }else if (feat == "Weapon Proficiency"){
       this.specifyFeatButtonName = "Select Weapon Group"
-      let weaponOptions = ["Simple Weapons", "Pistols", "Rifles", "Lightsabers", "Heavy Weapons", "Advanced Melee Weapons" ]
-      for(let i=0; i<weaponOptions.length; i++){
-        this.specialFeatOptions.push(weaponOptions[i]);
+      let weaponOptions = ["Simple Weapons", "Pistols", "Rifles", "Lightsabers", "Heavy Weapons", "Advanced Melee Weapons"]
+      let feats = await this.choices.getFeatsArray();
+      console.log("feats", feats)
+       for (let i =0; i<weaponOptions.length;i++){
+        const word = `Weapon Proficiency (${weaponOptions[i]})`
+        if (feats.includes(word)== false){
+          this.specialFeatOptions.push(weaponOptions[i]);
+        }
+
       }
       console.log("the weaponsArray", weaponOptions)
     }
-  
+    if (feat == "Weapon Proficiency"){
+      console.log("weap spec opts", this.specialFeatOptions)
+    }
+    this.specialFeatOptions.unshift("Select One")
   console.log("the specials array", this.specialFeatOptions)
+
 }
-submit(selection: any){
+
+removeParanthesis(str : any){
+  console.log("newArr", str)
+  if (str != undefined){
+  const newArr = str.split('')
+    let index;
+    if (newArr[0] == "A"){
+      return "no";
+    }else{
+      for (let i=0;i<newArr.length; i++){
+        if (newArr[i] == "("){
+            index = i + 1
+             break;
+          }
+      }  
+      let hiddenWord = newArr.slice(index, -1).join('');
+      console.log(hiddenWord);
+      return hiddenWord;
+    }
+
+    }
+  return "no";
+}
+async submit(selection: any){
   if (this.choices.featsArray.length != 0){
     while (this.choices.featsArray.length){
       this.choices.featsArray.pop();
     }
   }
+  console.log("the length" , this.choices.getStartFeatsLength())
   this.selectedFeats.pop();
+  const length = this.choices.getStartFeatsLength()
+  
+
+  // if condtition is met then it modifies the feat to include the feat with the optioni in paranthesis.
+  if (length < this.startingFeats.length){
+    await this.startingFeats.pop();
+    this.choices.setFeatsArray(this.startingFeats);
+  }
+let choice = selection;
 if (selection == "Skill Focus" || selection == "Skill Training" || selection == "Weapon Proficiency"){
-  let modSelection = `${selection} (${this.specialOptionSelected})`
-  this.selectedFeats.push(modSelection);
+  if (this.specialOptionSelected != "" && this.specialOptionSelected != "Select One"){
+    choice = `${selection} (${this.specialOptionSelected})` 
+    this.specialOptionSelected = "";
+    const tempArr: any =  [...this.startingFeats,choice]
+    console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
+      this.choices.setFeatsArray(tempArr);
+  }else{
+    const tempArr: any =  [...this.startingFeats]
+    console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
+      this.choices.setFeatsArray(tempArr);
+  }
 }else{
-  this.selectedFeats.push(selection);
-}
-  
- 
-  const tempArr =  this.startingFeats.concat(this.selectedFeats)
-  
+
+  const tempArr: any =  [...this.startingFeats,choice]
+  console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
     this.choices.setFeatsArray(tempArr);
+}
+
  
-  this.heroFeatsSelected.emit(this.choices.featsArray);
+  this.heroFeatsSelected.emit(this.choices.getFeatsArray());
   this.choices.startTalentComponent();
 }
 
