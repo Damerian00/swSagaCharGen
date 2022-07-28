@@ -27,7 +27,7 @@ specialOptionSelected: string = "";
 
 
 @Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
-
+@Output () heroSkillTrained: EventEmitter<any> = new EventEmitter<any>()
 
   ngOnInit(): void {
     this.swApiService.getFeats().subscribe(payload =>{
@@ -140,7 +140,7 @@ let BAB = await this.choices.acquireBab();
  for (let i=0; i< this.featsArray.length; i++){
   
   // indicates each req and it's values from the feats array at the given index
-  let prop = Object.keys(this.featsArray[i].prereqs);
+ 
   let vals: any = Object.values(this.featsArray[i].prereqs);
   // checks is there are no requirements for the first requirement then adds it to the new array of feats available for selection
    if (this.featsArray[i].prereqs.req1.includes("none")){
@@ -259,7 +259,7 @@ selectedFeatDescription: string = ""
 // humans can select an aditional feat
 async selected(selection: any){
   this.specialOptionSelected = ""
-if (selection.value != "Select a Feat"){
+if (selection != "Select a Feat"){
   this.selectedFeat = selection;
   if (selection == "Skill Focus" || selection == "Skill Training" || selection == "Weapon Proficiency"){
     this.specifyFeat = "yes";
@@ -270,11 +270,11 @@ if (selection.value != "Select a Feat"){
   }
    const index =  await this.featsArray.findIndex((el: any) => el.name == selection);
    // console.log("this is the selected id: ", this.featsArray.findIndex(index))
-   if (selection.value != undefined){
+  
 
      this.selectedFeatName = await this.featsArray[index].name;
      this.selectedFeatDescription =  await this.featsArray[index].description;
-   }
+   
   
 
 }else {
@@ -461,26 +461,30 @@ async submit(selection: any){
 let choice = selection;
 if (selection == "Skill Focus" || selection == "Skill Training" || selection == "Weapon Proficiency"){
   if (this.specialOptionSelected != "" && this.specialOptionSelected != "Select One"){
+    if (selection == "Skill Training"){
+      this.heroSkillTrained.emit(this.specialOptionSelected);
+    }
     choice = `${selection} (${this.specialOptionSelected})` 
     this.specialOptionSelected = "";
     const tempArr: any =  [...this.startingFeats,choice]
     console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
       this.choices.setFeatsArray(tempArr);
-  }else{
-    const tempArr: any =  [...this.startingFeats]
-    console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
+    }else{
+      const tempArr: any =  [...this.startingFeats]
+      console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
       this.choices.setFeatsArray(tempArr);
-  }
-}else{
-
-  const tempArr: any =  [...this.startingFeats,choice]
-  console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
+    }
+    this.heroSkillTrained.emit("");
+  }else{
+    this.heroSkillTrained.emit("");   
+    const tempArr: any =  [...this.startingFeats,choice]
+    console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
     this.choices.setFeatsArray(tempArr);
-}
-
- 
+  }
+  
   this.heroFeatsSelected.emit(this.choices.getFeatsArray());
   this.choices.startTalentComponent();
+  
 }
 
 }

@@ -136,7 +136,6 @@ skillTrained(event: any){
   }
   let selectedSkills: FormArray = this.form.get('selectedSkills') as FormArray;
   
-
   /* 
   ======old code=====
   //if (this.skillPoints <= 0  ){
@@ -148,8 +147,7 @@ skillTrained(event: any){
   */
       if (this.clear == "clear"){
         selectedSkills.clear(); 
-        this.clear = 'ok';
-        
+        this.clear = 'ok';    
       }
       // checks of the checkbox is checked
       if (event.target.checked){

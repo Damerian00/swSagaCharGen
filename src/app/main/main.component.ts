@@ -23,6 +23,8 @@ healthPoints: number = 0;
 reflexDefense:number = 10;
 fortitudeDefense: number = 10;
 willDefense:number = 10;
+chosenSkillsLength: number = 0;
+savedSkillValue: string = "";
 // tells the html not to sort
 unsorted = (a:any, b:any) => {
   return a;
@@ -49,16 +51,37 @@ the below functions are used to display the choices that the user selects on to 
   }
   updateSkills(chosenSkills: any){
     this.chosenSkills = chosenSkills;
+    this.chosenSkillsLength = chosenSkills.length;
+    console.log("the length is at start: ", this.chosenSkillsLength)
   }
   updateFeats(chosenFeats: Array<string>){
     console.log("here are the choosen ones: ", chosenFeats)
     this.chosenFeats = chosenFeats;
   }
 
+  async addRemoveSkill(skillTrained : any){
+    console.log("recieved input", skillTrained, "length is:", this.chosenSkillsLength, this.chosenSkills) 
+     // conditional that adds or replaces what was selected
+     if (skillTrained != ""){
+       while (this.chosenSkills.length > this.chosenSkillsLength){
+         this.chosenSkills.pop();
+       }
+       console.log("added: ", skillTrained)
+       this.chosenSkills.push(skillTrained);
+       this.savedSkillValue = skillTrained;
+       // this conditional removes any extra skills added if skill trained wasn't selected
+      } else if (this.savedSkillValue == ""){
+        while (this.chosenSkills.length > this.chosenSkillsLength){
+          this.chosenSkills.pop();
+        }
+        // resets savedValue Skill to ""
+      } else {
+        this.savedSkillValue = "";
+      } 
+  }
+
   updateStats(){
     this.calcHP();
-
-
   }
 
   async calcHP(){

@@ -10,7 +10,7 @@
         <abilities (abilitiesSelected)="updateAbilities($event)" (abilityModifiers)="getAbilityModifier($event)"></abilities>
         <classes (classSelected)="[updateClass($event), skills.showSkills($event), feats.setClass($event)]"></classes>
         <skills #skills [intModifier]="intModifier" (heroSkillsSelected)="updateSkills($event)"></skills>
-        <feats #feats (heroFeatsSelected)="updateFeats($event)" ></feats>
+        <feats #feats (heroFeatsSelected)="updateFeats($event)" (heroSkillTrained)="addRemoveSkill($event)"></feats>
         <talents></talents>
     </div>
     <div class="display">
