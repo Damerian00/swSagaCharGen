@@ -546,9 +546,10 @@ saveAbilities(){
 }
 // same as saveAbilitiesw minus the update function
 calcModifier(){
-  this.abilityModifiers.emit(this.finalAbilities);
+  this.abilitiesSelected.emit(this.finalAbilities);
+  // this.abilityModifiers.emit(this.finalAbilities);
   this.choices.abilities = this.finalAbilities;
-  console.log('the abilities :', this.choices.abilities);
+  // console.log('the abilities :', this.choices.abilities);
 }
 
 pointChecker(selection: string, operand: string){
@@ -579,7 +580,7 @@ pointChecker(selection: string, operand: string){
 this.choices.validator(this.points, pointBuy[value], operand, 'abilities');
 if (this.choices.validate == true){
   operand == "add"?  this.points -= pointBuy[value] : this.points += pointBuy[value]
-     console.log('the points', this.points)
+    //  console.log('the points', this.points)
       }
 
 }

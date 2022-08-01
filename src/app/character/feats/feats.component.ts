@@ -65,7 +65,7 @@ let int = await this.choices.acquireInt();
 let con = await this.choices.acquireCon();
 let species = await this.choices.getSpecies();
 
-
+// this switch holds the hard coded data for what feats each class gets starting out and based on the user choice will assign them to the user's character.
   switch (heroClass) {
     case "Jedi":
       
@@ -240,6 +240,7 @@ let BAB = await this.choices.acquireBab();
     this.selectableFeats.push(this.featsArray[i].name);}
 }
  }
+ // if the species matches "Tof" then they have 2 options when it comes to feats that it can have
  if (this.choices.getSpecies() == "Tof"){
   while (this.selectableFeats.length){
     this.selectableFeats.pop();
@@ -256,11 +257,12 @@ validated: boolean = true;
 
 selectedFeatName: string = ""
 selectedFeatDescription: string = ""
-// humans can select an aditional feat
+// function that takes input from the dropdown for feats
 async selected(selection: any){
   this.specialOptionSelected = ""
 if (selection != "Select a Feat"){
   this.selectedFeat = selection;
+  // this conditional when met gives user additional options
   if (selection == "Skill Focus" || selection == "Skill Training" || selection == "Weapon Proficiency"){
     this.specifyFeat = "yes";
     this.submitSpecialFeat(selection);
@@ -268,22 +270,21 @@ if (selection != "Select a Feat"){
     this.specifyFeat = "no";
     this.selectedFeats.push(selection);
   }
+  // finds the  index within the feat array that matches the selection based on the feat name
    const index =  await this.featsArray.findIndex((el: any) => el.name == selection);
-   // console.log("this is the selected id: ", this.featsArray.findIndex(index))
-  
 
      this.selectedFeatName = await this.featsArray[index].name;
      this.selectedFeatDescription =  await this.featsArray[index].description;
    
   
-
+// if no feat is or if user selects Select a feat it removes the feat name anbd description
 }else {
   this.selectedFeatName = "";
   this.selectedFeatDescription = "Select a Feat";
 }
 }
 
-
+// function to check the requirements based on parameters and updates validated variable based on values matching
 async chkReqs (apiValue: any, keyword: string){
 let BAB = await this.choices.acquireBab();
 let int = await this.choices.acquireInt();
@@ -342,18 +343,18 @@ async clearConditionals(){
       let value;
       let keyword;
       if (conditionalFeat[0] == "bonus feat"){
-        console.log("checking before chk",selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[1]], conditionalFeat[1])
+        // console.log("checking before chk",selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[1]], conditionalFeat[1])
         value = selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[1]];
         keyword = conditionalFeat[1];
       }else{
         value = selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[0]];
         keyword = conditionalFeat[0];
-        console.log("checking before chk",selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[0]], conditionalFeat[0])
+        // console.log("checking before chk",selectedSpeciesTraits["Conditional Bonus Feat"][i][conditionalFeat[0]], conditionalFeat[0])
       }
       if (keyword == "trained skill"){
         keyword = "trained"
       }
-        console.log("after checks before check", value, keyword )
+        // console.log("after checks before check", value, keyword )
         await this.chkReqs(value, keyword);
           if (this.validated == true) {
             if (this.choices.getSpecies() == "Arkanian Offshoot (str)" || this.choices.getSpecies() == "Arkanian Offshoot (dex)"){
@@ -366,11 +367,12 @@ async clearConditionals(){
     }
   } 
 }
-// sets the option to what is selected
+// sets the variable to whatever the drop down has been changed to
 setFeatOption(selected: string){
   this.specialOptionSelected = selected;
 }
 
+// function for the additional options of certain feats
 async submitSpecialFeat(feat: string) {
   console.log("the feat: " , feat)
   if (this.specialFeatOptions.length != 0){
@@ -419,7 +421,8 @@ async submitSpecialFeat(feat: string) {
   console.log("the specials array", this.specialFeatOptions)
 
 }
-
+// removes paranthese from a word with paranthese in it and returns the word within the paranthesis
+/*
 removeParanthesis(str : any){
   console.log("newArr", str)
   if (str != undefined){
@@ -442,6 +445,8 @@ removeParanthesis(str : any){
     }
   return "no";
 }
+*/
+// function that handles when the select feat is pushed to update the character sheet and the choices service
 async submit(selection: any){
   if (this.choices.featsArray.length != 0){
     while (this.choices.featsArray.length){
@@ -459,23 +464,29 @@ async submit(selection: any){
     this.choices.setFeatsArray(this.startingFeats);
   }
 let choice = selection;
+// checks the selection to include specific words for the special cases
 if (selection == "Skill Focus" || selection == "Skill Training" || selection == "Weapon Proficiency"){
+  // makes sure that the selection is not blank or on Select One as an option
   if (this.specialOptionSelected != "" && this.specialOptionSelected != "Select One"){
+    // emits skill that is chosen so that it can update the character sheet and skills array
     if (selection == "Skill Training"){
       this.heroSkillTrained.emit(this.specialOptionSelected);
     }
+    // adds paranthesis and the secondary option to the selection
     choice = `${selection} (${this.specialOptionSelected})` 
     this.specialOptionSelected = "";
     const tempArr: any =  [...this.startingFeats,choice]
     console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
       this.choices.setFeatsArray(tempArr);
     }else{
+      // if it was blank or select one then it doesn't change the feats array
       const tempArr: any =  [...this.startingFeats]
       console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
       this.choices.setFeatsArray(tempArr);
     }
     this.heroSkillTrained.emit("");
   }else{
+    // if this isn't one of the special feats then it adds it normally
     this.heroSkillTrained.emit("");   
     const tempArr: any =  [...this.startingFeats,choice]
     console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)

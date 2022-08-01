@@ -51,7 +51,7 @@ switch (type) {
      compute = value1 + value2;
     
    }
-   console.log('this is computed',compute)
+  //  console.log('this is computed',compute)
     if (compute <= this.maxPoints && compute >= 0){
       this.validate = true;
     }else{
@@ -130,5 +130,26 @@ setFeatsArray(importArray: Array<string>){
 getFeatsArray(){
   return this.featsArray;
 }
+
+
+/*
+
+save for later use
+
+calcScore (score: number){
+  let tempScore = 0;
+  console.log("starting temp", tempScore)
+  if (score-10< 0){
+    console.log("temp score",tempScore)
+    return tempScore = Math.ceil((score-10)/2);
+  }else{
+    console.log("temp score",tempScore)
+   return tempScore = Math.floor((score-10)/2);
+  }
+}
+
+
+
+ */
 
 }

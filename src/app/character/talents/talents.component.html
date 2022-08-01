@@ -6,4 +6,10 @@
     </select>
         <h3>Talent: {{selectedTalentName}}</h3>
         <p>Description: {{selectedTalentDescription}}</p>
+        <div *ngIf="hideButton == 'show'">
+            <h3>
+                Hit Select Talent to add {{selectedTalentName}} to your hero and generate your new hero
+            </h3>
+            <button (click)="submit()">Select Talent</button>
+        </div>
 </section>

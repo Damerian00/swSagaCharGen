@@ -31,7 +31,7 @@ validated: boolean = false;
       this.sortAvailable();
     })
   }
-
+// sorts the talent and talent tree arrays to see what is permissable by class before running a check reqs function
   sortAvailable(){
     if (this.availableTalentTreeArray.length != 0){
       while(this.availableTalentTreeArray.length){
@@ -68,6 +68,7 @@ async showAvailable(){
  console.log("the talents: ",this.availableTalents)
 }
 
+//checks to see if each talent passsed in meets the requirements.
 async checkRequirements(talent: any){
 //  console.log("talent in check",talent)
     
@@ -124,14 +125,21 @@ async checkRequirements(talent: any){
 
 selectedTalentName: string = "";
 selectedTalentDescription: string = "";
+hideButton: string = "hide";
+// uses the dropdown to display what he talent is and it's description
 async selectedTalent(selection: any){
+  if  (this.hideButton == "hide"){
+    this.hideButton= "show";
+  }
   const index = await this.availableTalents.findIndex((el: any) => el.name == selection.value);
   // console.log("this is the selected id: ", this.featsArray.findIndex(index))
    this.selectedTalentName = await this.availableTalents[index].name;
    this.selectedTalentDescription =  await this.availableTalents[index].description;
  //  console.log(index);
  }
-
+submit(){
+  
+}
 
 
 

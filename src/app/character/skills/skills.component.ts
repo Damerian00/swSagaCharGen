@@ -105,10 +105,17 @@ console.log("this is the class selected:" , selection);
     while (this.skillsArray.length) { 
       this.skillsArray.pop(); 
   }
+  if (Object.keys(this.choices.speciesSelectedObject.traits).includes("Class Skill")){
+    for (let i=0; i<this.choices.speciesSelectedObject.traits["Class Skill"].length; i++){
+      this.skillsArray.push(this.choices.speciesSelectedObject.traits["Class Skill"][i]);
+    }
+  }
     for (const [key, value] of Object.entries(this.availableSkills)){
       if (key == selection){
         value.forEach((val: any) => {
-          this.skillsArray.push(val);
+          if (this.skillsArray.includes(val) == false){
+            this.skillsArray.push(val);
+          }
         })      
       }
       this.clear = "clear";
