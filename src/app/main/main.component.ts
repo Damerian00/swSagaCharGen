@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ChoicesSenderService } from '../services/choices-sender.service';
 
@@ -28,7 +27,7 @@ chosenSkillsLength: number = 0;
 savedSkillValue: string = "";
 toggleClassesComponent: boolean = false;
 talentSelected: any = {};
-carryLimit: number = 1;
+carryLimit: number = NaN;
 speciesReflexDefenseMod: number = 0;
 speciesFortDefenseMod: number = 0;
 speciesWillDefenseMod: number = 0;
@@ -40,8 +39,9 @@ reflexClassBonus: number = 0;
 fortClassBonus: number = 0;
 willClassBonus: number = 0;
 heroLevel: number = 1;
-grapple: number = 0;
+grapple: number = NaN;
 hideSelectors: string = "show";
+abModOptions: Array<string> = ["Strength","Dexterity","Constitution","Intelligence"," Wisdom","Charisma",]
 
 // tells the html not to sort
 unsorted = (a:any, b:any) => {
@@ -107,6 +107,7 @@ updateTalents(chosenTalent: any){
 this.hideSelectors = "hide";
 this.talentSelected = chosenTalent;
 this.updateStats();
+
 }
 
 /* end of updates from components functions*/
@@ -115,31 +116,41 @@ this.updateStats();
 updateStats(){
   this.calcHP(this.class, this.abilityModifier.Constitution);
   this.calculateCarryLimit(this.sizeCarryModifier, this.abilities.Strength);
-  this.calculateDefenses("Reflex", "Devterity");
+  this.calculateDefenses("Reflex", "Dexterity");
   this.calculateDefenses("Fort", "Constitution");
   this.calculateDefenses("Will", "Wisdom");
+  this.calcGrapple("Strength");
 
 }
 
 // calculates the defense bonuses to be applied to a hero
 calculateDefenses(keyword: string, mod: string){
-
-  if (keyword = "Reflex"){
+  if (keyword == "Reflex"){
     this.reflexDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.reflexClassBonus + this.speciesReflexDefenseMod;
-  }else if (keyword = "Fort"){
+    if (mod == "Select"){
+      this.reflexDefense = 0
+    }
+  }else if (keyword == "Fort"){
     this.fortitudeDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.fortClassBonus + this.speciesFortDefenseMod;
+    if (mod == "Select"){
+      this.fortitudeDefense = 0
+    }
   }else{
     this.willDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.willClassBonus + this.speciesWillDefenseMod;
+    if (mod == "Select"){
+      this.willDefense = 0
+    }
   }
 
 }
 calcGrapple(mod: string){
+  const bab = this.choices.acquireBab();
   if (this.size == "Small"){
-
+    this.grapple = (bab + this.abilityModifier[mod]) - 5
   }else if (this.size == "Large"){
-
+    this.grapple = (bab + this.abilityModifier[mod]) + 5
   }else{
-
+    this.grapple = (bab + this.abilityModifier[mod])
   }
 }
 // sets the carrying capacity of the hero

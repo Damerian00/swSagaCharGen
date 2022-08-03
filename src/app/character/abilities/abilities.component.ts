@@ -61,6 +61,7 @@ holds the abilities and their values for starting
 
   //sets max points 
   setMaxPoints(mxpts: any){
+    this.update();
     if (mxpts <= 50 && mxpts >= 10){
       console.log("setting max:", mxpts);
       this.choices.maxPoints = mxpts;

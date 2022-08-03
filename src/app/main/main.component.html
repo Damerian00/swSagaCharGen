@@ -21,14 +21,33 @@
             <label>HP <p>{{healthPoints}}</p></label>
             <div class="defensesBox">
                 <label>Reflex Defense: <span> {{reflexDefense}}</span></label>
+                <select value="selected" #reflexModOption (change)="calculateDefenses('Reflex', reflexModOption.value)">
+                    <option>Select</option>
+                    <option *ngFor="let mod of abModOptions">{{mod}}</option>
+                </select>
                 <br>
+
                 <label>Fortitude Defense: <span> {{fortitudeDefense}}</span></label>
+                <select value="selected" #fortModOption (change)="calculateDefenses('Fort', fortModOption.value)">
+                    <option>Select</option>
+                    <option *ngFor="let mod of abModOptions">{{mod}}</option>
+                </select>
                 <br>
                 <label>Will Defense: <span> {{willDefense}}</span></label>
+                <select value="selected" #willModOption (change)="calculateDefenses('will', willModOption.value)">
+                    <option>Select</option>
+                    <option *ngFor="let mod of abModOptions">{{mod}}</option>
+                </select>
                 <br>
             </div>
             <div class="otherStats">
-                <label>Carry Capacity: <span>{{carryLimit}}</span></label>
+                <label *ngIf="carryLimit">Carry Capacity: <span>{{carryLimit}}</span></label>
+                <br>
+                <label *ngIf="grapple">Grapple: <span>{{grapple}}</span></label>
+                <select value="selected" #grappleOption (change)="calcGrapple(grappleOption.value)">
+                    <option>Strength</option>
+                    <option>Dexterity</option>
+                </select>
             </div>
         </section>
         <section *ngIf="showAbilities" class="abilityWrapper">

@@ -13,6 +13,8 @@ import { CharSheetComponent } from './character/char-sheet/char-sheet.component'
 import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { modOptionsComponent } from './partialComponents/modOptions.component';
+
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TalentsComponent,
     CharSheetComponent,
     MainComponent,
+    modOptionsComponent,
    
   ],
   imports: [
