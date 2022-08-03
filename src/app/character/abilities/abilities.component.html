@@ -1,26 +1,20 @@
-
-<h3>Select Your Abilities</h3>
-<h5>Points remaining: {{points}}</h5>
-<p *ngIf="points == 0">Select a species</p>
-<label>Max points: <input type="number" #maxPoints value="maxPoints" placeholder="25" min=10 max=50/></label>
-<button (click)="setMaxPoints(maxPoints.value)">Set Max Points</button>
-<section>
-    <div class="outsideWrapper">
-        <div class="abilityContainer" *ngFor="let ability of charAbilities | keyvalue : unsorted">
-            <p #ability class="abilityName">{{ability.key}} :</p>
-            <p class="abilityValue">{{ability.value}}</p>
-          <div class="buttonContainer">
-              <button (click)='addAbility(ability)'>+</button>
-              <button (click)='subAbility(ability)'>-</button>
-          </div>  
+<div >
+    <h3>Select Your Abilities</h3>
+    <h5>Points remaining: {{points}}</h5>
+    <p *ngIf="points == 0">Select a species</p>
+    <label>Max points: <input type="number" #maxPoints value="maxPoints" placeholder="25" min=10 max=50/></label>
+    <button (click)="setMaxPoints(maxPoints.value)">Set Max Points</button>
+    <section>
+        <div class="outsideWrapper">
+            <div class="abilityContainer" *ngFor="let ability of charAbilities | keyvalue : unsorted">
+                <p #ability class="abilityName">{{ability.key}} :</p>
+                <p class="abilityValue">{{ability.value}}</p>
+              <div class="buttonContainer">
+                  <button (click)='addAbility(ability)'>+</button>
+                  <button (click)='subAbility(ability)'>-</button>
+              </div>  
+            </div>
         </div>
-    </div>
-</section>
-
-
-
-<header>
-    <h1>Character Generator</h1>
-
-</header>
+    </section>
+</div>
 

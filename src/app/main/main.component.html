@@ -8,14 +8,14 @@
     <div class="selectors">
         <species (speciesSelected)="updateSpecies($event)"></species>
         <abilities (abilitiesSelected)="updateAbilities($event)" ></abilities>
-        <classes (classSelected)="[updateClass($event), skills.showSkills($event), feats.setClass($event)]"></classes>
+        <classes *ngIf="toggleClassesComponent == true" (classSelected)="[updateClass($event), skills.showSkills($event), feats.setClass($event)]"></classes>
         <skills #skills [intModifier]="intModifier" (heroSkillsSelected)="updateSkills($event)"></skills>
         <feats #feats (heroFeatsSelected)="updateFeats($event)" (heroSkillTrained)="addRemoveSkill($event)"></feats>
-        <talents></talents>
+        <talents #talents (heroTalentSelected)="updateTalents($event)"></talents>
     </div>
     <div class="display">
         <input type="text" value="{{heroName}}">
-       <h3> <span>Species:  </span> {{species}}</h3>
+       <h3> <span>Species:  </span> {{species.species_name}}</h3>
         <h3><span>Class: </span>{{class}} </h3>
         <section *ngIf="showAbilities" class="stats">
             <label>HP <p>{{healthPoints}}</p></label>
@@ -48,6 +48,12 @@
             <div class="featsContainer">
                 <h3>Selected Feats</h3>
                 <h4 *ngFor="let feat of chosenFeats">{{feat}}</h4>
+            </div>
+        </section>
+        <section *ngIf="showAbilities" class="talentsWrapper">
+            <div class="talentsContainer">
+                <h3>Selected Talent</h3>
+                <h4>{{talentSelected.name}} : {{talentSelected.description}}</h4>
             </div>
         </section>
         </div>

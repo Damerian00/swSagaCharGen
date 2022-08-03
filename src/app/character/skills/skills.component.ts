@@ -40,7 +40,7 @@ export class SkillsComponent implements OnInit {
  
   // sa flag to show button when abilities are available
   buttonIf: string = "hide";
-
+  
   // utilizes event emitter to emit the skills selected
   @Output () skillsSelected: EventEmitter<any> = new EventEmitter<any>()
 

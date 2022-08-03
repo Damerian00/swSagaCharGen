@@ -13,7 +13,7 @@ import { CharSheetComponent } from './character/char-sheet/char-sheet.component'
 import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AbilityModifierPipe } from './pipes/ability-modifier.pipe';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { AbilityModifierPipe } from './pipes/ability-modifier.pipe';
     TalentsComponent,
     CharSheetComponent,
     MainComponent,
-    AbilityModifierPipe
+   
   ],
   imports: [
     BrowserModule,

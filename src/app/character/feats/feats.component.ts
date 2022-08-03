@@ -119,7 +119,11 @@ let species = await this.choices.getSpecies();
             this.choices.featsArray.pop()
           }
         }
-      this.choices.setFeatsArray(tempString.split(","));
+        let tempArr = tempString.split(",")
+        if (this.additionalFeatsArray.length > 0){
+          tempArr.forEach((el)=> {tempArr.push(el)})
+        }
+      this.choices.setFeatsArray(tempArr);
       this.heroFeatsSelected.emit(this.choices.getFeatsArray())
     }
 }
@@ -161,7 +165,6 @@ let BAB = await this.choices.acquireBab();
     - uses a forEach to break down the multiarray's values "vals" into each index to be checked for the keyword's value to see if the player meets the minimum reqs then it is marked as validated
 */ 
     const reqsArray = ["BAB", "feat", "trained", "talent","trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" ]
-    
     for (let v = 0; v < vals.length; v++){    
       
         for (let j=0; j < reqsArray.length; j++){
@@ -224,11 +227,8 @@ let BAB = await this.choices.acquireBab();
              await this.chkReqs(check,  "Charisma");
               j = reqsArray.length;
             //  check >= chr ? this.validated=true : this.validated = false;         
-            break;
-            
-          }
-          // console.log("valid?: ", this.validated, temp)
-          
+            break;    
+          }        
         } 
         
       }
@@ -338,6 +338,7 @@ async clearConditionals(){
 };
   const selectedSpeciesTraits = await this.choices.acquireSpeciesTraits();
   if (Object.keys(selectedSpeciesTraits).includes("Conditional Bonus Feat")){
+    let neMoArr = [];
     for (let i =0 ; i < selectedSpeciesTraits["Conditional Bonus Feat"].length; i++){
       let conditionalFeat = await Object.keys(selectedSpeciesTraits["Conditional Bonus Feat"][i]);
       let value;
@@ -360,10 +361,16 @@ async clearConditionals(){
             if (this.choices.getSpecies() == "Arkanian Offshoot (str)" || this.choices.getSpecies() == "Arkanian Offshoot (dex)"){
               this.additionalFeatsArray.push(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
             }else{
+              if (this.choices.getSpecies()== "Neimoidian"){
+                neMoArr.push(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"])
+              }
               this.submit(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
             }
           }
-      
+          
+    }
+    if (this.choices.getSpecies()== "Neimoidian"){
+     this.submit(neMoArr)
     }
   } 
 }
@@ -458,7 +465,7 @@ async submit(selection: any){
   const length = this.choices.getStartFeatsLength()
   
 
-  // if condtition is met then it modifies the feat to include the feat with the optioni in paranthesis.
+  // if condtition is met then it modifies the feat to include the feat with the options in paranthesis.
   if (length < this.startingFeats.length){
     await this.startingFeats.pop();
     this.choices.setFeatsArray(this.startingFeats);
@@ -486,11 +493,23 @@ if (selection == "Skill Focus" || selection == "Skill Training" || selection == 
     }
     this.heroSkillTrained.emit("");
   }else{
-    // if this isn't one of the special feats then it adds it normally
-    this.heroSkillTrained.emit("");   
-    const tempArr: any =  [...this.startingFeats,choice]
-    console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
-    this.choices.setFeatsArray(tempArr);
+    // Array.isArray checks to see if selection is an array of feats if it is then it will add each one to the array in a for loop then add to the feats array
+    if (Array.isArray(selection) ){
+      this.heroSkillTrained.emit("");
+      let tempArr: any = [...this.startingFeats]     
+      for (let i=0; i<selection.length; i++){
+        tempArr.push(selection[i]);
+        
+      }
+      this.choices.setFeatsArray(tempArr);
+    }else {
+      
+      // if this isn't one of the special feats or doesn't have more then one feat to add then it adds it normally
+       this.heroSkillTrained.emit("");   
+       const tempArr: any =  [...this.startingFeats,choice]
+       console.log("this is tempArr", tempArr, this.selectedFeats, this.startingFeats)
+       this.choices.setFeatsArray(tempArr);
+     }
   }
   
   this.heroFeatsSelected.emit(this.choices.getFeatsArray());
