@@ -144,7 +144,8 @@ calcGrapple(mod: string){
 }
 // sets the carrying capacity of the hero
 calculateCarryLimit(cl : number, strScore : number){
-  this.carryLimit = ((strScore)^2 * .5) * cl;
+  console.log("this is carry stuff:" ,strScore, cl)
+  this.carryLimit = Math.pow(strScore, 2) * 0.5 * cl;
 }
 // calculates the hero's hp total
 async calcHP(heroicClass: string, mod: number){

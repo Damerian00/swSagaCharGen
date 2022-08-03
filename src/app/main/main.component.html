@@ -5,7 +5,7 @@
 
 <main>
 
-    <div class="selectors">
+    <div *ngIf="hideSelectors == 'show'" class="selectors">
         <species (speciesSelected)="updateSpecies($event)"></species>
         <abilities (abilitiesSelected)="updateAbilities($event)" ></abilities>
         <classes *ngIf="toggleClassesComponent == true" (classSelected)="[updateClass($event), skills.showSkills($event), feats.setClass($event)]"></classes>
@@ -20,9 +20,15 @@
         <section *ngIf="showAbilities" class="stats">
             <label>HP <p>{{healthPoints}}</p></label>
             <div class="defensesBox">
-                <label>Reflex Defense: <p> {{reflexDefense}}</p></label>
-                <label>Fortitude Defense: <p> {{fortitudeDefense}}</p></label>
-                <label>Will Defense: <p> {{willDefense}}</p></label>
+                <label>Reflex Defense: <span> {{reflexDefense}}</span></label>
+                <br>
+                <label>Fortitude Defense: <span> {{fortitudeDefense}}</span></label>
+                <br>
+                <label>Will Defense: <span> {{willDefense}}</span></label>
+                <br>
+            </div>
+            <div class="otherStats">
+                <label>Carry Capacity: <span>{{carryLimit}}</span></label>
             </div>
         </section>
         <section *ngIf="showAbilities" class="abilityWrapper">
@@ -57,5 +63,5 @@
             </div>
         </section>
         </div>
-
+        <button  *ngIf="hideSelectors == 'hide'" (click)="toggleSelectors()">Show Selectors</button>
 </main>
