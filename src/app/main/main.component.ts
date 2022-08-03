@@ -40,7 +40,7 @@ fortClassBonus: number = 0;
 willClassBonus: number = 0;
 heroLevel: number = 1;
 grapple: number = NaN;
-hideSelectors: string = "show";
+
 abModOptions: Array<string> = ["Strength","Dexterity","Constitution","Intelligence"," Wisdom","Charisma",]
 
 // tells the html not to sort
@@ -104,7 +104,7 @@ updateFeats(chosenFeats: Array<string>){
 }
 
 updateTalents(chosenTalent: any){
-this.hideSelectors = "hide";
+
 this.talentSelected = chosenTalent;
 this.updateStats();
 
@@ -249,7 +249,7 @@ calcModifier(){
   }
 }
 toggleSelectors(){
-  this.hideSelectors = "show";
+  
 }
 
 }

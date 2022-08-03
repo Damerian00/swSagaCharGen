@@ -1,6 +1,12 @@
 <h2>Please Select a Species</h2>
-<label>Species: </label> <select value="selectedSpecies" #selectedSpecies (change)="selected(selectedSpecies)">
-    <option>Select a Species</option>
-    <option *ngFor="let name of speciesArray">{{name.species_name}}</option>
-</select>
+<div class="speciesContainer">
+    <section class="selectionContainer">
+        <label>Species: </label> <select value="selectedSpecies" #selectedSpecies (change)="selected(selectedSpecies)">
+            <option>Select a Species</option>
+            <option *ngFor="let name of speciesArray">{{name.species_name}}</option>
+        </select>
+        <h3>Star Wars Saga Reference: <a  [href]="speciesUrl" target="_blank">{{selectedSpeciesObject.species_name}}</a></h3>
+    </section>
+    
 
+</div>

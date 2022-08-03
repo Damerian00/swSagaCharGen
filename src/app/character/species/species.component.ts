@@ -5,6 +5,7 @@ import { SwapiService } from 'src/app/services/swapi.service';
 import { CharSheetComponent } from '../char-sheet/char-sheet.component';
 
 
+
 @Component({
   selector: 'species',
   templateUrl: './species.component.html',
@@ -19,6 +20,8 @@ export class SpeciesComponent implements OnInit {
   ab_modifiers: object = {};
   charSheetComponent = new CharSheetComponent(this.choices);
   selectedSpecies: string = 'Human';
+  selectedSpeciesObject: any = {};
+  speciesUrl = "https://swse.fandom.com/wiki/"
   @Output () speciesSelected: EventEmitter<string> = new EventEmitter<string>()
   ngOnInit(): void {
 // utilizes swapi service to retriueve the data from the species endpoint
@@ -49,6 +52,10 @@ export class SpeciesComponent implements OnInit {
   }
 // function to handle the dropdown and watch for changes
  selected(selection: any){
+   if (selection.value == "Select a Species"){
+    this.selectedSpeciesObject = {}
+    return;
+   }
    for (let i=0; i<this.speciesArray.length; i++){
     /*
      compares the value selected with the imported array created from the api endpoint
@@ -71,12 +78,14 @@ export class SpeciesComponent implements OnInit {
   this.choices.onSelection();
   
   // creates the speciesObject on the choices service
-  this.createSpeciesObject(selection);
+  this.createSpeciesObject(selection.value);
+
 }
 
-async createSpeciesObject(selection: any){
 
-  const index =  await this.speciesArray.findIndex((el: any) => el.species_name == selection.value);
+async createSpeciesObject(selection: any){
+ 
+  const index =  await this.speciesArray.findIndex((el: any) => el.species_name == selection);
   // console.log("this is the selected id: ", this.speciesArray.findIndex(index))
   await this.choices.setSpecies(this.speciesArray[index]);
  console.log("here's the stored species:", index, this.choices.speciesSelectedObject)
@@ -84,6 +93,13 @@ async createSpeciesObject(selection: any){
    uses  an event emmiter to emit the species name which is required for another component
   */
  this.speciesSelected.emit(this.speciesArray[index])
+ this.selectedSpeciesObject = this.speciesArray[index]
+if (selection == "Arkanian Offshoot (dex)" || selection == "Arkanian Offshoot (str)" ){
+    this.speciesUrl = this.speciesUrl + "Arkanian_Offshoot"; 
+}else{
+  this.speciesUrl = this.speciesUrl + selection;
+}
+  
 } 
 
   
