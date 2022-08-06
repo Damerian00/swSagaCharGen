@@ -8,31 +8,123 @@ import { ChoicesSenderService } from '../services/choices-sender.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-speciesModifiers: object = {}
-importSpecies: string = "";
-species: any = {};
-abilities: any = {};
-class: string = "";
-abilityModifier: any = {};
-showAbilities: boolean = false
-intModifier: number = 0;
+/*
+ == Objects ==
+ */
+ speciesModifiers: object = {}
+ species: any = {};
+ abilities: any = {};
+ abilityModifier: any = {};
+ talentSelected: any = {};
+  
+ /*
+ == Arrays ==
+ */
 chosenSkills: Array <string> = [];
-heroName: string = "Name Goes Here...";
 chosenFeats: any = [];
+languages: Array<string> = [];
+abModOptions: Array<string> = ["Strength","Dexterity","Constitution","Intelligence"," Wisdom","Charisma",]
+heroSkillsTotal: any = [
+  {
+    "skill" : "Acrobatics", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Climb", "value" : 0, "default" : "Strength", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Deception", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+},
+{
+"skill" : "Endurance", "value" : 0, "default" : "Constitution", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Gather Information", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+},
+{
+"skill" : "Initiative", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+},
+{
+"skill" : "Jump", "value" : 0, "default" : "Strength", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Mechanics", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+"skill" : "Perception", "value" : 0, "default" : "Wisdom", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Persuasion", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+},
+  {
+    "skill" : "Knowledge (Bureaucracy)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Knowledge (Galactic Lore)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Knowledge (Life Sciences)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+"skill" : "Knowledge (Physical Sciences)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Knowledge (Social Sciences)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+"skill" : "Knowledge (Tactics)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+"skill" : "Knowledge (Technology)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+"skill" : "Mechanics", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+"skill" : "Perception", "value" : 0, "default" : "Wisdom", "trained" : false, "focus" : false
+},
+{
+"skill" : "Persuasion", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Pilot", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+},
+{
+"skill" : "Ride", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Stealth", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+},
+{
+  "skill" : "Survival", "value" : 0, "default" : "Wisdom", "trained" : false, "focus" : false
+},
+{
+"skill" : "Swim", "value" : 0, "default" : "Strength", "trained" : false, "focus" : false
+},
+{
+"skill" : "Treat Injury", "value" : 0, "default" : "Wisdom", "trained" : false, "focus" : false
+},
+{
+"skill" : "Use Computer", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+},
+{
+"skill" : "Use the Force", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+},
+]
+
+
+/*
+== Numbers == 
+*/
+intModifier: number = 0;
 healthPoints: number = 0;
 reflexDefense:number = 10;
 fortitudeDefense: number = 10;
 willDefense:number = 10;
 chosenSkillsLength: number = 0;
-savedSkillValue: string = "";
-toggleClassesComponent: boolean = false;
-talentSelected: any = {};
-carryLimit: number = NaN;
 speciesReflexDefenseMod: number = 0;
 speciesFortDefenseMod: number = 0;
+carryLimit: number = NaN;
 speciesWillDefenseMod: number = 0;
-languages: Array<string> = [];
-size: string = "";
 speed: number = 6;
 sizeCarryModifier: number = 1;
 reflexClassBonus: number = 0;
@@ -41,7 +133,22 @@ willClassBonus: number = 0;
 heroLevel: number = 1;
 grapple: number = NaN;
 
-abModOptions: Array<string> = ["Strength","Dexterity","Constitution","Intelligence"," Wisdom","Charisma",]
+/*
+  == Strings ==
+*/
+importSpecies: string = "";
+class: string = "";
+heroName: string = "Name Goes Here...";
+savedSkillValue: string = "";
+size: string = "";
+talentSelectedName: string = "";
+talentSelectedDesc: string = "";
+/*
+== Boolean ==
+*/
+showAbilities: boolean = false
+toggleClassesComponent: boolean = false;
+
 
 // tells the html not to sort
 unsorted = (a:any, b:any) => {
@@ -61,7 +168,7 @@ popArray(arr : Array<any>){
 }
 // the update Functions dynamically add the data from the corrosponding component to be displayed
   updateSpecies(chosenSpecies: any) {
-    console.log("the chosen Species",chosenSpecies)
+    // console.log("the chosen Species",chosenSpecies)
     this.species = chosenSpecies;
     this.sizeCarryModifier = chosenSpecies.traits["Carry Limit"];
     this.speciesReflexDefenseMod = chosenSpecies.traits.Defenses["Reflex Defense"];
@@ -85,27 +192,57 @@ popArray(arr : Array<any>){
     
   }
  
- updateClass(chosenClass: string){
+ async updateClass(chosenClass: string){
   this.class = chosenClass;
   this.calcClassBonuses(chosenClass);
-  
+  // if class isn't jedi and the array doesn't have Use the Force as a value for skill remove Use the force skill from the array 
+  let vals = await Object.values(this.heroSkillsTotal)
+  if (chosenClass != "Jedi" && Object.values(this.heroSkillsTotal).length >= 28){
+    this.heroSkillsTotal.pop();
+    // console.log("removed use the force")
+  // if jedi is chosen as a Class and Use the Force isn't in the array then add itat the end
+  }else if (chosenClass == "Jedi" && Object.values(this.heroSkillsTotal).length < 28){
+    this.heroSkillsTotal.push({
+      "skill" : "Use the Force", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+    },)
+    // console.log( "added use force")
+
+  // 
+  }
+  // console.log("this is it", this.heroSkillsTotal, vals.lastIndexOf("Use the Force"))
 }
 
 updateSkills(chosenSkills: any){
-  this.chosenSkills = chosenSkills;
+  this.chosenSkills =  chosenSkills;
   this.chosenSkillsLength = chosenSkills.length;
-  console.log("the length is at start: ", this.chosenSkillsLength)
+  // updates skills object.trained  boolean
+  
+  let vals = Object.values(this.heroSkillsTotal)
+  for (let i =0; i<vals.length; i++){
+    (this.chosenSkills.includes(this.heroSkillsTotal[i].skill)) ?
+      this.heroSkillsTotal[i].trained = true : this.heroSkillsTotal[i].trained = false;
+  }
+ console.log("the length is at start: ", this.chosenSkills )
 }
 
 
 updateFeats(chosenFeats: Array<string>){
-  console.log("here are the choosen ones: ", chosenFeats)
+  // console.log("here are the choosen ones: ", chosenFeats)
   this.chosenFeats = chosenFeats;
 }
-
+// if one of the talent exceptions was chosen use this
+updateTalentSpecify(specificArr: any){
+  this.talentSelected =specificArr[1];
+  this.talentSelectedName = specificArr[0]
+  this.talentSelectedDesc = specificArr[2];
+  this.updateStats();
+  // console.log("it was specific", specificArr)
+}
+// if a non exception talent was chosen use this
 updateTalents(chosenTalent: any){
-
 this.talentSelected = chosenTalent;
+this.talentSelectedName = chosenTalent.name
+this.talentSelectedDesc = chosenTalent.description
 this.updateStats();
 
 }
@@ -120,6 +257,9 @@ updateStats(){
   this.calculateDefenses("Fort", "Constitution");
   this.calculateDefenses("Will", "Wisdom");
   this.calcGrapple("Strength");
+  this.heroSkillsTotal.forEach((el: any)=> {
+    this.calcSkills(el, el.default, 0);
+  })
 
 }
 
@@ -155,7 +295,6 @@ calcGrapple(mod: string){
 }
 // sets the carrying capacity of the hero
 calculateCarryLimit(cl : number, strScore : number){
-  console.log("this is carry stuff:" ,strScore, cl)
   this.carryLimit = Math.pow(strScore, 2) * 0.5 * cl;
 }
 // calculates the hero's hp total
@@ -202,7 +341,7 @@ async calcHP(heroicClass: string, mod: number){
       }
   }
  
-
+// used to add or remove a skill that is added from a feat
   async addRemoveSkill(skillTrained : any){
     console.log("recieved input", skillTrained, "length is:", this.chosenSkillsLength, this.chosenSkills) 
      // conditional that adds or replaces what was selected
@@ -227,7 +366,7 @@ async calcHP(heroicClass: string, mod: number){
 calcModifier(){
   let keys = Object.keys(this.abilities);
   for (let i=0; i< keys.length; i++){
- console.log(keys[i]);
+//  console.log(keys[i]);
  let tempScore =0;
 //  console.log("starting temp", tempScore, )
  if (this.abilities[keys[i]]-10< 0){
@@ -245,11 +384,26 @@ calcModifier(){
      if (keys[i] == "Intelligence"){
       this.intModifier = tempScore;
      }
-     console.log("the abilities: ", keys[i], tempScore)    
+    //  console.log("the abilities: ", keys[i], tempScore)    
   }
 }
-toggleSelectors(){
-  
+calcSkills(ability: string, mod: string, misc: number){
+  let keys = Object.keys(this.heroSkillsTotal);
+  for (let i=0; i<keys.length;i++){
+    if (keys[i] == ability){
+    let t;
+    let f;
+    if (this.heroSkillsTotal[i].trained == true){
+      t = 5
+    }
+    if (this.heroSkillsTotal[i].focus == true){
+      f = 5
+    }
+  this.heroSkillsTotal[i].value = (Math.floor(this.heroLevel/2)) + this.abilityModifier[mod] + t + f + misc
+  break;
+    }
+
+  }
 }
 
 }

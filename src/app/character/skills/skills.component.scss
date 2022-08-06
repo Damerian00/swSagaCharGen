@@ -1,0 +1,16 @@
+h2, h3, p, input, label {
+    color: #FFFFFF;
+    // text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+    color: #FFFFFF;
+}
+
+.skillsButton{
+    background-color: black;
+    color:rgb(228, 206, 8);
+    text-align: center;
+    border:1px silver solid;
+    margin:1rem;
+    &:hover{
+        cursor: pointer;
+    }
+}

@@ -84,7 +84,7 @@ export class SpeciesComponent implements OnInit {
 
 
 async createSpeciesObject(selection: any){
- 
+  this.speciesUrl = "https://swse.fandom.com/wiki/"
   const index =  await this.speciesArray.findIndex((el: any) => el.species_name == selection);
   // console.log("this is the selected id: ", this.speciesArray.findIndex(index))
   await this.choices.setSpecies(this.speciesArray[index]);

@@ -134,6 +134,7 @@ submit(){
     this.choices.startTalentComponent();
   }
   this.heroSkillsSelected.emit(this.form.value.selectedSkills)
+  this.choices.setTrainedSkills(this.form.value.selectedSkills);
   this.buttonIf = "hide";
 }
 @Output () heroSkillsSelected: EventEmitter<any> = new EventEmitter()

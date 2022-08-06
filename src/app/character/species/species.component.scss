@@ -1,12 +1,38 @@
-.speciesContainer{
+h2{
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+    color: #FFFFFF;
+    font-size: 2rem;
    
+
+}
+h3{
+    color:rgb(10, 147, 238);
+}
+.speciesContainer{
+    display: flex;
+    justify-content: center;
     .selectionContainer{
+        select{
+            background-color: black;
+            color:rgb(228, 206, 8);
+            text-align: center;
+        }
+
         a{
             text-decoration: none;
-            color: black;
+            color: rgb(228, 206, 8);
+            text-shadow: 4px 3px 0 #7A7A7A;
+            color: rgb(228, 206, 8);
+            
+            
+            
         }
         a:hover{
-            color:blue;
+            color: black;
+
+
         }
     }
     

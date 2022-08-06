@@ -38,8 +38,10 @@ onSelection() {
   public featsArray: any = [];
   public classSkills: any;
   private startingFeatsLength: number = 0;
-  
-  constructor() { }
+  private allSkillsArray = ["Acrobatics",  "Climb", "Deception", "Endurance","Gather Information","Initiative","Jump", "Mechanics","Perception","Persuasion","Knowledge (Bureaucracy)","Knowledge (Galactic Lore)","Knowledge (Life Sciences)","Knowledge (Physical Sciences)","Knowledge (Social Sciences)","Knowledge (Tactics)","Knowledge (Technology)","Mechanics","Perception","Persuasion", "Pilot","Ride", "Stealth", "Survival","Swim", "Treat Injury", "Use Computer","Use the Force"]
+  private trainedSkillsArray: any;
+  private availableTalents: any;
+   constructor() { }
 // function set up to handle validtion and responses based on parameter inputs
 validator(value1 :any, value2: any, operand:string, type: string){
 switch (type) {
@@ -131,7 +133,21 @@ getFeatsArray(){
   return this.featsArray;
 }
 
-
+//gets skillsArray for all skills
+getAllSkillsArray(){
+  return this.allSkillsArray;
+}
+setTrainedSkills(arr : Array<any>){
+  if (this.trainedSkillsArray != undefined){
+    while(this.trainedSkillsArray.length){
+      this.trainedSkillsArray.pop();
+    }
+  }
+  this.trainedSkillsArray = arr;
+}
+getTrainedSkills(){
+  return this.trainedSkillsArray;
+}
 /*
 
 save for later use
@@ -151,5 +167,11 @@ calcScore (score: number){
 
 
  */
-
+setAvailableTalents(talents: any){
+  this.availableTalents = talents;
+  
+}
+getAvailableTalents(){
+  return this.availableTalents;
+}
 }

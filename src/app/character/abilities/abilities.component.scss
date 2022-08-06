@@ -2,8 +2,28 @@ section{
     display: flex;
     
 }
+h3,h5,label, p{
+    color: #FFFFFF;
+    // text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+    color: #FFFFFF;
+}
 .outsideWrapper{
     
+}
+input{
+    background-color: black;
+    color:rgb(228, 206, 8);
+    text-align: center;
+}
+.pointsButton, .toggleButton{
+    background-color: black;
+    color:rgb(228, 206, 8);
+    text-align: center;
+    border:1px silver solid;
+    margin:1rem;
+    &:hover{
+        cursor: pointer;
+    }
 }
 .abilityContainer{
     display: flex;
@@ -26,6 +46,26 @@ section{
     .buttonContainer{
         display: flex;
         flex-direction: column;
+        .addButton{
+            background-color: rgb(41, 182, 41);
+            color: white;
+            &:hover{
+                background-color: green;
+                
+            }
+        }
+        .subButton{
+            background-color: rgb(170, 5, 5);
+            color: white;
+            &:hover{
+                background-color:red
+            }
+        }
+        .addButton, .subButton{
+            margin:.25rem;
+            &:hover {cursor: pointer;}
+        }
+        
     }
 }
 .resultsContainer{

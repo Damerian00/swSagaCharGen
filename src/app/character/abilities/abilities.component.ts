@@ -46,7 +46,8 @@ holds the abilities and their values for starting
  
   // creates and intializes points setting them to 0
   points = 0;
-  
+  toggleButton: boolean = false;
+  toggleBtnText = "Open Points Editor"
   constructor(private choices: ChoicesSenderService) { }
   @Output () abilitiesSelected: EventEmitter<any> = new EventEmitter<any>()
   @Output () abilityModifiers: EventEmitter<any> = new EventEmitter<any>()
@@ -58,7 +59,10 @@ holds the abilities and their values for starting
   }
   // flag
   startAbilities: boolean = false;
-
+togglePtsBtn(){
+  (this.toggleBtnText == "Open Points Editor") ? this.toggleBtnText = "Close Points Editor" : this.toggleBtnText = "Open Points Editor";
+  this.toggleButton = !this.toggleButton;
+}
   //sets max points 
   setMaxPoints(mxpts: any){
     this.update();

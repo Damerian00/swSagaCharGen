@@ -16,9 +16,14 @@ availableTalents: Array<any> = [];
 showTalents: boolean = false;
 availableTalentTreeArray: Array <string> = [];
 validated: boolean = false;
-
+specifyTalent: string = "no";
+specificsArray: any;
+chosenSpecificTalent: string = "";
+selectedTalentName: string = "";
+selectedTalentDescription: string = "";
+hideButton: string = "hide";
 @Output () heroTalentSelected: EventEmitter<any> = new EventEmitter<any>();
-
+@Output () heroTalentSpecified: EventEmitter<any> = new EventEmitter<any>();
   ngOnInit(): void {
 
     this.swApiService.getTalents().subscribe(payload => {
@@ -69,7 +74,7 @@ async showAvailable(){
     }
     }
   }
-  
+  this.choices.setAvailableTalents(this.availableTalents);
  console.log("the talents: ",this.availableTalents)
 }
 
@@ -120,36 +125,115 @@ async checkRequirements(talent: any){
 //    console.log(talent.name, this.validated)
 }
 
-selectedTalentName: string = "";
-selectedTalentDescription: string = "";
-hideButton: string = "hide";
+
 // uses the dropdown to display what he talent is and it's description
-async selectedTalent(selection: any){
+async selectedTalent(selection: any){  
   if  (this.hideButton == "hide"){
     this.hideButton= "show";
   }
   if (selection != "Select a Talent"){
     const index = await this.availableTalents.findIndex((el: any) => el.name == selection);
     // console.log("this is the selected id: ", this.featsArray.findIndex(index))
-    //  this.selectedTalentName = await this.availableTalents[index].name;
-     this.selectedTalentDescription =  await this.availableTalents[index].description;
-   //  console.log(index);
-  }else {
-    this.selectedTalentDescription = "";
-    this.hideButton = "hide"
+    //  
+     this.setSelectedTalent(this.choices.getAvailableTalents()[index])
+    //  console.log(index);
+    if (selection == "Assured Skill" || selection == "Exceptional Skill" ){
+     await this.addTalentSpecifics(selection);
+      // console.log("temp add:",tempAdd)
+    }else {
+      while(this.specificsArray.length){
+        this.specificsArray.pop();
+    }
+    this.specifyTalent = "no";
   }
+}else {
   this.selectedTalentName = selection;
+  this.selectedTalentDescription = "";
+  this.hideButton = "hide"
+}
+ 
+
+  
  }
 
-async submit(){
-  if (this.selectedTalentName != "Select a Talent"){
-    const index = await this.availableTalents.findIndex((el: any) => el.name == this.selectedTalentName);
-    this.heroTalentSelected.emit(this.availableTalents[index])
-    console.log("sent this talent:",this.availableTalents[index])
+ addTalentSpecifics(selection: any){
+  this.specifyTalent = "yes";
+  if (selection == "Assured Skill"){
+    this.specificsArray = this.choices.getAllSkillsArray();
+  }else if (selection == "Exceptional Skill"){
+    this.specificsArray = this.choices.getTrainedSkills();
+  }
+ }
+ setSelectedTalent(selection: any){
+  let splitter = selection.name.split(' ');
+  if (splitter.length >= 3 && splitter[0] == "Exceptional" ){
+        // console.log("saving splitter", splitter, selection.name)
+      let tempArr = [...splitter[0], splitter[1]]
+      this.selectedTalentName = tempArr.join(' ');
+      this.selectedTalentDescription = selection.description;
+      }else{
+        // console.log("saving", selection)
+      this.selectedTalentName = selection.name;
+      this.selectedTalentDescription = selection.description;
+      }    
+   
+ }
+ getSelectedTalentName(){
+  return this.selectedTalentName;
+ }
+ getSelectedTalentDesc(){
+  return this.selectedTalentDescription;
+ }
+selectSpecificTalent(selection: any){
+  if (selection != "Select a skill"){
+    this.chosenSpecificTalent = selection;
+  }else {
+    this.chosenSpecificTalent = "nope";
+  }
+}
+removeParanthesis(str : any){
+  console.log("newArr", str)
+  if (str != undefined){
+  const newArr = str.split('')
+    let pump = [];
+    if (newArr.includes('(')== false){
+      return "no";
+    }else{
+      for (let i=0;i<newArr.length; i++){
+        if (newArr[i] == "("){
+            break;
+          }
+          pump.push(newArr[i]);
+      }  
+      pump.pop();
+      let hiddenWord = pump.join('') ;
+      // console.log(hiddenWord);
+      return hiddenWord;
+    }
+
+    }
+  return "no";
+}
+async submit(selection: any){
+  let index;
+  if (selection != "Select a Talent"){
+    
+    console.log("the name without parenthesis",selection)
+    if (selection == "Assured Skill" || selection == "Exceptional Skill" ){
+      if (this.chosenSpecificTalent != "nope"){
+        index = await this.choices.getAvailableTalents().findIndex((el: any) => el.name == selection);
+        let tempArr = [this.getSelectedTalentName() + ` (${this.chosenSpecificTalent})`, this.choices.getAvailableTalents(), this.getSelectedTalentDesc()];
+        this.heroTalentSpecified.emit(tempArr)
+        console.log("sent this talent:",this.choices.getAvailableTalents()[index])
+      }
+    } else{
+      index = await this.choices.getAvailableTalents().findIndex((el: any) => el.name == selection);
+      this.heroTalentSelected.emit(this.choices.getAvailableTalents()[index])
+      console.log("sent this talent:",this.choices.getAvailableTalents()[index])
+      
+    }
   }
 
 }
-
-
 
 }
