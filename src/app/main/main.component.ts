@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChoicesSenderService } from '../services/choices-sender.service';
+import { faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -26,88 +27,88 @@ languages: Array<string> = [];
 abModOptions: Array<string> = ["Strength","Dexterity","Constitution","Intelligence"," Wisdom","Charisma",]
 heroSkillsTotal: any = [
   {
-    "skill" : "Acrobatics", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+    "skill_name" : "Acrobatics", "skill_value" : 0, "default" : "Dexterity", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Climb", "value" : 0, "default" : "Strength", "trained" : false, "focus" : false
+  "skill_name" : "Climb", "skill_value" : 0, "default" : "Strength", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Deception", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+  "skill_name" : "Deception", "skill_value" : 0, "default" : "Dexterity", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Endurance", "value" : 0, "default" : "Constitution", "trained" : false, "focus" : false
+"skill_name" : "Endurance", "skill_value" : 0, "default" : "Constitution", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Gather Information", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+  "skill_name" : "Gather Information", "skill_value" : 0, "default" : "Charisma", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Initiative", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+"skill_name" : "Initiative", "skill_value" : 0, "default" : "Dexterity", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Jump", "value" : 0, "default" : "Strength", "trained" : false, "focus" : false
+"skill_name" : "Jump", "skill_value" : 0, "default" : "Strength", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Mechanics", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+  "skill_name" : "Mechanics", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Perception", "value" : 0, "default" : "Wisdom", "trained" : false, "focus" : false
+"skill_name" : "Perception", "skill_value" : 0, "default" : "Wisdom", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Persuasion", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+  "skill_name" : "Persuasion", "skill_value" : 0, "default" : "Charisma", "trained_skill" : false, "skill_focus" : false
 },
   {
-    "skill" : "Knowledge (Bureaucracy)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+    "skill_name" : "Knowledge (Bureaucracy)", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Knowledge (Galactic Lore)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+  "skill_name" : "Knowledge (Galactic Lore)", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Knowledge (Life Sciences)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+  "skill_name" : "Knowledge (Life Sciences)", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Knowledge (Physical Sciences)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+"skill_name" : "Knowledge (Physical Sciences)", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Knowledge (Social Sciences)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+  "skill_name" : "Knowledge (Social Sciences)", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Knowledge (Tactics)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+"skill_name" : "Knowledge (Tactics)", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Knowledge (Technology)", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+"skill_name" : "Knowledge (Technology)", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Mechanics", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+"skill_name" : "Mechanics", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Perception", "value" : 0, "default" : "Wisdom", "trained" : false, "focus" : false
+"skill_name" : "Perception", "skill_value" : 0, "default" : "Wisdom", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Persuasion", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+"skill_name" : "Persuasion", "skill_value" : 0, "default" : "Charisma", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Pilot", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+  "skill_name" : "Pilot", "skill_value" : 0, "default" : "Dexterity", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Ride", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+"skill_name" : "Ride", "skill_value" : 0, "default" : "Dexterity", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Stealth", "value" : 0, "default" : "Dexterity", "trained" : false, "focus" : false
+  "skill_name" : "Stealth", "skill_value" : 0, "default" : "Dexterity", "trained_skill" : false, "skill_focus" : false
 },
 {
-  "skill" : "Survival", "value" : 0, "default" : "Wisdom", "trained" : false, "focus" : false
+  "skill_name" : "Survival", "skill_value" : 0, "default" : "Wisdom", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Swim", "value" : 0, "default" : "Strength", "trained" : false, "focus" : false
+"skill_name" : "Swim", "skill_value" : 0, "default" : "Strength", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Treat Injury", "value" : 0, "default" : "Wisdom", "trained" : false, "focus" : false
+"skill_name" : "Treat Injury", "skill_value" : 0, "default" : "Wisdom", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Use Computer", "value" : 0, "default" : "Intelligence", "trained" : false, "focus" : false
+"skill_name" : "Use Computer", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
 {
-"skill" : "Use the Force", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+"skill_name" : "Use the Force", "skill_value" : 0, "default" : "Charisma", "trained_skill" : false, "skill_focus" : false
 },
 ]
 
@@ -146,9 +147,13 @@ talentSelectedDesc: string = "";
 /*
 == Boolean ==
 */
-showAbilities: boolean = false
+showAbilities: boolean = false;
 toggleClassesComponent: boolean = false;
+showRest: boolean = false;
 
+//icons
+faUncheck = faSquare;
+faChecked= faCheckSquare
 
 // tells the html not to sort
 unsorted = (a:any, b:any) => {
@@ -196,7 +201,7 @@ popArray(arr : Array<any>){
   this.class = chosenClass;
   this.calcClassBonuses(chosenClass);
   // if class isn't jedi and the array doesn't have Use the Force as a value for skill remove Use the force skill from the array 
-  let vals = await Object.values(this.heroSkillsTotal)
+  // let vals = await Object.values(this.heroSkillsTotal)
   if (chosenClass != "Jedi" && Object.values(this.heroSkillsTotal).length >= 28){
     this.heroSkillsTotal.pop();
     // console.log("removed use the force")
@@ -219,12 +224,28 @@ updateSkills(chosenSkills: any){
   
   let vals = Object.values(this.heroSkillsTotal)
   for (let i =0; i<vals.length; i++){
-    (this.chosenSkills.includes(this.heroSkillsTotal[i].skill)) ?
-      this.heroSkillsTotal[i].trained = true : this.heroSkillsTotal[i].trained = false;
+    (this.chosenSkills.includes(this.heroSkillsTotal[i].skill_name)) ?
+      this.heroSkillsTotal[i].trained_skill = true : this.heroSkillsTotal[i].trained_skill = false;
   }
  console.log("the length is at start: ", this.chosenSkills )
 }
-
+updateFocusFeats(chosenFeat: Array<string>){
+  for (let i = 0; i<chosenFeat.length; i ++){
+    let splitter = chosenFeat[i].split(' ');
+    // console.log("this is splitter:", splitter)
+    if (splitter.length > 2 && splitter[1] == "Focus"){
+      // console.log("splitter is true:", splitter)
+      for (let i =0; i<this.heroSkillsTotal.length; i++){
+        let a = splitter.slice(2).join(' ');
+        let len = a.length-1
+      let featName = a.substring(1,len);
+        (featName == this.heroSkillsTotal[i].skill_name) ?
+        this.heroSkillsTotal[i].skill_focus = true : this.heroSkillsTotal[i].skill_focus = false;
+        // console.log(featName, this.heroSkillsTotal[i].skill_name, this.heroSkillsTotal[i].skill_focus);
+      }
+    }
+  }
+}
 
 updateFeats(chosenFeats: Array<string>){
   // console.log("here are the choosen ones: ", chosenFeats)
@@ -235,6 +256,7 @@ updateTalentSpecify(specificArr: any){
   this.talentSelected =specificArr[1];
   this.talentSelectedName = specificArr[0]
   this.talentSelectedDesc = specificArr[2];
+  this.showRest = true;
   this.updateStats();
   // console.log("it was specific", specificArr)
 }
@@ -243,6 +265,7 @@ updateTalents(chosenTalent: any){
 this.talentSelected = chosenTalent;
 this.talentSelectedName = chosenTalent.name
 this.talentSelectedDesc = chosenTalent.description
+this.showRest = true;
 this.updateStats();
 
 }
@@ -250,17 +273,17 @@ this.updateStats();
 /* end of updates from components functions*/
 
 // calls all the functions to update the stats on the sheet
-updateStats(){
+async updateStats(){
   this.calcHP(this.class, this.abilityModifier.Constitution);
   this.calculateCarryLimit(this.sizeCarryModifier, this.abilities.Strength);
   this.calculateDefenses("Reflex", "Dexterity");
   this.calculateDefenses("Fort", "Constitution");
   this.calculateDefenses("Will", "Wisdom");
   this.calcGrapple("Strength");
+  this.updateFocusFeats(this.chosenFeats);
   this.heroSkillsTotal.forEach((el: any)=> {
-    this.calcSkills(el, el.default, 0);
+    this.calcSkills(el.skill_name, el.default, 0);
   })
-
 }
 
 // calculates the defense bonuses to be applied to a hero
@@ -292,6 +315,7 @@ calcGrapple(mod: string){
   }else{
     this.grapple = (bab + this.abilityModifier[mod])
   }
+ 
 }
 // sets the carrying capacity of the hero
 calculateCarryLimit(cl : number, strScore : number){
@@ -387,20 +411,21 @@ calcModifier(){
     //  console.log("the abilities: ", keys[i], tempScore)    
   }
 }
-calcSkills(ability: string, mod: string, misc: number){
-  let keys = Object.keys(this.heroSkillsTotal);
-  for (let i=0; i<keys.length;i++){
-    if (keys[i] == ability){
-    let t;
-    let f;
-    if (this.heroSkillsTotal[i].trained == true){
+calcSkills(skill: string, mod: string, misc: number){
+
+  for (let i=0; i<this.heroSkillsTotal.length;i++){
+    // console.log("the skill:", this.heroSkillsTotal[i].skill_name, skill)
+    if (this.heroSkillsTotal[i].skill_name == skill){
+    let t =0;
+    let f= 0;
+    if (this.heroSkillsTotal[i].trained_skill == true){
       t = 5
     }
-    if (this.heroSkillsTotal[i].focus == true){
+    if (this.heroSkillsTotal[i].skill_focus == true){
       f = 5
     }
-  this.heroSkillsTotal[i].value = (Math.floor(this.heroLevel/2)) + this.abilityModifier[mod] + t + f + misc
-  break;
+  this.heroSkillsTotal[i].skill_value = (Math.floor(this.heroLevel/2)) + this.abilityModifier[mod] + t + f + misc;
+  console.log("the value computed:",  this.abilityModifier[mod], t,f, misc)
     }
 
   }

@@ -43,7 +43,7 @@
             <div class="otherStats">
                 <label *ngIf="carryLimit">Carry Capacity: <span>{{carryLimit}}</span></label>
                 <br>
-                <label *ngIf="grapple">Grapple: <span>{{grapple}}</span></label>
+                <label *ngIf="grapple >= -100">Grapple: <span>{{grapple}}</span></label>
                 <select value="selected" #grappleOption (change)="calcGrapple(grappleOption.value)">
                     <option>Strength</option>
                     <option>Dexterity</option>
@@ -63,26 +63,28 @@
                 <p *ngFor="let score of abilityModifier | keyvalue: unsorted">{{score.value}}</p>
             </div>
         </section>
-        <section *ngIf="showAbilities" class="skillWrapper">
+        <section *ngIf="showRest" class="skillWrapper">
             <div class="skillsContainer">
                 <h3>Selected Skills</h3>
                 <h4 *ngFor="let skill of chosenSkills">{{skill}}</h4>
                 <div class="skillsCloset" *ngFor="let heroSkill of heroSkillsTotal">
-                    <p>{{heroSkill.skill}}</p>
-                    <p>{{heroSkill.value}}</p>
-                    <p>{{heroSkill.default}}</p>
-                    <p>{{heroSkill.trained}}</p>
-                    <p>{{heroSkill.focus}}</p>
+                    <p>{{heroSkill.skill_name}}</p>
+                    <p>{{heroSkill.skill_value}}</p>
+                    <p>{{heroSkill.default}}</p>             
+                    <p *ngIf="heroSkill.trained_skill == true"><fa-icon [icon]="faChecked"></fa-icon></p>
+                    <p *ngIf="heroSkill.trained_skill == false"><fa-icon [icon]="faUncheck"></fa-icon></p>
+                    <p *ngIf="heroSkill.skill_focus == true"><fa-icon [icon]="faChecked"></fa-icon></p>
+                    <p *ngIf="heroSkill.skill_focus == false"><fa-icon [icon]="faUncheck"></fa-icon></p>
                 </div>
             </div>
         </section>
-        <section *ngIf="showAbilities" class="featsWrapper">
+        <section *ngIf="showRest" class="featsWrapper">
             <div class="featsContainer">
                 <h3>Selected Feats</h3>
                 <h4 *ngFor="let feat of chosenFeats">{{feat}}</h4>
             </div>
         </section>
-        <section *ngIf="showAbilities" class="talentsWrapper">
+        <section *ngIf="showRest" class="talentsWrapper">
             <div class="talentsContainer">
                 <h3>Selected Talent</h3>
                 <h4>{{talentSelectedName}} : {{talentSelectedDesc}}</h4>

@@ -141,9 +141,11 @@ async selectedTalent(selection: any){
      await this.addTalentSpecifics(selection);
       // console.log("temp add:",tempAdd)
     }else {
-      while(this.specificsArray.length){
-        this.specificsArray.pop();
-    }
+      if (this.specificsArray != undefined){
+        while(this.specificsArray.length){
+          this.specificsArray.pop();
+      }
+      }
     this.specifyTalent = "no";
   }
 }else {
