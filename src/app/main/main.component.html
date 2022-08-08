@@ -14,7 +14,6 @@
         <talents #talents (heroTalentSelected)="updateTalents($event)" (heroTalentSpecified)="updateTalentSpecify($event)"></talents>
     </div>
     <div class="display">
-        <input type="text" value="{{heroName}}">
        <h3> <span>Species:  </span> {{species.species_name}}</h3>
         <h3><span>Class: </span>{{class}} </h3>
         <section *ngIf="showAbilities" class="stats">
@@ -67,10 +66,14 @@
             <div class="skillsContainer">
                 <h3>Selected Skills</h3>
                 <h4 *ngFor="let skill of chosenSkills">{{skill}}</h4>
-                <div class="skillsCloset" *ngFor="let heroSkill of heroSkillsTotal">
+                <div class="skillsCloset" *ngFor="let heroSkill of heroSkillsTotal; let i = index">
                     <p>{{heroSkill.skill_name}}</p>
                     <p>{{heroSkill.skill_value}}</p>
-                    <p>{{heroSkill.default}}</p>             
+                    <p>{{heroSkill.default}}</p>
+                    <select value="selected" id={{i}} (change)="collectCalcData(i,$event)">
+                        <option>Select</option>
+                        <option *ngFor="let mod of abModOptions">{{mod}}</option>
+                    </select>             
                     <p *ngIf="heroSkill.trained_skill == true"><fa-icon [icon]="faChecked"></fa-icon></p>
                     <p *ngIf="heroSkill.trained_skill == false"><fa-icon [icon]="faUncheck"></fa-icon></p>
                     <p *ngIf="heroSkill.skill_focus == true"><fa-icon [icon]="faChecked"></fa-icon></p>

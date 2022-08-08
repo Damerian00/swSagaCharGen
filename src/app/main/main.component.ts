@@ -411,6 +411,10 @@ calcModifier(){
     //  console.log("the abilities: ", keys[i], tempScore)    
   }
 }
+collectCalcData(index: any, selection: any){
+  console.log("this is the index", index, this.heroSkillsTotal[index].skill_name, selection.target.value)
+  this.calcSkills(this.heroSkillsTotal[index].skill_name,selection.target.value, 0);
+}
 calcSkills(skill: string, mod: string, misc: number){
 
   for (let i=0; i<this.heroSkillsTotal.length;i++){
@@ -425,7 +429,7 @@ calcSkills(skill: string, mod: string, misc: number){
       f = 5
     }
   this.heroSkillsTotal[i].skill_value = (Math.floor(this.heroLevel/2)) + this.abilityModifier[mod] + t + f + misc;
-  console.log("the value computed:",  this.abilityModifier[mod], t,f, misc)
+  // console.log("the value computed:",  this.abilityModifier[mod], t,f, misc)
     }
 
   }

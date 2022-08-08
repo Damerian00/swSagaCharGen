@@ -226,12 +226,12 @@ async submit(selection: any){
         index = await this.choices.getAvailableTalents().findIndex((el: any) => el.name == selection);
         let tempArr = [this.getSelectedTalentName() + ` (${this.chosenSpecificTalent})`, this.choices.getAvailableTalents(), this.getSelectedTalentDesc()];
         this.heroTalentSpecified.emit(tempArr)
-        console.log("sent this talent:",this.choices.getAvailableTalents()[index])
+        // console.log("sent this talent:",this.choices.getAvailableTalents()[index])
       }
     } else{
       index = await this.choices.getAvailableTalents().findIndex((el: any) => el.name == selection);
       this.heroTalentSelected.emit(this.choices.getAvailableTalents()[index])
-      console.log("sent this talent:",this.choices.getAvailableTalents()[index])
+      // console.log("sent this talent:",this.choices.getAvailableTalents()[index])
       
     }
   }
