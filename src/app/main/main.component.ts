@@ -412,7 +412,7 @@ calcModifier(){
   }
 }
 collectCalcData(index: any, selection: any){
-  console.log("this is the index", index, this.heroSkillsTotal[index].skill_name, selection.target.value)
+  // console.log("this is the index", index, this.heroSkillsTotal[index].skill_name, selection.target.value)
   this.calcSkills(this.heroSkillsTotal[index].skill_name,selection.target.value, 0);
 }
 calcSkills(skill: string, mod: string, misc: number){
@@ -428,6 +428,7 @@ calcSkills(skill: string, mod: string, misc: number){
     if (this.heroSkillsTotal[i].skill_focus == true){
       f = 5
     }
+    this.heroSkillsTotal[i].default = mod;
   this.heroSkillsTotal[i].skill_value = (Math.floor(this.heroLevel/2)) + this.abilityModifier[mod] + t + f + misc;
   // console.log("the value computed:",  this.abilityModifier[mod], t,f, misc)
     }

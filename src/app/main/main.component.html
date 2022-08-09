@@ -1,5 +1,5 @@
 <header>
-    <h1>Character Generator</h1>
+    <h1>Star Wars Saga Edition Character Generator</h1>
 
 </header>
 
@@ -13,42 +13,56 @@
         <feats #feats (heroFeatsSelected)="updateFeats($event)" (heroSkillTrained)="addRemoveSkill($event)"></feats>
         <talents #talents (heroTalentSelected)="updateTalents($event)" (heroTalentSpecified)="updateTalentSpecify($event)"></talents>
     </div>
-    <div class="display">
+    <div id="contentSaved" class="display">
        <h3> <span>Species:  </span> {{species.species_name}}</h3>
         <h3><span>Class: </span>{{class}} </h3>
-        <section *ngIf="showAbilities" class="stats">
-            <label>HP <p>{{healthPoints}}</p></label>
+        <section *ngIf="showAbilities" class="stats">   
+           <div class="hpDiv">
+               <label *ngIf="showAbilities">Total HP: </label>
+               <p>{{healthPoints}}</p>
+           </div>
             <div class="defensesBox">
-                <label>Reflex Defense: <span> {{reflexDefense}}</span></label>
-                <select value="selected" #reflexModOption (change)="calculateDefenses('Reflex', reflexModOption.value)">
-                    <option>Select</option>
-                    <option *ngFor="let mod of abModOptions">{{mod}}</option>
-                </select>
-                <br>
-
-                <label>Fortitude Defense: <span> {{fortitudeDefense}}</span></label>
+                <div class="defense">
+                    <label>Reflex Defense: </label>
+                    <p>{{reflexDefense}}</p>
+                    <select value="selected" #reflexModOption (change)="calculateDefenses('Reflex', reflexModOption.value)">
+                        <option>Select</option>
+                        <option *ngFor="let mod of abModOptions">{{mod}}</option>
+                    </select>
+                </div>
+                <div class="defense">
+                    <label>Fortitude Defense: </label>
+                    <p>{{fortitudeDefense}}</p>
                 <select value="selected" #fortModOption (change)="calculateDefenses('Fort', fortModOption.value)">
                     <option>Select</option>
                     <option *ngFor="let mod of abModOptions">{{mod}}</option>
                 </select>
-                <br>
-                <label>Will Defense: <span> {{willDefense}}</span></label>
-                <select value="selected" #willModOption (change)="calculateDefenses('will', willModOption.value)">
-                    <option>Select</option>
-                    <option *ngFor="let mod of abModOptions">{{mod}}</option>
-                </select>
-                <br>
+                </div>
+                <div class="defense">
+                    <label>Will Defense:</label>
+                    <p>{{willDefense}}</p>
+                    <select value="selected" #willModOption (change)="calculateDefenses('will', willModOption.value)">
+                        <option>Select</option>
+                        <option *ngFor="let mod of abModOptions">{{mod}}</option>
+                    </select>
+                </div>             
             </div>
-            <div class="otherStats">
-                <label *ngIf="carryLimit">Carry Capacity: <span>{{carryLimit}}</span></label>
-                <br>
-                <label *ngIf="grapple >= -100">Grapple: <span>{{grapple}}</span></label>
-                <select value="selected" #grappleOption (change)="calcGrapple(grappleOption.value)">
-                    <option>Strength</option>
-                    <option>Dexterity</option>
-                </select>
+            <div *ngIf="showRest" class="otherStats">
+                <div class="carryBox">
+                    <label *ngIf="carryLimit">Carry Capacity: </label>
+                    <p>{{carryLimit}} kg</p>
+                </div>
+                <div class="grappleBox">
+                    <label>Grapple: </label>
+                    <p>{{grapple}}</p>
+                    <select value="selected" #grappleOption (change)="calcGrapple(grappleOption.value)">
+                        <option>Strength</option>
+                        <option>Dexterity</option>
+                    </select>
+                </div>
             </div>
         </section>
+        <hr>
         <section *ngIf="showAbilities" class="abilityWrapper">
             <div class="abilitiesContainer">
                 <h3>Hero Abilities</h3>
@@ -62,14 +76,18 @@
                 <p *ngFor="let score of abilityModifier | keyvalue: unsorted">{{score.value}}</p>
             </div>
         </section>
+        <hr>
         <section *ngIf="showRest" class="skillWrapper">
             <div class="skillsContainer">
-                <h3>Selected Skills</h3>
-                <h4 *ngFor="let skill of chosenSkills">{{skill}}</h4>
+                <h3>Selected Skills: </h3>
+                <div class="selectedSkills">
+                    <p *ngFor="let skill of chosenSkills">{{skill}}</p>
+                </div>
+                <hr>
                 <div class="skillsCloset" *ngFor="let heroSkill of heroSkillsTotal; let i = index">
                     <p>{{heroSkill.skill_name}}</p>
                     <p>{{heroSkill.skill_value}}</p>
-                    <p>{{heroSkill.default}}</p>
+                    <!-- <p>{{heroSkill.default}}</p> -->
                     <select value="selected" id={{i}} (change)="collectCalcData(i,$event)">
                         <option>Select</option>
                         <option *ngFor="let mod of abModOptions">{{mod}}</option>
@@ -81,12 +99,14 @@
                 </div>
             </div>
         </section>
+        <hr>
         <section *ngIf="showRest" class="featsWrapper">
             <div class="featsContainer">
                 <h3>Selected Feats</h3>
                 <h4 *ngFor="let feat of chosenFeats">{{feat}}</h4>
             </div>
         </section>
+        <hr>
         <section *ngIf="showRest" class="talentsWrapper">
             <div class="talentsContainer">
                 <h3>Selected Talent</h3>
@@ -96,3 +116,6 @@
         </div>
         <!-- <button  (click)="toggleSelectors()">Show Selectors</button> -->
 </main>
+<footer>
+    <p>Created By: <a href="https://github.com/Damerian00" target="_blank">Damerian00</a></p>
+</footer>

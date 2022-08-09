@@ -1,6 +1,14 @@
 main{
     display: flex;
 }
+hr{
+    color:black;
+    font-size: 4rem;
+    width: 100%;
+}
+section{
+    margin: 1.5vh 0;
+}
 .selectors{
     display: flex;
     flex-direction: column;
@@ -16,11 +24,144 @@ main{
     background-size: cover;
     
 }
+.stats{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.hpDiv{
+    display: flex;
+    align-items: baseline;
+}
+.defensesBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 5vh;
+    .defense{
+        display: flex;
+        align-items: center;
+    label,select,p{
+        width: 5vw;
+    }
+     label{
+        text-align: justify;
+        
+     } 
+        p{
+        text-align: center;
+        width: 2vw;
+      } 
+      select{
+        text-align: center;
+        height: 3vh;
+      } 
+    }
+}
+.otherStats{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: space-around;
+       p,select{
+            text-align: center;
+            height: 2vh;
+        }
+        label{
+            text-align: justify;
+            height: 5vh;
+        }
+    
+    .carryBox, .grappleBox{
+        display: flex;
+        justify-content: space-around;
+        align-items: baseline;
+       
+    }
+    .carryBox{
+        align-items: center;
+        label{
+            width: 6vw;
+            height: 2vh;
+        }
+        p{
+            width: 5vw;
+        }
+    }
+    .grappleBox{
+        justify-content: space-evenly;
+       label{
+        width: 4vw;
+       }
+       p{
+        width: 2vw;
+       }
+       select{
+        width: 5vw;
+       }
+    }
+}
+.abilityWrapper{
+    display: flex;
+    justify-content: space-around;
+    .abilitiesContainer{
+        display: flex;
+        flex-direction: column;
+        h3{
+            text-align: center;
+        }
+        .abilities {
+            display: flex;
+            p{
+                margin:1rem;
+                text-align: center;
+                width: 2vw;
+                
+            }
+            p:first-child{
+                text-align: justify;
+                width: 100px;
+            }
+        }
+    }
+    .scoresContainer{
+        display:flex;
+        flex-direction: column;
+        h3{
+            text-align: center;
+        }
+        p{
+            margin:1rem;
+
+        }
+    }
+}
+.skillsContainer{
+    color:black;
+    span{
+        color:black
+    }
+}
+.selectedSkills{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    p{
+        margin:.25rem;
+    }
+}
 .skillsCloset{
     display: flex;
     justify-content: space-evenly;
-    p{
+    align-items: center;
+    p,select{
         text-align: center;
+        width: 5vw;
+        height: 3vh;
+    }
+    p:first-child{
+        font-size:.75rem;
     }
 }
 .display{
@@ -33,30 +174,27 @@ main{
     margin: 1rem;
     overflow-y: scroll;
 }
-.abilityWrapper{
-    display: flex;
-    .abilitiesContainer{
-        display: flex;
-        flex-direction: column;
-        .abilities {
-            display: flex;
-            p{
-                margin:1rem;
-                text-align: center;
-                
-            }
-            p:first-child{
-                text-align: justify;
-                width: 100px;
-            }
-        }
-    }
-    .scoresContainer{
-        display:flex;
-        flex-direction: column;
-        p{
-            margin:1rem;
 
+.featsContainer{
+    h3{
+        text-align: center;
+    }
+}
+
+.talentsContainer{
+    h3{
+        text-align: center;
+    }
+}
+footer{
+    display: flex;
+    justify-content: center;
+    a{
+        text-decoration: none;
+        color: black;
+        &:hover{
+            cursor: pointer;
+            color:blue;
         }
     }
 }

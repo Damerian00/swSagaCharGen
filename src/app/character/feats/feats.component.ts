@@ -56,6 +56,10 @@ if (Object.keys(traits).includes("Bonus Feat")){
   bonusFeat = traits["Bonus Feat"];
 }
 }
+let primitive = "no"
+if (Object.keys(traits).includes("Primitive")){
+primitive = "yes"
+}
 let tempString = '';
 let heroClass = this.heroicClass;
 let skillArray = await this.choices.acquireSkillsArray();
@@ -67,34 +71,47 @@ let species = await this.choices.getSpecies();
 
 // this switch holds the hard coded data for what feats each class gets starting out and based on the user choice will assign them to the user's character.
   switch (heroClass) {
-    case "Jedi":
-      
+    case "Jedi":   
       tempString = "Force Sensitivity,Weapon Proficiency (Lightsabers),Weapon Proficiency (Simple Weapons)";
       break;
     case "Noble":
-      if (int >= 13){
-       
+      if (int >= 13){ 
         tempString = "Linguist,Weapon Proficiency (Pistols),Weapon Proficiency (Simple Weapons)";
-      }else {
+      }else if (primitive == "yes") {
+        tempString = "Weapon Proficiency (Simple Weapons)";
+      }else{  
         tempString = "Weapon Proficiency (Pistols),Weapon Proficiency (Simple Weapons)";
       }
       break;
       case "Scoundrel":
-       
-        tempString = "Point-Blank Shot,Weapon Proficiency (Pistols),Weapon Proficiency (Simple Weapons)";
+        if (primitive == "yes") {
+          tempString = "Point-Blank Shot,Weapon Proficiency (Simple Weapons)";
+        }else{
+          tempString = "Point-Blank Shot,Weapon Proficiency (Pistols),Weapon Proficiency (Simple Weapons)";
+        }
       break;
       case "Scout":
-       
       if (con >= 13 && skillArray.includes("Endurance")){
-        tempString = "Shake It Off,Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
-
+        if (primitive == "yes") {
+          tempString = "Shake It Off,Weapon,Weapon Proficiency (Simple Weapons)";
+        }else{
+          tempString = "Shake It Off,Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
+          }
       } else {
-        tempString = "Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
+        if (primitive == "yes") {
+          tempString = "Weapon Proficiency (Simple Weapons)";
+        }else{
+          tempString = "Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
+        }
       }
       break;
       case "Soldier":
+        if (primitive == "yes") {
+          tempString = "Armor Proficiency (Light),Armor Proficiency (Medium),Weapon Proficiency (Simple Weapons)";
+        }else{
+          tempString = "Armor Proficiency (Light),Armor Proficiency (Medium),Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
+        }
        
-        tempString = "Armor Proficiency (Light),Armor Proficiency (Medium),Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
       break;
     default:
       
