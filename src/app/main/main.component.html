@@ -1,5 +1,6 @@
 <header>
     <h1>Star Wars Saga Edition Character Generator</h1>
+    <p>Created By: <a href="https://github.com/Damerian00" target="_blank">Damerian00</a></p>
     <button (click)="nameHeroToggle()" [disabled]="disabler == 'disabled'">Name Hero</button>
     <button (click)="saveHero()" [disabled]="disabler == 'disabled'">Save Hero</button>
 </header>
@@ -117,7 +118,9 @@
         <section *ngIf="showRest" class="featsWrapper">
             <div class="featsContainer">
                 <h3>Selected Feats</h3>
-                <h4 *ngFor="let feat of chosenFeats">{{feat}}</h4>
+                <div class="featsBox">
+                    <h4 *ngFor="let feat of chosenFeats">{{feat}}</h4>
+                </div>
             </div>
         </section>
         <hr>
@@ -130,6 +133,3 @@
         </div>
         <!-- <button  (click)="toggleSelectors()">Show Selectors</button> -->
 </main>
-<footer>
-    <p>Created By: <a href="https://github.com/Damerian00" target="_blank">Damerian00</a></p>
-</footer>

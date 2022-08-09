@@ -245,7 +245,7 @@ updateSkills(chosenSkills: any){
     (this.chosenSkills.includes(this.heroSkillsTotal[i].skill_name)) ?
       this.heroSkillsTotal[i].trained_skill = true : this.heroSkillsTotal[i].trained_skill = false;
   }
- console.log("the length is at start: ", this.chosenSkills )
+//  console.log("the length is at start: ", this.chosenSkills )
 }
 updateFocusFeats(chosenFeat: Array<string>){
   for (let i = 0; i<chosenFeat.length; i ++){
@@ -385,13 +385,13 @@ async calcHP(heroicClass: string, mod: number){
  
 // used to add or remove a skill that is added from a feat
   async addRemoveSkill(skillTrained : any){
-    console.log("recieved input", skillTrained, "length is:", this.chosenSkillsLength, this.chosenSkills) 
+    // console.log("recieved input", skillTrained, "length is:", this.chosenSkillsLength, this.chosenSkills) 
      // conditional that adds or replaces what was selected
      if (skillTrained != ""){
        while (this.chosenSkills.length > this.chosenSkillsLength){
          this.chosenSkills.pop();
        }
-       console.log("added: ", skillTrained)
+      //  console.log("added: ", skillTrained)
        this.chosenSkills.push(skillTrained);
        this.savedSkillValue = skillTrained;
        // this conditional removes any extra skills added if skill trained wasn't selected
@@ -458,7 +458,7 @@ nameHeroToggle(){
   this.showModal = !this.showModal;
 }
 nameHero(name: any){
-  console.log("hero name: ",name);
+  // console.log("hero name: ",name);
   if(name == ""){
     this.heroName = "Name Goes Here...";
   }else{
@@ -484,7 +484,7 @@ saveHero(){
   }
   
   let ranId = this.randomIzer(8);
-  console.log("the id is:",ranId)
+  // console.log("the id is:",ranId)
   let savedHero: heroObject = {
     id: ranId,
     name: this.heroName,
@@ -504,15 +504,7 @@ saveHero(){
     let tempName = savedHero.name.split(' ').join('_')
  
   let fileName = `${tempName}${savedHero.id}.pdf`;
-  // html2canvas(this.el.nativeElement, { scale: 3 }).then((canvas) => {
-  //   const imageGeneratedFromTemplate = canvas.toDataURL('image/png');
-  //   const fileWidth = 200;
-  //   const generatedImageHeight = (canvas.height * fileWidth) / canvas.width;
-  //   let PDF = new jsPDF('p', 'mm', 'a4',);
-  //   PDF.addImage(imageGeneratedFromTemplate, 'PNG', 0, 5, fileWidth, generatedImageHeight,);
-  //   PDF.html(this.el.nativeElement.innerHTML)
-  //   PDF.save(fileName);
-  // });
+
   let DATA: any = document.getElementById('contentSaved');
   html2canvas(DATA,{ scale: 3 }).then((canvas) => {
     let PDF = new jsPDF('p', 'mm', 'a4');
@@ -523,7 +515,7 @@ saveHero(){
     PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
     PDF.save(fileName);
   });
-  console.log("savedHero", savedHero, fileName);
+  // console.log("savedHero", savedHero, fileName);
 }
 
 

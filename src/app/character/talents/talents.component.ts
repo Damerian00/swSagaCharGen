@@ -28,12 +28,12 @@ hideButton: string = "hide";
 
     this.swApiService.getTalents().subscribe(payload => {
       this.talentsArray = payload;
-      console.log("talents: ", this.talentsArray);
+      // console.log("talents: ", this.talentsArray);
     })
     
     this.swApiService.getTalentTree().subscribe(payload =>{
       this.talentTreeArray = payload;
-      console.log("talent tree: ", this.talentTreeArray);
+      // console.log("talent tree: ", this.talentTreeArray);
     })
     this.choices.intiializeTalents.subscribe(() => {
       this.sortAvailable();
@@ -54,7 +54,7 @@ sortAvailable(){
         this.availableTalentTreeArray.push(this.talentTreeArray[i].id);
       }
     }
-    console.log("available TT: ", this.availableTalentTreeArray);
+    // console.log("available TT: ", this.availableTalentTreeArray);
     this.showAvailable();
   }
 
@@ -75,7 +75,7 @@ async showAvailable(){
     }
   }
   this.choices.setAvailableTalents(this.availableTalents);
- console.log("the talents: ",this.availableTalents)
+//  console.log("the talents: ",this.availableTalents)
 }
 
 //checks to see if each talent passsed in meets the requirements.
@@ -194,7 +194,7 @@ selectSpecificTalent(selection: any){
   }
 }
 removeParanthesis(str : any){
-  console.log("newArr", str)
+  // console.log("newArr", str)
   if (str != undefined){
   const newArr = str.split('')
     let pump = [];
@@ -220,7 +220,7 @@ async submit(selection: any){
   let index;
   if (selection != "Select a Talent"){
     
-    console.log("the name without parenthesis",selection)
+    // console.log("the name without parenthesis",selection)
     if (selection == "Assured Skill" || selection == "Exceptional Skill" ){
       if (this.chosenSpecificTalent != "nope"){
         index = await this.choices.getAvailableTalents().findIndex((el: any) => el.name == selection);

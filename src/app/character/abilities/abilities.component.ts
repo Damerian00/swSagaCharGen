@@ -104,7 +104,7 @@ togglePtsBtn(){
   update(){
   this.resetAbilites();
   this.abModifierImport = this.choices.speciesAbilityModifiers;
-  console.log('the ability modifiers:',this.abModifierImport)
+  // console.log('the ability modifiers:',this.abModifierImport)
   let strA =  this.abModifierImport.Strength;
   if (strA != 0){
     this.finalAbilities.Strength += strA;

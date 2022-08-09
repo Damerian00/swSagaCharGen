@@ -5,6 +5,14 @@ header{
     h1{
         text-align: center;
     }
+    a{
+        text-decoration: none;
+        color: black;
+        &:hover{
+            cursor: pointer;
+            color:blue;
+        }
+    }
     button{
         color: rgb(0, 0, 0); font-size: 16px; line-height: 16px; padding: 3px; border-radius: 10px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(221, 199, 3) 0%, rgb(203, 201, 106) 50%, rgb(168, 133, 0) 100%); box-shadow: rgb(0, 0, 0) 5px 2px 15px 0px; border: 2px solid rgb(1, 5, 7); display: inline-block;
         &:hover {
@@ -60,11 +68,11 @@ main{
 }
 hr{
     color:black;
-    font-size: 4rem;
+    font-size: 2rem;
     width: 100%;
 }
 section{
-    margin: 1.5vh 0;
+    margin: 1vh 0 2.5vh 0;
 }
 .selectors{
     display: flex;
@@ -184,7 +192,7 @@ section{
         .abilities {
             display: flex;
             p{
-                margin:1rem;
+                margin:0 1rem;
                 text-align: center;
                 width: 2vw;
                 
@@ -202,8 +210,8 @@ section{
             text-align: center;
         }
         p{
-            margin:1rem;
-
+            margin:0 1rem;
+            text-align: center;
         }
     }
 }
@@ -230,8 +238,7 @@ section{
     p,select{
         text-align: center;
         width: 5vw;
-        height: 3vh;
-    }
+     }
     p:first-child{
         font-size:.75rem;
     }
@@ -251,8 +258,10 @@ section{
     h3{
         text-align: center;
     }
-    h4{
-        margin-left: 1rem;
+    .featsBox{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
     }
 }
 
@@ -262,17 +271,5 @@ section{
     }
     h4{
         margin:0 1rem;
-    }
-}
-footer{
-    display: flex;
-    justify-content: center;
-    a{
-        text-decoration: none;
-        color: black;
-        &:hover{
-            cursor: pointer;
-            color:blue;
-        }
     }
 }

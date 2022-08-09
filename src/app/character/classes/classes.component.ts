@@ -19,7 +19,7 @@ heroicClass: any = "";
 
 // checks for user input then passes the selection to choices service
 selected(selection: any){
-console.log('this is the selection', selection.value)
+// console.log('this is the selection', selection.value)
 this.choices.selectedClass = selection.value;
 this.heroicClass = selection.value
 this.classSelected.emit(this.heroicClass)

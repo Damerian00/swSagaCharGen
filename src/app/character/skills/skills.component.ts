@@ -68,8 +68,8 @@ export class SkillsComponent implements OnInit {
   }
   // calculates skill points that each class would have based on the int modifier
   calcModifier(selection : string){
-    console.log("the species is, ", this.choices.speciesSelected )
-console.log("this is the class selected:" , selection);
+//     console.log("the species is, ", this.choices.speciesSelected )
+// console.log("this is the class selected:" , selection);
     switch (selection) {
       case "Jedi":
           this.skillPoints = 2 + this.intModifier;
@@ -121,7 +121,7 @@ console.log("this is the class selected:" , selection);
       this.clear = "clear";
     }
     
-    console.log('skills:',this.skillsArray)
+    // console.log('skills:',this.skillsArray)
     this.choices.classSkills = this.skillsArray;
     this.uncheckAll();
     
@@ -129,7 +129,7 @@ console.log("this is the class selected:" , selection);
   // connects with the service to intitate the starting feats 
 submit(){
   this.choices.setStartFeats();
-    console.log("button if",this.choices.abilities)
+    // console.log("button if",this.choices.abilities)
   if (this.choices.getSpecies() != "Human"){
     this.choices.startTalentComponent();
   }

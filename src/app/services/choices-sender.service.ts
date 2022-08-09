@@ -59,7 +59,7 @@ switch (type) {
       this.validate = true;
     }else{
       this.validate=false;
-      console.log("can't do")
+      // console.log("can't do")
     }
     break;
     case "skills":
@@ -79,7 +79,7 @@ switch (type) {
 Getters and Setters
 */
 setStartFeatsLength(num: number){
-  console.log(num, "the number of length")
+  // console.log(num, "the number of length")
     this.startingFeatsLength = num;
 }
 getStartFeatsLength(){
@@ -117,7 +117,7 @@ getClass(){
 }
 // sets the featsArray
 setFeatsArray(importArray: Array<string>){
-  console.log('the import:', importArray)
+  // console.log('the import:', importArray)
   if (this.featsArray.length !=0){
     // if it isn't empty we use pop method to empty it out
       while(this.featsArray.length){
@@ -127,7 +127,7 @@ setFeatsArray(importArray: Array<string>){
     for (let i =0; i< importArray.length; i++){
       if (importArray[i] != ""){this.featsArray.push(importArray[i])}
     }
-    console.log("loaded the feats", this.featsArray)
+    // console.log("loaded the feats", this.featsArray)
 }
 //returns the feats array
 getFeatsArray(){

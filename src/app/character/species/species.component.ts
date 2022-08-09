@@ -27,7 +27,7 @@ export class SpeciesComponent implements OnInit {
 // utilizes swapi service to retriueve the data from the species endpoint
     this.swApiService.getSpecies().subscribe(payload =>{
   this.speciesArray = payload;
-  console.log("Species: ", this.speciesArray);  
+  // console.log("Species: ", this.speciesArray);  
 // sorts the array by species name
   this.speciesArray.sort(this.sortNames("species_name"));
 })
@@ -69,7 +69,7 @@ export class SpeciesComponent implements OnInit {
   // passes off the values to the choices service corresponding variable
    this.choices.speciesAbilityModifiers = this.ab_modifiers;
    this.choices.speciesSelected = selection.value;
-   console.log("here's your species",this.choices.speciesSelected)
+  //  console.log("here's your species",this.choices.speciesSelected)
   
   
   ;
@@ -88,7 +88,7 @@ async createSpeciesObject(selection: any){
   const index =  await this.speciesArray.findIndex((el: any) => el.species_name == selection);
   // console.log("this is the selected id: ", this.speciesArray.findIndex(index))
   await this.choices.setSpecies(this.speciesArray[index]);
- console.log("here's the stored species:", index, this.choices.speciesSelectedObject)
+//  console.log("here's the stored species:", index, this.choices.speciesSelectedObject)
  /*
    uses  an event emmiter to emit the species name which is required for another component
   */
