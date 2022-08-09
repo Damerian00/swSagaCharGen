@@ -1,3 +1,60 @@
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    h1{
+        text-align: center;
+    }
+    button{
+        color: rgb(0, 0, 0); font-size: 16px; line-height: 16px; padding: 3px; border-radius: 10px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(221, 199, 3) 0%, rgb(203, 201, 106) 50%, rgb(168, 133, 0) 100%); box-shadow: rgb(0, 0, 0) 5px 2px 15px 0px; border: 2px solid rgb(1, 5, 7); display: inline-block;
+        &:hover {
+        background: #DDC703; 
+        }
+        &:active {
+        background: #A88500; 
+        }
+    }
+    }
+.modalBox{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    position: absolute;
+    right: 15vw;
+    width: 15vw;
+    border-radius: 15px;
+    padding: 1rem;
+
+    background-color: rgba(33, 166, 218, 0.5);
+    .inputBox,.buttonBox{
+        display: flex;
+        height: 5vh;
+        margin: 1rem;
+    }
+    .inputBox{
+        justify-content: flex-start;
+        align-items: center;
+        label{
+            color:black;
+        }
+        input{
+            color:black
+        }
+
+    }
+    .buttonBox{
+        justify-content: space-between;
+        button{
+            border: none;
+            color:rgb(1, 1, 22);
+            background-color: transparent;
+            &:hover{
+                cursor: pointer;
+                color:rgb(186, 5, 202);
+            }
+        }
+    }
+}
 main{
     display: flex;
 }
@@ -23,6 +80,18 @@ section{
     background-image: url('../../assets/spaceBackground.jpg');
     background-size: cover;
     
+}
+.display{
+    h2{
+        text-align: center;;
+    }
+}
+.heroIntro{
+    display: flex;
+    justify-content: space-evenly;
+    h3{
+        text-align: center;
+    }
 }
 .stats{
     display:flex;
@@ -179,11 +248,17 @@ section{
     h3{
         text-align: center;
     }
+    h4{
+        margin-left: 1rem;
+    }
 }
 
 .talentsContainer{
-    h3{
+    h3, h4{
         text-align: center;
+    }
+    h4{
+        margin:0 1rem;
     }
 }
 footer{

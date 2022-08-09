@@ -30,6 +30,7 @@ onSelection() {
   public speciesSelectedObject: any = {};
   public speciesAbilityModifiers: any
   public abilities: any;
+  public selectedAbilities: any;
   public selectedClass: string = "Jedi";
   public validate: any;
   public bab: number = 0;

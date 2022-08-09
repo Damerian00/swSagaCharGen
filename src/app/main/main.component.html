@@ -1,8 +1,18 @@
 <header>
     <h1>Star Wars Saga Edition Character Generator</h1>
-
+    <button (click)="nameHeroToggle()" [disabled]="disabler == 'disabled'">Name Hero</button>
+    <button (click)="saveHero()" [disabled]="disabler == 'disabled'">Save Hero</button>
 </header>
-
+<aside *ngIf="showModal" class="modalBox">
+    <div class="inputBox">
+        <label>Name: </label>
+        <input type="text" #changeName placeholder="Hero Name">
+    </div>
+    <div class="buttonBox">
+        <button (click)="nameHero(changeName.value)"><fa-icon [icon]="faSave"></fa-icon> Save Hero Name</button>
+        <button (click)="nameHeroToggle()" ><fa-icon [icon]="faClose"></fa-icon> Close Modal</button>
+    </div>
+</aside>
 <main>
 
     <div class="selectors">
@@ -13,9 +23,13 @@
         <feats #feats (heroFeatsSelected)="updateFeats($event)" (heroSkillTrained)="addRemoveSkill($event)"></feats>
         <talents #talents (heroTalentSelected)="updateTalents($event)" (heroTalentSpecified)="updateTalentSpecify($event)"></talents>
     </div>
-    <div id="contentSaved" class="display">
-       <h3> <span>Species:  </span> {{species.species_name}}</h3>
-        <h3><span>Class: </span>{{class}} </h3>
+    <div id="contentSaved" class="display" #contentSaved>
+        <h2>{{heroName}}</h2> 
+      <section class="heroIntro">
+          <h3> <span>Species:  </span> {{species.species_name}}</h3>
+           <h3><span>Class: </span>{{class}} </h3>
+           <h3><span>Level: </span>{{heroLevel}}</h3>
+      </section> 
         <section *ngIf="showAbilities" class="stats">   
            <div class="hpDiv">
                <label *ngIf="showAbilities">Total HP: </label>

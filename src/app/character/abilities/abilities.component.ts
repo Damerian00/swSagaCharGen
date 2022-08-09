@@ -548,6 +548,7 @@ subAbility(clicked: any){
 saveAbilities(){
   this.update();
   this.abilitiesSelected.emit(this.finalAbilities);
+  
 }
 // same as saveAbilitiesw minus the update function
 calcModifier(){
@@ -555,6 +556,7 @@ calcModifier(){
   // this.abilityModifiers.emit(this.finalAbilities);
   this.choices.abilities = this.finalAbilities;
   // console.log('the abilities :', this.choices.abilities);
+  this.choices.selectedAbilities = this.charAbilities;
 }
 
 pointChecker(selection: string, operand: string){

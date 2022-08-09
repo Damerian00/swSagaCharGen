@@ -1,13 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ChoicesSenderService } from '../services/choices-sender.service';
-import { faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
+import { faCheckSquare, faSquare, faSave, faClose } from '@fortawesome/free-solid-svg-icons';
 
+interface heroObject {
+  id: string,
+  name: string,
+  species: Object,
+  abilities: Object,
+  class: Array<string>,
+  defenses: Object,
+  skills: Array<any>,
+  feats: Array<string>,
+  talents: Array<string>,
+}
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
+
+
 export class MainComponent implements OnInit {
 /*
  == Objects ==
@@ -17,7 +30,7 @@ export class MainComponent implements OnInit {
  abilities: any = {};
  abilityModifier: any = {};
  talentSelected: any = {};
-  
+
  /*
  == Arrays ==
  */
@@ -144,17 +157,19 @@ savedSkillValue: string = "";
 size: string = "";
 talentSelectedName: string = "";
 talentSelectedDesc: string = "";
+disabler: string = "active"
 /*
 == Boolean ==
 */
 showAbilities: boolean = false;
 toggleClassesComponent: boolean = false;
 showRest: boolean = false;
-
+showModal: boolean = false;
 //icons
 faUncheck = faSquare;
-faChecked= faCheckSquare
-
+faChecked= faCheckSquare;
+faSave = faSave;
+faClose = faClose;
 // tells the html not to sort
 unsorted = (a:any, b:any) => {
   return a;
@@ -289,17 +304,17 @@ async updateStats(){
 // calculates the defense bonuses to be applied to a hero
 calculateDefenses(keyword: string, mod: string){
   if (keyword == "Reflex"){
-    this.reflexDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.reflexClassBonus + this.speciesReflexDefenseMod;
+       this.reflexDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.reflexClassBonus + this.speciesReflexDefenseMod;
     if (mod == "Select"){
       this.reflexDefense = 0
     }
   }else if (keyword == "Fort"){
-    this.fortitudeDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.fortClassBonus + this.speciesFortDefenseMod;
+       this.fortitudeDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.fortClassBonus + this.speciesFortDefenseMod;
     if (mod == "Select"){
       this.fortitudeDefense = 0
     }
   }else{
-    this.willDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.willClassBonus + this.speciesWillDefenseMod;
+       this.willDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.willClassBonus + this.speciesWillDefenseMod;
     if (mod == "Select"){
       this.willDefense = 0
     }
@@ -435,5 +450,60 @@ calcSkills(skill: string, mod: string, misc: number){
 
   }
 }
+nameHeroToggle(){ 
+  (this.disabler == "disabled")? this.disabler = "active": this.disabler = "disabled";
+  this.showModal = !this.showModal;
+}
+nameHero(name: any){
+  console.log("hero name: ",name);
+  if(name == ""){
+    this.heroName = "Name Goes Here...";
+  }else{
+    this.heroName = name;
+  }
+  this.nameHeroToggle();
+}
+saveHero(){
+  if (this.heroName == "Name Goes Here..." || Object.keys(this.talentSelected).length == 0){
+    return;
+  }
+  
+  let ranId = this.randomIzer(8);
+  console.log("the id is:",ranId)
+  let savedHero: heroObject = {
+    id: ranId,
+    name: this.heroName,
+    species: this.species,
+    abilities: this.abilities,
+    class: [this.class],
+    defenses: {
+      "reflex" : this.reflexDefense,
+      "fort": this.fortitudeDefense,
+      "will": this.willDefense,
+    },
+    skills: [this.heroSkillsTotal],
+    feats: [this.chosenFeats],
+    talents: [this.talentSelected],
+  }
+  
+    let tempName = savedHero.name.split(' ').join('_')
+ 
+  let fileName = `${tempName}${savedHero.id}`;
+
+ 
+  console.log("savedHero", savedHero, fileName);
+}
+randomIzer(num: number){
+ let id = []
+  let ranArr = ["a", "b", 5, "c", "d", "e", "f", "g", "h",4, "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", 2, "s", "t",2,"u", "v", 1, 3, "w", "x", "y", "z",6, "A", "B", "C", "D", "E",6, 7, 8, "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",1, "S", "T", "U", "V", "W", "X", "Y", 0,  5, 9]
+  while (id.length < num){
+    let ran =  Math.floor(Math.random() * ranArr.length);
+    id.push(ranArr[ran]);
+  }
+
+return id.join('');
+}
 
 }
+
+
