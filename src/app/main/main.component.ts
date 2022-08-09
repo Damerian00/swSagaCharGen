@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChoicesSenderService } from '../services/choices-sender.service';
 import { faCheckSquare, faSquare, faSave, faClose } from '@fortawesome/free-solid-svg-icons';
+import {jsPDF} from "jspdf";
+import html2canvas from 'html2canvas'
+
 
 interface heroObject {
   id: string,
@@ -463,6 +466,18 @@ nameHero(name: any){
   }
   this.nameHeroToggle();
 }
+randomIzer(num: number){
+  let id = []
+   let ranArr = ["a", "b", 5, "c", "d", "e", "f", "g", "h",4, "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", 2, "s", "t",2,"u", "v", 1, 3, "w", "x", "y", "z",6, "A", "B", "C", "D", "E",6, 7, 8, "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",1, "S", "T", "U", "V", "W", "X", "Y", 0,  5, 9]
+   while (id.length < num){
+     let ran =  Math.floor(Math.random() * ranArr.length);
+     id.push(ranArr[ran]);
+   }
+ 
+ return id.join('');
+ }
+@ViewChild('contentSaved', {static: false}) el!: ElementRef;
+
 saveHero(){
   if (this.heroName == "Name Goes Here..." || Object.keys(this.talentSelected).length == 0){
     return;
@@ -488,21 +503,29 @@ saveHero(){
   
     let tempName = savedHero.name.split(' ').join('_')
  
-  let fileName = `${tempName}${savedHero.id}`;
-
- 
+  let fileName = `${tempName}${savedHero.id}.pdf`;
+  // html2canvas(this.el.nativeElement, { scale: 3 }).then((canvas) => {
+  //   const imageGeneratedFromTemplate = canvas.toDataURL('image/png');
+  //   const fileWidth = 200;
+  //   const generatedImageHeight = (canvas.height * fileWidth) / canvas.width;
+  //   let PDF = new jsPDF('p', 'mm', 'a4',);
+  //   PDF.addImage(imageGeneratedFromTemplate, 'PNG', 0, 5, fileWidth, generatedImageHeight,);
+  //   PDF.html(this.el.nativeElement.innerHTML)
+  //   PDF.save(fileName);
+  // });
+  let DATA: any = document.getElementById('contentSaved');
+  html2canvas(DATA,{ scale: 3 }).then((canvas) => {
+    let PDF = new jsPDF('p', 'mm', 'a4');
+    let fileWidth = PDF.internal.pageSize.getWidth();
+    let fileHeight = PDF.internal.pageSize.getHeight();
+    const FILEURI = canvas.toDataURL('image/png');
+    let position = 0;
+    PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+    PDF.save(fileName);
+  });
   console.log("savedHero", savedHero, fileName);
 }
-randomIzer(num: number){
- let id = []
-  let ranArr = ["a", "b", 5, "c", "d", "e", "f", "g", "h",4, "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", 2, "s", "t",2,"u", "v", 1, 3, "w", "x", "y", "z",6, "A", "B", "C", "D", "E",6, 7, 8, "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",1, "S", "T", "U", "V", "W", "X", "Y", 0,  5, 9]
-  while (id.length < num){
-    let ran =  Math.floor(Math.random() * ranArr.length);
-    id.push(ranArr[ran]);
-  }
 
-return id.join('');
-}
 
 }
 

@@ -82,6 +82,7 @@ section{
     
 }
 .display{
+    
     h2{
         text-align: center;;
     }
@@ -207,7 +208,9 @@ section{
     }
 }
 .skillsContainer{
-    color:black;
+    h3{
+        text-align: center;
+    }
     span{
         color:black
     }
@@ -238,10 +241,10 @@ section{
     flex-direction: column;
     flex:1;
     border:1px solid black;
-    height: 85vh;
+    
     border-radius:20px;
     margin: 1rem;
-    overflow-y: scroll;
+   
 }
 
 .featsContainer{
