@@ -188,7 +188,7 @@ async checkConditionals(){
 
             // pushes 
               this.additionalFeatsArray.push(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
-              console.log("the additional feats:",this.additionalFeatsArray)
+              // console.log("the additional feats:",this.additionalFeatsArray)
             }else{
               if (species== "Neimoidian"){
                 neMoArr.push(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"])
@@ -458,7 +458,7 @@ async submitSpecialFeat(feat: string, indexNum: number) {
   }else if (feat == "Skill Training"){
       this.specifyFeatButtonName = "Select Skill"
       let finalArr: Array<string> = [];
-      console.log("trained skills:",this.choices.getTrainedSkills())
+      // console.log("trained skills:",this.choices.getTrainedSkills())
       for (let i =0; i<this.choices.classSkills.length; i++){
         if (skillArray.includes(this.choices.classSkills[i]) == false ){
           finalArr.push(this.choices.classSkills[i]);
@@ -467,7 +467,7 @@ async submitSpecialFeat(feat: string, indexNum: number) {
       if (this.submittedValues[0] == "Skill Training" && indexNum == 1){ 
      const index = finalArr.findIndex((el: any) => el == this.specialOptionSelected[0])
       finalArr.splice(index,1);
-      console.log("removing an option: ", this.specialOptionSelected[0])
+      // console.log("removing an option: ", this.specialOptionSelected[0])
     }
       // console.log("feats finalArr: ", finalArr)  
         this.specialFeatOptions = [...finalArr];
@@ -489,7 +489,7 @@ async submitSpecialFeat(feat: string, indexNum: number) {
     this.specialFeatOptions.unshift("Select One")
    if (feat == "Skill Focus" && this.submittedValues[0] == "Skill Training" && indexNum == 1){
     this.extraSpecialFeatOptions = await [...this.specialFeatOptions, this.specialOptionSelected[0]]  
-    console.log("time to push", this.extraSpecialFeatOptions)
+    // console.log("time to push", this.extraSpecialFeatOptions)
   }else{
     this.extraSpecialFeatOptions = await [...this.specialFeatOptions]
   }
@@ -578,7 +578,7 @@ submitFinal(selection: any){
   }else{
     featsArr = [...this.startingFeats, selection]
   }
-console.log("final thoughts:",selection, featsArr)
+// console.log("final thoughts:",selection, featsArr)
 this.heroFeatsSelected.emit(featsArr);
 this.choices.startTalentComponent();
 }

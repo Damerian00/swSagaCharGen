@@ -251,13 +251,13 @@ updateSkills(chosenSkills: any){
 async updateFeats(feats: Array<string>){
   await this.resetFocus();
   await this.removeAddedSkills();
-  console.log("recieved feats:", feats);
+  // console.log("recieved feats:", feats);
   let specArr = ["Skill Focus","Skill Training"] 
   for (let i=0; i<feats.length; i++){
     const splitter = feats[i].split(' (');
     if (feats[i] == ""){  
     }else if (specArr.includes(splitter[0])){
-      console.log("spec is here",feats[i]);
+      // console.log("spec is here",feats[i]);
       (splitter[0] == 'Skill Focus')? this.updateFocusFeats(feats[i]) : this.updateSkillTrained(feats[i]);
     }else{
 
@@ -277,7 +277,7 @@ await this.removeAddedSkills();
         let index = this.featSkills.findIndex((el: any) => el == "");
         this.featSkills.splice(index,1,onlySkill);
       }
-     console.log("trained and added: ", skill, this.heroSkillsTotal[i].trained_skill, this.featSkills)
+    //  console.log("trained and added: ", skill, this.heroSkillsTotal[i].trained_skill, this.featSkills)
       break;
     }  
   }  
@@ -292,11 +292,11 @@ async updateFocusFeats(chosenFeat: any){
         let index = this.featFocus.findIndex((el: any) => el == "");
         this.featFocus.splice(index,1,feat);
       }
-     console.log("focus and added: ", chosenFeat, this.heroSkillsTotal[i].skill_focus, this.featFocus)
+    //  console.log("focus and added: ", chosenFeat, this.heroSkillsTotal[i].skill_focus, this.featFocus)
       break;
     }
   }
-  console.log("the chosenFeat", chosenFeat, feat)
+  // console.log("the chosenFeat", chosenFeat, feat)
   /*for (let i = 0; i<chosenFeat.length; i ++){
     let splitter = chosenFeat[i].split(' ');
     console.log("this is splitter:", splitter)
@@ -372,7 +372,7 @@ async updateStats(){
   this.heroSkillsTotal.forEach((el: any)=> {
     this.calcSkills(el.skill_name, el.default, 0);
   })
-  console.log("hero skills", this.heroSkillsTotal)
+  // console.log("hero skills", this.heroSkillsTotal)
 }
 
 // calculates the defense bonuses to be applied to a hero
