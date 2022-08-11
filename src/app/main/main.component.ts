@@ -149,7 +149,9 @@ fortClassBonus: number = 0;
 willClassBonus: number = 0;
 heroLevel: number = 1;
 grapple: number = NaN;
-
+damageThreshold: number = 0;
+speciesDmgThreshMod: number = 0;
+dmgThreshMod: number = 0;
 /*
   == Strings ==
 */
@@ -204,6 +206,7 @@ popArray(arr : Array<any>){
     this.size = chosenSpecies.traits.size;
     this.speed = chosenSpecies.traits.speed;
     (this.showRest) ? this.showRest = !this.showRest: false;
+    (this.size == "Large")? this.speciesDmgThreshMod = 5: this.speciesDmgThreshMod = 0;
   }
   updateAbilities(chosenAbilities: any){
     this.showAbilities = true;
@@ -251,6 +254,7 @@ updateSkills(chosenSkills: any){
 async updateFeats(feats: Array<string>){
   await this.resetFocus();
   await this.removeAddedSkills();
+  this.dmgThreshMod = 0;
   // console.log("recieved feats:", feats);
   let specArr = ["Skill Focus","Skill Training"] 
   for (let i=0; i<feats.length; i++){
@@ -259,8 +263,8 @@ async updateFeats(feats: Array<string>){
     }else if (specArr.includes(splitter[0])){
       // console.log("spec is here",feats[i]);
       (splitter[0] == 'Skill Focus')? this.updateFocusFeats(feats[i]) : this.updateSkillTrained(feats[i]);
-    }else{
-
+    }else if (feats[i] == "Improved Damage Threshold"){
+      this.dmgThreshMod =+ 5;
     }
   }
   this.updateStats();
@@ -296,24 +300,7 @@ async updateFocusFeats(chosenFeat: any){
       break;
     }
   }
-  // console.log("the chosenFeat", chosenFeat, feat)
-  /*for (let i = 0; i<chosenFeat.length; i ++){
-    let splitter = chosenFeat[i].split(' ');
-    console.log("this is splitter:", splitter)
-    if (splitter.length > 2 && splitter[1] == "Focus"){
-      console.log("splitter is true:", splitter)
-      for (let i =0; i<this.heroSkillsTotal.length; i++){
-        let a = splitter.slice(2).join(' ');
-        let len = a.length-1
-      let featName = a.substring(1,len);
-       if(featName == this.heroSkillsTotal[i].skill_name){
-        this.heroSkillsTotal[i].skill_focus = true 
-        console.log(featName, this.heroSkillsTotal[i].skill_name, this.heroSkillsTotal[i].skill_focus);
-        break;
-      }
-      }
-    }
-  }*/
+  
 }
 removeAddedSkills(){
   if (this.featSkills[0] == ""){
@@ -372,6 +359,7 @@ async updateStats(){
   this.heroSkillsTotal.forEach((el: any)=> {
     this.calcSkills(el.skill_name, el.default, 0);
   })
+  this.calcDT();
   // console.log("hero skills", this.heroSkillsTotal)
 }
 
@@ -453,7 +441,10 @@ async calcHP(heroicClass: string, mod: number){
         break;
       }
   }
- 
+ // scalculates damage threshold
+ calcDT(){
+  this.damageThreshold = this.speciesDmgThreshMod + this.dmgThreshMod + this.fortitudeDefense;
+ }
 // used to add or remove a skill that is added from a feat
   async addRemoveSkill(skillTrained : any){
    

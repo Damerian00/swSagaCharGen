@@ -107,10 +107,6 @@ section{
     justify-content: space-evenly;
     align-items: center;
 }
-.hpDiv{
-    display: flex;
-    align-items: baseline;
-}
 .defensesBox{
     display: flex;
     align-items: center;
@@ -135,6 +131,19 @@ section{
         text-align: center;
         height: 3vh;
       } 
+    }
+}
+.healthBox{
+    display: flex;
+    flex-direction: column;
+    .bContainer{
+        display:flex;
+        label{
+            margin:.1rem;
+        }
+        p{
+            margin:.1rem;
+        }
     }
 }
 .otherStats{

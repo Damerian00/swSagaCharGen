@@ -31,11 +31,7 @@
            <h3><span>Class: </span>{{class}} </h3>
            <h3><span>Level: </span>{{heroLevel}}</h3>
       </section> 
-        <section *ngIf="showAbilities" class="stats">   
-           <div class="hpDiv">
-               <label *ngIf="showAbilities">Total HP: </label>
-               <p>{{healthPoints}}</p>
-           </div>
+        <section *ngIf="showAbilities" class="stats">       
             <div class="defensesBox">
                 <div class="defense">
                     <label>Reflex Defense: </label>
@@ -61,6 +57,16 @@
                         <option *ngFor="let mod of abModOptions">{{mod}}</option>
                     </select>
                 </div>             
+            </div>
+            <div *ngIf="showAbilities" class="healthBox">
+               <div class="bContainer">
+                   <label>Total HP: </label>
+                   <p>{{healthPoints}}</p>
+              </div>
+              <div class="bContainer">
+                  <label>Damage Threshold: </label>
+                  <p>{{damageThreshold}}</p>      
+              </div> 
             </div>
             <div *ngIf="showRest" class="otherStats">
                 <div class="carryBox">
