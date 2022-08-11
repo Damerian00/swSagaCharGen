@@ -129,10 +129,8 @@ export class SkillsComponent implements OnInit {
   // connects with the service to intitate the starting feats 
 submit(){
   this.choices.setStartFeats();
-    // console.log("button if",this.choices.abilities)
-  if (this.choices.getSpecies() != "Human"){
-    this.choices.startTalentComponent();
-  }
+  this.choices.startTalentComponent();
+ 
   this.heroSkillsSelected.emit(this.form.value.selectedSkills)
   this.choices.setTrainedSkills(this.form.value.selectedSkills);
   this.buttonIf = "hide";

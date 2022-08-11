@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/sw-saga-chargen",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

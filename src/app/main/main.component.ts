@@ -156,7 +156,7 @@ grapple: number = NaN;
 importSpecies: string = "";
 class: string = "";
 heroName: string = "Name Goes Here...";
-savedSkillValue: string = "";
+savedSkillValue: any;
 size: string = "";
 talentSelectedName: string = "";
 talentSelectedDesc: string = "";
@@ -239,7 +239,6 @@ updateSkills(chosenSkills: any){
   this.chosenSkills =  chosenSkills;
   this.chosenSkillsLength = chosenSkills.length;
   // updates skills object.trained  boolean
-  
   let vals = Object.values(this.heroSkillsTotal)
   for (let i =0; i<vals.length; i++){
     (this.chosenSkills.includes(this.heroSkillsTotal[i].skill_name)) ?
@@ -247,27 +246,53 @@ updateSkills(chosenSkills: any){
   }
 //  console.log("the length is at start: ", this.chosenSkills )
 }
+
 updateFocusFeats(chosenFeat: Array<string>){
+  console.log("the chosenFeat", chosenFeat)
   for (let i = 0; i<chosenFeat.length; i ++){
     let splitter = chosenFeat[i].split(' ');
-    // console.log("this is splitter:", splitter)
+    console.log("this is splitter:", splitter)
     if (splitter.length > 2 && splitter[1] == "Focus"){
-      // console.log("splitter is true:", splitter)
+      console.log("splitter is true:", splitter)
       for (let i =0; i<this.heroSkillsTotal.length; i++){
         let a = splitter.slice(2).join(' ');
         let len = a.length-1
       let featName = a.substring(1,len);
-        (featName == this.heroSkillsTotal[i].skill_name) ?
-        this.heroSkillsTotal[i].skill_focus = true : this.heroSkillsTotal[i].skill_focus = false;
-        // console.log(featName, this.heroSkillsTotal[i].skill_name, this.heroSkillsTotal[i].skill_focus);
+       if(featName == this.heroSkillsTotal[i].skill_name){
+        this.heroSkillsTotal[i].skill_focus = true 
+        console.log(featName, this.heroSkillsTotal[i].skill_name, this.heroSkillsTotal[i].skill_focus);
+        break;
+      }
       }
     }
   }
 }
+newUpdateFocusFeats(chosenFeat: Array<string>){
+  console.log ("the chosen feats:", chosenFeat )
+  let focusArr:Array<string> = [];
+  for (let i =0; i<chosenFeat.length; i++){
+    let splitter = chosenFeat[i].split(' ');
+    if (splitter.length > 2 && splitter[1] == "Focus"){
+      let a = splitter.slice(2).join(' ');
+        let len = a.length-1
+      let featName = a.substring(1,len);
+      focusArr.push(featName);
+    }
+  }
+ for (let j=0; j<this.heroSkillsTotal.length; j++){
+    if (focusArr.includes(this.heroSkillsTotal[j].skill_name)){
+      this.heroSkillsTotal[j].skill_focus = true;
+    }else{
+      this.heroSkillsTotal[j].skill_focus = false;
+    }   
+  }
+}
 
-updateFeats(chosenFeats: Array<string>){
-  // console.log("here are the choosen ones: ", chosenFeats)
-  this.chosenFeats = chosenFeats;
+async updateFeats(feats: Array<string>){
+  this.chosenFeats = await feats;
+  console.log("here are the choosen ones: ", this.chosenFeats)
+  this.newUpdateFocusFeats(this.chosenFeats);
+  
 }
 // if one of the talent exceptions was chosen use this
 updateTalentSpecify(specificArr: any){
@@ -298,10 +323,10 @@ async updateStats(){
   this.calculateDefenses("Fort", "Constitution");
   this.calculateDefenses("Will", "Wisdom");
   this.calcGrapple("Strength");
-  this.updateFocusFeats(this.chosenFeats);
   this.heroSkillsTotal.forEach((el: any)=> {
     this.calcSkills(el.skill_name, el.default, 0);
   })
+  console.log("hero skills", this.heroSkillsTotal)
 }
 
 // calculates the defense bonuses to be applied to a hero
@@ -385,12 +410,22 @@ async calcHP(heroicClass: string, mod: number){
  
 // used to add or remove a skill that is added from a feat
   async addRemoveSkill(skillTrained : any){
+   
     // console.log("recieved input", skillTrained, "length is:", this.chosenSkillsLength, this.chosenSkills) 
      // conditional that adds or replaces what was selected
+     let species = await this.choices.getSpecies();
+    //  if (species === "Human" || species == "Nyriaanan" || species == "Anarrian"){
+
+    //  }
      if (skillTrained != ""){
-       while (this.chosenSkills.length > this.chosenSkillsLength){
+      if (this.chosenSkills.includes(this.savedSkillValue)){
+        
+      }
+      const index = this.chosenSkills.findIndex((el: any)=> el.skill_name == skillTrained ) 
+      while (this.chosenSkills.length > this.chosenSkillsLength){
          this.chosenSkills.pop();
        }
+       this.chosenSkills.splice(index,1);
       //  console.log("added: ", skillTrained)
        this.chosenSkills.push(skillTrained);
        this.savedSkillValue = skillTrained;
@@ -433,6 +468,7 @@ collectCalcData(index: any, selection: any){
   // console.log("this is the index", index, this.heroSkillsTotal[index].skill_name, selection.target.value)
   this.calcSkills(this.heroSkillsTotal[index].skill_name,selection.target.value, 0);
 }
+
 calcSkills(skill: string, mod: string, misc: number){
 
   for (let i=0; i<this.heroSkillsTotal.length;i++){
@@ -451,6 +487,13 @@ calcSkills(skill: string, mod: string, misc: number){
   // console.log("the value computed:",  this.abilityModifier[mod], t,f, misc)
     }
 
+  }
+}
+newCalcSkills(){
+  let trainedSkills: Array<string> = [];
+  for (let i =0; i< this.heroSkillsTotal.length; i++){
+    let skills = this.heroSkillsTotal[i].skill_name
+    this.chosenSkills
   }
 }
 nameHeroToggle(){ 

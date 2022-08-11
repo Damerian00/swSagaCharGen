@@ -9,7 +9,16 @@ select{
     color:rgb(228, 206, 8);
     text-align: center;
 }
-
+button{
+    background-color: black;
+    color:rgb(228, 206, 8);
+    text-align: center;
+    border:1px silver solid;
+    margin:1rem;
+    &:hover{
+        cursor: pointer;
+    }
+}
 .featsButton{
     background-color: black;
     color:rgb(228, 206, 8);
