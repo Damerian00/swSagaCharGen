@@ -39,6 +39,7 @@ additionalFeatsTrigger: boolean = false;
 additionalFeat: string = "";
 savedSkills: Array <string> = ["",""];
 submittedValues: Array<string> = ["", ""]
+notTof: boolean = true;
 
 @Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
 @Output () heroSkillTrained: EventEmitter<any> = new EventEmitter<any>()
@@ -316,10 +317,11 @@ let BAB = await this.choices.acquireBab();
 }
  }
  // if the species matches "Tof" then they have 2 options when it comes to feats that it can have
- if (this.choices.getSpecies() == "Tof" && this.extraFeat == "yes"){
+ if (this.choices.getSpecies() == "Tof"){
   this.clearArray(this.extraSelectableFeats);
   this.extraSelectableFeats.push("Rapid Shot");
   this.extraSelectableFeats.push("Rapid Strike")
+  
 }
 this.choices.setFeatsArray(this.startingFeats);
 // console.log("what's available: ",this.selectableFeats)
@@ -510,14 +512,45 @@ console.log("the skill is", this.focusedSkill);
 }
 
 submit(selection: any, index: number){
+
 let finArr: Array <string> = [];
 let specArr = ["Skill Focus","Skill Training","Weapon Proficiency"]
 let choice = selection;
   this.submittedValues.splice(index, 1, selection)
+
 let species = this.choices.getSpecies();
+(species == "Tof") ? this.notTof == false : this.notTof == true;
   if (species === "Human" || species == "Nyriaanan" || species == "Anarrian" || species == "Tof"){
   this.extraFeatShow = 'yes'
+  if (index == 1){
+    for (let i = 0; i<this.submittedValues.length; i++){
+      if (specArr.includes(this.submittedValues[i])){
+        choice = `${this.submittedValues[i]} (${this.specialOptionSelected[i]})`
+      }else if (this.submittedValues[i] != ""){
+        choice = this.submittedValues[i]
+      }
+      finArr.push(choice);
+      console.log("the choice:", choice, finArr);
+    }
+      if (this.additionalFeatsArray.length != 0){
+        
+        finArr = [...this.additionalFeat, choice];
+       
+      }else{
+        this.setAdditionalFeat("");
+        this.focusedSkill = "";
+        let tempArr = finArr
+        if (this.conditionalArray.length != 0){
+          finArr = [...this.conditionalArray, ...tempArr]
+        }else{
+          
+          
+        }
+      } 
+      this.submitFinal(finArr);
+  }
   }else{
+    this.extraFeatShow = 'no'
     if (specArr.includes(selection)){
       choice = `${selection} (${this.specialOptionSelected[0]})`
     }

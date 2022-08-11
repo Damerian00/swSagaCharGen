@@ -28,7 +28,7 @@
         </form>
     </section>
     <section *ngIf="extraFeatShow == 'yes'" >
-        <form>
+        <form *ngIf="notTof else tofForm">
             <label>Feats: </label> <select value="selectedFeat" #extraSelectedFeat (change)="selected(extraSelectedFeat.value, 1)">
                 <option>Select a Feat</option>
                 <option *ngFor="let exfeat of selectableFeats">{{exfeat}}</option>
@@ -42,5 +42,16 @@
             </div>
             <button class="featsButton" (click)="submit(extraSelectedFeat.value, 1)">Select Feats</button>
         </form>
+        <ng-template #tofForm>
+            <form>
+                <label>Please Select one Feat: </label> <select value="selectedFeat" #tofSelectedFeat (change)="selected(tofSelectedFeat.value, 1)">
+                    <option>Select a Feat</option>
+                    <option *ngFor="let toffeat of extraSelectableFeats">{{toffeat}}</option>
+                </select>     
+                <h2>Feat: {{extraFeatName}}</h2>
+                <p>Description: {{extraFeatDescription}}</p>
+                <button class="featsButton" (click)="submit(tofSelectedFeat.value, 1)">Select Feats</button>
+            </form>
+        </ng-template>
     </section>
 </div>
