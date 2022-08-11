@@ -436,7 +436,7 @@ clearArray(arr : Array<any>){
 // function for the additional options of certain feats
 async submitSpecialFeat(feat: string, indexNum: number) {
   // console.log("the feat: " , feat)
-  console.log("submitSpecialty: ",feat,indexNum)
+  // console.log("submitSpecialty: ",feat,indexNum)
   if (this.specialFeatOptions.length != 0){
     // console.log("clear out loop");
    this.clearArray(this.specialFeatOptions);
@@ -487,14 +487,13 @@ async submitSpecialFeat(feat: string, indexNum: number) {
       // console.log("the weaponsArray", weaponOptions)
     }
     this.specialFeatOptions.unshift("Select One")
-   console.log("b4 add:", this.extraSpecialFeatOptions);
    if (feat == "Skill Focus" && this.submittedValues[0] == "Skill Training" && indexNum == 1){
     this.extraSpecialFeatOptions = await [...this.specialFeatOptions, this.specialOptionSelected[0]]  
     console.log("time to push", this.extraSpecialFeatOptions)
   }else{
     this.extraSpecialFeatOptions = await [...this.specialFeatOptions]
   }
-    console.log("after add:", this.extraSpecialFeatOptions);
+    // console.log("after add:", this.extraSpecialFeatOptions);
     if (this.submittedValues[0] == "Weapon Proficiency" && indexNum == 1){
       const index = this.extraSpecialFeatOptions.findIndex((el: any) => el == this.specialOptionSelected[0])
       this.extraSpecialFeatOptions.splice(index,1);
@@ -508,7 +507,7 @@ setAdditionalFeat(selection: any){
   let skill = selection.split(' ').slice(2).join(' ');
   let len = skill.length -1;
   this.focusedSkill = skill.substring(1, len);
-console.log("the skill is", this.focusedSkill);
+// console.log("the skill is", this.focusedSkill);
 }
 
 submit(selection: any, index: number){
@@ -530,7 +529,7 @@ let species = this.choices.getSpecies();
         choice = this.submittedValues[i]
       }
       finArr.push(choice);
-      console.log("the choice:", choice, finArr);
+      // console.log("the choice:", choice, finArr);
     }
       if (this.additionalFeatsArray.length != 0){
         
@@ -569,11 +568,19 @@ let species = this.choices.getSpecies();
     }
   }
   
-  console.log("the submitted:", this.submittedValues, index, this.specialOptionSelected, this.additionalFeat, this.conditionalArray);
+  // console.log("the submitted:", this.submittedValues, index, this.specialOptionSelected, this.additionalFeat, this.conditionalArray);
   
 }
 submitFinal(selection: any){
-console.log("final thoughts:",selection)
+  let featsArr: Array<string> = []
+  if (Array.isArray(selection)){
+    featsArr = [...this.startingFeats, ...selection]
+  }else{
+    featsArr = [...this.startingFeats, selection]
+  }
+console.log("final thoughts:",selection, featsArr)
+this.heroFeatsSelected.emit(featsArr);
+this.choices.startTalentComponent();
 }
 
 }

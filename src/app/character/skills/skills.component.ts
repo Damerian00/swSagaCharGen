@@ -129,8 +129,6 @@ export class SkillsComponent implements OnInit {
   // connects with the service to intitate the starting feats 
 submit(){
   this.choices.setStartFeats();
-  this.choices.startTalentComponent();
- 
   this.heroSkillsSelected.emit(this.form.value.selectedSkills)
   this.choices.setTrainedSkills(this.form.value.selectedSkills);
   this.buttonIf = "hide";
