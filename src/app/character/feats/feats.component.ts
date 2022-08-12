@@ -65,6 +65,8 @@ setClass(heroicClass: string){
 
 // checks requirements and class to display starting feats
 async acquireFeats(){
+  this.submittedValues = ["",""];
+  this.notTof == true;
 // sets traits to the species selected traits
 let traits = this.choices.acquireSpeciesTraits();
 let bonusFeat = "";
@@ -215,7 +217,7 @@ async showAvailable(){
     this.clearArray(this.extraSelectableFeats);
   }
   // holds the keywords for further down
-
+const species = await this.choices.getSpecies();
 // pulls in the values
 let BAB = await this.choices.acquireBab();
 // look through the imported feats array
@@ -232,7 +234,18 @@ let BAB = await this.choices.acquireBab();
       // adds the feat with that name to the array if the size requirement matches
    } else if(this.featsArray[i].name == "Powerful Charge" && this.featsArray[i].prereqs.req1[1] <= BAB && this.choices.acquireSpeciesTraits().size != "Small"){
     (this.additionalFeatsTrigger)? this.extraSelectableFeats.push(this.featsArray[i].name) : this.selectableFeats.push(this.featsArray[i].name);
-    
+   } else if (this.featsArray[i].name == "Staggering Attack" || this.featsArray[i].name =="Hobbling Strike"){ 
+    let apiValue = this.submittedValues[0];
+    // console.log("the apivalue:", apiValue);
+      if (apiValue == "Rapid Shot" || apiValue == "Rapid Strike"  || species == "Tof"){
+        this.selectableFeats.push(this.featsArray[i].name);
+         this.notTof == false;
+      }
+  }else if (this.featsArray[i].name == "Elder's Knowledge"){
+    let choice = `${this.submittedValues[0]} (${this.specialOptionSelected[0]})`;
+    if (choice == "Skill Focus (Knowledge (Social Sciences))" || choice == "Skill Focus (Knowledge (Galactic Lore))"){
+      this.selectableFeats.push(this.featsArray[i].name);
+    }
   }else{
 /*
     - first for loop will go through each of the different requirements 1-4
@@ -242,70 +255,75 @@ let BAB = await this.choices.acquireBab();
 */ 
     const reqsArray = ["BAB", "feat", "trained", "talent","trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" ]
     for (let v = 0; v < vals.length; v++){    
-      
-        for (let j=0; j < reqsArray.length; j++){
-          
-        if (vals[v].includes("or")){
-          for(let c=2; c< vals.length; c++ ){
-            this.chkReqs(vals[v][c], vals[v][0])
-            if (this.validated == false) break;  
-          }
-        } else if (vals[v][0] == reqsArray[j]){
-          let check = vals[v][1];
-          switch (reqsArray[j]){
-            case "BAB":
-              await this.chkReqs(check, "BAB");
-              j = reqsArray.length;
-             // check >= BAB ? this.validated=true : this.validated = false;
-            break;
-            case "feat":
-             await this.chkReqs(check, "feat");
-              j = reqsArray.length;
-           //  this.startingFeats.includes(check) ? this.validated=true : this.validated = false;
-            break;
-            case "trained":
-             await this.chkReqs(check,  "trained");
-              j = reqsArray.length;
-          //    skills.includes(check) ? this.validated=true : this.validated = false;
-            break;
-            case "trait":
-            // humans don't have this
-            await this.chkReqs(check,  "trait");
-              j = reqsArray.length;
-          //    check >= str ? this.validated=true : this.validated = false; 
-            break;
-            case "Strength":
-            await  this.chkReqs(check,  "Strength");
-              j = reqsArray.length;
-          //    check >= str ? this.validated=true : this.validated = false; 
-            break;
-            case "Dexterity":
-            await  this.chkReqs(check,  "Dexterity");
-              j = reqsArray.length;
-          //    check >= dex ? this.validated=true : this.validated = false;      
-            break;
-            case "Constitution":
-            await  this.chkReqs(check,  "Constitution");
-              j = reqsArray.length;
-           //   check >= con ? this.validated=true : this.validated = false;
-            break;
-            case "Intelligence":
-            await  this.chkReqs(check,  "Intelligence");
-              j = reqsArray.length;
-           //   check >= int ? this.validated=true : this.validated = false   
-            break;
-            case "Wisdom":
-             await this.chkReqs(check,  "Wisdom");
-              j = reqsArray.length;
-            //  check >= wis ? this.validated=true : this.validated = false;         
-            break;
-            case "Charisma":
-             await this.chkReqs(check,  "Charisma");
-              j = reqsArray.length;
-            //  check >= chr ? this.validated=true : this.validated = false;         
-            break;    
-          }        
-        } 
+      // j is requirements array
+        for (let j=0; j < reqsArray.length; j++){    
+          //if there is an or in the requirment array  
+          if (vals[v][0] == reqsArray[j]){
+            if (vals[v].includes("or")){
+              for (let c=2; c<vals[v].length; c++){
+                this.chkReqs(vals[v][c], vals[v][0]);
+                if (this.validated == true){
+                 break; 
+                }
+              }
+            }else{
+
+              let check = vals[v][1];
+              switch (reqsArray[j]){
+                case "BAB":
+                  await this.chkReqs(check, "BAB");
+                  j = reqsArray.length;
+                 // check >= BAB ? this.validated=true : this.validated = false;
+                break;
+                case "feat":
+                  await this.chkReqs(check, "feat");
+                     j = reqsArray.length;              
+               //  this.startingFeats.includes(check) ? this.validated=true : this.validated = false;
+                break;
+                case "trained":
+                 await this.chkReqs(check,  "trained");
+                  j = reqsArray.length;
+              //    skills.includes(check) ? this.validated=true : this.validated = false;
+                break;
+                case "trait":
+                // humans don't have this
+                await this.chkReqs(check,  "trait");
+                  j = reqsArray.length;
+              //    check >= str ? this.validated=true : this.validated = false; 
+                break;
+                case "Strength":
+                await  this.chkReqs(check,  "Strength");
+                  j = reqsArray.length;
+              //    check >= str ? this.validated=true : this.validated = false; 
+                break;
+                case "Dexterity":
+                await  this.chkReqs(check,  "Dexterity");
+                  j = reqsArray.length;
+              //    check >= dex ? this.validated=true : this.validated = false;      
+                break;
+                case "Constitution":
+                await  this.chkReqs(check,  "Constitution");
+                  j = reqsArray.length;
+               //   check >= con ? this.validated=true : this.validated = false;
+                break;
+                case "Intelligence":
+                await  this.chkReqs(check,  "Intelligence");
+                  j = reqsArray.length;
+               //   check >= int ? this.validated=true : this.validated = false   
+                break;
+                case "Wisdom":
+                 await this.chkReqs(check,  "Wisdom");
+                  j = reqsArray.length;
+                //  check >= wis ? this.validated=true : this.validated = false;         
+                break;
+                case "Charisma":
+                 await this.chkReqs(check,  "Charisma");
+                  j = reqsArray.length;
+                //  check >= chr ? this.validated=true : this.validated = false;         
+                break;    
+              }        
+            } 
+            }
         
       }
       // if any requirements doesn't meet the minimums it returns nothing and breaks out of the loop and the check
@@ -411,6 +429,7 @@ if (selection != "Select a Feat"){
 
 // function to check the requirements based on parameters and updates validated variable based on values matching
 async chkReqs (apiValue: any, keyword: string){
+
 let BAB = await this.choices.acquireBab();
 let int = await this.choices.acquireInt();
 let con = await this.choices.acquireCon();
@@ -421,12 +440,23 @@ let chr = await this.choices.abilities.Charisma;
 let skills = await this.choices.acquireSkillsArray();
 let trait = await this.choices.acquireSpeciesTraits();
 // console.log("check these values: ", apiValue, keyword)
+
+ 
   switch (keyword){
     case "BAB":
       apiValue <= BAB ? this.validated=true : this.validated = false;
-    break;
-    case "feat":
-      this.startingFeats.includes(apiValue) ? this.validated=true : this.validated = false;
+      break;
+      case "feat":
+        let choice;
+      if (this.submittedValues[0] == ""){
+        choice = ""
+      }else if (this.submittedValues[1] == ""){
+        choice = this.submittedValues[0];
+      } else {
+        choice = `${this.submittedValues[0]} (${this.specialOptionSelected[0]})`;
+      } 
+      (this.startingFeats.includes(apiValue) || choice == apiValue) ? this.validated = true : this.validated = false;
+     
       // console.log(this.startingFeats.includes(apiValue),this.startingFeats, this.validated);
     break;
     case "trained":
@@ -557,10 +587,10 @@ submit(selection: any, index: number){
 let finArr: Array <string> = [];
 let specArr = ["Skill Focus","Skill Training","Weapon Proficiency"]
 let choice = selection;
-  this.submittedValues.splice(index, 1, selection)
+this.submittedValues.splice(index, 1, selection)
 
 let species = this.choices.getSpecies();
-(species == "Tof") ? this.notTof == false : this.notTof == true;
+// (species == "Tof") ? this.notTof == false : this.notTof == true;
   if (species === "Human" || species == "Nyriaanan" || species == "Anarrian" || species == "Tof"){
   this.extraFeatShow = 'yes'
   if (index == 1){
@@ -589,6 +619,8 @@ let species = this.choices.getSpecies();
         }
       } 
       this.submitFinal(finArr);
+  }else{
+    this.showAvailable();
   }
   }else{
     this.extraFeatShow = 'no'
