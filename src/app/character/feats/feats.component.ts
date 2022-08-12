@@ -40,6 +40,7 @@ additionalFeat: string = "";
 savedSkills: Array <string> = ["",""];
 submittedValues: Array<string> = ["", ""]
 notTof: boolean = true;
+speciesFeatsArray: Array <any> = [];
 
 @Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
 @Output () heroSkillTrained: EventEmitter<any> = new EventEmitter<any>()
@@ -316,12 +317,39 @@ let BAB = await this.choices.acquireBab();
   }
 }
  }
+ 
  // if the species matches "Tof" then they have 2 options when it comes to feats that it can have
  if (this.choices.getSpecies() == "Tof"){
   this.clearArray(this.extraSelectableFeats);
   this.extraSelectableFeats.push("Rapid Shot");
   this.extraSelectableFeats.push("Rapid Strike")
   
+}
+// get species traits
+const traits = this.choices.acquireSpeciesTraits();
+let keys = Object.keys(traits);
+ // create a new object at each loop to hold the the correct values for the feats array;
+
+//if species has species feats got through and pull each one out
+if (keys.includes("Species Feats")){
+  for (let j=0; j < Object.keys(traits["Species Feats"]).length; j++){
+    let name = Object.keys(traits["Species Feats"])[j];
+    let description ="";  
+      // if the feat contains an array use the first index of the array to describe the feat
+      if(Array.isArray(traits["Species Feats"][name])){
+        description = traits["Species Feats"][name][0];
+      }else{
+        description = traits["Species Feats"][name];
+      }
+     let obj = {
+      name: name,
+      description: description,
+    };
+     
+      this.selectableFeats.push(name);
+      this.speciesFeatsArray.push(obj);
+      // console.log("added speciesFeat", this.speciesFeatsArray);
+  }
 }
 this.choices.setFeatsArray(this.startingFeats);
 // console.log("what's available: ",this.selectableFeats)
@@ -351,15 +379,24 @@ if (selection != "Select a Feat"){
     this.selectedFeats.push(selection);
   }
   // finds the  index within the feat array that matches the selection based on the feat name
-   const index =  await this.featsArray.findIndex((el: any) => el.name == selection);
-   if (indexNum == 0) {
-     this.selectedFeatName = await this.featsArray[index].name;
-     this.selectedFeatDescription =  await this.featsArray[index].description;
-   }else{
-    this.extraFeatName = await this.featsArray[index].name;
-    this.extraFeatDescription =  await this.featsArray[index].description;
-   }
-   
+ 
+  if (this.speciesFeatsArray.length != 0){
+    for (let i=0; i< this.speciesFeatsArray.length; i++){
+      if (this.speciesFeatsArray[i].name == selection){
+        this.selectedFeatName = this.speciesFeatsArray[i].name;
+      this.selectedFeatDescription =  this.speciesFeatsArray[i].description; 
+      }
+    }
+    // console.log("speciesFeats:",this.speciesFeatsArray);
+  }
+    const index =  await this.featsArray.findIndex((el: any) => el.name == selection);
+    if (indexNum == 0 && index != -1) {
+      this.selectedFeatName = await this.featsArray[index].name;
+      this.selectedFeatDescription =  await this.featsArray[index].description;
+    }else if (index != -1){
+     this.extraFeatName = await this.featsArray[index].name;
+     this.extraFeatDescription =  await this.featsArray[index].description;
+    }    
 // if no feat is or if user selects Select a feat it removes the feat name anbd description
 }else {
   if (indexNum == 0) {
@@ -445,7 +482,7 @@ async submitSpecialFeat(feat: string, indexNum: number) {
     this.clearArray(this.extraSpecialFeatOptions);
   }
     let skillArray = await this.choices.acquireSkillsArray();
-    // console.log("the skillsArray", skillArray)
+    //  console.log("the skillsArray", skillArray)
   if (feat == "Skill Focus"){
     this.specifyFeatButtonName = "Select Skill"
     for(let i=0; i<skillArray.length; i++){
@@ -460,8 +497,8 @@ async submitSpecialFeat(feat: string, indexNum: number) {
       let finalArr: Array<string> = [];
       // console.log("trained skills:",this.choices.getTrainedSkills())
       for (let i =0; i<this.choices.classSkills.length; i++){
-        if (skillArray.includes(this.choices.classSkills[i]) == false ){
-          finalArr.push(this.choices.classSkills[i]);
+        if (skillArray.includes(this.choices.classSkills[i].name) == false ){
+          finalArr.push(this.choices.classSkills[i].name);
         }
       }
       if (this.submittedValues[0] == "Skill Training" && indexNum == 1){ 

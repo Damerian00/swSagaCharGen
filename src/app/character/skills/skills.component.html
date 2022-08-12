@@ -3,8 +3,8 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
     <div *ngFor="let skill of skillsArray">
         <label>
-            <input #checkboxes type="checkbox" (change)="skillTrained($event)" value="{{skill}}" />
-            {{skill}}
+            <input #checkboxes type="checkbox" (change)="skillTrained($event)" value="{{skill.name}}" />
+            {{skill.name}} {{skill.ability}}
         </label>
     </div>
     <button class="skillsButton" *ngIf="buttonIf == 'show'" type="Submit">Select Skills</button>

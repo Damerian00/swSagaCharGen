@@ -1,16 +1,19 @@
 <section *ngIf="showTalents == true">
     <h2>Please Select a Starting Talent for your Hero.</h2>
-    <label>Talents: </label> <select value="selectTalents" #selectTalents (change)="selectedTalent(selectTalents.value)">
-        <option>Select a Talent</option>
-        <option *ngFor="let talent of availableTalents">{{talent.name}}</option>
-    </select>
+    <div class="selectionBox">
+        <label>Talents: </label> <select value="selectTalents" #selectTalents (change)="selectedTalent(selectTalents.value)">
+            <option>Select a Talent</option>
+            <option *ngFor="let talent of availableTalents">{{talent.name}}</option>
+        </select>
+    </div>
+    <div class="descBox">
         <h3>Talent: {{selectedTalentName}}</h3>
         <p>Description: {{selectedTalentDescription}}</p>
         <div *ngIf="hideButton == 'show'">
             <h3>
                 Hit Select Talent to add {{selectedTalentName}} to your hero and generate your new hero
             </h3>
-            <div *ngIf="specifyTalent == 'yes'">
+            <div class="specifics" *ngIf="specifyTalent == 'yes'">
                 <select #specialTalent (change)="selectSpecificTalent(specialTalent.value)" >
                     <option>Select a skill</option>
                     <option *ngFor="let talentOption of specificsArray">{{talentOption}}</option>
@@ -18,4 +21,5 @@
             </div>
             <button class="talentsButton" (click)="submit(selectTalents.value)">Select Talent</button>
         </div>
+    </div>
 </section>

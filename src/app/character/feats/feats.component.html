@@ -1,4 +1,4 @@
-<div *ngIf="startingFeats.length > 1">
+<div class="featsContainer" *ngIf="startingFeats.length > 1">
     <section class="startFeats">
         <p *ngFor = "let feat of startingFeats">{{feat}}</p>
 
@@ -13,12 +13,17 @@
     </section>
     <section>
         <form>
-            <label>Feats: </label> <select value="selectedFeat" #selectedFeat (change)="selected(selectedFeat.value, 0)">
-                <option>Select a Feat</option>
-                <option *ngFor="let feat of selectableFeats">{{feat}}</option>
-            </select>     
-            <h2>Feat: {{selectedFeatName}}</h2>
-            <p>Description: {{selectedFeatDescription}}</p>
+            <div class="featSelection">
+                <label>Feats: </label>
+                 <select value="selectedFeat" #selectedFeat (change)="selected(selectedFeat.value, 0)">
+                    <option>Select a Feat</option>
+                    <option *ngFor="let feat of selectableFeats">{{feat}}</option>
+                </select>     
+            </div>
+            <div class="featDescr">
+                <h2>Feat: {{selectedFeatName}}</h2>
+                <p>Description: {{selectedFeatDescription}}</p>
+            </div>         
             <div *ngIf="specifyFeat == 'yes'">
                 <select #specialFeat (change)="setFeatOption(specialFeat.value, 0)" >
                     <option *ngFor="let featOption of specialFeatOptions">{{featOption}}</option>
@@ -29,12 +34,17 @@
     </section>
     <section *ngIf="extraFeatShow == 'yes'" >
         <form *ngIf="notTof else tofForm">
-            <label>Feats: </label> <select value="selectedFeat" #extraSelectedFeat (change)="selected(extraSelectedFeat.value, 1)">
-                <option>Select a Feat</option>
-                <option *ngFor="let exfeat of selectableFeats">{{exfeat}}</option>
-            </select>     
-            <h2>Feat: {{extraFeatName}}</h2>
-            <p>Description: {{extraFeatDescription}}</p>
+            <div class="featSelection">
+                <label>Feats: </label> 
+                <select value="selectedFeat" #extraSelectedFeat (change)="selected(extraSelectedFeat.value, 1)">
+                    <option>Select a Feat</option>
+                    <option *ngFor="let exfeat of selectableFeats">{{exfeat}}</option>
+                </select>     
+            </div>
+            <div class="featDescr">
+                <h2>Feat: {{extraFeatName}}</h2>
+                <p>Description: {{extraFeatDescription}}</p>
+            </div>
             <div *ngIf="extraSpecifyFeat == 'yes'">
                 <select #exSpecialFeat (change)="setFeatOption(exSpecialFeat.value, 1)" >
                     <option *ngFor="let featOption of extraSpecialFeatOptions">{{featOption}}</option>

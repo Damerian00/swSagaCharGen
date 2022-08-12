@@ -67,11 +67,11 @@ togglePtsBtn(){
   setMaxPoints(mxpts: any){
     this.update();
     if (mxpts <= 50 && mxpts >= 10){
-      console.log("setting max:", mxpts);
+      // console.log("setting max:", mxpts);
       this.choices.maxPoints = mxpts;
       this.points = mxpts;
       this.maxPoints = mxpts;
-      console.log("changed max:",this.choices.maxPoints);
+      // console.log("changed max:",this.choices.maxPoints);
     }
   }
 
@@ -406,7 +406,7 @@ addAbility(clicked: any){
  if (this.points > 0){
   switch (clicked.key){
     case "Strength":
-      if (this.finalAbilities.Strength < 20){
+      if (this.finalAbilities.Strength < 50){
         //this.checkPoints(clicked.key , "add");
         this.pointChecker(clicked.key , "add");
         if (this.choices.validate == true){
@@ -416,7 +416,7 @@ addAbility(clicked: any){
         }
     break;
     case "Dexterity":
-      if (this.finalAbilities.Dexterity < 20){
+      if (this.finalAbilities.Dexterity < 50){
         //this.checkPoints(clicked.key , "add");
         this.pointChecker(clicked.key , "add");
         if (this.choices.validate == true){
@@ -426,7 +426,7 @@ addAbility(clicked: any){
         }
     break;
     case "Constitution":
-      if (this.finalAbilities.Constitution < 20){
+      if (this.finalAbilities.Constitution < 50){
         //this.checkPoints(clicked.key , "add");
         this.pointChecker(clicked.key , "add");
         if (this.choices.validate == true){
@@ -436,7 +436,7 @@ addAbility(clicked: any){
       }
     break;
     case "Intelligence":
-      if (this.finalAbilities.Intelligence < 20){
+      if (this.finalAbilities.Intelligence < 50){
         //this.checkPoints(clicked.key , "add");
       this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
@@ -446,7 +446,7 @@ addAbility(clicked: any){
       }
       break;
       case "Wisdom":
-        if (this.finalAbilities.Wisdom < 20){
+        if (this.finalAbilities.Wisdom < 50){
           //this.checkPoints(clicked.key , "add");
           this.pointChecker(clicked.key , "add");
       if (this.choices.validate == true){
@@ -456,7 +456,7 @@ addAbility(clicked: any){
     }
     break;
     case "Charisma":
-      if (this.finalAbilities.Charisma < 20){
+      if (this.finalAbilities.Charisma < 50){
         //this.checkPoints(clicked.key, "add")
         this.pointChecker(clicked.key , "add");
         if (this.choices.validate == true){
@@ -560,7 +560,7 @@ calcModifier(){
 }
 
 pointChecker(selection: string, operand: string){
-  let pointBuy = [-1,-1,-1,-1,-1,-1,-1,0,1,2,3,4,5,6,8,10,13,16];
+  let pointBuy = [-1,-1,-1,-1,-1,-1,-1,0,1,1,1,1,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10];
   let value =  operand === "add" ? 0:-1;
   switch (selection) {
   case "Strength":

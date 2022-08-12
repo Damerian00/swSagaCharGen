@@ -267,6 +267,8 @@ async updateFeats(feats: Array<string>){
       this.dmgThreshMod =+ 5;
     }
   }
+  let index = feats.findIndex((el:any)=> el == "");
+  feats.splice(index,1);
   this.updateStats();
   this.chosenFeats = feats;
 }
