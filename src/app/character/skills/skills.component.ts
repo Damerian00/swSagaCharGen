@@ -111,7 +111,7 @@ export class SkillsComponent implements OnInit {
   if (Object.keys(this.choices.speciesSelectedObject.traits).includes("Class Skill")){
     for (let i=0; i<this.choices.speciesSelectedObject.traits["Class Skill"].length; i++){
       let index = abSkills.findIndex((el:any)=> el[0] == this.choices.speciesSelectedObject.traits["Class Skill"][i]);
-      this.skillsArray.push({"name" : this.choices.speciesSelectedObject.traits["Class Skill"][i], "ability" : abSkills[i][1]});
+      this.skillsArray.push({"name" : this.choices.speciesSelectedObject.traits["Class Skill"][i], "ability" : abSkills[index][1]});
     }
   }
     for (const [key, value] of Object.entries(this.availableSkills)){
