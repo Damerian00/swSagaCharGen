@@ -15,7 +15,7 @@ export class SkillsComponent implements OnInit {
   }
   //object to hold each class and the skills that are permissable by them
   availableSkills: object = {
-    "Jedi" : [{"name" : "Acrobatics", "ability" : "(Dex)"},{"name" : "Endurance", "ability" : "(Con)"}, {"name" : "Initiative", "ability" : "(Dex)"}, {"name" : "Jump", "ability" : "(Str)"}, {"name" : "Knowledge (Bureaucracy)", "ability" : "(Int)"}, {"name" : "Knowledge (Galactic Lore)", "ability" : "(Int)"},{"name" : "Knowledge (Life Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Physical Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Social Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Tactics)", "ability" : "(Int)"},{"name" : "Knowledge (Technology)", "ability" : "(Int)"},{"name" : "Mechanics", "ability" : "(Int)"},{"name" : "Perception", "ability" : "(Wis)"} ,{"name" : "Pilot", "ability" : "(Dex)"} ,{"name" : "Use the Force", "ability" : "(Cha)"}, 
+    "Jedi" : [{"name" : "Acrobatics", "ability" : "(Dex)"},{"name" : "Endurance", "ability" : "(Con)"}, {"name" : "Initiative", "ability" : "(Dex)"}, {"name" : "Jump", "ability" : "(Str)"}, {"name" : "Knowledge (Bureaucracy)", "ability" : "(Int)"}, {"name" : "Knowledge (Galactic Lore)", "ability" : "(Int)"},{"name" : "Knowledge (Life Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Physical Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Social Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Tactics)", "ability" : "(Int)"},{"name" : "Knowledge (Technology)", "ability" : "(Int)"},{"name" : "Mechanics", "ability" : "(Int)"},{"name" : "Perception", "ability" : "(Wis)"} ,{"name" : "Pilot", "ability" : "(Dex)"} ,{"name" : "Use the Force", "ability" : "(Cha)"} 
   ],
     "Noble" : [{"name" : "Deception", "ability" : "(Cha)"},{"name" : "Gather Information", "ability" : "(Cha)"},{"name" : "Initiative", "ability" : "(Dex)"} ,{"name" : "Knowledge (Bureaucracy)", "ability" : "(Int)"}, {"name" : "Knowledge (Galactic Lore)", "ability" : "(Int)"},{"name" : "Knowledge (Life Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Physical Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Social Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Tactics)", "ability" : "(Int)"},{"name" : "Knowledge (Technology)", "ability" : "(Int)"}, {"name" : "Perception", "ability" : "(Wis)"},{"name" : "Persuasion", "ability" : "(Cha)"},{"name" : "Pilot", "ability" : "(Dex)"},{"name" : "Ride", "ability" : "(Dex)"},{"name" : "Treat Injury", "ability" : "(Wis)"},{"name" :  "Use Computer", "ability" : "(Int)"}
   ],
@@ -105,9 +105,13 @@ export class SkillsComponent implements OnInit {
     while (this.skillsArray.length) { 
       this.skillsArray.pop(); 
   }
+  let abSkills = [
+    ["Acrobatics","(Dex)"],["Climb","(Str)"],["Deception","(Cha)"],["Endurance","(Con)"],["Gather Information","(Cha)"],["Initiative","(Dex)"],["Jump","(Str)"],["Knowledge (Bureaucracy)","(Int)"], ["Knowledge (Galactic Lore)","(Int)"],["Knowledge (Life Sciences)","(Int)"] ,["Knowledge (Physical Sciences)","(Int)"],["Knowledge (Social Sciences)","(Int)"],["Knowledge (Tactics)","(Int)"],["Knowledge (Technology)","(Int)"],["Mechanics","(Int)"],["Perception","(Wis)"],["Persuasion","(Cha)"],["Pilot","(Dex)"],["Ride","(Dex)"],["Stealth","(Dex)"],["Survival","(Wis)"],["Swim","(Str)"],["Treat Injury","(Wis)"],["Use Computer","(Int)"],["Use the Force","(Cha)"]
+]
   if (Object.keys(this.choices.speciesSelectedObject.traits).includes("Class Skill")){
     for (let i=0; i<this.choices.speciesSelectedObject.traits["Class Skill"].length; i++){
-      this.skillsArray.push(this.choices.speciesSelectedObject.traits["Class Skill"][i]);
+      let index = abSkills.findIndex((el:any)=> el[0] == this.choices.speciesSelectedObject.traits["Class Skill"][i]);
+      this.skillsArray.push({"name" : this.choices.speciesSelectedObject.traits["Class Skill"][i], "ability" : abSkills[i][1]});
     }
   }
     for (const [key, value] of Object.entries(this.availableSkills)){
