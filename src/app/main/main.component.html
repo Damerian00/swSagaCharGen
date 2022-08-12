@@ -65,7 +65,13 @@
               </div>
               <div class="bContainer">
                   <label>Damage Threshold: </label>
-                  <p>{{damageThreshold}}</p>      
+                  <p>{{damageThreshold}}</p> 
+                  <select value="selected" #dmgThOption (change)="calcDT(dmgThOption.value)">
+                    <option>Select Defense</option>
+                    <option>Reflex Defense</option>
+                    <option>Fortitude Defense</option>
+                    <option>Will Defense</option>
+                </select>     
               </div> 
             </div>
             <div *ngIf="showRest" class="otherStats">
@@ -98,7 +104,7 @@
             </div>
         </section>
         <hr>
-        <section *ngIf="showRest" class="skillWrapper">
+        <section *ngIf="chosenSkills.length > 0" class="skillWrapper">
             <div class="skillsContainer">
                 <h3>Selected Skills: </h3>
                 <div class="selectedSkills">
@@ -121,7 +127,7 @@
             </div>
         </section>
         <hr>
-        <section  class="featsWrapper">
+        <section *ngIf="chosenFeats.length > 0" class="featsWrapper">
             <div class="featsContainer">
                 <h3>Selected Feats</h3>
                 <div class="featsBox">

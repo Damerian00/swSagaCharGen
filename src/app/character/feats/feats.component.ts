@@ -224,16 +224,16 @@ let BAB = await this.choices.acquireBab();
    let vals: any = Object.values(this.featsArray[i].prereqs);
   // checks is there are no requirements for the first requirement then adds it to the new array of feats available for selection
    if (this.featsArray[i].prereqs.req1.includes("none")){
-    (this.additionalFeatsTrigger)? this.extraSelectableFeats.push(this.featsArray[i].name) : this.selectableFeats.push(this.featsArray[i].name);
-      // adds the feat with that name to the array since a human matches the size requirement automatically
+    if (this.choices.getClass() == "Soldier" && this.featsArray[i].name == "Armor Proficiency (Light)"){
+      // do nothing to prevent adding Armor Proficiency (Light) to soldier
+    }else{
+      (this.additionalFeatsTrigger)? this.extraSelectableFeats.push(this.featsArray[i].name) : this.selectableFeats.push(this.featsArray[i].name);
+    }
+      // adds the feat with that name to the array if the size requirement matches
    } else if(this.featsArray[i].name == "Powerful Charge" && this.featsArray[i].prereqs.req1[1] <= BAB && this.choices.acquireSpeciesTraits().size != "Small"){
     (this.additionalFeatsTrigger)? this.extraSelectableFeats.push(this.featsArray[i].name) : this.selectableFeats.push(this.featsArray[i].name);
     
-  }else if (this.featsArray[i].prereqs.req1.includes("species")) {
-// not being used for this
-
-  }
-  else{
+  }else{
 /*
     - first for loop will go through each of the different requirements 1-4
     - second loop will to check if any of the keywords are present in the requirements
@@ -270,7 +270,7 @@ let BAB = await this.choices.acquireBab();
             break;
             case "trait":
             // humans don't have this
-            this.validated = false;
+            await this.chkReqs(check,  "trait");
               j = reqsArray.length;
           //    check >= str ? this.validated=true : this.validated = false; 
             break;
@@ -419,6 +419,7 @@ let dex = await this.choices.abilities.Dexterity;
 let wis = await this.choices.abilities.Wisdom;
 let chr = await this.choices.abilities.Charisma;
 let skills = await this.choices.acquireSkillsArray();
+let trait = await this.choices.acquireSpeciesTraits();
 // console.log("check these values: ", apiValue, keyword)
   switch (keyword){
     case "BAB":
@@ -448,6 +449,10 @@ let skills = await this.choices.acquireSkillsArray();
     break;
     case "Charisma":
       apiValue <= chr ? this.validated=true : this.validated = false;         
+    break;
+    case "trait":
+      let keys = Object.keys(trait);
+      keys.includes(apiValue) ? this.validated=true : this.validated = false;
     break;
     default:
       this.validated = false;

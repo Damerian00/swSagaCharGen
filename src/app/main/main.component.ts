@@ -15,6 +15,7 @@ interface heroObject {
   skills: Array<any>,
   feats: Array<string>,
   talents: Array<string>,
+  languages: Array<any>,
 }
 
 @Component({
@@ -25,6 +26,7 @@ interface heroObject {
 
 
 export class MainComponent implements OnInit {
+
 /*
  == Objects ==
  */
@@ -39,7 +41,6 @@ export class MainComponent implements OnInit {
  */
 chosenSkills: Array <string> = [];
 chosenFeats: any = [];
-languages: Array<string> = [];
 abModOptions: Array<string> = ["Strength","Dexterity","Constitution","Intelligence"," Wisdom","Charisma",]
 heroSkillsTotal: any = [
   {
@@ -129,6 +130,7 @@ heroSkillsTotal: any = [
 ]
 featSkills: Array<string> = ["", ""];
 featFocus: Array<string> = ["", ""];
+languages: Array<any> = [];
 /*
 == Numbers == 
 */
@@ -152,6 +154,12 @@ grapple: number = NaN;
 damageThreshold: number = 0;
 speciesDmgThreshMod: number = 0;
 dmgThreshMod: number = 0;
+hpToughness: number = 0;
+improvedReflex: number = 0;
+improvedFort: number = 0;
+improvedWill: number = 0;
+improvedDT: number = 0
+stealthSizeMod: number = 0
 /*
   == Strings ==
 */
@@ -175,6 +183,8 @@ faUncheck = faSquare;
 faChecked= faCheckSquare;
 faSave = faSave;
 faClose = faClose;
+// any
+currentDtType: any = "Fortitude Defense";
 // tells the html not to sort
 unsorted = (a:any, b:any) => {
   return a;
@@ -207,6 +217,13 @@ popArray(arr : Array<any>){
     this.speed = chosenSpecies.traits.speed;
     (this.showRest) ? this.showRest = !this.showRest: false;
     (this.size == "Large")? this.speciesDmgThreshMod = 5: this.speciesDmgThreshMod = 0;
+    if (this.size == "Small"){
+      this.stealthSizeMod = 5;
+    }else if (this.size == "Large"){
+      this.stealthSizeMod = -5;
+    }else{
+      this.stealthSizeMod = 0;
+    }
   }
   updateAbilities(chosenAbilities: any){
     this.showAbilities = true;
@@ -249,28 +266,54 @@ updateSkills(chosenSkills: any){
   }
 //  console.log("the length is at start: ", this.chosenSkills )
 }
-
-
+resetAdjustments(){
+  this.improvedFort = 0;
+  this.improvedReflex = 0;
+  this.improvedWill = 0;
+  this.hpToughness =-0;
+  this.improvedDT = 0;
+}
 async updateFeats(feats: Array<string>){
   await this.resetFocus();
   await this.removeAddedSkills();
+  await this.resetAdjustments();
   this.dmgThreshMod = 0;
   // console.log("recieved feats:", feats);
   let specArr = ["Skill Focus","Skill Training"] 
   for (let i=0; i<feats.length; i++){
     const splitter = feats[i].split(' (');
-    if (feats[i] == ""){  
-    }else if (specArr.includes(splitter[0])){
+     
+   if (specArr.includes(splitter[0])){
       // console.log("spec is here",feats[i]);
       (splitter[0] == 'Skill Focus')? this.updateFocusFeats(feats[i]) : this.updateSkillTrained(feats[i]);
-    }else if (feats[i] == "Improved Damage Threshold"){
-      this.dmgThreshMod =+ 5;
     }
+      switch (feats[i]) {
+        case "Improved Defenses":
+          this.improvedReflex =+ 1;
+          this.improvedFort =+ 1;
+          this.improvedWill =+ 1;
+          break;
+          case "Improved Damage Threshold":
+          this.improvedDT =+ 5;
+            break;
+          case "Martial Arts I":
+          this.improvedReflex =+ 1;
+          break;
+          case "Toughness":
+          this.hpToughness = 1;
+          break;
+        default:
+          break;
+      }
+    
   }
-  let index = feats.findIndex((el:any)=> el == "");
-  feats.splice(index,1);
-  this.updateStats();
+  if (feats.includes("")){
+    let index = feats.findIndex((el:any)=> el == "");
+    feats.splice(index,1);
+  }
   this.chosenFeats = feats;
+  this.updateStats();
+  // console.log("feats being added:", feats)
 }
 
 async updateSkillTrained(skill: any){
@@ -345,7 +388,6 @@ this.talentSelectedName = chosenTalent.name
 this.talentSelectedDesc = chosenTalent.description
 this.showRest = true;
 this.updateStats();
-
 }
 
 /* end of updates from components functions*/
@@ -358,27 +400,28 @@ async updateStats(){
   this.calculateDefenses("Fort", "Constitution");
   this.calculateDefenses("Will", "Wisdom");
   this.calcGrapple("Strength");
+  this.calcDT(this.currentDtType);
   this.heroSkillsTotal.forEach((el: any)=> {
     this.calcSkills(el.skill_name, el.default, 0);
   })
-  this.calcDT();
+  
   // console.log("hero skills", this.heroSkillsTotal)
 }
 
 // calculates the defense bonuses to be applied to a hero
 calculateDefenses(keyword: string, mod: string){
   if (keyword == "Reflex"){
-       this.reflexDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.reflexClassBonus + this.speciesReflexDefenseMod;
+       this.reflexDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.reflexClassBonus + this.speciesReflexDefenseMod + this.improvedReflex;
     if (mod == "Select"){
       this.reflexDefense = 0
     }
   }else if (keyword == "Fort"){
-       this.fortitudeDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.fortClassBonus + this.speciesFortDefenseMod;
+       this.fortitudeDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.fortClassBonus + this.speciesFortDefenseMod + this.improvedFort;
     if (mod == "Select"){
       this.fortitudeDefense = 0
     }
   }else{
-       this.willDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.willClassBonus + this.speciesWillDefenseMod;
+       this.willDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.willClassBonus + this.speciesWillDefenseMod + this.improvedWill;
     if (mod == "Select"){
       this.willDefense = 0
     }
@@ -410,7 +453,7 @@ async calcHP(heroicClass: string, mod: number){
   }else {
     offset = 18
   }
-  this.healthPoints = offset + mod;
+  this.healthPoints = offset + mod + this.hpToughness;
 
 }
 // sets the class bonuses based on class selected
@@ -444,9 +487,27 @@ async calcHP(heroicClass: string, mod: number){
       }
   }
  // scalculates damage threshold
- calcDT(){
-  this.damageThreshold = this.speciesDmgThreshMod + this.dmgThreshMod + this.fortitudeDefense;
- }
+ calcDT(defenseType: any){
+  if (defenseType == "Select Defense"){
+    return;
+  }
+  this.currentDtType = defenseType;
+  let calcNum = 0
+  switch (defenseType) {
+    case "Reflex Defense":
+      calcNum = this.reflexDefense
+    break;
+    case "Fortitude Defense":
+      calcNum = this.fortitudeDefense
+    break;
+    case "Will Defense":
+      calcNum = this.willDefense
+    break;
+    default:
+      break;
+    }
+    this.damageThreshold = this.speciesDmgThreshMod + this.dmgThreshMod + calcNum + this.improvedDT;
+  }
 // used to add or remove a skill that is added from a feat
   async addRemoveSkill(skillTrained : any){
    
@@ -509,7 +570,6 @@ collectCalcData(index: any, selection: any){
 }
 
 calcSkills(skill: string, mod: string, misc: number){
-
   for (let i=0; i<this.heroSkillsTotal.length;i++){
     // console.log("the skill:", this.heroSkillsTotal[i].skill_name, skill)
     if (this.heroSkillsTotal[i].skill_name == skill){
@@ -522,7 +582,10 @@ calcSkills(skill: string, mod: string, misc: number){
       f = 5
     }
     this.heroSkillsTotal[i].default = mod;
-  this.heroSkillsTotal[i].skill_value = (Math.floor(this.heroLevel/2)) + this.abilityModifier[mod] + t + f + misc;
+    this.heroSkillsTotal[i].skill_value = (Math.floor(this.heroLevel/2)) + this.abilityModifier[mod] + t + f + misc;
+    if (skill == "Stealth"){
+      this.heroSkillsTotal[i].skill_value =+ this.stealthSizeMod 
+    }
   // console.log("the value computed:",  this.abilityModifier[mod], t,f, misc)
     }
 
@@ -575,6 +638,7 @@ saveHero(){
     skills: [this.heroSkillsTotal],
     feats: [this.chosenFeats],
     talents: [this.talentSelected],
+    languages: [this.languages]
   }
   
     let tempName = savedHero.name.split(' ').join('_')

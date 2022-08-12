@@ -14,6 +14,9 @@ h2, h3, p {
         display:flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
+        p{
+            margin:.5rem;
+        }
     }
     form{
         label{
