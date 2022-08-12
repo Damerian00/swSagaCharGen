@@ -246,7 +246,7 @@ popArray(arr : Array<any>){
   // if jedi is chosen as a Class and Use the Force isn't in the array then add itat the end
   }else if (chosenClass == "Jedi" && Object.values(this.heroSkillsTotal).length < 28){
     this.heroSkillsTotal.push({
-      "skill" : "Use the Force", "value" : 0, "default" : "Charisma", "trained" : false, "focus" : false
+      "skill_name" : "Use the Force", "skill_value" : 0, "default" : "Charisma", "trained_skill" : false, "skill_focus" : false
     },)
     // console.log( "added use force")
 
