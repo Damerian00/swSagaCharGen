@@ -1,3 +1,4 @@
+
 header{
     display: flex;
     justify-content: space-around;
@@ -13,15 +14,27 @@ header{
             color:blue;
         }
     }
-    button{
-        color: rgb(0, 0, 0); font-size: 16px; line-height: 16px; padding: 3px; border-radius: 10px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(221, 199, 3) 0%, rgb(203, 201, 106) 50%, rgb(168, 133, 0) 100%); box-shadow: rgb(0, 0, 0) 5px 2px 15px 0px; border: 2px solid rgb(1, 5, 7); display: inline-block;
-        &:hover {
-        background: #DDC703; 
+    
+        button{
+            color: rgb(0, 0, 0); font-size: 16px; line-height: 16px; padding: 3px; border-radius: 10px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(221, 199, 3) 0%, rgb(203, 201, 106) 50%, rgb(168, 133, 0) 100%); box-shadow: rgb(0, 0, 0) 5px 2px 15px 0px; border: 2px solid rgb(1, 5, 7); display: inline-block;
+            margin: .5rem;
+            &:hover {
+            background: #DDC703; 
+            }
+            &:active {
+            background: #A88500; 
+            }
         }
-        &:active {
-        background: #A88500; 
-        }
+        
+    
     }
+    
+    .buttonBox{
+        display: flex;
+        justify-content: space-between
+    }
+    .toggleShow{
+        visibility: hidden;
     }
 .modalBox{
     display: flex;
@@ -32,6 +45,7 @@ header{
     width: 15vw;
     border-radius: 15px;
     padding: 1rem;
+    z-index: 900;
 
     background-color: rgba(33, 166, 218, 0.5);
     .inputBox,.buttonBox{
@@ -50,8 +64,7 @@ header{
         }
 
     }
-    .buttonBox{
-        justify-content: space-between;
+    ;
         button{
             border: none;
             color:rgb(1, 1, 22);
@@ -61,7 +74,7 @@ header{
                 color:rgb(186, 5, 202);
             }
         }
-    }
+    
 }
 main{
     display: flex;
@@ -81,7 +94,6 @@ section{
     flex:1;
     height: 85vh;
     margin:1rem;
-    overflow-y: auto;
     border: solid black 2px;
     background-color: rgb(71, 71, 71);
     overflow-y: scroll;
@@ -90,7 +102,7 @@ section{
     
 }
 .display{
-    
+    background-color: white;
     h2{
         text-align: center;;
     }
@@ -260,10 +272,10 @@ section{
     flex-direction: column;
     flex:1;
     border:1px solid black;
-    
+    overflow-y: scroll;
     border-radius:20px;
     margin: 1rem;
-   
+   min-width: 350px;
 }
 
 .featsContainer{
@@ -288,4 +300,161 @@ section{
     h4{
         margin:0 1rem;
     }
+}
+.ftBtn{
+        width: 50vw;
+        display: block !important;
+        margin: 2vh auto;
+        color: rgb(0, 0, 0); font-size: 16px; line-height: 16px; padding: 3px; border-radius: 10px; font-family: Georgia, serif; font-weight: normal; text-decoration: none; font-style: normal; font-variant: normal; text-transform: none; background-image: linear-gradient(to right, rgb(221, 199, 3) 0%, rgb(203, 201, 106) 50%, rgb(168, 133, 0) 100%); box-shadow: rgb(0, 0, 0) 5px 2px 15px 0px; border: 2px solid rgb(1, 5, 7); display: inline-block;
+        margin: 1vh auto;
+        &:hover {
+        background: #DDC703; 
+        }
+        &:active {
+        background: #A88500; 
+        }
+    
+}
+@media screen and (max-width: 1280px)  {
+    header, main{
+        flex-direction: row
+    }
+    .healthBox{
+            select{
+                width: 5vw;
+            }
+        }
+        .modalBox{ 
+            width: 50vw;
+            background-color: rgba(33, 166, 218, 1);
+            margin:1rem;
+            right: 20vw;
+            .inputBox{
+                justify-content: center;
+    
+            }
+        }    
+       .stats{
+
+           p{
+            margin: .5rem
+          }
+       }
+}
+@media screen and (max-width: 1000px)  {
+    header, main{
+        flex-direction: column
+    }
+    .display{
+        position: absolute; 
+        visibility: hidden;
+        width: 95vw;
+        
+    }
+    .onTop{
+        z-index: 500;
+        visibility: visible;
+    }
+    
+   .toggleShow{
+    visibility: visible;
+   }
+   .stats{
+
+    p{
+     margin: 1rem
+   }
+}
+}
+@media screen and (max-width: 850px )  {
+    .display{
+       
+        margin-left: 0;
+    }
+    .heroIntro{
+        margin: 1vh 0;
+    }
+   .stats{
+    flex-direction: column;
+
+    .defensesBox{
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+        flex-direction: row;
+        height: auto;
+        margin: 1vh 0.5vw;
+        .defense{
+            width: 100%;
+            justify-content: space-evenly;
+            p{
+                width:auto;
+            }
+        }
+    }
+    .healthBox{
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+        margin: 1vh 0.5vw;
+    }
+    .otherStats{
+        flex-direction: row;
+        width: 100%;
+
+        .carryBox{
+           width: 100%;
+           justify-content: center; 
+        }
+        .grappleBox{
+            width: 100%;
+            p{
+                width: auto;
+            }
+        }
+
+    }
+   }
+}
+@media screen and (max-width: 550px )  {
+    .defensesBox{
+        flex-direction: column;
+        .defense{
+            justify-content: space-between;
+            label{
+                margin-right:1rem;
+            }
+        }
+    }
+    .bContainer{
+        flex-direction: column;
+        select{
+            width: auto;
+        }
+    }
+    .otherStats{
+        flex-direction: column;
+        select{
+            width: auto;
+        }
+        label{
+            width:auto;
+        }
+    }
+    
+}
+@media screen and (max-width: 450px )  {
+   .defense{
+    flex-direction: column;
+   }
+    .abilityWrapper{
+        flex-direction: column;
+    }    
+    .skillsCloset{
+        p:first-child{
+            margin-right:1.5rem;
+        }
+    }
+
+
 }

@@ -1,15 +1,19 @@
 <header>
     <h1>Star Wars Saga Edition Character Generator</h1>
     <p>Created By: <a href="https://github.com/Damerian00" target="_blank">Damerian00</a></p>
-    <button (click)="nameHeroToggle()" [disabled]="disabler == 'disabled'">Name Hero</button>
-    <button (click)="saveHero()" [disabled]="disabler == 'disabled'">Save Hero</button>
+    <div class="buttonBox">
+        <button (click)="nameHeroToggle()" [disabled]="disabler == 'disabled'">Name Hero</button>
+        <button (click)="showCharSheet()" class="toggleShow">Show Character Sheet</button>
+        <button (click)="saveHero()" [disabled]="disabler == 'disabled'">Save Hero</button>
+    </div>
+
 </header>
 <aside *ngIf="showModal" class="modalBox">
     <div class="inputBox">
         <label>Name: </label>
         <input type="text" #changeName placeholder="Hero Name">
     </div>
-    <div class="buttonBox">
+    <div  class="buttonBox">
         <button (click)="nameHero(changeName.value)"><fa-icon [icon]="faSave"></fa-icon> Save Hero Name</button>
         <button (click)="nameHeroToggle()" ><fa-icon [icon]="faClose"></fa-icon> Close Modal</button>
     </div>
@@ -24,7 +28,7 @@
         <feats #feats (heroFeatsSelected)="updateFeats($event)" (heroSkillTrained)="addRemoveSkill($event)"></feats>
         <talents #talents (heroTalentSelected)="updateTalents($event)" (heroTalentSpecified)="updateTalentSpecify($event)"></talents>
     </div>
-    <div id="contentSaved" class="display" #contentSaved>
+    <div id="contentSaved" class="display {{toggleShow}}" #contentSaved>
         <h2>{{heroName}}</h2> 
       <section class="heroIntro">
           <h3> <span>Species:  </span> {{species.species_name}}</h3>
@@ -77,7 +81,7 @@
             <div *ngIf="showRest" class="otherStats">
                 <div class="carryBox">
                     <label *ngIf="carryLimit">Carry Capacity: </label>
-                    <p>{{carryLimit}} kg</p>
+                    <p>{{carryLimit}}kg</p>
                 </div>
                 <div class="grappleBox">
                     <label>Grapple: </label>
@@ -143,5 +147,5 @@
             </div>
         </section>
         </div>
-        <!-- <button  (click)="toggleSelectors()">Show Selectors</button> -->
-</main>
+    </main>
+    <button (click)="showCharSheet()" class="ftBtn toggleShow">Show Character Sheet</button>

@@ -1,15 +1,23 @@
+.abilitiesMain{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.ptsWrapper{
+    display: flex;
+    align-items: center;
+}
 section{
     display: flex;
     
 }
+
 h3,h5,label, p{
-    color: #FFFFFF;
+    text-align: center;
     // text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
     color: #FFFFFF;
 }
-.outsideWrapper{
-    
-}
+
 input{
     background-color: black;
     color:rgb(228, 206, 8);
@@ -80,5 +88,51 @@ input{
         border: black solid .05rem;
         border-radius: 10px;
         margin:.5rem;
+    }
+}
+
+
+@media screen and (max-width: 1280px)  {
+    header, main{
+        flex-direction: row
+    }
+    .healthBox{
+            select{
+                width: 5vw;
+            }
+        }
+        .modalBox{ 
+            width: 50vw;
+            background-color: rgba(33, 166, 218, 1);
+            margin:1rem;
+            right: 20vw;
+            .inputBox{
+                justify-content: center;
+    
+            }
+        }    
+       .stats{
+
+           p{
+            margin: .5rem
+          }
+       }
+}
+
+@media screen and (max-width: 450px )  {
+    .ptsWrapper{
+        flex-direction: column;
+    }
+    .abilityContainer{
+        flex-direction: column;
+        .abilityName{
+            width: 6rem;
+        }
+        .abilityValue{
+            width: auto;
+            border: 2px solid rgba(255, 255, 255, 0.555);
+            padding: 5px;
+            border-radius: 5px;
+        }
     }
 }

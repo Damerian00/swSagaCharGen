@@ -1,10 +1,12 @@
-<div >
+<div class="abilitiesMain">
     <h3>Select Your Abilities</h3>
     <h5>Points remaining: {{points}}</h5>
     <p *ngIf="points == 0">Select a species</p>
-    <label> Max points: <input type="number" #maxPoints value="maxPoints" placeholder="25" min=10 max=50/></label>
-    <button *ngIf="toggleButton" class="pointsButton" (click)="setMaxPoints(maxPoints.value)">Set Max Points</button>
-    <button class="toggleButton" (click)="togglePtsBtn()">{{toggleBtnText}}</button>
+   <div class="ptsWrapper">
+       <label>Max points: <input type="number" #maxPoints value="maxPoints" placeholder="25" min=10 max=50/></label>
+        <button *ngIf="toggleButton" class="pointsButton" (click)="setMaxPoints(maxPoints.value)">Set Max Points</button>
+        <button class="toggleButton" (click)="togglePtsBtn()">{{toggleBtnText}}</button>
+   </div> 
     <section>
         <div class="outsideWrapper">
             <div class="abilityContainer" *ngFor="let ability of charAbilities | keyvalue : unsorted">

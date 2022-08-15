@@ -1,7 +1,7 @@
 <div class="featsContainer" *ngIf="startingFeats.length > 1">
+    <h3>Starting Feats: </h3>
     <section class="startFeats">
         <p *ngFor = "let feat of startingFeats">{{feat}}</p>
-
     </section>
     <!--the below sectin will only show up if Arkanian Offshoot is chosen-->
     <section *ngIf="additionalFeatsArray.length > 0">

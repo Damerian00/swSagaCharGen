@@ -171,6 +171,7 @@ size: string = "";
 talentSelectedName: string = "";
 talentSelectedDesc: string = "";
 disabler: string = "active"
+toggleShow: string = "hiding";
 /*
 == Boolean ==
 */
@@ -658,6 +659,9 @@ saveHero(){
   // console.log("savedHero", savedHero, fileName);
 }
 
+showCharSheet(){
+  this.toggleShow == "hiding" ? this.toggleShow = "onTop" : this.toggleShow = "hiding";
+}
 
 }
 
