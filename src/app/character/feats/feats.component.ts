@@ -615,7 +615,6 @@ let species = this.choices.getSpecies();
           finArr = [...this.conditionalArray, ...tempArr]
         }else{
           
-          
         }
       } 
       this.submitFinal(finArr);
@@ -628,8 +627,8 @@ let species = this.choices.getSpecies();
       choice = `${selection} (${this.specialOptionSelected[0]})`
     }
     if (this.additionalFeatsArray.length != 0){
-      finArr = [...this.additionalFeat, choice];
-      this.submitFinal(finArr);
+      (species != "Neimoidian")? finArr = [this.additionalFeat, choice] : finArr = [...this.additionalFeat, choice];
+          this.submitFinal(finArr);
     }else{
       this.setAdditionalFeat("");
       this.focusedSkill = "";

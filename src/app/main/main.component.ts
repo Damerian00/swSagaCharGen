@@ -64,15 +64,6 @@ heroSkillsTotal: any = [
 {
 "skill_name" : "Jump", "skill_value" : 0, "default" : "Strength", "trained_skill" : false, "skill_focus" : false
 },
-{
-  "skill_name" : "Mechanics", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
-},
-{
-"skill_name" : "Perception", "skill_value" : 0, "default" : "Wisdom", "trained_skill" : false, "skill_focus" : false
-},
-{
-  "skill_name" : "Persuasion", "skill_value" : 0, "default" : "Charisma", "trained_skill" : false, "skill_focus" : false
-},
   {
     "skill_name" : "Knowledge (Bureaucracy)", "skill_value" : 0, "default" : "Intelligence", "trained_skill" : false, "skill_focus" : false
 },
@@ -241,15 +232,15 @@ popArray(arr : Array<any>){
   this.calcClassBonuses(chosenClass);
   // if class isn't jedi and the array doesn't have Use the Force as a value for skill remove Use the force skill from the array 
   // let vals = await Object.values(this.heroSkillsTotal)
-  if (chosenClass != "Jedi" && Object.values(this.heroSkillsTotal).length >= 28){
+  if (chosenClass != "Jedi" && Object.values(this.heroSkillsTotal).length > 24){
     this.heroSkillsTotal.pop();
-    // console.log("removed use the force")
+    console.log("removed use the force")
   // if jedi is chosen as a Class and Use the Force isn't in the array then add itat the end
-  }else if (chosenClass == "Jedi" && Object.values(this.heroSkillsTotal).length < 28){
+  }else if (chosenClass == "Jedi" && Object.values(this.heroSkillsTotal).length < 25){
     this.heroSkillsTotal.push({
       "skill_name" : "Use the Force", "skill_value" : 0, "default" : "Charisma", "trained_skill" : false, "skill_focus" : false
     },)
-    // console.log( "added use force")
+    console.log( "added use force")
 
   // 
   }
