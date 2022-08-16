@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Demo
 
-Here's a link to a live demo of this. https://sw-saga-character-gen.web.app/
+Here's a link to a live [demo](https://sw-saga-character-gen.web.app/) for this.
