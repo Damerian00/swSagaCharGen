@@ -12,8 +12,8 @@ export class UpdateSkillsComponent implements OnInit {
   constructor(private heroservice:HeroService) { }
 // Inputs
 @Input() chosenSkills: Array <any> = [];
-@Input() heroLevel: number = 0;
 // variables
+heroLevel: number = 0;
 heroCondition: number = 0;
 heroSkills: Array <any> = [];
 faUncheck = faSquare;
@@ -28,10 +28,15 @@ this.chosenSkills.forEach((el:any)=> {
   el["misc"] = 0;
 })
 this.heroSkills = this.chosenSkills;
-console.log(this.heroSkills);
+// console.log(this.heroSkills);
 this.performGetters();
 this.heroservice.invokeConditions.subscribe(() => {   
   this.getHeroCondition();
+});
+this.heroservice.invokeSkills.subscribe(() => {
+  this.heroSkills.forEach((el: any)=> {
+    this.calcSkillValue(el.skill_name, el.default, el.misc);
+  })
 });
   }
 getHeroCondition(){
@@ -57,7 +62,7 @@ collectSkillMod(index: any, selection: any){
   this.calcSkillValue(this.heroSkills[index].skill_name, mod, this.heroSkills[index].misc);
 }
 collectMisc(index: any, misc:any){
-  console.log("collecting Misc", index, misc)
+  // console.log("collecting Misc", index, misc)
 
   this.heroSkills[index].misc = parseInt(misc);
   this.calcSkillValue(this.heroSkills[index].skill_name, this.heroSkills[index].default, parseInt(misc))
@@ -68,6 +73,7 @@ updateAbilities(){
 }
 calcSkillValue(skill: string, mod:string, misc:number){
   this.updateAbilities();
+  this.heroLevel = this.heroservice.getHeroLevel();
   // console.log("what we got", skill, mod, misc);
   for (let i=0; i<this.heroSkills.length;i++){
     // console.log("the skill:", this.heroSkills[i].skill_name, skill)
@@ -80,11 +86,11 @@ calcSkillValue(skill: string, mod:string, misc:number){
     if (this.heroSkills[i].skill_focus == true){
       f = 5
     }
-    this.heroSkills[i].skill_value = (Math.floor(this.heroLevel/2)) + this.abilityModifier[mod] + t + f + misc + this.heroCondition;
+    this.heroSkills[i].skill_value = ((this.heroLevel == 1)? 1:(Math.floor(this.heroLevel/2))) + this.abilityModifier[mod] + t + f + misc + this.heroCondition;
     if (skill == "Stealth"){
       this.heroSkills[i].skill_value =+ this.stealthSizeMod 
     }
-  // console.log("the value computed:",  this.abilityModifier[mod], t,f, misc)
+  // console.log("the value computed:",this.heroSkills[i].skill_value, "herolevel", this.heroLevel,  this.abilityModifier[mod], t,f, misc)
     }
 
   }

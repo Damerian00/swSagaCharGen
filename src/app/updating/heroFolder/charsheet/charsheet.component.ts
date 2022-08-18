@@ -48,6 +48,7 @@ improvedDT: number = 0;
 damageThreshMod: number = 0;
 dmgThreshMisc: number = 0;
 heroCondition: number = 0;
+xpModalToggle: boolean = true;
 
   ngOnInit(): void {
     this.savedStorage = Object.keys(localStorage);
@@ -63,29 +64,34 @@ heroCondition: number = 0;
     }
     
   }
-calcHeroLevel(num: number){
-  if (num >= 1000){
-    let numStr = num.toString();
+calcHeroLevel(num: any){
+  this.currentXp += parseInt(num);
+  let tempNum = this.currentXp;
+  if (this.currentXp >= 1000){
+    let numStr = tempNum.toString();
     let len = numStr.length - 3;
     numStr.substring(0,len);
     let level = 0;
     let sawedNum = parseInt(numStr.substring(0,len))
     for (let i =0; i<this.xpChart.length; i++){
-      // console.log("the number to calc", num, numStr, sawedNum, i, this.xpChart.length);
-      if (sawedNum > this.xpChart[i]){
-        level = i;
+      // console.log("the number to calc", tempNum, numStr, sawedNum, i, this.xpChart.length);
+      if (sawedNum >= this.xpChart[i]){
         // console.log("the level", i);
       }else{
         this.heroLevel = level;
         this.nextXp = this.xpChart[i+1]*1000;
         break;
       }
+      level++;
     }
   }else{
     this.heroLevel = 1;
     this.nextXp = this.xpChart[1]*1000;
   }
   (this.heroLevel == 1)? this.halfLevel = 1: this.halfLevel = Math.floor(this.heroLevel/2);
+  this.openModal('xp');
+  this.heroservice.setHeroLevel(this.heroLevel);
+  this.heroservice.recalcSkills();
 }
 
 getHero(name: string){
@@ -175,6 +181,10 @@ calcDT(defenseType: any){
     }
     this.damageThreshold = this.speciesDmgThreshMod + this.dmgThreshMisc + calcNum + this.improvedDT;
   }
-
+openModal(keyword: string){
+  if (keyword == "xp"){
+    this.xpModalToggle = !this.xpModalToggle;
+  }
+}
 
 }

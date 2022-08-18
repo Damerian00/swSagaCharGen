@@ -11,6 +11,12 @@
 </div>
 <section *ngIf="heroPull else reminder">
     <h1>{{savedName}}</h1>
+    <button (click)="openModal('xp')">Add Experience Points</button>
+    <aside *ngIf="xpModalToggle" class="modal">
+        <label>Enter Earned XP amount then click add.</label>
+        <input type="number"id="xp" name="xp" #xp>
+        <button (click)="calcHeroLevel(xp.value)">Add Points</button>
+    </aside>
     <div class="heroBgContainer">
         <div class="half-row">
             <label>Class: </label>
@@ -46,9 +52,6 @@
         </div>
     </div>
     </div>
-    <p *ngFor="let defense of heroDefenses | keyvalue">{{defense.key}} : {{defense.value}}</p>
-    <p>Languages Known: </p>
-    <p *ngFor="let lang of speciesLanguages">{{lang}}</p>
     <section class="attrContainer">
         <section class="abilityWrapper">
             <h6>Attributes</h6>
@@ -120,7 +123,7 @@
        
         <section class="tb conditions">
             <h6>Condition</h6>
-            <input type="radio" id="normal" name="condition" value="normal" (click)="updateCondition(0)">
+            <input type="radio" id="normal" name="condition" value="normal" (click)="updateCondition(0)" checked="true">
             <label for="normal">Normal</label><br>
             <input type="radio" id="negOne" name="condition" value="-1" (click)="updateCondition(-1)">
             <label for="negOne">-1</label><br>  
@@ -190,7 +193,7 @@
             </div>
         </div>
         <div class="tb">
-            <update-skills [chosenSkills]="skills" [heroLevel]="halfLevel" ></update-skills>
+            <update-skills [chosenSkills]="skills"></update-skills>
             <div class="box">
                 <h6>Attack Options</h6>
             </div>
@@ -208,6 +211,9 @@
         <div class="tb">
             <div class="box">
                 <h6>Languages</h6>
+                <div class="white-board">
+                    <p *ngFor="let lang of speciesLanguages">{{lang}}</p>
+                </div>
             </div>
             <div class="box">
                 <h6>Experience</h6>
