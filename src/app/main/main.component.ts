@@ -3,6 +3,7 @@ import { ChoicesSenderService } from '../services/choices-sender.service';
 import { faCheckSquare, faSquare, faSave, faClose } from '@fortawesome/free-solid-svg-icons';
 import {jsPDF} from "jspdf";
 import html2canvas from 'html2canvas'
+import { LocalstorageService } from '../localstorage.service';
 
 
 interface heroObject {
@@ -15,7 +16,9 @@ interface heroObject {
   skills: Array<any>,
   feats: Array<string>,
   talents: Array<string>,
-  languages: Array<any>,
+  dt: number,
+  hp: number,
+  
 }
 
 @Component({
@@ -181,7 +184,7 @@ currentDtType: any = "Fortitude Defense";
 unsorted = (a:any, b:any) => {
   return a;
 }
-  constructor(private choices: ChoicesSenderService) { }
+  constructor(private choices: ChoicesSenderService, private local: LocalstorageService) { }
 
   ngOnInit(): void {
   }
@@ -234,13 +237,13 @@ popArray(arr : Array<any>){
   // let vals = await Object.values(this.heroSkillsTotal)
   if (chosenClass != "Jedi" && Object.values(this.heroSkillsTotal).length > 24){
     this.heroSkillsTotal.pop();
-    console.log("removed use the force")
+    // console.log("removed use the force")
   // if jedi is chosen as a Class and Use the Force isn't in the array then add itat the end
   }else if (chosenClass == "Jedi" && Object.values(this.heroSkillsTotal).length < 25){
     this.heroSkillsTotal.push({
       "skill_name" : "Use the Force", "skill_value" : 0, "default" : "Charisma", "trained_skill" : false, "skill_focus" : false
     },)
-    console.log( "added use force")
+    // console.log( "added use force")
 
   // 
   }
@@ -610,6 +613,7 @@ randomIzer(num: number){
 @ViewChild('contentSaved', {static: false}) el!: ElementRef;
 
 saveHero(){
+  // localStorage.clear();
   if (this.heroName == "Name Goes Here..." || Object.keys(this.talentSelected).length == 0){
     return;
   }
@@ -630,13 +634,15 @@ saveHero(){
     skills: [this.heroSkillsTotal],
     feats: [this.chosenFeats],
     talents: [this.talentSelected],
-    languages: [this.languages]
+    dt: this.damageThreshold,
+    hp: this.healthPoints,
   }
   
-    let tempName = savedHero.name.split(' ').join('_')
- 
-  let fileName = `${tempName}${savedHero.id}.pdf`;
-
+  let tempName = savedHero.name.split(' ').join('_')
+  let nameSaved = tempName + savedHero.id;
+  
+  let fileName = `${nameSaved}.pdf`;
+/*
   let DATA: any = document.getElementById('contentSaved');
   html2canvas(DATA,{ scale: 3 }).then((canvas) => {
     let PDF = new jsPDF('p', 'mm', 'a4');
@@ -647,13 +653,15 @@ saveHero(){
     PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
     PDF.save(fileName);
   });
-  // console.log("savedHero", savedHero, fileName);
+  */
+  // console.log("savedHero", nameSaved, savedHero);
+  localStorage.setItem(nameSaved, JSON.stringify(savedHero));
+  
 }
 
 showCharSheet(){
   this.toggleShow == "hiding" ? this.toggleShow = "onTop" : this.toggleShow = "hiding";
 }
-
 }
 
 

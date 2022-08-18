@@ -9,6 +9,7 @@
    </div> 
     <section>
         <div class="outsideWrapper">
+            <span class="validation" *ngIf="abValidator">{{abValidatorMessage}}</span>
             <div class="abilityContainer" *ngFor="let ability of charAbilities | keyvalue : unsorted">
                 <p #ability class="abilityName">{{ability.key}} :</p>
                 <p class="abilityValue">{{ability.value}}</p>

@@ -1,0 +1,39 @@
+.skillsContainer{
+    h3{
+        text-align: center;
+    }
+    span{
+        color:black
+    }
+}
+.selectedSkills{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    p{
+        margin:.25rem;
+    }
+}
+.skillsCloset{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    p,select{
+        text-align: center;
+        width: 5vw;
+     }
+    p:first-child{
+        font-size:.75rem;
+    }
+}
+.modBox{
+    display:flex;
+    label{
+        margin-right: .5rem;
+    }
+    input{
+        text-align: center;
+        border:2px solid black;
+        width: 2rem;
+    }
+}

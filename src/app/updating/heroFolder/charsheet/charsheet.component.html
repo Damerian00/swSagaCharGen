@@ -1,0 +1,268 @@
+<nav>
+    <a routerLink="/" routerLinActive="active">Landing Page</a>
+    <a routerLink="/new-hero" routerLinActive="active">Create a New Hero</a>
+</nav>
+<div>
+    <label>File Name:</label>
+        <select *ngIf="savesPulled" #localSaves value="selected" (change)="getHero(localSaves.value)">
+            <option>Select a Save File</option>
+            <option *ngFor="let hero of savedHeroes">{{hero.name}}</option>
+        </select>             
+</div>
+<section *ngIf="heroPull else reminder">
+    <h1>{{savedName}}</h1>
+    <div class="heroBgContainer">
+        <div class="half-row">
+            <label>Class: </label>
+            <div class="lightContainer classContainer">
+                <p *ngFor="let class of heroClass |keyvalue">{{class.key}} {{class.value}}</p>        
+            </div>
+        </div>
+    <div class="half-row">
+        <div class="box">
+            <label>Level: </label>
+            <div class="box">
+                <p class="lightContainer">{{heroLevel}}</p>
+                <p class="lightContainer">{{halfLevel}}</p>
+            </div>       
+        </div>         
+            <div class="box">
+                <label>Species: </label>
+                <p class="lightContainer">{{heroSpeciesObj.species_name}}</p>
+            </div>    
+    </div>
+    <div class="half-row">
+        <div class="box">
+            <label>Gender: </label>
+            <select name="gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>      
+        <div class="box">
+            <label>Size: </label>
+            <p class="lightContainer">{{size}}</p>
+        </div>
+    </div>
+    </div>
+    <p *ngFor="let defense of heroDefenses | keyvalue">{{defense.key}} : {{defense.value}}</p>
+    <p>Languages Known: </p>
+    <p *ngFor="let lang of speciesLanguages">{{lang}}</p>
+    <section class="attrContainer">
+        <section class="abilityWrapper">
+            <h6>Attributes</h6>
+            <div class="half-row">
+                <div class="abilitiesContainer">
+                    <div class="abilities" *ngFor="let ability of heroAbilities | keyvalue : unsorted">
+                        <p>{{ability.key}}</p>
+                        <p>{{ability.value}}</p>
+                    </div>
+                </div>
+                <div class="abilitiesContainer">
+                    <div class="modAbs" *ngFor="let mod of abilityMod | keyvalue : unsorted">                          
+                        <p >{{mod.value}}</p> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="tb">
+                <h6>Hit Points</h6>
+                <div class="half-row">
+                    <div class="box">
+                        <Label>Current</Label>
+                        <input name="currentHP" type="text" min="0" value="{{currentHp}}">
+                    </div>
+                    <span>/</span>
+                    <div class="box">
+                        <label>Total</label>
+                        <p>{{maxHp}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tb">
+                <h6>Threshold</h6>
+                <div class="box">
+                    <label>Total</label>
+                    <p>{{damageThreshold}}</p>
+                    <span>=</span>
+                    <label>Defense</label>
+                    <select id="defense_type" value="selected" #dmgThOption (change)="calcDT(dmgThOption.value)">
+                        <option>Reflex Defense</option>
+                        <option>Fortitude Defense</option>
+                        <option>Will Defense</option>
+                    </select>
+                    <label>Misc.</label>
+                    <input class = "smallBox" type="number" min="0">
+                </div>
+                <div class="reductions">
+                    <div>
+                        <label>Damage Reduction</label>
+                        <input class="smallBox" type="number" min="0">
+                    </div>
+                    <div>
+                        <label>Shield Rating</label>
+                        <input class="smallBox" type="number" min="0">
+                        <span>/</span>
+                        <input class="smallBox" type="number" min="0">
+                    </div>
+                    <div>
+                        <label>Immune</label>
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+            
+
+
+        </section>
+       
+        <section class="tb conditions">
+            <h6>Condition</h6>
+            <input type="radio" id="normal" name="condition" value="normal" (click)="updateCondition(0)">
+            <label for="normal">Normal</label><br>
+            <input type="radio" id="negOne" name="condition" value="-1" (click)="updateCondition(-1)">
+            <label for="negOne">-1</label><br>  
+            <input type="radio" id="negTwo" name="condition" value="-2" (click)="updateCondition(-2)">
+            <label for="negTwo">-2</label><br>
+            <input type="radio" id="negFive" name="condition" value="-5" (click)="updateCondition(-5)">
+            <label for="negFive">-5</label><br>
+            <input type="radio" id="negTen" name="condition" value="-10" (click)="updateCondition(-10)">
+            <label for="negTen">-10</label><br>  
+            <input type="radio" id="helpless" name="condition" value="helpless" (click)="updateCondition(-10)">
+            <label for="helpless">Helpless</label><br><br>
+    
+        </section>
+            <section class="adds">
+                <div class="tb">
+                    <div class="box">
+                           <h6>Force Points</h6>
+                            <h6>Destiny Points</h6>              
+                    </div>
+                    <div class="box">
+                            <input class="smallBox" type="number" min="0">
+                            <p>1</p>                   
+                            <input class="smallBox" type="number" min="0">                   
+                    </div>
+                    <div class="box">
+                        <h6>BAB</h6>
+                        <h6>Speed</h6>
+                        <h6>Dak Side Points</h6>
+                    </div>
+                    <div class="box">
+                        <p>1</p>
+                        <p>6</p>
+                        <input class="smallBox" type="number" min="0">
+                    </div>    
+                        <h6>Grapple</h6>       
+                    <div class="box">
+                            <p class="numbs">1</p>       
+                            <p>=</p>
+                        <div class="box">
+                            <label>Mod</label>
+                            <select id="grapMod_type colm">
+                                <option value= "STR">STR</option>
+                                <option value="DEX">DEX</option>
+                            </select>
+                        </div>
+                            <p>+</p>
+                        <div class="box">
+                            <p>Misc</p>
+                           <input class="smallBox" type="number">
+                        </div>
+                            
+                    </div>
+                    
+                </div>
+        </section>
+    </section>
+    <div class="split-box">
+        <div class="tb">
+            <div class="box">
+                <defenses [heroLevel]="heroLevel" (defenses)="updateDefenses($event)" ></defenses>
+            </div> 
+            <div class="box">
+                <h6>Armor</h6>
+            </div>
+            <div class="box">
+                <h6>Attacks</h6>
+            </div>
+        </div>
+        <div class="tb">
+            <update-skills [chosenSkills]="skills" [heroLevel]="halfLevel" ></update-skills>
+            <div class="box">
+                <h6>Attack Options</h6>
+            </div>
+            <div class="box">
+                <h6>Special Attacks</h6>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="split-box">
+        <div class="tb">
+            <h6>Equipment</h6>
+            <div class="box"></div>
+        </div>
+        <div class="tb">
+            <div class="box">
+                <h6>Languages</h6>
+            </div>
+            <div class="box">
+                <h6>Experience</h6>
+                <div class="box">
+                    <p>{{currentXp}}</p>
+                    <span>/</span>
+                    <p>{{nextXp}}</p>
+                </div>
+            </div>
+            <div class="box">
+                <h6>Credits</h6>
+            </div>
+            <div class="box">
+                <h6>Encumbrance</h6>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="box">
+        <div class="tb third-size">
+            <h6>Special Qualities</h6>
+            <textarea class="third-size" name="specialQualities" id="specialQualities" cols="30" rows="10"></textarea>
+        </div>
+        <div class="tb third-size">
+            <h6>Feats</h6>
+            <div class="white-board">
+                <p *ngFor="let feat of startingFeats">{{feat}}</p>
+            </div>
+        </div>
+        <div class="tb third-size">
+            <h6>Talents</h6>
+            <div class="white-board">
+                <p *ngFor="let talent of startingTalents">{{talent.name}} : {{talent.description}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="tb">
+            <h6>Notes</h6>
+            <div class="white-board">
+                
+            </div>
+        </div>
+    </div>
+    <!-- <div class="skillsHolder" *ngFor="let skill of skills">
+        <p>{{skill.skill_name}}</p>
+        <p>{{skill.skill_value}}</p>
+        <p>{{skill.default}}</p>
+        <p>{{skill.trained_skill}}</p>
+        <p>{{skill.skill_focus}}</p>
+    </div> -->
+    <button (click)="updateHero()">Update hero</button>
+</section>
+<ng-template #reminder>
+  
+    <h4>In order to generate the correct character sheet please select a file from the pulldown.</h4>
+   
+</ng-template>

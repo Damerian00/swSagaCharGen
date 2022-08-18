@@ -51,8 +51,7 @@ switch (type) {
     if (operand == 'add'){
      compute = value1 - value2;
    } else {
-     compute = value1 + value2;
-    
+     compute = value1 + value2; 
    }
   //  console.log('this is computed',compute)
     if (compute <= this.maxPoints && compute >= 0){

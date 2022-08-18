@@ -1,0 +1,22 @@
+
+ <section class="skillWrapper">
+    <div class="skillsContainer">
+        <h6>Skills: </h6>
+            <div class="skillsCloset" *ngFor="let skill of heroSkills; let i = index">
+            <p>{{skill.skill_name}}</p>
+            <p>{{skill.skill_value}}</p>
+            <select value="selected" id={{i}} (change)="collectSkillMod(i,$event)">
+                <option>Select</option>
+                <option *ngFor="let mod of modOptions">{{mod}}</option>
+            </select>             
+            <p *ngIf="skill.trained_skill == true"><fa-icon [icon]="faChecked"></fa-icon></p>
+            <p *ngIf="skill.trained_skill == false"><fa-icon [icon]="faUncheck"></fa-icon></p>
+            <p *ngIf="skill.skill_focus == true"><fa-icon [icon]="faChecked"></fa-icon></p>
+            <p *ngIf="skill.skill_focus == false"><fa-icon [icon]="faUncheck"></fa-icon></p>
+            <div class="modBox">
+                <label>Misc:</label>
+                <input type="number" #skillMisc (change)="collectMisc(i,skillMisc.value)" value="{{skill.misc}}">
+            </div>
+        </div>
+    </div>
+</section>

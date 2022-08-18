@@ -1,0 +1,157 @@
+.skillsHolder{
+    display: flex;
+    justify-content: space-evenly;
+}
+.lightContainer{
+    display: flex;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgba(20, 20, 20, 0.05);
+    padding: 2px 1rem;
+}
+.heroBgContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    .half-row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width:70vw;
+       margin-bottom:1vh;
+        div.box:nth-child(2){
+          flex: 5;  
+        }
+    }
+    label{
+        margin-right: 1rem;
+    }
+}
+.attrContainer{
+    display: flex;
+    justify-content:space-around;
+    .healthBox{
+
+    }
+    .threshBox{
+
+    }
+}
+.levelBox, .box{
+    display: flex;
+}
+.box{
+    align-items: center;
+    justify-content: center;
+    flex:1;
+    p{
+        margin: 0 .25rem;
+       
+    }
+
+}
+.split-box{
+    display:flex;
+    justify-content: space-between;
+    div{
+        flex:1;
+    }
+}  
+.half-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:1vh;
+   
+}
+.white-board{
+    height: 5vh;
+    border: 1px solid black;
+    margin-top: -1.5rem;
+    width: 100%;
+    padding: 2vh 0.25rem;
+
+}
+textarea.third-size{
+    margin-top:-1rem;
+    max-width: calc(100vw/3);
+    min-width: calc(100vw/3);
+    min-height: 2vh;
+}
+.third-size{
+    width: calc(100vw/3);
+}
+.classContainer{
+    flex: 1;
+}
+
+.abilityWrapper{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    .abilitiesContainer{
+        display: flex;
+        flex-direction: column;
+        h3{
+            text-align: center;
+        }
+        .abilities {
+            display: flex;
+            margin: .1rem 0;
+            p{
+                margin:0 1rem;
+                text-align: center;
+                width: 2vw;
+                border: 1px solid black;
+                border-radius: 5px;
+                background-color: rgba(20, 20, 20, 0.05);
+                padding: 6px 1rem;
+                
+            }
+            p:first-child{
+                text-align: justify;
+                width: 100px;
+                background-color: rgba(20, 20, 20, 0.3);
+                border-color: transparent;
+            }
+        }
+        .modAbs{
+            display: flex;
+            margin: .1rem 0;
+            p{
+                margin:0 1rem;
+                text-align: center;
+                width: 2vw;
+                border: 1px solid black;
+                border-radius: 5px;
+                background-color: rgba(20, 20, 20, 0.05);
+                padding: 6px 1rem;
+                
+            } 
+        }
+      
+    }
+    .scoresContainer{
+        display:flex;
+        flex-direction: column;
+        h3{
+            text-align: center;
+        }
+        p{
+            margin:0 1rem;
+            text-align: center;
+        }
+    }
+}
+.tb{
+    margin:1rem;
+}
+.conditions{
+    label{
+        margin-left: .5rem;
+    } 
+}
+h6{
+    text-align: center; color:white; background-color: black;width:100%;padding: .5vh .5rem;border-radius:10px;margin:1rem 0;
+    font-size:1rem;
+}

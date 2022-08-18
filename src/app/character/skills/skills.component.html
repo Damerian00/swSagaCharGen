@@ -1,6 +1,7 @@
 <h2>Select which Skills to train in</h2>
 <h3>Points available to train: {{skillPoints}}</h3>
 <form [formGroup]="form" (ngSubmit)="submit()">
+    <span class="validation" *ngIf="skValidator">{{skValidatorMessage}}</span>
     <div *ngFor="let skill of skillsArray">
         <label>
             <input #checkboxes type="checkbox" (change)="skillTrained($event)" value="{{skill.name}}" />

@@ -48,6 +48,8 @@ holds the abilities and their values for starting
   points = 0;
   toggleButton: boolean = false;
   toggleBtnText = "Open Points Editor"
+  abValidator: boolean = false;
+  abValidatorMessage: string = '';
   constructor(private choices: ChoicesSenderService) { }
   @Output () abilitiesSelected: EventEmitter<any> = new EventEmitter<any>()
   @Output () abilityModifiers: EventEmitter<any> = new EventEmitter<any>()
@@ -402,6 +404,8 @@ togglePtsBtn(){
 adds ability point if it successfully clears the checkpoints function with no errros then emits the changes to main component to be displayed
 */
 addAbility(clicked: any){
+  this.abValidator = false
+  this.choices.validate = false;
   this.abModifierImport = this.choices.speciesAbilityModifiers;
  if (this.points > 0){
   switch (clicked.key){
@@ -466,7 +470,14 @@ addAbility(clicked: any){
       }
     break;
   }
+  if (this.choices.validate == false){
+    this.abValidator = true;
+    this.abValidatorMessage = `Not enough points available to add to ${clicked.key}.`    
+  }
  this.calcModifier();
+}else{
+  this.abValidator = true;
+    this.abValidatorMessage = `Not enough points available to add to ${clicked.key}.`    
 }
 
 }
@@ -474,7 +485,8 @@ addAbility(clicked: any){
 subtracts ability point if it successfully clears the checkpoints function with no errros then emits the changes to main component to be displayed
 */
 subAbility(clicked: any){
- 
+  this.abValidator = false;
+  this.choices.validate = false;
   if (this.points < this.maxPoints){
     switch (clicked.key){
       case "Strength":
@@ -484,7 +496,9 @@ subAbility(clicked: any){
           this.charAbilities.Strength -= 1;
           this.finalAbilities.Strength -= 1;
   
-        } 
+        }else{
+          this.choices.validate = false;
+        }
         
       break;
       case "Dexterity":
@@ -494,6 +508,8 @@ subAbility(clicked: any){
           this.charAbilities.Dexterity -= 1;
           this.finalAbilities.Dexterity -= 1;
           
+        }else{
+          this.choices.validate = false;
         }   
         
         break;
@@ -504,7 +520,9 @@ subAbility(clicked: any){
             this.charAbilities.Constitution -= 1;
             this.finalAbilities.Constitution -= 1;
     
-          }  
+          }else{
+          this.choices.validate = false;
+        }  
           
         break;
     case "Intelligence":
@@ -514,19 +532,22 @@ subAbility(clicked: any){
         this.charAbilities.Intelligence -= 1;
         this.finalAbilities.Intelligence -= 1;
 
-      }   
+      }else{
+          this.choices.validate = false;
+        }   
       
     break;
    
     case "Wisdom":
       //this.checkPoints(clicked.key, "subtract")
       this.pointChecker(clicked.key, "subtract")
-      
       if (this.choices.validate == true && this.charAbilities.Wisdom > 8){
         this.charAbilities.Wisdom -= 1;
         this.finalAbilities.Wisdom -= 1;
 
-      }   
+      }else{
+          this.choices.validate = false;
+        }   
       
     break;
     case "Charisma":
@@ -535,22 +556,33 @@ subAbility(clicked: any){
       if (this.choices.validate == true && this.charAbilities.Charisma > 8){
         this.finalAbilities.Charisma -= 1;
         this.charAbilities.Charisma -= 1;
-      }
+      }else{
+          this.choices.validate = false;
+        }
       
     break;
   }
+  if (this.choices.validate == false){
+      this.abValidator = true;
+      this.abValidatorMessage = `Can't subtract any more from ${clicked.key}.`
+    }
+  
   this.calcModifier();
 
+}else{
+  this.abValidator = true;
+  this.abValidatorMessage = `Can't subtract any more from ${clicked.key}.`
 }
 
 }
 // calls the update function then emits the finalabilities to the main component for evaluation
 saveAbilities(){
   this.update();
-  this.abilitiesSelected.emit(this.finalAbilities);
+  // removing this ensures that at least one ability point is added before intializing classes
+  // this.abilitiesSelected.emit(this.finalAbilities);
   
 }
-// same as saveAbilitiesw minus the update function
+// same as saveAbilities minus the update function
 calcModifier(){
   this.abilitiesSelected.emit(this.finalAbilities);
   // this.abilityModifiers.emit(this.finalAbilities);
@@ -586,10 +618,10 @@ pointChecker(selection: string, operand: string){
 }
 this.choices.validator(this.points, pointBuy[value], operand, 'abilities');
 if (this.choices.validate == true){
+  this.abValidator = false;
   operand == "add"?  this.points -= pointBuy[value] : this.points += pointBuy[value]
     //  console.log('the points', this.points)
-      }
-
+      }    
 }
 
 

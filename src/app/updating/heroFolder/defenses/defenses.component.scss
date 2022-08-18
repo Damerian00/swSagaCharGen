@@ -1,0 +1,52 @@
+.defensesBox{
+    
+}
+
+.headers{
+    display: flex;
+    justify-content: space-evenly;   
+}
+.blank{
+    visibility: hidden;
+    margin: 0 4vw;
+
+}
+.defense{
+    display: flex;
+    align-items: center;
+    label{
+        color:black;
+        text-align: center;
+    }
+    .name{
+        color: black;
+        background-color: #979696;
+        border-radius: 10px;
+        width: 10vw;
+        text-align: left;
+        padding: 1rem 0.25rem;
+   
+    }
+    p{
+        margin:0 1rem;
+        text-align: center;
+        width: 2vw;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(20, 20, 20, 0.05);
+        padding: 6px 1rem;
+
+    }
+    select{
+        color:black;
+    }
+    input{
+        margin:0 1rem;
+        text-align: center;
+        width: 2vw;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(20, 20, 20, 0.05);
+        padding: 6px 1rem;
+    }
+}

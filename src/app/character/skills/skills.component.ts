@@ -42,6 +42,8 @@ export class SkillsComponent implements OnInit {
   buttonIf: string = "hide";
   
   // utilizes event emitter to emit the skills selected
+  skValidator: boolean = false;
+  skValidatorMessage: string = '';
   @Output () skillsSelected: EventEmitter<any> = new EventEmitter<any>()
 
   // takes input from the form to to create an array for the items checked
@@ -61,8 +63,7 @@ export class SkillsComponent implements OnInit {
   // a function to uncheck the boxes checked
   uncheckAll(){
     this.checkboxes?.toArray().forEach((item)=> {
-      item.nativeElement.checked = false;
-      
+      item.nativeElement.checked = false;  
     })
     
   }
@@ -157,12 +158,15 @@ skillTrained(event: any){
         selectedSkills.clear(); 
         this.clear = 'ok';    
       }
+      this.skValidator = false;
       // checks of the checkbox is checked
       if (event.target.checked){
         /*
          checks if the skill points remaining will go below 0 when checked if it does then it immediately gets unchecked so skill points never go below 0
         */
         if (this.skillPoints - 1 < 0  ){
+          this.skValidator = true;
+          this.skValidatorMessage = `No more skill points availabel to choose ${event.target.value}.`
           event.target.checked = false;
           // add a validation error here
         }else {

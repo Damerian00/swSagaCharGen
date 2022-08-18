@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpeciesComponent } from './character/species/species.component';
@@ -13,8 +12,12 @@ import { CharSheetComponent } from './character/char-sheet/char-sheet.component'
 import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { modOptionsComponent } from './partialComponents/modOptions.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CharsheetComponent } from './updating/heroFolder/charsheet/charsheet.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { UpdateSkillsComponent } from './updating/heroFolder/skills/skills.component';
+import { DefensesComponent } from './updating/heroFolder/defenses/defenses.component';
+
 
 
 
@@ -29,7 +32,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TalentsComponent,
     CharSheetComponent,
     MainComponent,
-    modOptionsComponent,
+    CharsheetComponent,
+    LandingpageComponent,
+    UpdateSkillsComponent,
+    DefensesComponent
    
   ],
   imports: [

@@ -36,12 +36,10 @@ export class SpeciesComponent implements OnInit {
   // a sorting function to arrange an array of objects by prop parameter
   sortNames(prop: string){
     let sortOrder = 1;
-
     if(prop[0] === "-") {
         sortOrder = -1;
         prop = prop.substr(1);
     }
-
     return function (a:any,b:any) {
         if(sortOrder == -1){
             return b[prop].localeCompare(a[prop]);
