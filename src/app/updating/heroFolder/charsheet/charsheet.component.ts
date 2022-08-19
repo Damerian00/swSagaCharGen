@@ -16,7 +16,7 @@ export class CharsheetComponent implements OnInit {
   constructor(private local: LocalstorageService, private heroservice : HeroService) { }
 savedHero: any;
 savedName: string = "";
-startingFeats: Array <string> = [];
+startingFeats: any;
 skills: any;
 speciesLanguages: any;
 heroClass: Object = {};
@@ -39,7 +39,7 @@ maxHp: number = 0;
 currentHp: number = 0;
 damageThreshold: number = 0;
 abilityMod: any;
-currentDtType: any = "Fortitude Defense";
+currentDtType: string = "Fortitude Defense";
 reflexDefense: number = 10;
 fortitudeDefense:number = 10;
 willDefense: number = 10;
@@ -48,7 +48,14 @@ improvedDT: number = 0;
 damageThreshMod: number = 0;
 dmgThreshMisc: number = 0;
 heroCondition: number = 0;
-xpModalToggle: boolean = true;
+xpModalToggle: boolean = false;
+forceDice: string = "1d6";
+hpType: string = "set"
+forcePoints: number = 5
+grapple: number = 0;
+BAB: number = 1;
+grappleModSelected: string = "Strength";
+grappleMisc: number = 0;
 
   ngOnInit(): void {
     this.savedStorage = Object.keys(localStorage);
@@ -89,9 +96,19 @@ calcHeroLevel(num: any){
     this.nextXp = this.xpChart[1]*1000;
   }
   (this.heroLevel == 1)? this.halfLevel = 1: this.halfLevel = Math.floor(this.heroLevel/2);
-  this.openModal('xp');
+  if (this.xpModalToggle == true){
+    this.openModal('xp');
+  }
+  if (this.heroLevel <= 7){
+    this.forceDice = "1d6";
+  }else if (this.heroLevel <= 14){
+    this.forceDice = "2d6";
+  }else{
+    this.forceDice = "3d6";
+  }
   this.heroservice.setHeroLevel(this.heroLevel);
   this.heroservice.recalcSkills();
+  this.forcePoints = 5 + Math.floor((this.heroLevel/2));
 }
 
 getHero(name: string){
@@ -105,13 +122,15 @@ getHero(name: string){
     console.log("the hero is", name,this.savedHero)
     this.updateStats();
     this.heroPull = true;
+    this.calcDT(this.currentDtType);
+    
   }
 }
 
 async updateStats(){
   this.savedName = await this.savedHero.name;
-  this.startingFeats = await [this.savedHero.feats];
-  this.skills = await this.savedHero.skills[0];
+  this.startingFeats = await this.savedHero.feats;
+  this.skills = await this.savedHero.skills;
   (Array.isArray(this.savedHero.class))? this.heroClass = {[this.savedHero.class]: 1}: this.heroClass = this.savedHero.class;
   this.heroDefenses = await this.savedHero.defenses;
   this.heroSpeciesObj = await this.savedHero.species;
@@ -119,11 +138,13 @@ async updateStats(){
   this.speciesLanguages = await this.heroSpeciesObj.traits.languages;
   this.heroAbilities = await this.savedHero.abilities;
   this.size = await this.heroSpeciesObj.traits.size;
+  this.BAB = await this.savedHero.bab;
+  this.maxHp = this.savedHero.hp;
   this.calcHeroLevel(this.currentXp);
   await this.heroSets();
   await this.heroGets();
-  this.calcDT(this.currentDtType);
-  this.updateCondition(this.heroCondition);
+  
+  
 }
 async heroSets(){
   this.heroservice.setAbilitites(this.savedHero.abilities)
@@ -133,9 +154,10 @@ async heroSets(){
   this.heroservice.setFeatImprovements(this.savedHero.feats);
   this.heroservice.setClassBonuses(this.heroClass);
 }
-heroGets(){
+async heroGets(){
   this.damageThreshold = this.heroservice.getDamageThreshold();
-  this.abilityMod = this.heroservice.getAbilityModifier();
+  this.abilityMod = await this.heroservice.getAbilityModifier();
+  this.calcGrapple("Strength");
   // console.log('the absMods', this.abilityMod)
 }
 updateHero(){ 
@@ -152,9 +174,10 @@ updateCondition(num: number){
   this.heroCondition = num;
   this.heroservice.setCondition(num);
   this.heroservice.enforceConditions();
+  this.calcDT(this.currentDtType);
 }
-setDTMisc(num: number){
-  this.dmgThreshMisc = Math.floor(num);
+setDTMisc(num: any){
+  this.dmgThreshMisc = Math.floor(parseInt(num));
   this.calcDT(this.currentDtType);
 }
 calcDT(defenseType: any){
@@ -182,9 +205,25 @@ calcDT(defenseType: any){
     this.damageThreshold = this.speciesDmgThreshMod + this.dmgThreshMisc + calcNum + this.improvedDT;
   }
 openModal(keyword: string){
-  if (keyword == "xp"){
+  if (keyword == "xp" ){
     this.xpModalToggle = !this.xpModalToggle;
   }
 }
-
+setGrappleMisc(misc: any){
+  this.grappleMisc = Math.floor(parseInt(misc));
+  this.calcGrapple(this.grappleModSelected);
+}
+async calcGrapple(mod: string){
+  this.grappleModSelected = mod;
+  let abMod = await this.heroservice.getAbilityModifier()
+  if (this.size == "Small"){
+    this.grapple = (this.BAB + abMod[this.grappleModSelected]) - 5;
+  }else if (this.size == "Large"){
+    this.grapple = (this.BAB + abMod[this.grappleModSelected]) + 5;
+  }else{
+    this.grapple = (this.BAB + abMod[this.grappleModSelected]);
+  }
+  this.grapple += (this.heroCondition + this.grappleMisc)
+  // console.log(this.grappleModSelected, abMod);
+}
 }

@@ -17,6 +17,7 @@ import { CharsheetComponent } from './updating/heroFolder/charsheet/charsheet.co
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { UpdateSkillsComponent } from './updating/heroFolder/skills/skills.component';
 import { DefensesComponent } from './updating/heroFolder/defenses/defenses.component';
+import { ArmorComponent } from './updating/heroFolder/armor/armor.component';
 
 
 
@@ -35,7 +36,8 @@ import { DefensesComponent } from './updating/heroFolder/defenses/defenses.compo
     CharsheetComponent,
     LandingpageComponent,
     UpdateSkillsComponent,
-    DefensesComponent
+    DefensesComponent,
+    ArmorComponent
    
   ],
   imports: [

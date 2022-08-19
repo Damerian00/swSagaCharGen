@@ -1,0 +1,83 @@
+.armorContainer{
+}
+.armor{
+    display: flex;
+    align-items: center;
+
+}
+input{
+    accent-color:black;
+}
+
+.box{
+    display: flex;
+    flex:1;   
+    align-items: flex-end;
+    justify-content: space-between;
+    p{
+        margin: 0 .25rem;
+        flex:1;
+    }
+    label{
+        
+    }
+    select{
+        
+    }
+}
+.stat-box{
+    margin:2px;
+    text-align: center;
+    label{
+        font-size: 12px;
+        margin:10px;
+    }
+    p{
+        margin:0 1rem;
+        text-align: center;
+        width: 2vw;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(20, 20, 20, 0.05);
+        padding: 6px;       
+    }
+    .type{
+       width: auto;
+    }
+}
+.name{
+    flex:4;   
+    p{
+        margin:0 1rem;
+        text-align: justify;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(20, 20, 20, 0.05);
+        padding: 6px 5rem 6px 1rem;
+    }
+}
+.tb{
+    margin:1rem;
+}
+.notes{
+    border:1px solid black;
+    align-items: flex-start;
+    p{
+        min-height: 5vh;
+        padding:0 5px;
+    }
+
+}
+#editNotes{
+    display:none;
+}
+#note:hover + #editNotes{
+    display: block;
+}
+.notesForm{
+    position: absolute;
+    input{
+        width: 25vw;
+        height: 4vh;
+    }
+}

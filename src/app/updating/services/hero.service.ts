@@ -171,6 +171,7 @@ getWillClassBonus(){
   return this.willClassBonus;
 }
 setFeatImprovements(feats: Array <string>){
+  // console.log("the feats:", feats);
   for (let i=0; i<feats.length;i++){
     switch (feats[i]) {
       case "Improved Defenses":
@@ -187,8 +188,7 @@ setFeatImprovements(feats: Array <string>){
         case "Toughness":
         this.hpToughness = 1;
         break;
-      default:
-        break;
+     
     }
   }
 }

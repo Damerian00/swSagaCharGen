@@ -18,7 +18,7 @@ interface heroObject {
   talents: Array<string>,
   dt: number,
   hp: number,
-  
+  bab: number,
 }
 
 @Component({
@@ -631,11 +631,12 @@ saveHero(){
       "fort": this.fortitudeDefense,
       "will": this.willDefense,
     },
-    skills: [this.heroSkillsTotal],
-    feats: [this.chosenFeats],
+    skills: [...this.heroSkillsTotal],
+    feats: [...this.chosenFeats],
     talents: [this.talentSelected],
     dt: this.damageThreshold,
     hp: this.healthPoints,
+    bab: this.choices.acquireBab(),
   }
   
   let tempName = savedHero.name.split(' ').join('_')

@@ -1,0 +1,81 @@
+<h6>Armor</h6>
+<section class="armorContainer">
+    <div class="armor">
+        <div class="tb">
+            <div class="box">
+                <label>Armor Worn<input type="checkbox" id="aromorWorn" name="aromorWorn" value="aromorWorn" (change)="checkTheBoxes($event)"></label>
+            </div>
+            <div class="box">
+                <div class="box name">
+                    <label>Name: </label>
+                    <p>{{currentArmor.armor_name}}</p>
+                </div>
+                <div class="stat-box">
+                    <label>Ref Def Bonus</label>  
+                    <p>{{currentArmor.ref_def_bonus}}</p>                                
+                </div>
+                <div class="stat-box">
+                    <label>Fort Def Bonus</label>
+                    <p>{{currentArmor.fort_def_bonus}}</p>                   
+                </div>
+                <div class="stat-box">
+                    <label>Max Dex Bonus</label>
+                    <p>{{currentArmor.max_def_bonus}}</p>                
+                </div>
+                <div class="stat-box">
+                    <label>Speed</label>
+                    <p>{{currentArmor.speed}}</p>              
+                </div>
+            </div>
+            <div class="box">
+                <div class="stat-box">
+                    <label>Proficiency</label>
+                    <input type="checkbox" id="proficiency" name="proficiency" value="proficiency" (change)="checkTheBoxes($event)">
+                </div>
+                <div class="stat-box">
+                    <label>Armor Def.</label>
+                    <input type="checkbox" id="armorDef" name="armorDef" value="armorDef" (change)="checkTheBoxes($event)">
+                </div>
+                <div class="stat-box">
+                    <label>Improved Armor Def.</label>
+                    <input type="checkbox" #improveArmorDef id="improveArmorDef" name="improveArmorDef" value="improveArmorDef" (change)="checkTheBoxes($event)" >
+                </div>
+                <div class="stat-box">
+                    <label>Armor Type</label>
+                    <p class="type">{{currentArmor.armor_type}}</p>
+                </div>
+                <div class="stat-box">
+                    <label>Helmet Package </label>          
+                     <select id="helm_type" #helm_type value="selected" (change)="changeHelmetPackage(helm_type.value)">
+                         <option>None</option>
+                         <option>Standard</option>
+                         <option>Superior</option>
+                     </select>              
+                </div>
+            </div>
+            <div class="box notes" id="noteContainer">
+                <label>Notes:</label>
+                <p id="note">{{currentArmor.notes}}</p>
+                <button id="editNotes" (click)="editNotes()">Edit Notes</button>
+                <div class="notesForm" *ngIf="addNotes">
+                    <input type="text" #notesInput value="{{currentArmor.notes}}">
+                    <button (click)="updateNotes(notesInput.value)">Save Notes</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="currentSet">
+        <form action="">
+            <h3>Change Current Armor</h3>
+            <select name="armorSelection" #armorNames value="selected" (change)="getName(armorNames.value)">
+                <option>Select an Armor to Add</option>
+                <option>Custom Armor</option>
+                <option *ngFor="let armor of armorArray">{{armor.name}}</option>
+            </select>
+        </form>
+    </div>
+    <button (click)="toggleCurrent()">Edit Current Armor</button>
+    <button (click)="saveArmor()">Save Armor</button>
+</section>
+

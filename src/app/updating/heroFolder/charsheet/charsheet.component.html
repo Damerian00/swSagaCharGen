@@ -79,7 +79,7 @@
                     </div>
                     <span>/</span>
                     <div class="box">
-                        <label>Total</label>
+                        <label>Total:</label>
                         <p>{{maxHp}}</p>
                     </div>
                 </div>
@@ -92,12 +92,12 @@
                     <span>=</span>
                     <label>Defense</label>
                     <select id="defense_type" value="selected" #dmgThOption (change)="calcDT(dmgThOption.value)">
-                        <option>Reflex Defense</option>
                         <option>Fortitude Defense</option>
+                        <option>Reflex Defense</option>
                         <option>Will Defense</option>
                     </select>
                     <label>Misc.</label>
-                    <input class = "smallBox" type="number" min="0">
+                    <input class = "smallBox" name="dtMisc" #dtMisc id="dtMisc" type="number" (change)="setDTMisc(dtMisc.value)">
                 </div>
                 <div class="reductions">
                     <div>
@@ -144,8 +144,8 @@
                             <h6>Destiny Points</h6>              
                     </div>
                     <div class="box">
-                            <input class="smallBox" type="number" min="0">
-                            <p>1</p>                   
+                            <input class="smallBox" type="number" min="0" placeholder="{{forcePoints}}">
+                            <p class="smallBox">{{forceDice}}</p>
                             <input class="smallBox" type="number" min="0">                   
                     </div>
                     <div class="box">
@@ -154,25 +154,27 @@
                         <h6>Dak Side Points</h6>
                     </div>
                     <div class="box">
-                        <p>1</p>
+                        <p>{{BAB}}</p>
                         <p>6</p>
                         <input class="smallBox" type="number" min="0">
                     </div>    
                         <h6>Grapple</h6>       
-                    <div class="box">
-                            <p class="numbs">1</p>       
-                            <p>=</p>
                         <div class="box">
                             <label>Mod</label>
-                            <select id="grapMod_type colm">
-                                <option value= "STR">STR</option>
-                                <option value="DEX">DEX</option>
+                            <label>Misc</label>
+                        </div>
+                    <div class="box">
+                            <p class="numbs">{{grapple}}</p>       
+                            <p>=</p>
+                        <div class="box">
+                            <select value="selected" #grappleOption (change)="calcGrapple(grappleOption.value)">
+                                <option value= "Strength">STR</option>
+                                <option value="Dexterity">DEX</option>
                             </select>
                         </div>
                             <p>+</p>
-                        <div class="box">
-                            <p>Misc</p>
-                           <input class="smallBox" type="number">
+                        <div class="box">  
+                           <input class="smallBox" type="number" name="grptMisc" #grpMisc id="grpMisc" (change)="setGrappleMisc(grpMisc.value)">
                         </div>
                             
                     </div>
@@ -186,7 +188,7 @@
                 <defenses [heroLevel]="heroLevel" (defenses)="updateDefenses($event)" ></defenses>
             </div> 
             <div class="box">
-                <h6>Armor</h6>
+                <armor></armor>
             </div>
             <div class="box">
                 <h6>Attacks</h6>
@@ -269,6 +271,6 @@
 </section>
 <ng-template #reminder>
   
-    <h4>In order to generate the correct character sheet please select a file from the pulldown.</h4>
+    <h4>In order to generate the correct character sheet please select a file from the pulldown. If there is no pulldown then you will need to create a hero first.</h4>
    
 </ng-template>

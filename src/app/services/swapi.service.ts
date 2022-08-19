@@ -26,5 +26,17 @@ swApitUrl: string = "https://swsagaapi.herokuapp.com/"
   getTalentTree(): Observable<any> {
     return this.http.get(this.swApitUrl + 'talenttree');
   }
+  getArmors(): Observable<any> {
+    return this.http.get(this.swApitUrl + 'armors');
+  }
+  getMelees(): Observable<any> {
+    return this.http.get(this.swApitUrl + 'melees');
+  }
+  getRanged(): Observable<any> {
+    return this.http.get(this.swApitUrl + 'ranger');
+  }
+  getEquip(): Observable<any> {
+    return this.http.get(this.swApitUrl + 'equipment');
+  }
 
 }

@@ -26,6 +26,7 @@ export class DefensesComponent implements OnInit {
   traits: any;
   abModOptions = this.heroservice.abModOptions;
   heroDefenses: any = [{"name": "Reflex Defense", "total": 10, "default" : "Dexterity", "class": 0, "misc" : 0},{"name": "Fortitude Defense", "total": 10, "default" : "Constitution","class": 0, "misc" : 0},{"name": "Will Defense", "total": 10, "default" : "Wisdom", "class": 0, "misc" : 0}]
+ 
   constructor(private heroservice: HeroService) { }
 
   ngOnInit(): void {
