@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'armor',
@@ -8,7 +9,7 @@ import { SwapiService } from 'src/app/services/swapi.service';
 })
 export class ArmorComponent implements OnInit {
 
-  constructor(private swapi : SwapiService) { }
+  constructor(private swapi : SwapiService, private fb : FormBuilder) { }
 @Output () savedArmor: EventEmitter <any> = new EventEmitter <any> ();
 currentSet: boolean = false;
 armorObj: object = {
@@ -25,10 +26,19 @@ armorObj: object = {
   helmet : "None",
   notes : "None",
 };
+armorTypes: string[] = ["Light Armor", "Medium Armor", "Heavy Armor"] 
 currentArmor: any;
 armorArray: any;
 addNotes: boolean = false;
+createCustom: boolean = false;
+customFormArmor : FormGroup = this.fb.group({
+  name: '',
+  reflex: 0,
+  fort: 0,
+  dex: 0,
+  type: '',
 
+})
 
 
 
@@ -42,17 +52,12 @@ this.swapi.getArmors().subscribe(payload => {
 })
     this.currentArmor = Object.assign(this.armorObj);    
 
-  
-
-
-
   }
   removeShields(){
    let shields = ["Energy Shields, Light","Energy Shields, Heavy","Energy Shields, Medium"]
    for (let i =0; i<this.armorArray.length; i++){
       if (shields.includes(this.armorArray[i].name)){
         this.armorArray.splice(i,1);
-        console.log("removed:",i)
       }
    } 
    let index = this.armorArray.findIndex((el: any)=> el.id == 6);
@@ -76,7 +81,7 @@ getName(name: string){
   if(name == "Select an Armor to Add"){
     return;
   }else if (name == "Custom Armor"){
-    this.addCustomArmor();
+    this.toggleCustForm();
     return;
   }else{
     const index = this.armorArray.findIndex((el:any) => el.name == name);
@@ -84,8 +89,25 @@ getName(name: string){
     return;
   }
 }
-addCustomArmor(){
-  console.log("lets make some armor");
+toggleCustForm(){
+  this.createCustom = !this.createCustom;
+}
+saveCustArmor(){
+console.log("the custom aromor",this.customFormArmor.value);
+this.toggleCustForm();
+this.currentArmor.armor_name = this.customFormArmor.value.name;
+this.currentArmor.ref_def_bonus = this.customFormArmor.value.reflex;
+this.currentArmor.fort_def_bonus = this.customFormArmor.value.fort;
+this.currentArmor.max_def_bonus = this.customFormArmor.value.dex;
+this.currentArmor.armor_type = this.customFormArmor.value.type;
+}
+selectType(event :any){
+  let val = event.target.value.split(':');
+  let newVal = val[1].substring(1);
+  // console.log("the type",event.target.value, val, newVal)
+  this.customFormArmor.patchValue({
+    type: newVal
+  });
 }
 assignSelectedArmor(armor : any){
   console.log("I got dis:" , armor);

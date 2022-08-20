@@ -75,6 +75,21 @@
             </select>
         </form>
     </div>
+    <form *ngIf="createCustom" [formGroup]="customFormArmor" (ngSubmit)="saveCustArmor()">
+        <label>Armor Name:</label>
+        <input type="text" formControlName="name" #armName>
+        <label>Reflex Defense Bonus</label>
+        <input type="number" min="0" formControlName="reflex" #reflex>
+        <label>Fortitude Defense Bonus</label>
+        <input type="number" min="0" formControlName="fort" #fort>
+        <label>Max Dex Bonus</label>
+        <input type="number" min="0" formControlName="dex" #dex>
+        <select name="armor_tyoe" id="armor_type" (change)="selectType($event)" formControlName="type" #type>
+            <option *ngFor="let type of armorTypes" [ngValue]="type">{{type}}</option>
+        </select>
+        <button type="submit">Add Armor</button>
+        <button (click)="toggleCustForm()">Cancel</button>
+    </form>
     <button (click)="toggleCurrent()">Edit Current Armor</button>
     <button (click)="saveArmor()">Save Armor</button>
 </section>
