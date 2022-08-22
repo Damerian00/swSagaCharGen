@@ -88,19 +88,48 @@
             <option>Ranged</option>
             <option>Custom</option>
         </select>
-        <aside *ngIf="notCustom">
+        <aside *ngIf="notCustom else yesCustom">
             <select #weaponName value="selected" >
                 <option>Select a Weapon</option>
                 <option *ngFor="let name of currentSelectionNamesArray">{{name}}</option>
             </select>
             <button (click)="createWeaponIndex(weaponName.value)">Add Weapon</button>
         </aside>
-        <ng-template #yesCustom>
-            
-        </ng-template>
+
     </div>
 
     <div class="btns">
         <button (click)="createNewWeapon()" class="add" [disabled]="wepEdit">+Add</button>
     </div>
 </section>
+<ng-template #yesCustom>
+    <div class="box wep-edit">
+        <div class="tb">
+            <label>Weapon Name</label>
+            <input type="text" name="custName" #cusName required>
+        </div>
+        <div class="tb">
+            <label>Weapon Type:</label>
+            <select name="cusWepType" #cusWepType required>
+                <option *ngFor="let wep of customWepType">{{wep}}</option>
+            </select>
+        </div>
+        <div class="tb">
+            <label>Damage Die</label>
+            <input type="text" #cusDie required>
+        </div>
+        <div class="tb">
+            <label>Damage Type:</label>
+            <input type="text" #cusDmgType required>
+        </div>
+        <div class="vtb">
+            <label>Attack Notes</label>
+            <input type="text" #cusAttNotes required>
+        </div>
+        <div class="tb">
+            <label>Weapon Notes</label>
+            <input type="text" #cusWepNotes required>
+        </div>
+        <button (click)="saveCusWep(cusName.value, cusWepType.value, cusDie.value,cusDmgType.value, cusAttNotes.value, cusWepNotes.value)">Save Custom Weapon</button>
+    </div>
+</ng-template>

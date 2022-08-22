@@ -19,6 +19,8 @@ currentSelectionNamesArray: Array<string> = [];
 notCustom: boolean = false;
 currentType: string = '';
 weaponsArray: Array<any> = [];
+customWepType: Array<string> = ["Advanced Melee Weapons", "Heavy Weapons","Lightsabers","Pistols","Rifles","Grenades","Simple Weapons (Melee)","Simple Weapons (Ranged)","Exotic Weapons (Melee)","Exotic Weapons (Ranged)"]
+
 attackMods: Array<string> = ["default","STR","DEX","CHA"];
 damageMods: Array<string> = ["None","STR","STRx2","DEX","DEXx2","CHA","CHAx2"];
 dmgTimesTwo: boolean = false;
@@ -60,16 +62,18 @@ wepEditIndex: number = 0;
 
 createNewWeapon(){
   this.createWepForm = true;
+  this.notCustom = true;
 }
 selectWeaponType(selection: any){
   // console.log("Weapon Selection:",selection)
   if (selection == "Select Type"){
+    this.notCustom = true;
     return;
   }else if (selection == "Melee"){
     this.addMeleeWep();
   }else if (selection == "Ranged"){
     this.addRangedWep();
-  }else{
+  }else if (selection == "Custom"){
     this.createCustomWep();
   }
 }
@@ -98,6 +102,53 @@ addRangedWep(){
 createCustomWep(){
   this.notCustom = false;
   console.log("Custom Chosen")
+}
+saveCusWep(name: any, type: any, die:any, dmgType: any, attNotes:any, wepNotes: any){
+  if (name == "" || die == "" || dmgType == ""){
+    return;
+  }
+  let meleeArr = ["Advanced Melee Weapons","Lightsabers","Simple Weapons (Melee)","Exotic Weapons (Melee)"]
+  let newWep;
+  if (meleeArr.includes(type)){
+    newWep = {
+      name: name,
+      wep_type: type,
+      stun: "",
+      stun_dmmg: die,
+      die: die,
+      attack_total: 0,
+      attack_misc: 0,
+      attack_mod: 'Strength',
+      dmg_type: dmgType,
+      damage_total: 0,
+      damage_misc: 0,
+      damage_mod: 'Strength',
+      att_notes: attNotes,
+      wep_notes: wepNotes,
+    };
+  }else{
+    newWep = {
+      name: name,
+      wep_type: type,
+      stun: "",
+      stun_dmmg: die,
+      die: die,
+      attack_total: 0,
+      attack_misc: 0,
+      attack_mod: 'Dexterity',
+      dmg_type: dmgType,
+      damage_total: 0,
+      damage_misc: 0,
+      damage_mod: 'None',
+      att_notes: attNotes,
+      wep_notes: wepNotes,
+    };
+  }
+  this.weaponsArray.push(newWep);
+  console.log("cus to create", name,type,die,dmgType,attNotes,wepNotes);
+  this.notCustom = true;
+  this.runCalcs();
+  this.createWepForm = false;
 }
 clearArray(arr: Array<string>){
   while(arr.length){
