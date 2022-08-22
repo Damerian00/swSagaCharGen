@@ -1,0 +1,92 @@
+.attacks{
+    margin: 0 1vw;
+}
+.tb{
+    margin:1rem;
+}
+.headers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    label{
+        text-align: center;
+    }
+}
+.box{
+    display: flex;
+    flex:1;   
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5vh 1vw;
+    p, input{
+        margin:0 1rem;
+        text-align: center;
+        width: 3vw;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(20, 20, 20, 0.05);
+        padding: 6px 1rem;
+    }
+    .name{
+        color: black;
+        background-color: rgba(20, 20, 20, 0.05);
+        border-radius: 5px;
+        width: 100%;
+        text-align: left;
+        padding: 0.25rem;
+        margin: 1vh 1px;
+   
+    }
+    .shadow{
+         margin:0 1rem;
+         text-align: justify;
+         border: none;
+         border-radius: 5px;
+         background-color: rgb(151, 150, 150);
+         padding: 6px 5rem 6px 1rem;   
+     }
+    label{
+        
+    }
+    select{
+        
+    }
+    span{
+        margin: 0 1rem;
+    }
+
+}
+.notes{
+    border:1px solid black;
+    align-items: flex-start;
+    background-color:rgba(20, 20, 20, 0.05);
+    justify-content: flex-start;
+    p{
+        min-height: 5vh;
+        padding:0 5px;
+        border:none;
+        background-color: transparent;
+        margin:0;
+        width:100%;
+        text-align: start;
+    }
+    label{
+        width:3vw;
+    }
+}
+.blank{
+    visibility: hidden;
+}
+.wep-edit{
+    flex-direction: column;
+    position: absolute;
+    z-index: 90;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 20px 5px;
+    bottom:-60vh;
+    left:50vw;
+    input{
+        width:auto;
+    }
+}

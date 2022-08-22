@@ -38,7 +38,7 @@
                 </div>
                 <div class="stat-box">
                     <label>Improved Armor Def.</label>
-                    <input type="checkbox" #improveArmorDef id="improveArmorDef" name="improveArmorDef" value="improveArmorDef" (change)="checkTheBoxes($event)" >
+                    <input type="checkbox" #improveArmorDef id="improveArmorDef" name="improveArmorDef" value="improveArmorDef" (change)="checkTheBoxes($event)" [disabled]="currentArmor.def == false" >
                 </div>
                 <div class="stat-box">
                     <label>Armor Type</label>

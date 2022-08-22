@@ -1,0 +1,106 @@
+<h6>Attacks</h6>
+<section class="attacks">
+    <div *ngIf="weaponsArray.length >= 1" claa="tb">
+        <div *ngFor="let weapon of weaponsArray; let i=index" class="tb">
+            <div class="box">        
+                <p class="name">{{weapon.name}}</p>
+                <p class="name">{{weapon.wep_type}}</p>
+            </div>
+            <div class="box">
+                <label class="shadow">Attack</label>
+                <p class="blank">Hidden</p>
+                <span class="blank">=</span>
+                <div class="headers">
+                    <label>Total</label>
+                    <p>{{weapon.attack_total}}</p>
+                </div>
+                <span>|</span>
+                <div class="headers">
+                    <label>Mod</label>
+                    <select id="{{i}}" (change)="collectAttackMod(i, $event)">
+                        <option *ngFor="let mod of attackMods">{{mod}}</option>       
+                    </select>
+                </div>
+                <span>+</span>
+                <div class="headers">
+                    <label>Misc</label>
+                    <input class="smallBox" type="number" min="0" #attackMisc (change)="collectAttackmisc(i, attackMisc.value)" >
+                </div>
+            </div>
+             <div class="box">
+                <label class="shadow">Damage</label>
+                <p>{{weapon.die}}</p>
+                <span>+</span>
+                <p>{{weapon.damage_total}}</p>
+                <span>|</span>
+                <select id="damageMod_type" (change)="collectDamageMod(i, $event)">
+                    <option *ngFor="let mod of damageMods">{{mod}}</option>
+                </select>
+                <span>+</span>
+                <input class="smallBox" type="number" min="0" #dmgMisc (change)="collectDamageMisc(i, dmgMisc.value)">
+             </div>   
+            <div class="box">
+                <h5>Critical Info</h5>
+                <label>Range</label>
+                <input class="smallBox" type="number" min="0" >
+                <label>Multiplier</label>
+                <input class="smallBox" type="number" min="0">
+            </div>
+            <div class="box notes">
+                <label id="attack_notes" name="attack_notes" rows="2" cols="100" placeholder="Attack Notes">Attack Notes:</label>
+                    <p>{{weapon.att_notes}}</p>           
+            </div>
+            <div class="box notes">
+                <label id="weapon_notes" name="weapon_notes" rows="2" cols="100" placeholder="Weapon Notes">Weapon Notes:</label> 
+                    <p>{{weapon.wep_notes}}</p>      
+            </div> 
+            <div class="box wep-btns">
+                <button (click)="editForm(i)" [disabled]="wepEdit">Modify</button>
+                <button (click)="deleteWeapon(i)" [disabled]="wepEdit">Delete</button>
+            </div>
+        </div>
+        <div *ngIf="wepEdit" class="box wep-edit">
+            <h2>Edit: {{weaponsArray[wepEditIndex].name}}</h2>
+            <div class="tb">
+                <label>Weapon Damage: </label>
+                <span>(ex: 1d6)</span>
+                <input type="text" #editWepDie name="editWepDie">
+            </div>
+            <div class="tb">
+                <label>Attack Notes:</label>
+                <input type="text" #editAttNotes name="editAttNotes">
+            </div>
+            <div class="tb">
+                <label>Weapon Notes: </label>
+                <input type="text" #editWepNotes name="editWepNotes">
+            </div>
+            <div class="tb">
+                <button (click)="editWeapon(editWepDie.value, editAttNotes.value, editWepNotes.value)">Save Changes</button>
+                <button (click)="editForm(-1000)">Cancel</button>
+            </div>
+        </div> 
+    </div> 
+    <div *ngIf="createWepForm">
+        <label>Weapon Type: </label>
+        <select #weaponType value="selected" (change)="selectWeaponType(weaponType.value)">
+            <option>Select Type</option>
+            <option>Melee</option>
+            <option>Ranged</option>
+            <option>Custom</option>
+        </select>
+        <aside *ngIf="notCustom">
+            <select #weaponName value="selected" >
+                <option>Select a Weapon</option>
+                <option *ngFor="let name of currentSelectionNamesArray">{{name}}</option>
+            </select>
+            <button (click)="createWeaponIndex(weaponName.value)">Add Weapon</button>
+        </aside>
+        <ng-template #yesCustom>
+            
+        </ng-template>
+    </div>
+
+    <div class="btns">
+        <button (click)="createNewWeapon()" class="add" [disabled]="wepEdit">+Add</button>
+    </div>
+</section>

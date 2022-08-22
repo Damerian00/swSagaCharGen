@@ -1,4 +1,5 @@
 .armorContainer{
+    margin: 1vh 3vw;
 }
 .armor{
     display: flex;
@@ -62,9 +63,11 @@ input{
 .notes{
     border:1px solid black;
     align-items: flex-start;
+    background-color:rgba(20, 20, 20, 0.05);
     p{
         min-height: 5vh;
         padding:0 5px;
+        margin:0;
     }
 
 }
