@@ -48,7 +48,7 @@ createCustom: boolean = false;
 ngOnInit(): void {
   this.swapi.getArmors().subscribe(payload => {
   this.armorArray = payload;
-  console.log("Armors:", this.armorArray);
+  // console.log("Armors:", this.armorArray);
 
   this.armorArray.sort(this.sortNames("name"));
   this.removeShields();

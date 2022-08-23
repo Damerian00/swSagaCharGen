@@ -19,6 +19,7 @@ import { UpdateSkillsComponent } from './updating/heroFolder/skills/skills.compo
 import { DefensesComponent } from './updating/heroFolder/defenses/defenses.component';
 import { ArmorComponent } from './updating/heroFolder/armor/armor.component';
 import { AttacksComponent } from './updating/heroFolder/attacks/attacks.component';
+import { EquipmentComponent } from './updating/heroFolder/equipment/equipment.component';
 
 
 
@@ -39,7 +40,8 @@ import { AttacksComponent } from './updating/heroFolder/attacks/attacks.componen
     UpdateSkillsComponent,
     DefensesComponent,
     ArmorComponent,
-    AttacksComponent
+    AttacksComponent,
+    EquipmentComponent
    
   ],
   imports: [

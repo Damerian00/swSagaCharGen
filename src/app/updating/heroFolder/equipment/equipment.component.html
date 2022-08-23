@@ -1,0 +1,61 @@
+<h6>Equipment</h6>
+<section class="equipment">
+    <div class="box">
+        <div class="tb name">
+            <Label>Item Name</Label>
+            <p class="name">Item</p>
+        </div>
+        <div class="tb">
+            <label>Carry</label>
+            <input type="checkbox" name="carryBox" #carryBox>
+        </div>
+        <div class="tb">
+            <label>QTY</label>
+            <input type="number" #qty (change)="adjustQty(qty.value)">
+        </div>
+        <div class="tb">
+            <label>Weight</label>
+            <p>.5kg</p>
+        </div>
+        <div class="tb">
+            <label>Total Weight</label>
+            <p>1kg</p>
+        </div>
+        <div class="tb">
+            <label>Base Cost</label>
+            <p>10</p>
+        </div>
+        <div class="tb">
+            <label>Total Cost</label>
+            <p>20</p>
+        </div>
+    </div>
+    <button (click)="toggleEquipTable()">+Add</button>
+</section>
+<aside class="equipTable" *ngIf="showEqTable">
+    <label>Choose which Type of Equipment</label>    
+    <select name="equipType" #equipType (change)="createSubCatArr(equipType.value)">
+            <option>Select which Type</option>
+            <option *ngFor="let type of eqTypeArr">{{type}}</option>
+        </select>
+    <label>Choose Category</label>
+    <select name="subCat" #subCat (change)="loadFilteredList(subCat.value)">
+        <option>Select Category</option>
+        <option *ngFor="let cat of equipSubCats">{{cat}}</option>
+    </select>
+    <select *ngIf="filteredEquipArr.length != 0" name="filterList" #filterList (change)="loadEquipTable(filterList.value)">
+        <option *ngFor="let item of filteredEquipArr">{{item.name}}</option>
+    </select>     
+    <table *ngIf="tableType == 'armor'">
+        <h1>Hi from Armor Table</h1>
+    </table>
+    <table *ngIf="tableType == 'melee'">
+        <h1>Hi from Melee Table</h1>
+    </table>
+    <table *ngIf="tableType == 'ranged'">
+        <h1>Hi from Ranged Table</h1> 
+    </table>
+    <table *ngIf="tableType == 'equipment'">
+        <h1>Hi from Equipment Table</h1> 
+    </table>
+</aside>

@@ -36,13 +36,13 @@ wepEdit: boolean = false;
   ngOnInit(): void {
     this.swapi.getMelees().subscribe(payload => {
       this.meleeWeaponsArr = payload;
-      console.log("melee:", this.meleeWeaponsArr);
+      // console.log("melee:", this.meleeWeaponsArr);
     
       this.meleeWeaponsArr.sort(this.sortNames("name"));
     })
     this.swapi.getRanged().subscribe(payload => {
       this.rangedWeaponsArr = payload;
-      console.log("ranged:", this.rangedWeaponsArr);
+      // console.log("ranged:", this.rangedWeaponsArr);
     
       this.rangedWeaponsArr.sort(this.sortNames("name"));
     })
