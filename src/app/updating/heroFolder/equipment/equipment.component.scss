@@ -4,11 +4,43 @@
 .equipTable{
     position: fixed;
     top:0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
         
     table{
-        
+        border:3px solid black;
+        background-color: rgb(175, 121, 68, 0.7);
+        margin: 1vh 1vw;
+       .tb{
+        margin:1rem;
+        padding: 10px;
+        text-align: center;
+       }
+        .tb:first-child{
+            color:black;
+            background-color: rgb(207, 164, 100);
+        }
+        .tb:nth-child(2){
+            border-left:2px solid black;
+            background-color: rgb(207, 164, 100);
+        }
+        .desc{
+            color:black;
+            hr{
+                color: black;
+            }
+            p{
+                width:15vw;
+            }
+        }
     }
+        .box{
 
+            label{
+                margin-right: 5px;
+            }
+        }
 
 }
 .tb{
@@ -50,4 +82,8 @@
         margin: 1vh 1px;
    } 
 
+}
+.split-view{
+    align-items: flex-start;
+    
 }

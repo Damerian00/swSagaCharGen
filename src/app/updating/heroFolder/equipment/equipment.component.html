@@ -43,19 +43,119 @@
         <option>Select Category</option>
         <option *ngFor="let cat of equipSubCats">{{cat}}</option>
     </select>
+    <label>Choose Item to Add</label>
     <select *ngIf="filteredEquipArr.length != 0" name="filterList" #filterList (change)="loadEquipTable(filterList.value)">
+        <option>Select an item</option>
         <option *ngFor="let item of filteredEquipArr">{{item.name}}</option>
     </select>     
-    <table *ngIf="tableType == 'armor'">
-        <h1>Hi from Armor Table</h1>
+    <table *ngIf="(tableObj | keyvalue)?.length">
+        <div class="box split-view">
+            <div class="tb">
+                <label>Name: </label>
+                <h3>{{tableObj.name}}</h3>
+                <div *ngIf="tableObj.desc != ''" class="tb desc">
+                    <hr>
+                    <p>{{tableObj.desc}}</p>
+                </div>
+            </div>
+            <div class="tb">
+                <label>Stats: </label>
+                    <div class="box">
+                        <label>Cost: </label>
+                        <p>{{tableObj.cost}}</p>
+                    </div>
+                    <div *ngIf="tableObj.weight != ''" class="box">
+                        <label>Weight: </label>
+                        <p>{{tableObj.weight}}</p>
+                    </div>
+                    <div *ngIf="tableObj.avail.length !=0" class="box">
+                        <label>Availability: </label>
+                        <p *ngFor="let av of tableObj.avail">{{av}}</p>
+                    </div>
+                    <div *ngIf="tableObj.attr.length !=0" class="box">
+                        <label>Attributes: </label>
+                        <p *ngFor="let at of tableObj.attr">{{at}}</p>
+                    </div>
+                    <div *ngIf="tableType == 'armor'" class="tb">
+                        <div class="box">
+                            <label>Armor Bonus: </label>
+                            <p>{{tableObj.armor.armBonus}}</p>
+                        </div>
+                        <div class="box">
+                            <label>Max Dexterity Bonus: </label>
+                            <p>{{tableObj.armor.dexBonus}}</p>
+                        </div>
+                        <div class="box">
+                            <label>Equipment Bonus: </label>
+                            <p>{{tableObj.armor.fortBonus}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="tableType == 'melee'" class="tb">
+                        <div class="box">
+                            <label>Damage: </label>
+                            <p>{{tableObj.melee.damage}}</p>
+                        </div>
+                        <div class="box">
+                            <label>Damage Type: </label>
+                                <p *ngFor="let dgt of tableObj.melee.damage_type">{{dgt}}</p>
+                        </div>
+                        <div class="box">
+                            <label>Size: </label>
+                            <p>{{tableObj.melee.size}}</p>
+                        </div>
+                        <div class="box">
+                            <label>Stun: </label>
+                            <p>{{tableObj.melee.stun}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="tableType == 'ranged'" class="tb">
+                        <div class="box">
+                            <label>Damage: </label>
+                            <p>{{tableObj.ranged.damage}}</p>
+                        </div>
+                        <div class="box">
+                            <label>Damage Type: </label>
+                                <p *ngFor="let dgt of tableObj.ranged.damage_type">{{dgt}}</p>
+                        </div>
+                        <div class="box">
+                            <label>Size: </label>
+                            <p>{{tableObj.ranged.size}}</p>
+                        </div>
+                        <div class="box">
+                            <label>Stun: </label>
+                            <p>{{tableObj.ranged.stun}}</p>
+                        </div>
+                        <div *ngIf="tableObj.ranged.rof.length != 0" class="box">
+                            <label>ROF: </label>
+                            <p *ngFor="let rate of tableObj.ranged.rof">{{rate}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="tableType == 'equipment'" class="tb">
+                        <div *ngIf="tableObj.equipment.size != ''" class="box">
+                            <label>Size: </label>
+                            <p>{{tableObj.equipment.size}}</p>
+                        </div> 
+                        <div *ngIf="tableObj.equipment.damage != ''" class="box">
+                            <label>Damage: </label>
+                            <p>{{tableObj.equipment.damage}}</p>
+                        </div>
+                        <div *ngIf="tableObj.equipment.damage != ''" class="box">
+                            <label>Explosive Type: </label>
+                            <p>{{tableObj.equipment.explosive_type}}</p>
+                        </div>
+                        <div *ngIf="tableObj.equipment.upgrade_type != ''" class="box">
+                            <label>Upgrade Type: </label>
+                            <p>{{tableObj.equipment.upgrade_type}}</p>
+                        </div>
+                        <div *ngIf="tableObj.equipment.surgery_cost != ''" class="box">
+                            <label>Costs for Surgery: </label>
+                            <p>{{tableObj.equipment.surgery_cost}}</p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+      
     </table>
-    <table *ngIf="tableType == 'melee'">
-        <h1>Hi from Melee Table</h1>
-    </table>
-    <table *ngIf="tableType == 'ranged'">
-        <h1>Hi from Ranged Table</h1> 
-    </table>
-    <table *ngIf="tableType == 'equipment'">
-        <h1>Hi from Equipment Table</h1> 
-    </table>
+    <button (click)="addItem()">Add {{tableObj.name}} to Inventory</button>
+    <button (click)="toggleEquipTable()">Cancel</button>
 </aside>

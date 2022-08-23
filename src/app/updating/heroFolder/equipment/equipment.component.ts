@@ -15,7 +15,7 @@ rangedWeaponsArr: any;
 armorsArr: any;
 equipmentArr: any;
 filteredEquipArr: Array<any> = [];
-heroEquipments: Array<any> = [];
+inventoryArr: Array<any> = [];
 eqTypeArr: Array <string> = ["Armor", "Melee", "Ranged", "Equipment"];
 equipSubCats: Array <string> = [];
 // strings
@@ -23,6 +23,7 @@ selectedType: string = "";
 // booleans
 showEqTable: boolean = false;
 tableType: string = "";
+tableObj: any = {};
 
   constructor(private swapi : SwapiService, private heroservice : HeroService) { }
   ngOnInit(): void {
@@ -162,53 +163,96 @@ loadFilteredList(selection: any){
 }
 
 loadEquipTable(selection : any){ 
+  if (selection == "Select an item"){
+    return;
+  }
   let equipObj;
-  //  = {
-  //   name: '',
-  //   cost: '',
-  //   weight: '',
-  //   type: '',
-  //   armor: {
-  //     armBonus : '',
-  //     dexBonus : '',
-  //     fortBonus : '',
-  //   },
-  //   melee: {
-  //     damage: '',
-  //     damage_type: [],
-  //     size: '',
-  //     stun: [],
-  //   },
-  //   ranged: {
-  //     damage: '',
-  //     damage_type: [],
-  //     size: '',
-  //     stun: [],
-  //     rof: [],
-  //   },
-  //   equipment : {
-  //     desc: '',
-
-  //   },
-  //   avail: [],
-  //   attr: [],
-  // }
+ let index = this.filteredEquipArr.findIndex((el:any) => el.name == selection);
 switch (this.selectedType) {
   case "Armor":
    this.tableType = "armor";
+   equipObj = {
+    name: this.filteredEquipArr[index].name,
+    cost: this.filteredEquipArr[index].cost,
+    weight: this.filteredEquipArr[index].weight,
+    type: this.filteredEquipArr[index].a_type,
+    armor: {
+      armBonus : this.filteredEquipArr[index].armorBonus,
+      dexBonus : this.filteredEquipArr[index].dexBonus,
+      fortBonus : this.filteredEquipArr[index].epuipBonus,
+    },
+    avail: this.filteredEquipArr[index].availability,
+    attr: this.filteredEquipArr[index].attributes,
+    desc: '',
+  } 
   break;
   case "Melee":
     this.tableType = "melee";
+    equipObj = {
+      name: this.filteredEquipArr[index].name,
+      cost: this.filteredEquipArr[index].cost,
+      weight: this.filteredEquipArr[index].weight,
+      type: this.filteredEquipArr[index].w_type,
+      melee: {
+        damage: this.filteredEquipArr[index].damage,
+        damage_type: this.filteredEquipArr[index].d_type,
+        size: this.filteredEquipArr[index].size,
+        stun: this.filteredEquipArr[index].stun_setting[0].toLowerCase(),
+      },
+      avail: this.filteredEquipArr[index].availability,
+      attr: [],
+      desc: '',
+    } 
   break;
   case "Ranged":
     this.tableType = "ranged";
+    equipObj = {
+      name: this.filteredEquipArr[index].name,
+      cost: this.filteredEquipArr[index].cost,
+      weight: this.filteredEquipArr[index].weight,
+      type: this.filteredEquipArr[index].w_type,
+      ranged: {
+        damage: this.filteredEquipArr[index].damage,
+        damage_type: this.filteredEquipArr[index].d_type,
+        size: this.filteredEquipArr[index].size,
+        stun: this.filteredEquipArr[index].stun_setting[0].toLowerCase(),
+        rof: this.filteredEquipArr[index].rof,
+      },
+      avail: this.filteredEquipArr[index].availability,
+      attr: this.filteredEquipArr[index].attributes,
+      desc: '',
+    } 
   break;
   case "Equipment":
     this.tableType = "equipment";
+    equipObj = {
+      name: this.filteredEquipArr[index].name,
+      cost: this.filteredEquipArr[index].cost,
+      weight: this.filteredEquipArr[index].weight,
+      type: this.filteredEquipArr[index].equip_type.type,
+      equipment: {
+        size : (this.filteredEquipArr[index].equip_type.size == undefined)? '': this.filteredEquipArr[index].equip_type.size,
+        damage : (this.filteredEquipArr[index].equip_type.damage == undefined)? '': this.filteredEquipArr[index].equip_type.damage,
+        explosive_type : (this.filteredEquipArr[index].equip_type.explosive_type == undefined)? '': this.filteredEquipArr[index].equip_type.explosive_type,
+        upgrade_type : (this.filteredEquipArr[index].equip_type.upgrade_type == undefined)? '': this.filteredEquipArr[index].equip_type.upgrade_type,
+        surgery_cost : (this.filteredEquipArr[index].equip_type.surgeryCost == undefined)? '': this.filteredEquipArr[index].equip_type.surgeryCost,
+      },
+      avail: (this.filteredEquipArr[index].equip_type.availability == undefined)? [] : [this.filteredEquipArr[index].equip_type.availability],
+      attr: this.filteredEquipArr[index].attributes,
+      desc: this.filteredEquipArr[index].description,
+    }
   break;
 }
 
+this.tableObj = equipObj;
 }
+
+addItem(){
+  this.inventoryArr.push(this.tableObj);
+  this.toggleEquipTable();
+  console.log("the inventorypArray",this.inventoryArr)
+}
+
 
 
 
