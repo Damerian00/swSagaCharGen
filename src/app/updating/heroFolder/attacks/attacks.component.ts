@@ -11,23 +11,28 @@ import { HeroService } from '../../services/hero.service';
   styleUrls: ['./attacks.component.scss']
 })
 export class AttacksComponent implements OnInit {
+//variables
+//strings
+currentType: string = '';
+//arrays
 meleeWeaponsArr: any;
 rangedWeaponsArr: any;
-createWepForm: boolean = false;
 weaponOptionsArray: any;
 currentSelectionNamesArray: Array<string> = [];
-notCustom: boolean = false;
-currentType: string = '';
 weaponsArray: Array<any> = [];
 customWepType: Array<string> = ["Advanced Melee Weapons", "Heavy Weapons","Lightsabers","Pistols","Rifles","Grenades","Simple Weapons (Melee)","Simple Weapons (Ranged)","Exotic Weapons (Melee)","Exotic Weapons (Ranged)"]
 
 attackMods: Array<string> = ["default","STR","DEX","CHA"];
 damageMods: Array<string> = ["None","STR","STRx2","DEX","DEXx2","CHA","CHAx2"];
+//numbers
+wepEditIndex: number = 0;
+//boolean
+notCustom: boolean = false;
+createWepForm: boolean = false;
 dmgTimesTwo: boolean = false;
 wepEdit: boolean = false;
-wepEditIndex: number = 0;
   constructor(private swapi : SwapiService, private heroservice: HeroService) { }
-
+// accesses service to pull in data from api and save it to 2 different arrays
   ngOnInit(): void {
     this.swapi.getMelees().subscribe(payload => {
       this.meleeWeaponsArr = payload;
@@ -44,7 +49,7 @@ wepEditIndex: number = 0;
 
 
   }
-
+// sorts the arrays by name
   sortNames(prop: string){
     let sortOrder = 1;
     if(prop[0] === "-") {
@@ -59,11 +64,12 @@ wepEditIndex: number = 0;
         }        
     }
   }
-
+// a taoggle for adding weapons form
 createNewWeapon(){
   this.createWepForm = true;
   this.notCustom = true;
 }
+// takes the user input to load the correct data
 selectWeaponType(selection: any){
   // console.log("Weapon Selection:",selection)
   if (selection == "Select Type"){
@@ -77,6 +83,7 @@ selectWeaponType(selection: any){
     this.createCustomWep();
   }
 }
+// uses melee array to load in the names for the select
 addMeleeWep(){
   this.notCustom = true;
   if (this.currentSelectionNamesArray.length != 0){
@@ -86,8 +93,9 @@ addMeleeWep(){
     this.currentSelectionNamesArray.push(el.name);
   }); 
   this.currentType = "melee";
-  console.log("Melee Chosen", this.currentSelectionNamesArray);
+  // console.log("Melee Chosen", this.currentSelectionNamesArray);
 }
+// uses ranged array to load in names of weapons in this category
 addRangedWep(){
   this.notCustom = true
   if (this.currentSelectionNamesArray.length != 0){
@@ -97,16 +105,20 @@ addRangedWep(){
     this.currentSelectionNamesArray.push(el.name);
   });
   this.currentType = "ranged";  
-  console.log("Ranged Chosen", this.currentSelectionNamesArray);
+  // console.log("Ranged Chosen", this.currentSelectionNamesArray);
 }
+// reveals the custom weapon form
 createCustomWep(){
   this.notCustom = false;
-  console.log("Custom Chosen")
+  // console.log("Custom Chosen")
 }
+// saves input from user to create a new custom weapon that is added to the weapons array
 saveCusWep(name: any, type: any, die:any, dmgType: any, attNotes:any, wepNotes: any){
+// if form is left blank doesn't do anything.
   if (name == "" || die == "" || dmgType == ""){
     return;
   }
+  // checks if the selection was made is melee then creates weapon obj based on melee
   let meleeArr = ["Advanced Melee Weapons","Lightsabers","Simple Weapons (Melee)","Exotic Weapons (Melee)"]
   let newWep;
   if (meleeArr.includes(type)){
@@ -126,6 +138,7 @@ saveCusWep(name: any, type: any, die:any, dmgType: any, attNotes:any, wepNotes: 
       att_notes: attNotes,
       wep_notes: wepNotes,
     };
+  // creates weapon object based on ranged
   }else{
     newWep = {
       name: name,
@@ -150,12 +163,14 @@ saveCusWep(name: any, type: any, die:any, dmgType: any, attNotes:any, wepNotes: 
   this.runCalcs();
   this.createWepForm = false;
 }
+// function to clear out arrays
 clearArray(arr: Array<string>){
   while(arr.length){
     arr.pop();
   }
 
 }
+// creates weapon obj based on selection of melee or ranged then it's added to the weapons array
 createWeaponIndex(selection: any){
   // console.log("the selection", selection);
 if (selection == "Select a Weapon"){
@@ -207,6 +222,7 @@ let newWep;
   this.runCalcs();
   this.createWepForm = false;
 }
+// calculates attack total and damage total for all weapons in the weapons array.
 runCalcs(){
  for (let i=0; i<this.weaponsArray.length; i++){
   this.calcAttack(i);
@@ -214,6 +230,7 @@ runCalcs(){
   console.log(this.weaponsArray);
  }
 }
+//collects users selection and assigns it to that object as the modifier for attacks
 collectAttackMod(index: number, mod: any ){
   let carryOverMod = mod.target.value;
   let actualMod = '';
@@ -241,7 +258,9 @@ collectAttackMod(index: number, mod: any ){
   //this.weaponsArray[index].attack_mod = mod;
 
 }
+//collects user input and assigns it to the weapon objects damage modifier if x2 is chosen then it intiates a *2 variable
 collectDamageMod(index: number, mod: any){
+  this.dmgTimesTwo = false;
   let ttArr =  ["STRx2","DEXx2","CHAx2"]
   let carryOverMod = mod.target.value;
   let actualMod = '';
@@ -275,47 +294,58 @@ collectDamageMod(index: number, mod: any){
   this.runCalcs();
   //this.weaponsArray[index].damage_mod = mod
 }
+// collects user input to update the misc value for this wep objects attack
 collectAttackmisc(index: number, misc: any){
   // console.log("collect Att misc:", index, misc)
   this.weaponsArray[index].attack_misc = parseInt(misc);
   this.runCalcs();
 }
+// collects user input to update the misc value for this wep objects damage
 collectDamageMisc(index: number, misc:any){
   // console.log("collect Att misc:", index, misc)
   this.weaponsArray[index].damage_misc = parseInt(misc);
   this.runCalcs();
 }
+// calculates the attack total based on the weapon objects values
 calcAttack(index: number){
   let halfLevel = Math.floor(this.heroservice.getHeroLevel()/2)
   let mod = this.heroservice.getAbilityModifier();
   this.weaponsArray[index].attack_total = this.weaponsArray[index].attack_misc + mod[this.weaponsArray[index].attack_mod] + halfLevel;
 }
+//calculates the danmage total based on weapon objects values
 calcDamage(index: number){
   let halfLevel = Math.floor(this.heroservice.getHeroLevel()/2)
   let mod = this.heroservice.getAbilityModifier();
   if (this.dmgTimesTwo == true){
     this.weaponsArray[index].damage_total = this.weaponsArray[index].damage_misc + (mod[this.weaponsArray[index].damage_mod]* 2) + halfLevel;
   }else{
-    this.weaponsArray[index].damage_total = this.weaponsArray[index].damage_misc + (this.weaponsArray[index].damage_mod == "None")? 0: mod[this.weaponsArray[index].damage_mod] + halfLevel;
+    this.weaponsArray[index].damage_total = this.weaponsArray[index].damage_misc + ((this.weaponsArray[index].damage_mod == "None")? 0: mod[this.weaponsArray[index].damage_mod]) + halfLevel;
   }
-  this.dmgTimesTwo = false;
+  console.log("calc dmg", "misc",this.weaponsArray[index].damage_misc, "mod",(this.weaponsArray[index].damage_mod == "None")? 0: mod[this.weaponsArray[index].damage_mod] + halfLevel, halfLevel)
 }
+// deletes the weapon from the weapon array based on user selection
 deleteWeapon(index: number){
   console.log("deleting:", this.weaponsArray[index])
   this.weaponsArray.splice(index,1);
 }
+//opens edit form so user can change saved weapon data also saves index to be used later
 editForm(index: number){
   if (index == -1000){
     this.wepEdit = false;
   }else{
     this.wepEdit = true;
     this.wepEditIndex = index;
-    console.log("modify this wep", this.weaponsArray[index]);
+    // console.log("modify this wep", this.weaponsArray[index]);
   }
 
 }
-editWeapon(die: any, att: any, wep: any){
-console.log("to edit" ,die,att,wep)
+// takes user input to change the weapon at the previously saved index to what the user selects from the form.
+editWeapon(name: any,die: any, att: any, wep: any){
+if (name == ""){
+  return;
+}
+console.log("to edit", name,die,att,wep)
+this.weaponsArray[this.wepEditIndex].name = name;
 this.weaponsArray[this.wepEditIndex].die = die;
 this.weaponsArray[this.wepEditIndex].att_notes = att;
 this.weaponsArray[this.wepEditIndex].wep_notes = wep;

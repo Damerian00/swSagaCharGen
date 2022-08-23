@@ -42,9 +42,9 @@
             <div class="box">
                 <h5>Critical Info</h5>
                 <label>Range</label>
-                <input class="smallBox" type="number" min="0" >
+                <input class="smallBox" type="number" min="0" #rangeNumber>
                 <label>Multiplier</label>
-                <input class="smallBox" type="number" min="0">
+                <input class="smallBox" type="number" min="0" #multNumber>
             </div>
             <div class="box notes">
                 <label id="attack_notes" name="attack_notes" rows="2" cols="100" placeholder="Attack Notes">Attack Notes:</label>
@@ -62,20 +62,24 @@
         <div *ngIf="wepEdit" class="box wep-edit">
             <h2>Edit: {{weaponsArray[wepEditIndex].name}}</h2>
             <div class="tb">
+                <label>Weapon Name: </label>
+                <input type="text" #editWepName name="editWepName" value="{{weaponsArray[wepEditIndex].name}}">
+            </div>
+            <div class="tb">
                 <label>Weapon Damage: </label>
                 <span>(ex: 1d6)</span>
-                <input type="text" #editWepDie name="editWepDie">
+                <input type="text" #editWepDie name="editWepDie" value="{{weaponsArray[wepEditIndex].die}}">
             </div>
             <div class="tb">
                 <label>Attack Notes:</label>
-                <input type="text" #editAttNotes name="editAttNotes">
+                <input type="text" #editAttNotes name="editAttNotes" value="{{weaponsArray[wepEditIndex].att_notes}}">
             </div>
             <div class="tb">
                 <label>Weapon Notes: </label>
-                <input type="text" #editWepNotes name="editWepNotes">
+                <input type="text" #editWepNotes name="editWepNotes" value="{{weaponsArray[wepEditIndex].wep_notes}}">
             </div>
             <div class="tb">
-                <button (click)="editWeapon(editWepDie.value, editAttNotes.value, editWepNotes.value)">Save Changes</button>
+                <button (click)="editWeapon(editWepName.value,editWepDie.value, editAttNotes.value, editWepNotes.value)">Save Changes</button>
                 <button (click)="editForm(-1000)">Cancel</button>
             </div>
         </div> 

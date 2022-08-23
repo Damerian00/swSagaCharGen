@@ -10,8 +10,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ArmorComponent implements OnInit {
 
   constructor(private swapi : SwapiService, private fb : FormBuilder) { }
+  // variables
 @Output () savedArmor: EventEmitter <any> = new EventEmitter <any> ();
 currentSet: boolean = false;
+// Templates
 armorObj: object = {
   armor_name : "None",
   worn : false,
@@ -26,11 +28,6 @@ armorObj: object = {
   helmet : "None",
   notes : "None",
 };
-armorTypes: string[] = ["Light Armor", "Medium Armor", "Heavy Armor"] 
-currentArmor: any;
-armorArray: any;
-addNotes: boolean = false;
-createCustom: boolean = false;
 customFormArmor : FormGroup = this.fb.group({
   name: '',
   reflex: 0,
@@ -38,12 +35,18 @@ customFormArmor : FormGroup = this.fb.group({
   dex: 0,
   type: '',
 
-})
+});
+// arrays
+armorTypes: string[] = ["Light Armor", "Medium Armor", "Heavy Armor"] 
+// etc..
+currentArmor: any;
+armorArray: any;
+addNotes: boolean = false;
+createCustom: boolean = false;
 
-
-
-  ngOnInit(): void {
-this.swapi.getArmors().subscribe(payload => {
+// recievs data from api and sets it to the arrmor array
+ngOnInit(): void {
+  this.swapi.getArmors().subscribe(payload => {
   this.armorArray = payload;
   console.log("Armors:", this.armorArray);
 
@@ -53,6 +56,7 @@ this.swapi.getArmors().subscribe(payload => {
     this.currentArmor = Object.assign(this.armorObj);    
 
   }
+// removes shields from the array
   removeShields(){
    let shields = ["Energy Shields, Light","Energy Shields, Heavy","Energy Shields, Medium"]
    for (let i =0; i<this.armorArray.length; i++){
@@ -63,6 +67,7 @@ this.swapi.getArmors().subscribe(payload => {
    let index = this.armorArray.findIndex((el: any)=> el.id == 6);
    this.armorArray.splice(index,1);
   }
+// sorts names alphabetically
   sortNames(prop: string){
     let sortOrder = 1;
     if(prop[0] === "-") {
@@ -77,6 +82,7 @@ this.swapi.getArmors().subscribe(payload => {
         }        
     }
   }
+// checks user selection to run functions based on them
 getName(name: string){
   if(name == "Select an Armor to Add"){
     return;
@@ -89,9 +95,11 @@ getName(name: string){
     return;
   }
 }
+// a toggle
 toggleCustForm(){
   this.createCustom = !this.createCustom;
 }
+// saves user choices as the current armor
 saveCustArmor(){
 console.log("the custom aromor",this.customFormArmor.value);
 this.toggleCustForm();
@@ -101,6 +109,7 @@ this.currentArmor.fort_def_bonus = this.customFormArmor.value.fort;
 this.currentArmor.max_def_bonus = this.customFormArmor.value.dex;
 this.currentArmor.armor_type = this.customFormArmor.value.type;
 }
+// patch to change the type chosen for the armor
 selectType(event :any){
   let val = event.target.value.split(':');
   let newVal = val[1].substring(1);
@@ -109,6 +118,8 @@ selectType(event :any){
     type: newVal
   });
 }
+
+// 
 assignSelectedArmor(armor : any){
   console.log("I got dis:" , armor);
   this.currentArmor.armor_name = armor.name,
@@ -122,6 +133,7 @@ assignSelectedArmor(armor : any){
 toggleCurrent(){
   this.currentSet = !this.currentSet;
 }
+// removes any added symbols like +
 removeSymbol(str: string){
   // console.log(str);
   if (str == "-"){
@@ -131,16 +143,20 @@ removeSymbol(str: string){
   }
   
 }
+// allows user to change notes or add neww notes to the armor
 updateNotes(text : string){
   this.currentArmor.notes = text;
   this.addNotes = !this.addNotes;
 }
+//toggle
 editNotes(){
   this.addNotes = !this.addNotes;
 }
+// edits value in current Armor
 changeHelmetPackage(value: string){
   this.currentArmor.helmet = value;
 }
+// checks which checkboxes were selected
 checkTheBoxes(event: any){
   console.log("the event", event.target);
   let check = event.target.checked
@@ -169,6 +185,7 @@ checkTheBoxes(event: any){
   console.log(this.currentArmor)
 
 }
+//saves user information for this hero and emits it using an emitter
 saveArmor(){
   console.log(this.currentArmor);
 
