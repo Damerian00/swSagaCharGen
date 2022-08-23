@@ -71,7 +71,7 @@ tableObj: any = {};
 
 
 adjustQty(index: number, qty: any){
-  console.log("the qty",index,qty)
+  // console.log("the qty",index,qty)
   this.inventoryArr[index].qty = parseInt(qty);
   this.calcTotals();
 }
@@ -307,7 +307,13 @@ addItem(){
   // console.log("the inventorypArray",this.inventoryArr)
 }
 
-
+deleteItem(index: number){
+  if (index == 0){
+    this.inventoryArr.shift();
+  }
+  this.inventoryArr.splice(1, index);
+  console.log("delete item", index, this.inventoryArr);
+}
 
 
 }
