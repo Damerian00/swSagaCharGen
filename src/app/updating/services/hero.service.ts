@@ -9,12 +9,17 @@ export class HeroService {
 
 invokeConditions = new EventEmitter ();
 invokeSkills = new EventEmitter ();
+invokeAttacks = new EventEmitter ();
 enforceConditions(){
   this.invokeConditions.emit();
 }
 recalcSkills(){
   this.invokeSkills.emit();
 }
+reCalcAttacks(){
+  this.invokeAttacks.emit();
+}
+
 
 private abilities:any;
 private skills: any;

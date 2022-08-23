@@ -46,8 +46,13 @@ wepEdit: boolean = false;
     
       this.rangedWeaponsArr.sort(this.sortNames("name"));
     })
-
-
+  //subscribes to hero service function to update attacks whenever hero level changes
+    this.heroservice.invokeAttacks.subscribe(()=> {
+      this.runCalcs();
+    })
+    this.heroservice.invokeConditions.subscribe(() => {   
+      this.runCalcs();
+    });
   }
 // sorts the arrays by name
   sortNames(prop: string){
@@ -308,18 +313,20 @@ collectDamageMisc(index: number, misc:any){
 }
 // calculates the attack total based on the weapon objects values
 calcAttack(index: number){
+  let condition = this.heroservice.getCondition();
   let halfLevel = Math.floor(this.heroservice.getHeroLevel()/2)
   let mod = this.heroservice.getAbilityModifier();
-  this.weaponsArray[index].attack_total = this.weaponsArray[index].attack_misc + mod[this.weaponsArray[index].attack_mod] + halfLevel;
+  this.weaponsArray[index].attack_total = this.weaponsArray[index].attack_misc + mod[this.weaponsArray[index].attack_mod] + halfLevel + condition;
 }
 //calculates the danmage total based on weapon objects values
 calcDamage(index: number){
+  let condition = this.heroservice.getCondition();
   let halfLevel = Math.floor(this.heroservice.getHeroLevel()/2)
   let mod = this.heroservice.getAbilityModifier();
   if (this.dmgTimesTwo == true){
-    this.weaponsArray[index].damage_total = this.weaponsArray[index].damage_misc + (mod[this.weaponsArray[index].damage_mod]* 2) + halfLevel;
+    this.weaponsArray[index].damage_total = this.weaponsArray[index].damage_misc + (mod[this.weaponsArray[index].damage_mod]* 2) + halfLevel + condition;
   }else{
-    this.weaponsArray[index].damage_total = this.weaponsArray[index].damage_misc + ((this.weaponsArray[index].damage_mod == "None")? 0: mod[this.weaponsArray[index].damage_mod]) + halfLevel;
+    this.weaponsArray[index].damage_total = this.weaponsArray[index].damage_misc + ((this.weaponsArray[index].damage_mod == "None")? 0: mod[this.weaponsArray[index].damage_mod]) + halfLevel + condition;
   }
   console.log("calc dmg", "misc",this.weaponsArray[index].damage_misc, "mod",(this.weaponsArray[index].damage_mod == "None")? 0: mod[this.weaponsArray[index].damage_mod] + halfLevel, halfLevel)
 }

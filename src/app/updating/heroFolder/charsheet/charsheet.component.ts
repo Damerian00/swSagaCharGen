@@ -108,6 +108,7 @@ calcHeroLevel(num: any){
   }
   this.heroservice.setHeroLevel(this.heroLevel);
   this.heroservice.recalcSkills();
+  this.heroservice.reCalcAttacks();
   this.forcePoints = 5 + Math.floor((this.heroLevel/2));
 }
 
