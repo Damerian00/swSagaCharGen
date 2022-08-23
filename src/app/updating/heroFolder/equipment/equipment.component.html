@@ -1,9 +1,9 @@
 <h6>Equipment</h6>
 <section class="equipment">
-    <div class="box">
+    <div *ngFor="let item of inventoryArr let i = index" class="box">
         <div class="tb name">
             <Label>Item Name</Label>
-            <p class="name">Item</p>
+            <p class="name">{{item.name}}</p>
         </div>
         <div class="tb">
             <label>Carry</label>
@@ -11,23 +11,23 @@
         </div>
         <div class="tb">
             <label>QTY</label>
-            <input type="number" #qty (change)="adjustQty(qty.value)">
+            <input type="number" #qty (change)="adjustQty(i, qty.value)" value="{{item.qty}}" min="1">
         </div>
         <div class="tb">
             <label>Weight</label>
-            <p>.5kg</p>
+            <p>{{item.weight}}</p>
         </div>
         <div class="tb">
             <label>Total Weight</label>
-            <p>1kg</p>
+            <p>{{item.total_weight}}</p>
         </div>
         <div class="tb">
             <label>Base Cost</label>
-            <p>10</p>
+            <p>{{item.cost}}</p>
         </div>
         <div class="tb">
             <label>Total Cost</label>
-            <p>20</p>
+            <p>{{item.total_cost}}</p>
         </div>
     </div>
     <button (click)="toggleEquipTable()">+Add</button>

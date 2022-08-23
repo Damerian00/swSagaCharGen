@@ -70,8 +70,33 @@ tableObj: any = {};
   }
 
 
-adjustQty(qty: any){
-  console.log("the qty",qty)
+adjustQty(index: number, qty: any){
+  console.log("the qty",index,qty)
+  this.inventoryArr[index].qty = parseInt(qty);
+  this.calcTotals();
+}
+calcTotals(){
+  for (let i = 0; i<this.inventoryArr.length;i++){
+    this.calcCost(i);
+    this.calcWeight(i);
+  }
+}
+calcWeight(index: number){
+  if (this.inventoryArr[index].weight == "" || this.inventoryArr[index].weight == "-"){
+    this.inventoryArr[index].total_weight = "-"
+    return;
+  }
+  if (this.inventoryArr[index].name == "Universal Energy Cage"){
+    this.inventoryArr[index].total_weight = `${3*this.inventoryArr[index].qty} Tons`
+    return;
+  }
+  let split = this.inventoryArr[index].weight.split('')
+  let stop = split.findIndex((el:any)=> el == "k" || el == "t");
+  let weight = parseInt(this.inventoryArr[index].weight.substring(0, stop));
+  this.inventoryArr[index].total_weight = `${weight * this.inventoryArr[index].qty}kg`
+}
+calcCost(index: number){
+  this.inventoryArr[index].total_cost = this.inventoryArr[index].cost * this.inventoryArr[index].qty;
 }
 
 toggleEquipTable(){
@@ -174,7 +199,7 @@ switch (this.selectedType) {
    equipObj = {
     name: this.filteredEquipArr[index].name,
     cost: this.filteredEquipArr[index].cost,
-    weight: this.filteredEquipArr[index].weight,
+    weight: (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
     type: this.filteredEquipArr[index].a_type,
     armor: {
       armBonus : this.filteredEquipArr[index].armorBonus,
@@ -184,6 +209,9 @@ switch (this.selectedType) {
     avail: this.filteredEquipArr[index].availability,
     attr: this.filteredEquipArr[index].attributes,
     desc: '',
+    qty: 0,
+    total_weight : (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
+    total_cost: this.filteredEquipArr[index].cost,
   } 
   break;
   case "Melee":
@@ -191,7 +219,7 @@ switch (this.selectedType) {
     equipObj = {
       name: this.filteredEquipArr[index].name,
       cost: this.filteredEquipArr[index].cost,
-      weight: this.filteredEquipArr[index].weight,
+      weight: (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
       type: this.filteredEquipArr[index].w_type,
       melee: {
         damage: this.filteredEquipArr[index].damage,
@@ -202,6 +230,9 @@ switch (this.selectedType) {
       avail: this.filteredEquipArr[index].availability,
       attr: [],
       desc: '',
+      qty: 0,
+      total_weight : (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
+      total_cost: this.filteredEquipArr[index].cost,
     } 
   break;
   case "Ranged":
@@ -209,7 +240,7 @@ switch (this.selectedType) {
     equipObj = {
       name: this.filteredEquipArr[index].name,
       cost: this.filteredEquipArr[index].cost,
-      weight: this.filteredEquipArr[index].weight,
+      weight: (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
       type: this.filteredEquipArr[index].w_type,
       ranged: {
         damage: this.filteredEquipArr[index].damage,
@@ -221,6 +252,9 @@ switch (this.selectedType) {
       avail: this.filteredEquipArr[index].availability,
       attr: this.filteredEquipArr[index].attributes,
       desc: '',
+      qty : 0,
+      total_weight : (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
+      total_cost: this.filteredEquipArr[index].cost,
     } 
   break;
   case "Equipment":
@@ -228,7 +262,7 @@ switch (this.selectedType) {
     equipObj = {
       name: this.filteredEquipArr[index].name,
       cost: this.filteredEquipArr[index].cost,
-      weight: this.filteredEquipArr[index].weight,
+      weight: (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
       type: this.filteredEquipArr[index].equip_type.type,
       equipment: {
         size : (this.filteredEquipArr[index].equip_type.size == undefined)? '': this.filteredEquipArr[index].equip_type.size,
@@ -240,6 +274,9 @@ switch (this.selectedType) {
       avail: (this.filteredEquipArr[index].equip_type.availability == undefined)? [] : [this.filteredEquipArr[index].equip_type.availability],
       attr: this.filteredEquipArr[index].attributes,
       desc: this.filteredEquipArr[index].description,
+      qty: 0,
+      total_weight : (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
+      total_cost: this.filteredEquipArr[index].cost,
     }
   break;
 }
@@ -248,9 +285,26 @@ this.tableObj = equipObj;
 }
 
 addItem(){
-  this.inventoryArr.push(this.tableObj);
+  console.log(this.tableObj , this.inventoryArr)
+  if (this.inventoryArr.length != 0){
+    for (let i=0; i<this.inventoryArr.length; i++){
+      if (this.tableObj.name == this.inventoryArr[i].name){
+        this.inventoryArr[i].qty += 1;
+        this.toggleEquipTable();
+        this.calcTotals();
+        return;
+      }
+  } 
+}
+    this.tableObj.carry = false;
+    this.tableObj.qty = 1;
+    this.inventoryArr.push(this.tableObj);
+    // console.log('i pushed it');
+    
+  
   this.toggleEquipTable();
-  console.log("the inventorypArray",this.inventoryArr)
+  this.calcTotals();
+  // console.log("the inventorypArray",this.inventoryArr)
 }
 
 
