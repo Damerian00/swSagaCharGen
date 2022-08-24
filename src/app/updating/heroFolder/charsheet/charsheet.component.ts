@@ -57,6 +57,7 @@ BAB: number = 1;
 grappleModSelected: string = "Strength";
 grappleMisc: number = 0;
 
+
   ngOnInit(): void {
     this.savedStorage = Object.keys(localStorage);
     // console.log(this.savedStorage);
@@ -124,7 +125,7 @@ getHero(name: string){
     this.updateStats();
     this.heroPull = true;
     this.calcDT(this.currentDtType);
-    
+   
   }
 }
 
@@ -154,6 +155,7 @@ async heroSets(){
   this.heroservice.setSpeciesTraits(this.savedHero.species.traits);
   this.heroservice.setFeatImprovements(this.savedHero.feats);
   this.heroservice.setClassBonuses(this.heroClass);
+  this.heroservice.getCarry();
 }
 async heroGets(){
   this.damageThreshold = this.heroservice.getDamageThreshold();
