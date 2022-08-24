@@ -25,6 +25,7 @@ showEqTable: boolean = false;
 tableType: string = "";
 tableObj: any = {};
 
+
   constructor(private swapi : SwapiService, private heroservice : HeroService) { }
   ngOnInit(): void {
     this.swapi.getMelees().subscribe(payload => {
@@ -72,6 +73,9 @@ tableObj: any = {};
 
 adjustQty(index: number, qty: any){
   // console.log("the qty",index,qty)
+  if (qty <= 0){
+    return
+  }
   this.inventoryArr[index].qty = parseInt(qty);
   this.calcTotals();
 }
@@ -92,8 +96,9 @@ calcWeight(index: number){
   }
   let split = this.inventoryArr[index].weight.split('')
   let stop = split.findIndex((el:any)=> el == "k" || el == "t");
-  let weight = parseInt(this.inventoryArr[index].weight.substring(0, stop));
-  this.inventoryArr[index].total_weight = `${weight * this.inventoryArr[index].qty}kg`
+  let weight = parseFloat(this.inventoryArr[index].weight.substring(0, stop));
+  // console.log("calc weight", this.inventoryArr[index].weight, weight, stop, split )
+  this.inventoryArr[index].total_weight = `${(weight * this.inventoryArr[index].qty).toFixed(2)}kg`
 }
 calcCost(index: number){
   this.inventoryArr[index].total_cost = this.inventoryArr[index].cost * this.inventoryArr[index].qty;
@@ -145,8 +150,10 @@ createSubCatArr(selection: any){
           }
         })
       break;
+      
   }
    this.selectedType = selection;
+   console.log(this.selectedType);
 }
 
 
@@ -186,7 +193,44 @@ loadFilteredList(selection: any){
   
   
 }
+createCustomItem(name: string, qty: string, type: string, weight: any, cost: string){
+  if(name == "" || type == "Select which Type" || parseInt(qty) <= 0){
+    this.toggleEquipTable();
+    return;
+  }
+  console.log("create Cust", name,qty,type,weight,cost);
+  let preps = ["a","of", "an", "by", "to", "or"]
+  let arr = name.split(" ")
+for (var i = 0; i < arr.length; i++) {
+  if (preps.includes(arr[i]) == false){
+    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+  }
 
+}
+let newQty = Number(qty)
+let newName = arr.join(" ")
+let newWeight = `${weight}kg`
+let parseWeight: any = parseFloat(weight).toFixed(2);
+let totalWeight = `${parseWeight * newQty}kg`;
+let newCost = Number(cost);
+let totalCost = newCost * newQty;
+console.log(newQty, newName, newWeight, totalWeight, newCost, totalCost);
+let equipObj = {
+  name: newName,
+  cost: newCost,
+  weight: newWeight,
+  type: type,
+  qty: newQty,
+  total_weight : totalWeight,
+  total_cost: totalCost,
+  show: false,
+  itemNotes: '',
+  showNotes: false,
+  notesDisplay: 'show',
+} 
+this.inventoryArr.push(equipObj);
+this.toggleEquipTable();
+}
 loadEquipTable(selection : any){ 
   if (selection == "Select an item"){
     return;
@@ -198,7 +242,7 @@ switch (this.selectedType) {
    this.tableType = "armor";
    equipObj = {
     name: this.filteredEquipArr[index].name,
-    cost: this.filteredEquipArr[index].cost,
+    cost: (isNaN(this.filteredEquipArr[index].cost))? 0: this.filteredEquipArr[index].cost,
     weight: (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
     type: this.filteredEquipArr[index].a_type,
     armor: {
@@ -212,13 +256,17 @@ switch (this.selectedType) {
     qty: 0,
     total_weight : (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
     total_cost: this.filteredEquipArr[index].cost,
+    show: false,
+    itemNotes: '',
+    showNotes: false,
+    notesDisplay: 'show',
   } 
   break;
   case "Melee":
     this.tableType = "melee";
     equipObj = {
       name: this.filteredEquipArr[index].name,
-      cost: this.filteredEquipArr[index].cost,
+      cost: (isNaN(this.filteredEquipArr[index].cost))? 0: this.filteredEquipArr[index].cost,
       weight: (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
       type: this.filteredEquipArr[index].w_type,
       melee: {
@@ -233,13 +281,17 @@ switch (this.selectedType) {
       qty: 0,
       total_weight : (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
       total_cost: this.filteredEquipArr[index].cost,
+      show: false,
+      itemNotes: '',
+      showNotes: false,
+      notesDisplay: 'show',
     } 
   break;
   case "Ranged":
     this.tableType = "ranged";
     equipObj = {
       name: this.filteredEquipArr[index].name,
-      cost: this.filteredEquipArr[index].cost,
+      cost: (isNaN(this.filteredEquipArr[index].cost))? 0: this.filteredEquipArr[index].cost,
       weight: (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
       type: this.filteredEquipArr[index].w_type,
       ranged: {
@@ -255,13 +307,17 @@ switch (this.selectedType) {
       qty : 0,
       total_weight : (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
       total_cost: this.filteredEquipArr[index].cost,
+      show: false,
+      itemNotes: '',
+      showNotes: false,
+      notesDisplay: 'show',
     } 
   break;
   case "Equipment":
     this.tableType = "equipment";
     equipObj = {
       name: this.filteredEquipArr[index].name,
-      cost: this.filteredEquipArr[index].cost,
+      cost: (isNaN(this.filteredEquipArr[index].cost))? 0: this.filteredEquipArr[index].cost,
       weight: (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
       type: this.filteredEquipArr[index].equip_type.type,
       equipment: {
@@ -277,6 +333,10 @@ switch (this.selectedType) {
       qty: 0,
       total_weight : (this.filteredEquipArr[index].weight == "Varies")? "": this.filteredEquipArr[index].weight,
       total_cost: this.filteredEquipArr[index].cost,
+      show: false,
+      itemNotes: '',
+      showNotes: false,
+      notesDisplay: 'show',
     }
   break;
 }
@@ -285,6 +345,9 @@ this.tableObj = equipObj;
 }
 
 addItem(){
+  if (this.tableObj.name == "" || this.tableObj.name == undefined){
+    return;
+  }
   console.log(this.tableObj , this.inventoryArr)
   if (this.inventoryArr.length != 0){
     for (let i=0; i<this.inventoryArr.length; i++){
@@ -300,8 +363,6 @@ addItem(){
     this.tableObj.qty = 1;
     this.inventoryArr.push(this.tableObj);
     // console.log('i pushed it');
-    
-  
   this.toggleEquipTable();
   this.calcTotals();
   // console.log("the inventorypArray",this.inventoryArr)
@@ -314,6 +375,40 @@ deleteItem(index: number){
   this.inventoryArr.splice(1, index);
   console.log("delete item", index, this.inventoryArr);
 }
+toggleNotes(index: number){
+  (this.inventoryArr[index].notesDisplay == "show")? this.inventoryArr[index].notesDisplay = 'hide': this.inventoryArr[index].notesDisplay = 'show';
+  this.inventoryArr[index].showNotes = !this.inventoryArr[index].showNotes;
+}
+toggleItemShow(index: number){
+  this.inventoryArr[index].show = !this.inventoryArr[index].show;
+}
+async editItem(index:number, name: string, weight: any, cost: any, notes: string){
+  console.log("edit this", index,name,weight,cost,notes)
+  let newWeight
+  if (parseFloat(weight) >= 0){
+    newWeight = `${weight}kg`
+    let parseWeight: any = parseFloat(weight).toFixed(2);
+    this.inventoryArr[index].weight = newWeight;
+    this.inventoryArr[index].total_weight = `${(parseWeight * this.inventoryArr[index].qty)}kg`
+  }
+  let preps = ["a","of", "an", "by", "to", "or"];
+  let arr:any = name.split(" ");
+for (var i = 0; i < arr.length; i++) {
+  if (preps.includes(arr[i]) == false){
+    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+  }
+
+}
+let newName: string =  await arr.join(" ") 
+await (newName != "")?this.inventoryArr[index].name = newName: "nothing";
+(parseInt(cost) >= 0)?this.inventoryArr[index].cost = parseInt(cost): "nothing";
+(notes == "")? "nothing": this.inventoryArr[index].itemNotes = notes;
+console.log(this.inventoryArr[index]);
+this.toggleItemShow(index);
+this.calcTotals();
+}
+
+
 
 
 }

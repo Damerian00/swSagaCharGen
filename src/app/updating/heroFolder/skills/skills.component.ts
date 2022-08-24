@@ -86,7 +86,7 @@ calcSkillValue(skill: string, mod:string, misc:number){
     if (this.heroSkills[i].skill_focus == true){
       f = 5
     }
-    this.heroSkills[i].skill_value = ((this.heroLevel == 1)? 1:(Math.floor(this.heroLevel/2))) + this.abilityModifier[mod] + t + f + misc + this.heroCondition;
+    this.heroSkills[i].skill_value = Math.floor(this.heroLevel/2) + this.abilityModifier[mod] + t + f + misc + this.heroCondition;
     if (skill == "Stealth"){
       this.heroSkills[i].skill_value =+ this.stealthSizeMod 
     }

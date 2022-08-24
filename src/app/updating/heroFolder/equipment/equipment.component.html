@@ -3,7 +3,10 @@
     <div *ngFor="let item of inventoryArr let i = index" class="box">
         <div class="tb name">
             <Label>Item Name</Label>
-            <p class="name">{{item.name}}</p>
+            <p class="name">{{item.name}} <span (click)="toggleNotes(i)">({{item.notesDisplay}} notes)</span></p>
+            <div *ngIf="item.showNotes" class="box notesBox">        
+                <p><label>Notes: </label>{{item.itemNotes}}</p>
+            </div>
         </div>
         <div class="tb">
             <label>Carry</label>
@@ -29,7 +32,39 @@
             <label>Total Cost</label>
             <p>{{item.total_cost}}</p>
         </div>
-        <button (click)="deleteItem(i)">Delete</button>
+        <div class="tb">
+            <div class="box">
+                <button (click)="toggleItemShow(i)">Modify</button>
+                <button (click)="deleteItem(i)">Delete</button>
+            </div>
+        </div>
+        <aside class="edit-box" *ngIf="item.show">
+            <div class="tb">
+                <div class="box">
+                    <label>Name: </label>
+                    <input type="name" #editName value="{{item.name}}">
+                </div>
+                <div class="box">
+                    <label>Weight in kg: </label>
+                    <span>(Prev Weight: {{item.weight}})</span>
+                    <input type="number" #editWeight min=".01">
+
+                </div>
+                <div class="box">
+                    <label>Cost: </label>
+                    <span>(Prev Cost: {{item.cost}})</span>
+                    <input type="number" #editCost min="0">
+                </div>
+                <div class="box">
+                    <label>Item Notes: </label>
+                    <input type="text" #editNotes value="{{item.itemNotes}}">
+                </div>
+            </div>
+            <div class="box">
+                <button (click)="editItem(i,editName.value, editWeight.value, editCost.value, editNotes.value)">Update</button>
+                <button (click)="toggleItemShow(i)">Cancel</button>
+            </div>
+        </aside>
     </div>
     <button (click)="toggleEquipTable()">+Add</button>
 </section>
@@ -38,12 +73,31 @@
     <select name="equipType" #equipType (change)="createSubCatArr(equipType.value)">
             <option>Select which Type</option>
             <option *ngFor="let type of eqTypeArr">{{type}}</option>
+            <option>Custom</option>
         </select>
-    <label>Choose Category</label>
-    <select name="subCat" #subCat (change)="loadFilteredList(subCat.value)">
-        <option>Select Category</option>
-        <option *ngFor="let cat of equipSubCats">{{cat}}</option>
-    </select>
+        <div class="cust" *ngIf="selectedType == 'Custom'" >
+            <label>Item Name: </label>
+            <input type="cusName" #cusName>
+            <label>QTY :</label>
+            <input type="number" min="1" #cusQty>
+            <label>Type of Equipment: </label>
+            <select name="cusEquipType" #cusEquipType>
+                <option>Select which Type</option>
+                <option *ngFor="let type of eqTypeArr">{{type}}</option>
+            </select>
+            <label>Weight in kg: </label>
+            <input type="number" min="0.01" #cusWeight>
+            <label>Cost: </label> 
+            <input type="number" min="0" #cusCost>
+            <button (click)="createCustomItem(cusName.value, cusQty.value, cusEquipType.value, cusWeight.value, cusCost.value)">Add Item to Inventory</button>
+        </div>
+        <div *ngIf="selectedType != 'Custom'">
+            <label >Choose Category</label>
+            <select name="subCat" #subCat (change)="loadFilteredList(subCat.value)">
+                <option>Select Category</option>
+                <option *ngFor="let cat of equipSubCats">{{cat}}</option>
+            </select>
+        </div>
     <label>Choose Item to Add</label>
     <select *ngIf="filteredEquipArr.length != 0" name="filterList" #filterList (change)="loadEquipTable(filterList.value)">
         <option>Select an item</option>
@@ -157,6 +211,6 @@
         </div>
       
     </table>
-    <button (click)="addItem()">Add {{tableObj.name}} to Inventory</button>
+    <button  *ngIf="tableObj.name != undefined" (click)="addItem()">Add {{tableObj.name}} to Inventory</button>
     <button (click)="toggleEquipTable()">Cancel</button>
 </aside>

@@ -1,6 +1,6 @@
 <h6>Attacks</h6>
 <section class="attacks">
-    <div *ngIf="weaponsArray.length >= 1" claa="tb">
+
         <div *ngFor="let weapon of weaponsArray; let i=index" class="tb">
             <div class="box">        
                 <p class="name">{{weapon.name}}</p>
@@ -83,7 +83,7 @@
                 <button (click)="editForm(-1000)">Cancel</button>
             </div>
         </div> 
-    </div> 
+
     <div *ngIf="createWepForm">
         <label>Weapon Type: </label>
         <select #weaponType value="selected" (change)="selectWeaponType(weaponType.value)">

@@ -95,7 +95,7 @@ calcHeroLevel(num: any){
     this.heroLevel = 1;
     this.nextXp = this.xpChart[1]*1000;
   }
-  (this.heroLevel == 1)? this.halfLevel = 1: this.halfLevel = Math.floor(this.heroLevel/2);
+  this.halfLevel = Math.floor(this.heroLevel/2);
   if (this.xpModalToggle == true){
     this.openModal('xp');
   }

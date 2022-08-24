@@ -79,11 +79,65 @@
        width: 100%;
         text-align: left;
         padding: 0.25rem;
-        margin: 1vh 1px;
+        margin: 1vh 1px;display: flex;
+        justify-content: space-between;
    } 
-
+   span{
+    text-align: right;
+   }
 }
 .split-view{
     align-items: flex-start;
     
 }
+.cust{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.edit-box{
+    background-color: rgba(175, 121, 68);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 2px solid black;
+    left: 10vw;
+    min-width: 20vw;
+    p{
+        width:auto;
+    }
+    .box{
+
+        label{
+            margin-right: 5px;
+        }
+       input{
+           width:100%;
+        }
+    }
+    button{
+        background-color: rgb(207, 164, 100);
+
+        &:hover{
+            background-color: rgb(175, 121, 68, 0.7);      
+        }
+    }
+    span{
+        width: 100%;
+    }
+}
+.notesBox{
+    justify-content: flex-start;
+    width: auto;
+    height: auto;
+    label{
+        font-size: .7rem;
+        margin-right: 5px;
+    }
+    p{
+        color:black;
+    }
+}
+
