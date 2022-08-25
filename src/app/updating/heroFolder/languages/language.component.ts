@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { HeroService } from "../../services/hero.service";
 
 @Component({
     selector: 'languages',
@@ -11,17 +12,26 @@ export class LanguageComponent implements OnInit {
 
 @Input() knownLanguages:Array<string> = [];
 @Input () totalLangs: number = 0;
+@Output () savedLanguages : EventEmitter <any> = new EventEmitter <any> ();
     currentLangs: number = 0;
     allLanguagesArr: Array<string> = ["Basic", "Binary", "Bocce", "Bothese", "Cerean", "Dosh", "Durese", "Ewokese", "Gamorrean", "Gunganese", "High Galactic", "Huttese", "Ithorese", "Jawa Trade Language", "Kel Dor", "Mon Calamarian","Quarrenese","Rodese","Ryl","Shyriiwook","Sullustese","Zabrak","Altirish","Anzat","Anarrese","Dromnyr","Chadra-Fan","Cheunh","Ebruchese","Killik","Kreva","Minnisiat (Trade Language)","Nikto","Rakata","Rammocate (Trade Language)","Shistavanen","Sluissese","Squibbian","Ssi-Ruuvi","Sy Bisti (Trade Language)","Tibranese","Tof","Vagaari","Verpine","Military Sign"];
-langOptions: Array<string> = [];
- showLangForm: boolean = false;
- selectionArr: Array<string> = [];
- heroLanguages: Array<string> = [];
+    langOptions: Array<string> = [];
+    showLangForm: boolean = false;
+    selectionArr: Array<string> = [];
+    heroLanguages: Array<string> = [];
+    constructor(private heroservice : HeroService) { }
     ngOnInit(): void {
         this.currentLangs = this.knownLanguages.length;
         // this.getLangOptions();
-        this.heroLanguages = [...this.knownLanguages];
+        this.resetlanguages(this.knownLanguages);
+        this.heroservice.invokeLanguages.subscribe((arr: Array<string>)=>{
+            this.resetlanguages(arr);
+        })
     }
+resetlanguages(arr: Array<string>){
+    this.heroLanguages = [...arr];
+    this.currentLangs = this.heroLanguages.length;
+}
 getLangOptions(){
     if (this.langOptions.length != 0){
         while (this.langOptions.length){
@@ -76,6 +86,7 @@ addToKnown(){
     this.currentLangs = this.heroLanguages.length;
     // console.log(this.heroLanguages)
     this.toggleAddLanguage('b');
+    this.savedLanguages.emit(this.heroLanguages);
 }
 
 

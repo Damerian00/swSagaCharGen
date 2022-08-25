@@ -138,6 +138,7 @@ getHero(name: string){
     this.calcDT(this.currentDtType);
    
   }
+  
 }
 
 async updateStats(){
@@ -154,6 +155,7 @@ async updateStats(){
   this.BAB = await this.savedHero.bab;
   this.maxHp = this.savedHero.hp;
   this.calcHeroLevel(this.currentXp);
+  this.heroservice.resetLanguages(this.speciesLanguages);
   await this.heroSets();
   await this.heroGets();
   
@@ -166,11 +168,13 @@ async heroSets(){
   this.heroservice.setFeatImprovements(this.savedHero.feats);
   this.heroservice.setClassBonuses(this.heroClass);
   this.heroservice.getCarry();
+   
 }
 async heroGets(){
   this.damageThreshold = this.heroservice.getDamageThreshold();
   this.abilityMod = await this.heroservice.getAbilityModifier();
   this.calcGrapple("Strength");
+  
   this.calcLangsAllowed();
   // console.log('the absMods', this.abilityMod)
 }

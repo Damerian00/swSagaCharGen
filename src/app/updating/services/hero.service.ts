@@ -12,6 +12,7 @@ invokeSkills = new EventEmitter ();
 invokeAttacks = new EventEmitter ();
 invokeCarry = new EventEmitter();
 invokeCarryCalcs = new EventEmitter();
+invokeLanguages = new EventEmitter();
 enforceConditions(){
   this.invokeConditions.emit();
 }
@@ -23,6 +24,9 @@ reCalcAttacks(){
 }
 getCarry(){
   this.invokeCarry.emit();
+}
+resetLanguages(arr: Array<string>){
+  this.invokeLanguages.emit(arr);
 }
 updateCarry(num: number){
 this.carryMod += num;
