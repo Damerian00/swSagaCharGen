@@ -1,0 +1,31 @@
+<h6>Languages</h6>
+<section class="language">  
+        <div class="tb">
+            <div class="box">
+                <label>Languages: </label>
+                <p>{{currentLangs}}</p>
+                <span>/</span>
+                <p>{{totalLangs}}</p>
+                <button (click)="toggleAddLanguage('a')" *ngIf="currentLangs < totalLangs">Add Languages</button>
+            </div>   
+        <div class="lang-box box">
+            <div *ngFor="let lang of heroLanguages let i = index" class="box">
+                <div class="box">
+                    <p>{{lang}}</p>
+                    <span (click)="removeLanguage(i)">remove {{lang}}</span>
+                </div>
+            </div>
+        </div>   
+    </div>
+    <aside *ngIf="showLangForm" class="lang-table">
+        <select #langSelector value="selected" (change)="addToSelection(langSelector.value)">
+            <option>Select a Language to add</option>
+            <option *ngFor="let lngOpt of langOptions">{{lngOpt}}</option>
+        </select>
+        <div *ngFor="let selected of selectionArr let i = index" class="box">
+            <p>{{selected}}</p>
+            <button (click)="removeFromSelection(i)">Remove {{selected}}</button>
+        </div>
+        <button (click)="addToKnown()">Save Languages</button>
+    </aside>
+</section>

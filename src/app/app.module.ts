@@ -21,6 +21,7 @@ import { ArmorComponent } from './updating/heroFolder/armor/armor.component';
 import { AttacksComponent } from './updating/heroFolder/attacks/attacks.component';
 import { EquipmentComponent } from './updating/heroFolder/equipment/equipment.component';
 import { EncumbranceComponent } from './updating/heroFolder/encumbrance/encumbrance.component';
+import { LanguageComponent } from './updating/heroFolder/languages/language.component';
 
 
 
@@ -43,7 +44,8 @@ import { EncumbranceComponent } from './updating/heroFolder/encumbrance/encumbra
     ArmorComponent,
     AttacksComponent,
     EquipmentComponent,
-    EncumbranceComponent
+    EncumbranceComponent,
+    LanguageComponent,
    
   ],
   imports: [

@@ -1,0 +1,49 @@
+.language{
+    color:black;
+}
+
+
+.tb{
+    margin:1rem;
+}
+
+.box{
+    display: flex;
+    flex:1;   
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5vh 1vw;
+    p, input{
+        text-align: center;
+        background-color: rgba(20, 20, 20, 0.05);
+        padding: 6px 1rem;
+        margin: 0 1rem;
+    }
+   label{
+    color:black;
+   }
+   span{
+    font-size: 2rem;
+    margin: 0 1rem;
+   }
+}
+.lang-box{
+    min-width: 40vw;
+    justify-content: space-evenly;
+    width: auto;
+    flex-wrap: wrap;
+    p{
+        margin:0;
+    }
+    span{
+        color: grey;
+        font-size: .7rem;
+        font-style: italic;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .box{
+        justify-content: center;
+    }
+}

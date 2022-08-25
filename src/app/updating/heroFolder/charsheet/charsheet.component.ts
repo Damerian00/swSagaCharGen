@@ -56,7 +56,8 @@ grapple: number = 0;
 BAB: number = 1;
 grappleModSelected: string = "Strength";
 grappleMisc: number = 0;
-
+langsAllowed: number = 0;
+savedLanguages: Array <string> = [];
 
   ngOnInit(): void {
     this.savedStorage = Object.keys(localStorage);
@@ -112,7 +113,17 @@ calcHeroLevel(num: any){
   this.heroservice.reCalcAttacks();
   this.forcePoints = 5 + Math.floor((this.heroLevel/2));
 }
-
+async calcLangsAllowed(){
+  let int = this.heroservice.getAbilityModifier()["Intelligence"];
+  let feats = this.savedHero.feats;
+  for (let i=0; i<feats.length; i++){
+    (feats[i] == "Linguist")? int += 1: "nothing";
+  }
+  let knownLangs = await this.speciesLanguages.length + this.savedLanguages.length;
+  (knownLangs >= int)? this.langsAllowed = knownLangs: this.langsAllowed = int;
+   
+  // console.log ("the stats for lang", int, this.speciesLanguages, this.langsAllowed);
+}
 getHero(name: string){
   let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
   let hero = this.savedStorage[index];
@@ -146,7 +157,6 @@ async updateStats(){
   await this.heroSets();
   await this.heroGets();
   
-  
 }
 async heroSets(){
   this.heroservice.setAbilitites(this.savedHero.abilities)
@@ -161,6 +171,7 @@ async heroGets(){
   this.damageThreshold = this.heroservice.getDamageThreshold();
   this.abilityMod = await this.heroservice.getAbilityModifier();
   this.calcGrapple("Strength");
+  this.calcLangsAllowed();
   // console.log('the absMods', this.abilityMod)
 }
 updateHero(){ 
@@ -172,6 +183,7 @@ updateDefenses(defObj: any){
   this.reflexDefense = defObj[0].total;
   this.fortitudeDefense = defObj[1].total;
   this.willDefense = defObj[2].total;
+  this.calcDT(this.currentDtType);
 }
 updateCondition(num: number){
   this.heroCondition = num;

@@ -212,10 +212,7 @@
         </div>
         <div class="tb">
             <div class="box">
-                <h6>Languages</h6>
-                <div class="white-board">
-                    <p *ngFor="let lang of speciesLanguages">{{lang}}</p>
-                </div>
+               <languages [knownLanguages]="speciesLanguages" [totalLangs]="langsAllowed"></languages>
             </div>
             <div class="box">
                 <h6>Experience</h6>
