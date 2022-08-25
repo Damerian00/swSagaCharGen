@@ -11,6 +11,7 @@ invokeConditions = new EventEmitter ();
 invokeSkills = new EventEmitter ();
 invokeAttacks = new EventEmitter ();
 invokeCarry = new EventEmitter();
+invokeCarryCalcs = new EventEmitter();
 enforceConditions(){
   this.invokeConditions.emit();
 }
@@ -23,7 +24,11 @@ reCalcAttacks(){
 getCarry(){
   this.invokeCarry.emit();
 }
-
+updateCarry(num: number){
+this.carryMod += num;
+  this.invokeCarryCalcs.emit();
+}
+private carryMod: number = 0;
 private abilities:any;
 private skills: any;
 public abModOptions: Array<string> = ["Strength","Dexterity","Constitution","Intelligence","Wisdom","Charisma",];
@@ -76,7 +81,9 @@ getAbilityModifier(){
 setSkills(skillArr: Array <any>){
   this.skills = skillArr;
 }
-
+getCarryMod(){
+  return this.carryMod;
+}
 getSkills(){
   return this.skills;
 }

@@ -43,7 +43,10 @@ export class EncumbranceComponent implements OnInit {
     this.heroservice.invokeCarry.subscribe(()=> {
       this.getMaxCarry();
     });
-
+    this.heroservice.invokeCarryCalcs.subscribe(()=> {
+      this.calcCurrentCarry();
+    })
+    
   }
 
 async getMaxCarry(){
@@ -54,7 +57,8 @@ console.log(strScore, cl)
 }
 
 calcCurrentCarry(){
-
+let carry = this.heroservice.getCarryMod()
+this.currentCarry = carry;
 
 }
 

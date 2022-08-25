@@ -113,7 +113,19 @@ clearArray(arr: Array<any>){
   while(arr.length){
     arr.pop();
   }
+}
+modCarry(index: number){
 
+  (this.inventoryArr[index].carry == true)?this.inventoryArr[index].carry = false: this.inventoryArr[index].carry = true; 
+  let split = this.inventoryArr[index].total_weight.split('')
+  let stop = split.findIndex((el:any)=> el == "k" || el == "t");
+  let num = parseFloat(this.inventoryArr[index].total_weight.substring(0, stop))
+  if (this.inventoryArr[index].carry == true){
+    this.heroservice.updateCarry(num);
+  }else{
+    this.heroservice.updateCarry((num * -1));
+  }
+  // console.log('carry', this.inventoryArr[index].carry)
 }
 //"Armor","Melee", "Ranged", "Equipment"
 createSubCatArr(selection: any){
@@ -369,6 +381,7 @@ addItem(){
 }
 
 deleteItem(index: number){
+(this.inventoryArr[index].carry == true)?this.modCarry(index): "nothing";
   if (index == 0){
     this.inventoryArr.shift();
   }
