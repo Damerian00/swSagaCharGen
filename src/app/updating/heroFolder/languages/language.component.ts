@@ -31,6 +31,7 @@ export class LanguageComponent implements OnInit {
 resetlanguages(arr: Array<string>){
     this.heroLanguages = [...arr];
     this.currentLangs = this.heroLanguages.length;
+    this.savedLanguages.emit(this.heroLanguages)
 }
 getLangOptions(){
     if (this.langOptions.length != 0){

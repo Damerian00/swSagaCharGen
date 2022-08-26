@@ -21,7 +21,7 @@ savedHero: any;
 startingFeats: any;
 savedFeats: Array<any> = [];
 skills: any;
-speciesLanguages: any;
+heroLanguages: any;
 startingTalents: any;
 savedStorage: any;
 savedHeroes:any = [];
@@ -40,6 +40,7 @@ abilityMod: any;
 heroPull: boolean = false;
 savesPulled: boolean = false;
 xpModalToggle: boolean = false;
+callOnce : boolean = false;
 //  Numbers & Strings
 savedName: string = "";
 tempId: string = "";
@@ -74,6 +75,7 @@ credits: number = 0;
 
 //  ---End Variables---
   ngOnInit(): void {
+    
     this.savedStorage = Object.keys(localStorage);
     // console.log(this.savedStorage);
     if (this.savedStorage.length != 0){
@@ -87,6 +89,22 @@ credits: number = 0;
     }
     
   }
+  getHero(name: string){
+    
+    let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
+    let hero = this.savedStorage[index];
+    console.log("the name", name, index, hero)
+    if (hero != null){
+      this.tempId = hero;
+      let recieved: any = this.local.getHero(hero);
+      this.savedHero = JSON.parse(recieved);
+      // console.log("the hero is", name,this.savedHero)
+      this.updateStats();
+      this.heroPull = true;
+      this.calcDT(this.currentDtType);
+      
+    }
+  }
 calcHeroLevel(num: any){
   this.currentXp += parseInt(num);
   let tempNum = this.currentXp;
@@ -99,6 +117,7 @@ calcHeroLevel(num: any){
     for (let i =0; i<this.xpChart.length; i++){
       // console.log("the number to calc", tempNum, numStr, sawedNum, i, this.xpChart.length);
       if (sawedNum >= this.xpChart[i]){
+        
         // console.log("the level", i);
       }else{
         this.heroLevel = level;
@@ -133,29 +152,19 @@ async calcLangsAllowed(){
   for (let i=0; i<feats.length; i++){
     (feats[i] == "Linguist")? int += 1: "nothing";
   }
-  let knownLangs = await this.speciesLanguages.length + this.savedLanguages.length;
+  let knownLangs = await (this.savedLanguages.length == 0)?this.heroLanguages.length : this.savedLanguages.length;
   (knownLangs >= int)? this.langsAllowed = knownLangs: this.langsAllowed = int;
    
-  // console.log ("the stats for lang", int, this.speciesLanguages, this.langsAllowed);
+  // console.log ("the stats for lang", int, this.heroLanguages,this.savedLanguages, this.langsAllowed);
 }
-getHero(name: string){
-  let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
-  let hero = this.savedStorage[index];
-  console.log("the name", name, index, hero)
-  if (hero != null){
-    this.tempId = hero;
-    let recieved: any = this.local.getHero(hero);
-    this.savedHero = JSON.parse(recieved);
-    console.log("the hero is", name,this.savedHero)
-    this.updateStats();
-    this.heroPull = true;
-    this.calcDT(this.currentDtType);
-   
-  }
-  
+updatelanguages(langs : any){
+  this.savedLanguages = [...langs];
 }
 
 async updateStats(){
+  setTimeout(() => {
+    this.heroservice.loadHeroStats(this.savedHero.currentArmor, this.savedHero.equipment, this.savedHero.attacks)
+    }, 500);
   this.savedName = await this.savedHero.name;
   this.startingFeats = await this.savedHero.feats;
   this.skills = await this.savedHero.skills;
@@ -163,17 +172,19 @@ async updateStats(){
   this.heroDefenses = await this.savedHero.defenses;
   this.heroSpeciesObj = await this.savedHero.species;
   this.startingTalents = await this.savedHero.talents;
-  this.speciesLanguages = await this.heroSpeciesObj.traits.languages;
+  this.heroLanguages = await (this.savedHero.languages == undefined)?this.heroSpeciesObj.traits.languages: this.savedHero.languages;
   this.heroAbilities = await this.savedHero.abilities;
   this.size = await this.heroSpeciesObj.traits.size;
   this.BAB = await this.savedHero.bab;
+  await (this.savedHero.currentArmor == undefined)? "nothing":this.currentArmor = this.savedHero.currentArmor; 
+  await (this.savedHero.attacks == undefined || this.savedHero.attacks.length == 0)? "nothing":this.heroAttacks= [...this.savedHero.attacks];
+  (this.savedHero.equipment == undefined || this.savedHero.equipment.length == 0)? "nothing": this.heroInventory = [...this.savedHero.equipment];
   this.maxHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[1]: this.savedHero.hp;
   this.currentHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[0]: this.savedHero.hp;
   this.calcHeroLevel(this.currentXp);
-  this.heroservice.resetLanguages(this.speciesLanguages);
+  this.heroservice.resetLanguages(this.heroLanguages);
   await this.heroSets();
   await this.heroGets();
-  
 }
 async heroSets(){
   this.heroservice.setAbilitites(this.savedHero.abilities)
@@ -189,8 +200,8 @@ async heroGets(){
   this.damageThreshold = this.heroservice.getDamageThreshold();
   this.abilityMod = await this.heroservice.getAbilityModifier();
   this.calcGrapple("Strength");
-  
   this.calcLangsAllowed();
+  this.updatelanguages(this.heroLanguages);
   // console.log('the absMods', this.abilityMod)
 }
 
@@ -269,8 +280,8 @@ async calcGrapple(mod: string){
   // console.log(this.grappleModSelected, abMod);
 }
 
-updateHero(){ 
-  let heroObj = {
+async updateHero(){ 
+  let heroObj = await {
     "id"  : this.savedHero.id,
     "name" : this.savedName,
     "dt" : this.damageThreshold,
@@ -283,7 +294,7 @@ updateHero(){
     "currentArmor" : this.currentArmor,
     "attacks" : this.heroAttacks,
     "hp" : [this.currentHp,this.maxHp],
-    "heroClass" : this.heroClass,
+    "class" : this.heroClass,
     "skills" : this.skills,
     "species" : this.savedHero.species,
     "condition" : this.heroCondition,
@@ -298,8 +309,8 @@ updateHero(){
     "credits" : this.credits,
     "forcePoints" : this.forcePoints,
   }
-  // this.local.removeHero(this.tempId);
-  // this.local.saveHerotoStorage(this.tempId, this.savedHero)
+  this.local.removeHero(this.tempId);
+  this.local.saveHerotoStorage(this.tempId, heroObj)
   console.log("hero saved", this.tempId, this.savedHero, heroObj);
 }
 

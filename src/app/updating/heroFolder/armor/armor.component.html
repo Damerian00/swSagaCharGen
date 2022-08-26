@@ -3,7 +3,7 @@
     <div class="armor">
         <div class="tb">
             <div class="box">
-                <label>Armor Worn<input type="checkbox" id="aromorWorn" name="aromorWorn" value="aromorWorn" (change)="checkTheBoxes($event)"></label>
+                <label>Armor Worn<input type="checkbox" id="aromorWorn" name="aromorWorn" value="aromorWorn" (change)="checkTheBoxes($event)" [checked]="currentArmor.worn"></label>
             </div>
             <div class="box">
                 <div class="box name">
@@ -30,15 +30,15 @@
             <div class="box">
                 <div class="stat-box">
                     <label>Proficiency</label>
-                    <input type="checkbox" id="proficiency" name="proficiency" value="proficiency" (change)="checkTheBoxes($event)">
+                    <input type="checkbox" id="proficiency" name="proficiency" value="proficiency" (change)="checkTheBoxes($event)" [checked]="currentArmor.proficient">
                 </div>
                 <div class="stat-box">
                     <label>Armor Def.</label>
-                    <input type="checkbox" id="armorDef" name="armorDef" value="armorDef" (change)="checkTheBoxes($event)">
+                    <input type="checkbox" id="armorDef" name="armorDef" value="armorDef" (change)="checkTheBoxes($event)" [checked]="currentArmor.def">
                 </div>
                 <div class="stat-box">
                     <label>Improved Armor Def.</label>
-                    <input type="checkbox" #improveArmorDef id="improveArmorDef" name="improveArmorDef" value="improveArmorDef" (change)="checkTheBoxes($event)" [disabled]="currentArmor.def == false" >
+                    <input type="checkbox" #improveArmorDef id="improveArmorDef" name="improveArmorDef" value="improveArmorDef" (change)="checkTheBoxes($event)" [disabled]="currentArmor.def == false" [checked]="currentArmor.improved_def">
                 </div>
                 <div class="stat-box">
                     <label>Armor Type</label>

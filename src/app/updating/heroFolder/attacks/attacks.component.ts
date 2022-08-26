@@ -48,12 +48,16 @@ wepEdit: boolean = false;
       this.rangedWeaponsArr.sort(this.sortNames("name"));
     })
   //subscribes to hero service function to update attacks whenever hero level changes
+    this.heroservice.createAttacks.subscribe((weapons : any)=> {
+      this.importHeroAttacks(weapons);
+    })
     this.heroservice.invokeAttacks.subscribe(()=> {
       this.runCalcs();
     })
     this.heroservice.invokeConditions.subscribe(() => {   
       this.runCalcs();
     });
+    
   }
 // sorts the arrays by name
   sortNames(prop: string){
@@ -70,6 +74,9 @@ wepEdit: boolean = false;
         }        
     }
   }
+importHeroAttacks(arr: any){
+  (arr == undefined)?"nothing":this.weaponsArray = [...arr];
+}
 // a taoggle for adding weapons form
 createNewWeapon(){
   this.createWepForm = true;
@@ -233,7 +240,7 @@ runCalcs(){
  for (let i=0; i<this.weaponsArray.length; i++){
   this.calcAttack(i);
   this.calcDamage(i);
-  console.log(this.weaponsArray);
+  // console.log(this.weaponsArray);
  }
  this.savedAttacks.emit(this.weaponsArray)
 }
@@ -330,7 +337,7 @@ calcDamage(index: number){
   }else{
     this.weaponsArray[index].damage_total = this.weaponsArray[index].damage_misc + ((this.weaponsArray[index].damage_mod == "None")? 0: mod[this.weaponsArray[index].damage_mod]) + halfLevel + condition;
   }
-  console.log("calc dmg", "misc",this.weaponsArray[index].damage_misc, "mod",(this.weaponsArray[index].damage_mod == "None")? 0: mod[this.weaponsArray[index].damage_mod] + halfLevel, halfLevel)
+  // console.log("calc dmg", "misc",this.weaponsArray[index].damage_misc, "mod",(this.weaponsArray[index].damage_mod == "None")? 0: mod[this.weaponsArray[index].damage_mod] + halfLevel, halfLevel)
 }
 // deletes the weapon from the weapon array based on user selection
 deleteWeapon(index: number){

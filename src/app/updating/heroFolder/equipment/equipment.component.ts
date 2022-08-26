@@ -32,28 +32,31 @@ tableObj: any = {};
   ngOnInit(): void {
     this.swapi.getMelees().subscribe(payload => {
       this.meleeWeaponsArr = payload;
-      console.log("melee:", this.meleeWeaponsArr);
+      // console.log("melee:", this.meleeWeaponsArr);
     
       this.meleeWeaponsArr.sort(this.sortNames("name"));
     })
     this.swapi.getRanged().subscribe(payload => {
       this.rangedWeaponsArr = payload;
-      console.log("ranged:", this.rangedWeaponsArr);
+      // console.log("ranged:", this.rangedWeaponsArr);
     
       this.rangedWeaponsArr.sort(this.sortNames("name"));
     })
     this.swapi.getEquip().subscribe(payload => {
       this.equipmentArr = payload;
-      console.log("equipment:", this.equipmentArr);
+      // console.log("equipment:", this.equipmentArr);
     
       this.equipmentArr.sort(this.sortNames("name"));
     })
     this.swapi.getArmors().subscribe(payload => {
       this.armorsArr = payload;
-      console.log("Armors:", this.armorsArr);
+      // console.log("Armors:", this.armorsArr);
     
       this.armorsArr.sort(this.sortNames("name"));
      
+    })
+    this.heroservice.packBags.subscribe((bag : any)=> {
+      this.importHeroInventory(bag);
     })
 
   }
@@ -72,7 +75,9 @@ tableObj: any = {};
     }
   }
 
-
+importHeroInventory(arr: any){
+ (arr == undefined)?"nothing":this.inventoryArr = [...arr];
+}
 adjustQty(index: number, qty: any){
   // console.log("the qty",index,qty)
   if (qty <= 0){

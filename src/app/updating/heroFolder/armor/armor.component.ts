@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'armor',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ArmorComponent implements OnInit {
 
-  constructor(private swapi : SwapiService, private fb : FormBuilder) { }
+  constructor(private swapi : SwapiService, private fb : FormBuilder, private heroservice : HeroService) { }
   // variables
 @Output () savedArmor: EventEmitter <any> = new EventEmitter <any> ();
 currentSet: boolean = false;
@@ -54,8 +55,15 @@ ngOnInit(): void {
   this.removeShields();
 })
     this.currentArmor = Object.assign(this.armorObj);    
-
+this.heroservice.displayArmor.subscribe((armor :any)=> {
+  this.displaySavedArmor(armor);
+})
   }
+
+displaySavedArmor(armor: any){
+  (armor == undefined)?this.currentArmor = Object.assign(this.armorObj):this.currentArmor = Object.assign(armor);
+  console.log("assigned", this.currentArmor)
+}
 // removes shields from the array
   removeShields(){
    let shields = ["Energy Shields, Light","Energy Shields, Heavy","Energy Shields, Medium"]

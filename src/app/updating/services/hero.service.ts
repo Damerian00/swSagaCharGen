@@ -13,6 +13,9 @@ invokeAttacks = new EventEmitter ();
 invokeCarry = new EventEmitter();
 invokeCarryCalcs = new EventEmitter();
 invokeLanguages = new EventEmitter();
+createAttacks = new EventEmitter();
+displayArmor = new EventEmitter();
+packBags = new EventEmitter();
 enforceConditions(){
   this.invokeConditions.emit();
 }
@@ -21,6 +24,14 @@ recalcSkills(){
 }
 reCalcAttacks(){
   this.invokeAttacks.emit();
+}
+inbitial : boolean = false;
+loadHeroStats(armor: any, equipment: any, attacks: any){
+  this.createAttacks.emit(attacks);
+  this.displayArmor.emit(armor);
+  this.packBags.emit(equipment);
+console.log("called the stats",armor,attacks, equipment);
+// (this.inbitial = false)?this.loadHeroStats(armor, attacks, equipment):this.inbitial= true;
 }
 getCarry(){
   this.invokeCarry.emit();

@@ -53,7 +53,7 @@ async getMaxCarry(){
   let strScore = await this.heroservice.getAbilities()["Strength"];
   let cl = await this.heroservice.getSpeciesTraits()["Carry Limit"];
   this.maxCarry = Math.pow(strScore, 2) * 0.5 * cl;
-console.log(strScore, cl)
+// console.log(strScore, cl)
 }
 
 calcCurrentCarry(){

@@ -212,7 +212,7 @@
         </div>
         <div class="tb">
             <div class="box">
-               <languages [knownLanguages]="speciesLanguages" [totalLangs]="langsAllowed"></languages>
+               <languages [knownLanguages]="heroLanguages" [totalLangs]="langsAllowed" (savedLanguages)="updatelanguages($event)"></languages>
             </div>
             <div class="box">
                 <experience></experience>
