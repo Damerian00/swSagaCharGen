@@ -11,6 +11,7 @@
 </div>
 <section *ngIf="heroPull else reminder">
     <h1>{{savedName}}</h1>
+    <button (click)="updateHero()">Save {{savedName}}</button>
     <button (click)="openModal('xp')">Add Experience Points</button>
     <aside *ngIf="xpModalToggle" class="modal">
         <label>Enter Earned XP amount then click add.</label>
@@ -75,7 +76,7 @@
                 <div class="half-row">
                     <div class="box">
                         <Label>Current</Label>
-                        <input name="currentHP" type="text" min="0" value="{{currentHp}}">
+                        <input name="currentHP" #changeHp type="number" min="0" value="{{currentHp}}" (change)="updateCurrentHp(changeHp.value)">
                     </div>
                     <span>/</span>
                     <div class="box">
@@ -188,10 +189,10 @@
                 <defenses [heroLevel]="heroLevel" (defenses)="updateDefenses($event)" ></defenses>
             </div> 
             <div class="box">
-                <armor></armor>
+                <armor (savedArmor)="updateArmor($event)"></armor>
             </div>
             <div class="box">
-                <attacks></attacks>
+                <attacks (savedAttacks)="updateAttacks($event)"></attacks>
             </div>
         </div>
         <div class="tb">
@@ -207,15 +208,14 @@
     <hr>
     <div class="split-box">
         <div class="tb">
-           <equipment></equipment>
-            <div class="box"></div>
+           <equipment (inventory)="updateInventory($event)"></equipment>
         </div>
         <div class="tb">
             <div class="box">
                <languages [knownLanguages]="speciesLanguages" [totalLangs]="langsAllowed"></languages>
             </div>
             <div class="box">
-                <h6>Experience</h6>
+                <experience></experience>
                 <div class="box">
                     <p>{{currentXp}}</p>
                     <span>/</span>
@@ -264,7 +264,6 @@
         <p>{{skill.trained_skill}}</p>
         <p>{{skill.skill_focus}}</p>
     </div> -->
-    <button (click)="updateHero()">Update hero</button>
 </section>
 <ng-template #reminder>
   

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
 import { HeroService } from '../../services/hero.service';
 
@@ -9,6 +9,8 @@ import { HeroService } from '../../services/hero.service';
 })
 export class EquipmentComponent implements OnInit {
 // -----variables-----
+@Output () inventory : EventEmitter<any> = new EventEmitter<any> ();
+
 // Arrays
 meleeWeaponsArr: any;
 rangedWeaponsArr: any;
@@ -83,6 +85,7 @@ calcTotals(){
   for (let i = 0; i<this.inventoryArr.length;i++){
     this.calcCost(i);
     this.calcWeight(i);
+    this.inventory.emit(this.inventoryArr);
   }
 }
 calcWeight(index: number){
@@ -360,7 +363,7 @@ addItem(){
   if (this.tableObj.name == "" || this.tableObj.name == undefined){
     return;
   }
-  console.log(this.tableObj , this.inventoryArr)
+  // console.log(this.tableObj , this.inventoryArr)
   if (this.inventoryArr.length != 0){
     for (let i=0; i<this.inventoryArr.length; i++){
       if (this.tableObj.name == this.inventoryArr[i].name){
@@ -386,7 +389,7 @@ deleteItem(index: number){
     this.inventoryArr.shift();
   }
   this.inventoryArr.splice(1, index);
-  console.log("delete item", index, this.inventoryArr);
+  // console.log("delete item", index, this.inventoryArr);
 }
 toggleNotes(index: number){
   (this.inventoryArr[index].notesDisplay == "show")? this.inventoryArr[index].notesDisplay = 'hide': this.inventoryArr[index].notesDisplay = 'show';
@@ -396,7 +399,7 @@ toggleItemShow(index: number){
   this.inventoryArr[index].show = !this.inventoryArr[index].show;
 }
 async editItem(index:number, name: string, weight: any, cost: any, notes: string){
-  console.log("edit this", index,name,weight,cost,notes)
+  // console.log("edit this", index,name,weight,cost,notes)
   let newWeight
   if (parseFloat(weight) >= 0){
     newWeight = `${weight}kg`
@@ -416,7 +419,7 @@ let newName: string =  await arr.join(" ")
 await (newName != "")?this.inventoryArr[index].name = newName: "nothing";
 (parseInt(cost) >= 0)?this.inventoryArr[index].cost = parseInt(cost): "nothing";
 (notes == "")? "nothing": this.inventoryArr[index].itemNotes = notes;
-console.log(this.inventoryArr[index]);
+// console.log(this.inventoryArr[index]);
 this.toggleItemShow(index);
 this.calcTotals();
 }

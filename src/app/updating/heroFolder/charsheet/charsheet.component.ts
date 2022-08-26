@@ -14,31 +14,43 @@ export class CharsheetComponent implements OnInit {
   }
 
   constructor(private local: LocalstorageService, private heroservice : HeroService) { }
+//  ----Variables
+//  Input/Output
+//  Arrays
 savedHero: any;
-savedName: string = "";
 startingFeats: any;
+savedFeats: Array<any> = [];
 skills: any;
 speciesLanguages: any;
+startingTalents: any;
+savedStorage: any;
+savedHeroes:any = [];
+xpChart: Array <any> = [0,1,3,6,10,15,21,28,36,45,55,66,78,91,105,120,136,153,171,190]
+heroAbilities: Object = {};
+savedLanguages: Array <string> = [];
+currentArmor: any;
+heroInventory: Array<string> = [];
+heroAttacks: Array<string> = [];
+//  Objects
 heroClass: Object = {};
 heroDefenses: any;
 heroSpeciesObj: any;
-startingTalents: any;
+abilityMod: any;
+//  Booleans
 heroPull: boolean = false;
 savesPulled: boolean = false;
+xpModalToggle: boolean = false;
+//  Numbers & Strings
+savedName: string = "";
 tempId: string = "";
-savedStorage: any;
-savedHeroes:any = [];
 currentXp: number = 0;
 nextXp: number = 0;
 heroLevel: number = 0;
 halfLevel: number = 0;
-xpChart: Array <any> = [0,1,3,6,10,15,21,28,36,45,55,66,78,91,105,120,136,153,171,190]
-heroAbilities: Object = {};
 size: string = "";
 maxHp: number = 0;
 currentHp: number = 0;
 damageThreshold: number = 0;
-abilityMod: any;
 currentDtType: string = "Fortitude Defense";
 reflexDefense: number = 10;
 fortitudeDefense:number = 10;
@@ -48,7 +60,6 @@ improvedDT: number = 0;
 damageThreshMod: number = 0;
 dmgThreshMisc: number = 0;
 heroCondition: number = 0;
-xpModalToggle: boolean = false;
 forceDice: string = "1d6";
 hpType: string = "set"
 forcePoints: number = 5
@@ -57,8 +68,11 @@ BAB: number = 1;
 grappleModSelected: string = "Strength";
 grappleMisc: number = 0;
 langsAllowed: number = 0;
-savedLanguages: Array <string> = [];
+credits: number = 0;
 
+//  Misc
+
+//  ---End Variables---
   ngOnInit(): void {
     this.savedStorage = Object.keys(localStorage);
     // console.log(this.savedStorage);
@@ -153,7 +167,8 @@ async updateStats(){
   this.heroAbilities = await this.savedHero.abilities;
   this.size = await this.heroSpeciesObj.traits.size;
   this.BAB = await this.savedHero.bab;
-  this.maxHp = this.savedHero.hp;
+  this.maxHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[1]: this.savedHero.hp;
+  this.currentHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[0]: this.savedHero.hp;
   this.calcHeroLevel(this.currentXp);
   this.heroservice.resetLanguages(this.speciesLanguages);
   await this.heroSets();
@@ -178,22 +193,30 @@ async heroGets(){
   this.calcLangsAllowed();
   // console.log('the absMods', this.abilityMod)
 }
-updateHero(){ 
-  // this.local.removeHero(this.tempId);
-  // this.local.saveHerotoStorage(this.tempId, this.savedHero)
-  console.log("hero saved", this.tempId, this.savedHero);
-}
+
 updateDefenses(defObj: any){
   this.reflexDefense = defObj[0].total;
   this.fortitudeDefense = defObj[1].total;
   this.willDefense = defObj[2].total;
   this.calcDT(this.currentDtType);
 }
+updateArmor(armor : any){
+  this.currentArmor = armor;
+}
+updateInventory(inventory: any){
+  this.heroInventory = [...inventory];
+}
+updateAttacks(attacks: any){
+  this.heroAttacks = [...attacks];
+}
 updateCondition(num: number){
   this.heroCondition = num;
   this.heroservice.setCondition(num);
   this.heroservice.enforceConditions();
   this.calcDT(this.currentDtType);
+}
+updateCurrentHp(num: any){
+  this.currentHp = Math.floor(parseInt(num))
 }
 setDTMisc(num: any){
   this.dmgThreshMisc = Math.floor(parseInt(num));
@@ -245,4 +268,39 @@ async calcGrapple(mod: string){
   this.grapple += (this.heroCondition + this.grappleMisc)
   // console.log(this.grappleModSelected, abMod);
 }
+
+updateHero(){ 
+  let heroObj = {
+    "id"  : this.savedHero.id,
+    "name" : this.savedName,
+    "dt" : this.damageThreshold,
+    "defenses"  : {
+      "reflex": this.reflexDefense,
+      "fort": this.fortitudeDefense,
+      "will": this.willDefense,
+    },
+    "equipment" : this.heroInventory,
+    "currentArmor" : this.currentArmor,
+    "attacks" : this.heroAttacks,
+    "hp" : [this.currentHp,this.maxHp],
+    "heroClass" : this.heroClass,
+    "skills" : this.skills,
+    "species" : this.savedHero.species,
+    "condition" : this.heroCondition,
+    "bab" : this.BAB,
+    "abilities" : this.heroAbilities,
+    "feats" : this.startingFeats,
+    "talents" : this.startingTalents,
+    "currentXp" : this.currentXp,
+    "level" : this.heroLevel,
+    "grapple" : this.grapple,
+    "languages" : this.savedLanguages,
+    "credits" : this.credits,
+    "forcePoints" : this.forcePoints,
+  }
+  // this.local.removeHero(this.tempId);
+  // this.local.saveHerotoStorage(this.tempId, this.savedHero)
+  console.log("hero saved", this.tempId, this.savedHero, heroObj);
+}
+
 }

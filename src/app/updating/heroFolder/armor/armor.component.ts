@@ -101,7 +101,7 @@ toggleCustForm(){
 }
 // saves user choices as the current armor
 saveCustArmor(){
-console.log("the custom aromor",this.customFormArmor.value);
+// console.log("the custom aromor",this.customFormArmor.value);
 this.toggleCustForm();
 this.currentArmor.armor_name = this.customFormArmor.value.name;
 this.currentArmor.ref_def_bonus = this.customFormArmor.value.reflex;
@@ -121,7 +121,7 @@ selectType(event :any){
 
 // 
 assignSelectedArmor(armor : any){
-  console.log("I got dis:" , armor);
+  // console.log("armor:" , armor);
   this.currentArmor.armor_name = armor.name,
   this.currentArmor.ref_def_bonus = this.removeSymbol(armor.armorBonus)
   this.currentArmor.fort_def_bonus = this.removeSymbol(armor.epuipBonus)
@@ -158,7 +158,7 @@ changeHelmetPackage(value: string){
 }
 // checks which checkboxes were selected
 checkTheBoxes(event: any){
-  console.log("the event", event.target);
+  // console.log("the event", event.target);
   let check = event.target.checked
   switch (event.target.value) {
     case "aromorWorn":
@@ -182,12 +182,12 @@ checkTheBoxes(event: any){
     break;
   }
   
-  console.log(this.currentArmor)
+  // console.log(this.currentArmor)
 
 }
 //saves user information for this hero and emits it using an emitter
 saveArmor(){
-  console.log(this.currentArmor);
+  // console.log(this.currentArmor);
 
     this.savedArmor.emit(this.currentArmor);
 

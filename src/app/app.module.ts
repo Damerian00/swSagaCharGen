@@ -22,6 +22,7 @@ import { AttacksComponent } from './updating/heroFolder/attacks/attacks.componen
 import { EquipmentComponent } from './updating/heroFolder/equipment/equipment.component';
 import { EncumbranceComponent } from './updating/heroFolder/encumbrance/encumbrance.component';
 import { LanguageComponent } from './updating/heroFolder/languages/language.component';
+import { ExperienceComponent } from './updating/heroFolder/experience/experience.component';
 
 
 
@@ -46,6 +47,7 @@ import { LanguageComponent } from './updating/heroFolder/languages/language.comp
     EquipmentComponent,
     EncumbranceComponent,
     LanguageComponent,
+    ExperienceComponent,
    
   ],
   imports: [

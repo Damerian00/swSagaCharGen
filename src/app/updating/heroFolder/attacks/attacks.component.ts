@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
 import { HeroService } from '../../services/hero.service';
 
@@ -12,6 +12,7 @@ import { HeroService } from '../../services/hero.service';
 })
 export class AttacksComponent implements OnInit {
 //variables
+@Output() savedAttacks : EventEmitter<any> = new EventEmitter<any> ();
 //strings
 currentType: string = '';
 //arrays
@@ -234,6 +235,7 @@ runCalcs(){
   this.calcDamage(i);
   console.log(this.weaponsArray);
  }
+ this.savedAttacks.emit(this.weaponsArray)
 }
 //collects users selection and assigns it to that object as the modifier for attacks
 collectAttackMod(index: number, mod: any ){
