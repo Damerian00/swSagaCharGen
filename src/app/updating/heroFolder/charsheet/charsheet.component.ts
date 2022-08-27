@@ -98,7 +98,7 @@ credits: number = 0;
       this.tempId = hero;
       let recieved: any = this.local.getHero(hero);
       this.savedHero = JSON.parse(recieved);
-      // console.log("the hero is", name,this.savedHero)
+      console.log("the hero is", name,this.savedHero)
       this.updateStats();
       this.heroPull = true;
       this.calcDT(this.currentDtType);
@@ -162,6 +162,7 @@ updatelanguages(langs : any){
 }
 
 async updateStats(){
+  //timeout interval to call this function once charactersheet loads properly.
   setTimeout(() => {
     this.heroservice.loadHeroStats(this.savedHero.currentArmor, this.savedHero.equipment, this.savedHero.attacks)
     }, 500);

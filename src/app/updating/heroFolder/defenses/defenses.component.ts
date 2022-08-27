@@ -25,26 +25,56 @@ export class DefensesComponent implements OnInit {
   improvedWill:number = 0;
   traits: any;
   abModOptions = this.heroservice.abModOptions;
-  heroDefenses: any = [{"name": "Reflex Defense", "total": 10, "default" : "Dexterity", "class": 0, "misc" : 0},{"name": "Fortitude Defense", "total": 10, "default" : "Constitution","class": 0, "misc" : 0},{"name": "Will Defense", "total": 10, "default" : "Wisdom", "class": 0, "misc" : 0}]
+  currentArmor: any;
+  heroDefenses: any = [{"name": "Reflex Defense", "total": 10, "default" : "Dexterity", "class": 0, "misc" : 0, "level" : 0},{"name": "Fortitude Defense", "total": 10, "default" : "Constitution","class": 0, "misc" : 0, "level" : 0},{"name": "Will Defense", "total": 10, "default" : "Wisdom", "class": 0, "misc" : 0, "level" : 0}]
  
   constructor(private heroservice: HeroService) { }
 
   ngOnInit(): void {
     this.traits = this.heroservice.getSpeciesTraits();
     this.getValues();
+    this.resetDefenses();
     this.calculateDefenses( this.heroDefenses[0].name, this.heroDefenses[0].default);
     this.calculateDefenses(this.heroDefenses[1].name, this.heroDefenses[1].default);
     this.calculateDefenses(this.heroDefenses[2].name, this.heroDefenses[2].default);
     this.defenses.emit(this.heroDefenses);
     this.heroservice.invokeConditions.subscribe(() => {   
       this.getHeroCondition();
-    });    
+    }); 
+    
   }
 getHeroCondition(){
   this.heroCondition = this.heroservice.getCondition();
   this.calculateDefenses( this.heroDefenses[0].name, this.heroDefenses[0].default);
   this.calculateDefenses(this.heroDefenses[1].name, this.heroDefenses[1].default);
   this.calculateDefenses(this.heroDefenses[2].name, this.heroDefenses[2].default);
+}
+async updateArmor(armor: any){
+  // console.log("recieved armor", armor);
+  (armor == "nothing")? "nothing" : this.currentArmor = await armor;
+  if (this.currentArmor.worn == true){
+    if (this.currentArmor.worn == true && this.currentArmor.proficient == true && this.currentArmor.def == true && this.currentArmor.improved_def == true){
+      this.heroDefenses[0].level = ((this.heroLevel + Math.floor(this.currentArmor.ref_def_bonus/2)) < armor.ref_def_bonus)? this.currentArmor.ref_def_bonus: (this.heroLevel + Math.floor(this.currentArmor.ref_def_bonus/2)); 
+      // console.log("the calc",this.heroLevel, "+",Math.floor(this.currentArmor.ref_def_bonus/2),"=",(this.heroLevel + Math.floor(this.currentArmor.ref_def_bonus/2))) 
+  }
+     else if (this.currentArmor.worn == true && this.currentArmor.proficient == true && this.currentArmor.def == true){
+      (this.heroLevel <= this.currentArmor.ref_def_bonus)?this.heroDefenses[0].level = this.currentArmor.ref_def_bonus: this.heroDefenses[0].level = this.heroLevel;
+    }else{
+    this.heroDefenses[0].level = (this.currentArmor.ref_def_bonus != 0)? this.currentArmor.ref_def_bonus: this.heroLevel;
+  }
+  this.heroDefenses[1].level = (this.currentArmor.proficient == true)? this.heroLevel + this.currentArmor.fort_def_bonus: this.heroLevel;
+ }else{
+    this.resetDefenses();
+  } 
+  this.calculateDefenses( this.heroDefenses[0].name, this.heroDefenses[0].default);
+  this.calculateDefenses(this.heroDefenses[1].name, this.heroDefenses[1].default);
+  this.calculateDefenses(this.heroDefenses[2].name, this.heroDefenses[2].default);
+  this.defenses.emit(this.heroDefenses);
+}
+resetDefenses(){
+  this.heroDefenses[0].level = this.heroLevel;
+  this.heroDefenses[1].level = this.heroLevel;
+  this.heroDefenses[2].level = this.heroLevel;
 }
 getValues(){
   this.speciesFortDefenseMod = this.traits.Defenses["Fortitude Defense"];
@@ -77,15 +107,15 @@ collectMisc(index: any, misc:any){
     let abMod = this.heroservice.getAbilityModifier();
     if (keyword == "Reflex Defense"){
       (mod == "Select")? this.heroDefenses[0].default = "Dexterity": this.heroDefenses[0].default = mod;  
-      this.heroDefenses[0].total = 10 + this.heroLevel + abMod[this.heroDefenses[0].default] + this.reflexClassBonus + this.speciesReflexDefenseMod + this.improvedReflex + this.heroDefenses[0].misc + this.heroCondition;
+      this.heroDefenses[0].total = 10 + this.heroDefenses[0].level + abMod[this.heroDefenses[0].default] + this.reflexClassBonus + this.speciesReflexDefenseMod + this.improvedReflex + this.heroDefenses[0].misc + this.heroCondition;
       // console.log("defense vars:", this.heroLevel,this.reflexClassBonus,this.speciesReflexDefenseMod)
     }else if (keyword == "Fortitude Defense"){
       (mod == "Select")? this.heroDefenses[1].default = "Constitution": this.heroDefenses[1].default = mod;
-      this.heroDefenses[1].total = 10 + this.heroLevel + abMod[this.heroDefenses[1].default] + this.fortClassBonus + this.speciesFortDefenseMod + this.improvedFort + this.heroDefenses[1].misc + this.heroCondition;
+      this.heroDefenses[1].total = 10 + this.heroDefenses[1].level + abMod[this.heroDefenses[1].default] + this.fortClassBonus + this.speciesFortDefenseMod + this.improvedFort + this.heroDefenses[1].misc + this.heroCondition;
       // console.log("defense vars:", this.heroLevel,this.fortClassBonus,this.speciesFortDefenseMod)
     }else{
       (mod == "Select")? this.heroDefenses[2].default = "Wisdom": this.heroDefenses[2].default = mod;
-      this.heroDefenses[2].total = 10 + this.heroLevel + abMod[this.heroDefenses[2].default] + this.willClassBonus + this.speciesWillDefenseMod + this.improvedWill + this.heroDefenses[2].misc + this.heroCondition;
+      this.heroDefenses[2].total = 10 + this.heroDefenses[2].level + abMod[this.heroDefenses[2].default] + this.willClassBonus + this.speciesWillDefenseMod + this.improvedWill + this.heroDefenses[2].misc + this.heroCondition;
       // console.log("defense vars:", this.heroLevel,this.willClassBonus,this.speciesWillDefenseMod)
     }
     this.defenses.emit(this.heroDefenses)

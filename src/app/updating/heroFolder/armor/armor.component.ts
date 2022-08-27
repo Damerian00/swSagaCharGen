@@ -57,6 +57,7 @@ ngOnInit(): void {
     this.currentArmor = Object.assign(this.armorObj);    
 this.heroservice.displayArmor.subscribe((armor :any)=> {
   this.displaySavedArmor(armor);
+  this.saveArmor();
 })
   }
 
@@ -116,6 +117,12 @@ this.currentArmor.ref_def_bonus = this.customFormArmor.value.reflex;
 this.currentArmor.fort_def_bonus = this.customFormArmor.value.fort;
 this.currentArmor.max_def_bonus = this.customFormArmor.value.dex;
 this.currentArmor.armor_type = this.customFormArmor.value.type;
+this.currentArmor.worn = false;
+this.currentArmor.def = false;
+this.currentArmor.proficient = false;
+this.currentArmor.improved_def = false;
+this.toggleCurrent();
+this.saveArmor();
 }
 // patch to change the type chosen for the armor
 selectType(event :any){
@@ -135,7 +142,13 @@ assignSelectedArmor(armor : any){
   this.currentArmor.fort_def_bonus = this.removeSymbol(armor.epuipBonus)
   this.currentArmor.max_def_bonus = this.removeSymbol(armor.dexBonus)
   this.currentArmor.armor_type = armor.a_type
+  this.currentArmor.worn = false;
+  this.currentArmor.def = false;
+  this.currentArmor.proficient = false;
+  this.currentArmor.improved_def = false;
+  this.toggleCurrent();
   // this.currentSet = true;
+  this.saveArmor();
 }
 
 toggleCurrent(){
@@ -155,6 +168,7 @@ removeSymbol(str: string){
 updateNotes(text : string){
   this.currentArmor.notes = text;
   this.addNotes = !this.addNotes;
+  this.saveArmor();
 }
 //toggle
 editNotes(){
@@ -163,6 +177,7 @@ editNotes(){
 // edits value in current Armor
 changeHelmetPackage(value: string){
   this.currentArmor.helmet = value;
+  this.saveArmor();
 }
 // checks which checkboxes were selected
 checkTheBoxes(event: any){
@@ -189,13 +204,14 @@ checkTheBoxes(event: any){
       }
     break;
   }
+  this.saveArmor();
   
   // console.log(this.currentArmor)
 
 }
 //saves user information for this hero and emits it using an emitter
 saveArmor(){
-  // console.log(this.currentArmor);
+  // console.log("armor sved",this.currentArmor);
 
     this.savedArmor.emit(this.currentArmor);
 
