@@ -75,7 +75,6 @@ checkWorn(armor : any){
   this.heroSkills.forEach((el: any)=> {
     (skillsAffected.includes(el.skill_name)== true)?this.calcSkillValue(el.skill_name, el.default, el.misc, penalty): "nothing";
   })
-  console.log("not proficient", penalty);
 }
 collectSkillMod(index: any, selection: any){
   if (selection.target.value == "Select"){
@@ -99,7 +98,7 @@ updateAbilities(){
 calcSkillValue(skill: string, mod:string, misc:number, penalty: number){
   this.updateAbilities();
   this.heroLevel = this.heroservice.getHeroLevel();
-  console.log("what we got", skill, mod, misc, penalty);
+  // console.log("what we got", skill, mod, misc, penalty);
   for (let i=0; i<this.heroSkills.length;i++){
     // console.log("the skill:", this.heroSkills[i].skill_name, skill)
     if (this.heroSkills[i].skill_name == skill){

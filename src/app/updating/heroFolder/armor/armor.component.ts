@@ -11,7 +11,7 @@ import { HeroService } from '../../services/hero.service';
 export class ArmorComponent implements OnInit {
 
   constructor(private swapi : SwapiService, private fb : FormBuilder, private heroservice : HeroService) { }
-  // variables
+  // ---Variables---
 @Output () savedArmor: EventEmitter <any> = new EventEmitter <any> ();
 currentSet: boolean = false;
 // Templates
@@ -63,7 +63,7 @@ this.heroservice.displayArmor.subscribe((armor :any)=> {
 
 displaySavedArmor(armor: any){
   (armor == undefined)?this.currentArmor = Object.assign(this.armorObj):this.currentArmor = Object.assign(armor);
-  console.log("assigned", this.currentArmor)
+  // console.log("assigned", this.currentArmor)
 }
 // removes shields from the array
   removeShields(){

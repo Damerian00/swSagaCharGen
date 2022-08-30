@@ -29,6 +29,7 @@ tableObj: any = {};
 
 
   constructor(private swapi : SwapiService, private heroservice : HeroService) { }
+//  subscribes to the services and the EventEmitter
   ngOnInit(): void {
     this.swapi.getMelees().subscribe(payload => {
       this.meleeWeaponsArr = payload;
@@ -60,6 +61,7 @@ tableObj: any = {};
     })
 
   }
+  //  sorts alphabetically
   sortNames(prop: string){
     let sortOrder = 1;
     if(prop[0] === "-") {
@@ -74,10 +76,11 @@ tableObj: any = {};
         }        
     }
   }
-
+// sets the inventory arr to what is imported from the saved hero object
 importHeroInventory(arr: any){
  (arr == undefined)?"nothing":this.inventoryArr = [...arr];
 }
+//  changes the qty on the items's object
 adjustQty(index: number, qty: any){
   // console.log("the qty",index,qty)
   if (qty <= 0){
@@ -86,6 +89,7 @@ adjustQty(index: number, qty: any){
   this.inventoryArr[index].qty = parseInt(qty);
   this.calcTotals();
 }
+//  calls the function to calculate the totalts of cost and weight for each item then emits those new values out
 calcTotals(){
   for (let i = 0; i<this.inventoryArr.length;i++){
     this.calcCost(i);
@@ -93,6 +97,7 @@ calcTotals(){
     this.inventory.emit(this.inventoryArr);
   }
 }
+//  calculates the total weight
 calcWeight(index: number){
   if (this.inventoryArr[index].weight == "" || this.inventoryArr[index].weight == "-"){
     this.inventoryArr[index].total_weight = "-"
@@ -108,22 +113,23 @@ calcWeight(index: number){
   // console.log("calc weight", this.inventoryArr[index].weight, weight, stop, split )
   this.inventoryArr[index].total_weight = `${(weight * this.inventoryArr[index].qty).toFixed(2)}kg`
 }
+//  calculate total cost
 calcCost(index: number){
   this.inventoryArr[index].total_cost = this.inventoryArr[index].cost * this.inventoryArr[index].qty;
 }
-
+//  show/hide equipment table 
 toggleEquipTable(){
   this.showEqTable = !this.showEqTable;
 }
-
+//  function to empty an array
 clearArray(arr: Array<any>){
-  console.log("clear this", arr)
+  // console.log("clear this", arr)
   while(arr.length){
     arr.pop();
   }
 }
+//  checks if carry checkbox is selected and uses that weight value to add or subtract from encumbrance
 modCarry(index: number){
-
   (this.inventoryArr[index].carry == true)?this.inventoryArr[index].carry = false: this.inventoryArr[index].carry = true; 
   let split = this.inventoryArr[index].total_weight.split('')
   let stop = split.findIndex((el:any)=> el == "k" || el == "t");
@@ -135,7 +141,7 @@ modCarry(index: number){
   }
   // console.log('carry', this.inventoryArr[index].carry)
 }
-//"Armor","Melee", "Ranged", "Equipment"
+//  adds to the subcategory array based on choice of item type selected by user
 createSubCatArr(selection: any){
   if (selection == "Select which Type"){
     return;
@@ -169,14 +175,12 @@ createSubCatArr(selection: any){
             this.equipSubCats.push(el.equip_type.type)
           }
         })
-      break;
-      
+      break;     
   }
    this.selectedType = selection;
-   console.log(this.selectedType);
+  //  console.log(this.selectedType);
 }
-
-
+//  creates the filtered list based on user selection to show the items that match the selection
 loadFilteredList(selection: any){
   console.log ("load filter",selection);
   this.clearArray(this.filteredEquipArr);
@@ -210,22 +214,20 @@ loadFilteredList(selection: any){
       })
     break;
   } 
-  
-  
 }
+//  function to create a custom item
 createCustomItem(name: string, qty: string, type: string, weight: any, cost: string){
   if(name == "" || type == "Select which Type" || parseInt(qty) <= 0){
     this.toggleEquipTable();
     return;
   }
-  console.log("create Cust", name,qty,type,weight,cost);
+  // console.log("create Cust", name,qty,type,weight,cost);
   let preps = ["a","of", "an", "by", "to", "or"]
   let arr = name.split(" ")
 for (var i = 0; i < arr.length; i++) {
   if (preps.includes(arr[i]) == false){
     arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
   }
-
 }
 let newQty = Number(qty)
 let newName = arr.join(" ")
@@ -251,6 +253,7 @@ let equipObj = {
 this.inventoryArr.push(equipObj);
 this.toggleEquipTable();
 }
+//  sets the tableObj to the equipObj Object to be used later
 loadEquipTable(selection : any){ 
   if (selection == "Select an item"){
     return;
@@ -363,7 +366,7 @@ switch (this.selectedType) {
 
 this.tableObj = equipObj;
 }
-
+//  adds the previously made tableObj to the array if it isn't already there if it is it just adds to the qty
 addItem(){
   if (this.tableObj.name == "" || this.tableObj.name == undefined){
     return;
@@ -387,7 +390,7 @@ addItem(){
   this.calcTotals();
   // console.log("the inventorypArray",this.inventoryArr)
 }
-
+//  deletes the item from the inventory array
 deleteItem(index: number){
 (this.inventoryArr[index].carry == true)?this.modCarry(index): "nothing";
   if (index == 0){
@@ -396,13 +399,16 @@ deleteItem(index: number){
   this.inventoryArr.splice(1, index);
   // console.log("delete item", index, this.inventoryArr);
 }
+//  show/hidse Notes for the item
 toggleNotes(index: number){
   (this.inventoryArr[index].notesDisplay == "show")? this.inventoryArr[index].notesDisplay = 'hide': this.inventoryArr[index].notesDisplay = 'show';
   this.inventoryArr[index].showNotes = !this.inventoryArr[index].showNotes;
 }
+//  hide/show item to edit it
 toggleItemShow(index: number){
   this.inventoryArr[index].show = !this.inventoryArr[index].show;
 }
+//  allows you to patch an item's base weight, name, anr/or base cost
 async editItem(index:number, name: string, weight: any, cost: any, notes: string){
   // console.log("edit this", index,name,weight,cost,notes)
   let newWeight

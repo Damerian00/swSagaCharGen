@@ -9,41 +9,41 @@ import { SwapiService } from 'src/app/services/swapi.service';
   styleUrls: ['./feats.component.scss']
 })
 export class FeatsComponent implements OnInit {
-
   constructor(private swApiService: SwapiService, private choices: ChoicesSenderService) { }
-featsArray: any;
-startingFeats: Array<string> = [];
-selectedFeats: Array<string> = [];
-selectedHeroicClass = this.choices.selectedClass;
-heroicClass: string = '';
-extraFeat: string = 'no';
-selectableFeats: Array<string> = [];
-selectedFeat: Array<any> = ["", ""];
-extraSelectedFeat: string = "";
-additionalFeatsArray: Array<string> = [];
-specifyFeat: string = "no"
-extraSpecifyFeat: string = "no"
-specifyFeatButtonName = "default"
-specialFeatOptions: Array<string> = [];
-extraSpecialFeatOptions: Array<string> = [];
-specialOptionSelected: Array<any> = ["",""];
-extraFeatShow: string = "no";
-validated: boolean = true;
-selectedFeatName: string = "";
-selectedFeatDescription: string = "";
-extraFeatName: string = "";
-extraFeatDescription: string = "";
-conditionalArray: Array<string> = [];
-extraSelectableFeats: Array<string> = []
-additionalFeatsTrigger: boolean = false;
-additionalFeat: string = "";
-savedSkills: Array <string> = ["",""];
-submittedValues: Array<string> = ["", ""]
-notTof: boolean = true;
-speciesFeatsArray: Array <any> = [];
+//  ---Variables---
+  @Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
+  @Output () heroSkillTrained: EventEmitter<any> = new EventEmitter<any>()
+  featsArray: any;
+  startingFeats: Array<string> = [];
+  selectedFeats: Array<string> = [];
+  selectedHeroicClass = this.choices.selectedClass;
+  heroicClass: string = '';
+  extraFeat: string = 'no';
+  selectableFeats: Array<string> = [];
+  selectedFeat: Array<any> = ["", ""];
+  extraSelectedFeat: string = "";
+  additionalFeatsArray: Array<string> = [];
+  specifyFeat: string = "no"
+  extraSpecifyFeat: string = "no"
+  specifyFeatButtonName = "default"
+  specialFeatOptions: Array<string> = [];
+  extraSpecialFeatOptions: Array<string> = [];
+  specialOptionSelected: Array<any> = ["",""];
+  extraFeatShow: string = "no";
+  validated: boolean = true;
+  selectedFeatName: string = "";
+  selectedFeatDescription: string = "";
+  extraFeatName: string = "";
+  extraFeatDescription: string = "";
+  conditionalArray: Array<string> = [];
+  extraSelectableFeats: Array<string> = []
+  additionalFeatsTrigger: boolean = false;
+  additionalFeat: string = "";
+  savedSkills: Array <string> = ["",""];
+  submittedValues: Array<string> = ["", ""]
+  notTof: boolean = true;
+  speciesFeatsArray: Array <any> = [];
 
-@Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
-@Output () heroSkillTrained: EventEmitter<any> = new EventEmitter<any>()
 
   ngOnInit(): void {
     this.swApiService.getFeats().subscribe(payload =>{

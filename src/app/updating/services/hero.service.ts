@@ -16,6 +16,8 @@ invokeLanguages = new EventEmitter();
 createAttacks = new EventEmitter();
 displayArmor = new EventEmitter();
 packBags = new EventEmitter();
+
+//  --Invoking Functions
 enforceConditions(){
   this.invokeConditions.emit();
 }
@@ -30,8 +32,8 @@ loadHeroStats(armor: any, equipment: any, attacks: any){
   this.createAttacks.emit(attacks);
   this.displayArmor.emit(armor);
   this.packBags.emit(equipment);
-console.log("called the stats",armor,attacks, equipment);
-// (this.inbitial = false)?this.loadHeroStats(armor, attacks, equipment):this.inbitial= true;
+// console.log("called the stats",armor,attacks, equipment);
+
 }
 getCarry(){
   this.invokeCarry.emit();
@@ -43,6 +45,9 @@ updateCarry(num: number){
 this.carryMod += num;
   this.invokeCarryCalcs.emit();
 }
+
+//  --end of Invoking functions
+//  ---Variables
 private carryMod: number = 0;
 private abilities:any;
 private skills: any;
@@ -62,7 +67,7 @@ hpToughness: number = 0;
 private heroLevel: number = 0;
 private heroCondition: number = 0
 
-//gettters and setters
+//  gettters and setters
 setHeroLevel(level : number){
   this.heroLevel = level;
 }
@@ -119,27 +124,7 @@ getstealthSizeMod(){
   return this.stealthSizeMod;
 }
 
-calcModifier(){
-  let keys = Object.keys(this.abilities);
-  for (let i=0; i< keys.length; i++){
-//  console.log(keys[i]);
- let tempScore =0;
-//  console.log("starting temp", tempScore)
- if (this.abilities[keys[i]]-10< 0){
-   if(this.abilities[keys[i]] == 9){
-     tempScore = -1;
-   }else {
-    //  console.log("temp score",tempScore);
-    tempScore = Math.ceil((this.abilities[keys[i]]-10)/2);
-   }
- }else{
-  //  console.log("temp score",tempScore);
-   tempScore = Math.floor((this.abilities[keys[i]]-10)/2);
- }
-     this.abilityModifier[keys[i]] = tempScore;
-    //  console.log("the abilities: ", keys[i], tempScore)    
-  }
-}
+
 setDamageThreshold(dt: number){
   this.damageThreshold = dt;
 }
@@ -169,27 +154,6 @@ setClassBonuses(classsObj: object){
 
 
 
-}
-calcClassBonuses(chosenClass: string){
-  let obj = {}
-  switch (chosenClass) {
-    case "Jedi":
-      obj = {"reflex" : 1, "fort" : 1, "will" : 1};
-    break;
-    case "Noble":
-      obj = {"reflex" : 1, "fort" : 0, "will" : 2};
-    break;
-    case "Scoundrel":
-      obj = {"reflex" : 2, "fort" : 0, "will" : 1};
-    break;
-    case "Scout":
-      obj = {"reflex" : 2, "fort" : 1, "will" : 0};
-    break;
-    case "Soldier":
-      obj = {"reflex" : 1, "fort" : 2, "will" : 0};
-    break;
-  }
-  return obj;
 }
 getReflexClassBonus(){
   return this.reflexClassBonus;
@@ -226,6 +190,52 @@ setFeatImprovements(feats: Array <string>){
 getImprovedDT(){
   return this.improvedDT;
 }
+//  ebd of getters and setters
+
+//  --calc functions
+calcModifier(){
+  let keys = Object.keys(this.abilities);
+  for (let i=0; i< keys.length; i++){
+//  console.log(keys[i]);
+ let tempScore =0;
+//  console.log("starting temp", tempScore)
+ if (this.abilities[keys[i]]-10< 0){
+   if(this.abilities[keys[i]] == 9){
+     tempScore = -1;
+   }else {
+    //  console.log("temp score",tempScore);
+    tempScore = Math.ceil((this.abilities[keys[i]]-10)/2);
+   }
+ }else{
+  //  console.log("temp score",tempScore);
+   tempScore = Math.floor((this.abilities[keys[i]]-10)/2);
+ }
+     this.abilityModifier[keys[i]] = tempScore;
+    //  console.log("the abilities: ", keys[i], tempScore)    
+  }
+}
+calcClassBonuses(chosenClass: string){
+  let obj = {}
+  switch (chosenClass) {
+    case "Jedi":
+      obj = {"reflex" : 1, "fort" : 1, "will" : 1};
+    break;
+    case "Noble":
+      obj = {"reflex" : 1, "fort" : 0, "will" : 2};
+    break;
+    case "Scoundrel":
+      obj = {"reflex" : 2, "fort" : 0, "will" : 1};
+    break;
+    case "Scout":
+      obj = {"reflex" : 2, "fort" : 1, "will" : 0};
+    break;
+    case "Soldier":
+      obj = {"reflex" : 1, "fort" : 2, "will" : 0};
+    break;
+  }
+  return obj;
+}
+
 
 
 }

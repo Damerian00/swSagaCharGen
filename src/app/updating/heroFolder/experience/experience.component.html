@@ -1,1 +1,45 @@
 <h6>Experience</h6>
+<section class="tb experience">
+    <div class="box">
+        <p>{{currentXp}}</p>
+        <span>/</span>
+        <p>{{nextXp}}</p>
+    </div>
+    <button class="lvlBtn" *ngIf="levelUp" (click)="beginLevelUp()">Level Up</button>
+
+    <aside class="lvlModal" *ngIf="levelUpModal">
+        <h2>Select your Class for this Level</h2>
+        <select #classSelected name="classSelected" (change)="addClassSelection(classSelected.value)">
+            <option>Select a Class</option>
+            <option *ngFor="let class of startingClasses">{{class.name}}</option>
+        </select>
+       
+        <div class="tb" *ngIf="lvlUpObject.class != ''">
+            <h4>Will you roll for your hp or use a constant?</h4>
+            <select #hpSelector name="hpSelector" (change)="selectHPIncrease(hpSelector.value)">
+                <option>Select</option>
+                <option>Roll HP</option>
+                <option>Use Constant</option>
+            </select>
+            <div class="tb" *ngIf="hpKeyWord == 'Roll HP'">
+                <label>Roll for HP </label>
+                <button (click)="rollHP()" [disabled]="rolledHp > 0">Roll HP</button>
+                <p *ngIf="rolledHp > 0">You rolled a {{rolledHp}}</p>
+            </div>
+            <div class="tb" #useConstant *ngIf="hpKeyWord == 'Use Constant'">
+                <label>Input Constant for this Class</label>
+                <input type="number" #hpConst min="0">
+                <button (click)="calcHPIncrease(hpConst.value)">Increase HP</button>
+            </div>
+        </div>
+        <div class="tb">
+            
+        </div>
+        <div class="tb">
+            <h4>Selected Stats</h4>
+            <p>Selected Class: {{lvlUpObject.class}}</p>
+            <p>HP to increase {{lvlUpObject.hp}}</p>
+        </div>
+    </aside>
+</section>
+

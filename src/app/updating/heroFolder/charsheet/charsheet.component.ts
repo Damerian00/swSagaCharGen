@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LocalstorageService } from 'src/app/localstorage.service';
 import { HeroService } from '../../services/hero.service';
+import { LevelingService } from '../../services/leveling.service';
 
 @Component({
   selector: 'app-charsheet',
@@ -13,7 +14,7 @@ export class CharsheetComponent implements OnInit {
     return a;
   }
 
-  constructor(private local: LocalstorageService, private heroservice : HeroService) { }
+  constructor(private local: LocalstorageService, private heroservice : HeroService, private level : LevelingService) { }
 //  ----Variables
 //  Input/Output
 //  Arrays
@@ -40,7 +41,7 @@ abilityMod: any;
 heroPull: boolean = false;
 savesPulled: boolean = false;
 xpModalToggle: boolean = false;
-callOnce : boolean = false;
+levelUp : boolean = false;
 //  Numbers & Strings
 savedName: string = "";
 tempId: string = "";
@@ -89,11 +90,11 @@ credits: number = 0;
     }
     
   }
-  getHero(name: string){
-    
+  //  gets the hero data from the user selection from the local storage/db
+  getHero(name: string){  
     let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
     let hero = this.savedStorage[index];
-    console.log("the name", name, index, hero)
+    // console.log("the name", name, index, hero)
     if (hero != null){
       this.tempId = hero;
       let recieved: any = this.local.getHero(hero);
@@ -101,10 +102,11 @@ credits: number = 0;
       console.log("the hero is", name,this.savedHero)
       this.updateStats();
       this.heroPull = true;
-      this.calcDT(this.currentDtType);
+      // this.calcDT(this.currentDtType);
       
     }
   }
+// calculates the heroes kevel based on their current xp
 calcHeroLevel(num: any){
   this.currentXp += parseInt(num);
   let tempNum = this.currentXp;
@@ -115,15 +117,17 @@ calcHeroLevel(num: any){
     let level = 0;
     let sawedNum = parseInt(numStr.substring(0,len))
     for (let i =0; i<this.xpChart.length; i++){
-      // console.log("the number to calc", tempNum, numStr, sawedNum, i, this.xpChart.length);
+      console.log("the number to calc", tempNum, numStr, sawedNum, i, this.xpChart.length);
       if (sawedNum >= this.xpChart[i]){
         
         // console.log("the level", i);
       }else{
+        (this.heroLevel <= level)?this.levelUp = true: this.levelUp = false;
         this.heroLevel = level;
         this.nextXp = this.xpChart[i+1]*1000;
         break;
       }
+      this.level.setLevelPts(level);
       level++;
     }
   }else{
@@ -141,10 +145,13 @@ calcHeroLevel(num: any){
   }else{
     this.forceDice = "3d6";
   }
+  this.level.setNextXp(this.nextXp);
   this.heroservice.setHeroLevel(this.heroLevel);
   this.heroservice.recalcSkills();
   this.heroservice.reCalcAttacks();
   this.forcePoints = 5 + Math.floor((this.heroLevel/2));
+  this.level.setCurrentXp(this.currentXp)
+  this.level.displayXp();
 }
 async calcLangsAllowed(){
   let int = this.heroservice.getAbilityModifier()["Intelligence"];
@@ -157,17 +164,20 @@ async calcLangsAllowed(){
    
   // console.log ("the stats for lang", int, this.heroLanguages,this.savedLanguages, this.langsAllowed);
 }
+// updates saved languages array with the outputted languages array from language component
 updatelanguages(langs : any){
   this.savedLanguages = [...langs];
 }
-
+// updates hero stats and cvalls the setters and getters
 async updateStats(){
   //timeout interval to call this function once charactersheet loads properly.
   setTimeout(() => {
     this.heroservice.loadHeroStats(this.savedHero.currentArmor, this.savedHero.equipment, this.savedHero.attacks)
+    this.level.displayXp();
     }, 500);
   this.savedName = await this.savedHero.name;
   this.startingFeats = await this.savedHero.feats;
+  this.level.setFeats(this.startingFeats);
   this.skills = await this.savedHero.skills;
   (Array.isArray(this.savedHero.class))? this.heroClass = {[this.savedHero.class]: 1}: this.heroClass = this.savedHero.class;
   this.heroDefenses = await this.savedHero.defenses;
@@ -177,63 +187,80 @@ async updateStats(){
   this.heroAbilities = await this.savedHero.abilities;
   this.size = await this.heroSpeciesObj.traits.size;
   this.BAB = await this.savedHero.bab;
+  this.damageThreshold = this.savedHero.dt;
   await (this.savedHero.currentArmor == undefined)? "nothing":this.currentArmor = this.savedHero.currentArmor; 
   await (this.savedHero.attacks == undefined || this.savedHero.attacks.length == 0)? "nothing":this.heroAttacks= [...this.savedHero.attacks];
   (this.savedHero.equipment == undefined || this.savedHero.equipment.length == 0)? "nothing": this.heroInventory = [...this.savedHero.equipment];
   this.maxHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[1]: this.savedHero.hp;
   this.currentHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[0]: this.savedHero.hp;
-  this.calcHeroLevel(this.currentXp);
+   if(this.savedHero.currentXp == undefined){
+    this.currentXp = 0
+  }else{
+    this.currentXp = this.savedHero.currentXp
+  } 
+  this.level.setCurrentXp(this.currentXp);
+  this.calcHeroLevel(0);
   this.heroservice.resetLanguages(this.heroLanguages);
   await this.heroSets();
   await this.heroGets();
 }
+// calls methods to set variables in heroService to be used with other components
 async heroSets(){
   this.heroservice.setAbilitites(this.savedHero.abilities)
   this.heroservice.setSizeMods(this.size);
-  this.heroservice.setDamageThreshold(this.savedHero.dt);
+  this.heroservice.setDamageThreshold(this.damageThreshold);
   this.heroservice.setSpeciesTraits(this.savedHero.species.traits);
   this.heroservice.setFeatImprovements(this.savedHero.feats);
   this.heroservice.setClassBonuses(this.heroClass);
   this.heroservice.getCarry();
+  this.level.setHeroClassObj(this.heroClass);
    
 }
+//  gets values for variables by calling the methods
 async heroGets(){
-  this.damageThreshold = this.heroservice.getDamageThreshold();
+  // this.damageThreshold = this.heroservice.getDamageThreshold();
   this.abilityMod = await this.heroservice.getAbilityModifier();
   this.calcGrapple("Strength");
   this.calcLangsAllowed();
   this.updatelanguages(this.heroLanguages);
   // console.log('the absMods', this.abilityMod)
 }
-
+//  sets defenses to value output by defenses componenet
 updateDefenses(defObj: any){
   this.reflexDefense = defObj[0].total;
   this.fortitudeDefense = defObj[1].total;
   this.willDefense = defObj[2].total;
   this.calcDT(this.currentDtType);
 }
+//  sets current armor to the value output by armor component
 updateArmor(armor : any){
   this.currentArmor = armor;
 }
+// updates inventory array with the outputted value from equipment component
 updateInventory(inventory: any){
   this.heroInventory = [...inventory];
 }
+// updates the heroAttacks array woith the outputted value from atttacks conmponent 
 updateAttacks(attacks: any){
   this.heroAttacks = [...attacks];
 }
+// adjusts hero's condition based on the selection
 updateCondition(num: number){
   this.heroCondition = num;
   this.heroservice.setCondition(num);
   this.heroservice.enforceConditions();
   this.calcDT(this.currentDtType);
 }
+// sets current hp to the input
 updateCurrentHp(num: any){
   this.currentHp = Math.floor(parseInt(num))
 }
+// sets the damage threshold misc value to the input
 setDTMisc(num: any){
   this.dmgThreshMisc = Math.floor(parseInt(num));
   this.calcDT(this.currentDtType);
 }
+//  calculates damage threshold
 calcDT(defenseType: any){
   this.improvedDT = this.heroservice.getImprovedDT();
   if (defenseType == "Select Defense"){
@@ -257,16 +284,19 @@ calcDT(defenseType: any){
       break;
     }
     this.damageThreshold = this.speciesDmgThreshMod + this.dmgThreshMisc + calcNum + this.improvedDT;
+    this.heroservice.setDamageThreshold(this.damageThreshold);
   }
 openModal(keyword: string){
   if (keyword == "xp" ){
     this.xpModalToggle = !this.xpModalToggle;
   }
 }
+// sets the value from the input to the misc for the grapple.
 setGrappleMisc(misc: any){
   this.grappleMisc = Math.floor(parseInt(misc));
   this.calcGrapple(this.grappleModSelected);
 }
+// calculates grapple value
 async calcGrapple(mod: string){
   this.grappleModSelected = mod;
   let abMod = await this.heroservice.getAbilityModifier()
@@ -280,7 +310,7 @@ async calcGrapple(mod: string){
   this.grapple += (this.heroCondition + this.grappleMisc)
   // console.log(this.grappleModSelected, abMod);
 }
-
+// saves the current configurations of the hero by removing the item in localstorage and adding it back
 async updateHero(){ 
   let heroObj = await {
     "id"  : this.savedHero.id,

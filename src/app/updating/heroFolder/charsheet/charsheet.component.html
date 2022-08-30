@@ -215,12 +215,7 @@
                <languages [knownLanguages]="heroLanguages" [totalLangs]="langsAllowed" (savedLanguages)="updatelanguages($event)"></languages>
             </div>
             <div class="box">
-                <experience></experience>
-                <div class="box">
-                    <p>{{currentXp}}</p>
-                    <span>/</span>
-                    <p>{{nextXp}}</p>
-                </div>
+                <experience [levelUp]="levelUp"></experience>
             </div>
             <div class="box">
                 <h6>Credits</h6>
