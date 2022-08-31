@@ -32,13 +32,30 @@
                 <button (click)="calcHPIncrease(hpConst.value)">Increase HP</button>
             </div>
         </div>
-        <div class="tb">
-            
+        <div *ngIf="showClassFeat" class="tb">
+           <label>Select a Class Feat</label>
+           <select #classFeat name="classFeat" (change)="selectFeat(classFeat.value)">
+                <option>Select</option>
+                <option *ngFor="let feat of importFeatsArr">{{feat}}</option>
+           </select>
+           <p *ngIf="featName != ''">Selected Feat: {{featName}}</p>
+           <p *ngIf="featDesc !=''">Description: {{featDesc}}</p>
+           <div *ngIf="showAddOptions" class="tb">
+                <label>Select additional Option</label>
+                <select  #addOption name="addOption">
+                    <option>Select</option>
+                    <option *ngFor="let addOpt of addOptionsArr">{{addOpt}}</option>
+            </select>
+            <button (click)="addFeat(classFeat.value, addOption.value)">Add Feat</button>
+           </div>
+           <button *ngIf="showAddOptions == false" (click)="addFeat(classFeat.value, 'none')">Add Feat</button>
         </div>
         <div class="tb">
             <h4>Selected Stats</h4>
-            <p>Selected Class: {{lvlUpObject.class}}</p>
-            <p>HP to increase {{lvlUpObject.hp}}</p>
+            <p *ngIf="lvlUpObject.class != ''">Selected Class: {{lvlUpObject.class}}</p>
+            <p *ngIf="lvlUpObject.hp != 0">HP to increase {{lvlUpObject.hp}}</p>
+            <p *ngIf="lvlUpObject.feat.length != 0">Feat(s) to add: <span *ngFor="let feat of lvlUpObject.feat">{{feat}}</span></p>
+            <button [disabled]="lvlButton">Level Up</button>
         </div>
     </aside>
 </section>

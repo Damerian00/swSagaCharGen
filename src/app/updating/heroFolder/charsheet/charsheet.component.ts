@@ -117,7 +117,7 @@ calcHeroLevel(num: any){
     let level = 0;
     let sawedNum = parseInt(numStr.substring(0,len))
     for (let i =0; i<this.xpChart.length; i++){
-      console.log("the number to calc", tempNum, numStr, sawedNum, i, this.xpChart.length);
+      // console.log("the number to calc", tempNum, numStr, sawedNum, i, this.xpChart.length);
       if (sawedNum >= this.xpChart[i]){
         
         // console.log("the level", i);
@@ -179,6 +179,7 @@ async updateStats(){
   this.startingFeats = await this.savedHero.feats;
   this.level.setFeats(this.startingFeats);
   this.skills = await this.savedHero.skills;
+  this.heroservice.setSkills(this.savedHero.skills);
   (Array.isArray(this.savedHero.class))? this.heroClass = {[this.savedHero.class]: 1}: this.heroClass = this.savedHero.class;
   this.heroDefenses = await this.savedHero.defenses;
   this.heroSpeciesObj = await this.savedHero.species;

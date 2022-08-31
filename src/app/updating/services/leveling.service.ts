@@ -31,7 +31,7 @@ getCurrentXp(){
 
 }
 setLevelPts(pts: number){
-  console.log(" set pts", pts);
+  // console.log(" set pts", pts);
   this.levelPts = pts;
 }
 getLevelPts(){

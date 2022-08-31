@@ -12,8 +12,12 @@ export class ExperienceComponent implements OnInit {
 @Input() levelUp: boolean = false;
 heroClass: any;
 currentfeatsArr: any;
+classStartFeatsArr: Array<string> = [];
 currentTalentsArr: any;
-importFeatsArr: any;
+apifeatsArr: any;
+apiTalentsArr: any;
+importFeatsArr: Array<any> = [];
+addOptionsArr: Array<string> = [];
 importTalentsArr: any;
 levelPts: number = 0;
 currentXp: number = 0;
@@ -23,9 +27,20 @@ levelUpModal: boolean = false;
 hpKeyWord: string = '';
 rolledHp: number = 0;
 classSelection: string = '';
+showClassFeat: boolean = false;
+showNoClassFeat: boolean = false;
+showTalent: boolean = false;
+lvlButton: boolean = false;
+showAddOptions: boolean = false;
+featName: string = '';
+featDesc: string = '';
+talentName: string = '';
+talentDesc: string = '';
 lvlUpObject = {
   "class" : "",
   "hp"  : 0,
+  "feat" : [""],
+  "talent" : [""],
 }
 availablePrestigeClasses = [];
 startingClasses = [
@@ -106,10 +121,10 @@ babArr = {
 
   ngOnInit(): void {
     this.swapi.getFeats().subscribe((feats)=> {
-      this.importFeatsArr = feats;
+      this.apifeatsArr = feats;
     })
     this.swapi.getTalents().subscribe((talents) =>{
-      this.importTalentsArr = talents
+      this.apiTalentsArr = talents
     })
     this.level.invokeGetXp.subscribe(() => {
       this.getXp();
@@ -120,6 +135,117 @@ babArr = {
 
 
 // check hero level to see if it's every 3rd level and return the answer
+clearArr(arr : any){
+  if (arr == undefined){
+    return;
+  }
+  if (arr.length != 0){
+    while(arr.length){
+      arr.pop();
+    }
+  }
+}
+addFeatOptions(){
+
+}
+//  displays classs feats that aren't already on the character
+addClassFeatOptions(heroClass : string){
+  this.clearArr(this.importFeatsArr);
+  let currFeats = this.level.getHeroFeats();
+  let index = this.startingClasses.findIndex((el: any)=> el.name == heroClass);
+  let newFeats = this.startingClasses[index].class_Feats;
+  for (let i=0; i< newFeats.length; i++){
+    if(currFeats.includes(newFeats[i]) == false){
+      this.importFeatsArr.push(newFeats[i]);
+    }
+  }
+  console.log("show me feats",currFeats, this.importFeatsArr);
+}
+//  adds to a starting feats array when choosing a new class to multiclass with
+addStartFeats(heroClass : string){
+  this.clearArr(this.classStartFeatsArr);
+  let currFeats = this.level.getHeroFeats();
+  let index = this.startingClasses.findIndex((el: any)=> el.name == heroClass);
+  let startFeats = this.startingClasses[index].start_feats;
+  for (let i=0; i< startFeats.length; i++){
+    let key = this.checkClassReqs(startFeats[i]);
+    if(currFeats.includes(startFeats[i]) == false && key == "yes"){
+      this.classStartFeatsArr.push(startFeats[i]);
+    }
+  }
+  console.log("show me start feats",currFeats, this.classStartFeatsArr);
+}
+//  checks class requirments for scout and noble
+checkClassReqs(feat : string){
+  let key = '';
+  switch (feat) {
+    case "Linguist":
+      key = (this.heroservice.getAbilities()["Intelligence"] >= 13)? "yes": "no";
+      break;
+    case "Shake It Off":
+      let skills = this.heroservice.getSkills();
+      console.log(skills);
+      let skill = true;
+      for (let i = 0; i < skills.length; i++){
+        if (skills[i].skill_name == "Endurance"){
+            skill = skills[i].trained_skill;
+        }
+      }
+      key = (this.heroservice.getAbilities()["Constitution"] >= 13 && skill == true)? "yes": "no";
+    break;
+    default:
+      key = "yes";
+      break;
+  }
+  return key;
+}
+addTalentOptions(){
+
+}
+selectFeat(feat: string){
+  if (feat == "Select"){
+    return;
+  } 
+  this.clearArr(this.addOptionsArr);
+  let skillsTrained = [];
+  let skillsFocused = [];
+  if (feat == "Skill Focus" || feat == "Skill Training"){
+      let skills = this.heroservice.getSkills();
+      for (let i = 0; i<skills.length; i++){
+        if(skills[i].trained_skill == false){
+          skillsTrained.push(skills[i].skill_name);
+        }
+        if(skills[i].skill_focus == false && skills[i].trained_skill == true){
+          skillsFocused.push(skills[i].skill_name)
+        }
+      }
+      this.addOptionsArr = (feat == "Skill Training")?  [...skillsTrained]: [...skillsFocused];
+    
+    
+    this.showAddOptions = true;
+  }else{
+    this.showAddOptions = false
+    
+  }
+  for (let i = 0; i<this.apifeatsArr.length; i++){
+    let splitter = feat.split('Weapon Proficiency');
+  let tempFeat = ((splitter[0]== '')? 'Weapon Proficiency': "nope");
+    if (this.apifeatsArr[i].name == feat || this.apifeatsArr[i].name == tempFeat){
+      this.featName = (splitter[0]== '')? feat : this.apifeatsArr[i].name;
+      this.featDesc = this.apifeatsArr[i].description;
+      break;
+    }
+}
+}
+addFeat(feat: string, option: string){
+  if (feat == "Select" || option == "Select"){
+    return;
+  }else if (option == "none"){
+    this.lvlUpObject.feat = [feat];
+  }else{
+    this.lvlUpObject.feat =[`${feat} (${option})`];
+  }
+}
 checkTimesLeveled(){
   let obj = this.level.getHeroClassObj();
  let vals: Array<number> = Object.values(obj);
@@ -154,9 +280,15 @@ addClassSelection(selection: any){
     this.lvlUpObject.class = '';
     return;
   }
+  let curClass = Object.keys(this.level.getHeroClassObj());
   this.classSelection = selection;
   this.lvlUpObject.class = selection;
   this.rolledHp = 0;
+  if (curClass.includes(selection)== false){
+    this.addStartFeats(selection);
+    console.log("class obj:",curClass);
+  }
+  this.addClassFeatOptions(this.lvlUpObject.class);
 }
 selectHPIncrease(selection: string){
   console.log("the Selection:", selection);
@@ -184,6 +316,7 @@ let con = this.heroservice.getAbilityModifier()["Constitution"];
 this.lvlUpObject.hp = ((num + con) >= 1)? num + con: 1;
 console.log("new hp", this.lvlUpObject.hp, num)
 this.checkTimesLeveled();
+this.showClassFeat = true;
 }
 
 
