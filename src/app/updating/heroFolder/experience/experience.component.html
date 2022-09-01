@@ -50,6 +50,12 @@
            </div>
            <button *ngIf="showAddOptions == false" (click)="addFeat(classFeat.value, 'none')">Add Feat</button>
         </div>
+        <div *ngIf="showTalent">
+            <h2>Hi from Talent</h2>
+        </div>
+        <div *ngIf="showAbs">
+            <h2>Hi from Abs</h2>
+        </div>
         <div class="tb">
             <h4>Selected Stats</h4>
             <p *ngIf="lvlUpObject.class != ''">Selected Class: {{lvlUpObject.class}}</p>

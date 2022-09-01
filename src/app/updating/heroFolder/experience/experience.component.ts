@@ -18,6 +18,7 @@ classStartFeatsArr: Array<string> = [];
 currentTalentsArr: any;
 apifeatsArr: any;
 apiTalentsArr: any;
+apiTree: any;
 apiWeaponsArr: Array<any> = [];
 apiMeleeArr : Array<any> = [];
 apiRangedArr: Array<any> = [];
@@ -92,7 +93,7 @@ startingClasses = [
     "class_Feats" : ["Armor Proficiency (Heavy)","Bantha Rush","Careful Shot","Charging Fire","Cleave","Combat Reflexes","Coordinated Attack","Crush","Deadeye","Double Attack","Dual Weapon Mastery I","Dual Weapon Mastery II","Dual Weapon Mastery III","Exotic Weapon Proficiency","Far Shot","Great Cleave","Improved Charge","Improved Disarm","Martial Arts I","Martial Arts II","Martial Arts III","Melee Defense","Mighty Swing","Pin","Point-Blank Shot","Power Attack","Precise Shot","Quick Draw","Rapid Shot","Rapid Strike","Running Attack","Shake It Off","Skill Focus","Skill Training","Sniper","Throw","Toughness","Trip","Triple Attack","Triple Crit","Vehicular Combat","Weapon Focus","Weapon Proficiency (Advanced Melee Weapons)","Weapon Proficiency (Heavy Weapons)","Accelerated Strike","Conditioning","Critical Strike","Flurry","Improved Rapid Strike","Increased Agility","Power Blast","Sniper Shot","Tumble Defense","Withdrawal Strike"],
   }
 ]
-
+wepGrps: Array<string> = ["Advanced Melee Weapons","Heavy Weapons","Lightsabers","Pistols","Rifles","Grenades","Simple Weapons (Melee)","Simple Weapons (Ranged)" ]
 //  Objects
 lvlUpObject = {
   "class" : "",
@@ -111,6 +112,7 @@ levelUpModal: boolean = false;
 showClassFeat: boolean = false;
 showNoClassFeat: boolean = false;
 showTalent: boolean = false;
+showAbs: boolean = false;
 lvlButton: boolean = false;
 showAddOptions: boolean = false;
 //  Numbers & Strings
@@ -134,7 +136,6 @@ talentDesc: string = '';
   ngOnInit(): void {
     this.swapi.getFeats().subscribe((feats)=> {
       this.apifeatsArr = feats;
-      // console.log(this.apifeatsArr);
     })
     this.swapi.getTalents().subscribe((talents) =>{
       this.apiTalentsArr = talents
@@ -144,6 +145,9 @@ talentDesc: string = '';
     })
     this.swapi.getRanged().subscribe((ranged)=> {
       this.apiRangedArr = [...ranged];
+    })
+    this.swapi.getTalentTree().subscribe((tree)=> {
+      this.apiTree = [...tree];
     })
     this.level.invokeGetXp.subscribe(() => {
       this.getXp();
@@ -369,12 +373,12 @@ selectFeat(feat: string){
         this.addOptionsArr = (feat == "Skill Training")?  [...skillsTrained]: [...skillsFocused];
     }else{
       let exoticsArr = [];
-      let wepGrps = ["Advanced Melee Weapons","Heavy Weapons","Lightsabers","Pistols","Rifles","Grenades","Simple Weapons (Melee)","Simple Weapons (Ranged)" ]
+      
       let proficient = [""];
-      let feats = [...this.level.getHeroFeats(), ...this.classStartFeatsArr];
+      let feats = [...this.level.getHeroFeats()];
       for (let i =0; i < feats.length; i++){
         let words = feats[i].split(' ')
-        console.log("these are current feats", words);
+        // console.log("these are current feats", words);
           if (words[0] == "Weapon" && words[1] == "Proficiency"){
             let inParan = []
             for (let i = 2; i<words.length; i++){
@@ -390,7 +394,7 @@ selectFeat(feat: string){
         inParan.push(words[i]);
       }
     }
-      console.log("no Parans",inParan.join(' '))
+      // console.log("no Parans",inParan.join(' '))
       proficient.push(inParan.join(' '))
           }
         }
@@ -438,17 +442,28 @@ checkTimesLeveled(){
  this.timesLeveled = vals.reduce((prev:any, curr)=> Number(prev) + Number(curr),0);
   // console.log("number of times", vals,this.timesLeveled)
 }
-thirdLevelFeat(){
-  let num =this.heroservice.getHeroLevel();
-  if (num % 3 === 0){
+checkHeroLvl(){
+  let num = 1;
+  let hc = this.level.getHeroClassObj();
+  if (hc[this.lvlUpObject.class] != undefined){
+    num = hc[this.lvlUpObject.class] + 1;
+  }
+  let hl = this.heroservice.getHeroLevel();
+  let valid = false;
+  this.showNoClassFeat = (this.thirdLevelFeat(hl))? true: false;
+  this.showAbs = (this.everyFourth(hl))? true: false;
+  if (num % 2 == 0){ this.showClassFeat = true; this.showTalent = false }else{ this.showClassFeat = false; this.showTalent = true; this.addFeat('','none'); }
+}
+
+thirdLevelFeat(lvl : number){
+  if (lvl % 3 === 0){
     return true;
   }else{
     return false;
   }
 }
-everyFourth(){
-  let num = this.heroservice.getHeroLevel();
-  if (num % 4 === 0){
+everyFourth(lvl : number){
+  if (lvl % 4 === 0){
     return true;
   }else{
     return false;
@@ -462,6 +477,10 @@ beginLevelUp(){
   this.levelUpModal = true;
 }
 addClassSelection(selection: any){
+  this.showTalent = false;
+  this.showClassFeat = false;
+  this.showNoClassFeat = false;
+  this.hpKeyWord = '';
   if (selection == "Select a Class"){
     this.lvlUpObject.class = '';
     return;
@@ -502,7 +521,8 @@ let con = this.heroservice.getAbilityModifier()["Constitution"];
 this.lvlUpObject.hp = ((num + con) >= 1)? num + con: 1;
 // console.log("new hp", this.lvlUpObject.hp, num)
 this.checkTimesLeveled();
-this.showClassFeat = true;
+this.checkHeroLvl();
+
 }
 
 
