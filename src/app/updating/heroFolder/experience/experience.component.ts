@@ -170,17 +170,17 @@ clearArr(arr : any){
     }
   }
 }
-async showAvailable(feat : any){
+async showAvailable(feat : any, arr: Array<any>){
   this.currFeat = feat;
   let index=0;
-  for (let i =0; i<this.apifeatsArr.length;i++){
-    if(this.apifeatsArr[i].name == feat){
+  for (let i =0; i < arr.length; i++){
+    if(arr[i].name == feat){
       index = i;
       break;
     }    
   }
-    let keys = Object.keys(this.apifeatsArr[index].prereqs);
-    let vals: any = Object.values(this.apifeatsArr[index].prereqs);
+    let keys = Object.keys(arr[index].prereqs);
+    let vals: any = Object.values(arr[index].prereqs);
     // console.log("vals:",vals, feat)
     if (vals[0].includes("none")){
       this.importFeatsArr.push(feat);
@@ -258,7 +258,7 @@ async checkFeatReqs(apiValue: any, keyWord: string, feat: any, valid: boolean){
           let words = feats[i].split(' ');
           if (words[0] == "Weapon" && words[1] == "Proficiency" && feat == "Weapon Focus"){
            valid = true;
-            console.log("the split",words, apiValue)
+            // console.log("the split",words, apiValue)
             break;
           }else{
            valid = (feats[i] == apiValue)? true: false;
@@ -270,7 +270,6 @@ async checkFeatReqs(apiValue: any, keyWord: string, feat: any, valid: boolean){
        valid = keys.includes(apiValue) ? true :  false;
       break;
       case "talent":
-        console.log("no talents yet", feat);
         for (let i=0 ; i<talents.length;i++){
           if (talents[i].name == apiValue){
             valid = true;
@@ -301,7 +300,7 @@ addClassFeatOptions(heroClass : string){
   // console.log(this.lvlUpObject.BAB,this.level.getBAB(), "+", this.startingClasses[index].BAB )
   for (let i=0; i< newFeats.length; i++){
     if(currFeats.includes(newFeats[i]) == false){
-      this.showAvailable(newFeats[i])
+      this.showAvailable(newFeats[i], this.apifeatsArr)
     }
   }
   console.log("show me feats",currFeats, this.importFeatsArr);
@@ -371,13 +370,39 @@ selectFeat(feat: string){
     }else{
       let exoticsArr = [];
       let wepGrps = ["Advanced Melee Weapons","Heavy Weapons","Lightsabers","Pistols","Rifles","Grenades","Simple Weapons (Melee)","Simple Weapons (Ranged)" ]
+      let proficient = [""];
+      let feats = [...this.level.getHeroFeats(), ...this.classStartFeatsArr];
+      for (let i =0; i < feats.length; i++){
+        let words = feats[i].split(' ')
+        console.log("these are current feats", words);
+          if (words[0] == "Weapon" && words[1] == "Proficiency"){
+            let inParan = []
+            for (let i = 2; i<words.length; i++){
+      let len = words.length - 1
+       if ( words.length == 3){
+        
+        inParan.push(words[2].substring(1).slice(0,-1));
+       } else if(i == 2){
+            inParan.push(words[i].substring(1));
+        }  else if (i == len){
+          inParan.push(words[i].slice(0,-1));
+        } else{
+        inParan.push(words[i]);
+      }
+    }
+      console.log("no Parans",inParan.join(' '))
+      proficient.push(inParan.join(' '))
+          }
+        }
+        proficient.shift();
       // need to check feats to see if proficient first.
       for (let i = 0; i< this.apiWeaponsArr.length; i++){
         if(this.apiWeaponsArr[i].w_type == 'Exotic Weapons (Ranged)' || this.apiWeaponsArr[i].w_type == 'Exotic Weapons (Melee)'){
           exoticsArr.push(this.apiWeaponsArr[i].name);
         }
       }
-      this.addOptionsArr = [...wepGrps, ...exoticsArr];
+  
+      this.addOptionsArr = [...proficient];
     }
     
     
