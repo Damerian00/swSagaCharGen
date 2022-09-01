@@ -66,6 +66,7 @@ improvedDT: number = 0
 hpToughness: number = 0;
 private heroLevel: number = 0;
 private heroCondition: number = 0
+private species: string = '';
 
 //  gettters and setters
 setHeroLevel(level : number){

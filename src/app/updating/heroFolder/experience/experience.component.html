@@ -54,8 +54,8 @@
             <h4>Selected Stats</h4>
             <p *ngIf="lvlUpObject.class != ''">Selected Class: {{lvlUpObject.class}}</p>
             <p *ngIf="lvlUpObject.hp != 0">HP to increase {{lvlUpObject.hp}}</p>
-            <p *ngIf="lvlUpObject.feat.length != 0">Feat(s) to add: <span *ngFor="let feat of lvlUpObject.feat">{{feat}}</span></p>
-            <button [disabled]="lvlButton">Level Up</button>
+            <p *ngIf="lvlUpObject.feat.length > 0">Feat(s) to add: <span *ngFor="let feat of lvlUpObject.feat">{{feat}}</span></p>
+            <button [disabled]="lvlButton == false">Level Up</button>
         </div>
     </aside>
 </section>

@@ -184,10 +184,12 @@ async updateStats(){
   this.heroDefenses = await this.savedHero.defenses;
   this.heroSpeciesObj = await this.savedHero.species;
   this.startingTalents = await this.savedHero.talents;
+  this.level.setTalents(this.savedHero.talents);
   this.heroLanguages = await (this.savedHero.languages == undefined)?this.heroSpeciesObj.traits.languages: this.savedHero.languages;
   this.heroAbilities = await this.savedHero.abilities;
   this.size = await this.heroSpeciesObj.traits.size;
   this.BAB = await this.savedHero.bab;
+  this.level.setBAB(this.savedHero.bab)
   this.damageThreshold = this.savedHero.dt;
   await (this.savedHero.currentArmor == undefined)? "nothing":this.currentArmor = this.savedHero.currentArmor; 
   await (this.savedHero.attacks == undefined || this.savedHero.attacks.length == 0)? "nothing":this.heroAttacks= [...this.savedHero.attacks];
