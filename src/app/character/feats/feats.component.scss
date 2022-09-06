@@ -58,6 +58,13 @@ h2, h3, p {
     }
 
 }
+.box{
+    display: flex;
+    flex:1;   
+    align-items: center;
+    justify-content: space-around;
+    margin: 0.5vh 1vw;
+}
 @media screen and (max-width: 450px )  {
     .startFeats{
         flex-direction: column;

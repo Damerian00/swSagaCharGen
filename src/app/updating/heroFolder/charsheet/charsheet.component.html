@@ -117,11 +117,7 @@
                     </div>
                 </div>
             </div>
-            
-
-
         </section>
-       
         <section class="tb conditions">
             <h6>Condition</h6>
             <input type="radio" id="normal" name="condition" value="normal" (click)="updateCondition(0)" checked="true">
@@ -203,6 +199,12 @@
             <div class="box">
                 <h6>Special Attacks</h6>
             </div>
+            <div class="box">
+                <h6>Force Powers</h6>
+            </div>
+            <div class="box">
+                <h6>Starship Maneuvers</h6>
+            </div>
         </div>
     </div>
     <hr>
@@ -239,6 +241,24 @@
         </div>
         <div class="tb third-size">
             <h6>Talents</h6>
+            <div class="white-board">
+                <p *ngFor="let talent of startingTalents">{{talent.name}} : {{talent.description}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="box flex-start">
+        <div class="tb third-size">
+            <h6>Force Techniques</h6>
+            <textarea class="third-size" name="specialQualities" id="specialQualities" cols="30" rows="10"></textarea>
+        </div>
+        <div class="tb third-size">
+            <h6>Force Secrets</h6>
+            <div class="white-board">
+                <p *ngFor="let feat of startingFeats">{{feat}}</p>
+            </div>
+        </div>
+        <div class="tb third-size">
+            <h6>Force Regimens</h6>
             <div class="white-board">
                 <p *ngFor="let talent of startingTalents">{{talent.name}} : {{talent.description}}</p>
             </div>

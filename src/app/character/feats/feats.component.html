@@ -29,6 +29,29 @@
                     <option *ngFor="let featOption of specialFeatOptions">{{featOption}}</option>
                 </select>
             </div>
+            <section *ngIf="showForcePowers">
+                <header>
+                    <h2>You may select {{numPowers}} force powers.</h2>
+                </header>
+                <main>
+                    <select #selectPower name="selectPower" (change)="selectedPower(selectPower.value)">
+                        <option>Select a Power</option>
+                        <option *ngFor="let power of forcePowersArr">{{power.name}}</option>
+                        <option *ngFor="let saberForm of saberFormPowers">{{saberForm.name}}</option>  
+                    </select>
+                    <div *ngIf=" forceName !=''">
+                        <label>Force Power: {{forceName}}</label>
+                        <label>Description: {{forceDesc}}</label>
+                        <button (click)="acceptPower()">Add to Suite</button>
+                    </div>
+                    <aside *ngIf="heroForceSuite.length != 0">
+                        <div class="box" *ngFor="let power of heroForceSuite let i = index">
+                            <p>{{power.name}}</p>
+                            <button (click)="deletePower(i)">Remove</button>
+                        </div>
+                    </aside>
+                </main>
+            </section>
             <button class="featsButton" (click)="submit(selectedFeat.value, 0)">Select Feat</button>
         </form>
     </section>

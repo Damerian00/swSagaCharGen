@@ -23,8 +23,8 @@ apiWeaponsArr: Array<any> = [];
 apiMeleeArr : Array<any> = [];
 apiRangedArr: Array<any> = [];
 importFeatsArr: Array<any> = [];
+importTalentsArr: Array<any> = []
 addOptionsArr: Array<string> = [];
-importTalentsArr: any;
 availablePrestigeClasses = [];
 startingClasses = [
   {
@@ -350,7 +350,9 @@ checkClassReqs(feat : string){
 addTalentOptions(){
 
 }
+selectTalent(talent : string){
 
+}
 selectFeat(feat: string){
   if (feat == "Select"){
     return;

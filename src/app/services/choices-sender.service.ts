@@ -42,6 +42,7 @@ onSelection() {
   private allSkillsArray = ["Acrobatics",  "Climb", "Deception", "Endurance","Gather Information","Initiative","Jump", "Mechanics","Perception","Persuasion","Knowledge (Bureaucracy)","Knowledge (Galactic Lore)","Knowledge (Life Sciences)","Knowledge (Physical Sciences)","Knowledge (Social Sciences)","Knowledge (Tactics)","Knowledge (Technology)","Mechanics","Perception","Persuasion", "Pilot","Ride", "Stealth", "Survival","Swim", "Treat Injury", "Use Computer","Use the Force"]
   private trainedSkillsArray: any;
   private availableTalents: any;
+  private abilityMods: any;
    constructor() { }
 // function set up to handle validtion and responses based on parameter inputs
 validator(value1 :any, value2: any, operand:string, type: string){
@@ -147,6 +148,12 @@ setTrainedSkills(arr : Array<any>){
 }
 getTrainedSkills(){
   return this.trainedSkillsArray;
+}
+setAbilityMods(abilities: any){
+  this.abilityMods = abilities;
+}
+getAbilityMods(){
+  return this.abilityMods;
 }
 /*
 

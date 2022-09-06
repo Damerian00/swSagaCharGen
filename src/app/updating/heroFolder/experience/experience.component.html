@@ -50,8 +50,13 @@
            </div>
            <button *ngIf="showAddOptions == false" (click)="addFeat(classFeat.value, 'none')">Add Feat</button>
         </div>
-        <div *ngIf="showTalent">
-            <h2>Hi from Talent</h2>
+        <div *ngIf="showTalent" class="tb">
+            <Label>Select a Talent to add</Label>
+            <select #talentSelector name="talentSelector" (change)="selectTalent(talentSelector.value)">
+                <option>Select</option>
+                <option *ngFor="let talent of importTalentsArr">{{talent}}</option>
+            </select>
+
         </div>
         <div *ngIf="showAbs">
             <h2>Hi from Abs</h2>

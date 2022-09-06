@@ -558,6 +558,7 @@ calcModifier(){
      }
     //  console.log("the abilities: ", keys[i], tempScore)    
   }
+  this.choices.setAbilityMods(this.abilityModifier);
 }
 collectCalcData(index: any, selection: any){
   // console.log("this is the index", index, this.heroSkillsTotal[index].skill_name, selection.target.value)
