@@ -125,6 +125,7 @@ heroSkillsTotal: any = [
 featSkills: Array<string> = ["", ""];
 featFocus: Array<string> = ["", ""];
 languages: Array<any> = [];
+forcePowers: Array<any> = [];
 /*
 == Numbers == 
 */
@@ -326,6 +327,15 @@ await this.removeAddedSkills();
     }  
   }  
 }
+
+updateForcePowers(powersArr : Array<any>){
+  console.log("Here's the force", powersArr);
+  if (powersArr == undefined){
+    return;
+  }
+  this.forcePowers = [...powersArr]
+}
+
 async updateFocusFeats(chosenFeat: any){
   let feat = chosenFeat.split(' ').slice(2).join(' ').slice(1,-1);
   await this.resetFocus();

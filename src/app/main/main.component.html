@@ -26,7 +26,7 @@
         <abilities (abilitiesSelected)="updateAbilities($event)" ></abilities>
         <classes *ngIf="toggleClassesComponent == true" (classSelected)="[updateClass($event), skills.showSkills($event), feats.setClass($event)]"></classes>
         <skills #skills [intModifier]="intModifier" (heroSkillsSelected)="updateSkills($event)"></skills>
-        <feats #feats (heroFeatsSelected)="updateFeats($event)" (heroSkillTrained)="addRemoveSkill($event)"></feats>
+        <feats #feats (heroFeatsSelected)="updateFeats($event)" (heroSkillTrained)="addRemoveSkill($event)" (heroForcePowers)="updateForcePowers($event)"></feats>
         <talents #talents (heroTalentSelected)="updateTalents($event)" (heroTalentSpecified)="updateTalentSpecify($event)"></talents>
     </div>
     <div id="contentSaved" class="display {{toggleShow}}" #contentSaved>
@@ -139,6 +139,15 @@
                     <h4 *ngFor="let feat of chosenFeats">{{feat}}</h4>
                 </div>
             </div>
+        </section>
+        <hr>
+        <section *ngIf="forcePowers.length >= 1" class="featsWrapper">
+          <div class="featsContainer">
+              <h3>Force Powers</h3>
+              <div class="box">
+                  <h4 *ngFor="let power of forcePowers">{{power.name}}</h4>
+              </div>
+          </div>
         </section>
         <hr>
         <section *ngIf="showRest" class="talentsWrapper">

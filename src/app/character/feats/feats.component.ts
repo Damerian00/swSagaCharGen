@@ -13,6 +13,7 @@ export class FeatsComponent implements OnInit {
 //  ---Variables---
   @Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
   @Output () heroSkillTrained: EventEmitter<any> = new EventEmitter<any>()
+  @Output () heroForcePowers: EventEmitter<any> = new EventEmitter<any>()
   featsArray: any;
   startingFeats: Array<string> = [];
   selectedFeats: Array<string> = [];
@@ -549,7 +550,7 @@ if (selection != "Select a Feat"){
         if (this.selectedFeat[0] == "Force Training"){
           if(this.heroForceSuite.length <= this.maxPowers){
             this.numPowers +=1 
-            console.log("Why?",this.selectedFeat[0]);
+            // console.log("Why?",this.selectedFeat[0]);
           }else{
             while (this.heroForceSuite.length > this.maxPowers){
                 this.heroForceSuite.pop();
@@ -622,6 +623,7 @@ selectedPower(power: any){
       this.forceName = this.forcePower.name;
       this.forceDesc = this.forcePower.desc;
 }
+
 acceptPower(){
  
   if (this.numPowers > 0 && this.heroForceSuite.length < this.maxPowers){
@@ -869,6 +871,7 @@ submitFinal(selection: any){
 console.log("final thoughts:",selection, featsArr)
 this.heroFeatsSelected.emit(featsArr);
 this.choices.startTalentComponent();
+this.heroForcePowers.emit(this.heroForceSuite);
 }
 
 }
