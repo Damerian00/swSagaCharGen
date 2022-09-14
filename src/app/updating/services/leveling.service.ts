@@ -14,9 +14,11 @@ heroFeats: any;
 heroTalents: any;
 heroClassObj: any;
 BAB: number = 0;
+trees: any;
   constructor(private hero : HeroService) { }
 
-invokeGetXp = new EventEmitter() 
+invokeGetXp = new EventEmitter();
+invokeTreeCount= new EventEmitter();
 
 displayXp(){
   this.invokeGetXp.emit();
@@ -54,6 +56,8 @@ getHeroFeats(){
 setTalents(talents: any){
   this.heroTalents = talents;
   console.log("talents", this.heroTalents);
+  this.invokeTreeCount.emit(this.heroTalents);
+
 }
 getHeroTalents(){
   return this.heroTalents;
@@ -70,6 +74,14 @@ setBAB(bab : number){
 }
 getBAB(){
   return this.BAB;
+}
+
+setNumberinTrees(talents: any){
+  this.trees = talents;
+  // console.log("checks: ",this.trees)
+}
+getNumberinTrees(){
+  return this.trees;
 }
 }
 

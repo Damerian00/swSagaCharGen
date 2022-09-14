@@ -19,6 +19,7 @@ interface heroObject {
   dt: number,
   hp: number,
   bab: number,
+  forcePowers: Array<any>,
 }
 
 @Component({
@@ -648,6 +649,7 @@ saveHero(){
     dt: this.damageThreshold,
     hp: this.healthPoints,
     bab: this.choices.acquireBab(),
+    forcePowers: [...this.forcePowers],
   }
   
   let tempName = savedHero.name.split(' ').join('_')

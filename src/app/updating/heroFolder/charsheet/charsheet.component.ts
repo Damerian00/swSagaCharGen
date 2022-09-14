@@ -71,7 +71,8 @@ grappleModSelected: string = "Strength";
 grappleMisc: number = 0;
 langsAllowed: number = 0;
 credits: number = 0;
-
+forcePowers: Array<any> = [];
+attack: number = 0;
 //  Misc
 
 //  ---End Variables---
@@ -88,7 +89,6 @@ credits: number = 0;
       }
      })
     }
-    
   }
   //  gets the hero data from the user selection from the local storage/db
   getHero(name: string){  
@@ -103,8 +103,12 @@ credits: number = 0;
       this.updateStats();
       this.heroPull = true;
       // this.calcDT(this.currentDtType);
-      
     }
+  }
+
+  testChange(){ 
+    (this.savedHero['test'] == 1)? this.savedHero['test'] = 0:this.savedHero['test'] = 1;
+    console.log("hero:", this.savedHero.test);
   }
 // calculates the heroes kevel based on their current xp
 calcHeroLevel(num: any){
@@ -167,6 +171,7 @@ async calcLangsAllowed(){
 // updates saved languages array with the outputted languages array from language component
 updatelanguages(langs : any){
   this.savedLanguages = [...langs];
+  this.heroservice.setLanguages(langs)
 }
 // updates hero stats and cvalls the setters and getters
 async updateStats(){

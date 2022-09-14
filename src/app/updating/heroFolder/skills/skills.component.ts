@@ -95,7 +95,7 @@ updateAbilities(){
   this.abilityModifier = this.heroservice.getAbilityModifier();
   // console.log("ab mods", this.abilityModifier)
 }
-calcSkillValue(skill: string, mod:string, misc:number, penalty: number){
+async calcSkillValue(skill: string, mod:string, misc:number, penalty: number){
   this.updateAbilities();
   this.heroLevel = this.heroservice.getHeroLevel();
   // console.log("what we got", skill, mod, misc, penalty);
@@ -112,7 +112,7 @@ calcSkillValue(skill: string, mod:string, misc:number, penalty: number){
     }
     this.heroSkills[i].skill_value = Math.floor(this.heroLevel/2) + this.abilityModifier[mod] + t + f + misc + this.heroCondition + penalty;
     if (skill == "Stealth"){
-      this.heroSkills[i].skill_value =+ this.stealthSizeMod 
+      this.heroSkills[i].skill_value += this.stealthSizeMod;
     }
   // console.log("the value computed:",this.heroSkills[i].skill_value, "herolevel", this.heroLevel,  this.abilityModifier[mod], t,f, misc)
     }

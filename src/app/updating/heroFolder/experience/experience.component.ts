@@ -93,7 +93,9 @@ startingClasses = [
     "class_Feats" : ["Armor Proficiency (Heavy)","Bantha Rush","Careful Shot","Charging Fire","Cleave","Combat Reflexes","Coordinated Attack","Crush","Deadeye","Double Attack","Dual Weapon Mastery I","Dual Weapon Mastery II","Dual Weapon Mastery III","Exotic Weapon Proficiency","Far Shot","Great Cleave","Improved Charge","Improved Disarm","Martial Arts I","Martial Arts II","Martial Arts III","Melee Defense","Mighty Swing","Pin","Point-Blank Shot","Power Attack","Precise Shot","Quick Draw","Rapid Shot","Rapid Strike","Running Attack","Shake It Off","Skill Focus","Skill Training","Sniper","Throw","Toughness","Trip","Triple Attack","Triple Crit","Vehicular Combat","Weapon Focus","Weapon Proficiency (Advanced Melee Weapons)","Weapon Proficiency (Heavy Weapons)","Accelerated Strike","Conditioning","Critical Strike","Flurry","Improved Rapid Strike","Increased Agility","Power Blast","Sniper Shot","Tumble Defense","Withdrawal Strike"],
   }
 ]
-wepGrps: Array<string> = ["Advanced Melee Weapons","Heavy Weapons","Lightsabers","Pistols","Rifles","Grenades","Simple Weapons (Melee)","Simple Weapons (Ranged)" ]
+wepGrps: Array<string> = ["Advanced Melee Weapons","Heavy Weapons","Lightsabers","Pistols","Rifles","Grenades","Simple Weapons (Melee)","Simple Weapons (Ranged)"];
+meleeGrps: Array<string> = ["Advanced Melee Weapons","Lightsabers","Simple Weapons (Melee)"];
+rangedGrps: Array<string> = ["Heavy Weapons","Pistols","Rifles","Grenades","Simple Weapons (Ranged)"];
 //  Objects
 lvlUpObject = {
   "class" : "",
@@ -151,6 +153,9 @@ talentDesc: string = '';
     })
     this.level.invokeGetXp.subscribe(() => {
       this.getXp();
+    })
+    this.level.invokeTreeCount.subscribe((talents)=> {
+      this.countTrees(talents);
     })
     setTimeout(() => {
       this.apiWeaponsArr = [...this.apiMeleeArr, ...this.apiRangedArr];
@@ -347,11 +352,213 @@ checkClassReqs(feat : string){
   }
   return key;
 }
-addTalentOptions(){
+// creates the array for selecting when choosing a talent
+addTalentSelectables(selectedClass : string){
+  console.log("adding selectables", selectedClass);
+  let tempTree = [];
+  this.clearArr(this.importTalentsArr);
+  for (let i = 0; i < this.apiTree.length; i ++){
+    if (this.apiTree[i].classUsage.includes(selectedClass)){
+      tempTree.push(this.apiTree[i].id);
+    }
+  }
+  console.log("tempTree arr", tempTree);
+  for (let i=0; i<this.apiTalentsArr.length; i++){
+    if (tempTree.includes(this.apiTalentsArr[i].TalentTreeId)){
+      if (this.apiTalentsArr[i].preReqs.req1 == "none"){
+        this.importTalentsArr.push(this.apiTalentsArr[i]);
+      }else{
+        let preReqs = this.apiTalentsArr[i].preReqs
+        for (let p = 0; p< Object.keys(preReqs).length; p++){
+          let vals = Object.values(preReqs)[p];
+        //  console.log(this.apiTalentsArr[i])
+          if (this.checkArrLength(vals, this.apiTalentsArr[i].name) == true){
+            this.importTalentsArr.push(this.apiTalentsArr[i]);
+          }
+        }
+      }
+    }
+  }
+  console.log(this.importTalentsArr, "<--imp talentsarr");
+}
+checkArrLength(arr: any, talent: string){
+  let valid = false;
+  if (arr.length == 2){
+    valid = (this.checkTalentReqs(arr, talent))? true: false;
+  }else if (arr.includes("or")){
+    //start i @ 2 since we are only looping through indexes after the first 2
+    for (let i=2; i< arr.length; i++){
+      let newArr = [arr[0], arr[i]];
+      // if true will break loop and set valid to true because only need one to be true
+      if (this.checkTalentReqs(newArr, talent) == true){
+        valid = true;
+        break;
+      }
+    }
+  }else{
+    //start i @ 2 since we are only looping through indexes after the first 2
+    for (let i=2; i< arr.length; i++){
+      let newArr = [arr[0], arr[i]];
+      // if false will return false and break the loop because all need to be true
+      if (this.checkTalentReqs(newArr, talent) == false){
+        valid = false;
+        break;
+      }else{
+        valid = true;
+      }
+    } 
+  }
+  return valid;
+}
+checkTalentReqs(arr: any, talent: string){
+  let valid = false
+  let tempStr = '';
+  const abs = Object.keys(this.heroservice.getAbilities());
+  if (abs.includes(arr[0])){
+    let index = abs.findIndex((el: any)=> el == arr[0])
+    tempStr = abs[index];
+    arr[0] = "abilities";
+  }else{
+    let split = arr[0].split(' ');
+    if (split[split.length -1] == "Tree"){
+      tempStr = arr[0];
+      arr[0] = "tree";
+    }
+  }
+  const bab = this.level.getBAB();
+  const skills = this.heroservice.getSkills();
+  const talents = this.level.getHeroTalents();
+  const feats = this.level.getHeroFeats();
+  const trees = this.level.getNumberinTrees();
+  switch (arr[0]){
+    case "Trained":
+      let index = skills.findIndex((el : any)=> el.skill_name == arr[1]);
+      valid = skills[index].trained_skill
+    break;
+    case "talent":
+    valid = talents.includes(arr[1]);
+    break;
+    case "abilities":
+    valid = (this.heroservice.getAbilities()[tempStr] >= arr[1])? true: false;
+    break;
+    case "BAB":
+    valid = (arr[1] >= bab)? true: false;
+    break;
+    case "Language":
+    valid = (this.heroservice.getLanguages().includes(arr[1]))? true: false;
+    break;
+    case "feat":
+    valid = (feats.includes(arr[1]));
+    break;
+    case "tree":
+    valid = (Object.keys(trees).includes(tempStr))? true: false;
+    break;
+  }
+  // console.log("Well?", talent, arr, valid, tempStr);
+ return valid;
+}
+// ["Greater Weapon Specialization","Accurate Blow","Share Force Secret","Share Force Technique","Assured Skill","Exceptional Skill",Skill Boon","Skill Confidence","Skillful Recovery"]
+// skills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
+// talentTree = ["Coordinated Leadership","Stolen Form","Squadron Maneuvers", "Share Talent"]
+// proficient = ["Accurate Blow","Greater Weapon Focus"]
+// weapon = ["Greater Weapon Specialization"]
+// force = ["Share Force Secret","Share Force Technique"]
+addTalentOptions(key: string, talent : any){
+  console.log("here's a talent:", key, talent)
+  let tempArr = [];
+  
+  switch (key){
+    case "talentTree":
+      switch (talent.name){
+        case "Coordinated Leadership":
 
+        break;
+        case "Stolen Form":
+
+        break;
+        case "Squadron Maneuvers":
+
+        break;
+        case "Share Talent":
+
+        break;
+      }
+    break;
+    case "proficient":
+
+    break;
+    case "weapon":
+
+    break;
+    case "force":
+
+    break;
+    case "skills":
+      switch (talent.name){
+        case "Assured Skill":
+
+        break;
+        case "Exceptional Skill":
+
+        break;
+        case "Skill Boon":
+
+        break;
+        case "Skill Confidence":
+
+        break;
+        case "Skillful Recovery":
+
+        break;
+
+      }
+    break;
+
+
+  }
+  
 }
 selectTalent(talent : string){
+  if (talent == "Select"){
+    this.talentName = "";
+    this.talentDesc = "";
+    return;
+  }
+  let index = this.apiTalentsArr.findIndex((el : any)=> el.name == talent);
+  this.talentName = this.apiTalentsArr[index].name;
+  this.talentDesc = this.apiTalentsArr[index].description;
+  if (this.apiTalentsArr[index].addOption.includes("none") == false){
+    switch (this.apiTalentsArr[index].name){}
+    let skills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
+    let force = ["Share Force Secret","Share Force Technique"];
+    if (skills.includes(this.apiTalentsArr[index].name)){
+      this.addTalentOptions("skills",this.apiTalentsArr[index]);
+    }else if(force.includes(this.apiTalentsArr[index].name)){
+      this.addTalentOptions("force", this.apiTalentsArr[index]);
+    }else{
+      this.addTalentOptions(this.apiTalentsArr[index].addOption[0], this.apiTalentsArr[index]);
+    }
 
+  }
+}
+countTrees(talents: any){
+  // console.log("counting", talents)
+  let obj:any = {};
+  for (let i = 0; i < talents.length; i++){
+    for (let j = 0; j<this.apiTree.length; j++){
+      if (talents[i].TalentTreeId == this.apiTree[j].id){
+        if (obj[this.apiTree[j].name] == undefined){
+          obj[this.apiTree[j].name] = 1;
+        }else{
+          let value = obj[this.apiTree[j].name];
+          obj[this.apiTree[j].name] = value + 1;
+        }
+      }
+    }
+  }
+  this.level.setNumberinTrees(obj);
+  this.addTalentSelectables(this.lvlUpObject.class)
+  // console.log("heres trees", obj)
 }
 selectFeat(feat: string){
   if (feat == "Select"){
@@ -444,6 +651,7 @@ checkTimesLeveled(){
  this.timesLeveled = vals.reduce((prev:any, curr)=> Number(prev) + Number(curr),0);
   // console.log("number of times", vals,this.timesLeveled)
 }
+// checks to see what hero and class level the user is leveling to
 checkHeroLvl(){
   let num = 1;
   let hc = this.level.getHeroClassObj();
@@ -454,7 +662,7 @@ checkHeroLvl(){
   let valid = false;
   this.showNoClassFeat = (this.thirdLevelFeat(hl))? true: false;
   this.showAbs = (this.everyFourth(hl))? true: false;
-  if (num % 2 == 0){ this.showClassFeat = true; this.showTalent = false }else{ this.showClassFeat = false; this.showTalent = true; this.addFeat('','none'); }
+  if (num % 2 == 0){ this.showClassFeat = true; this.showTalent = false }else{ this.showClassFeat = false; this.showTalent = true; this.addFeat('','none'); this.countTrees(this.level.getHeroTalents()) }
 }
 
 thirdLevelFeat(lvl : number){
@@ -478,6 +686,7 @@ getXp(){
 beginLevelUp(){
   this.levelUpModal = true;
 }
+// select a class when first leveling up
 addClassSelection(selection: any){
   this.showTalent = false;
   this.showClassFeat = false;
@@ -497,6 +706,7 @@ addClassSelection(selection: any){
   }
   this.addClassFeatOptions(this.lvlUpObject.class);
 }
+// selects one of 2 methods on increasing hp
 selectHPIncrease(selection: string){
   // console.log("the Selection:", selection);
   if (selection == "Select"){
@@ -504,6 +714,7 @@ selectHPIncrease(selection: string){
   }
   this.hpKeyWord = selection;
 }
+// rolls hp based on die associated with class selected
 rollHP(){
   let die = 0;
   for (let i =0; i<this.startingClasses.length; i++){
@@ -517,6 +728,7 @@ rollHP(){
 //  console.log("rolled", this.rolledHp, die);
  this.calcHPIncrease(this.rolledHp);
 }
+// calculates the hp based on the roll or the input recieved from user
 calcHPIncrease(value: any){
 let num = (isNaN(value))? value: Math.floor(parseInt(value));
 let con = this.heroservice.getAbilityModifier()["Constitution"];

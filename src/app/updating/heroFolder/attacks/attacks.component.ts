@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
 import { HeroService } from '../../services/hero.service';
 
@@ -13,6 +13,8 @@ import { HeroService } from '../../services/hero.service';
 export class AttacksComponent implements OnInit {
 //variables
 @Output() savedAttacks : EventEmitter<any> = new EventEmitter<any> ();
+@Output() attackTest: EventEmitter<any> = new EventEmitter<any> ();
+@Input() currentHero = {"test" : 0};
 //strings
 currentType: string = '';
 //arrays

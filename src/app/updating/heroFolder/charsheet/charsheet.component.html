@@ -188,7 +188,7 @@
                 <armor (savedArmor)="[updateArmor($event), defenses.updateArmor($event), updateSkills.checkWorn($event)]"></armor>
             </div>
             <div class="box">
-                <attacks (savedAttacks)="updateAttacks($event)"></attacks>
+                <attacks (savedAttacks)="updateAttacks($event)" [currentHero]="savedHero"></attacks>
             </div>
         </div>
         <div class="tb">

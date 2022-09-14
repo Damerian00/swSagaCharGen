@@ -67,6 +67,7 @@ hpToughness: number = 0;
 private heroLevel: number = 0;
 private heroCondition: number = 0
 private species: string = '';
+private languages : Array <string> = [];
 
 //  gettters and setters
 setHeroLevel(level : number){
@@ -236,7 +237,12 @@ calcClassBonuses(chosenClass: string){
   }
   return obj;
 }
-
+setLanguages(languages: Array<string>){
+  this.languages = [...languages];
+}
+getLanguages(){
+  return this.languages;
+}
 
 
 }

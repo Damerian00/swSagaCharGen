@@ -52,97 +52,97 @@ export class FeatsComponent implements OnInit {
   forceTraining: boolean = false;
   maxPowers: number = 0;
   forcePowersArr: Array<any> = [
-    { "name" : "Battle Strike","isChecked" : false, "times" : 0, "desc" : "Increases attack and damage for next attack.", "type" : ["na"] },
-    { "name" : "Dark Rage","isChecked" : false, "times" : 0, "desc" : "Increases Melee attack and damage for 1 turn.", "type" : ["Dark Side"] },
-    { "name" : "Farseeing","isChecked" : false, "times" : 0, "desc" : "You use The Force to detect an individual over a long distance.", "type" : ["na"] },
-    { "name" : "Force Disarm","isChecked" : false, "times" : 0, "desc" : "Disarms an opponent using The Force.", "type" : ["Telekinetic"] },
-    { "name" : "Force Grip","isChecked" : false, "times" : 0, "desc" : "Chokes or crushes an opponent, may force opponent to lose their Standard Action.", "type" : ["Telekinetic"] },
-    { "name" : "Force Lightning","isChecked" : false, "times" : 0, "desc" : "Electrocutes an opponent, deals automatic damage.", "type" : ["Dark Side"] },
-    { "name" : "Force Slam","isChecked" : false, "times" : 0, "desc" : "Pounds multiple opponents, and may knock them Prone.", "type" : ["Telekinetic"] },
-    { "name" : "Force Stun","isChecked" : false, "times" : 0, "desc" : "Stuns an opponent, and damages their overall Condition.", "type" : ["na"] },
-    { "name" : "Force Thrust","isChecked" : false, "times" : 0, "desc" : "You use The Force to push back an opponent several meters, and possibly deal damage.", "type" : ["Telekinetic"] },
-    { "name" : "Mind Trick","isChecked" : false, "times" : 0, "desc" : "You influence the mind of a target by dominating their will.", "type" : ["Mind-Affecting"] },
-    { "name" : "Move Object","isChecked" : false, "times" : 0, "desc" : "You use The Force to hold, move, or crush one target.", "type" : ["Telekinetic"] },
-    { "name" : "Negate Energy","isChecked" : false, "times" : 0, "desc" : "You dissipate an energy attack.", "type" : ["na"] },
-    { "name" : "Rebuke","isChecked" : false, "times" : 0, "desc" : "You deflect a Force Power used against you.", "type" : ["na"] },
-    { "name" : "Sever Force","isChecked" : false, "times" : 0, "desc" : "You temporarily block a Force-User's access to The Force.", "type" : ["Light Side"] },
-    { "name" : "Surge","isChecked" : false, "times" : 0, "desc" : "You use The Force to assist in a supernatural Jump.", "type" : ["na"] },
-    { "name" : "Vital Transfer","isChecked" : false, "times" : 0, "desc" : "You heal another through The Force.", "type" : ["Light Side"] },
-    { "name" : "Energy Resistance","isChecked" : false, "times" : 0, "desc" : "You use The Force to protect you from damage caused by energy, sonic, fire, cold, and electrical sources.", "type" : ["na"] },
-    { "name" : "Fear","isChecked" : false, "times" : 0, "desc" : "You summon The Dark Side to instill fear in your enemies.", "type" : ["Dark Side","Mind-Affecting"] },
-    { "name" : "Force Scream","isChecked" : false, "times" : 0, "desc" : "You create an intense sonic scream, amplified by The Force.", "type" : ["Dark Side"] },
-    { "name" : "Force Whirlwind","isChecked" : false, "times" : 0, "desc" : "You call upon The Force to surround an enemy in a swirling vortex of Force energy. The whirlwind lifts them about half a meter off the ground, spinning them in the air and buffeting them with Force energy.", "type" : ["Telekinetic"] },
-    { "name" : "Ionize","isChecked" : false, "times" : 0, "desc" : "You call upon The Force to overload electrical systems and Droids, damaging or even destroying the unit.", "type" : ["na"] },
-    { "name" : "Kinetic Combat","isChecked" : false, "times" : 0, "desc" : "You use The Force to manipulate your chosen weapon, allowing it to operate independent of your grasp.", "type" : ["Telekinetic"] },
-    { "name" : "Resist Force","isChecked" : false, "times" : 0, "desc" : "You use The Force to protect yourself from an opponent's Force Powers.", "type" : ["na"] },
-    { "name" : "Slow","isChecked" : false, "times" : 0, "desc" : "The Force enables you to slow your targets as if they are encumbered by an extremely Heavy Load, making it difficult for them to move.", "type" : ["Telekinetic"] },
-    { "name" : "Valor","isChecked" : false, "times" : 0, "desc" : "You call upon the strength of The Force, reaching out to your ally and sharing your strength with them.", "type" : ["Light Side"] },
-    { "name" : "Wound","isChecked" : false, "times" : 0, "desc" : "You cause spasms in the lungs of your targets, painfully injuring them.", "type" : ["Dark Side"] },
-    { "name" : "Corruption","isChecked" : false, "times" : 0, "desc" : "You use The Force to send a bolt of pure Dark Side vileness into an enemy.", "type" : ["Dark Side"] },
-    { "name" : "Force Blast","isChecked" : false, "times" : 0, "desc" : "You use The Force to create a ball of compressed air and debris that you can hurl at enemy targets.", "type" : ["na"] },
-    { "name" : "Force Shield","isChecked" : false, "times" : 0, "desc" : "You use The Force to create a bubble of telekinetic energy around yourself, protecting you from harm.", "type" : ["Telekinetic"] },
-    { "name" : "Force Storm","isChecked" : false, "times" : 0, "desc" : "You use The Force to create a swirling whirlwind of dark energy around yourself.", "type" : ["Dark Side","Telekinetic"] },
-    { "name" : "Repulse","isChecked" : false, "times" : 0, "desc" : "You use The Force to clear an area around yourself.", "type" : ["Telekinetic"] },
-    { "name" : "Cloak","isChecked" : false, "times" : 0, "desc" : "You bend light around your body, rendering yourself invisible to anyone looking in your direction.", "type" : ["na"] },
-    { "name" : "Levitate","isChecked" : false, "times" : 0, "desc" : "You can float up or down without anything or anyone to assist you.", "type" : ["Telekinetic"] },
-    { "name" : "Malacia","isChecked" : false, "times" : 0, "desc" : "You create dizziness and nausea by disrupting your target's equilibrium.", "type" : ["Light Side"] },
-    { "name" : "Morichro","isChecked" : false, "times" : 0, "desc" : "You slow the vital functions of a target, causing them to slip into a deep sleep or even die.", "type" : ["na"] },
-    { "name" : "Phase","isChecked" : false, "times" : 0, "desc" : "You can pass through solid objects, such as walls and doors.", "type" : ["na"] },
-    { "name" : "Rend","isChecked" : false, "times" : 0, "desc" : "You can move a single target, whether it is a creature or object, in two different directions simultaneously.", "type" : ["Dark Side"] },
-    { "name" : "Shatterpoint","isChecked" : false, "times" : 0, "desc" : "You can see the critical point of something, whether it is a person or object, that would shatter if struck at the right time.", "type" : ["na"] },
-    { "name" : "Technometry","isChecked" : false, "times" : 0, "desc" : "You can tap into and read technological devices and, in some cases, control them.", "type" : ["na"] },
-    { "name" : "Ballistakinesis","isChecked" : false, "times" : 0, "desc" : "You use The Force to spray an area with dangerous debris.", "type" : ["Telekinetic"] },
-    { "name" : "Combustion","isChecked" : false, "times" : 0, "desc" : "You use The Force to agitate particles in the air to create a pyrokinetic spray of sparks.", "type" : ["na"] },
-    { "name" : "Dark Transfer","isChecked" : false, "times" : 0, "desc" : "You use the Dark Side of The Force to restore vitality to a living being.", "type" : ["Dark Side"] },
-    { "name" : "Detonate","isChecked" : false, "times" : 0, "desc" : "You can perceive points of weakness within an object and use The Force to telekinetically press on one of those points, shattering the object.", "type" : ["Telekinetic"] },
-    { "name" : "Enlighten","isChecked" : false, "times" : 0, "desc" : "You reach out to an ally telepathically, sharing visions of the near future to give the ally an edge or to protect the ally from harm.", "type" : ["Light Side","Mind-Affecting"] },
-    { "name" : "Lightning Burst","isChecked" : false, "times" : 0, "desc" : "You call upon the Dark Side to cause lightning to arc out from your body, striking adjacent enemies.", "type" : ["Dark Side"] },
-    { "name" : "Obscure","isChecked" : false, "times" : 0, "desc" : "You use The Force to cloud an enemy's mind, making it harder for the enemy to see its target.", "type" : ["Mind-Affecting"] },
-    { "name" : "Prescience","isChecked" : false, "times" : 0, "desc" : "The Force grants you a flash of insight in dealing with your enemies.", "type" : ["na"] },
-    { "name" : "Stagger","isChecked" : false, "times" : 0, "desc" : "You use The Force to lash out at a nearby enemy, causing it to stumble.", "type" : ["Telekinetic"] },
-    { "name" : "Blind","isChecked" : false, "times" : 0, "desc" : "You hurl dirt, dust, and debris at your foe, affecting its sight.", "type" : ["Telekinetic"] },
-    { "name" : "Convection","isChecked" : false, "times" : 0, "desc" : "You alter your body chemistry, causing your skin to burn with incredible heat.", "type" : ["na"] },
-    { "name" : "Crucitorn","isChecked" : false, "times" : 0, "desc" : "You ignore the debilitating effects of physical pain, and focus despite great physical trauma.", "type" : ["na"] },
-    { "name" : "Cryokinesis","isChecked" : false, "times" : 0, "desc" : "You can use The Force to draw heat away from a target, causing its temperature to drop rapidly.", "type" : ["na"] },
-    { "name" : "Drain Energy","isChecked" : false, "times" : 0, "desc" : "You can draw the energy out of a powered object, such as a blaster's Power Pack or a Power Generator.", "type" : ["na"] },
-    { "name" : "Fold Space","isChecked" : false, "times" : 0, "desc" : "You can use The Force to bend space, transporting an object almost instantaneously from one place to another.", "type" : ["na"] },
-    { "name" : "Force Light","isChecked" : false, "times" : 0, "desc" : "You can draw The Force into yourself, turning you into a beacon of light that purges the taint of the Dark Side.", "type" : ["Light Side"] },
-    { "name" : "Force Storm","isChecked" : false, "times" : 0, "desc" : "You can create a storm that draws upon the Dark Side of The Force, focusing its malicious intent on a certain area.", "type" : ["Dark Side"] },
-    { "name" : "Force Track","isChecked" : false, "times" : 0, "desc" : "You peer into The Force for guidance, picking up the trail of your quarry.", "type" : ["na"] },
-    { "name" : "Hatred","isChecked" : false, "times" : 0, "desc" : "You give yourself over to the Dark Side, letting your hate radiate out from your body in palpable waves.", "type" : ["Dark Side"] },
-    { "name" : "Inertia","isChecked" : false, "times" : 0, "desc" : "You can use The Force to shift your body's inertia, allowing you to perform impossible stunts.", "type" : ["na"] },
-    { "name" : "Inspire","isChecked" : false, "times" : 0, "desc" : "You fill your allies with hope and courage, allowing them to face even the most daunting of odds.", "type" : ["Light Side"] },
-    { "name" : "Intercept","isChecked" : false, "times" : 0, "desc" : "You use The Force to telekinetically hurl a small object in the path of an incoming projectile, preventing it from striking you.", "type" : ["Telekinetic"] },
-    { "name" : "Memory Walk","isChecked" : false, "times" : 0, "desc" : "You torment an enemy by causing them to relive their most horrible memories.", "type" : ["Dark Side","Mind-Affecting"] },
-    { "name" : "Mind Shard","isChecked" : false, "times" : 0, "desc" : "You use The Force to splinter the mind of an opponent, wracking it with pain.", "type" : ["Mind-Affecting"] },
-    { "name" : "Plant Surge","isChecked" : false, "times" : 0, "desc" : "You reach out with The Force to entreat the aid of plants, causing them to lash out at your opponents.", "type" : ["na"] },
-    { "name" : "Thought Bomb","isChecked" : false, "times" : 0, "desc" : "You use The Force to radiate out harmful waves of telepathy, damaging the minds of nearby foes.", "type" : ["Mind-Affecting"] },
+    { "name" : "Battle Strike", "desc" : "Increases attack and damage for next attack.", "type" : ["na"] },
+    { "name" : "Dark Rage", "desc" : "Increases Melee attack and damage for 1 turn.", "type" : ["Dark Side"] },
+    { "name" : "Farseeing", "desc" : "You use The Force to detect an individual over a long distance.", "type" : ["na"] },
+    { "name" : "Force Disarm", "desc" : "Disarms an opponent using The Force.", "type" : ["Telekinetic"] },
+    { "name" : "Force Grip", "desc" : "Chokes or crushes an opponent, may force opponent to lose their Standard Action.", "type" : ["Telekinetic"] },
+    { "name" : "Force Lightning", "desc" : "Electrocutes an opponent, deals automatic damage.", "type" : ["Dark Side"] },
+    { "name" : "Force Slam", "desc" : "Pounds multiple opponents, and may knock them Prone.", "type" : ["Telekinetic"] },
+    { "name" : "Force Stun", "desc" : "Stuns an opponent, and damages their overall Condition.", "type" : ["na"] },
+    { "name" : "Force Thrust", "desc" : "You use The Force to push back an opponent several meters, and possibly deal damage.", "type" : ["Telekinetic"] },
+    { "name" : "Mind Trick", "desc" : "You influence the mind of a target by dominating their will.", "type" : ["Mind-Affecting"] },
+    { "name" : "Move Object", "desc" : "You use The Force to hold, move, or crush one target.", "type" : ["Telekinetic"] },
+    { "name" : "Negate Energy", "desc" : "You dissipate an energy attack.", "type" : ["na"] },
+    { "name" : "Rebuke", "desc" : "You deflect a Force Power used against you.", "type" : ["na"] },
+    { "name" : "Sever Force", "desc" : "You temporarily block a Force-User's access to The Force.", "type" : ["Light Side"] },
+    { "name" : "Surge", "desc" : "You use The Force to assist in a supernatural Jump.", "type" : ["na"] },
+    { "name" : "Vital Transfer", "desc" : "You heal another through The Force.", "type" : ["Light Side"] },
+    { "name" : "Energy Resistance", "desc" : "You use The Force to protect you from damage caused by energy, sonic, fire, cold, and electrical sources.", "type" : ["na"] },
+    { "name" : "Fear", "desc" : "You summon The Dark Side to instill fear in your enemies.", "type" : ["Dark Side","Mind-Affecting"] },
+    { "name" : "Force Scream", "desc" : "You create an intense sonic scream, amplified by The Force.", "type" : ["Dark Side"] },
+    { "name" : "Force Whirlwind", "desc" : "You call upon The Force to surround an enemy in a swirling vortex of Force energy. The whirlwind lifts them about half a meter off the ground, spinning them in the air and buffeting them with Force energy.", "type" : ["Telekinetic"] },
+    { "name" : "Ionize", "desc" : "You call upon The Force to overload electrical systems and Droids, damaging or even destroying the unit.", "type" : ["na"] },
+    { "name" : "Kinetic Combat", "desc" : "You use The Force to manipulate your chosen weapon, allowing it to operate independent of your grasp.", "type" : ["Telekinetic"] },
+    { "name" : "Resist Force", "desc" : "You use The Force to protect yourself from an opponent's Force Powers.", "type" : ["na"] },
+    { "name" : "Slow", "desc" : "The Force enables you to slow your targets as if they are encumbered by an extremely Heavy Load, making it difficult for them to move.", "type" : ["Telekinetic"] },
+    { "name" : "Valor", "desc" : "You call upon the strength of The Force, reaching out to your ally and sharing your strength with them.", "type" : ["Light Side"] },
+    { "name" : "Wound", "desc" : "You cause spasms in the lungs of your targets, painfully injuring them.", "type" : ["Dark Side"] },
+    { "name" : "Corruption", "desc" : "You use The Force to send a bolt of pure Dark Side vileness into an enemy.", "type" : ["Dark Side"] },
+    { "name" : "Force Blast", "desc" : "You use The Force to create a ball of compressed air and debris that you can hurl at enemy targets.", "type" : ["na"] },
+    { "name" : "Force Shield", "desc" : "You use The Force to create a bubble of telekinetic energy around yourself, protecting you from harm.", "type" : ["Telekinetic"] },
+    { "name" : "Force Storm", "desc" : "You use The Force to create a swirling whirlwind of dark energy around yourself.", "type" : ["Dark Side","Telekinetic"] },
+    { "name" : "Repulse", "desc" : "You use The Force to clear an area around yourself.", "type" : ["Telekinetic"] },
+    { "name" : "Cloak", "desc" : "You bend light around your body, rendering yourself invisible to anyone looking in your direction.", "type" : ["na"] },
+    { "name" : "Levitate", "desc" : "You can float up or down without anything or anyone to assist you.", "type" : ["Telekinetic"] },
+    { "name" : "Malacia", "desc" : "You create dizziness and nausea by disrupting your target's equilibrium.", "type" : ["Light Side"] },
+    { "name" : "Morichro", "desc" : "You slow the vital functions of a target, causing them to slip into a deep sleep or even die.", "type" : ["na"] },
+    { "name" : "Phase", "desc" : "You can pass through solid objects, such as walls and doors.", "type" : ["na"] },
+    { "name" : "Rend", "desc" : "You can move a single target, whether it is a creature or object, in two different directions simultaneously.", "type" : ["Dark Side"] },
+    { "name" : "Shatterpoint", "desc" : "You can see the critical point of something, whether it is a person or object, that would shatter if struck at the right time.", "type" : ["na"] },
+    { "name" : "Technometry", "desc" : "You can tap into and read technological devices and, in some cases, control them.", "type" : ["na"] },
+    { "name" : "Ballistakinesis", "desc" : "You use The Force to spray an area with dangerous debris.", "type" : ["Telekinetic"] },
+    { "name" : "Combustion", "desc" : "You use The Force to agitate particles in the air to create a pyrokinetic spray of sparks.", "type" : ["na"] },
+    { "name" : "Dark Transfer", "desc" : "You use the Dark Side of The Force to restore vitality to a living being.", "type" : ["Dark Side"] },
+    { "name" : "Detonate", "desc" : "You can perceive points of weakness within an object and use The Force to telekinetically press on one of those points, shattering the object.", "type" : ["Telekinetic"] },
+    { "name" : "Enlighten", "desc" : "You reach out to an ally telepathically, sharing visions of the near future to give the ally an edge or to protect the ally from harm.", "type" : ["Light Side","Mind-Affecting"] },
+    { "name" : "Lightning Burst", "desc" : "You call upon the Dark Side to cause lightning to arc out from your body, striking adjacent enemies.", "type" : ["Dark Side"] },
+    { "name" : "Obscure", "desc" : "You use The Force to cloud an enemy's mind, making it harder for the enemy to see its target.", "type" : ["Mind-Affecting"] },
+    { "name" : "Prescience", "desc" : "The Force grants you a flash of insight in dealing with your enemies.", "type" : ["na"] },
+    { "name" : "Stagger", "desc" : "You use The Force to lash out at a nearby enemy, causing it to stumble.", "type" : ["Telekinetic"] },
+    { "name" : "Blind", "desc" : "You hurl dirt, dust, and debris at your foe, affecting its sight.", "type" : ["Telekinetic"] },
+    { "name" : "Convection", "desc" : "You alter your body chemistry, causing your skin to burn with incredible heat.", "type" : ["na"] },
+    { "name" : "Crucitorn", "desc" : "You ignore the debilitating effects of physical pain, and focus despite great physical trauma.", "type" : ["na"] },
+    { "name" : "Cryokinesis", "desc" : "You can use The Force to draw heat away from a target, causing its temperature to drop rapidly.", "type" : ["na"] },
+    { "name" : "Drain Energy", "desc" : "You can draw the energy out of a powered object, such as a blaster's Power Pack or a Power Generator.", "type" : ["na"] },
+    { "name" : "Fold Space", "desc" : "You can use The Force to bend space, transporting an object almost instantaneously from one place to another.", "type" : ["na"] },
+    { "name" : "Force Light", "desc" : "You can draw The Force into yourself, turning you into a beacon of light that purges the taint of the Dark Side.", "type" : ["Light Side"] },
+    { "name" : "Force Storm", "desc" : "You can create a storm that draws upon the Dark Side of The Force, focusing its malicious intent on a certain area.", "type" : ["Dark Side"] },
+    { "name" : "Force Track", "desc" : "You peer into The Force for guidance, picking up the trail of your quarry.", "type" : ["na"] },
+    { "name" : "Hatred", "desc" : "You give yourself over to the Dark Side, letting your hate radiate out from your body in palpable waves.", "type" : ["Dark Side"] },
+    { "name" : "Inertia", "desc" : "You can use The Force to shift your body's inertia, allowing you to perform impossible stunts.", "type" : ["na"] },
+    { "name" : "Inspire", "desc" : "You fill your allies with hope and courage, allowing them to face even the most daunting of odds.", "type" : ["Light Side"] },
+    { "name" : "Intercept", "desc" : "You use The Force to telekinetically hurl a small object in the path of an incoming projectile, preventing it from striking you.", "type" : ["Telekinetic"] },
+    { "name" : "Memory Walk", "desc" : "You torment an enemy by causing them to relive their most horrible memories.", "type" : ["Dark Side","Mind-Affecting"] },
+    { "name" : "Mind Shard", "desc" : "You use The Force to splinter the mind of an opponent, wracking it with pain.", "type" : ["Mind-Affecting"] },
+    { "name" : "Plant Surge", "desc" : "You reach out with The Force to entreat the aid of plants, causing them to lash out at your opponents.", "type" : ["na"] },
+    { "name" : "Thought Bomb", "desc" : "You use The Force to radiate out harmful waves of telepathy, damaging the minds of nearby foes.", "type" : ["Mind-Affecting"] },
   ];
   saberFormPowers: Array<any> = [
-    {"name" : "Assured Strike","isChecked" : false, "times" : 0, "desc" : "You trade power for accuracy.","type" : ["na"]},
-    { "name" : "Barrier of Blades","isChecked" : false, "times" : 0, "desc" : "You whip your Lightsaber around you, creating a barrier through which blaster fire rarely penetrates.","type" : ["na"]},
-    { "name" : "Circle of Shelter","isChecked" : false, "times" : 0, "desc" : "You create a protected area around yourself, through which enemies have difficulty reaching you or your allies.","type" : ["na"]},
-    { "name" : "Contentious Opportunity", "isChecked" : false, "times" : 0, "desc" : "You seize the moment when your opponent gives you an opening, darting in to strike.","type" : ["na"]},
-    { "name" : "Deflecting Slash", "isChecked" : false, "times" : 0, "desc" : "You use the momentum from your effort to deflect a projectile to strike at an adjacent opponent.","type" : ["na"]},
-    { "name" : "Disarming Slash", "isChecked" : false, "times" : 0, "desc" : "You strike at your opponent's weapon, attempting to rip it from their grasp.","type" : ["na"]},
-    { "name" : "Draw Closer", "isChecked" : false, "times" : 0, "desc" : "You grab an opponent with The Force, drawing him or her into the path of your weapon.","type" : ["Telekinetic"]},
-    { "name" : "Falling Avalanche", "isChecked" : false, "times" : 0, "desc" : "You raise your Lightsaber above your head and then bring it crashing down on your opponent with incredible force.","type" : ["na"]},
-    { "name" : "Fluid Riposte", "isChecked" : false, "times" : 0, "desc" : "You smoothly turn aside an opponent's melee attack, stepping in to deliver your own attack.","type" : ["na"]},
-    { "name" : "Hawk-Bat Swoop", "isChecked" : false, "times" : 0, "desc" : "You leap into action against your foe, striking with your Lightsaber before other enemies have a chance to react.","type" : ["na"]},
-    { "name" : "High Ground Defense", "isChecked" : false, "times" : 0, "desc" : "You know how to take advantage of the terrain and gain a defensive advantage from it.","type" : ["na"]},
-    { "name" : "Makashi Riposte", "isChecked" : false, "times" : 0, "desc" : "You are trained in a Makashi technique that allows you to slightly change the angle of an opponent's attack before striking with a decisive riposte of your own.","type" : ["na"]},
-    { "name" : "Pass the Blade", "isChecked" : false, "times" : 0, "desc" : "You deactivate your Lightsaber as your opponent attempts to block it, reactivating it just after it passes by their blade.","type" : ["na"]},
-     { "name" : "Pushing Slash", "isChecked" : false, "times" : 0, "desc" : "You strike at your target with your Lightsaber, then hurl them away from you with The Force.","type" : ["Telekinetic"]},
-     { "name" : "Rising Whirlwind", "isChecked" : false, "times" : 0, "desc" : "You swing your Lightsabers around your body, creating a brilliant whirlwind of deadly light.","type" : ["na"]},
-    { "name" : "Saber Swarm", "isChecked" : false, "times" : 0, "desc" : "You slash at your opponent rapidly, aiming many short strikes at the target's body.","type" : ["na"]},
-     { "name" : "Sarlacc Sweep", "isChecked" : false, "times" : 0, "desc" : "You lash out at multiple enemies, striking them with a sweeping motion.","type" : ["na"]},
-     { "name" : "Shien Deflection", "isChecked" : false, "times" : 0, "desc" : "You deflect an incoming attack and leap toward your attacker with fierce abandon.","type" : ["na"]},
-    { "name" : "Swift Flank", "isChecked" : false, "times" : 0, "desc" : "You leap over or dash around your opponent, striking before they have time to react.","type" : ["na"]},
-     { "name" : "Tempered Aggression", "isChecked" : false, "times" : 0, "desc" : "You throw yourself against an opponent, controlling your aggression to prevent it from getting the better of you.","type" : ["Dark Side"]},
-     { "name" : "Twin Strike", "isChecked" : false, "times" : 0, "desc" : "You swing both of your Lightsabers in an arc toward the target, slamming them home with great force.","type" : ["na"]},
-    { "name" : "Unbalancing Block", "isChecked" : false, "times" : 0, "desc" : "You catch an opponent's weapon on your blade before deactivating your blade momentarily, causing them to stumble.","type" : ["na"]},
-     { "name" : "Unhindered Charge", "isChecked" : false, "times" : 0, "desc" : "You move quickly to your opponent, ignoring Difficult Terrain and obstacles.","type" : ["na"]},
-     { "name" : "Vornskr's Ferocity", "isChecked" : false, "times" : 0, "desc" : "You walk the thin line between darkness and light as you ferociously attack your foe.","type" : ["Dark Side"]},
+    {"name" : "Assured Strike", "desc" : "You trade power for accuracy.","type" : ["na"]},
+    { "name" : "Barrier of Blades", "desc" : "You whip your Lightsaber around you, creating a barrier through which blaster fire rarely penetrates.","type" : ["na"]},
+    { "name" : "Circle of Shelter", "desc" : "You create a protected area around yourself, through which enemies have difficulty reaching you or your allies.","type" : ["na"]},
+    { "name" : "Contentious Opportunity",  "desc" : "You seize the moment when your opponent gives you an opening, darting in to strike.","type" : ["na"]},
+    { "name" : "Deflecting Slash",  "desc" : "You use the momentum from your effort to deflect a projectile to strike at an adjacent opponent.","type" : ["na"]},
+    { "name" : "Disarming Slash",  "desc" : "You strike at your opponent's weapon, attempting to rip it from their grasp.","type" : ["na"]},
+    { "name" : "Draw Closer",  "desc" : "You grab an opponent with The Force, drawing him or her into the path of your weapon.","type" : ["Telekinetic"]},
+    { "name" : "Falling Avalanche",  "desc" : "You raise your Lightsaber above your head and then bring it crashing down on your opponent with incredible force.","type" : ["na"]},
+    { "name" : "Fluid Riposte",  "desc" : "You smoothly turn aside an opponent's melee attack, stepping in to deliver your own attack.","type" : ["na"]},
+    { "name" : "Hawk-Bat Swoop",  "desc" : "You leap into action against your foe, striking with your Lightsaber before other enemies have a chance to react.","type" : ["na"]},
+    { "name" : "High Ground Defense",  "desc" : "You know how to take advantage of the terrain and gain a defensive advantage from it.","type" : ["na"]},
+    { "name" : "Makashi Riposte",  "desc" : "You are trained in a Makashi technique that allows you to slightly change the angle of an opponent's attack before striking with a decisive riposte of your own.","type" : ["na"]},
+    { "name" : "Pass the Blade",  "desc" : "You deactivate your Lightsaber as your opponent attempts to block it, reactivating it just after it passes by their blade.","type" : ["na"]},
+     { "name" : "Pushing Slash",  "desc" : "You strike at your target with your Lightsaber, then hurl them away from you with The Force.","type" : ["Telekinetic"]},
+     { "name" : "Rising Whirlwind",  "desc" : "You swing your Lightsabers around your body, creating a brilliant whirlwind of deadly light.","type" : ["na"]},
+    { "name" : "Saber Swarm",  "desc" : "You slash at your opponent rapidly, aiming many short strikes at the target's body.","type" : ["na"]},
+     { "name" : "Sarlacc Sweep",  "desc" : "You lash out at multiple enemies, striking them with a sweeping motion.","type" : ["na"]},
+     { "name" : "Shien Deflection",  "desc" : "You deflect an incoming attack and leap toward your attacker with fierce abandon.","type" : ["na"]},
+    { "name" : "Swift Flank",  "desc" : "You leap over or dash around your opponent, striking before they have time to react.","type" : ["na"]},
+     { "name" : "Tempered Aggression",  "desc" : "You throw yourself against an opponent, controlling your aggression to prevent it from getting the better of you.","type" : ["Dark Side"]},
+     { "name" : "Twin Strike",  "desc" : "You swing both of your Lightsabers in an arc toward the target, slamming them home with great force.","type" : ["na"]},
+    { "name" : "Unbalancing Block",  "desc" : "You catch an opponent's weapon on your blade before deactivating your blade momentarily, causing them to stumble.","type" : ["na"]},
+     { "name" : "Unhindered Charge",  "desc" : "You move quickly to your opponent, ignoring Difficult Terrain and obstacles.","type" : ["na"]},
+     { "name" : "Vornskr's Ferocity",  "desc" : "You walk the thin line between darkness and light as you ferociously attack your foe.","type" : ["Dark Side"]},
 
   ];
 /*
@@ -543,7 +543,7 @@ if (selection != "Select a Feat"){
       }else{
         this.showForcePowers = false;
         this.clearPowers();
-        console.log("no more powers")
+        // console.log("no more powers")
       }
     }else{
       if (selection == "Force Training"){
@@ -567,7 +567,7 @@ if (selection != "Select a Feat"){
         this.numPowers = this.maxPowers - this.heroForceSuite.length; 
           this.showForcePowers = true;
         }else{
-          console.log("no more powers")
+          // console.log("no more powers")
           this.showForcePowers = false;
           this.clearPowers();
         }
@@ -584,14 +584,14 @@ if (selection != "Select a Feat"){
     this.selectedFeatDescription = "Select a Feat";
     this.showForcePowers = false;
     this.clearPowers();
-    console.log("no more powers")
+    // console.log("no more powers")
   }else{
    this.extraFeatName = ""
    this.extraFeatDescription =  "Select a Feat";
    if (this.selectedFeat[0] != "Force Training"){
       this.showForcePowers = false;
       this.clearPowers(); 
-    console.log("no more powers")
+    // console.log("no more powers")
    }
   }
 }
@@ -607,7 +607,7 @@ selectedPower(power: any){
     return;
   }
   
-  console.log("Chosen Power:" ,power);
+  // console.log("Chosen Power:" ,power);
   for (let i = 0; i< this.forcePowersArr.length; i++){
     if (this.forcePowersArr[i].name == power){
       this.forcePower = this.forcePowersArr[i];
@@ -633,7 +633,7 @@ acceptPower(){
 addPower(power: any){
   this.heroForceSuite.push(power);
   this.numPowers -= 1
-  console.log("the suite: ", this.heroForceSuite)
+  // console.log("the suite: ", this.heroForceSuite)
 }
 deletePower(index: number){
   this.heroForceSuite.splice(index, 1);
@@ -644,7 +644,7 @@ clearPowers(){
     this.heroForceSuite.pop();
     this.numPowers += 1
   }
-  console.log("cleared arr:",  this.heroForceSuite)
+  // console.log("cleared arr:",  this.heroForceSuite)
 }
 
 // End of Jefi Force Powers
