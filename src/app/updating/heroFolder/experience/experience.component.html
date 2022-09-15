@@ -56,10 +56,19 @@
                 <option>Select</option>
                 <option *ngFor="let talent of importTalentsArr">{{talent.name}}</option>
             </select>
+            <div *ngIf="showTalentOptions" class="tb">
+                <label>Choose an Option</label>
+                <select #talentOption name="talentOption">
+                    <option>Select</option>
+                    <option *ngFor="let addOpt of addOptionsArr">{{addOpt}}</option>
+                </select>
+                <button (click)="addTalent(talentSelector.value, talentOption.value)">Add Talent</button>
+            </div>
             <div *ngIf="talentName != ''">
                 <h4>Talent Name:  {{talentName}}</h4>
                 <p>Description: {{talentDesc}}</p>
             </div>
+            <button *ngIf="showTalentOptions == false" (click)="addTalent(talentSelector.value, 'none')">Add Talent</button>
         </div>
         <div *ngIf="showAbs">
             <h2>Hi from Abs</h2>
@@ -68,7 +77,8 @@
             <h4>Selected Stats</h4>
             <p *ngIf="lvlUpObject.class != ''">Selected Class: {{lvlUpObject.class}}</p>
             <p *ngIf="lvlUpObject.hp != 0">HP to increase {{lvlUpObject.hp}}</p>
-            <p *ngIf="lvlUpObject.feat.length > 0">Feat(s) to add: <span *ngFor="let feat of lvlUpObject.feat">{{feat}}</span></p>
+            <p *ngIf="lvlUpObject.feats[0] != ''">Feat(s) to add: <span *ngFor="let feat of lvlUpObject.feats">{{feat}}</span></p>
+            <p *ngIf="lvlUpObject.talents.name != ''">Talent to add: <span *ngIf="lvlUpObject.talents.alias == undefined">{{lvlUpObject.talents.name}}</span><span *ngIf="lvlUpObject.talents.alias != ''">{{lvlUpObject.talents.alias}}</span></p>
             <button [disabled]="lvlButton == false">Level Up</button>
         </div>
     </aside>

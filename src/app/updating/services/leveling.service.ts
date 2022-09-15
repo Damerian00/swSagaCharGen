@@ -92,7 +92,11 @@ getNumberinTrees(){
           for (let i = 2; i<words.length; i++){
     let len = words.length - 1
      if (i == 2){
-          inParan.push(words[i].substring(1));
+         if (words.length == 3){
+         inParan.push(words[i].substring(1).slice(0,-1));
+       }else{
+       	inParan.push(words[i].substring(1));
+       } 
       } else if (i == len){
            inParan.push(words[i].slice(0,-1));
           }

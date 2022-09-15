@@ -101,8 +101,8 @@ lvlUpObject = {
   "class" : "",
   "BAB" : 0,
   "hp"  : 0,
-  "feat" : [""],
-  "talent" : [""],
+  "feats" : [""],
+  "talents" : {"name" : "", "description": "","alias": ""},
 }
 babArr = {
   "normal" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
@@ -117,6 +117,7 @@ showTalent: boolean = false;
 showAbs: boolean = false;
 lvlButton: boolean = false;
 showAddOptions: boolean = false;
+showTalentOptions: boolean = false;
 //  Numbers & Strings
 levelPts: number = 0;
 currentXp: number = 0;
@@ -410,6 +411,7 @@ checkArrLength(arr: any, talent: string){
   }
   return valid;
 }
+// function checks the different requirements passed into it then returns if valid
 checkTalentReqs(arr: any, talent: string){
   let valid = false
   let tempStr = '';
@@ -463,52 +465,175 @@ checkTalentReqs(arr: any, talent: string){
 // proficient = ["Accurate Blow","Greater Weapon Focus"]
 // weapon = ["Greater Weapon Specialization"]
 // force = ["Share Force Secret","Share Force Technique"]
+
+// if a talent has an additional option this function creates an array of those options
 addTalentOptions(key: string, talent : any){
   console.log("here's a talent:", key, talent)
-  let tempArr = [];
-  
+  let heroTalents = this.level.getHeroTalents();
+  let tempArr: Array <any> = [];
+  let meleeExotic: Array<any> = [];
+  let rangedExotic: Array<any> = [];
+  this.apiMeleeArr.forEach((el: any)=> {
+    if(el.w_type == "Exotic Weapons (Melee)"){
+      meleeExotic.push(el.name);
+    }else if (el.w_type == "Exotic Weapons (Ranged)"){
+      rangedExotic.push(el.name);
+    }
+  })
   switch (key){
     case "talentTree":
       switch (talent.name){
         case "Coordinated Leadership":
-
+        // list of talents user possess from LTT     
+        heroTalents.forEach((el:any) => {
+          if (el.TalentTreeId == "LTT"){
+            tempArr.push(el.name);
+          }
+        });
         break;
         case "Stolen Form":
+        // the list will be from the LFTT that the user meets the requirements for.
 
         break;
         case "Squadron Maneuvers":
+        // list talents that user possesses from either EPTT and GTT
+        heroTalents.forEach((el:any) => {
+          if (el.TalentTreeId == "EPTT" || el.TalentTreeId == "GTT"){
+            tempArr.push(el.name);
+          }
+        });
 
         break;
         case "Share Talent":
-
+        // list talents user possess from LCTT, DTT and LFTT
+        heroTalents.forEach((el:any) => {
+          if (el.TalentTreeId == "LCTT" || el.TalentTreeId == "DTT" || el.TalentTreeId == "LFTT"){
+            tempArr.push(el.name);
+          }
+        });
         break;
       }
     break;
     case "proficient":
+      const feats = this.level.getHeroFeats();
+      feats.forEach((el: any) => {
+        let words = el.split(' ')
+          if (words[0] == "Weapon" && words[1] == "Proficiency"){
+            tempArr.push(el);
+          }
+      })
+      if (talent.name == "Accurate Blow"){
+        //  list of melee exotic and melee weapon groups user has proficiency with
+        feats.forEach((el:any)=> {
+          let words = el.split(' ')
+          if (words[0] == "Weapon" && words[1] == "Proficiency"){
+            let inParan = []
+            for (let i = 2; i<words.length; i++){
+      let len = words.length - 1
+       if (i == 2){
+           if (words.length == 3){
+           inParan.push(words[i].substring(1).slice(0,-1));
+         }else{
+           inParan.push(words[i].substring(1));
+         } 
+        } else if (i == len){
+             inParan.push(words[i].slice(0,-1));
+            }
+      else{
+        inParan.push(words[i]);
+      }
+    }
+    let keyWord = inParan.join(' ');
+    if (this.meleeGrps.includes(keyWord) || meleeExotic.includes(keyWord)){
+        tempArr.push(el);
+    }
+          }
+        })
+      }else{
+        // list of any exotic weapon and weapon group user has proficiency with
+        feats.forEach((el:any)=> {
+          let words = el.split(' ')
+          if (words[0] == "Weapon" && words[1] == "Proficiency"){
+            let inParan = []
+            for (let i = 2; i<words.length; i++){
+      let len = words.length - 1
+       if (i == 2){
+           if (words.length == 3){
+           inParan.push(words[i].substring(1).slice(0,-1));
+         }else{
+           inParan.push(words[i].substring(1));
+         } 
+        } else if (i == len){
+             inParan.push(words[i].slice(0,-1));
+            }
+      else{
+        inParan.push(words[i]);
+      }
+    }
+    let keyWord = inParan.join(' ');
+    let exotics = [...meleeExotic, ...rangedExotic]
+    if (this.wepGrps.includes(keyWord) || exotics.includes(keyWord)){
+        tempArr.push(el);
+    }
+          }
+        })
+      }
 
     break;
     case "weapon":
-
+      // list of all exotic weapons and Advanced Melee Weapons, Heavy Weapons, Pistols, Rifles, and Simple Weapons
+      let wepGrp = ["Advanced Melee Weapons", "Heavy Weapons", "Pistols", "Rifles", "Simple Weapons (Melee)","Simple Weapons (Ranged)"]
+      tempArr = [...meleeExotic,...rangedExotic,...wepGrp]; 
     break;
     case "force":
-
+      if (talent.name == "Share Force Secret"){
+        //  list known force secrets
+      }else{
+        // list known force techniques
+      }
     break;
     case "skills":
+      const heroSkills = this.heroservice.getSkills();
       switch (talent.name){
         case "Assured Skill":
-
+        // show skills that have assured value as undefined or false
+        heroSkills.forEach((el: any) => {
+          if (el.assured != true){
+            tempArr.push(el.skill_name);
+          }
+        });
         break;
         case "Exceptional Skill":
-
+        // show skills that have exceptional value as undefined or false and are trained
+        heroSkills.forEach((el:any) => {
+          if (el.trained_skill == true && el.exceptional != true){
+            tempArr.push(el.skill_name);
+          }
+        });
         break;
         case "Skill Boon":
-
+        // show skills that have boon value as undefined of false and are trained
+        heroSkills.forEach((el:any) => {
+          if (el.trained_skill == true && el.boon != true){
+            tempArr.push(el.skill_name);
+          }
+        });
         break;
         case "Skill Confidence":
-
+         // show skills that have confidence value as undefined of false and are trained
+         heroSkills.forEach((el:any) => {
+          if (el.trained_skill == true && el.confidence != true){
+            tempArr.push(el.skill_name);
+          }
+        });
         break;
         case "Skillful Recovery":
-
+        // show skills that have recovery value as undefined of false and are trained
+        heroSkills.forEach((el:any) => {
+          if (el.trained_skill == true && el.recovery != true){
+            tempArr.push(el.skill_name);
+          }
+        });
         break;
 
       }
@@ -516,19 +641,21 @@ addTalentOptions(key: string, talent : any){
 
 
   }
-  
+  this.addOptionsArr = [...tempArr];
 }
 selectTalent(talent : string){
   if (talent == "Select"){
     this.talentName = "";
     this.talentDesc = "";
+    this.showTalentOptions = false;
     return;
   }
+  this.showTalentOptions = false;
   let index = this.apiTalentsArr.findIndex((el : any)=> el.name == talent);
   this.talentName = this.apiTalentsArr[index].name;
   this.talentDesc = this.apiTalentsArr[index].description;
   if (this.apiTalentsArr[index].addOption.includes("none") == false){
-    switch (this.apiTalentsArr[index].name){}
+    this.showTalentOptions = true;
     let skills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
     let force = ["Share Force Secret","Share Force Technique"];
     if (skills.includes(this.apiTalentsArr[index].name)){
@@ -540,6 +667,18 @@ selectTalent(talent : string){
     }
 
   }
+}
+addTalent(talent: string, opt : string){
+  if (talent == "Select" || opt == "Select"){
+    return;
+  }
+  let index = this.apiTalentsArr.findIndex((el:any)=> el.name == talent)
+  let obj = this.apiTalentsArr[index];
+  if (opt != "none"){
+    obj["alias"] = `${talent} (${opt})`
+  }
+ this.lvlUpObject.talents = Object.assign(obj);
+  console.log("the obj:", this.lvlUpObject);
 }
 countTrees(talents: any){
   // console.log("counting", talents)
@@ -643,7 +782,7 @@ addFeat(feat: string, option: string){
   }else{
     tempFeat =[`${feat} (${option})`];
   }
-  (this.classStartFeatsArr.length > 0)? this.lvlUpObject.feat = [...this.classStartFeatsArr, ...tempFeat] : this.lvlUpObject.feat = [...tempFeat]
+  (this.classStartFeatsArr.length > 0)? this.lvlUpObject.feats = [...this.classStartFeatsArr, ...tempFeat] : this.lvlUpObject.feats = [...tempFeat]
 }
 checkTimesLeveled(){
   let obj = this.level.getHeroClassObj();
