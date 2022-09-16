@@ -73,6 +73,7 @@ langsAllowed: number = 0;
 credits: number = 0;
 forcePowers: Array<any> = [];
 attack: number = 0;
+// array to track lvlup changes
 //  Misc
 
 //  ---End Variables---
@@ -222,6 +223,7 @@ async heroSets(){
   this.heroservice.setClassBonuses(this.heroClass);
   this.heroservice.getCarry();
   this.level.setHeroClassObj(this.heroClass);
+  
    
 }
 //  gets values for variables by calling the methods
@@ -318,6 +320,32 @@ async calcGrapple(mod: string){
   this.grapple += (this.heroCondition + this.grappleMisc)
   // console.log(this.grappleModSelected, abMod);
 }
+// levels  up hero
+levelUpHero(lvlObj : any){
+// will push lvlObj to the changes array 
+this.level.setBAB(this.level.getBAB() + lvlObj.BAB);
+this.maxHp += lvlObj.hp;
+this.currentHp += lvlObj.hp;
+this.skills = this.heroservice.getSkills();
+this.heroservice.recalcSkills();
+let tempArr = []
+if (lvlObj.feats.length > 0){
+  let currFeats = this.level.getHeroFeats();
+  tempArr = [...currFeats, ...lvlObj.feats];
+  this.level.setFeats(tempArr);
+  this.startingFeats = this.level.getHeroFeats();
+}
+if (lvlObj.talents.name != ''){
+  let currTalents = this.level.getHeroTalents();
+  tempArr = [...currTalents, lvlObj.talents];
+  this.level.setTalents(tempArr);
+  this.startingTalents = this.level.getHeroTalents();
+}
+
+}
+
+
+
 // saves the current configurations of the hero by removing the item in localstorage and adding it back
 async updateHero(){ 
   let heroObj = await {

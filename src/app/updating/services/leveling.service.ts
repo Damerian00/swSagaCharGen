@@ -6,15 +6,15 @@ import { HeroService } from './hero.service';
 })
 export class LevelingService {
 //  ---Variables
-currentXp: number = 0;
-nextXp: number = 0;
-currentLevel: number = 0;
-levelPts: number = 0;
-heroFeats: any;
-heroTalents: any;
-heroClassObj: any;
-BAB: number = 0;
-trees: any;
+private currentXp: number = 0;
+private nextXp: number = 0;
+private currentLevel: number = 0;
+private levelPts: number = 0;
+private heroFeats: any;
+private heroTalents: any;
+private heroClassObj: any;
+private BAB: number = 0;
+private trees: any;
   constructor(private hero : HeroService) { }
 
 invokeGetXp = new EventEmitter();

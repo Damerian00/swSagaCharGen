@@ -102,6 +102,7 @@ getAbilityModifier(){
 }
 setSkills(skillArr: Array <any>){
   this.skills = skillArr;
+ console.log("set skills", this.skills)
 }
 getCarryMod(){
   return this.carryMod;

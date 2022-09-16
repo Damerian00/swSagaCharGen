@@ -78,7 +78,15 @@ tableObj: any = {};
   }
 // sets the inventory arr to what is imported from the saved hero object
 importHeroInventory(arr: any){
- (arr == undefined)?"nothing":this.inventoryArr = [...arr];
+ if(arr == undefined){"nothing"}else{
+  this.inventoryArr = [...arr];
+  for (let i=0;i<arr.length;i++){
+    if(arr[i].carry == true){
+      arr[i].carry = false;
+      this.modCarry(i);
+    }
+  }
+}
 }
 //  changes the qty on the items's object
 adjustQty(index: number, qty: any){

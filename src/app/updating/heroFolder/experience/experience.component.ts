@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
 import { HeroService } from '../../services/hero.service';
 import { LevelingService } from '../../services/leveling.service';
@@ -12,6 +12,7 @@ export class ExperienceComponent implements OnInit {
 //  ---Variables
 //  Input/Output
   @Input() levelUp: boolean = false;
+  @Output() heroLvlUpObj: EventEmitter <any>  = new EventEmitter <any> ()
 //  Arrays
 currentfeatsArr: any;
 classStartFeatsArr: Array<string> = [];
@@ -109,6 +110,7 @@ babArr = {
   "special" : [0,0,1,2,3,3,4,5,6,6,7,8,9,9,10,11,12,12,13,14,15],
 }
 validatedArr: Array<boolean> = [];
+skillValuetoUpdate: Array<string> = [];
 //  Boolean
 levelUpModal: boolean = false;
 showClassFeat: boolean = false;
@@ -118,6 +120,7 @@ showAbs: boolean = false;
 lvlButton: boolean = false;
 showAddOptions: boolean = false;
 showTalentOptions: boolean = false;
+updateSkills: boolean = false;
 //  Numbers & Strings
 levelPts: number = 0;
 currentXp: number = 0;
@@ -313,7 +316,7 @@ addClassFeatOptions(heroClass : string){
       this.showAvailable(newFeats[i], this.apifeatsArr)
     }
   }
-  console.log("show me feats",currFeats, this.importFeatsArr);
+  // console.log("show me feats",currFeats, this.importFeatsArr);
 }
 //  adds to a starting feats array when choosing a new class to multiclass with
 addStartFeats(heroClass : string){
@@ -327,7 +330,7 @@ addStartFeats(heroClass : string){
       this.classStartFeatsArr.push(startFeats[i]);
     }
   }
-  console.log("show me start feats",currFeats, this.classStartFeatsArr);
+  // console.log("show me start feats",currFeats, this.classStartFeatsArr);
 }
 //  checks class requirments for scout and noble
 checkClassReqs(feat : string){
@@ -355,7 +358,7 @@ checkClassReqs(feat : string){
 }
 // creates the array for selecting when choosing a talent
 addTalentSelectables(selectedClass : string){
-  console.log("adding selectables", selectedClass);
+  // console.log("adding selectables", selectedClass);
   let tempTree = [];
   this.clearArr(this.importTalentsArr);
   for (let i = 0; i < this.apiTree.length; i ++){
@@ -363,7 +366,7 @@ addTalentSelectables(selectedClass : string){
       tempTree.push(this.apiTree[i].id);
     }
   }
-  console.log("tempTree arr", tempTree);
+  // console.log("tempTree arr", tempTree);
   for (let i=0; i<this.apiTalentsArr.length; i++){
     if (tempTree.includes(this.apiTalentsArr[i].TalentTreeId)){
       if (this.apiTalentsArr[i].preReqs.req1 == "none"){
@@ -380,7 +383,7 @@ addTalentSelectables(selectedClass : string){
       }
     }
   }
-  console.log(this.importTalentsArr, "<--imp talentsarr");
+  // console.log(this.importTalentsArr, "<--imp talentsarr");
 }
 checkArrLength(arr: any, talent: string){
   let valid = false;
@@ -468,6 +471,7 @@ checkTalentReqs(arr: any, talent: string){
 
 // if a talent has an additional option this function creates an array of those options
 addTalentOptions(key: string, talent : any){
+  this.updateSkills = false;
   console.log("here's a talent:", key, talent)
   let heroTalents = this.level.getHeroTalents();
   let tempArr: Array <any> = [];
@@ -594,6 +598,7 @@ addTalentOptions(key: string, talent : any){
     break;
     case "skills":
       const heroSkills = this.heroservice.getSkills();
+      this.updateSkills = true;
       switch (talent.name){
         case "Assured Skill":
         // show skills that have assured value as undefined or false
@@ -602,6 +607,7 @@ addTalentOptions(key: string, talent : any){
             tempArr.push(el.skill_name);
           }
         });
+        this.skillValuetoUpdate[0] = 'assured';
         break;
         case "Exceptional Skill":
         // show skills that have exceptional value as undefined or false and are trained
@@ -610,6 +616,7 @@ addTalentOptions(key: string, talent : any){
             tempArr.push(el.skill_name);
           }
         });
+        this.skillValuetoUpdate[0] = 'exceptional';
         break;
         case "Skill Boon":
         // show skills that have boon value as undefined of false and are trained
@@ -618,6 +625,7 @@ addTalentOptions(key: string, talent : any){
             tempArr.push(el.skill_name);
           }
         });
+        this.skillValuetoUpdate[0] = 'boon';
         break;
         case "Skill Confidence":
          // show skills that have confidence value as undefined of false and are trained
@@ -626,6 +634,7 @@ addTalentOptions(key: string, talent : any){
             tempArr.push(el.skill_name);
           }
         });
+        this.skillValuetoUpdate[0] = 'confidence';
         break;
         case "Skillful Recovery":
         // show skills that have recovery value as undefined of false and are trained
@@ -634,6 +643,7 @@ addTalentOptions(key: string, talent : any){
             tempArr.push(el.skill_name);
           }
         });
+        this.skillValuetoUpdate[0] = 'recovery';
         break;
 
       }
@@ -672,13 +682,18 @@ addTalent(talent: string, opt : string){
   if (talent == "Select" || opt == "Select"){
     return;
   }
+  let talentSkills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
+  if (talentSkills.includes(talent)){
+    this.skillValuetoUpdate[1] = opt
+  }
   let index = this.apiTalentsArr.findIndex((el:any)=> el.name == talent)
   let obj = this.apiTalentsArr[index];
   if (opt != "none"){
     obj["alias"] = `${talent} (${opt})`
   }
  this.lvlUpObject.talents = Object.assign(obj);
-  console.log("the obj:", this.lvlUpObject);
+  // console.log("the obj:", this.lvlUpObject);
+  this.lvlButton = true;
 }
 countTrees(talents: any){
   // console.log("counting", talents)
@@ -774,15 +789,24 @@ selectFeat(feat: string){
 }
 }
 addFeat(feat: string, option: string){
-  let tempFeat;
   if (feat == "Select" || option == "Select"){
     return;
-  }else if (option == "none"){
+  }
+  if (feat == "Skill Focus" || feat == "Skill Training" ){
+    this.updateSkills = true;
+    this.skillValuetoUpdate = [feat,option];
+  }else{
+    this.updateSkills = false;
+    this.skillValuetoUpdate = [''];
+  }
+  let tempFeat;
+  if (option == "none"){
     tempFeat = [feat];
   }else{
     tempFeat =[`${feat} (${option})`];
   }
   (this.classStartFeatsArr.length > 0)? this.lvlUpObject.feats = [...this.classStartFeatsArr, ...tempFeat] : this.lvlUpObject.feats = [...tempFeat]
+  this.lvlButton = true;
 }
 checkTimesLeveled(){
   let obj = this.level.getHeroClassObj();
@@ -824,6 +848,7 @@ getXp(){
 }
 beginLevelUp(){
   this.levelUpModal = true;
+  this.lvlButton = false;
 }
 // select a class when first leveling up
 addClassSelection(selection: any){
@@ -877,6 +902,33 @@ this.checkTimesLeveled();
 this.checkHeroLvl();
 
 }
-
+levelUpHero(){
+  if (this.updateSkills == true){
+    let skills = this.heroservice.getSkills();
+    let index = skills.findIndex((el: any)=> el.skill_name == this.skillValuetoUpdate[1])
+    if (this.skillValuetoUpdate[0] == "Skill Focus" ){
+      skills[index].skill_focus = true;
+    }else if (this.skillValuetoUpdate[0] == "Skill Training"){
+      skills[index].trained_skill = true;
+    }else{
+      skills[index][this.skillValuetoUpdate[0]] = true;
+    }
+    this.heroservice.setSkills(skills);
+  }
+  if (this.lvlUpObject.feats.includes("")){
+    console.log("it's there");
+    this.lvlUpObject.feats.pop();
+  }
+  console.log("leveling this", this.lvlUpObject);
+  this.levelUpModal = false;
+  this.heroLvlUpObj.emit(this.lvlUpObject);
+  this.lvlUpObject = {
+    "class" : "",
+    "BAB" : 0,
+    "hp"  : 0,
+    "feats" : [""],
+    "talents" : {"name" : "", "description": "","alias": ""},
+  }
+}
 
 }

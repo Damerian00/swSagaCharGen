@@ -217,7 +217,7 @@
                <languages [knownLanguages]="heroLanguages" [totalLangs]="langsAllowed" (savedLanguages)="updatelanguages($event)"></languages>
             </div>
             <div class="box">
-                <experience [levelUp]="levelUp"></experience>
+                <experience [levelUp]="levelUp" (heroLvlUpObj)="levelUpHero($event)"></experience>
             </div>
             <div class="box">
                 <h6>Credits</h6>
