@@ -66,6 +66,13 @@ setHeroClassObj(classObj : any){
   console.log("got the classes", classObj);
   this.heroClassObj = classObj;
 }
+addHeroClass(heroClass : string){
+  if (this.heroClassObj[heroClass] == undefined){
+    this.heroClassObj[heroClass] = 1
+  }else{
+    this.heroClassObj[heroClass] += 1;
+  }
+}
 getHeroClassObj(){
   return this.heroClassObj;
 }

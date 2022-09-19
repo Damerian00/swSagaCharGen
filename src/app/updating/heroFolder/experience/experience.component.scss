@@ -27,11 +27,14 @@
     right: 0;
 }
 .lvlModal{
-    position: fixed;
+    position: absolute;
     top: 1vh;
     border: 3px solid black;
     border-radius: 10px;
     padding: 1rem;
     z-index: 500;
     background-color: white;
+    width: auto;
+    max-width: 50vw;
+    right: 0;
 }

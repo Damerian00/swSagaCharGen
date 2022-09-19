@@ -71,7 +71,15 @@
             <button *ngIf="showTalentOptions == false" (click)="addTalent(talentSelector.value, 'none')">Add Talent</button>
         </div>
         <div *ngIf="showAbs">
-            <h2>Hi from Abs</h2>
+            <h4>Choose 2 attributes to it's increase score by 1.</h4>
+            <p>Selections remaining {{increaseAbsCounter}}.</p>
+            <div class="tb">
+                <div class="box" *ngFor="let ab of abilities |keyvalue : unsorted">
+                    <label>{{ab.key}}</label>
+                    <label>{{ab.value}}</label>
+                    <input type="checkbox" name="ab.key" (change)="increaseAbs($event, ab.key)">
+                </div>
+            </div>
         </div>
         <div class="tb">
             <h4>Selected Stats</h4>
@@ -79,6 +87,7 @@
             <p *ngIf="lvlUpObject.hp != 0">HP to increase {{lvlUpObject.hp}}</p>
             <p *ngIf="lvlUpObject.feats[0] != ''">Feat(s) to add: <span *ngFor="let feat of lvlUpObject.feats">{{feat}}</span></p>
             <p *ngIf="lvlUpObject.talents.name != ''">Talent to add: <span *ngIf="lvlUpObject.talents.alias == undefined">{{lvlUpObject.talents.name}}</span><span *ngIf="lvlUpObject.talents.alias != ''">{{lvlUpObject.talents.alias}}</span></p>
+            <p *ngIf="lvlUpObject.abilities[0] != ''">Abilities to add: <span *ngFor="let ab of lvlUpObject.abilities">{{ab}}</span></p>
             <button [disabled]="lvlButton == false" (click)="levelUpHero()">Level Up</button>
         </div>
     </aside>

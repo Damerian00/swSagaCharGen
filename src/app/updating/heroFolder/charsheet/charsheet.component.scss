@@ -9,6 +9,7 @@
     background-color: rgba(20, 20, 20, 0.05);
     padding: 2px 1rem;
 }
+
 .heroBgContainer{
     display:flex;
     flex-direction: column;
@@ -84,6 +85,9 @@ textarea.third-size{
 }
 .classContainer{
     flex: 1;
+    p{
+        margin: .5rem;
+    }
 }
 
 .abilityWrapper{

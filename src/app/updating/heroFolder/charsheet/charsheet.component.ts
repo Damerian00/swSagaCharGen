@@ -90,6 +90,9 @@ attack: number = 0;
       }
      })
     }
+    this.heroservice.updateAbs.subscribe(()=>{
+      this.upDateAbs();
+    })
   }
   //  gets the hero data from the user selection from the local storage/db
   getHero(name: string){  
@@ -113,6 +116,9 @@ attack: number = 0;
   }
 // calculates the heroes kevel based on their current xp
 calcHeroLevel(num: any){
+  if (num == ""){
+    num = 0;
+  }
   this.currentXp += parseInt(num);
   let tempNum = this.currentXp;
   if (this.currentXp >= 1000){
@@ -127,11 +133,18 @@ calcHeroLevel(num: any){
         
         // console.log("the level", i);
       }else{
-        (this.heroLevel <= level)?this.levelUp = true: this.levelUp = false;
+        let num = 0;
+      let hc = (this.level.getHeroClassObj() == undefined)? this.savedHero.class: this.level.getHeroClassObj();
+      let hcArr: any = Object.values(hc);
+      console.log("the hc",Object.values(hc));
+      let totalHC = hcArr.reduce((prev: any, curr: any) => prev + curr, num);
+    console.log("total HC", totalHC);
+        (this.heroLevel <= level && this.heroLevel == totalHC)?this.levelUp = true: this.levelUp = false;
         this.heroLevel = level;
         this.nextXp = this.xpChart[i+1]*1000;
         break;
       }
+      this.levelUp = false;
       this.level.setLevelPts(level);
       level++;
     }
@@ -320,14 +333,17 @@ async calcGrapple(mod: string){
   this.grapple += (this.heroCondition + this.grappleMisc)
   // console.log(this.grappleModSelected, abMod);
 }
-// levels  up hero
+// levels up hero by updating each property in the object to it's corresponding member
 levelUpHero(lvlObj : any){
 // will push lvlObj to the changes array 
+this.levelUp = false;
 this.level.setBAB(this.level.getBAB() + lvlObj.BAB);
 this.maxHp += lvlObj.hp;
 this.currentHp += lvlObj.hp;
 this.skills = this.heroservice.getSkills();
 this.heroservice.recalcSkills();
+this.level.addHeroClass(lvlObj.class);
+
 let tempArr = []
 if (lvlObj.feats.length > 0){
   let currFeats = this.level.getHeroFeats();
@@ -341,9 +357,12 @@ if (lvlObj.talents.name != ''){
   this.level.setTalents(tempArr);
   this.startingTalents = this.level.getHeroTalents();
 }
-
+this.heroClass = this.level.getHeroClassObj();
 }
-
+upDateAbs(){
+this.heroAbilities = this.heroservice.getAbilities();
+this.abilityMod = this.heroservice.getAbilityModifier();
+}
 
 
 // saves the current configurations of the hero by removing the item in localstorage and adding it back

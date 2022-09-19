@@ -9,7 +9,11 @@ import { LevelingService } from '../../services/leveling.service';
   styleUrls: ['./experience.component.scss']
 })
 export class ExperienceComponent implements OnInit {
-//  ---Variables
+  unsorted = (a:any, b:any) => {
+    return a;
+  }
+
+  //  ---Variables
 //  Input/Output
   @Input() levelUp: boolean = false;
   @Output() heroLvlUpObj: EventEmitter <any>  = new EventEmitter <any> ()
@@ -104,11 +108,13 @@ lvlUpObject = {
   "hp"  : 0,
   "feats" : [""],
   "talents" : {"name" : "", "description": "","alias": ""},
+  "abilities" : [""]
 }
 babArr = {
   "normal" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
   "special" : [0,0,1,2,3,3,4,5,6,6,7,8,9,9,10,11,12,12,13,14,15],
 }
+abilities: any = {};
 validatedArr: Array<boolean> = [];
 skillValuetoUpdate: Array<string> = [];
 //  Boolean
@@ -823,12 +829,13 @@ checkHeroLvl(){
   }
   let hl = this.heroservice.getHeroLevel();
   let valid = false;
-  this.showNoClassFeat = (this.thirdLevelFeat(hl))? true: false;
+  this.showNoClassFeat = (this.thirdLevelFeat(hc))? true: false;
   this.showAbs = (this.everyFourth(hl))? true: false;
   if (num % 2 == 0){ this.showClassFeat = true; this.showTalent = false }else{ this.showClassFeat = false; this.showTalent = true; this.addFeat('','none'); this.countTrees(this.level.getHeroTalents()) }
 }
 
 thirdLevelFeat(lvl : number){
+  console.log("this is your level", lvl)
   if (lvl % 3 === 0){
     return true;
   }else{
@@ -837,8 +844,10 @@ thirdLevelFeat(lvl : number){
 }
 everyFourth(lvl : number){
   if (lvl % 4 === 0){
+    this.displayCurrentAbs(true);
     return true;
   }else{
+    this.displayCurrentAbs(false);
     return false;
   }
 }
@@ -902,6 +911,32 @@ this.checkTimesLeveled();
 this.checkHeroLvl();
 
 }
+displayCurrentAbs(flag : boolean){
+  this.showAbs = flag;
+  if (flag){
+    this.abilities = this.heroservice.getAbilities();
+  }
+}
+increaseAbsCounter: number = 2;
+increaseAbs(e: any, key: any){
+  if (this.increaseAbsCounter <= 0  || this.increaseAbsCounter > 2){
+    e.target.checked = !e.target.checked
+    console.log("unchecked", e)
+    return;
+  }
+  if (this.lvlUpObject.abilities[0] == ''){
+    this.lvlUpObject.abilities.pop();
+  }
+if (e.target.checked){
+    this.lvlUpObject.abilities.push(key);
+    this.increaseAbsCounter -= 1;
+  }else{
+    this.increaseAbsCounter += 1;
+    let index = this.lvlUpObject.abilities.findIndex((el: any)=> el == key);
+    this.lvlUpObject.abilities.splice(index,1);
+  }
+  console.log("the abs array", this.lvlUpObject.abilities)
+}
 levelUpHero(){
   if (this.updateSkills == true){
     let skills = this.heroservice.getSkills();
@@ -919,6 +954,9 @@ levelUpHero(){
     console.log("it's there");
     this.lvlUpObject.feats.pop();
   }
+  if (this.lvlUpObject.abilities.length == 2 && this.lvlUpObject.abilities.includes("") == false){
+    this.heroservice.increaseAbilities(this.lvlUpObject.abilities);
+  }
   console.log("leveling this", this.lvlUpObject);
   this.levelUpModal = false;
   this.heroLvlUpObj.emit(this.lvlUpObject);
@@ -928,7 +966,16 @@ levelUpHero(){
     "hp"  : 0,
     "feats" : [""],
     "talents" : {"name" : "", "description": "","alias": ""},
+    "abilities" : [""],
   }
+ this.resetAllSelections("Select")
 }
-
+resetAllSelections(reset: string){
+  this.addClassSelection("Select a Class");
+  this.selectHPIncrease(reset);
+  this.selectFeat(reset);
+  this.addFeat(reset, 'none');
+  this.selectTalent(reset);
+  this.addTalent(reset, 'none')
+}
 }

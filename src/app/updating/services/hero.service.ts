@@ -16,6 +16,7 @@ invokeLanguages = new EventEmitter();
 createAttacks = new EventEmitter();
 displayArmor = new EventEmitter();
 packBags = new EventEmitter();
+updateAbs = new EventEmitter();
 
 //  --Invoking Functions
 enforceConditions(){
@@ -42,7 +43,7 @@ resetLanguages(arr: Array<string>){
   this.invokeLanguages.emit(arr);
 }
 updateCarry(num: number){
-this.carryMod += num;
+(this.carryMod += num);
   this.invokeCarryCalcs.emit();
 }
 
@@ -99,6 +100,14 @@ getAbilities(){
 }
 getAbilityModifier(){
   return this.abilityModifier;
+}
+increaseAbilities(arr: Array<string>){
+  arr.forEach((el:any)=> {
+    this.abilities[el] += 1;
+  })
+  console.log("new abs:", this.abilities);
+  this.calcModifier();
+  this.updateAbs.emit();
 }
 setSkills(skillArr: Array <any>){
   this.skills = skillArr;
