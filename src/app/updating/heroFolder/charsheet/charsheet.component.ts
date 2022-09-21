@@ -42,6 +42,7 @@ heroPull: boolean = false;
 savesPulled: boolean = false;
 xpModalToggle: boolean = false;
 levelUp : boolean = false;
+showSpecQual: boolean = false;
 //  Numbers & Strings
 savedName: string = "";
 tempId: string = "";
@@ -73,6 +74,12 @@ langsAllowed: number = 0;
 credits: number = 0;
 forcePowers: Array<any> = [];
 attack: number = 0;
+// holds the values for notes user adds
+specialQuals: string = '';
+heroNotes: string = '';
+attackOptsNotes: string = '';
+specAttackNotes: string = '';
+starshipNotes: string = '';
 // array to track lvlup changes
 //  Misc
 
@@ -92,6 +99,16 @@ attack: number = 0;
     }
     this.heroservice.updateAbs.subscribe(()=>{
       this.upDateAbs();
+    })
+    this.level.invokeBABUpdate.subscribe((BAB)=>{
+      this.BAB = BAB;
+      this.heroservice.reCalcAttacks();
+      
+    })
+    this.heroservice.distroCredits.subscribe((creds)=>{
+      if (creds != "not valid"){
+        this.credits = creds;
+      }
     })
   }
   //  gets the hero data from the user selection from the local storage/db
@@ -141,7 +158,9 @@ calcHeroLevel(num: any){
     console.log("total HC", totalHC);
         (this.heroLevel <= level && this.heroLevel == totalHC)?this.levelUp = true: this.levelUp = false;
         this.heroLevel = level;
-        this.nextXp = this.xpChart[i+1]*1000;
+        this.nextXp = this.xpChart[i]*1000;
+        // this.level.calcBAB();
+     
         break;
       }
       this.levelUp = false;
@@ -170,6 +189,7 @@ calcHeroLevel(num: any){
   this.forcePoints = 5 + Math.floor((this.heroLevel/2));
   this.level.setCurrentXp(this.currentXp)
   this.level.displayXp();
+  this.BAB = this.level.getBAB();
 }
 async calcLangsAllowed(){
   let int = this.heroservice.getAbilityModifier()["Intelligence"];
@@ -193,6 +213,7 @@ async updateStats(){
   setTimeout(() => {
     this.heroservice.loadHeroStats(this.savedHero.currentArmor, this.savedHero.equipment, this.savedHero.attacks)
     this.level.displayXp();
+    this.heroservice.calcCredits(this.credits, "+");
     }, 500);
   this.savedName = await this.savedHero.name;
   this.startingFeats = await this.savedHero.feats;
@@ -208,13 +229,18 @@ async updateStats(){
   this.heroAbilities = await this.savedHero.abilities;
   this.size = await this.heroSpeciesObj.traits.size;
   this.BAB = await this.savedHero.bab;
-  this.level.setBAB(this.savedHero.bab)
   this.damageThreshold = this.savedHero.dt;
+  this.specialQuals = (this.savedHero.notes.specQualNotes == undefined)? "": this.savedHero.notes.specQualNotes;
+  this.heroNotes = (this.savedHero.notes.heroNotes == undefined)? "": this.savedHero.notes.heroNotes;
+  this.attackOptsNotes= (this.savedHero.notes.attackOptsNotes == undefined)? "": this.savedHero.notes.attackOptsNotes;
+  this.specAttackNotes = (this.savedHero.notes.specAttackNotes == undefined)? "": this.savedHero.notes.specAttackNotes;
+  this.starshipNotes = (this.savedHero.notes.starshipNotes == undefined)? "": this.savedHero.notes.starshipNotes;
   await (this.savedHero.currentArmor == undefined)? "nothing":this.currentArmor = this.savedHero.currentArmor; 
   await (this.savedHero.attacks == undefined || this.savedHero.attacks.length == 0)? "nothing":this.heroAttacks= [...this.savedHero.attacks];
   (this.savedHero.equipment == undefined || this.savedHero.equipment.length == 0)? "nothing": this.heroInventory = [...this.savedHero.equipment];
   this.maxHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[1]: this.savedHero.hp;
   this.currentHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[0]: this.savedHero.hp;
+  this.credits = (this.savedHero.credits == undefined)? 0: this.savedHero.credits;
    if(this.savedHero.currentXp == undefined){
     this.currentXp = 0
   }else{
@@ -236,6 +262,7 @@ async heroSets(){
   this.heroservice.setClassBonuses(this.heroClass);
   this.heroservice.getCarry();
   this.level.setHeroClassObj(this.heroClass);
+  
   
    
 }
@@ -278,6 +305,7 @@ updateCondition(num: number){
 updateCurrentHp(num: any){
   this.currentHp = Math.floor(parseInt(num))
 }
+
 // sets the damage threshold misc value to the input
 setDTMisc(num: any){
   this.dmgThreshMisc = Math.floor(parseInt(num));
@@ -337,7 +365,7 @@ async calcGrapple(mod: string){
 levelUpHero(lvlObj : any){
 // will push lvlObj to the changes array 
 this.levelUp = false;
-this.level.setBAB(this.level.getBAB() + lvlObj.BAB);
+// this.level.setBAB(this.level.getBAB() + lvlObj.BAB);
 this.maxHp += lvlObj.hp;
 this.currentHp += lvlObj.hp;
 this.skills = this.heroservice.getSkills();
@@ -362,6 +390,36 @@ this.heroClass = this.level.getHeroClassObj();
 upDateAbs(){
 this.heroAbilities = this.heroservice.getAbilities();
 this.abilityMod = this.heroservice.getAbilityModifier();
+}
+editNotes(value: string){
+  switch (value){
+    case "specQual":
+      this.showSpecQual = !this.showSpecQual;
+    break;
+
+  }
+
+
+}
+saveNotes(key: string, value: any){
+  switch (key){
+    case 'specQual':  
+    this.specialQuals = value.target.value;
+    break;
+    case "hero_notes":
+    this.heroNotes = value.target.value;
+    break;
+    case "attackOpts":
+    this.attackOptsNotes = value.target.value;
+    break;
+    case "attackNotes":
+    this.specAttackNotes = value.target.value;
+    break;
+    case "starshipNotes":
+    this.starshipNotes = value.target.value;
+    break;
+  }
+
 }
 
 
@@ -394,6 +452,13 @@ async updateHero(){
     "languages" : this.savedLanguages,
     "credits" : this.credits,
     "forcePoints" : this.forcePoints,
+    "notes" : {
+      "specQualNotes" : this.specialQuals,
+      "heroNotes": this.heroNotes,
+      "attackOptsNotes": this.attackOptsNotes,
+      "specAttackNotes" : this.specAttackNotes,
+      "starshipNotes" : this.starshipNotes,
+    },
   }
   this.local.removeHero(this.tempId);
   this.local.saveHerotoStorage(this.tempId, heroObj)

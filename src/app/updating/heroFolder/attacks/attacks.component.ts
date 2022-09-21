@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
 import { HeroService } from '../../services/hero.service';
+import { LevelingService } from '../../services/leveling.service';
 
 
 
@@ -34,7 +35,7 @@ notCustom: boolean = false;
 createWepForm: boolean = false;
 dmgTimesTwo: boolean = false;
 wepEdit: boolean = false;
-  constructor(private swapi : SwapiService, private heroservice: HeroService) { }
+  constructor(private swapi : SwapiService, private heroservice: HeroService, private level: LevelingService) { }
 // accesses service to pull in data from api and save it to 2 different arrays
   ngOnInit(): void {
     this.swapi.getMelees().subscribe(payload => {
@@ -327,7 +328,9 @@ calcAttack(index: number){
   let condition = this.heroservice.getCondition();
   let halfLevel = Math.floor(this.heroservice.getHeroLevel()/2)
   let mod = this.heroservice.getAbilityModifier();
-  this.weaponsArray[index].attack_total = this.weaponsArray[index].attack_misc + mod[this.weaponsArray[index].attack_mod] + halfLevel + condition;
+  let BAB = this.level.getBAB();
+  this.weaponsArray[index].attack_total = this.weaponsArray[index].attack_misc + mod[this.weaponsArray[index].attack_mod] + halfLevel + condition + BAB;
+  console.log(BAB, "for attack")
 }
 //calculates the danmage total based on weapon objects values
 calcDamage(index: number){

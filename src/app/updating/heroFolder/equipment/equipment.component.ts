@@ -59,7 +59,9 @@ tableObj: any = {};
     this.heroservice.packBags.subscribe((bag : any)=> {
       this.importHeroInventory(bag);
     })
-
+    this.heroservice.distroCredits.subscribe((num: any)=> {
+      this.checkCredits(num);
+    })
   }
   //  sorts alphabetically
   sortNames(prop: string){
@@ -124,6 +126,11 @@ calcWeight(index: number){
 //  calculate total cost
 calcCost(index: number){
   this.inventoryArr[index].total_cost = this.inventoryArr[index].cost * this.inventoryArr[index].qty;
+}
+checkCredits(value: any){
+  if (value == 'not valid'){
+    
+  }
 }
 //  show/hide equipment table 
 toggleEquipTable(){

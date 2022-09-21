@@ -1,0 +1,17 @@
+<section>
+    <p>{{credits}}</p>
+    <button (click)="toggleCalc()">{{showCalc.text}}</button>
+    <p class="validation" *ngIf="notvalid">Can't go below 0</p>
+</section>
+<aside *ngIf="showCalc.boolean" #calculator id="calculator">
+    <label>Current Credits</label>
+    <p>{{credits}}</p>
+    <label>Select Operand: </label>
+    <select #operandSelection>
+        <option>+</option>
+        <option>-</option>
+    </select>
+    <label>Input amount to adjust:</label>
+    <input type="number" #numAdjust>
+    <button (click)="calculateCredits(numAdjust.value, operandSelection.value)">[ = ]</button>
+</aside>

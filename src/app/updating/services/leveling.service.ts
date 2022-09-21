@@ -15,14 +15,18 @@ private heroTalents: any;
 private heroClassObj: any;
 private BAB: number = 0;
 private trees: any;
+
   constructor(private hero : HeroService) { }
 
 invokeGetXp = new EventEmitter();
 invokeTreeCount= new EventEmitter();
+invokeBABUpdate = new EventEmitter();
+
 
 displayXp(){
   this.invokeGetXp.emit();
 }
+
 
 //  ---Getters and settters
 setCurrentXp(xp : number){
@@ -65,6 +69,7 @@ getHeroTalents(){
 setHeroClassObj(classObj : any){
   console.log("got the classes", classObj);
   this.heroClassObj = classObj;
+  this.calcBAB();
 }
 addHeroClass(heroClass : string){
   if (this.heroClassObj[heroClass] == undefined){
@@ -72,12 +77,30 @@ addHeroClass(heroClass : string){
   }else{
     this.heroClassObj[heroClass] += 1;
   }
+  this.calcBAB();
 }
 getHeroClassObj(){
   return this.heroClassObj;
 }
-setBAB(bab : number){
-  this.BAB = bab;
+
+calcBAB(){
+  this.BAB = 0;
+  const babArr = {
+    "normal" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+    "special" : [0,0,1,2,3,3,4,5,6,6,7,8,9,9,10,11,12,12,13,14,15],
+  }
+  let norms = ["Jedi","Soldier"]
+  let keys = Object.keys(this.heroClassObj);
+  let vals:any = Object.values(this.heroClassObj);
+  for (let i=0; i < keys.length; i++){
+    if (norms.includes(keys[i])){
+      this.BAB += babArr.normal[vals[i]];
+    }else{
+      this.BAB += babArr.special[vals[i]]
+    }
+  }
+  // console.log('the BAB is:', this.BAB, this.heroClassObj)
+  this.invokeBABUpdate.emit(this.BAB);
 }
 getBAB(){
   return this.BAB;

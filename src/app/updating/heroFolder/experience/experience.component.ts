@@ -951,7 +951,7 @@ levelUpHero(){
     this.heroservice.setSkills(skills);
   }
   if (this.lvlUpObject.feats.includes("")){
-    console.log("it's there");
+    // console.log("it's there");
     this.lvlUpObject.feats.pop();
   }
   if (this.lvlUpObject.abilities.length == 2 && this.lvlUpObject.abilities.includes("") == false){

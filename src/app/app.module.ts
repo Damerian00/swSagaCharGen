@@ -23,6 +23,7 @@ import { EquipmentComponent } from './updating/heroFolder/equipment/equipment.co
 import { EncumbranceComponent } from './updating/heroFolder/encumbrance/encumbrance.component';
 import { LanguageComponent } from './updating/heroFolder/languages/language.component';
 import { ExperienceComponent } from './updating/heroFolder/experience/experience.component';
+import { CreditsComponent } from './updating/heroFolder/credits/credits.component';
 
 
 
@@ -48,6 +49,7 @@ import { ExperienceComponent } from './updating/heroFolder/experience/experience
     EncumbranceComponent,
     LanguageComponent,
     ExperienceComponent,
+    CreditsComponent,
    
   ],
   imports: [

@@ -193,17 +193,21 @@
         </div>
         <div class="tb">
             <update-skills [chosenSkills]="skills" #updateSkills></update-skills>
-            <div class="box">
+            <div class="tb">
                 <h6>Attack Options</h6>
+                <textarea (change)="saveNotes('attackOpts', $event)" cols="30" rows="10">{{attackOptsNotes}}</textarea>  
             </div>
-            <div class="box">
+            <div class="tb">
                 <h6>Special Attacks</h6>
+                <textarea (change)="saveNotes('attackNotes', $event)" cols="30" rows="10">{{specAttackNotes}}</textarea>  
             </div>
             <div class="box">
+                <!-- need to have an ng if to show if they are a jedi and have force powers-->
                 <h6>Force Powers</h6>
             </div>
-            <div class="box">
+            <div class="tb">
                 <h6>Starship Maneuvers</h6>
+                <textarea (change)="saveNotes('starshipNotes', $event)" cols="30" rows="10">{{starshipNotes}}</textarea> 
             </div>
         </div>
     </div>
@@ -219,8 +223,9 @@
             <div class="box">
                 <experience [levelUp]="levelUp" (heroLvlUpObj)="levelUpHero($event)"></experience>
             </div>
-            <div class="box">
+            <div class="tb">
                 <h6>Credits</h6>
+                <credits></credits>
             </div>
             <div class="box">
                <encumbrance style="width:100%;"></encumbrance>
@@ -231,7 +236,7 @@
     <div class="box flex-start">
         <div class="tb third-size">
             <h6>Special Qualities</h6>
-            <textarea class="third-size" name="specialQualities" id="specialQualities" cols="30" rows="10"></textarea>
+                <textarea class="third-size" #specialQualities id="specialQualities" (change)="saveNotes('specQual', $event)" cols="30" rows="10">{{specialQuals}}</textarea>   
         </div>
         <div class="tb third-size">
             <h6>Feats</h6>
@@ -267,9 +272,7 @@
     <div class="box">
         <div class="tb">
             <h6>Notes</h6>
-            <div class="white-board">
-                
-            </div>
+           <textarea name="heroNotes" id="heroNotes" cols="100" rows="10" (change)="saveNotes('hero_notes', $event)">{{heroNotes}}</textarea>
         </div>
     </div>
     <!-- <div class="skillsHolder" *ngFor="let skill of skills">

@@ -171,3 +171,21 @@ h6{
 .flex-start{
     align-items: flex-start;
 }
+
+.notes{
+    align-items: flex-start;
+    p{
+        min-height: 5vh;
+        padding:0 5px;
+    }
+
+}
+.tb textarea{
+    width:100%;
+    margin-top: -1rem;;
+}
+#heroNotes{
+    width: 95vw;
+    margin-top: -1rem;
+}
+    

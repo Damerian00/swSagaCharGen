@@ -17,6 +17,8 @@ createAttacks = new EventEmitter();
 displayArmor = new EventEmitter();
 packBags = new EventEmitter();
 updateAbs = new EventEmitter();
+distroCredits = new EventEmitter ();
+invokeCalculator = new EventEmitter();
 
 //  --Invoking Functions
 enforceConditions(){
@@ -69,6 +71,7 @@ private heroLevel: number = 0;
 private heroCondition: number = 0
 private species: string = '';
 private languages : Array <string> = [];
+private credits = 0;
 
 //  gettters and setters
 setHeroLevel(level : number){
@@ -254,5 +257,11 @@ getLanguages(){
   return this.languages;
 }
 
-
+updateCredits(num: any){
+     this.distroCredits.emit(num);
+}
+calcCredits(num : any, operand : string){
+  let arr = [num, operand]
+  this.invokeCalculator.emit(arr);
+}
 }
