@@ -248,7 +248,10 @@
         <div class="tb third-size">
             <h6>Talents</h6>
             <div class="white-board">
-                <p *ngFor="let talent of startingTalents">{{talent.name}} : {{talent.description}}</p>
+                <div *ngFor="let talent of startingTalents">
+                    <p *ngIf="talent.alias == undefined || talent.alias == ''">{{talent.name}} : {{talent.description}}</p>
+                    <p *ngIf="talent.alias != undefined || talent.alias != ''">{{talent.alias}} : {{talent.description}}</p>
+                </div>
             </div>
         </div>
     </div>

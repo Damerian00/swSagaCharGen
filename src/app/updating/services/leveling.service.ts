@@ -67,7 +67,7 @@ getHeroTalents(){
   return this.heroTalents;
 }
 setHeroClassObj(classObj : any){
-  console.log("got the classes", classObj);
+  // console.log("got the classes", classObj);
   this.heroClassObj = classObj;
   this.calcBAB();
 }

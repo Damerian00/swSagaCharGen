@@ -824,13 +824,15 @@ checkTimesLeveled(){
 checkHeroLvl(){
   let num = 1;
   let hc = this.level.getHeroClassObj();
+  let hcArr = Object.values(hc);
   if (hc[this.lvlUpObject.class] != undefined){
     num = hc[this.lvlUpObject.class] + 1;
   }
-  let hl = this.heroservice.getHeroLevel();
-  let valid = false;
+  // let hl = this.heroservice.getHeroLevel();
+  // let valid = false;
+  let count:any = hcArr.reduce((prev: any, curr: any) => prev + curr, 1);
   this.showNoClassFeat = (this.thirdLevelFeat(hc))? true: false;
-  this.showAbs = (this.everyFourth(hl))? true: false;
+  this.showAbs = (this.everyFourth(count))? true: false;
   if (num % 2 == 0){ this.showClassFeat = true; this.showTalent = false }else{ this.showClassFeat = false; this.showTalent = true; this.addFeat('','none'); this.countTrees(this.level.getHeroTalents()) }
 }
 
@@ -843,6 +845,7 @@ thirdLevelFeat(lvl : number){
   }
 }
 everyFourth(lvl : number){
+  console.log("the count", lvl)
   if (lvl % 4 === 0){
     this.displayCurrentAbs(true);
     return true;
@@ -919,23 +922,24 @@ displayCurrentAbs(flag : boolean){
 }
 increaseAbsCounter: number = 2;
 increaseAbs(e: any, key: any){
-  if (this.increaseAbsCounter <= 0  || this.increaseAbsCounter > 2){
-    e.target.checked = !e.target.checked
-    console.log("unchecked", e)
-    return;
-  }
-  if (this.lvlUpObject.abilities[0] == ''){
-    this.lvlUpObject.abilities.pop();
-  }
-if (e.target.checked){
-    this.lvlUpObject.abilities.push(key);
-    this.increaseAbsCounter -= 1;
-  }else{
+  if (this.lvlUpObject.abilities.includes(key)){
     this.increaseAbsCounter += 1;
     let index = this.lvlUpObject.abilities.findIndex((el: any)=> el == key);
     this.lvlUpObject.abilities.splice(index,1);
+  }else if(this.increaseAbsCounter <= 0){
+    e.target.checked = !e.target.checked
+    // console.log("unchecked", e)
+    return;
+  }else{
+    if (this.lvlUpObject.abilities[0] == ''){
+      this.lvlUpObject.abilities.pop();
+    }
+  if (e.target.checked){
+      this.lvlUpObject.abilities.push(key);
+      this.increaseAbsCounter -= 1;
+    }
   }
-  console.log("the abs array", this.lvlUpObject.abilities)
+  // console.log("the abs array", this.lvlUpObject.abilities)
 }
 levelUpHero(){
   if (this.updateSkills == true){
@@ -977,5 +981,8 @@ resetAllSelections(reset: string){
   this.addFeat(reset, 'none');
   this.selectTalent(reset);
   this.addTalent(reset, 'none')
+  this.showAbs = false;
+  this.showNoClassFeat = false;
+  this.lvlButton = true;
 }
 }

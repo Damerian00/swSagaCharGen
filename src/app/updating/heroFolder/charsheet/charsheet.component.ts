@@ -124,7 +124,7 @@ forceRegimens: string = "";
       this.tempId = hero;
       let recieved: any = this.local.getHero(hero);
       this.savedHero = JSON.parse(recieved);
-      // console.log("the hero is", name,this.savedHero)
+      console.log("the hero is", name,this.savedHero)
       this.updateStats();
       this.heroPull = true;
       // this.calcDT(this.currentDtType);
@@ -157,17 +157,16 @@ calcHeroLevel(num: any){
         let num = 0;
       let hc = (this.level.getHeroClassObj() == undefined)? this.savedHero.class: this.level.getHeroClassObj();
       let hcArr: any = Object.values(hc);
-      console.log("the hc",Object.values(hc));
+      // console.log("the hc",Object.values(hc));
       let totalHC = hcArr.reduce((prev: any, curr: any) => prev + curr, num);
-    console.log("total HC", totalHC);
-        (this.heroLevel <= level && this.heroLevel == totalHC)?this.levelUp = true: this.levelUp = false;
+    // console.log("total HC", totalHC);
+        (this.heroLevel < level && this.heroLevel == totalHC)?this.levelUp = true: this.levelUp = false;
         this.heroLevel = level;
         this.nextXp = this.xpChart[i]*1000;
         // this.level.calcBAB();
      
         break;
       }
-      this.levelUp = false;
       this.level.setLevelPts(level);
       level++;
     }
@@ -371,14 +370,13 @@ async calcGrapple(mod: string){
 // levels up hero by updating each property in the object to it's corresponding member
 levelUpHero(lvlObj : any){
 // will push lvlObj to the changes array 
-this.levelUp = false;
+
 // this.level.setBAB(this.level.getBAB() + lvlObj.BAB);
 this.maxHp += lvlObj.hp;
 this.currentHp += lvlObj.hp;
 this.skills = this.heroservice.getSkills();
 this.heroservice.recalcSkills();
 this.level.addHeroClass(lvlObj.class);
-
 let tempArr = []
 if (lvlObj.feats.length > 0){
   let currFeats = this.level.getHeroFeats();
@@ -392,6 +390,11 @@ if (lvlObj.talents.name != ''){
   this.level.setTalents(tempArr);
   this.startingTalents = this.level.getHeroTalents();
 }
+const classObj = this.level.getHeroClassObj();
+let vals = Object.values(classObj);
+let num = vals.reduce((prev: any, curr: any)=> prev + curr);
+console.log("the values",vals, num);
+(Number(num) < this.heroLevel)? this.levelUp = true: this.levelUp = false;
 this.heroClass = this.level.getHeroClassObj();
 }
 upDateAbs(){

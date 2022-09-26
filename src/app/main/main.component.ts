@@ -380,12 +380,13 @@ resetFocus(){
 }
 // if one of the talent exceptions was chosen use this
 updateTalentSpecify(specificArr: any){
-  this.talentSelected =specificArr[1];
+  this.talentSelected = specificArr[1];
+  this.talentSelected.alias = specificArr[0];
   this.talentSelectedName = specificArr[0]
   this.talentSelectedDesc = specificArr[2];
   this.showRest = true;
   this.updateStats();
-  // console.log("it was specific", specificArr)
+  console.log("it was specific", specificArr[1])
 }
 // if a non exception talent was chosen use this
 updateTalents(chosenTalent: any){
@@ -668,7 +669,7 @@ saveHero(){
     PDF.save(fileName);
   });
   */
-  // console.log("savedHero", nameSaved, savedHero);
+  console.log("savedHero", nameSaved, savedHero);
   localStorage.setItem(nameSaved, JSON.stringify(savedHero));
   window.location.href = '/index.html';
 }

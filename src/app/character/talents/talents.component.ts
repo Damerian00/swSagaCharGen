@@ -224,9 +224,9 @@ async submit(selection: any){
     if (selection == "Assured Skill" || selection == "Exceptional Skill" ){
       if (this.chosenSpecificTalent != "nope"){
         index = await this.choices.getAvailableTalents().findIndex((el: any) => el.name == selection);
-        let tempArr = [this.getSelectedTalentName() + ` (${this.chosenSpecificTalent})`, this.choices.getAvailableTalents(), this.getSelectedTalentDesc()];
+        let tempArr = [this.getSelectedTalentName() + ` (${this.chosenSpecificTalent})`, this.choices.getAvailableTalents()[index], this.getSelectedTalentDesc()];
         this.heroTalentSpecified.emit(tempArr)
-        // console.log("sent this talent:",this.choices.getAvailableTalents()[index])
+        // console.log("sent this talent:",tempArr,this.choices.getAvailableTalents()[index])
       }
     } else{
       index = await this.choices.getAvailableTalents().findIndex((el: any) => el.name == selection);
