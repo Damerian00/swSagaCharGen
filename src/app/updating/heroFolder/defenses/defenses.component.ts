@@ -32,12 +32,13 @@ export class DefensesComponent implements OnInit {
   constructor(private heroservice: HeroService) { }
 //  starts the calculations for the variables and supscribes to the services
   ngOnInit(): void {
-    this.traits = this.heroservice.getSpeciesTraits();
+    
+    
     this.getValues();
     this.resetDefenses();
-    this.calculateDefenses( this.heroDefenses[0].name, this.heroDefenses[0].default);
-    this.calculateDefenses(this.heroDefenses[1].name, this.heroDefenses[1].default);
-    this.calculateDefenses(this.heroDefenses[2].name, this.heroDefenses[2].default);
+    // this.calculateDefenses( this.heroDefenses[0].name, this.heroDefenses[0].default);
+    // this.calculateDefenses(this.heroDefenses[1].name, this.heroDefenses[1].default);
+    // this.calculateDefenses(this.heroDefenses[2].name, this.heroDefenses[2].default);
     this.defenses.emit(this.heroDefenses);
     this.heroservice.invokeConditions.subscribe(() => {   
       this.getHeroCondition();
@@ -69,7 +70,7 @@ async updateArmor(armor: any){
  }else{
     this.resetDefenses();
   } 
-  this.calculateDefenses( this.heroDefenses[0].name, this.heroDefenses[0].default);
+  this.calculateDefenses(this.heroDefenses[0].name, this.heroDefenses[0].default);
   this.calculateDefenses(this.heroDefenses[1].name, this.heroDefenses[1].default);
   this.calculateDefenses(this.heroDefenses[2].name, this.heroDefenses[2].default);
   this.defenses.emit(this.heroDefenses);
@@ -82,9 +83,13 @@ resetDefenses(){
 }
 //  gets all the values and sets them
 getValues(){
-  this.speciesFortDefenseMod = this.traits.Defenses["Fortitude Defense"];
-  this.speciesReflexDefenseMod = this.traits.Defenses["Reflex Defense"];
-  this.speciesWillDefenseMod = this.traits.Defenses["Will Defense"];
+  this.traits = this.heroservice.getSpeciesTraits();
+  // console.log(this.traits)
+  if (this.traits != undefined){
+    this.speciesFortDefenseMod = this.traits.Defenses["Fortitude Defense"];
+    this.speciesReflexDefenseMod = this.traits.Defenses["Reflex Defense"];
+    this.speciesWillDefenseMod = this.traits.Defenses["Will Defense"];
+  }
   this.reflexClassBonus = this.heroservice.getReflexClassBonus();
   this.fortClassBonus = this.heroservice.getFortClassBonus();
   this.willClassBonus = this.heroservice.getWillClassBonus();

@@ -12,6 +12,7 @@
 <section *ngIf="heroPull else reminder">
     <h1>{{savedName}}</h1>
     <button (click)="updateHero()">Save {{savedName}}</button>
+    <button (click)="deleteHero()" disabled="true">Delete {{savedName}}</button>
     <button (click)="openModal('xp')">Add Experience Points</button>
     <aside *ngIf="xpModalToggle" class="modal">
         <label>Enter Earned XP amount then click add.</label>
@@ -251,22 +252,18 @@
             </div>
         </div>
     </div>
-    <div class="box flex-start">
+    <div *ngIf="forceUser" class="box flex-start">
         <div class="tb third-size">
             <h6>Force Techniques</h6>
-            <textarea class="third-size" name="specialQualities" id="specialQualities" cols="30" rows="10"></textarea>
+            <textarea class="third-size" name="forceTechniques" (change)="saveNotes('techniques', $event)" cols="30" rows="10">{{forceTechniques}}</textarea>
         </div>
         <div class="tb third-size">
             <h6>Force Secrets</h6>
-            <div class="white-board">
-                <p *ngFor="let feat of startingFeats">{{feat}}</p>
-            </div>
+            <textarea class="third-size" name="forceSecrets" (change)="saveNotes('secrets', $event)" cols="30" rows="10">{{forceSecrets}}</textarea>
         </div>
         <div class="tb third-size">
             <h6>Force Regimens</h6>
-            <div class="white-board">
-                <p *ngFor="let talent of startingTalents">{{talent.name}} : {{talent.description}}</p>
-            </div>
+            <textarea class="third-size" name="forceRegimens" (change)="saveNotes('regimens', $event)" cols="30" rows="10">{{forceRegimens}}</textarea>
         </div>
     </div>
     <div class="box">

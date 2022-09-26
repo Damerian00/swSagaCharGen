@@ -43,6 +43,7 @@ savesPulled: boolean = false;
 xpModalToggle: boolean = false;
 levelUp : boolean = false;
 showSpecQual: boolean = false;
+forceUser: boolean = false;
 //  Numbers & Strings
 savedName: string = "";
 tempId: string = "";
@@ -80,6 +81,9 @@ heroNotes: string = '';
 attackOptsNotes: string = '';
 specAttackNotes: string = '';
 starshipNotes: string = '';
+forceTechniques: string = '';
+forceSecrets: string = "";
+forceRegimens: string = "";
 // array to track lvlup changes
 //  Misc
 
@@ -120,7 +124,7 @@ starshipNotes: string = '';
       this.tempId = hero;
       let recieved: any = this.local.getHero(hero);
       this.savedHero = JSON.parse(recieved);
-      console.log("the hero is", name,this.savedHero)
+      // console.log("the hero is", name,this.savedHero)
       this.updateStats();
       this.heroPull = true;
       // this.calcDT(this.currentDtType);
@@ -230,11 +234,14 @@ async updateStats(){
   this.size = await this.heroSpeciesObj.traits.size;
   this.BAB = await this.savedHero.bab;
   this.damageThreshold = this.savedHero.dt;
-  this.specialQuals = (this.savedHero.notes.specQualNotes == undefined)? "": this.savedHero.notes.specQualNotes;
-  this.heroNotes = (this.savedHero.notes.heroNotes == undefined)? "": this.savedHero.notes.heroNotes;
-  this.attackOptsNotes= (this.savedHero.notes.attackOptsNotes == undefined)? "": this.savedHero.notes.attackOptsNotes;
-  this.specAttackNotes = (this.savedHero.notes.specAttackNotes == undefined)? "": this.savedHero.notes.specAttackNotes;
-  this.starshipNotes = (this.savedHero.notes.starshipNotes == undefined)? "": this.savedHero.notes.starshipNotes;
+  this.specialQuals = (this.savedHero.notes == undefined || this.savedHero.notes.specQualNotes == undefined)? "": this.savedHero.notes.specQualNotes;
+  this.heroNotes = (this.savedHero.notes == undefined || this.savedHero.notes.heroNotes == undefined)? "": this.savedHero.notes.heroNotes;
+  this.attackOptsNotes= (this.savedHero.notes == undefined || this.savedHero.notes.attackOptsNotes == undefined)? "": this.savedHero.notes.attackOptsNotes;
+  this.specAttackNotes = (this.savedHero.notes == undefined || this.savedHero.notes.specAttackNotes == undefined)? "": this.savedHero.notes.specAttackNotes;
+  this.starshipNotes = (this.savedHero.notes == undefined || this.savedHero.notes.starshipNotes == undefined)? "": this.savedHero.notes.starshipNotes;
+  this.forceTechniques = (this.savedHero.forceNotes == undefined || this.savedHero.forceNotes.forceTechniques == undefined)? "": this.savedHero.forceNotes.forceTechniques;
+  this.forceSecrets = (this.savedHero.forceNotes == undefined || this.savedHero.forceNotes.forceSecrets == undefined)? "": this.savedHero.forceNotes.forceSecrets;
+  this.forceRegimens = (this.savedHero.forceNotes == undefined || this.savedHero.forceNotes.forceRegimens == undefined)? "": this.savedHero.forceNotes.forceRegimens;
   await (this.savedHero.currentArmor == undefined)? "nothing":this.currentArmor = this.savedHero.currentArmor; 
   await (this.savedHero.attacks == undefined || this.savedHero.attacks.length == 0)? "nothing":this.heroAttacks= [...this.savedHero.attacks];
   (this.savedHero.equipment == undefined || this.savedHero.equipment.length == 0)? "nothing": this.heroInventory = [...this.savedHero.equipment];
@@ -418,6 +425,15 @@ saveNotes(key: string, value: any){
     case "starshipNotes":
     this.starshipNotes = value.target.value;
     break;
+    case "techniques":
+      this.forceTechniques = value.target.value;
+    break;
+    case "secrets":
+      this.forceSecrets  = value.target.value;
+    break;
+    case "regimens":
+      this.forceRegimens  = value.target.value;
+    break;
   }
 
 }
@@ -459,10 +475,19 @@ async updateHero(){
       "specAttackNotes" : this.specAttackNotes,
       "starshipNotes" : this.starshipNotes,
     },
+    "forceNotes" : {
+      "techniques" : "",
+      "secrets" : "",
+      "regimens" : "",
+    }
   }
   this.local.removeHero(this.tempId);
   this.local.saveHerotoStorage(this.tempId, heroObj)
   console.log("hero saved", this.tempId, this.savedHero, heroObj);
+  window.location.href = '/index.html';
 }
-
+deleteHero(){
+  this.local.removeHero(this.tempId);
+  window.location.href = '/index.html';
+}
 }

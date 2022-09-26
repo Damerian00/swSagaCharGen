@@ -670,7 +670,7 @@ saveHero(){
   */
   // console.log("savedHero", nameSaved, savedHero);
   localStorage.setItem(nameSaved, JSON.stringify(savedHero));
-  
+  window.location.href = '/index.html';
 }
 
 showCharSheet(){

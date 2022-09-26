@@ -11,7 +11,7 @@ export class CreditsComponent implements OnInit {
 
 credits : number = 0;
 notvalid: boolean = false;
-showCalc = {"boolean" : false, "text" : "Show Calculator"};
+showCalc = {"boolean" : true, "text" : "Hide Calculator"};
 
 
   constructor(private level: LevelingService, private hero: HeroService) { }
@@ -26,9 +26,15 @@ showCalc = {"boolean" : false, "text" : "Show Calculator"};
   }
 toggleCalc(){
   this.showCalc.boolean = !this.showCalc.boolean;
-  this.showCalc.text = (this.showCalc.text == "Show Calculator")? "Hide Calculator": "Show Calculator";
+  if (this.showCalc.text == "Show Calculator"){ 
+    this.showCalc.text = "Hide Calculator";
+  }else{
+  this.notvalid = false;
+  this.showCalc.text = "Show Calculator";
+  };
 }
 calculateCredits(num : any, operand: string){
+  // console.log("show me the credits: ", num, operand)
   if (num == ""){
     this.toggleCalc();
     this.notvalid = false; 
@@ -42,7 +48,7 @@ calculateCredits(num : any, operand: string){
   }else{
     cred = this.credits - realNum;
   }
-  if (cred < 0){
+  if (cred < 0  || num == undefined){
     this.notvalid = true;
     this.hero.updateCredits('not valid');
     return;

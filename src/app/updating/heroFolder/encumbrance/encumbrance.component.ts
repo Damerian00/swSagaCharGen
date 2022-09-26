@@ -57,8 +57,8 @@ async getMaxCarry(){
 }
 
 calcCurrentCarry(){
-let carry = this.heroservice.getCarryMod()
-this.currentCarry = carry;
+let carry = this.heroservice.getCarryMod().toFixed(2);
+this.currentCarry = Number(carry);
 
 }
 

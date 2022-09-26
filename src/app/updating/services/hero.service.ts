@@ -44,8 +44,14 @@ getCarry(){
 resetLanguages(arr: Array<string>){
   this.invokeLanguages.emit(arr);
 }
-updateCarry(num: number){
-(this.carryMod += num);
+updateCarry(weight: Array<number>, qty: Array<number>){
+  // console.log(weight, qty)
+  let temp = 0
+  for (let i = 0; i < weight.length; i++){
+    temp += (weight[i]*qty[i]);
+    // console.log(temp);
+  }
+  this.carryMod = temp;
   this.invokeCarryCalcs.emit();
 }
 
@@ -71,7 +77,7 @@ private heroLevel: number = 0;
 private heroCondition: number = 0
 private species: string = '';
 private languages : Array <string> = [];
-private credits = 0;
+
 
 //  gettters and setters
 setHeroLevel(level : number){
@@ -114,7 +120,7 @@ increaseAbilities(arr: Array<string>){
 }
 setSkills(skillArr: Array <any>){
   this.skills = skillArr;
- console.log("set skills", this.skills)
+//  console.log("set skills", this.skills)
 }
 getCarryMod(){
   return this.carryMod;

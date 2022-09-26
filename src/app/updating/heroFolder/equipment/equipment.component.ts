@@ -26,6 +26,7 @@ selectedType: string = "";
 showEqTable: boolean = false;
 tableType: string = "";
 tableObj: any = {};
+notvalid: boolean = false;
 
 
   constructor(private swapi : SwapiService, private heroservice : HeroService) { }
@@ -85,7 +86,7 @@ importHeroInventory(arr: any){
   for (let i=0;i<arr.length;i++){
     if(arr[i].carry == true){
       arr[i].carry = false;
-      this.modCarry(i);
+      this.modCarry();
     }
   }
 }
@@ -106,6 +107,7 @@ calcTotals(){
     this.calcWeight(i);
     this.inventory.emit(this.inventoryArr);
   }
+  this.modCarry();
 }
 //  calculates the total weight
 calcWeight(index: number){
@@ -129,7 +131,9 @@ calcCost(index: number){
 }
 checkCredits(value: any){
   if (value == 'not valid'){
-    
+    this.notvalid = true;
+  }else{
+    this.notvalid = false;
   }
 }
 //  show/hide equipment table 
@@ -144,16 +148,25 @@ clearArray(arr: Array<any>){
   }
 }
 //  checks if carry checkbox is selected and uses that weight value to add or subtract from encumbrance
-modCarry(index: number){
-  (this.inventoryArr[index].carry == true)?this.inventoryArr[index].carry = false: this.inventoryArr[index].carry = true; 
-  let split = this.inventoryArr[index].total_weight.split('')
-  let stop = split.findIndex((el:any)=> el == "k" || el == "t");
-  let num = parseFloat(this.inventoryArr[index].total_weight.substring(0, stop))
-  if (this.inventoryArr[index].carry == true){
-    this.heroservice.updateCarry(num);
-  }else{
-    this.heroservice.updateCarry((num * -1));
+toggleCarry(index: any){
+  this.inventoryArr[index].carry = !this.inventoryArr[index].carry;
+  this.modCarry();
+}
+modCarry(){
+  let qty: Array<number> = [];
+  let weight: Array<number> = [];
+  for (let i =0; i<this.inventoryArr.length;i++){
+    let split = this.inventoryArr[i].total_weight.split('')
+    let stop = split.findIndex((el:any)=> el == "k" || el == "t");
+    let num = parseFloat(this.inventoryArr[i].weight.substring(0, stop))
+    // console.log("before conditional", this.inventoryArr[i].carry);
+    if (this.inventoryArr[i].carry == true){
+      weight.push(num);
+      qty.push(this.inventoryArr[i].qty);
+    }
+
   }
+  this.heroservice.updateCarry(weight, qty);
   // console.log('carry', this.inventoryArr[index].carry)
 }
 //  adds to the subcategory array based on choice of item type selected by user
@@ -232,6 +245,7 @@ loadFilteredList(selection: any){
 }
 //  function to create a custom item
 createCustomItem(name: string, qty: string, type: string, weight: any, cost: string){
+  this.notvalid = false;
   if(name == "" || type == "Select which Type" || parseInt(qty) <= 0){
     this.toggleEquipTable();
     return;
@@ -265,8 +279,11 @@ let equipObj = {
   showNotes: false,
   notesDisplay: 'show',
 } 
-this.inventoryArr.push(equipObj);
-this.toggleEquipTable();
+this.heroservice.calcCredits(equipObj.total_cost, "-");
+if (this.notvalid == false){
+  this.inventoryArr.push(equipObj);
+  this.toggleEquipTable();
+}
 }
 //  sets the tableObj to the equipObj Object to be used later
 loadEquipTable(selection : any){ 
@@ -381,6 +398,13 @@ switch (this.selectedType) {
 
 this.tableObj = equipObj;
 }
+//allows user to purchase item with credits
+async buyItem(){
+  await this.heroservice.calcCredits(this.tableObj.cost, "-");
+  if (this.notvalid == false){
+    this.addItem();
+  }
+}
 //  adds the previously made tableObj to the array if it isn't already there if it is it just adds to the qty
 addItem(){
   if (this.tableObj.name == "" || this.tableObj.name == undefined){
@@ -407,7 +431,7 @@ addItem(){
 }
 //  deletes the item from the inventory array
 deleteItem(index: number){
-(this.inventoryArr[index].carry == true)?this.modCarry(index): "nothing";
+(this.inventoryArr[index].carry == true)?this.toggleCarry(index): "nothing";
   if (index == 0){
     this.inventoryArr.shift();
   }

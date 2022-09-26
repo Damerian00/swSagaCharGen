@@ -52,14 +52,14 @@ getNextXp(){
 }
 setFeats(feats: any){
   this.heroFeats = feats;
-  console.log("feats", this.heroFeats);
+  // console.log("feats", this.heroFeats);
 }
 getHeroFeats(){
   return this.heroFeats;
 }
 setTalents(talents: any){
   this.heroTalents = talents;
-  console.log("talents", this.heroTalents);
+  // console.log("talents", this.heroTalents);
   this.invokeTreeCount.emit(this.heroTalents);
 
 }

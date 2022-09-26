@@ -10,7 +10,7 @@
         </div>
         <div class="tb">
             <label>Carry</label>
-            <input type="checkbox" name="carryBox" #carryBox (change)="modCarry(i)" [checked]="item.carry">
+            <input type="checkbox" name="carryBox" #carryBox (change)="toggleCarry(i)" [checked]="item.carry">
         </div>
         <div class="tb">
             <label>QTY</label>
@@ -79,7 +79,7 @@
             <label>Item Name: </label>
             <input type="cusName" #cusName>
             <label>QTY :</label>
-            <input type="number" min="1" #cusQty>
+            <input type="number" min="1" #cusQty (change)="calcTotals()">
             <label>Type of Equipment: </label>
             <select name="cusEquipType" #cusEquipType>
                 <option>Select which Type</option>
@@ -90,6 +90,7 @@
             <label>Cost: </label> 
             <input type="number" min="0" #cusCost>
             <button (click)="createCustomItem(cusName.value, cusQty.value, cusEquipType.value, cusWeight.value, cusCost.value)">Add Item to Inventory</button>
+            <button (click)="buyItem()">Purchase Item</button>
         </div>
         <div *ngIf="selectedType != 'Custom'">
             <label >Choose Category</label>
@@ -212,5 +213,7 @@
       
     </table>
     <button  *ngIf="tableObj.name != undefined" (click)="addItem()">Add {{tableObj.name}} to Inventory</button>
+    <button  *ngIf="tableObj.name != undefined" (click)="buyItem()">Purchase {{tableObj.name}}</button>
+    <span *ngIf="notvalid" class="validator">Error not enough Credits...</span>
     <button (click)="toggleEquipTable()">Cancel</button>
 </aside>
