@@ -20,7 +20,7 @@ export class AbilitiesComponent implements OnInit {
   /*
    max amount of points available for abilities which is adjustable
   */
-  maxPoints: number = 25;
+  maxPoints: number = 0;
   abModifierImport: any= {};
 /* 
 holds the abilities and their values for starting
@@ -58,23 +58,28 @@ holds the abilities and their values for starting
         this.saveAbilities();
       });    
           
+      this.choices.initializeAbilityPoints.subscribe((pts)=>{
+        this.setMaxPoints(pts);
+        this.togglePtsBtn();
+      })
   }
   // flag
   startAbilities: boolean = false;
 togglePtsBtn(){
-  (this.toggleBtnText == "Open Points Editor") ? this.toggleBtnText = "Close Points Editor" : this.toggleBtnText = "Open Points Editor";
+  (this.toggleBtnText == "Open Points Editor") ? this.toggleBtnText = "Cancel" : this.toggleBtnText = "Open Points Editor";
   this.toggleButton = !this.toggleButton;
 }
   //sets max points 
   setMaxPoints(mxpts: any){
     this.update();
-    if (mxpts <= 50 && mxpts >= 10){
+    if (mxpts <= 50 && mxpts >= 25){
       // console.log("setting max:", mxpts);
       this.choices.maxPoints = mxpts;
       this.points = mxpts;
       this.maxPoints = mxpts;
       // console.log("changed max:",this.choices.maxPoints);
     }
+    this.togglePtsBtn();
   }
 
   /*
@@ -104,6 +109,9 @@ togglePtsBtn(){
   updates the ability values when adding or subtracting points
   */
   update(){
+  if (this.abModifierImport.Strength == undefined){
+    return;
+  }
   this.resetAbilites();
   this.abModifierImport = this.choices.speciesAbilityModifiers;
   // console.log('the ability modifiers:',this.abModifierImport)

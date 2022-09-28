@@ -19,6 +19,7 @@ packBags = new EventEmitter();
 updateAbs = new EventEmitter();
 distroCredits = new EventEmitter ();
 invokeCalculator = new EventEmitter();
+setSavedCredits = new EventEmitter();
 
 //  --Invoking Functions
 enforceConditions(){
@@ -265,6 +266,9 @@ getLanguages(){
 
 updateCredits(num: any){
      this.distroCredits.emit(num);
+}
+setStartCredits(num: number){
+  this.setSavedCredits.emit(num);
 }
 calcCredits(num : any, operand : string){
   let arr = [num, operand]

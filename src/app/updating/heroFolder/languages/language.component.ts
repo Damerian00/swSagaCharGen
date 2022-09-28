@@ -56,11 +56,14 @@ toggleAddLanguage(char: string){
     this.showLangForm = !this.showLangForm;
 }
 addToSelection(selection: any){
-    // console.log(this.selectionArr);
-    if (selection == "Select a Language to add" || this.selectionArr.includes(selection) || this.heroLanguages.length > this.totalLangs){
+    
+    if (selection == "Select a Language to add" || this.selectionArr.includes(selection)){
+        return;
+    }else if ( (this.selectionArr.length + this.heroLanguages.length) >= this.totalLangs){
         return;
     }
     this.selectionArr.push(selection);
+    console.log(this.selectionArr, this.heroLanguages, this.totalLangs);
     
 }
 removeLanguage(index: number){
@@ -88,7 +91,11 @@ addToKnown(){
     // console.log(this.heroLanguages)
     this.toggleAddLanguage('b');
     this.savedLanguages.emit(this.heroLanguages);
+    this.selectionArr = [];
 }
-
+cancel(){
+    this.selectionArr = []
+    this.toggleAddLanguage('b');
+}
 
 }

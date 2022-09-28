@@ -10,6 +10,7 @@ invokeAbilitiesFunction = new EventEmitter ();
   subsVar: Subscription = new Subscription;
 setStartingFeats = new EventEmitter();
 intiializeTalents = new EventEmitter();
+initializeAbilityPoints = new EventEmitter();
 
 // middleware function to display starting feats
 setStartFeats(){
@@ -24,6 +25,9 @@ startTalentComponent(){
 // middleware function to show ability points and final ability values
 onSelection() {
   this.invokeAbilitiesFunction.emit();
+}
+initAbPoints(pts: number){
+  this.initializeAbilityPoints.emit(pts);
 }
 
   public speciesSelected: any

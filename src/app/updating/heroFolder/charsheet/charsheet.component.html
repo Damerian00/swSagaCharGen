@@ -1,19 +1,14 @@
-<nav>
+<nav class="nav">
     <a routerLink="/" routerLinActive="active">Landing Page</a>
     <a routerLink="/new-hero" routerLinActive="active">Create a New Hero</a>
 </nav>
-<div>
-    <label>File Name:</label>
-        <select *ngIf="savesPulled" #localSaves value="selected" (change)="getHero(localSaves.value)">
-            <option>Select a Save File</option>
-            <option *ngFor="let hero of savedHeroes">{{hero.name}}</option>
-        </select>             
-</div>
+
 <section *ngIf="heroPull else reminder">
     <h1>{{savedName}}</h1>
     <button (click)="updateHero()">Save {{savedName}}</button>
-    <button (click)="deleteHero()" disabled="true">Delete {{savedName}}</button>
+    <button (click)="deleteHero()">Delete {{savedName}}</button>
     <button (click)="openModal('xp')">Add Experience Points</button>
+    <button (click)="switchHero()">Select another hero</button>
     <aside *ngIf="xpModalToggle" class="modal">
         <label>Enter Earned XP amount then click add.</label>
         <input type="number"id="xp" name="xp" #xp>
@@ -202,7 +197,7 @@
                 <h6>Special Attacks</h6>
                 <textarea (change)="saveNotes('attackNotes', $event)" cols="30" rows="10">{{specAttackNotes}}</textarea>  
             </div>
-            <div class="box">
+            <div class="box" *ngIf="forceUser">
                 <!-- need to have an ng if to show if they are a jedi and have force powers-->
                 <h6>Force Powers</h6>
             </div>
@@ -250,7 +245,7 @@
             <div class="white-board">
                 <div *ngFor="let talent of startingTalents">
                     <p *ngIf="talent.alias == undefined || talent.alias == ''">{{talent.name}} : {{talent.description}}</p>
-                    <p *ngIf="talent.alias != undefined || talent.alias != ''">{{talent.alias}} : {{talent.description}}</p>
+                    <p *ngIf="talent.alias != undefined">{{talent.alias}} : {{talent.description}}</p>
                 </div>
             </div>
         </div>
@@ -284,7 +279,13 @@
     </div> -->
 </section>
 <ng-template #reminder>
-  
+    <div>
+        <label>File Name:</label>
+            <select *ngIf="savesPulled" #localSaves value="selected" (change)="getHero(localSaves.value)">
+                <option>Select a Save File</option>
+                <option *ngFor="let hero of savedHeroes">{{hero.name}}</option>
+            </select>             
+    </div>
     <h4>In order to generate the correct character sheet please select a file from the pulldown. If there is no pulldown then you will need to create a hero first.</h4>
    
 </ng-template>

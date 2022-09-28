@@ -234,7 +234,7 @@ let newWep;
   };
 } 
   this.weaponsArray.push(newWep);
-  console.log(this.weaponsArray);
+  // console.log(this.weaponsArray);
   this.runCalcs();
   this.createWepForm = false;
 }
@@ -330,7 +330,7 @@ calcAttack(index: number){
   let mod = this.heroservice.getAbilityModifier();
   let BAB = this.level.getBAB();
   this.weaponsArray[index].attack_total = this.weaponsArray[index].attack_misc + mod[this.weaponsArray[index].attack_mod] + halfLevel + condition + BAB;
-  console.log(BAB, "for attack")
+  // console.log(BAB, "for attack")
 }
 //calculates the danmage total based on weapon objects values
 calcDamage(index: number){

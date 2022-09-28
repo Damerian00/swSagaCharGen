@@ -130,10 +130,12 @@ forceRegimens: string = "";
       // this.calcDT(this.currentDtType);
     }
   }
-
+switchHero(){
+  this.heroPull = false;
+}
   testChange(){ 
     (this.savedHero['test'] == 1)? this.savedHero['test'] = 0:this.savedHero['test'] = 1;
-    console.log("hero:", this.savedHero.test);
+    // console.log("hero:", this.savedHero.test);
   }
 // calculates the heroes kevel based on their current xp
 calcHeroLevel(num: any){
@@ -217,6 +219,7 @@ async updateStats(){
     this.heroservice.loadHeroStats(this.savedHero.currentArmor, this.savedHero.equipment, this.savedHero.attacks)
     this.level.displayXp();
     this.heroservice.calcCredits(this.credits, "+");
+    this.heroservice.setStartCredits(this.credits);
     }, 500);
   this.savedName = await this.savedHero.name;
   this.startingFeats = await this.savedHero.feats;
@@ -486,11 +489,14 @@ async updateHero(){
   }
   this.local.removeHero(this.tempId);
   this.local.saveHerotoStorage(this.tempId, heroObj)
-  console.log("hero saved", this.tempId, this.savedHero, heroObj);
+  // console.log("hero saved", this.tempId, this.savedHero, heroObj);
   window.location.href = '/index.html';
 }
 deleteHero(){
-  this.local.removeHero(this.tempId);
-  window.location.href = '/index.html';
+  
+  if (prompt("Are you sure you want to delete this character? If so type yes then press ok")){
+    this.local.removeHero(this.tempId);
+    window.location.href = '/index.html';
+  }
 }
 }

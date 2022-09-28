@@ -210,7 +210,7 @@ createSubCatArr(selection: any){
 }
 //  creates the filtered list based on user selection to show the items that match the selection
 loadFilteredList(selection: any){
-  console.log ("load filter",selection);
+  // console.log ("load filter",selection);
   this.clearArray(this.filteredEquipArr);
   switch (this.selectedType) {
     case "Armor":

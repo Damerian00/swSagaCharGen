@@ -128,6 +128,7 @@ async checkRequirements(talent: any){
 
 // uses the dropdown to display what he talent is and it's description
 async selectedTalent(selection: any){  
+  let talentSkills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
   if  (this.hideButton == "hide"){
     this.hideButton= "show";
   }
@@ -137,7 +138,7 @@ async selectedTalent(selection: any){
     //  
      this.setSelectedTalent(this.choices.getAvailableTalents()[index])
     //  console.log(index);
-    if (selection == "Assured Skill" || selection == "Exceptional Skill" ){
+    if (talentSkills.includes(selection)){
      await this.addTalentSpecifics(selection);
       // console.log("temp add:",tempAdd)
     }else {
@@ -159,12 +160,13 @@ async selectedTalent(selection: any){
  }
 
  addTalentSpecifics(selection: any){
-  this.specifyTalent = "yes";
-  if (selection == "Assured Skill"){
-    this.specificsArray = this.choices.getAllSkillsArray();
-  }else if (selection == "Exceptional Skill"){
-    this.specificsArray = this.choices.getTrainedSkills();
-  }
+   this.specifyTalent = "yes";
+   if (selection == "Assured Skill"){
+     this.specificsArray = [...this.choices.getAllSkillsArray()];
+    }else {
+      this.specificsArray = [...this.choices.getTrainedSkills()];
+    }
+    console.log("loading specifics array", this.specificsArray, selection);
  }
  setSelectedTalent(selection: any){
   let splitter = selection.name.split(' ');
@@ -218,13 +220,14 @@ removeParanthesis(str : any){
 }
 async submit(selection: any){
   let index;
+  let talentSkills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
   if (selection != "Select a Talent"){
     
     // console.log("the name without parenthesis",selection)
-    if (selection == "Assured Skill" || selection == "Exceptional Skill" ){
+    if (talentSkills.includes(selection)){
       if (this.chosenSpecificTalent != "nope"){
         index = await this.choices.getAvailableTalents().findIndex((el: any) => el.name == selection);
-        let tempArr = [this.getSelectedTalentName() + ` (${this.chosenSpecificTalent})`, this.choices.getAvailableTalents()[index], this.getSelectedTalentDesc()];
+        let tempArr = [this.getSelectedTalentName() + ` (${this.chosenSpecificTalent})`, this.choices.getAvailableTalents()[index], this.getSelectedTalentDesc(), this.chosenSpecificTalent];
         this.heroTalentSpecified.emit(tempArr)
         // console.log("sent this talent:",tempArr,this.choices.getAvailableTalents()[index])
       }

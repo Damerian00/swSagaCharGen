@@ -221,6 +221,7 @@ popArray(arr : Array<any>){
     }else{
       this.stealthSizeMod = 0;
     }
+    this.choices.initAbPoints(25);
   }
   updateAbilities(chosenAbilities: any){
     this.showAbilities = true;
@@ -330,7 +331,7 @@ await this.removeAddedSkills();
 }
 
 updateForcePowers(powersArr : Array<any>){
-  console.log("Here's the force", powersArr);
+  // console.log("Here's the force", powersArr);
   if (powersArr == undefined){
     return;
   }
@@ -387,6 +388,30 @@ updateTalentSpecify(specificArr: any){
   this.showRest = true;
   this.updateStats();
   console.log("it was specific", specificArr[1])
+  let keyWord = '';
+  switch (specificArr[1].name){
+    case "Assured Skill":
+      keyWord = "assured";
+    break;
+    case "Exceptional Skill":
+      keyWord = "exceptional";
+    break;
+    case "Skill Boon":
+      keyWord = "boon"
+    break;
+    case "Skill Confidence":
+      keyWord = "confidence";
+    break;
+    case "Skillful Recovery":
+      keyWord = "recovery";
+    break;
+  }
+  this.heroSkillsTotal.forEach((el:any)=>{
+    if (el.skill_name == specificArr[3]){
+      el[keyWord] = true;
+    }
+  })
+  // console.log(this.heroSkillsTotal, specificArr[1]);
 }
 // if a non exception talent was chosen use this
 updateTalents(chosenTalent: any){

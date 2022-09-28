@@ -21,9 +21,16 @@ showCalc = {"boolean" : true, "text" : "Hide Calculator"};
     this.hero.invokeCalculator.subscribe((arr)=>{
       this.calculateCredits(arr[0], arr[1]);
     })
-
+    this.hero.setSavedCredits.subscribe((num)=>{
+      this.setCredits(num);
+    })
 
   }
+setCredits(credits: number){
+  this.credits = credits;
+  this.showCalc.text = "Show Calculator";
+  this.showCalc.boolean = false;
+}
 toggleCalc(){
   this.showCalc.boolean = !this.showCalc.boolean;
   if (this.showCalc.text == "Show Calculator"){ 

@@ -6,7 +6,7 @@
                 <p>{{currentLangs}}</p>
                 <span>/</span>
                 <p>{{totalLangs}}</p>
-                <button (click)="toggleAddLanguage('a')" *ngIf="currentLangs < totalLangs">Add Languages</button>
+                    <button (click)="toggleAddLanguage('a')" *ngIf="currentLangs < totalLangs">Add Languages</button> 
             </div>   
         <div class="lang-box box">
             <div *ngFor="let lang of heroLanguages let i = index" class="box">
@@ -27,5 +27,6 @@
             <button (click)="removeFromSelection(i)">Remove {{selected}}</button>
         </div>
         <button (click)="addToKnown()">Save Languages</button>
+        <button (click)="cancel()">Cancel</button>
     </aside>
 </section>

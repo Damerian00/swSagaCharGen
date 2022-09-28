@@ -3,8 +3,8 @@
     <h5>Points remaining: {{points}}</h5>
     <p *ngIf="points == 0">Select a species</p>
    <div class="ptsWrapper">
-       <label>Max points: <input type="number" #maxPoints value="maxPoints" placeholder="25" min=10 max=50/></label>
-        <button *ngIf="toggleButton" class="pointsButton" (click)="setMaxPoints(maxPoints.value)">Set Max Points</button>
+       <label>Max points: <input type="number" #mxPoints value="maxPoints" placeholder="25" min=25 max=50/></label>
+        <button *ngIf="toggleButton" class="pointsButton" (click)="setMaxPoints(mxPoints.value)">Save</button>
         <button class="toggleButton" (click)="togglePtsBtn()">{{toggleBtnText}}</button>
    </div> 
     <section>
@@ -22,3 +22,4 @@
     </section>
 </div>
 
+ 
