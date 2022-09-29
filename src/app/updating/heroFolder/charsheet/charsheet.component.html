@@ -6,7 +6,7 @@
 <section *ngIf="heroPull else reminder">
     <h1>{{savedName}}</h1>
     <button (click)="updateHero()">Save {{savedName}}</button>
-    <button (click)="deleteHero()">Delete {{savedName}}</button>
+    <button (click)="deleteHero('delete', savedName)">Delete {{savedName}}</button>
     <button (click)="openModal('xp')">Add Experience Points</button>
     <button (click)="switchHero()">Select another hero</button>
     <aside *ngIf="xpModalToggle" class="modal">
@@ -281,11 +281,22 @@
 <ng-template #reminder>
     <div>
         <label>File Name:</label>
-            <select *ngIf="savesPulled" #localSaves value="selected" (change)="getHero(localSaves.value)">
-                <option>Select a Save File</option>
-                <option *ngFor="let hero of savedHeroes">{{hero.name}}</option>
-            </select>             
+        <!-- <select *ngIf="savesPulled" #localSaves value="selected" (change)="getHero(localSaves.value)">
+            <option>Select a Save File</option>
+            <option *ngFor="let hero of savedHeroes">{{hero.name}}</option>
+        </select> -->
     </div>
-    <h4>In order to generate the correct character sheet please select a file from the pulldown. If there is no pulldown then you will need to create a hero first.</h4>
+    <h4>In order to generate the correct character sheet please select one of your saved heroes. If there are none to select then you will need to create a new hero first.</h4>
+    <aside class="heroSelectBox">
+        <div class="heroSelect" *ngFor="let hero of savedHeroes let i = index">
+            <Label>{{hero.name}}</Label>
+            <button  (click)="getHero(hero.name)">EDIT</button>
+            <label>Species:</label>
+            <p>{{hero.species.species_name}}</p>           
+            <label>Level:</label>
+            <p>{{hero.level}}</p>
+            <button  (click)="deleteHero(i, hero.name)">DELETE</button>
+        </div>
+    </aside>
    
 </ng-template>

@@ -15,6 +15,11 @@
     a{
         text-decoration: none;
         color: blue;
+        &:hover{
+           color:rgb(136, 138, 138);
+            border: 2px inset rgba(185, 185, 185, 0.836);
+            padding:3px;
+        }
     }
 }
 .heroBgContainer{
@@ -196,4 +201,33 @@ h6{
     width: 95vw;
     margin-top: -1rem;
 }
-    
+.heroSelectBox{
+    div:nth-child(even){
+        background-color: rgb(211, 211, 211);
+    }
+}
+.heroSelect{
+    display: flex;
+    margin: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    label{
+        width:20ch;
+       
+    }
+    button{
+        
+        font-size: 1rem;
+        background: -webkit-linear-gradient(rgb(250, 233, 2), rgb(7, 7, 7));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        color: rgba(200, 214, 8, 0.89);
+        &:hover{
+           color:rgb(136, 138, 138);
+            border: 2px inset rgba(185, 185, 185, 0.836);
+            
+        } 
+    }
+}

@@ -46,7 +46,7 @@ showSpecQual: boolean = false;
 forceUser: boolean = false;
 //  Numbers & Strings
 savedName: string = "";
-tempId: string = "";
+tempId: any;
 currentXp: number = 0;
 nextXp: number = 0;
 heroLevel: number = 0;
@@ -99,7 +99,9 @@ forceRegimens: string = "";
         this.savedHeroes.push(JSON.parse(file));
         this.savesPulled = true;
       }
+      console.log("what is saved",this.savedHeroes);
      })
+
     }
     this.heroservice.updateAbs.subscribe(()=>{
       this.upDateAbs();
@@ -492,11 +494,15 @@ async updateHero(){
   // console.log("hero saved", this.tempId, this.savedHero, heroObj);
   window.location.href = '/index.html';
 }
-deleteHero(){
-  
-  if (prompt("Are you sure you want to delete this character? If so type yes then press ok")){
+deleteHero(index: any, name: string){
+ if (index != 'delete'){
+  this.tempId = `${name}${this.savedHeroes[index].id}`
+};
+  if (prompt(`Are you sure you want to delete ${name}? If so type heroes name then press ok`) == name){
     this.local.removeHero(this.tempId);
-    window.location.href = '/index.html';
+    window.location.href = '/update-hero';
+    console.log("success")
   }
+
 }
 }

@@ -62,6 +62,9 @@ holds the abilities and their values for starting
         this.setMaxPoints(pts);
         this.togglePtsBtn();
       })
+      setTimeout(() => {
+        this.addAbility('default');
+      }, 300);
   }
   // flag
   startAbilities: boolean = false;
@@ -109,9 +112,10 @@ togglePtsBtn(){
   updates the ability values when adding or subtracting points
   */
   update(){
-  if (this.abModifierImport.Strength == undefined){
-    return;
+  if (this.abModifierImport == undefined){
+    this.abModifierImport = this.choices.speciesAbilityModifiers;
   }
+  // console.log(this.abModifierImport)
   this.resetAbilites();
   this.abModifierImport = this.choices.speciesAbilityModifiers;
   // console.log('the ability modifiers:',this.abModifierImport)
@@ -476,6 +480,9 @@ addAbility(clicked: any){
           this.finalAbilities.Charisma += 1;
         }
       }
+    break;
+    default:
+      this.finalAbilities.Strength += 0;
     break;
   }
   if (this.choices.validate == false){

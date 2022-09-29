@@ -63,4 +63,7 @@ import { CreditsComponent } from './updating/heroFolder/credits/credits.componen
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+
+ }

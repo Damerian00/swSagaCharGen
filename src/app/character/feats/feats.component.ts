@@ -51,6 +51,8 @@ export class FeatsComponent implements OnInit {
   heroForceSuite: Array <any> = [];
   forceTraining: boolean = false;
   maxPowers: number = 0;
+  exoticMelee: Array<any> = [];
+exoticRange: Array<any> = [];
   forcePowersArr: Array<any> = [
     { "name" : "Battle Strike", "desc" : "Increases attack and damage for next attack.", "type" : ["na"] },
     { "name" : "Dark Rage", "desc" : "Increases Melee attack and damage for 1 turn.", "type" : ["Dark Side"] },
@@ -157,7 +159,20 @@ export class FeatsComponent implements OnInit {
     this.choices.setStartingFeats.subscribe(() => {   
       this.acquireFeats();
     });    
-    
+    this.swApiService.getMelees().subscribe(payload=> {
+      payload.forEach((el:any)=> {
+        if (el.w_type == "Exotic Weapons (Melee)"){
+          this.exoticMelee.push(el.name);
+        }
+      })
+    })
+    this.swApiService.getRanged().subscribe(payload=> {
+      payload.forEach((el:any)=> {
+        if (el.w_type == "Exotic Weapons (Ranged)"){
+          this.exoticRange.push(el.name);
+        }
+      })
+    })
   }
 
  
@@ -495,7 +510,8 @@ if (selection != "Select a Feat"){
   this.maxPowers = (this.choices.getAbilityMods()["Wisdom"] + mod)
   console.log(this.maxPowers);
   // this conditional when met gives user additional options
-  if (selection == "Skill Focus" || selection == "Skill Training" || selection == "Weapon Proficiency"){
+  let opts = ["Skill Focus", "Skill Training", "Weapon Proficiency", "Exotic Weapon Proficiency"]
+  if (opts.includes(selection)){
     this.specifyFeat = "yes";
     if (indexNum == 1){
       this.extraSpecifyFeat = "yes";
@@ -738,7 +754,91 @@ async submitSpecialFeat(feat: string, indexNum: number) {
   }
     let skillArray = await this.choices.acquireSkillsArray();
     //  console.log("the skillsArray", skillArray)
-  if (feat == "Skill Focus"){
+  switch (feat){
+    case "Skill Focus":
+      this.specifyFeatButtonName = "Select Skill"
+      for(let i=0; i<skillArray.length; i++){
+        this.specialFeatOptions.push(skillArray[i]);
+      }
+     if (this.additionalFeatsArray.length != 0){
+      const index = this.specialFeatOptions.findIndex((el: any) => el == this.focusedSkill)
+        this.specialFeatOptions.splice(index, 1);
+     }
+    break;
+    case "Skill Training":
+      this.specifyFeatButtonName = "Select Skill"
+      let finalArr: Array<string> = [];
+      // console.log("trained skills:",this.choices.getTrainedSkills())
+      for (let i =0; i<this.choices.classSkills.length; i++){
+        if (skillArray.includes(this.choices.classSkills[i].name) == false ){
+          finalArr.push(this.choices.classSkills[i].name);
+        }
+      }
+      if (this.submittedValues[0] == "Skill Training" && indexNum == 1){ 
+     const index = finalArr.findIndex((el: any) => el == this.specialOptionSelected[0])
+      finalArr.splice(index,1);
+      // console.log("removing an option: ", this.specialOptionSelected[0])
+    }
+      // console.log("feats finalArr: ", finalArr)  
+        this.specialFeatOptions = [...finalArr];
+      
+    break;
+    case "Weapon Proficiency":
+      this.specifyFeatButtonName = "Select Weapon Group";
+      let weaponOptions = ["Simple Weapons", "Pistols", "Rifles", "Lightsabers", "Heavy Weapons", "Advanced Melee Weapons"]
+      let feats = await this.choices.getFeatsArray();
+      // console.log("feats", feats)
+       for (let i =0; i<weaponOptions.length;i++){
+        const word = `Weapon Proficiency (${weaponOptions[i]})`
+        if (feats.includes(word)== false){
+          this.specialFeatOptions.push(weaponOptions[i]);
+        }
+
+      } 
+    break;
+    case "Exotic Weapon Proficiency":
+      let exclusiveSpecies = ["Gamorrean","Gungan","Wookiee","Kissai","Massassi","Felucians","Squib","Verpine"];
+      let excludeArr: any = [];
+      const species = this.choices.getSpecies();
+      let exoticOpts: Array<any> = [...this.exoticMelee, ...this.exoticRange];
+      if (exclusiveSpecies.includes(species)){
+        switch (species){
+          case "Gamorrean":
+            excludeArr = ["Arg'garok"];
+          break;
+          case "Gungan":
+            excludeArr = ["Atlatl","Cesta"];
+          break;
+          case "Wookiee":
+            excludeArr = ["Bowcaster","Ryyk Blade"];
+          break;
+          case "Kissai":
+            excludeArr = ["Massassi Lanvarok"];
+          break;
+          case "Massassi":
+            excludeArr = ["Massassi Lanvarok"];
+            break;
+          case "Felucians":
+            excludeArr = ["Felucian Skullblade"];
+          break;
+          case "Squib":
+            excludeArr = ["Squib Tensor Rifle"];
+          break;
+          case "Verpine":
+            excludeArr = ["Verpine Shattergun"];
+        }
+      }
+        exoticOpts.forEach((el: any)=> {
+          if (excludeArr.length == 0){
+            this.specialFeatOptions.push(el);
+          }else if (excludeArr.includes(el) == false){
+            this.specialFeatOptions.push(el);
+          }
+        })
+    break;
+  }
+  /*
+    if (feat == "Skill Focus"){
     this.specifyFeatButtonName = "Select Skill"
     for(let i=0; i<skillArray.length; i++){
       this.specialFeatOptions.push(skillArray[i]);
@@ -777,7 +877,7 @@ async submitSpecialFeat(feat: string, indexNum: number) {
 
       } 
       // console.log("the weaponsArray", weaponOptions)
-    }
+    } */
     this.specialFeatOptions.unshift("Select One")
    if (feat == "Skill Focus" && this.submittedValues[0] == "Skill Training" && indexNum == 1){
     this.extraSpecialFeatOptions = await [...this.specialFeatOptions, this.specialOptionSelected[0]]  
@@ -804,7 +904,7 @@ setAdditionalFeat(selection: any){
 
 submit(selection: any, index: number){
 let finArr: Array <string> = [];
-let specArr = ["Skill Focus","Skill Training","Weapon Proficiency"]
+let specArr = ["Skill Focus","Skill Training","Weapon Proficiency","Exotic Weapon Proficiency"]
 let choice = selection;
 this.submittedValues.splice(index, 1, selection)
 
@@ -869,7 +969,7 @@ submitFinal(selection: any){
     featsArr = [...this.startingFeats, selection]
   }
 console.log("final thoughts:",selection, featsArr)
-this.heroFeatsSelected.emit(featsArr);
+// this.heroFeatsSelected.emit(featsArr);
 this.choices.startTalentComponent();
 this.heroForcePowers.emit(this.heroForceSuite);
 }

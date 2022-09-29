@@ -221,10 +221,10 @@ popArray(arr : Array<any>){
     }else{
       this.stealthSizeMod = 0;
     }
+    this.showAbilities = true;
     this.choices.initAbPoints(25);
   }
   updateAbilities(chosenAbilities: any){
-    this.showAbilities = true;
     this.abilities = chosenAbilities;
     this.calcModifier();
     if (this.toggleClassesComponent == false){
@@ -442,13 +442,15 @@ async updateStats(){
 
 // calculates the defense bonuses to be applied to a hero
 calculateDefenses(keyword: string, mod: string){
+  let thickSkin;
+  thickSkin = (this.chosenFeats.includes('Thick Skin'))? 2: 0;
   if (keyword == "Reflex"){
        this.reflexDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.reflexClassBonus + this.speciesReflexDefenseMod + this.improvedReflex;
     if (mod == "Select"){
       this.reflexDefense = 0
     }
   }else if (keyword == "Fort"){
-       this.fortitudeDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.fortClassBonus + this.speciesFortDefenseMod + this.improvedFort;
+       this.fortitudeDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.fortClassBonus + this.speciesFortDefenseMod + this.improvedFort + thickSkin;
     if (mod == "Select"){
       this.fortitudeDefense = 0
     }
