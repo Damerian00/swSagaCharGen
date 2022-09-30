@@ -482,17 +482,21 @@ addAbility(clicked: any){
       }
     break;
     default:
-      this.finalAbilities.Strength += 0;
+     this.choices.validate = true;
     break;
   }
   if (this.choices.validate == false){
     this.abValidator = true;
     this.abValidatorMessage = `Not enough points available to add to ${clicked.key}.`    
+    
   }
  this.calcModifier();
+} else if(clicked == "default"){
+ 
 }else{
   this.abValidator = true;
     this.abValidatorMessage = `Not enough points available to add to ${clicked.key}.`    
+   
 }
 
 }

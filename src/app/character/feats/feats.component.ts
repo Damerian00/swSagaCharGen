@@ -14,45 +14,23 @@ export class FeatsComponent implements OnInit {
   @Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
   @Output () heroSkillTrained: EventEmitter<any> = new EventEmitter<any>()
   @Output () heroForcePowers: EventEmitter<any> = new EventEmitter<any>()
-  featsArray: any;
+  //  arrays
   startingFeats: Array<string> = [];
   selectedFeats: Array<string> = [];
-  selectedHeroicClass = this.choices.selectedClass;
-  heroicClass: string = '';
-  extraFeat: string = 'no';
   selectableFeats: Array<string> = [];
   selectedFeat: Array<any> = ["", ""];
-  extraSelectedFeat: string = "";
   additionalFeatsArray: Array<string> = [];
-  specifyFeat: string = "no"
-  extraSpecifyFeat: string = "no"
-  specifyFeatButtonName = "default"
   specialFeatOptions: Array<string> = [];
   extraSpecialFeatOptions: Array<string> = [];
   specialOptionSelected: Array<any> = ["",""];
-  extraFeatShow: string = "no";
-  validated: boolean = true;
-  selectedFeatName: string = "";
-  selectedFeatDescription: string = "";
-  extraFeatName: string = "";
-  extraFeatDescription: string = "";
   conditionalArray: Array<string> = [];
   extraSelectableFeats: Array<string> = []
-  additionalFeatsTrigger: boolean = false;
-  additionalFeat: string = "";
   savedSkills: Array <string> = ["",""];
   submittedValues: Array<string> = ["", ""]
-  notTof: boolean = true;
   speciesFeatsArray: Array <any> = [];
-  showForcePowers: boolean = false;
-  forceName: string = "";
-  forceDesc: string = "";
-  numPowers: number =  0;
   heroForceSuite: Array <any> = [];
-  forceTraining: boolean = false;
-  maxPowers: number = 0;
   exoticMelee: Array<any> = [];
-exoticRange: Array<any> = [];
+  exoticRange: Array<any> = [];
   forcePowersArr: Array<any> = [
     { "name" : "Battle Strike", "desc" : "Increases attack and damage for next attack.", "type" : ["na"] },
     { "name" : "Dark Rage", "desc" : "Increases Melee attack and damage for 1 turn.", "type" : ["Dark Side"] },
@@ -147,6 +125,39 @@ exoticRange: Array<any> = [];
      { "name" : "Vornskr's Ferocity",  "desc" : "You walk the thin line between darkness and light as you ferociously attack your foe.","type" : ["Dark Side"]},
 
   ];
+  
+  //  booleans
+  validated: boolean = true;
+  additionalFeatsTrigger: boolean = false;
+  notTof: boolean = true;
+  showForcePowers: boolean = false;
+  forceTraining: boolean = false;
+  zabrakResil: boolean = false;
+  //  misc
+  maxPowers: number = 0;
+  forceName: string = "";
+  forceDesc: string = "";
+  numPowers: number =  0;
+  additionalFeat: string = "";
+  selectedFeatName: string = "";
+  selectedFeatDescription: string = "";
+  extraFeatName: string = "";
+  extraFeatDescription: string = "";
+  featsArray: any;
+  selectedHeroicClass = this.choices.selectedClass;
+  heroicClass: string = '';
+  extraFeat: string = 'no';
+  extraSelectedFeat: string = "";
+  specifyFeat: string = "no"
+  extraSpecifyFeat: string = "no"
+  specifyFeatButtonName = "default"
+  extraFeatShow: string = "no";
+  tempDef: any = {
+    "reflex" : 0,
+    "fort" : 0,
+    "will" : 0
+  }
+  spec: any;
 /*
 
 */
@@ -507,8 +518,9 @@ if (selection != "Select a Feat"){
   }else if (this.selectedFeat[0] == "Force Training" || this.selectedFeat[1] == "Force Training"){
     mod = 1;
   }
+  (selection == "Inborn Resilience")? this.zabrakResil = true: this.zabrakResil = false;
   this.maxPowers = (this.choices.getAbilityMods()["Wisdom"] + mod)
-  console.log(this.maxPowers);
+  // console.log(this.maxPowers);
   // this conditional when met gives user additional options
   let opts = ["Skill Focus", "Skill Training", "Weapon Proficiency", "Exotic Weapon Proficiency"]
   if (opts.includes(selection)){
@@ -907,7 +919,9 @@ let finArr: Array <string> = [];
 let specArr = ["Skill Focus","Skill Training","Weapon Proficiency","Exotic Weapon Proficiency"]
 let choice = selection;
 this.submittedValues.splice(index, 1, selection)
-
+if (selection == "Inborn Resilience"){
+  this.swapDefenses('nothing', 'final')
+}
 let species = this.choices.getSpecies();
 // (species == "Tof") ? this.notTof == false : this.notTof == true;
   if (species === "Human" || species == "Nyriaanan" || species == "Anarrian" || species == "Tof"){
@@ -960,6 +974,64 @@ let species = this.choices.getSpecies();
   
   // console.log("the submitted:", this.submittedValues, index, this.specialOptionSelected, this.additionalFeat, this.conditionalArray);
   
+}
+async swapDefenses(swap: string, sequence: any){
+  let ref, will, fort;
+  this.spec = Object.assign(this.choices.acquireSpeciesTraits())
+  if (sequence == "initial"){
+    switch (swap){
+      case "rw":
+        ref = 0;
+        will = 2;
+        fort = 1;
+      break;
+      case "rf":
+        ref = 0;
+        will = 1;
+        fort = 2;
+      break;
+      case "wr":
+        ref = 2;
+        will = 0;
+        fort = 1;
+      break;
+      case "wf":
+        ref = 1;
+        will = 0;
+        fort = 2;
+      break;
+      case "fr":
+        ref = 2;
+        will = 1;
+        fort = 0;
+      break;
+      case "fw":
+        ref = 1;
+        will = 2;
+        fort = 0;
+      break;
+          
+    }
+    this.tempDef = {
+      "reflex" : ref,
+      "fort" : fort,
+      "will": will,
+    };
+    console.log(swap, this.tempDef);
+  }else{   
+    let r,w,f;
+    console.log(swap, this.spec.Defenses, "/",this.spec, this.tempDef);
+    this.spec.Defenses["Fortitude Defense"] = this.tempDef.fort;
+    this.spec.Defenses["Reflex Defense"] = this.tempDef.reflex;
+    this.spec.Defenses["Will Defense"] = this.tempDef.will;
+    this.choices.setSpeciesTraits(this.spec)
+    f = this.spec.Defenses["Fortitude Defense"];
+    r = this.spec.Defenses["Reflex Defense"];
+    w = this.spec.Defenses["Will Defense"];
+    this.tempDef.fort = f;
+    this.tempDef.reflex = r;
+    this.tempDef.will = w;
+  }
 }
 submitFinal(selection: any){
   let featsArr: Array<string> = []

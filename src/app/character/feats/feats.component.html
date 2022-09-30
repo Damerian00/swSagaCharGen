@@ -7,7 +7,7 @@
     <section *ngIf="additionalFeatsArray.length > 0">
         <label>Select one Skill Focus to add:</label>
             <select value="additionalFeat" #additionalFeat>
-<option *ngFor="let addFeat of additionalFeatsArray">{{addFeat}}</option>
+    <option *ngFor="let addFeat of additionalFeatsArray">{{addFeat}}</option>
             </select>
             <button (click)="setAdditionalFeat(additionalFeat.value)">Add this Bonus Feat</button>
     </section>
@@ -29,6 +29,18 @@
                     <option *ngFor="let featOption of specialFeatOptions">{{featOption}}</option>
                 </select>
             </div>
+            <section *ngIf="zabrakResil">
+                <h2>Please select which defenses will be modified</h2>
+                <select #defSwap>
+                    <option value="rw">reflex -> will</option>
+                    <option value="rf">reflex -> fortitude</option>
+                    <option value="wr">will -> reflex</option>
+                    <option value="wf">will -> fortitude</option>
+                    <option value="fr">fortitude -> reflex</option>
+                    <option value="fw">fortitude -> will</option>
+                </select>
+                <button (click)="swapDefenses(defSwap.value, 'initial')">Make the Swap</button>
+            </section>
             <section *ngIf="showForcePowers">
                 <header>
                     <h2>You may select {{numPowers}} force powers.</h2>

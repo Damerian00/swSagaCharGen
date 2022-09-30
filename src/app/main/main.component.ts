@@ -443,6 +443,10 @@ async updateStats(){
 // calculates the defense bonuses to be applied to a hero
 calculateDefenses(keyword: string, mod: string){
   let thickSkin;
+  let traits = this.choices.acquireSpeciesTraits()
+  this.speciesReflexDefenseMod = traits.Defenses["Reflex Defense"];
+  this.speciesFortDefenseMod = traits.Defenses["Fortitude Defense"];
+  this.speciesWillDefenseMod = traits.Defenses["Will Defense"];
   thickSkin = (this.chosenFeats.includes('Thick Skin'))? 2: 0;
   if (keyword == "Reflex"){
        this.reflexDefense = 10 + this.heroLevel + this.abilityModifier[mod] + this.reflexClassBonus + this.speciesReflexDefenseMod + this.improvedReflex;

@@ -90,7 +90,11 @@ getStartFeatsLength(){
   return this.startingFeatsLength;
 }
 setSpecies(selection: object){
+  console.log("show me selection:", selection);
   this.speciesSelectedObject = selection;
+}
+setSpeciesTraits(selection: any){
+  this.speciesSelectedObject.traits = selection;
 }
 acquireSpeciesTraits(){
   return this.speciesSelectedObject.traits;
