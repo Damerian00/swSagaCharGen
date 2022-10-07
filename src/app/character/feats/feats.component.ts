@@ -518,7 +518,28 @@ if (selection != "Select a Feat"){
   }else if (this.selectedFeat[0] == "Force Training" || this.selectedFeat[1] == "Force Training"){
     mod = 1;
   }
-  (selection == "Inborn Resilience")? this.zabrakResil = true: this.zabrakResil = false;
+  if (this.choices.getSpecies() == "Zabrak"){
+    if (selection == "Inborn Resilience"){
+      this.zabrakResil = true
+     }else{ 
+      this.zabrakResil = false;
+      if (this.tempDef.reflex > 1 || this.tempDef.fort > 1 || this.tempDef.will > 1){
+        // console.log("tempDef", this.tempDef)
+        let traits = this.choices.acquireSpeciesTraits();
+        traits.Defenses["Fortitude Defense"] =  1;
+        traits.Defenses["Reflex Defense"] =  1;
+        traits.Defenses["Will Defense"] = 1;
+        this.choices.setSpeciesTraits(traits);
+        this.tempDef.reflex = 0;
+        this.tempDef.fort = 0;
+        this.tempDef.will = 0;
+      }
+     }
+  }else{
+    this.tempDef.reflex = 0;
+    this.tempDef.fort = 0;
+    this.tempDef.will = 0;
+  }
   this.maxPowers = (this.choices.getAbilityMods()["Wisdom"] + mod)
   // console.log(this.maxPowers);
   // this conditional when met gives user additional options
@@ -1041,7 +1062,7 @@ submitFinal(selection: any){
     featsArr = [...this.startingFeats, selection]
   }
 console.log("final thoughts:",selection, featsArr)
-// this.heroFeatsSelected.emit(featsArr);
+this.heroFeatsSelected.emit(featsArr);
 this.choices.startTalentComponent();
 this.heroForcePowers.emit(this.heroForceSuite);
 }

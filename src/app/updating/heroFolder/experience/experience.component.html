@@ -32,6 +32,24 @@
                 <button (click)="calcHPIncrease(hpConst.value)">Increase HP</button>
             </div>
         </div>
+        <div *ngIf="showNoClassFeat" class="tb">
+            <label>Select an unrestricted Feat</label>
+            <select #noClassFeat (change)="selectFeat(noClassFeat.value)">
+                 <option>Select</option>
+                 <option *ngFor="let feat of importFeatsArr">{{feat}}</option>
+            </select>
+            <p *ngIf="featName != ''">Selected Feat: {{featName}}</p>
+            <p *ngIf="featDesc !=''">Description: {{featDesc}}</p>
+            <div *ngIf="showAddOptions" class="tb">
+                 <label>Select additional Option</label>
+                 <select  #addOption name="addOption">
+                     <option>Select</option>
+                     <option *ngFor="let addOpt of addOptionsArr">{{addOpt}}</option>
+             </select>
+             <button (click)="addFeat(noClassFeat.value, addOption.value, 'yes')">Add Feat</button>
+            </div>
+            <button *ngIf="showAddOptions == false" (click)="addFeat(noClassFeat.value, 'none', 'yes')">Add Feat</button>
+         </div>
         <div *ngIf="showClassFeat" class="tb">
            <label>Select a Class Feat</label>
            <select #classFeat name="classFeat" (change)="selectFeat(classFeat.value)">
@@ -46,9 +64,9 @@
                     <option>Select</option>
                     <option *ngFor="let addOpt of addOptionsArr">{{addOpt}}</option>
             </select>
-            <button (click)="addFeat(classFeat.value, addOption.value)">Add Feat</button>
+            <button (click)="addFeat(classFeat.value, addOption.value, 'no')">Add Feat</button>
            </div>
-           <button *ngIf="showAddOptions == false" (click)="addFeat(classFeat.value, 'none')">Add Feat</button>
+           <button *ngIf="showAddOptions == false" (click)="addFeat(classFeat.value, 'none', 'no')">Add Feat</button>
         </div>
         <div *ngIf="showTalent" class="tb">
             <Label>Select a Talent to add</Label>

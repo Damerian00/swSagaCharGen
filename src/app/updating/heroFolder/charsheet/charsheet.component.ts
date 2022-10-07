@@ -99,8 +99,8 @@ forceRegimens: string = "";
         this.savedHeroes.push(JSON.parse(file));
         this.savesPulled = true;
       }
-      console.log("what is saved",this.savedHeroes);
-     })
+    })
+    // console.log("what is saved",this.savedHeroes);
 
     }
     this.heroservice.updateAbs.subscribe(()=>{

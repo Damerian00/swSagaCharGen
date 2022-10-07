@@ -117,6 +117,7 @@ babArr = {
 abilities: any = {};
 validatedArr: Array<boolean> = [];
 skillValuetoUpdate: Array<string> = [];
+speciesFeats: any;
 //  Boolean
 levelUpModal: boolean = false;
 showClassFeat: boolean = false;
@@ -127,6 +128,7 @@ lvlButton: boolean = false;
 showAddOptions: boolean = false;
 showTalentOptions: boolean = false;
 updateSkills: boolean = false;
+unrestrictFlag: boolean = false;
 //  Numbers & Strings
 levelPts: number = 0;
 currentXp: number = 0;
@@ -139,6 +141,7 @@ featName: string = '';
 featDesc: string = '';
 talentName: string = '';
 talentDesc: string = '';
+unrestrictFeat : string = "";
 // heroClass: any;
 /*
 0,1,2,3,3,4,5,6,6,7,8,9,9,10,11,12,12,13,14,15
@@ -150,7 +153,7 @@ talentDesc: string = '';
       this.apifeatsArr = feats;
     })
     this.swapi.getTalents().subscribe((talents) =>{
-      this.apiTalentsArr = talents
+      this.apiTalentsArr = talents 
     })
     this.swapi.getMelees().subscribe((melee)=> {
       this.apiMeleeArr = [...melee];
@@ -189,6 +192,51 @@ clearArr(arr : any){
     }
   }
 }
+
+// checks to see what hero and class level the user is leveling to
+checkHeroLvl(){
+  let num = 1;
+  let hc = this.level.getHeroClassObj();
+  let hcArr = Object.values(hc);
+  if (hc[this.lvlUpObject.class] != undefined){
+    num = hc[this.lvlUpObject.class] + 1;
+  }
+  // let hl = this.heroservice.getHeroLevel();
+  // let valid = false;
+  let count:any = hcArr.reduce((prev: any, curr: any) => prev + curr, 1);
+  this.showNoClassFeat = (this.thirdLevelFeat(count))? true: false;
+  this.showAbs = (this.everyFourth(count))? true: false;
+  if (num % 2 == 0){ this.showClassFeat = true; this.showTalent = false }else{ this.showClassFeat = false; this.showTalent = true; this.addFeat('','none', 'yes'); this.countTrees(this.level.getHeroTalents()) }
+}
+
+thirdLevelFeat(lvl : number){
+  console.log("this is your level", lvl)
+  if (lvl % 3 === 0){
+    this.addFeatOptions();
+    return true;
+  }else{
+    return false;
+  }
+}
+everyFourth(lvl : number){
+  console.log("the count", lvl)
+  if (lvl % 4 === 0){
+    this.displayCurrentAbs(true);
+    return true;
+  }else{
+    this.displayCurrentAbs(false);
+    return false;
+  }
+}
+getXp(){
+  this.currentXp = this.level.getCurrentXp();
+  this.nextXp = this.level.getNextXp();
+}
+beginLevelUp(){
+  this.levelUpModal = true;
+  this.lvlButton = false;
+}
+
 async showAvailable(feat : any, arr: Array<any>){
   this.currFeat = feat;
   let index=0;
@@ -308,6 +356,35 @@ async checkFeatReqs(apiValue: any, keyWord: string, feat: any, valid: boolean){
   }
   // console.log(feat,":",apiValue, "/",keyWord,"/",valid)
   return valid;
+}
+async addFeatOptions(){
+  this.clearArr(this.importFeatsArr);
+  let currFeats = this.level.getHeroFeats();
+  let traits = await this.heroservice.getSpeciesTraits();
+  let featsArr = [...this.apifeatsArr]
+  this.speciesFeats = traits["Species Feats"];
+  if (Object.keys(traits).includes("Species Feats")){
+    let tempArr = []
+    console.log("keys:", traits)
+    let keys =  Object.keys(this.speciesFeats);
+    let vals =  Object.values(this.speciesFeats);
+    for (let i=0; i<keys.length;i++){
+      let obj = {
+        "name" : keys[i],
+        "description" : vals[i],
+        "prereqs" : {"req1": ["none"]},
+        "species" : "yes",
+      };
+      tempArr.push(obj);
+  }
+  featsArr = [...this.apifeatsArr, ...tempArr]
+}
+  featsArr.forEach((el:any)=>{
+    // console.log("the list:",currFeats);
+    if (currFeats.includes(el.name) == false){
+      this.showAvailable(el.name, featsArr);
+    }
+  })
 }
 //  displays classs feats that aren't already on the character
 addClassFeatOptions(heroClass : string){
@@ -699,7 +776,7 @@ addTalent(talent: string, opt : string){
   }
  this.lvlUpObject.talents = Object.assign(obj);
   // console.log("the obj:", this.lvlUpObject);
-  this.lvlButton = true;
+  this.checkSelections('talent');
 }
 countTrees(talents: any){
   // console.log("counting", talents)
@@ -727,9 +804,9 @@ selectFeat(feat: string){
   this.clearArr(this.addOptionsArr);
   let skillsTrained = [];
   let skillsFocused = [];
-  
-  if (feat == "Skill Focus" || feat == "Skill Training" || feat == "Weapon Focus"){
-    if (feat != "Weapon Focus"){
+  let optionFeats = ["Skill Focus","Skill Training","Weapon Focus","Weapon Proficiency","Adaptable Talent", "Recurring Success","Exotic Weapon Proficiency"]
+  if (optionFeats.includes(feat)){
+    if (feat == optionFeats[0] || feat == optionFeats[1] ){
       let skills = this.heroservice.getSkills();
         for (let i = 0; i<skills.length; i++){
           if(skills[i].trained_skill == false){
@@ -791,10 +868,50 @@ selectFeat(feat: string){
       this.featName = (splitter[0]== '')? feat : this.apifeatsArr[i].name;
       this.featDesc = this.apifeatsArr[i].description;
       break;
+    }else if (this.speciesFeats != undefined ){
+      let keys = Object.keys(this.speciesFeats);
+      let vals:any = Object.values(this.speciesFeats);
+      for (let i=0; i < keys.length; i++){
+        if (keys[i] == feat){
+          this.featName = keys[i];
+          this.featDesc = vals[i];
+          break;
+        }
+      }
     }
 }
 }
-addFeat(feat: string, option: string){
+checkSelections(key: string){
+  switch(key){
+    case "talent":
+      if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.showAbs == false){
+        this.lvlButton = true;
+      }else{
+        this.lvlButton = false;
+      }
+    break;
+    case "feat":
+      if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.showAbs == false){
+        this.lvlButton = true;
+      }else{
+        this.lvlButton = false;
+      }
+    break;
+    case "abs":
+    if (this.increaseAbsCounter == 0){
+      if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.unrestrictFlag == false){
+          this.lvlButton = true;
+        }else{
+          this.lvlButton = false;
+        }
+    }else{
+      this.lvlButton = false;
+    }  
+    break
+  }
+
+}
+addFeat(feat: string, option: string, unrestricted: string){
   if (feat == "Select" || option == "Select"){
     return;
   }
@@ -811,8 +928,17 @@ addFeat(feat: string, option: string){
   }else{
     tempFeat =[`${feat} (${option})`];
   }
-  (this.classStartFeatsArr.length > 0)? this.lvlUpObject.feats = [...this.classStartFeatsArr, ...tempFeat] : this.lvlUpObject.feats = [...tempFeat]
-  this.lvlButton = true;
+  if (this.lvlUpObject.feats[0] != ""){
+    this.lvlUpObject.feats = [...this.classStartFeatsArr,this.unrestrictFeat, ...tempFeat];
+  }else{
+    this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?  [...this.classStartFeatsArr, ...tempFeat]:  [...tempFeat];
+  }
+  if (unrestricted == 'yes'){
+    this.unrestrictFlag = true;
+    this.unrestrictFeat = feat;
+  }else{
+    this.checkSelections('feat');
+  }
 }
 checkTimesLeveled(){
   let obj = this.level.getHeroClassObj();
@@ -820,50 +946,10 @@ checkTimesLeveled(){
  this.timesLeveled = vals.reduce((prev:any, curr)=> Number(prev) + Number(curr),0);
   // console.log("number of times", vals,this.timesLeveled)
 }
-// checks to see what hero and class level the user is leveling to
-checkHeroLvl(){
-  let num = 1;
-  let hc = this.level.getHeroClassObj();
-  let hcArr = Object.values(hc);
-  if (hc[this.lvlUpObject.class] != undefined){
-    num = hc[this.lvlUpObject.class] + 1;
-  }
-  // let hl = this.heroservice.getHeroLevel();
-  // let valid = false;
-  let count:any = hcArr.reduce((prev: any, curr: any) => prev + curr, 1);
-  this.showNoClassFeat = (this.thirdLevelFeat(hc))? true: false;
-  this.showAbs = (this.everyFourth(count))? true: false;
-  if (num % 2 == 0){ this.showClassFeat = true; this.showTalent = false }else{ this.showClassFeat = false; this.showTalent = true; this.addFeat('','none'); this.countTrees(this.level.getHeroTalents()) }
-}
 
-thirdLevelFeat(lvl : number){
-  console.log("this is your level", lvl)
-  if (lvl % 3 === 0){
-    return true;
-  }else{
-    return false;
-  }
-}
-everyFourth(lvl : number){
-  console.log("the count", lvl)
-  if (lvl % 4 === 0){
-    this.displayCurrentAbs(true);
-    return true;
-  }else{
-    this.displayCurrentAbs(false);
-    return false;
-  }
-}
-getXp(){
-  this.currentXp = this.level.getCurrentXp();
-  this.nextXp = this.level.getNextXp();
-}
-beginLevelUp(){
-  this.levelUpModal = true;
-  this.lvlButton = false;
-}
 // select a class when first leveling up
 addClassSelection(selection: any){
+  this.resetAllSelections("Select", 'no')
   this.showTalent = false;
   this.showClassFeat = false;
   this.showNoClassFeat = false;
@@ -939,8 +1025,10 @@ increaseAbs(e: any, key: any){
       this.increaseAbsCounter -= 1;
     }
   }
+  this.checkSelections('abs');
   // console.log("the abs array", this.lvlUpObject.abilities)
 }
+
 levelUpHero(){
   if (this.updateSkills == true){
     let skills = this.heroservice.getSkills();
@@ -972,17 +1060,21 @@ levelUpHero(){
     "talents" : {"name" : "", "description": "","alias": ""},
     "abilities" : [""],
   }
- this.resetAllSelections("Select")
+ this.resetAllSelections("Select", 'yes')
 }
-resetAllSelections(reset: string){
-  this.addClassSelection("Select a Class");
+resetAllSelections(reset: string, cs: string){
+  if (cs == 'yes'){
+    this.addClassSelection("Select a Class");
+  }
   this.selectHPIncrease(reset);
   this.selectFeat(reset);
-  this.addFeat(reset, 'none');
+  this.addFeat(reset, 'none', 'yes');
   this.selectTalent(reset);
   this.addTalent(reset, 'none')
   this.showAbs = false;
   this.showNoClassFeat = false;
-  this.lvlButton = true;
+  this.lvlButton = false;
+  this.unrestrictFlag = false;
+  this.unrestrictFeat = "";
 }
 }
