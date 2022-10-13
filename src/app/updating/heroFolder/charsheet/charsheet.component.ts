@@ -32,6 +32,7 @@ savedLanguages: Array <string> = [];
 currentArmor: any;
 heroInventory: Array<string> = [];
 heroAttacks: Array<string> = [];
+forcePowers: Array<any> = [];
 //  Objects
 heroClass: Object = {};
 heroDefenses: any;
@@ -73,7 +74,6 @@ grappleModSelected: string = "Strength";
 grappleMisc: number = 0;
 langsAllowed: number = 0;
 credits: number = 0;
-forcePowers: Array<any> = [];
 attack: number = 0;
 // holds the values for notes user adds
 specialQuals: string = '';
@@ -231,6 +231,7 @@ async updateStats(){
   (Array.isArray(this.savedHero.class))? this.heroClass = {[this.savedHero.class]: 1}: this.heroClass = this.savedHero.class;
   this.heroDefenses = await this.savedHero.defenses;
   this.heroSpeciesObj = await this.savedHero.species;
+  this.heroservice.setSpecies(this.savedHero.species.species_name);
   this.startingTalents = await this.savedHero.talents;
   this.level.setTalents(this.savedHero.talents);
   this.heroLanguages = await (this.savedHero.languages == undefined)?this.heroSpeciesObj.traits.languages: this.savedHero.languages;
@@ -252,6 +253,10 @@ async updateStats(){
   this.maxHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[1]: this.savedHero.hp;
   this.currentHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[0]: this.savedHero.hp;
   this.credits = (this.savedHero.credits == undefined)? 0: this.savedHero.credits;
+  if(this.savedHero.forcePowers != undefined){
+    this.forcePowers = [...this.savedHero.forcePowers];
+    this.forceUser = true;
+  } 
    if(this.savedHero.currentXp == undefined){
     this.currentXp = 0
   }else{
@@ -475,6 +480,7 @@ async updateHero(){
     "grapple" : this.grapple,
     "languages" : this.savedLanguages,
     "credits" : this.credits,
+    "forcePowers": this.forcePowers,
     "forcePoints" : this.forcePoints,
     "notes" : {
       "specQualNotes" : this.specialQuals,

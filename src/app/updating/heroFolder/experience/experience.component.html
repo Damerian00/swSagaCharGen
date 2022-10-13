@@ -34,13 +34,13 @@
         </div>
         <div *ngIf="showNoClassFeat" class="tb">
             <label>Select an unrestricted Feat</label>
-            <select #noClassFeat (change)="selectFeat(noClassFeat.value)">
+            <select #noClassFeat (change)="selectFeat(noClassFeat.value, 'regular')">
                  <option>Select</option>
                  <option *ngFor="let feat of importFeatsArr">{{feat}}</option>
             </select>
             <p *ngIf="featName != ''">Selected Feat: {{featName}}</p>
             <p *ngIf="featDesc !=''">Description: {{featDesc}}</p>
-            <div *ngIf="showAddOptions" class="tb">
+            <div *ngIf="showRegFeatOptions" class="tb">
                  <label>Select additional Option</label>
                  <select  #addOption name="addOption">
                      <option>Select</option>
@@ -48,17 +48,40 @@
              </select>
              <button (click)="addFeat(noClassFeat.value, addOption.value, 'yes')">Add Feat</button>
             </div>
-            <button *ngIf="showAddOptions == false" (click)="addFeat(noClassFeat.value, 'none', 'yes')">Add Feat</button>
+            <section *ngIf="showForcePowers">
+                <header>
+                    <h2>You may select {{numPowers}} force powers.</h2>
+                </header>
+                <main>
+                    <select #selectPower name="selectPower" (change)="selectedPower(selectPower.value)">
+                        <option>Select a Power</option>
+                        <option *ngFor="let power of forcePowersArr">{{power.name}}</option>
+                        <option *ngFor="let saberForm of saberFormPowers">{{saberForm.name}}</option>  
+                    </select>
+                    <div class="box" *ngIf=" forceName !=''">
+                        <label>Force Power: {{forceName}}</label>
+                        <label>Description: {{forceDesc}}</label>
+                        <button (click)="acceptPower()">Add to Suite</button>
+                    </div>
+                    <aside *ngIf="heroForceSuite.length != 0">
+                        <div class="box" *ngFor="let power of heroForceSuite let i = index">
+                            <p>{{power.name}}</p>
+                            <button (click)="deletePower(i)">Remove</button>
+                        </div>
+                    </aside>
+                </main>
+            </section>
+            <button *ngIf="showRegFeatOptions == false" (click)="addFeat(noClassFeat.value, 'none', 'yes')">Add Feat</button>
          </div>
         <div *ngIf="showClassFeat" class="tb">
            <label>Select a Class Feat</label>
-           <select #classFeat name="classFeat" (change)="selectFeat(classFeat.value)">
+           <select #classFeat name="classFeat" (change)="selectFeat(classFeat.value, 'class')">
                 <option>Select</option>
-                <option *ngFor="let feat of importFeatsArr">{{feat}}</option>
+                <option *ngFor="let feat of importClassFeatsArr">{{feat}}</option>
            </select>
-           <p *ngIf="featName != ''">Selected Feat: {{featName}}</p>
-           <p *ngIf="featDesc !=''">Description: {{featDesc}}</p>
-           <div *ngIf="showAddOptions" class="tb">
+           <p *ngIf="classFeatName != ''">Selected Feat: {{classFeatName}}</p>
+           <p *ngIf="classFeatDesc !=''">Description: {{classFeatDesc}}</p>
+           <div *ngIf="showClassFeatOptions" class="tb">
                 <label>Select additional Option</label>
                 <select  #addOption name="addOption">
                     <option>Select</option>
@@ -66,7 +89,7 @@
             </select>
             <button (click)="addFeat(classFeat.value, addOption.value, 'no')">Add Feat</button>
            </div>
-           <button *ngIf="showAddOptions == false" (click)="addFeat(classFeat.value, 'none', 'no')">Add Feat</button>
+           <button *ngIf="showClassFeatOptions == false" (click)="addFeat(classFeat.value, 'none', 'no')">Add Feat</button>
         </div>
         <div *ngIf="showTalent" class="tb">
             <Label>Select a Talent to add</Label>

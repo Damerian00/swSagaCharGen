@@ -2,6 +2,21 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
 import { HeroService } from '../../services/hero.service';
 import { LevelingService } from '../../services/leveling.service';
+import  forcePowersArr from '../../../db/fpowers.json';
+import saberPowersArr from '../../../db/spowers.json';
+import startClasses from '../../../db/sclasses.json';
+
+interface forcePowers {
+  name:String,
+  desc: String,
+  type: Array<string>
+}
+
+interface saberPowers {
+  name:String,
+  desc: String,
+  type: Array<string>
+}
 
 @Component({
   selector: 'experience',
@@ -28,79 +43,19 @@ apiWeaponsArr: Array<any> = [];
 apiMeleeArr : Array<any> = [];
 apiRangedArr: Array<any> = [];
 importFeatsArr: Array<any> = [];
+importClassFeatsArr: Array<any> = [];
 importTalentsArr: Array<any> = []
 addOptionsArr: Array<string> = [];
 availablePrestigeClasses = [];
-startingClasses = [
-  {
-    "name" : "Jedi",
-    "defenses" : {
-      "reflex" : 1,
-      "fortitude" : 1,
-      "will"  : 1,
-    },
-    "start_feats" : ["Force Sensitivity", "Weapon Proficiency (Lightsabers)", "Weapon Proficiency (Simple Weapons)"],
-    "BAB" : 1,
-    "hp" : 10,
-    "babId" : "normal",
-    "class_Feats" : ["Acrobatic Strike","Cleave","Combat Reflexes","Dodge","Double Attack","Dreadful Rage","Dual Weapon Mastery I","Dual Weapon Mastery II","Dual Weapon Mastery III","Great Cleave","Improved Charge","Improved Disarm","Martial Arts I","Martial Arts II","Martial Arts III","Melee Defense","Mobility","Power Attack","Powerful Charge","Quick Draw","Rapid Strike","Running Attack","Skill Focus","Skill Training","Strong in the Force","Triple Attack","Triple Crit","Weapon Finesse","Weapon Focus","Accelerated Strike","Critical Strike","Flurry","Force Readiness","Improved Rapid Strike","Tumble Defense","Withdrawal Strike","Savage Attack","Swarm","Burst of Speed","Close Combat Escape","Impetuous Move","Impulsive Flight","Lightning Draw","Opportunistic Retreat","Resurgence","Slippery Maneuver","Stay Up","Tactical Advantage","Wicked Strike","Unstoppable Force","Unwavering Resolve","Wary Defender","Attack Combo (Melee)","Brink of Death","Feat of Strength","Grapple Resistance","Assured Attack","Deft Charge","Fast Surge","Moving Target","Rapid Reaction","Recovering Surge","Battering Attack","Dive for Cover","Fight Through Pain","Force of Personality","Mission Specialist","Never Surrender","Officer Candidacy Training","Resilient Strength","Risk Taker","Staggering Attack","Brilliant Defense","Resolute Stance","Stand Tall","Elder's Knowledge","Instinctive Attack","Instinctive Defense"],
-  },
- {
-  "name" : "Noble", 
-    "defenses" : {
-      "reflex" : 1,
-      "fortitude" : 0,
-      "will"  : 2,
-    },
-    "start_feats" : ["Linguist","Weapon Proficiency (Pistols)","Weapon Proficiency (Simple Weapons)"],
-    "BAB" : 0,
-    "hp" : 6, 
-    "babId" : "special",
-    "class_Feats" : ["Armor Proficiency (Light)","Cybernetic Surgery","Exotic Weapon Proficiency","Linguist","Melee Defense","Skill Focus","Skill Training","Surgical Expertise","Weapon Finesse","Weapon Proficiency (Advanced Melee Weapons)","Weapon Proficiency (Rifles)","Tech Specialist","Flurry","Quick Skill","Informer","Rapport","Recall","Cornered","Friends in Low Places","Hasty Modification","Impulsive Flight","Opportunistic Retreat","Signature Device","Superior Tech","Tactical Advantage","Wicked Strike","Experienced Medic","Leader of Droids","Unwavering Resolve","Wary Defender","Biotech Specialist","Biotech Surgery","Return Fire","Returning Bug","Fast Surge","Rapid Reaction","Recovering Surge","Disabler","Fight Through Pain","Force of Personality","Mission Specialist","Predictive Defense","Sport Hunter","Brilliant Defense","Cut the Red Tape","Demoralizing Strike","Disturbing Presence","Expert Briber","Flèche","Indomitable Personality","Master of Disguise","Sadistic Strike","Silver Tongue","Stand Tall","Combat Trickery","Elder's Knowledge","Intimidator","Mounted Combat"],
-  }, 
-   {
-    "name"  : "Scoundrel",
-    "defenses" : {
-      "reflex" : 2,
-      "fortitude" : 0,
-      "will"  : 1,
-    },
-    "start_feats" : ["Point-Blank Shot","Weapon Proficiency (Pistols)","Weapon Proficiency (Simple Weapons)"],
-    "BAB" : 0,
-    "hp"  : 6,
-    "babId" : "special",
-    "class_Feats" : ["Deadeye","Dodge","Melee Defense","Mobility","Precise Shot","Quick Draw","Rapid Shot","Running Attack","Skill Focus","Skill Training","Vehicular Combat","Weapon Proficiency (Advanced Melee Weapons)","Tech Specialist","Gearhead","Implant Training","Poison Resistance","Quick Skill","Sniper Shot","Advantageous Attack","Advantageous Cover","Bad Feeling","Crossfire","Cunning Attack","Scavenger","Burst of Speed","Close Combat Escape","Collateral Damage","Cornered","Deceptive Drop","Desperate Gambit","Duck and Cover","Fleet-Footed","Friends in Low Places","Hasty Modification","Impulsive Flight","Knife Trick","Lightning Draw","Signature Device","Superior Tech","Droidcraft","Droid Hunter","Expert Droid Repair","Overwhelming Attack","Attack Combo (Ranged)","Biotech Specialist","Fatal Hit","Return Fire","Vehicle Systems Expertise","Zero Range","Fast Surge","Moving Target","Prime Shot","Rapid Reaction","Recovering Surge","Vehicular Surge","Bantha Herder","Disabler","Fight Through Pain","Force of Personality","Mission Specialist","Opportunistic Shooter","Pistoleer","Predictive Defense","Steadying Position","Disturbing Presence","Expert Briber","Hobbling Strike","Improved Opportunistic Trickery","Indomitable Personality","Master of Disguise","Opportunistic Trickery","Sadistic Strike","Silver Tongue","Stand Tall","Acrobatic Ally","Acrobatic Dodge","Combat Trickery","Hold Together","Improved Sleight of Hand"],
-  },
-   {
-    "name"  : "Scout",
-    "defenses" : {
-      "reflex" : 2,
-      "fortitude" : 1,
-      "will"  : 0,
-    },
-    "start_feats" : ["Shake It Off","Weapon Proficiency (Pistols)","Weapon Proficiency (Rifles)","Weapon Proficiency (Simple Weapons)"],
-    "BAB" : 0,
-    "hp"  : 8,
-    "babId" : "special",
-    "class_Feats" : ["Armor Proficiency (Heavy)","Armor Proficiency (Light)","Armor Proficiency (Medium)","Careful Shot","Deadeye","Dodge","Far Shot","Linguist","Mobility","Point-Blank Shot","Precise Shot","Rapid Shot","Running Attack","Skill Focus","Skill Training","Sniper","Vehicular Combat","Weapon Proficiency (Advanced Melee Weapons)","Conditioning","Gearhead","Increased Agility","Poison Resistance","Advantageous Attack","Advantageous Cover","Bad Feeling","Cunning Attack","Burst of Speed","Cornered","Deadly Sniper","Duck and Cover","Fleet-Footed","Resurgence","Slippery Maneuver","Stay Up","Droidcraft","Droid Hunter","Expert Droid Repair","Flash and Clear","Attack Combo (Ranged)","Fatal Hit","Feat of Strength","Grapple Resistance","Return Fire","Vehicle Systems Expertise","Deft Charge","Fast Surge","Moving Target","Prime Shot","Rapid Reaction","Rebel Military Training","Recovering Surge","Vehicular Surge","Destructive Force","Disabler","Dive for Cover","Forceful Blast","Fortifying Recovery","Mission Specialist","Never Surrender","Opportunistic Shooter","Pistoleer","Resilient Strength","Riflemaster","Risk Taker","Sport Hunter","Steadying Position","Grazing Shot","Hobbling Strike","Meat Shield","Stand Tall","Hold Together","Hyperblazer","Improvised Weapon Mastery","Maniacal Charge","Mounted Combat","Targeted Area","Trample","Wilderness First Aid"],
-  },
-   {
-    "name"  : "Soldier",
-    "defenses" : {
-      "reflex" : 1,
-      "fortitude" : 2,
-      "will"  : 0,
-    },
-    "start_feats" : ["Armor Proficiency (Light)","Armor Proficiency (Medium)","Weapon Proficiency (Pistols)","Weapon Proficiency (Rifles)","Weapon Proficiency (Simple Weapons)"],
-    "BAB" : 1,
-    "hp"  : 10,
-    "babId" : "normal",
-    "class_Feats" : ["Armor Proficiency (Heavy)","Bantha Rush","Careful Shot","Charging Fire","Cleave","Combat Reflexes","Coordinated Attack","Crush","Deadeye","Double Attack","Dual Weapon Mastery I","Dual Weapon Mastery II","Dual Weapon Mastery III","Exotic Weapon Proficiency","Far Shot","Great Cleave","Improved Charge","Improved Disarm","Martial Arts I","Martial Arts II","Martial Arts III","Melee Defense","Mighty Swing","Pin","Point-Blank Shot","Power Attack","Precise Shot","Quick Draw","Rapid Shot","Rapid Strike","Running Attack","Shake It Off","Skill Focus","Skill Training","Sniper","Throw","Toughness","Trip","Triple Attack","Triple Crit","Vehicular Combat","Weapon Focus","Weapon Proficiency (Advanced Melee Weapons)","Weapon Proficiency (Heavy Weapons)","Accelerated Strike","Conditioning","Critical Strike","Flurry","Improved Rapid Strike","Increased Agility","Power Blast","Sniper Shot","Tumble Defense","Withdrawal Strike"],
-  }
-]
+startingClasses = startClasses;
 wepGrps: Array<string> = ["Advanced Melee Weapons","Heavy Weapons","Lightsabers","Pistols","Rifles","Grenades","Simple Weapons (Melee)","Simple Weapons (Ranged)"];
 meleeGrps: Array<string> = ["Advanced Melee Weapons","Lightsabers","Simple Weapons (Melee)"];
 rangedGrps: Array<string> = ["Heavy Weapons","Pistols","Rifles","Grenades","Simple Weapons (Ranged)"];
+repeatFeats: Array<string> = ["Improved Damage Threshold","Force Training", "Extra Rage","Extra Second Wind","Linguist",]
+heroForceSuite: Array <any> = []
+forcePowersArr: forcePowers[] = forcePowersArr;
+saberFormPowers: saberPowers[] = saberPowersArr;
+
 //  Objects
 lvlUpObject = {
   "class" : "",
@@ -118,6 +73,9 @@ abilities: any = {};
 validatedArr: Array<boolean> = [];
 skillValuetoUpdate: Array<string> = [];
 speciesFeats: any;
+exoticMelee: Array<any> = [];
+exoticRange: Array<any> = [];
+
 //  Boolean
 levelUpModal: boolean = false;
 showClassFeat: boolean = false;
@@ -125,10 +83,13 @@ showNoClassFeat: boolean = false;
 showTalent: boolean = false;
 showAbs: boolean = false;
 lvlButton: boolean = false;
-showAddOptions: boolean = false;
+showClassFeatOptions: boolean = false;
+showRegFeatOptions: boolean = false
 showTalentOptions: boolean = false;
 updateSkills: boolean = false;
 unrestrictFlag: boolean = false;
+forceTraining: boolean = false;
+showForcePowers: boolean = false;
 //  Numbers & Strings
 levelPts: number = 0;
 currentXp: number = 0;
@@ -139,10 +100,15 @@ rolledHp: number = 0;
 classSelection: string = '';
 featName: string = '';
 featDesc: string = '';
+classFeatName: string = '';
+classFeatDesc: string = ''
 talentName: string = '';
 talentDesc: string = '';
 unrestrictFeat : string = "";
-// heroClass: any;
+forceName: string = "";
+forceDesc: string = "";
+maxPowers: number = 0;
+numPowers: number =  0;
 /*
 0,1,2,3,3,4,5,6,6,7,8,9,9,10,11,12,12,13,14,15
 */
@@ -151,15 +117,28 @@ unrestrictFeat : string = "";
   ngOnInit(): void {
     this.swapi.getFeats().subscribe((feats)=> {
       this.apifeatsArr = feats;
+      this.apifeatsArr.sort(this.sortNames("name"));
     })
     this.swapi.getTalents().subscribe((talents) =>{
-      this.apiTalentsArr = talents 
+      this.apiTalentsArr = talents
+      this.apiTalentsArr.sort(this.sortNames("name"));
     })
     this.swapi.getMelees().subscribe((melee)=> {
       this.apiMeleeArr = [...melee];
+      melee.forEach((el:any)=>{
+        if (el.w_type == "Exotic Weapons (Melee)"){
+          this.exoticMelee.push(el.name);
+        } 
+      })
+ 
     })
     this.swapi.getRanged().subscribe((ranged)=> {
       this.apiRangedArr = [...ranged];
+      ranged.forEach((el:any)=> {
+        if (el.w_type == "Exotic Weapons (Ranged)"){
+          this.exoticRange.push(el.name);
+        }
+      })
     })
     this.swapi.getTalentTree().subscribe((tree)=> {
       this.apiTree = [...tree];
@@ -175,9 +154,25 @@ unrestrictFeat : string = "";
       }, 500);
     
   }
+  sortNames(prop: string){
+    let sortOrder = 1;
+    if(prop[0] === "-") {
+        sortOrder = -1;
+        prop = prop.substr(1);
+    }
+    return function (a:any,b:any) {
+        if(sortOrder == -1){
+            return b[prop].localeCompare(a[prop]);
+        }else{
+            return a[prop].localeCompare(b[prop]);
+        }        
+    }
+  }
 
-
-
+sortArray(arr: Array<any>){
+  // console.log("the arr", arr);
+ return arr.sort(function(a, b){return a-b});
+}
 
 // check hero level to see if it's every 3rd level and return the answer
 currFeat: string = '';
@@ -237,7 +232,7 @@ beginLevelUp(){
   this.lvlButton = false;
 }
 
-async showAvailable(feat : any, arr: Array<any>){
+async showAvailable(feat : any, arr: Array<any>, keyWord: string){
   this.currFeat = feat;
   let index=0;
   for (let i =0; i < arr.length; i++){
@@ -249,8 +244,9 @@ async showAvailable(feat : any, arr: Array<any>){
     let keys = Object.keys(arr[index].prereqs);
     let vals: any = Object.values(arr[index].prereqs);
     // console.log("vals:",vals, feat)
-    if (vals[0].includes("none")){
-      this.importFeatsArr.push(feat);
+    let noreqClassFeat = ["Weapon Proficiency (Advanced Melee Weapons)","Weapon Proficiency (Heavy Weapons)","Weapon Proficiency (Rifles)"]
+    if (vals[0].includes("none") || noreqClassFeat.includes(feat)){
+      (keyWord == 'regular')?this.importFeatsArr.push(feat):this.importClassFeatsArr.push(feat);
     }else{
          for(let v = 0; v < vals.length; v++){
           let valid = false;
@@ -297,10 +293,11 @@ async showAvailable(feat : any, arr: Array<any>){
       } 
       if (this.validatedArr.includes(false) == false && this.validatedArr.length != 0) {
         // console.log("adding to arry:", feat)
-        this.importFeatsArr.push(feat)
+        (keyWord == 'regular')?this.importFeatsArr.push(feat):this.importClassFeatsArr.push(feat);
       };
     }
-    
+    // let tempArr = this.sortArray(this.importFeatsArr)
+    // this.importFeatsArr = [...tempArr];
 }
 async checkFeatReqs(apiValue: any, keyWord: string, feat: any, valid: boolean){
   // console.log(apiValue, keyWord, feat)
@@ -327,10 +324,9 @@ async checkFeatReqs(apiValue: any, keyWord: string, feat: any, valid: boolean){
            valid = true;
             // console.log("the split",words, apiValue)
             break;
-          }else{
-           valid = (feats[i] == apiValue)? true: false;
           }
         }        
+        valid = (feats.includes(apiValue))? true: false;         
       break;
       case "trait":
         let keys = Object.keys(trait);
@@ -354,7 +350,9 @@ async checkFeatReqs(apiValue: any, keyWord: string, feat: any, valid: boolean){
         // console.log(this.validatedArr, ":",this.heroservice.getAbilities()[keyWord],keyWord,apiValue, feat)
       break;
   }
-  // console.log(feat,":",apiValue, "/",keyWord,"/",valid)
+  // if (feat == "Force Training"){
+  //   console.log(feats, "+",feat,":",apiValue, "/",keyWord,"/",valid)
+  // }
   return valid;
 }
 async addFeatOptions(){
@@ -379,10 +377,11 @@ async addFeatOptions(){
   }
   featsArr = [...this.apifeatsArr, ...tempArr]
 }
+console.log(this.lvlUpObject.class)
   featsArr.forEach((el:any)=>{
     // console.log("the list:",currFeats);
-    if (currFeats.includes(el.name) == false){
-      this.showAvailable(el.name, featsArr);
+    if (this.repeatableFeats.includes(el.name) || currFeats.includes(el.name) == false){
+      this.showAvailable(el.name, featsArr, 'regular');
     }
   })
 }
@@ -393,15 +392,17 @@ addClassFeatOptions(heroClass : string){
   let index = this.startingClasses.findIndex((el: any)=> el.name == heroClass);
   let newFeats = this.startingClasses[index].class_Feats;
   this.lvlUpObject.BAB = (this.level.getBAB() + this.startingClasses[index].BAB)
+  this.sortArray(newFeats);
   // console.log(this.lvlUpObject.BAB,this.level.getBAB(), "+", this.startingClasses[index].BAB )
   for (let i=0; i< newFeats.length; i++){
     if(currFeats.includes(newFeats[i]) == false){
-      this.showAvailable(newFeats[i], this.apifeatsArr)
+      this.showAvailable(newFeats[i], this.apifeatsArr, 'class')
     }
   }
   // console.log("show me feats",currFeats, this.importFeatsArr);
 }
 //  adds to a starting feats array when choosing a new class to multiclass with
+repeatableFeats = ["Improved Damage Threshold","Force Training"]
 addStartFeats(heroClass : string){
   this.clearArr(this.classStartFeatsArr);
   let currFeats = this.level.getHeroFeats();
@@ -466,6 +467,7 @@ addTalentSelectables(selectedClass : string){
       }
     }
   }
+  this.sortArray(this.importTalentsArr);
   // console.log(this.importTalentsArr, "<--imp talentsarr");
 }
 checkArrLength(arr: any, talent: string){
@@ -545,12 +547,6 @@ checkTalentReqs(arr: any, talent: string){
   // console.log("Well?", talent, arr, valid, tempStr);
  return valid;
 }
-// ["Greater Weapon Specialization","Accurate Blow","Share Force Secret","Share Force Technique","Assured Skill","Exceptional Skill",Skill Boon","Skill Confidence","Skillful Recovery"]
-// skills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
-// talentTree = ["Coordinated Leadership","Stolen Form","Squadron Maneuvers", "Share Talent"]
-// proficient = ["Accurate Blow","Greater Weapon Focus"]
-// weapon = ["Greater Weapon Specialization"]
-// force = ["Share Force Secret","Share Force Technique"]
 
 // if a talent has an additional option this function creates an array of those options
 addTalentOptions(key: string, talent : any){
@@ -797,40 +793,143 @@ countTrees(talents: any){
   this.addTalentSelectables(this.lvlUpObject.class)
   // console.log("heres trees", obj)
 }
-selectFeat(feat: string){
+selectFeat(feat: string, type: string){
   if (feat == "Select"){
+    if (type == 'regular'){
+      this.featName = "";
+      this.featDesc = "";
+    }else{
+      this.classFeatName = "";
+      this.classFeatDesc = "";
+    }
     return;
   } 
   this.clearArr(this.addOptionsArr);
   let skillsTrained = [];
   let skillsFocused = [];
-  let optionFeats = ["Skill Focus","Skill Training","Weapon Focus","Weapon Proficiency","Adaptable Talent", "Recurring Success","Exotic Weapon Proficiency"]
+  let optionFeats = ["Skill Focus","Skill Training","Weapon Focus","Weapon Proficiency","Adaptable Talent", "Recurring Success","Exotic Weapon Proficiency","Force Training","Withdrawal Strike","Mission Specialist"]
   if (optionFeats.includes(feat)){
     if (feat == optionFeats[0] || feat == optionFeats[1] ){
       let skills = this.heroservice.getSkills();
-        for (let i = 0; i<skills.length; i++){
-          if(skills[i].trained_skill == false){
-            skillsTrained.push(skills[i].skill_name);
-          }
-          if(skills[i].skill_focus == false && skills[i].trained_skill == true){
-            skillsFocused.push(skills[i].skill_name)
-          }
+      for (let i = 0; i<skills.length; i++){
+        if(skills[i].trained_skill == false){
+          skillsTrained.push(skills[i].skill_name);
         }
-        this.addOptionsArr = (feat == "Skill Training")?  [...skillsTrained]: [...skillsFocused];
-    }else{
-      let exoticsArr = [];
+        if(skills[i].skill_focus == false && skills[i].trained_skill == true){
+          skillsFocused.push(skills[i].skill_name)
+        }
+      }
+      this.addOptionsArr = (feat == "Skill Training")?  [...skillsTrained]: [...skillsFocused];
       
+    }else{
+      let heroFeats = this.level.getHeroFeats();
+      const species = this.heroservice.getSpecies();
+      const abs = this.heroservice.getAbilityModifier();
+      switch (feat){
+        case "Weapon Focus":
+          for (let i=0; i<heroFeats.length;i++){
+            let splitter = heroFeats[i].split(' ');
+            if (splitter[0] == "Weapon" && splitter[1] == "Proficiency"){
+              let word = splitter.slice(2).join(' ')    
+              this.addOptionsArr.push(word.slice(1,-1));
+            }
+          }
+        break;
+        case "Weapon Proficiency":
+          let weaponOptions = ["Simple Weapons", "Pistols", "Rifles", "Lightsabers", "Heavy Weapons", "Advanced Melee Weapons"]
+        // console.log("feats", feats)
+          for (let i =0; i<weaponOptions.length;i++){
+            const word = `Weapon Proficiency (${weaponOptions[i]})`
+            if (heroFeats.includes(word)== false){
+            this.addOptionsArr.push(weaponOptions[i]);
+            }
+
+      } 
+        break;
+        case "Adaptable Talent":
+
+        break;
+        case "Recurring Success":
+
+        break;
+        case "Exotic Weapon Proficiency":
+          let exclusiveSpecies = ["Gamorrean","Gungan","Wookiee","Kissai","Massassi","Felucians","Squib","Verpine"];
+      let excludeArr: any = [];
+      let exoticOpts: Array<any> = [...this.exoticMelee, ...this.exoticRange];
+      if (exclusiveSpecies.includes(species)){
+        switch (species){
+          case "Gamorrean":
+            excludeArr = ["Arg'garok"];
+          break;
+          case "Gungan":
+            excludeArr = ["Atlatl","Cesta"];
+          break;
+          case "Wookiee":
+            excludeArr = ["Bowcaster","Ryyk Blade"];
+          break;
+          case "Kissai":
+            excludeArr = ["Massassi Lanvarok"];
+          break;
+          case "Massassi":
+            excludeArr = ["Massassi Lanvarok"];
+            break;
+          case "Felucians":
+            excludeArr = ["Felucian Skullblade"];
+          break;
+          case "Squib":
+            excludeArr = ["Squib Tensor Rifle"];
+          break;
+          case "Verpine":
+            excludeArr = ["Verpine Shattergun"];
+        }
+      }
+      exoticOpts.forEach((el: any)=> {
+        if (excludeArr.length == 0){
+          this.addOptionsArr.push(el);
+        }else if (excludeArr.includes(el) == false){
+          this.addOptionsArr.push(el);
+        }
+        // console.log(this.addOptionsArr, "addOpts")
+      })
+        break;
+        case "Force Training":
+        this.showForcePowers = true;
+        this.showRegFeatOptions = false;
+        let wisdom = abs.Wisdom;
+        let currentPowers = this.heroservice.getForcePowers().length;
+        let ft = (heroFeats.includes("Jedi Heritage"))? 3:1;      
+        if (heroFeats.includes("Force Training")){
+          heroFeats.forEach((el: any)=>{
+            if (el == "Force Training"){
+              if (heroFeats.includes("Jedi Heritage")){
+                ft += 3;
+              }else{
+                ft += 1;
+              }
+            }  
+          })
+        }
+        this.numPowers = (wisdom + ft) - currentPowers;
+        this.maxPowers = (wisdom + ft) - currentPowers;
+        break;
+        case "Withdrawal Strike":
+
+        break;
+        case "Mission Specialist":
+
+        break;
+      }
+      let exoticsArr = [];
       let proficient = [""];
       let feats = [...this.level.getHeroFeats()];
       for (let i =0; i < feats.length; i++){
         let words = feats[i].split(' ')
-        // console.log("these are current feats", words);
+        console.log("these are current feats", words);
           if (words[0] == "Weapon" && words[1] == "Proficiency"){
             let inParan = []
             for (let i = 2; i<words.length; i++){
       let len = words.length - 1
-       if ( words.length == 3){
-        
+       if ( words.length == 3){     
         inParan.push(words[2].substring(1).slice(0,-1));
        } else if(i == 2){
             inParan.push(words[i].substring(1));
@@ -840,7 +939,7 @@ selectFeat(feat: string){
         inParan.push(words[i]);
       }
     }
-      // console.log("no Parans",inParan.join(' '))
+      console.log("no Parans",inParan.join(' '))
       proficient.push(inParan.join(' '))
           }
         }
@@ -851,30 +950,42 @@ selectFeat(feat: string){
           exoticsArr.push(this.apiWeaponsArr[i].name);
         }
       }
-  
-      this.addOptionsArr = [...proficient];
+      // this.addOptionsArr = [...proficient];
+    }    
+    // toggles the view
+    if(type == 'regular' && feat != "Force Training"){
+      this.showRegFeatOptions = true;
+    }else{
+      this.showClassFeatOptions = true;
     }
-    
-    
-    this.showAddOptions = true;
   }else{
-    this.showAddOptions = false
-    
+    this.showRegFeatOptions = false;
+    this.showClassFeatOptions = false;   
   }
   for (let i = 0; i<this.apifeatsArr.length; i++){
-    let splitter = feat.split('Weapon Proficiency');
-  let tempFeat = ((splitter[0]== '')? 'Weapon Proficiency': "nope");
+  let split = feat.split(' ');
+  let tempFeat = ((split[0] == 'Weapon' && split[1]=='Proficiency')? 'Weapon Proficiency': "");
     if (this.apifeatsArr[i].name == feat || this.apifeatsArr[i].name == tempFeat){
-      this.featName = (splitter[0]== '')? feat : this.apifeatsArr[i].name;
-      this.featDesc = this.apifeatsArr[i].description;
+      if (type == 'regular'){
+        this.featName =  (tempFeat == "")?this.apifeatsArr[i].name:feat;
+        this.featDesc = this.apifeatsArr[i].description;
+      }else{
+        this.classFeatName = (tempFeat == "")?this.apifeatsArr[i].name:feat;
+        this.classFeatDesc = this.apifeatsArr[i].description;
+      }
       break;
     }else if (this.speciesFeats != undefined ){
       let keys = Object.keys(this.speciesFeats);
       let vals:any = Object.values(this.speciesFeats);
       for (let i=0; i < keys.length; i++){
         if (keys[i] == feat){
-          this.featName = keys[i];
-          this.featDesc = vals[i];
+          if (type == 'regular'){
+            this.featName = keys[i];
+            this.featDesc = vals[i];
+          }else{
+            this.classFeatName = keys[i];
+            this.classFeatDesc = vals[i];
+          }
           break;
         }
       }
@@ -901,8 +1012,6 @@ checkSelections(key: string){
     if (this.increaseAbsCounter == 0){
       if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.unrestrictFlag == false){
           this.lvlButton = true;
-        }else{
-          this.lvlButton = false;
         }
     }else{
       this.lvlButton = false;
@@ -915,12 +1024,15 @@ addFeat(feat: string, option: string, unrestricted: string){
   if (feat == "Select" || option == "Select"){
     return;
   }
+  let hfs = this.level.getHeroFeats();
+  for (let i=0; i<this.classStartFeatsArr.length; i++){
+    if (hfs.includes(this.classStartFeatsArr[i])){
+      this.classStartFeatsArr.splice(i,1)
+    }
+  }
   if (feat == "Skill Focus" || feat == "Skill Training" ){
     this.updateSkills = true;
     this.skillValuetoUpdate = [feat,option];
-  }else{
-    this.updateSkills = false;
-    this.skillValuetoUpdate = [''];
   }
   let tempFeat;
   if (option == "none"){
@@ -928,17 +1040,21 @@ addFeat(feat: string, option: string, unrestricted: string){
   }else{
     tempFeat =[`${feat} (${option})`];
   }
-  if (this.lvlUpObject.feats[0] != ""){
-    this.lvlUpObject.feats = [...this.classStartFeatsArr,this.unrestrictFeat, ...tempFeat];
+  // console.log("current feats:", this.lvlUpObject.feats)
+// need to get current feats and compare with starting feats should remove feats that character already has
+if (unrestricted == 'yes'){
+  this.unrestrictFlag = true;
+  this.unrestrictFeat = tempFeat[0];
+  this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?[...this.classStartFeatsArr, ...tempFeat]:[...tempFeat]
+}else{
+  this.checkSelections('feat');
+  if (this.unrestrictFlag == true){
+    this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?  [...this.classStartFeatsArr, this.unrestrictFeat, ...tempFeat]:  [this.unrestrictFeat, ...tempFeat];
   }else{
     this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?  [...this.classStartFeatsArr, ...tempFeat]:  [...tempFeat];
   }
-  if (unrestricted == 'yes'){
-    this.unrestrictFlag = true;
-    this.unrestrictFeat = feat;
-  }else{
-    this.checkSelections('feat');
-  }
+}
+
 }
 checkTimesLeveled(){
   let obj = this.level.getHeroClassObj();
@@ -1028,18 +1144,83 @@ increaseAbs(e: any, key: any){
   this.checkSelections('abs');
   // console.log("the abs array", this.lvlUpObject.abilities)
 }
+//  force powers
+forcePower: any;
+selectedPower(power: any){
+  if (power == "Select a Power" || power == undefined){
+    this.forceName = "";
+    this.forceDesc = "";
+    return;
+  }
+  console.log("Chosen Power:" ,power);
+  for (let i = 0; i< this.forcePowersArr.length; i++){
+    if (this.forcePowersArr[i].name == power){
+      this.forcePower = this.forcePowersArr[i];
+      break;
+    }
+  }
+  for (let i = 0; i< this.saberFormPowers.length; i++){
+    if (this.saberFormPowers[i].name == power){
+      this.forcePower = this.saberFormPowers[i];
+      break;
+    }
+  }
+      this.forceName = this.forcePower.name;
+      this.forceDesc = this.forcePower.desc;
+}
+
+acceptPower(){
+ 
+  if (this.numPowers > 0 && this.heroForceSuite.length < this.maxPowers){
+    this.addPower(this.forcePower)
+  }
+}
+addPower(power: any){
+  this.heroForceSuite.push(power);
+  this.numPowers -= 1
+  console.log("the suite: ", this.heroForceSuite)
+}
+deletePower(index: number){
+  this.heroForceSuite.splice(index, 1);
+  this.numPowers += 1
+}
+clearPowers(){
+   while (this.heroForceSuite.length){
+    this.heroForceSuite.pop();
+    this.numPowers += 1
+  }
+  console.log("cleared arr:",  this.heroForceSuite)
+}
+
+
 
 levelUpHero(){
+  let skills = this.heroservice.getSkills();
   if (this.updateSkills == true){
-    let skills = this.heroservice.getSkills();
     let index = skills.findIndex((el: any)=> el.skill_name == this.skillValuetoUpdate[1])
     if (this.skillValuetoUpdate[0] == "Skill Focus" ){
       skills[index].skill_focus = true;
     }else if (this.skillValuetoUpdate[0] == "Skill Training"){
+      console.log('the index:',index)
       skills[index].trained_skill = true;
     }else{
       skills[index][this.skillValuetoUpdate[0]] = true;
     }
+    this.heroservice.setSkills(skills);
+  }
+  (this.heroForceSuite.length > 0)? this.heroservice.addForcePowers(this.heroForceSuite):'nothing';
+ // adds the Use the Force skill to the skills array
+ console.log('the skills',skills);
+  if (this.lvlUpObject.class == "Jedi" && skills.length < 24 || this.lvlUpObject.feats.includes("Force Sensitivity")){
+    let jediSkill = {
+      "skill_name": 'Use the Force',
+      "skill_value": 0, 
+      "default": 'Charisma', 
+      "trained_skill": false,
+      "skill_focus": false,
+      "misc": 0,
+    }
+    skills.push(jediSkill);
     this.heroservice.setSkills(skills);
   }
   if (this.lvlUpObject.feats.includes("")){
@@ -1049,7 +1230,7 @@ levelUpHero(){
   if (this.lvlUpObject.abilities.length == 2 && this.lvlUpObject.abilities.includes("") == false){
     this.heroservice.increaseAbilities(this.lvlUpObject.abilities);
   }
-  console.log("leveling this", this.lvlUpObject);
+  console.log("leveling this", this.lvlUpObject, this.heroForceSuite);
   this.levelUpModal = false;
   this.heroLvlUpObj.emit(this.lvlUpObject);
   this.lvlUpObject = {
@@ -1061,13 +1242,14 @@ levelUpHero(){
     "abilities" : [""],
   }
  this.resetAllSelections("Select", 'yes')
+ //connect to a service to have the other components update
 }
 resetAllSelections(reset: string, cs: string){
   if (cs == 'yes'){
     this.addClassSelection("Select a Class");
   }
   this.selectHPIncrease(reset);
-  this.selectFeat(reset);
+  this.selectFeat(reset, 'regular');
   this.addFeat(reset, 'none', 'yes');
   this.selectTalent(reset);
   this.addTalent(reset, 'none')

@@ -78,9 +78,16 @@ private heroLevel: number = 0;
 private heroCondition: number = 0
 private species: string = '';
 private languages : Array <string> = [];
+private forcePowers: Array <any> = [];
 
 
 //  gettters and setters
+setSpecies(species: string){
+  this.species = species;
+}
+getSpecies(){
+  return this.species;
+}
 setHeroLevel(level : number){
   this.heroLevel = level;
 }
@@ -173,9 +180,6 @@ setClassBonuses(classsObj: object){
     (tempFort > this.fortClassBonus)? this.fortClassBonus = tempFort: tempFort = 0;
     (tempWill > this.willClassBonus)? this.willClassBonus = tempWill: tempWill = 0;
   }
-
-
-
 }
 getReflexClassBonus(){
   return this.reflexClassBonus;
@@ -274,4 +278,18 @@ calcCredits(num : any, operand : string){
   let arr = [num, operand]
   this.invokeCalculator.emit(arr);
 }
+setForcePowers(fp: Array<any>){
+  this.forcePowers = [...fp];
 }
+getForcePowers(){
+  return this.forcePowers;
+}
+addForcePowers(fp: Array<any>){
+  let temp = [...this.forcePowers];
+  this.forcePowers = [...temp, ...fp];
+}
+
+
+
+}
+

@@ -197,9 +197,12 @@
                 <h6>Special Attacks</h6>
                 <textarea (change)="saveNotes('attackNotes', $event)" cols="30" rows="10">{{specAttackNotes}}</textarea>  
             </div>
-            <div class="box" *ngIf="forceUser">
+            <div class="tb" *ngIf="forceUser">
                 <!-- need to have an ng if to show if they are a jedi and have force powers-->
                 <h6>Force Powers</h6>
+                <div class="box">
+                    <p *ngFor="let power of forcePowers">{{power.name}}</p>
+                </div>
             </div>
             <div class="tb">
                 <h6>Starship Maneuvers</h6>
@@ -270,13 +273,6 @@
            <textarea name="heroNotes" id="heroNotes" cols="100" rows="10" (change)="saveNotes('hero_notes', $event)">{{heroNotes}}</textarea>
         </div>
     </div>
-    <!-- <div class="skillsHolder" *ngFor="let skill of skills">
-        <p>{{skill.skill_name}}</p>
-        <p>{{skill.skill_value}}</p>
-        <p>{{skill.default}}</p>
-        <p>{{skill.trained_skill}}</p>
-        <p>{{skill.skill_focus}}</p>
-    </div> -->
 </section>
 <ng-template #reminder>
     <div>

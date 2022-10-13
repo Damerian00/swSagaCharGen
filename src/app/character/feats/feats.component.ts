@@ -131,7 +131,7 @@ export class FeatsComponent implements OnInit {
   additionalFeatsTrigger: boolean = false;
   notTof: boolean = true;
   showForcePowers: boolean = false;
-  forceTraining: boolean = false;
+  // forceTraining: boolean = false;
   zabrakResil: boolean = false;
   //  misc
   maxPowers: number = 0;
