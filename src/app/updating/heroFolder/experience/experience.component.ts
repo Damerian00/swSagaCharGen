@@ -296,6 +296,7 @@ async showAvailable(feat : any, arr: Array<any>, keyWord: string){
         (keyWord == 'regular')?this.importFeatsArr.push(feat):this.importClassFeatsArr.push(feat);
       };
     }
+    (keyWord == 'regular')?this.sortArray(this.importFeatsArr):this.sortArray(this.importClassFeatsArr);
     // let tempArr = this.sortArray(this.importFeatsArr)
     // this.importFeatsArr = [...tempArr];
 }
@@ -441,7 +442,7 @@ checkClassReqs(feat : string){
   return key;
 }
 // creates the array for selecting when choosing a talent
-addTalentSelectables(selectedClass : string){
+addTalentSelectables(selectedClass : string, keyWaord: string){
   // console.log("adding selectables", selectedClass);
   let tempTree = [];
   this.clearArr(this.importTalentsArr);
@@ -454,20 +455,20 @@ addTalentSelectables(selectedClass : string){
   for (let i=0; i<this.apiTalentsArr.length; i++){
     if (tempTree.includes(this.apiTalentsArr[i].TalentTreeId)){
       if (this.apiTalentsArr[i].preReqs.req1 == "none"){
-        this.importTalentsArr.push(this.apiTalentsArr[i]);
+        (keyWaord == 'talent')?this.importTalentsArr.push(this.apiTalentsArr[i]):this.addOptionsArr.push(this.apiTalentsArr[i].name);
       }else{
         let preReqs = this.apiTalentsArr[i].preReqs
         for (let p = 0; p< Object.keys(preReqs).length; p++){
           let vals = Object.values(preReqs)[p];
         //  console.log(this.apiTalentsArr[i])
           if (this.checkArrLength(vals, this.apiTalentsArr[i].name) == true){
-            this.importTalentsArr.push(this.apiTalentsArr[i]);
+            (keyWaord == 'talent')?this.importTalentsArr.push(this.apiTalentsArr[i]):this.addOptionsArr.push(this.apiTalentsArr[i].name);
           }
         }
       }
     }
   }
-  this.sortArray(this.importTalentsArr);
+  (keyWaord == 'talent')?this.sortArray(this.importTalentsArr):this.sortArray(this.addOptionsArr);
   // console.log(this.importTalentsArr, "<--imp talentsarr");
 }
 checkArrLength(arr: any, talent: string){
@@ -790,7 +791,7 @@ countTrees(talents: any){
     }
   }
   this.level.setNumberinTrees(obj);
-  this.addTalentSelectables(this.lvlUpObject.class)
+  this.addTalentSelectables(this.lvlUpObject.class, 'talent')
   // console.log("heres trees", obj)
 }
 selectFeat(feat: string, type: string){
@@ -825,6 +826,7 @@ selectFeat(feat: string, type: string){
       let heroFeats = this.level.getHeroFeats();
       const species = this.heroservice.getSpecies();
       const abs = this.heroservice.getAbilityModifier();
+      const heroObject = this.level.getHeroClassObj();
       switch (feat){
         case "Weapon Focus":
           for (let i=0; i<heroFeats.length;i++){
@@ -846,11 +848,33 @@ selectFeat(feat: string, type: string){
 
       } 
         break;
+  //  needs to show talents for all classes that the character possesses as well as meets the requirements for
         case "Adaptable Talent":
-
+        let keys = Object.keys(heroObject);
+        if (keys.includes(this.lvlUpObject.class) == false){
+          keys.push(this.lvlUpObject.class); 
+        }
+        keys.forEach((el:any)=> {
+          this.addTalentSelectables(el,'feat');
+          console.log("pushed", el);
+      })
+      // need to set something up to add options if a talent is choosen that has additional options
         break;
         case "Recurring Success":
-
+// check current talents and feats for restrictions on uses per encounter and add that talent or feat to options array will have ope set to true
+          const heroTalents = this.level.getHeroTalents();
+          for (let i=0; i< this.apifeatsArr.length;i++){
+            if (heroFeats.includes(this.apifeatsArr[i].name)){
+                if (this.apifeatsArr[i].ope == true){
+                  this.addOptionsArr.push(this.apifeatsArr[i].name);
+                }
+            }
+          }
+          for (let i=0; i<heroTalents.length;i++){
+            if (heroTalents[i].ope == true){
+              this.addOptionsArr.push(heroTalents[i].name);
+            }
+          }
         break;
         case "Exotic Weapon Proficiency":
           let exclusiveSpecies = ["Gamorrean","Gungan","Wookiee","Kissai","Massassi","Felucians","Squib","Verpine"];
@@ -909,6 +933,7 @@ selectFeat(feat: string, type: string){
             }  
           })
         }
+        console.log("they have: ",currentPowers, this.heroservice.getForcePowers());
         this.numPowers = (wisdom + ft) - currentPowers;
         this.maxPowers = (wisdom + ft) - currentPowers;
         break;
@@ -918,7 +943,10 @@ selectFeat(feat: string, type: string){
         case "Mission Specialist":
 
         break;
+        
       }
+//  after switch sort the options array alphabetically
+      this.sortArray(this.addOptionsArr);
       let exoticsArr = [];
       let proficient = [""];
       let feats = [...this.level.getHeroFeats()];
@@ -939,7 +967,7 @@ selectFeat(feat: string, type: string){
         inParan.push(words[i]);
       }
     }
-      console.log("no Parans",inParan.join(' '))
+      // console.log("no Parans",inParan.join(' '))
       proficient.push(inParan.join(' '))
           }
         }
@@ -1170,7 +1198,6 @@ selectedPower(power: any){
 }
 
 acceptPower(){
- 
   if (this.numPowers > 0 && this.heroForceSuite.length < this.maxPowers){
     this.addPower(this.forcePower)
   }

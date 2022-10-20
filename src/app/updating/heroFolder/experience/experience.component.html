@@ -46,6 +46,7 @@
                      <option>Select</option>
                      <option *ngFor="let addOpt of addOptionsArr">{{addOpt}}</option>
              </select>
+             
              <button (click)="addFeat(noClassFeat.value, addOption.value, 'yes')">Add Feat</button>
             </div>
             <section *ngIf="showForcePowers">

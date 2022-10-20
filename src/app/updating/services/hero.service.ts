@@ -20,6 +20,7 @@ updateAbs = new EventEmitter();
 distroCredits = new EventEmitter ();
 invokeCalculator = new EventEmitter();
 setSavedCredits = new EventEmitter();
+forcePowersUpdate = new EventEmitter();
 
 //  --Invoking Functions
 enforceConditions(){
@@ -285,8 +286,10 @@ getForcePowers(){
   return this.forcePowers;
 }
 addForcePowers(fp: Array<any>){
-  let temp = [...this.forcePowers];
-  this.forcePowers = [...temp, ...fp];
+  this.forcePowers = [...this.forcePowers, ...fp];
+  console.log("added the powers", fp, this.forcePowers);
+  // need to add a trigger to update charsheet when function runs
+  this.forcePowersUpdate.emit(this.forcePowers);
 }
 
 

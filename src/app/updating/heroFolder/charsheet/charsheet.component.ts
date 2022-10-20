@@ -116,6 +116,9 @@ forceRegimens: string = "";
         this.credits = creds;
       }
     })
+    this.heroservice.forcePowersUpdate.subscribe((powers)=>{
+      this.forcePowers = powers;
+    })
   }
   //  gets the hero data from the user selection from the local storage/db
   getHero(name: string){  
@@ -247,8 +250,8 @@ async updateStats(){
   this.forceTechniques = (this.savedHero.forceNotes == undefined || this.savedHero.forceNotes.forceTechniques == undefined)? "": this.savedHero.forceNotes.forceTechniques;
   this.forceSecrets = (this.savedHero.forceNotes == undefined || this.savedHero.forceNotes.forceSecrets == undefined)? "": this.savedHero.forceNotes.forceSecrets;
   this.forceRegimens = (this.savedHero.forceNotes == undefined || this.savedHero.forceNotes.forceRegimens == undefined)? "": this.savedHero.forceNotes.forceRegimens;
-  await (this.savedHero.currentArmor == undefined)? "nothing":this.currentArmor = this.savedHero.currentArmor; 
-  await (this.savedHero.attacks == undefined || this.savedHero.attacks.length == 0)? "nothing":this.heroAttacks= [...this.savedHero.attacks];
+  (this.savedHero.currentArmor == undefined)? "nothing":this.currentArmor = this.savedHero.currentArmor; 
+  (this.savedHero.attacks == undefined || this.savedHero.attacks.length == 0)? "nothing":this.heroAttacks= [...this.savedHero.attacks];
   (this.savedHero.equipment == undefined || this.savedHero.equipment.length == 0)? "nothing": this.heroInventory = [...this.savedHero.equipment];
   this.maxHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[1]: this.savedHero.hp;
   this.currentHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[0]: this.savedHero.hp;
@@ -256,6 +259,7 @@ async updateStats(){
   if(this.savedHero.forcePowers != undefined){
     this.forcePowers = [...this.savedHero.forcePowers];
     this.forceUser = true;
+    this.heroservice.setForcePowers(this.savedHero.forcePowers);
   } 
    if(this.savedHero.currentXp == undefined){
     this.currentXp = 0
@@ -278,9 +282,7 @@ async heroSets(){
   this.heroservice.setClassBonuses(this.heroClass);
   this.heroservice.getCarry();
   this.level.setHeroClassObj(this.heroClass);
-  
-  
-   
+    
 }
 //  gets values for variables by calling the methods
 async heroGets(){
@@ -403,7 +405,7 @@ if (lvlObj.talents.name != ''){
 const classObj = this.level.getHeroClassObj();
 let vals = Object.values(classObj);
 let num = vals.reduce((prev: any, curr: any)=> prev + curr);
-console.log("the values",vals, num);
+// console.log("the values",vals, num);
 (Number(num) < this.heroLevel)? this.levelUp = true: this.levelUp = false;
 this.heroClass = this.level.getHeroClassObj();
 }
@@ -450,7 +452,6 @@ saveNotes(key: string, value: any){
   }
 
 }
-
 
 // saves the current configurations of the hero by removing the item in localstorage and adding it back
 async updateHero(){ 

@@ -7,36 +7,37 @@ import { Observable } from 'rxjs';
 })
 export class SwapiService {
 
-swApitUrl: string = "https://swsagaapi.herokuapp.com/"
+// swApitUrl: string = "https://swsagaapi.herokuapp.com/" postgres db
+swApiUrl: string = "https://swsagabe01.herokuapp.com/";
 
   constructor(private http: HttpClient) { }
 
   getSpecies(): Observable<any> {
-    return this.http.get(this.swApitUrl + 'species');
+    return this.http.get(this.swApiUrl + 'species');
   }
 
   getFeats(): Observable<any> {
-    return this.http.get(this.swApitUrl + 'feats');
+    return this.http.get(this.swApiUrl + 'feats');
   }
 
   getTalents(): Observable<any> {
-    return this.http.get(this.swApitUrl + 'talents');
+    return this.http.get(this.swApiUrl + 'talents');
   }
 
   getTalentTree(): Observable<any> {
-    return this.http.get(this.swApitUrl + 'talenttree');
+    return this.http.get(this.swApiUrl + 'talenttree');
   }
   getArmors(): Observable<any> {
-    return this.http.get(this.swApitUrl + 'armors');
+    return this.http.get(this.swApiUrl + 'armors');
   }
   getMelees(): Observable<any> {
-    return this.http.get(this.swApitUrl + 'melees');
+    return this.http.get(this.swApiUrl + 'melees');
   }
   getRanged(): Observable<any> {
-    return this.http.get(this.swApitUrl + 'ranger');
+    return this.http.get(this.swApiUrl + 'ranger');
   }
   getEquip(): Observable<any> {
-    return this.http.get(this.swApitUrl + 'equipment');
+    return this.http.get(this.swApiUrl + 'equipment');
   }
 
 }
