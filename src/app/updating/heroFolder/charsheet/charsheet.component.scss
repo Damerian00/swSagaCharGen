@@ -62,7 +62,11 @@
         margin: 0 .25rem;
        
     }
-
+.fps{
+    border: 2px inset black;
+    padding: 5px;
+    border-radius: 10px;
+}
 }
 .split-box{
     display:flex;

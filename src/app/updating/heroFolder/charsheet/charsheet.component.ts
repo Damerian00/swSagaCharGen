@@ -45,6 +45,7 @@ xpModalToggle: boolean = false;
 levelUp : boolean = false;
 showSpecQual: boolean = false;
 forceUser: boolean = false;
+addFPs: boolean = false;
 //  Numbers & Strings
 savedName: string = "";
 tempId: any;
@@ -75,6 +76,7 @@ grappleMisc: number = 0;
 langsAllowed: number = 0;
 credits: number = 0;
 attack: number = 0;
+totAllotForPow : number = 0;
 // holds the values for notes user adds
 specialQuals: string = '';
 heroNotes: string = '';
@@ -256,10 +258,12 @@ async updateStats(){
   this.maxHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[1]: this.savedHero.hp;
   this.currentHp = (Array.isArray(this.savedHero.hp))? this.savedHero.hp[0]: this.savedHero.hp;
   this.credits = (this.savedHero.credits == undefined)? 0: this.savedHero.credits;
-  if(this.savedHero.forcePowers != undefined){
+  if(this.savedHero.forcePowers.length > 0){
     this.forcePowers = [...this.savedHero.forcePowers];
     this.forceUser = true;
     this.heroservice.setForcePowers(this.savedHero.forcePowers);
+  }else{
+    this.forceUser = false;
   } 
    if(this.savedHero.currentXp == undefined){
     this.currentXp = 0
@@ -291,6 +295,7 @@ async heroGets(){
   this.calcGrapple("Strength");
   this.calcLangsAllowed();
   this.updatelanguages(this.heroLanguages);
+  (this.forceUser == true)? this.checkForcePowers():'nothing';
   // console.log('the absMods', this.abilityMod)
 }
 //  sets defenses to value output by defenses componenet
@@ -408,6 +413,33 @@ let num = vals.reduce((prev: any, curr: any)=> prev + curr);
 // console.log("the values",vals, num);
 (Number(num) < this.heroLevel)? this.levelUp = true: this.levelUp = false;
 this.heroClass = this.level.getHeroClassObj();
+(this.forceUser == true)? this.checkForcePowers():'nothing';
+this.calcLangsAllowed();
+}
+checkForcePowers(){
+  const feats = this.level.getHeroFeats();
+  const abs = this.heroservice.getAbilityModifier();
+  let wisdom = abs.Wisdom;
+  let currentPowers = this.heroservice.getForcePowers().length;
+  let ft = (feats.includes("Jedi Heritage"))? 2:0; 
+  // console.log(ft);     
+  if (feats.includes("Force Training")){
+    feats.forEach((el: any)=>{
+      if (el == "Force Training"){
+        if (feats.includes("Jedi Heritage")){
+          ft += 3;
+        }else{
+          ft += 1;
+        }
+      }  
+    })
+  }
+  // this.numPowers = (wisdom + ft) - currentPowers;
+  this.totAllotForPow = (wisdom + ft) - currentPowers;
+  // console.log("checking powers: ",currentPowers, this.totAllotForPow);
+}
+showFPs(){
+  this.addFPs = true;
 }
 upDateAbs(){
 this.heroAbilities = this.heroservice.getAbilities();
@@ -418,10 +450,7 @@ editNotes(value: string){
     case "specQual":
       this.showSpecQual = !this.showSpecQual;
     break;
-
   }
-
-
 }
 saveNotes(key: string, value: any){
   switch (key){

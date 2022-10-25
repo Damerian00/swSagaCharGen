@@ -20,8 +20,14 @@
     <aside *ngIf="showLangForm" class="lang-table">
         <select #langSelector value="selected" (change)="addToSelection(langSelector.value)">
             <option>Select a Language to add</option>
+            <option>Add Language</option>
             <option *ngFor="let lngOpt of langOptions">{{lngOpt}}</option>
         </select>
+        <section *ngIf="newLangForm">
+            <label>Language to add:</label>
+            <input #newLang type="text">
+            <button (click)="addToSelection(newLang.value)">Add Language</button>
+        </section>
         <div *ngFor="let selected of selectionArr let i = index" class="box">
             <p>{{selected}}</p>
             <button (click)="removeFromSelection(i)">Remove {{selected}}</button>

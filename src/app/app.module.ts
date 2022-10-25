@@ -24,6 +24,7 @@ import { EncumbranceComponent } from './updating/heroFolder/encumbrance/encumbra
 import { LanguageComponent } from './updating/heroFolder/languages/language.component';
 import { ExperienceComponent } from './updating/heroFolder/experience/experience.component';
 import { CreditsComponent } from './updating/heroFolder/credits/credits.component';
+import { ForcepowersComponent } from './updating/heroFolder/forcepowers/forcepowers.component';
 
 
 
@@ -50,6 +51,7 @@ import { CreditsComponent } from './updating/heroFolder/credits/credits.componen
     LanguageComponent,
     ExperienceComponent,
     CreditsComponent,
+    ForcepowersComponent,
    
   ],
   imports: [

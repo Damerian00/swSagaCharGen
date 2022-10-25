@@ -21,6 +21,7 @@ distroCredits = new EventEmitter ();
 invokeCalculator = new EventEmitter();
 setSavedCredits = new EventEmitter();
 forcePowersUpdate = new EventEmitter();
+checkForcePowerReset = new EventEmitter();
 
 //  --Invoking Functions
 enforceConditions(){
@@ -286,13 +287,30 @@ getForcePowers(){
   return this.forcePowers;
 }
 addForcePowers(fp: Array<any>){
+  if (fp.length == 0){
+    return;
+  }
   this.forcePowers = [...this.forcePowers, ...fp];
-  console.log("added the powers", fp, this.forcePowers);
+  // console.log("added the powers", fp);
+  // console.table(this.forcePowers);
   // need to add a trigger to update charsheet when function runs
   this.forcePowersUpdate.emit(this.forcePowers);
 }
-
-
+removeForcePowers(fp: Array<any>){
+  if (fp.length == 0){
+    return;
+  }
+  // console.log("removing", fp);
+  fp.forEach((el:any) =>{
+    let index = this.forcePowers.findIndex((element)=> element.name == el.name);
+    // console.log("index",index);
+    this.forcePowers.splice(index,1);
+  })
+  // console.table(this.forcePowers);
+}
+checkFeatPower(){
+  this.checkForcePowerReset.emit();
+}
 
 }
 

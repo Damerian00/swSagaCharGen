@@ -9,16 +9,21 @@ import { HeroService } from "../../services/hero.service";
 
 })
 export class LanguageComponent implements OnInit {
-
+//   Variables
+//  inputs and Outputs
 @Input() knownLanguages:Array<string> = [];
 @Input () totalLangs: number = 0;
 @Output () savedLanguages : EventEmitter <any> = new EventEmitter <any> ();
-    currentLangs: number = 0;
-    allLanguagesArr: Array<string> = ["Basic", "Binary", "Bocce", "Bothese", "Cerean", "Dosh", "Durese", "Ewokese", "Gamorrean", "Gunganese", "High Galactic", "Huttese", "Ithorese", "Jawa Trade Language", "Kel Dor", "Mon Calamarian","Quarrenese","Rodese","Ryl","Shyriiwook","Sullustese","Zabrak","Altirish","Anzat","Anarrese","Dromnyr","Chadra-Fan","Cheunh","Ebruchese","Killik","Kreva","Minnisiat (Trade Language)","Nikto","Rakata","Rammocate (Trade Language)","Shistavanen","Sluissese","Squibbian","Ssi-Ruuvi","Sy Bisti (Trade Language)","Tibranese","Tof","Vagaari","Verpine","Military Sign"];
-    langOptions: Array<string> = [];
-    showLangForm: boolean = false;
-    selectionArr: Array<string> = [];
-    heroLanguages: Array<string> = [];
+//  Arrays
+allLanguagesArr: Array<string> = ["Basic", "Binary", "Bocce", "Bothese", "Cerean", "Dosh", "Durese", "Ewokese", "Gamorrean", "Gunganese", "High Galactic", "Huttese", "Ithorese", "Jawa Trade Language", "Kel Dor", "Mon Calamarian","Quarrenese","Rodese","Ryl","Shyriiwook","Sullustese","Zabrak","Altirish","Anzat","Anarrese","Dromnyr","Chadra-Fan","Cheunh","Ebruchese","Killik","Kreva","Minnisiat (Trade Language)","Nikto","Rakata","Rammocate (Trade Language)","Shistavanen","Sluissese","Squibbian","Ssi-Ruuvi","Sy Bisti (Trade Language)","Tibranese","Tof","Vagaari","Verpine","Military Sign"];
+langOptions: Array<string> = [];
+selectionArr: Array<string> = [];
+heroLanguages: Array<string> = [];
+//  Booleans
+showLangForm: boolean = false;
+newLangForm: boolean = false;
+//  Misc
+currentLangs: number = 0;
     constructor(private heroservice : HeroService) { }
     ngOnInit(): void {
         this.currentLangs = this.knownLanguages.length;
@@ -56,12 +61,15 @@ toggleAddLanguage(char: string){
     this.showLangForm = !this.showLangForm;
 }
 addToSelection(selection: any){
-    
-    if (selection == "Select a Language to add" || this.selectionArr.includes(selection)){
+    if (selection == "Select a Language to add" || this.selectionArr.includes(selection) || selection == ''){
         return;
-    }else if ( (this.selectionArr.length + this.heroLanguages.length) >= this.totalLangs){
+    }else if (selection == 'Add Language'){
+        this.newLangForm = true;
+        return;
+    } else if ( (this.selectionArr.length + this.heroLanguages.length) >= this.totalLangs){
         return;
     }
+    this.newLangForm = false;
     this.selectionArr.push(selection);
     console.log(this.selectionArr, this.heroLanguages, this.totalLangs);
     

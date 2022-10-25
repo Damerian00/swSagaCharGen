@@ -198,11 +198,13 @@
                 <textarea (change)="saveNotes('attackNotes', $event)" cols="30" rows="10">{{specAttackNotes}}</textarea>  
             </div>
             <div class="tb" *ngIf="forceUser">
-                <!-- need to have an ng if to show if they are a jedi and have force powers-->
                 <h6>Force Powers</h6>
+                <!-- need to have it check total of force powers alloted and current ones-->
+                <button *ngIf = "forcePowers.length < totAllotForPow" (click)="showFPs()">Add Force Powers</button>
                 <div class="box">
-                    <p *ngFor="let power of forcePowers">{{power.name}}</p>
+                    <p class="fps" *ngFor="let power of forcePowers">{{power.name}}</p>
                 </div>
+                <forcepowers *ngIf="addFPs && forcePowers.length < totAllotForPow"></forcepowers>
             </div>
             <div class="tb">
                 <h6>Starship Maneuvers</h6>

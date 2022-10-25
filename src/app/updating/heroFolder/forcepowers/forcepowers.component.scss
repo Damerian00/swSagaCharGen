@@ -1,0 +1,16 @@
+.box{
+    align-items: center;
+    justify-content: space-evenly;
+    flex:1;
+    display:flex;
+    p{
+        margin: 0 .25rem;
+       
+    }
+      
+}
+.powers{
+    margin: 0.25rem;
+    border: 1px solid black;
+    background-color: rgba(212, 212, 212, 0.884);
+}

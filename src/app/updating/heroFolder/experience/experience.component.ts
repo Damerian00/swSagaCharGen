@@ -205,7 +205,7 @@ checkHeroLvl(){
 }
 
 thirdLevelFeat(lvl : number){
-  console.log("this is your level", lvl)
+  // console.log("this is your level", lvl)
   if (lvl % 3 === 0){
     this.addFeatOptions();
     return true;
@@ -214,7 +214,7 @@ thirdLevelFeat(lvl : number){
   }
 }
 everyFourth(lvl : number){
-  console.log("the count", lvl)
+  // console.log("the count", lvl)
   if (lvl % 4 === 0){
     this.displayCurrentAbs(true);
     return true;
@@ -364,7 +364,7 @@ async addFeatOptions(){
   this.speciesFeats = traits["Species Feats"];
   if (Object.keys(traits).includes("Species Feats")){
     let tempArr = []
-    console.log("keys:", traits)
+    // console.log("keys:", traits)
     let keys =  Object.keys(this.speciesFeats);
     let vals =  Object.values(this.speciesFeats);
     for (let i=0; i<keys.length;i++){
@@ -378,7 +378,7 @@ async addFeatOptions(){
   }
   featsArr = [...this.apifeatsArr, ...tempArr]
 }
-console.log(this.lvlUpObject.class)
+// console.log(this.lvlUpObject.class)
   featsArr.forEach((el:any)=>{
     // console.log("the list:",currFeats);
     if (this.repeatableFeats.includes(el.name) || currFeats.includes(el.name) == false){
@@ -552,7 +552,7 @@ checkTalentReqs(arr: any, talent: string){
 // if a talent has an additional option this function creates an array of those options
 addTalentOptions(key: string, talent : any){
   this.updateSkills = false;
-  console.log("here's a talent:", key, talent)
+  // console.log("here's a talent:", key, talent)
   let heroTalents = this.level.getHeroTalents();
   let tempArr: Array <any> = [];
   let meleeExotic: Array<any> = [];
@@ -795,6 +795,7 @@ countTrees(talents: any){
   // console.log("heres trees", obj)
 }
 selectFeat(feat: string, type: string){
+  this.forceTraining = false;
   if (feat == "Select"){
     if (type == 'regular'){
       this.featName = "";
@@ -917,25 +918,8 @@ selectFeat(feat: string, type: string){
       })
         break;
         case "Force Training":
-        this.showForcePowers = true;
         this.showRegFeatOptions = false;
-        let wisdom = abs.Wisdom;
-        let currentPowers = this.heroservice.getForcePowers().length;
-        let ft = (heroFeats.includes("Jedi Heritage"))? 3:1;      
-        if (heroFeats.includes("Force Training")){
-          heroFeats.forEach((el: any)=>{
-            if (el == "Force Training"){
-              if (heroFeats.includes("Jedi Heritage")){
-                ft += 3;
-              }else{
-                ft += 1;
-              }
-            }  
-          })
-        }
-        console.log("they have: ",currentPowers, this.heroservice.getForcePowers());
-        this.numPowers = (wisdom + ft) - currentPowers;
-        this.maxPowers = (wisdom + ft) - currentPowers;
+        this.forceTraining = true;
         break;
         case "Withdrawal Strike":
 
@@ -952,7 +936,7 @@ selectFeat(feat: string, type: string){
       let feats = [...this.level.getHeroFeats()];
       for (let i =0; i < feats.length; i++){
         let words = feats[i].split(' ')
-        console.log("these are current feats", words);
+        // console.log("these are current feats", words);
           if (words[0] == "Weapon" && words[1] == "Proficiency"){
             let inParan = []
             for (let i = 2; i<words.length; i++){
@@ -1082,7 +1066,8 @@ if (unrestricted == 'yes'){
     this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?  [...this.classStartFeatsArr, ...tempFeat]:  [...tempFeat];
   }
 }
-
+this.showForcePowers = (feat == "Force Training")? true:false;
+if (feat != "Force Training"){this.heroservice.checkFeatPower()};
 }
 checkTimesLeveled(){
   let obj = this.level.getHeroClassObj();
@@ -1108,7 +1093,7 @@ addClassSelection(selection: any){
   this.rolledHp = 0;
   if (curClass.includes(selection)== false){
     this.addStartFeats(selection);
-    console.log("class obj:",curClass);
+    // console.log("class obj:",curClass);
   }
   this.addClassFeatOptions(this.lvlUpObject.class);
 }
@@ -1235,9 +1220,9 @@ levelUpHero(){
     }
     this.heroservice.setSkills(skills);
   }
-  (this.heroForceSuite.length > 0)? this.heroservice.addForcePowers(this.heroForceSuite):'nothing';
+  // (this.heroForceSuite.length > 0)? this.heroservice.addForcePowers(this.heroForceSuite):'nothing';
  // adds the Use the Force skill to the skills array
- console.log('the skills',skills);
+//  console.log('the skills',skills);
   if (this.lvlUpObject.class == "Jedi" && skills.length < 24 || this.lvlUpObject.feats.includes("Force Sensitivity")){
     let jediSkill = {
       "skill_name": 'Use the Force',
@@ -1257,7 +1242,7 @@ levelUpHero(){
   if (this.lvlUpObject.abilities.length == 2 && this.lvlUpObject.abilities.includes("") == false){
     this.heroservice.increaseAbilities(this.lvlUpObject.abilities);
   }
-  console.log("leveling this", this.lvlUpObject, this.heroForceSuite);
+  // console.log("leveling this", this.lvlUpObject, this.heroForceSuite);
   this.levelUpModal = false;
   this.heroLvlUpObj.emit(this.lvlUpObject);
   this.lvlUpObject = {
