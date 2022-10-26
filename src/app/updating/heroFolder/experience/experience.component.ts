@@ -55,7 +55,11 @@ repeatFeats: Array<string> = ["Improved Damage Threshold","Force Training", "Ext
 heroForceSuite: Array <any> = []
 forcePowersArr: forcePowers[] = forcePowersArr;
 saberFormPowers: saberPowers[] = saberPowersArr;
-
+exoticMelee: Array<any> = [];
+exoticRange: Array<any> = [];
+validatedArr: Array<boolean> = [];
+skillValuetoUpdate: Array<string> = [];
+adaptTalentOptsArr: Array<string> = [];
 //  Objects
 lvlUpObject = {
   "class" : "",
@@ -70,11 +74,7 @@ babArr = {
   "special" : [0,0,1,2,3,3,4,5,6,6,7,8,9,9,10,11,12,12,13,14,15],
 }
 abilities: any = {};
-validatedArr: Array<boolean> = [];
-skillValuetoUpdate: Array<string> = [];
 speciesFeats: any;
-exoticMelee: Array<any> = [];
-exoticRange: Array<any> = [];
 
 //  Boolean
 levelUpModal: boolean = false;
@@ -90,6 +90,7 @@ updateSkills: boolean = false;
 unrestrictFlag: boolean = false;
 forceTraining: boolean = false;
 showForcePowers: boolean = false;
+showAdaptOpts: boolean = false;
 //  Numbers & Strings
 levelPts: number = 0;
 currentXp: number = 0;
@@ -104,6 +105,8 @@ classFeatName: string = '';
 classFeatDesc: string = ''
 talentName: string = '';
 talentDesc: string = '';
+adaptTalentName: string = '';
+adaptTalentDesc: string = '';
 unrestrictFeat : string = "";
 forceName: string = "";
 forceDesc: string = "";
@@ -201,7 +204,14 @@ checkHeroLvl(){
   let count:any = hcArr.reduce((prev: any, curr: any) => prev + curr, 1);
   this.showNoClassFeat = (this.thirdLevelFeat(count))? true: false;
   this.showAbs = (this.everyFourth(count))? true: false;
-  if (num % 2 == 0){ this.showClassFeat = true; this.showTalent = false }else{ this.showClassFeat = false; this.showTalent = true; this.addFeat('','none', 'yes'); this.countTrees(this.level.getHeroTalents()) }
+  if (num % 2 == 0){
+     this.showClassFeat = true; 
+     this.showTalent = false; 
+    }else{ 
+      this.showClassFeat = false; this.showTalent = true;
+      this.addFeat('','none', 'yes');
+      this.countTrees(this.level.getHeroTalents());
+     }
 }
 
 thirdLevelFeat(lvl : number){
@@ -426,7 +436,7 @@ checkClassReqs(feat : string){
       break;
     case "Shake It Off":
       let skills = this.heroservice.getSkills();
-      console.log(skills);
+      // console.log(skills);
       let skill = true;
       for (let i = 0; i < skills.length; i++){
         if (skills[i].skill_name == "Endurance"){
@@ -442,7 +452,7 @@ checkClassReqs(feat : string){
   return key;
 }
 // creates the array for selecting when choosing a talent
-addTalentSelectables(selectedClass : string, keyWaord: string){
+addTalentSelectables(selectedClass : string, keyWord: string){
   // console.log("adding selectables", selectedClass);
   let tempTree = [];
   this.clearArr(this.importTalentsArr);
@@ -455,20 +465,20 @@ addTalentSelectables(selectedClass : string, keyWaord: string){
   for (let i=0; i<this.apiTalentsArr.length; i++){
     if (tempTree.includes(this.apiTalentsArr[i].TalentTreeId)){
       if (this.apiTalentsArr[i].preReqs.req1 == "none"){
-        (keyWaord == 'talent')?this.importTalentsArr.push(this.apiTalentsArr[i]):this.addOptionsArr.push(this.apiTalentsArr[i].name);
+        (keyWord == 'talent')?this.importTalentsArr.push(this.apiTalentsArr[i]):this.addOptionsArr.push(this.apiTalentsArr[i].name);
       }else{
         let preReqs = this.apiTalentsArr[i].preReqs
         for (let p = 0; p< Object.keys(preReqs).length; p++){
           let vals = Object.values(preReqs)[p];
         //  console.log(this.apiTalentsArr[i])
           if (this.checkArrLength(vals, this.apiTalentsArr[i].name) == true){
-            (keyWaord == 'talent')?this.importTalentsArr.push(this.apiTalentsArr[i]):this.addOptionsArr.push(this.apiTalentsArr[i].name);
+            (keyWord == 'talent')?this.importTalentsArr.push(this.apiTalentsArr[i]):this.addOptionsArr.push(this.apiTalentsArr[i].name);
           }
         }
       }
     }
   }
-  (keyWaord == 'talent')?this.sortArray(this.importTalentsArr):this.sortArray(this.addOptionsArr);
+  (keyWord == 'talent')?this.sortArray(this.importTalentsArr):this.sortArray(this.addOptionsArr);
   // console.log(this.importTalentsArr, "<--imp talentsarr");
 }
 checkArrLength(arr: any, talent: string){
@@ -550,7 +560,7 @@ checkTalentReqs(arr: any, talent: string){
 }
 
 // if a talent has an additional option this function creates an array of those options
-addTalentOptions(key: string, talent : any){
+addTalentOptions(key: string, talent : any, adapt: string){
   this.updateSkills = false;
   // console.log("here's a talent:", key, talent)
   let heroTalents = this.level.getHeroTalents();
@@ -728,36 +738,55 @@ addTalentOptions(key: string, talent : any){
 
       }
     break;
-
-
   }
-  this.addOptionsArr = [...tempArr];
+  (adapt == 'yes')?this.adaptTalentOptsArr = [...tempArr]: this.addOptionsArr = [...tempArr];
 }
-selectTalent(talent : string){
-  if (talent == "Select"){
+selectTalent(talent : string, keyWord: string){
+  if (talent == "Select" && keyWord != 'aTalent'){
     this.talentName = "";
     this.talentDesc = "";
     this.showTalentOptions = false;
     return;
+  }else if (talent == 'Select' && keyWord == 'aTalent'){
+    this.adaptTalentName = '';
+    this.adaptTalentDesc = '';
+    return
   }
   this.showTalentOptions = false;
   let index = this.apiTalentsArr.findIndex((el : any)=> el.name == talent);
-  this.talentName = this.apiTalentsArr[index].name;
-  this.talentDesc = this.apiTalentsArr[index].description;
+  if (keyWord != 'aTalent'){
+    this.talentName = this.apiTalentsArr[index].name;
+    this.talentDesc = this.apiTalentsArr[index].description;
+  }else{
+    this.adaptTalentName = this.apiTalentsArr[index].name;
+    this.adaptTalentDesc = this.apiTalentsArr[index].description;
+  }
   if (this.apiTalentsArr[index].addOption.includes("none") == false){
     this.showTalentOptions = true;
     let skills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
     let force = ["Share Force Secret","Share Force Technique"];
     if (skills.includes(this.apiTalentsArr[index].name)){
-      this.addTalentOptions("skills",this.apiTalentsArr[index]);
+      (keyWord == 'aTalent')?this.addTalentOptions('skills',this.apiTalentsArr[index],'yes'):this.addTalentOptions("skills",this.apiTalentsArr[index],'no');
     }else if(force.includes(this.apiTalentsArr[index].name)){
-      this.addTalentOptions("force", this.apiTalentsArr[index]);
+      this.addTalentOptions("force", this.apiTalentsArr[index], 'no');
     }else{
-      this.addTalentOptions(this.apiTalentsArr[index].addOption[0], this.apiTalentsArr[index]);
+      this.addTalentOptions(this.apiTalentsArr[index].addOption[0], this.apiTalentsArr[index], 'no');
     }
 
   }
 }
+// selectAdaptTalent(talent: string){
+//   if (talent == 'Select'){
+//     this.adaptTalentName = '';
+//     this.adaptTalentDesc = '';
+//     return;
+//   }
+//   let index = this.apiTalentsArr.findIndex((el : any)=> el.name == talent);
+//   this.adaptTalentName = this.apiTalentsArr[index].name;
+//   this.adaptTalentDesc = this.apiTalentsArr[index].description;
+//   let skills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
+//   this.addTalentOptions("skills",this.apiTalentsArr[0])
+// }
 addTalent(talent: string, opt : string){
   if (talent == "Select" || opt == "Select"){
     return;
@@ -775,6 +804,7 @@ addTalent(talent: string, opt : string){
   // console.log("the obj:", this.lvlUpObject);
   this.checkSelections('talent');
 }
+// counts the number of talents in a talent tree
 countTrees(talents: any){
   // console.log("counting", talents)
   let obj:any = {};
@@ -794,6 +824,7 @@ countTrees(talents: any){
   this.addTalentSelectables(this.lvlUpObject.class, 'talent')
   // console.log("heres trees", obj)
 }
+//  takes user input to indicate which feat was choosen
 selectFeat(feat: string, type: string){
   this.forceTraining = false;
   if (feat == "Select"){
@@ -805,12 +836,15 @@ selectFeat(feat: string, type: string){
       this.classFeatDesc = "";
     }
     return;
-  } 
+  }
+  //  remove previous data from opts array if present
   this.clearArr(this.addOptionsArr);
   let skillsTrained = [];
   let skillsFocused = [];
   let optionFeats = ["Skill Focus","Skill Training","Weapon Focus","Weapon Proficiency","Adaptable Talent", "Recurring Success","Exotic Weapon Proficiency","Force Training","Withdrawal Strike","Mission Specialist"]
+  //  if selected feat is included in the optionFeats array execute code
   if (optionFeats.includes(feat)){
+  //  if the feat is the first or second index of the optionFeats array
     if (feat == optionFeats[0] || feat == optionFeats[1] ){
       let skills = this.heroservice.getSkills();
       for (let i = 0; i<skills.length; i++){
@@ -822,8 +856,9 @@ selectFeat(feat: string, type: string){
         }
       }
       this.addOptionsArr = (feat == "Skill Training")?  [...skillsTrained]: [...skillsFocused];
-      
+  // if feat isn't index 1 or 2 then execute code
     }else{
+      this.showAdaptOpts = false;
       let heroFeats = this.level.getHeroFeats();
       const species = this.heroservice.getSpecies();
       const abs = this.heroservice.getAbilityModifier();
@@ -857,8 +892,9 @@ selectFeat(feat: string, type: string){
         }
         keys.forEach((el:any)=> {
           this.addTalentSelectables(el,'feat');
-          console.log("pushed", el);
+          // console.log("pushed", el);
       })
+      this.showAdaptOpts = true;
       // need to set something up to add options if a talent is choosen that has additional options
         break;
         case "Recurring Success":
@@ -1032,6 +1068,13 @@ checkSelections(key: string){
   }
 
 }
+//  used only if adaptable talent was selected to add feat options to talents
+addAdaptFeat(feat: string, talent: string, option: string){
+  if (feat == "Select" || option == "Select" || talent == "Select"){
+    return;
+  }
+  (option == 'none')? this.addFeat(feat, talent, 'yes'):this.addFeat(feat, `${talent} (${option})`, 'yes');
+}
 addFeat(feat: string, option: string, unrestricted: string){
   if (feat == "Select" || option == "Select"){
     return;
@@ -1058,6 +1101,7 @@ if (unrestricted == 'yes'){
   this.unrestrictFlag = true;
   this.unrestrictFeat = tempFeat[0];
   this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?[...this.classStartFeatsArr, ...tempFeat]:[...tempFeat]
+  if (feat == "Adaptable Talent")this.addTalentSelectables(this.lvlUpObject.class, 'talent');
 }else{
   this.checkSelections('feat');
   if (this.unrestrictFlag == true){
@@ -1263,7 +1307,7 @@ resetAllSelections(reset: string, cs: string){
   this.selectHPIncrease(reset);
   this.selectFeat(reset, 'regular');
   this.addFeat(reset, 'none', 'yes');
-  this.selectTalent(reset);
+  this.selectTalent(reset, 'talent');
   this.addTalent(reset, 'none')
   this.showAbs = false;
   this.showNoClassFeat = false;

@@ -137,8 +137,10 @@ forceRegimens: string = "";
       // this.calcDT(this.currentDtType);
     }
   }
+//  switches the view to the list of saved heroes
 switchHero(){
   this.heroPull = false;
+  this.levelUp = false;
 }
   testChange(){ 
     (this.savedHero['test'] == 1)? this.savedHero['test'] = 0:this.savedHero['test'] = 1;
@@ -219,7 +221,7 @@ updatelanguages(langs : any){
   this.savedLanguages = [...langs];
   this.heroservice.setLanguages(langs)
 }
-// updates hero stats and cvalls the setters and getters
+// updates hero stats and calls the setters and getters
 async updateStats(){
   //timeout interval to call this function once charactersheet loads properly.
   setTimeout(() => {
@@ -537,7 +539,7 @@ deleteHero(index: any, name: string){
   if (prompt(`Are you sure you want to delete ${name}? If so type heroes name then press ok`) == name){
     this.local.removeHero(this.tempId);
     window.location.href = '/update-hero';
-    console.log("success")
+    // console.log("success")
   }
 
 }

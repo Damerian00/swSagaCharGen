@@ -41,13 +41,31 @@
             <p *ngIf="featName != ''">Selected Feat: {{featName}}</p>
             <p *ngIf="featDesc !=''">Description: {{featDesc}}</p>
             <div *ngIf="showRegFeatOptions" class="tb">
-                 <label>Select additional Option</label>
-                 <select  #addOption name="addOption">
-                     <option>Select</option>
-                     <option *ngFor="let addOpt of addOptionsArr">{{addOpt}}</option>
-             </select>
-             
-             <button (click)="addFeat(noClassFeat.value, addOption.value, 'yes')">Add Feat</button>
+                <div *ngIf="showAdaptOpts == false">
+                     <label>Select additional Option</label>
+                     <select #addOption name="addOption">
+                         <option>Select</option>
+                         <option *ngFor="let addOpt of addOptionsArr">{{addOpt}}</option>
+                 </select>
+                 <button (click)="addFeat(noClassFeat.value, addOption.value, 'yes')">Add Feat</button>
+                 </div>
+             <div *ngIf="showAdaptOpts">
+                <label>Select Talent to make adaptable:</label>
+                 <select #addAdaptTalent name="addOption" (change)="selectTalent(addAdaptTalent.value, 'aTalent')">
+                    <option>Select</option>
+                    <option *ngFor="let addOpt of addOptionsArr">{{addOpt}}</option>
+                </select>
+                <p *ngIf="adaptTalentName != ''">Adaptable Talent's Talent: {{adaptTalentName}}</p>
+                <p *ngIf="adaptTalentDesc !=''">Description: {{adaptTalentDesc}}</p>
+                <div *ngIf="adaptTalentOptsArr.length > 0">
+                    <select  #addAdaptTalentOption>
+                        <option>Select</option>
+                        <option *ngFor="let addOpt of adaptTalentOptsArr">{{addOpt}}</option>
+                    </select>
+                    <button (click)="addAdaptFeat(noClassFeat.value, addAdaptTalent.value, addAdaptTalentOption.value)">Add Feat</button>
+                </div>
+                    <button *ngIf="adaptTalentOptsArr.length == 0" (click)="addAdaptFeat(noClassFeat.value, addAdaptTalent.value, 'none')">Add Feat</button>
+             </div>
             </div>
             <button *ngIf="showRegFeatOptions == false" (click)="addFeat(noClassFeat.value, 'none', 'yes')">Add Feat</button>
             <forcepowers *ngIf="showForcePowers" [incomingFeat]="forceTraining"></forcepowers>
@@ -72,7 +90,7 @@
         </div>
         <div *ngIf="showTalent" class="tb">
             <Label>Select a Talent to add</Label>
-            <select #talentSelector name="talentSelector" (change)="selectTalent(talentSelector.value)">
+            <select #talentSelector name="talentSelector" (change)="selectTalent(talentSelector.value, 'talent')">
                 <option>Select</option>
                 <option *ngFor="let talent of importTalentsArr">{{talent.name}}</option>
             </select>

@@ -216,6 +216,7 @@ h6{
     align-items: center;
     justify-content: space-evenly;
     border: 1px solid black;
+    background-color: white;
     label{
         width:20ch;
        
@@ -225,13 +226,19 @@ h6{
         font-size: 1rem;
         background: -webkit-linear-gradient(rgb(250, 233, 2), rgb(7, 7, 7));
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        
+        -webkit-text-fill-color: transparent; 
         color: rgba(200, 214, 8, 0.89);
         &:hover{
            color:rgb(136, 138, 138);
             border: 2px inset rgba(185, 185, 185, 0.836);
-            
+            cursor: pointer;
+           background: webkit-linear-gradient(rgb(255, 238, 2), rgb(7, 7, 7));
+           -webkit-background-clip: content-box;
+           -webkit-text-fill-color: black;
+           
         } 
     }
+}
+.heroSelectBox{
+    background-color: black;
 }

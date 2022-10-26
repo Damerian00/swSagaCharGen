@@ -292,7 +292,8 @@
             <label>Species:</label>
             <p>{{hero.species.species_name}}</p>           
             <label>Level:</label>
-            <p>{{hero.level}}</p>
+            <p *ngIf="hero.level >= 1">{{hero.level}}</p>
+            <p *ngIf="hero.level == undefined">1</p>
             <button  (click)="deleteHero(i, hero.name)">DELETE</button>
         </div>
     </aside>
