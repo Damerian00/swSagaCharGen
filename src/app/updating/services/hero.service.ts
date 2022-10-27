@@ -124,7 +124,7 @@ increaseAbilities(arr: Array<string>){
   arr.forEach((el:any)=> {
     this.abilities[el] += 1;
   })
-  console.log("new abs:", this.abilities);
+  // console.log("new abs:", this.abilities);
   this.calcModifier();
   this.updateAbs.emit();
 }

@@ -560,759 +560,779 @@ checkTalentReqs(arr: any, talent: string){
 }
 
 // if a talent has an additional option this function creates an array of those options
-addTalentOptions(key: string, talent : any, adapt: string){
-  this.updateSkills = false;
-  // console.log("here's a talent:", key, talent)
-  let heroTalents = this.level.getHeroTalents();
-  let tempArr: Array <any> = [];
-  let meleeExotic: Array<any> = [];
-  let rangedExotic: Array<any> = [];
-  this.apiMeleeArr.forEach((el: any)=> {
-    if(el.w_type == "Exotic Weapons (Melee)"){
-      meleeExotic.push(el.name);
-    }else if (el.w_type == "Exotic Weapons (Ranged)"){
-      rangedExotic.push(el.name);
-    }
-  })
-  switch (key){
-    case "talentTree":
-      switch (talent.name){
-        case "Coordinated Leadership":
-        // list of talents user possess from LTT     
-        heroTalents.forEach((el:any) => {
-          if (el.TalentTreeId == "LTT"){
-            tempArr.push(el.name);
-          }
-        });
-        break;
-        case "Stolen Form":
-        // the list will be from the LFTT that the user meets the requirements for.
-
-        break;
-        case "Squadron Maneuvers":
-        // list talents that user possesses from either EPTT and GTT
-        heroTalents.forEach((el:any) => {
-          if (el.TalentTreeId == "EPTT" || el.TalentTreeId == "GTT"){
-            tempArr.push(el.name);
-          }
-        });
-
-        break;
-        case "Share Talent":
-        // list talents user possess from LCTT, DTT and LFTT
-        heroTalents.forEach((el:any) => {
-          if (el.TalentTreeId == "LCTT" || el.TalentTreeId == "DTT" || el.TalentTreeId == "LFTT"){
-            tempArr.push(el.name);
-          }
-        });
-        break;
+  addTalentOptions(key: string, talent : any, adapt: string){
+    this.updateSkills = false;
+    // console.log("here's a talent:", key, talent)
+    let heroTalents = this.level.getHeroTalents();
+    let tempArr: Array <any> = [];
+    let meleeExotic: Array<any> = [];
+    let rangedExotic: Array<any> = [];
+    this.apiMeleeArr.forEach((el: any)=> {
+      if(el.w_type == "Exotic Weapons (Melee)"){
+        meleeExotic.push(el.name);
+      }else if (el.w_type == "Exotic Weapons (Ranged)"){
+        rangedExotic.push(el.name);
       }
-    break;
-    case "proficient":
-      const feats = this.level.getHeroFeats();
-      feats.forEach((el: any) => {
-        let words = el.split(' ')
-          if (words[0] == "Weapon" && words[1] == "Proficiency"){
-            tempArr.push(el);
-          }
-      })
-      if (talent.name == "Accurate Blow"){
-        //  list of melee exotic and melee weapon groups user has proficiency with
-        feats.forEach((el:any)=> {
-          let words = el.split(' ')
-          if (words[0] == "Weapon" && words[1] == "Proficiency"){
-            let inParan = []
-            for (let i = 2; i<words.length; i++){
-      let len = words.length - 1
-       if (i == 2){
-           if (words.length == 3){
-           inParan.push(words[i].substring(1).slice(0,-1));
-         }else{
-           inParan.push(words[i].substring(1));
-         } 
-        } else if (i == len){
-             inParan.push(words[i].slice(0,-1));
+    })
+    switch (key){
+      case "talentTree":
+        switch (talent.name){
+          case "Coordinated Leadership":
+          // list of talents user possess from LTT     
+          heroTalents.forEach((el:any) => {
+            if (el.TalentTreeId == "LTT"){
+              tempArr.push(el.name);
             }
-      else{
-        inParan.push(words[i]);
-      }
-    }
-    let keyWord = inParan.join(' ');
-    if (this.meleeGrps.includes(keyWord) || meleeExotic.includes(keyWord)){
-        tempArr.push(el);
-    }
-          }
-        })
-      }else{
-        // list of any exotic weapon and weapon group user has proficiency with
-        feats.forEach((el:any)=> {
-          let words = el.split(' ')
-          if (words[0] == "Weapon" && words[1] == "Proficiency"){
-            let inParan = []
-            for (let i = 2; i<words.length; i++){
-      let len = words.length - 1
-       if (i == 2){
-           if (words.length == 3){
-           inParan.push(words[i].substring(1).slice(0,-1));
-         }else{
-           inParan.push(words[i].substring(1));
-         } 
-        } else if (i == len){
-             inParan.push(words[i].slice(0,-1));
+          });
+          break;
+          case "Stolen Form":
+          // the list will be from the LFTT that the user meets the requirements for.
+
+          break;
+          case "Squadron Maneuvers":
+          // list talents that user possesses from either EPTT and GTT
+          heroTalents.forEach((el:any) => {
+            if (el.TalentTreeId == "EPTT" || el.TalentTreeId == "GTT"){
+              tempArr.push(el.name);
             }
-      else{
-        inParan.push(words[i]);
-      }
-    }
-    let keyWord = inParan.join(' ');
-    let exotics = [...meleeExotic, ...rangedExotic]
-    if (this.wepGrps.includes(keyWord) || exotics.includes(keyWord)){
-        tempArr.push(el);
-    }
-          }
-        })
-      }
+          });
 
-    break;
-    case "weapon":
-      // list of all exotic weapons and Advanced Melee Weapons, Heavy Weapons, Pistols, Rifles, and Simple Weapons
-      let wepGrp = ["Advanced Melee Weapons", "Heavy Weapons", "Pistols", "Rifles", "Simple Weapons (Melee)","Simple Weapons (Ranged)"]
-      tempArr = [...meleeExotic,...rangedExotic,...wepGrp]; 
-    break;
-    case "force":
-      if (talent.name == "Share Force Secret"){
-        //  list known force secrets
-      }else{
-        // list known force techniques
-      }
-    break;
-    case "skills":
-      const heroSkills = this.heroservice.getSkills();
-      this.updateSkills = true;
-      switch (talent.name){
-        case "Assured Skill":
-        // show skills that have assured value as undefined or false
-        heroSkills.forEach((el: any) => {
-          if (el.assured != true){
-            tempArr.push(el.skill_name);
-          }
-        });
-        this.skillValuetoUpdate[0] = 'assured';
-        break;
-        case "Exceptional Skill":
-        // show skills that have exceptional value as undefined or false and are trained
-        heroSkills.forEach((el:any) => {
-          if (el.trained_skill == true && el.exceptional != true){
-            tempArr.push(el.skill_name);
-          }
-        });
-        this.skillValuetoUpdate[0] = 'exceptional';
-        break;
-        case "Skill Boon":
-        // show skills that have boon value as undefined of false and are trained
-        heroSkills.forEach((el:any) => {
-          if (el.trained_skill == true && el.boon != true){
-            tempArr.push(el.skill_name);
-          }
-        });
-        this.skillValuetoUpdate[0] = 'boon';
-        break;
-        case "Skill Confidence":
-         // show skills that have confidence value as undefined of false and are trained
-         heroSkills.forEach((el:any) => {
-          if (el.trained_skill == true && el.confidence != true){
-            tempArr.push(el.skill_name);
-          }
-        });
-        this.skillValuetoUpdate[0] = 'confidence';
-        break;
-        case "Skillful Recovery":
-        // show skills that have recovery value as undefined of false and are trained
-        heroSkills.forEach((el:any) => {
-          if (el.trained_skill == true && el.recovery != true){
-            tempArr.push(el.skill_name);
-          }
-        });
-        this.skillValuetoUpdate[0] = 'recovery';
-        break;
-
-      }
-    break;
-  }
-  (adapt == 'yes')?this.adaptTalentOptsArr = [...tempArr]: this.addOptionsArr = [...tempArr];
-}
-selectTalent(talent : string, keyWord: string){
-  if (talent == "Select" && keyWord != 'aTalent'){
-    this.talentName = "";
-    this.talentDesc = "";
-    this.showTalentOptions = false;
-    return;
-  }else if (talent == 'Select' && keyWord == 'aTalent'){
-    this.adaptTalentName = '';
-    this.adaptTalentDesc = '';
-    return
-  }
-  this.showTalentOptions = false;
-  let index = this.apiTalentsArr.findIndex((el : any)=> el.name == talent);
-  if (keyWord != 'aTalent'){
-    this.talentName = this.apiTalentsArr[index].name;
-    this.talentDesc = this.apiTalentsArr[index].description;
-  }else{
-    this.adaptTalentName = this.apiTalentsArr[index].name;
-    this.adaptTalentDesc = this.apiTalentsArr[index].description;
-  }
-  if (this.apiTalentsArr[index].addOption.includes("none") == false){
-    this.showTalentOptions = true;
-    let skills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
-    let force = ["Share Force Secret","Share Force Technique"];
-    if (skills.includes(this.apiTalentsArr[index].name)){
-      (keyWord == 'aTalent')?this.addTalentOptions('skills',this.apiTalentsArr[index],'yes'):this.addTalentOptions("skills",this.apiTalentsArr[index],'no');
-    }else if(force.includes(this.apiTalentsArr[index].name)){
-      this.addTalentOptions("force", this.apiTalentsArr[index], 'no');
-    }else{
-      this.addTalentOptions(this.apiTalentsArr[index].addOption[0], this.apiTalentsArr[index], 'no');
-    }
-
-  }
-}
-// selectAdaptTalent(talent: string){
-//   if (talent == 'Select'){
-//     this.adaptTalentName = '';
-//     this.adaptTalentDesc = '';
-//     return;
-//   }
-//   let index = this.apiTalentsArr.findIndex((el : any)=> el.name == talent);
-//   this.adaptTalentName = this.apiTalentsArr[index].name;
-//   this.adaptTalentDesc = this.apiTalentsArr[index].description;
-//   let skills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
-//   this.addTalentOptions("skills",this.apiTalentsArr[0])
-// }
-addTalent(talent: string, opt : string){
-  if (talent == "Select" || opt == "Select"){
-    return;
-  }
-  let talentSkills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
-  if (talentSkills.includes(talent)){
-    this.skillValuetoUpdate[1] = opt
-  }
-  let index = this.apiTalentsArr.findIndex((el:any)=> el.name == talent)
-  let obj = this.apiTalentsArr[index];
-  if (opt != "none"){
-    obj["alias"] = `${talent} (${opt})`
-  }
- this.lvlUpObject.talents = Object.assign(obj);
-  // console.log("the obj:", this.lvlUpObject);
-  this.checkSelections('talent');
-}
-// counts the number of talents in a talent tree
-countTrees(talents: any){
-  // console.log("counting", talents)
-  let obj:any = {};
-  for (let i = 0; i < talents.length; i++){
-    for (let j = 0; j<this.apiTree.length; j++){
-      if (talents[i].TalentTreeId == this.apiTree[j].id){
-        if (obj[this.apiTree[j].name] == undefined){
-          obj[this.apiTree[j].name] = 1;
-        }else{
-          let value = obj[this.apiTree[j].name];
-          obj[this.apiTree[j].name] = value + 1;
-        }
-      }
-    }
-  }
-  this.level.setNumberinTrees(obj);
-  this.addTalentSelectables(this.lvlUpObject.class, 'talent')
-  // console.log("heres trees", obj)
-}
-//  takes user input to indicate which feat was choosen
-selectFeat(feat: string, type: string){
-  this.forceTraining = false;
-  if (feat == "Select"){
-    if (type == 'regular'){
-      this.featName = "";
-      this.featDesc = "";
-    }else{
-      this.classFeatName = "";
-      this.classFeatDesc = "";
-    }
-    return;
-  }
-  //  remove previous data from opts array if present
-  this.clearArr(this.addOptionsArr);
-  let skillsTrained = [];
-  let skillsFocused = [];
-  let optionFeats = ["Skill Focus","Skill Training","Weapon Focus","Weapon Proficiency","Adaptable Talent", "Recurring Success","Exotic Weapon Proficiency","Force Training","Withdrawal Strike","Mission Specialist"]
-  //  if selected feat is included in the optionFeats array execute code
-  if (optionFeats.includes(feat)){
-  //  if the feat is the first or second index of the optionFeats array
-    if (feat == optionFeats[0] || feat == optionFeats[1] ){
-      let skills = this.heroservice.getSkills();
-      for (let i = 0; i<skills.length; i++){
-        if(skills[i].trained_skill == false){
-          skillsTrained.push(skills[i].skill_name);
-        }
-        if(skills[i].skill_focus == false && skills[i].trained_skill == true){
-          skillsFocused.push(skills[i].skill_name)
-        }
-      }
-      this.addOptionsArr = (feat == "Skill Training")?  [...skillsTrained]: [...skillsFocused];
-  // if feat isn't index 1 or 2 then execute code
-    }else{
-      this.showAdaptOpts = false;
-      let heroFeats = this.level.getHeroFeats();
-      const species = this.heroservice.getSpecies();
-      const abs = this.heroservice.getAbilityModifier();
-      const heroObject = this.level.getHeroClassObj();
-      switch (feat){
-        case "Weapon Focus":
-          for (let i=0; i<heroFeats.length;i++){
-            let splitter = heroFeats[i].split(' ');
-            if (splitter[0] == "Weapon" && splitter[1] == "Proficiency"){
-              let word = splitter.slice(2).join(' ')    
-              this.addOptionsArr.push(word.slice(1,-1));
+          break;
+          case "Share Talent":
+          // list talents user possess from LCTT, DTT and LFTT
+          heroTalents.forEach((el:any) => {
+            if (el.TalentTreeId == "LCTT" || el.TalentTreeId == "DTT" || el.TalentTreeId == "LFTT"){
+              tempArr.push(el.name);
             }
-          }
-        break;
-        case "Weapon Proficiency":
-          let weaponOptions = ["Simple Weapons", "Pistols", "Rifles", "Lightsabers", "Heavy Weapons", "Advanced Melee Weapons"]
-        // console.log("feats", feats)
-          for (let i =0; i<weaponOptions.length;i++){
-            const word = `Weapon Proficiency (${weaponOptions[i]})`
-            if (heroFeats.includes(word)== false){
-            this.addOptionsArr.push(weaponOptions[i]);
-            }
-
-      } 
-        break;
-  //  needs to show talents for all classes that the character possesses as well as meets the requirements for
-        case "Adaptable Talent":
-        let keys = Object.keys(heroObject);
-        if (keys.includes(this.lvlUpObject.class) == false){
-          keys.push(this.lvlUpObject.class); 
+          });
+          break;
         }
-        keys.forEach((el:any)=> {
-          this.addTalentSelectables(el,'feat');
-          // console.log("pushed", el);
-      })
-      this.showAdaptOpts = true;
-      // need to set something up to add options if a talent is choosen that has additional options
-        break;
-        case "Recurring Success":
-// check current talents and feats for restrictions on uses per encounter and add that talent or feat to options array will have ope set to true
-          const heroTalents = this.level.getHeroTalents();
-          for (let i=0; i< this.apifeatsArr.length;i++){
-            if (heroFeats.includes(this.apifeatsArr[i].name)){
-                if (this.apifeatsArr[i].ope == true){
-                  this.addOptionsArr.push(this.apifeatsArr[i].name);
-                }
-            }
-          }
-          for (let i=0; i<heroTalents.length;i++){
-            if (heroTalents[i].ope == true){
-              this.addOptionsArr.push(heroTalents[i].name);
-            }
-          }
-        break;
-        case "Exotic Weapon Proficiency":
-          let exclusiveSpecies = ["Gamorrean","Gungan","Wookiee","Kissai","Massassi","Felucians","Squib","Verpine"];
-      let excludeArr: any = [];
-      let exoticOpts: Array<any> = [...this.exoticMelee, ...this.exoticRange];
-      if (exclusiveSpecies.includes(species)){
-        switch (species){
-          case "Gamorrean":
-            excludeArr = ["Arg'garok"];
-          break;
-          case "Gungan":
-            excludeArr = ["Atlatl","Cesta"];
-          break;
-          case "Wookiee":
-            excludeArr = ["Bowcaster","Ryyk Blade"];
-          break;
-          case "Kissai":
-            excludeArr = ["Massassi Lanvarok"];
-          break;
-          case "Massassi":
-            excludeArr = ["Massassi Lanvarok"];
-            break;
-          case "Felucians":
-            excludeArr = ["Felucian Skullblade"];
-          break;
-          case "Squib":
-            excludeArr = ["Squib Tensor Rifle"];
-          break;
-          case "Verpine":
-            excludeArr = ["Verpine Shattergun"];
-        }
-      }
-      exoticOpts.forEach((el: any)=> {
-        if (excludeArr.length == 0){
-          this.addOptionsArr.push(el);
-        }else if (excludeArr.includes(el) == false){
-          this.addOptionsArr.push(el);
-        }
-        // console.log(this.addOptionsArr, "addOpts")
-      })
-        break;
-        case "Force Training":
-        this.showRegFeatOptions = false;
-        this.forceTraining = true;
-        break;
-        case "Withdrawal Strike":
-
-        break;
-        case "Mission Specialist":
-
-        break;
-        
-      }
-//  after switch sort the options array alphabetically
-      this.sortArray(this.addOptionsArr);
-      let exoticsArr = [];
-      let proficient = [""];
-      let feats = [...this.level.getHeroFeats()];
-      for (let i =0; i < feats.length; i++){
-        let words = feats[i].split(' ')
-        // console.log("these are current feats", words);
-          if (words[0] == "Weapon" && words[1] == "Proficiency"){
-            let inParan = []
-            for (let i = 2; i<words.length; i++){
-      let len = words.length - 1
-       if ( words.length == 3){     
-        inParan.push(words[2].substring(1).slice(0,-1));
-       } else if(i == 2){
-            inParan.push(words[i].substring(1));
-        }  else if (i == len){
-          inParan.push(words[i].slice(0,-1));
-        } else{
-        inParan.push(words[i]);
-      }
-    }
-      // console.log("no Parans",inParan.join(' '))
-      proficient.push(inParan.join(' '))
-          }
-        }
-        proficient.shift();
-      // need to check feats to see if proficient first.
-      for (let i = 0; i< this.apiWeaponsArr.length; i++){
-        if(this.apiWeaponsArr[i].w_type == 'Exotic Weapons (Ranged)' || this.apiWeaponsArr[i].w_type == 'Exotic Weapons (Melee)'){
-          exoticsArr.push(this.apiWeaponsArr[i].name);
-        }
-      }
-      // this.addOptionsArr = [...proficient];
-    }    
-    // toggles the view
-    if(type == 'regular' && feat != "Force Training"){
-      this.showRegFeatOptions = true;
-    }else{
-      this.showClassFeatOptions = true;
-    }
-  }else{
-    this.showRegFeatOptions = false;
-    this.showClassFeatOptions = false;   
-  }
-  for (let i = 0; i<this.apifeatsArr.length; i++){
-  let split = feat.split(' ');
-  let tempFeat = ((split[0] == 'Weapon' && split[1]=='Proficiency')? 'Weapon Proficiency': "");
-    if (this.apifeatsArr[i].name == feat || this.apifeatsArr[i].name == tempFeat){
-      if (type == 'regular'){
-        this.featName =  (tempFeat == "")?this.apifeatsArr[i].name:feat;
-        this.featDesc = this.apifeatsArr[i].description;
-      }else{
-        this.classFeatName = (tempFeat == "")?this.apifeatsArr[i].name:feat;
-        this.classFeatDesc = this.apifeatsArr[i].description;
-      }
       break;
-    }else if (this.speciesFeats != undefined ){
-      let keys = Object.keys(this.speciesFeats);
-      let vals:any = Object.values(this.speciesFeats);
-      for (let i=0; i < keys.length; i++){
-        if (keys[i] == feat){
-          if (type == 'regular'){
-            this.featName = keys[i];
-            this.featDesc = vals[i];
+      case "proficient":
+        const feats = this.level.getHeroFeats();
+        feats.forEach((el: any) => {
+          let words = el.split(' ')
+            if (words[0] == "Weapon" && words[1] == "Proficiency"){
+              tempArr.push(el);
+            }
+        })
+        if (talent.name == "Accurate Blow"){
+          //  list of melee exotic and melee weapon groups user has proficiency with
+          feats.forEach((el:any)=> {
+            let words = el.split(' ')
+            if (words[0] == "Weapon" && words[1] == "Proficiency"){
+              let inParan = []
+              for (let i = 2; i<words.length; i++){
+        let len = words.length - 1
+        if (i == 2){
+            if (words.length == 3){
+            inParan.push(words[i].substring(1).slice(0,-1));
           }else{
-            this.classFeatName = keys[i];
-            this.classFeatDesc = vals[i];
-          }
+            inParan.push(words[i].substring(1));
+          } 
+          } else if (i == len){
+              inParan.push(words[i].slice(0,-1));
+              }
+        else{
+          inParan.push(words[i]);
+        }
+      }
+      let keyWord = inParan.join(' ');
+      if (this.meleeGrps.includes(keyWord) || meleeExotic.includes(keyWord)){
+          tempArr.push(el);
+      }
+            }
+          })
+        }else{
+          // list of any exotic weapon and weapon group user has proficiency with
+          feats.forEach((el:any)=> {
+            let words = el.split(' ')
+            if (words[0] == "Weapon" && words[1] == "Proficiency"){
+              let inParan = []
+              for (let i = 2; i<words.length; i++){
+        let len = words.length - 1
+        if (i == 2){
+            if (words.length == 3){
+            inParan.push(words[i].substring(1).slice(0,-1));
+          }else{
+            inParan.push(words[i].substring(1));
+          } 
+          } else if (i == len){
+              inParan.push(words[i].slice(0,-1));
+              }
+        else{
+          inParan.push(words[i]);
+        }
+      }
+      let keyWord = inParan.join(' ');
+      let exotics = [...meleeExotic, ...rangedExotic]
+      if (this.wepGrps.includes(keyWord) || exotics.includes(keyWord)){
+          tempArr.push(el);
+      }
+            }
+          })
+        }
+
+      break;
+      case "weapon":
+        // list of all exotic weapons and Advanced Melee Weapons, Heavy Weapons, Pistols, Rifles, and Simple Weapons
+        let wepGrp = ["Advanced Melee Weapons", "Heavy Weapons", "Pistols", "Rifles", "Simple Weapons (Melee)","Simple Weapons (Ranged)"]
+        tempArr = [...meleeExotic,...rangedExotic,...wepGrp]; 
+      break;
+      case "force":
+        if (talent.name == "Share Force Secret"){
+          //  list known force secrets
+        }else{
+          // list known force techniques
+        }
+      break;
+      case "skills":
+        const heroSkills = this.heroservice.getSkills();
+        this.updateSkills = true;
+        switch (talent.name){
+          case "Assured Skill":
+          // show skills that have assured value as undefined or false
+          heroSkills.forEach((el: any) => {
+            if (el.assured != true){
+              tempArr.push(el.skill_name);
+            }
+          });
+          this.skillValuetoUpdate[0] = 'assured';
           break;
+          case "Exceptional Skill":
+          // show skills that have exceptional value as undefined or false and are trained
+          heroSkills.forEach((el:any) => {
+            if (el.trained_skill == true && el.exceptional != true){
+              tempArr.push(el.skill_name);
+            }
+          });
+          this.skillValuetoUpdate[0] = 'exceptional';
+          break;
+          case "Skill Boon":
+          // show skills that have boon value as undefined of false and are trained
+          heroSkills.forEach((el:any) => {
+            if (el.trained_skill == true && el.boon != true){
+              tempArr.push(el.skill_name);
+            }
+          });
+          this.skillValuetoUpdate[0] = 'boon';
+          break;
+          case "Skill Confidence":
+          // show skills that have confidence value as undefined of false and are trained
+          heroSkills.forEach((el:any) => {
+            if (el.trained_skill == true && el.confidence != true){
+              tempArr.push(el.skill_name);
+            }
+          });
+          this.skillValuetoUpdate[0] = 'confidence';
+          break;
+          case "Skillful Recovery":
+          // show skills that have recovery value as undefined of false and are trained
+          heroSkills.forEach((el:any) => {
+            if (el.trained_skill == true && el.recovery != true){
+              tempArr.push(el.skill_name);
+            }
+          });
+          this.skillValuetoUpdate[0] = 'recovery';
+          break;
+
         }
-      }
+      break;
     }
-}
-}
-checkSelections(key: string){
-  switch(key){
-    case "talent":
-      if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.showAbs == false){
-        this.lvlButton = true;
-      }else{
-        this.lvlButton = false;
-      }
-    break;
-    case "feat":
-      if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.showAbs == false){
-        this.lvlButton = true;
-      }else{
-        this.lvlButton = false;
-      }
-    break;
-    case "abs":
-    if (this.increaseAbsCounter == 0){
-      if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.unrestrictFlag == false){
-          this.lvlButton = true;
-        }
+    (adapt == 'yes')?this.adaptTalentOptsArr = [...tempArr]: this.addOptionsArr = [...tempArr];
+  }
+  //  recieves user input when selecting a talent and processes it according to the keyWord
+  selectTalent(talent : string, keyWord: string){
+  //  first conditional will do reset name and description if select is selected
+    if (talent == "Select" && keyWord != 'aTalent'){
+      this.talentName = "";
+      this.talentDesc = "";
+      this.showTalentOptions = false;
+      return;
+    }else if (talent == 'Select' && keyWord == 'aTalent'){
+      this.adaptTalentName = '';
+      this.adaptTalentDesc = '';
+      return
+    }
+  //  this will set show talent options to false in case the option to switch it doesn't get chosen
+    this.showTalentOptions = false;
+    let index = this.apiTalentsArr.findIndex((el : any)=> el.name == talent);
+    if (keyWord != 'aTalent'){
+      this.talentName = this.apiTalentsArr[index].name;
+      this.talentDesc = this.apiTalentsArr[index].description;
     }else{
-      this.lvlButton = false;
-    }  
-    break
+      this.adaptTalentName = this.apiTalentsArr[index].name;
+      this.adaptTalentDesc = this.apiTalentsArr[index].description;
+    }
+    //  checks talents array if the addOption property doesn't include none to process that block of code
+    if (this.apiTalentsArr[index].addOption.includes("none") == false){
+      this.showTalentOptions = true;
+      let skills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
+      let force = ["Share Force Secret","Share Force Technique"];
+      if (skills.includes(this.apiTalentsArr[index].name)){
+        (keyWord == 'aTalent')?this.addTalentOptions('skills',this.apiTalentsArr[index],'yes'):this.addTalentOptions("skills",this.apiTalentsArr[index],'no');
+      }else if(force.includes(this.apiTalentsArr[index].name)){
+        this.addTalentOptions("force", this.apiTalentsArr[index], 'no');
+      }else{
+        this.addTalentOptions(this.apiTalentsArr[index].addOption[0], this.apiTalentsArr[index], 'no');
+      }
+
+    }
   }
 
-}
+  addTalent(talent: string, opt : string){
+    if (talent == "Select" || opt == "Select"){
+      return;
+    }
+    let talentSkills = ["Assured Skill","Exceptional Skill","Skill Boon","Skill Confidence","Skillful Recovery"]
+    if (talentSkills.includes(talent)){
+      this.skillValuetoUpdate[1] = opt
+    }
+    let index = this.apiTalentsArr.findIndex((el:any)=> el.name == talent)
+    let obj = this.apiTalentsArr[index];
+    if (opt != "none"){
+      obj["alias"] = `${talent} (${opt})`
+    }
+  this.lvlUpObject.talents = Object.assign(obj);
+    // console.log("the obj:", this.lvlUpObject);
+    this.checkSelections('talent');
+  }
+  // counts the number of talents in a talent tree
+  countTrees(talents: any){
+    // console.log("counting", talents)
+    let obj:any = {};
+    for (let i = 0; i < talents.length; i++){
+      for (let j = 0; j<this.apiTree.length; j++){
+        if (talents[i].TalentTreeId == this.apiTree[j].id){
+          if (obj[this.apiTree[j].name] == undefined){
+            obj[this.apiTree[j].name] = 1;
+          }else{
+            let value = obj[this.apiTree[j].name];
+            obj[this.apiTree[j].name] = value + 1;
+          }
+        }
+      }
+    }
+    this.level.setNumberinTrees(obj);
+    this.addTalentSelectables(this.lvlUpObject.class, 'talent')
+    // console.log("heres trees", obj)
+  }
+//  takes user input to indicate which feat was choosen
+  selectFeat(feat: string, type: string){
+    this.forceTraining = false;
+    if (feat == "Select"){
+      if (type == 'regular'){
+        this.featName = "";
+        this.featDesc = "";
+      }else{
+        this.classFeatName = "";
+        this.classFeatDesc = "";
+      }
+      return;
+    }
+    //  remove previous data from opts array if present
+    this.clearArr(this.addOptionsArr);
+    let skillsTrained = [];
+    let skillsFocused = [];
+    let optionFeats = ["Skill Focus","Skill Training","Weapon Focus","Weapon Proficiency","Adaptable Talent", "Recurring Success","Exotic Weapon Proficiency","Force Training","Withdrawal Strike","Mission Specialist"]
+    let skills = this.heroservice.getSkills();
+    //  if selected feat is included in the optionFeats array execute code
+    if (optionFeats.includes(feat)){
+    //  if the feat is the first or second index of the optionFeats array or is mission specialist
+      if (feat == optionFeats[0] || feat == optionFeats[1]){
+        for (let i = 0; i<skills.length; i++){
+          if(skills[i].trained_skill == false){
+            skillsTrained.push(skills[i].skill_name);
+          }
+          if(skills[i].skill_focus == false && skills[i].trained_skill == true){
+            skillsFocused.push(skills[i].skill_name)
+          }
+        }
+  // if the feat is skill focus we load all skills that are focused if not we load all skills that are trained
+        this.addOptionsArr = (feat == "Skill Focus")?  [...skillsFocused]:[...skillsTrained];
+  // if feat isn't index 1 or 2 then execute code
+      }else{
+        this.showAdaptOpts = false;
+        let heroFeats = this.level.getHeroFeats();
+        const species = this.heroservice.getSpecies();
+        const abs = this.heroservice.getAbilityModifier();
+        const heroObject = this.level.getHeroClassObj();
+  //  switch statement used to pick out specific feats that require more specific options
+        switch (feat){
+  // this feat requires character to have a proficiency first with the weapon type
+          case "Weapon Focus":
+            for (let i=0; i<heroFeats.length;i++){
+              let splitter = heroFeats[i].split(' ');
+              if (splitter[0] == "Weapon" && splitter[1] == "Proficiency"){
+                let word = splitter.slice(2).join(' ')    
+                this.addOptionsArr.push(word.slice(1,-1));
+              }
+            }
+          break;
+  //  this feat shows the different proficiency options and will only add weapon groups that the character isn't proficient with
+          case "Weapon Proficiency":
+            let weaponOptions = ["Simple Weapons", "Pistols", "Rifles", "Lightsabers", "Heavy Weapons", "Advanced Melee Weapons"]
+          // console.log("feats", feats)
+            for (let i =0; i<weaponOptions.length;i++){
+              const word = `Weapon Proficiency (${weaponOptions[i]})`
+              if (heroFeats.includes(word)== false){
+              this.addOptionsArr.push(weaponOptions[i]);
+              }
+
+        } 
+          break;
+  //  shows talents for all classes that the character possesses and meets the requirements
+          case "Adaptable Talent":
+          let keys = Object.keys(heroObject);
+          if (keys.includes(this.lvlUpObject.class) == false){
+            keys.push(this.lvlUpObject.class); 
+          }
+          keys.forEach((el:any)=> {
+            this.addTalentSelectables(el,'feat');
+        // console.log("pushed", el);
+        })
+  //  shows the additiuoanl options section if talent comes with options
+        this.showAdaptOpts = true;
+          break;
+          case "Recurring Success":
+  // check current talents and feats for restrictions on uses per encounter and add that talent or feat to options array will have the property ope set to true
+            const heroTalents = this.level.getHeroTalents();
+            for (let i=0; i< this.apifeatsArr.length;i++){
+              if (heroFeats.includes(this.apifeatsArr[i].name)){
+                  if (this.apifeatsArr[i].ope == true){
+                    this.addOptionsArr.push(this.apifeatsArr[i].name);
+                  }
+              }
+            }
+            for (let i=0; i<heroTalents.length;i++){
+              if (heroTalents[i].ope == true){
+                this.addOptionsArr.push(heroTalents[i].name);
+              }
+            }
+          break;
+  //  this checks if the hero belongs to one of the specifc species since thier species weapon isn't considered exotic, therefore, shouldn't show up as an option to choose as an exotic weapon
+          case "Exotic Weapon Proficiency":
+            let exclusiveSpecies = ["Gamorrean","Gungan","Wookiee","Kissai","Massassi","Felucians","Squib","Verpine"];
+        let excludeArr: any = [];
+        let exoticOpts: Array<any> = [...this.exoticMelee, ...this.exoticRange];
+        if (exclusiveSpecies.includes(species)){
+          switch (species){
+            case "Gamorrean":
+              excludeArr = ["Arg'garok"];
+            break;
+            case "Gungan":
+              excludeArr = ["Atlatl","Cesta"];
+            break;
+            case "Wookiee":
+              excludeArr = ["Bowcaster","Ryyk Blade"];
+            break;
+            case "Kissai":
+              excludeArr = ["Massassi Lanvarok"];
+            break;
+            case "Massassi":
+              excludeArr = ["Massassi Lanvarok"];
+              break;
+            case "Felucians":
+              excludeArr = ["Felucian Skullblade"];
+            break;
+            case "Squib":
+              excludeArr = ["Squib Tensor Rifle"];
+            break;
+            case "Verpine":
+              excludeArr = ["Verpine Shattergun"];
+          }
+        }
+        exoticOpts.forEach((el: any)=> {
+          if (excludeArr.length == 0){
+            this.addOptionsArr.push(el);
+          }else if (excludeArr.includes(el) == false){
+            this.addOptionsArr.push(el);
+          }
+          // console.log(this.addOptionsArr, "addOpts")
+        })
+          break;
+  //  if the feat is Force Training then it will switch around which section will be seen to add in options
+          case "Force Training":
+          this.showRegFeatOptions = false;
+          this.forceTraining = true;
+          break;
+
+          case "Withdrawal Strike":
+  //  checks characters feats and only adds melee weapon groups or exotic melee weapons they are proficient with to the options array 
+          let exoMelee = [...this.exoticMelee];
+          let meleeWeaponOptions = ["Simple Weapons","Lightsabers", "Advanced Melee Weapons"]
+          for (let i =0; i<meleeWeaponOptions.length;i++){
+            const word = `Weapon Proficiency (${meleeWeaponOptions[i]})`
+            if (heroFeats.includes(word) && meleeWeaponOptions[i] == 'Simple Weapons'){
+              this.addOptionsArr.push("Simple Weapons (Melee)");
+            }else if (heroFeats.includes(word)){
+              this.addOptionsArr.push(meleeWeaponOptions[i]);
+            }
+          }
+          for (let i = 0; i< exoMelee.length; i++){
+            const word = `Weapon Proficiency (${exoMelee[i]})`
+            if (heroFeats.includes(word)){
+              this.addOptionsArr.push(exoMelee[i]);
+            }
+          } 
+          break;
+  //  pushes only trained skills to the options array
+          case "Mission Specialist":
+            skillsTrained = [];
+            for (let i = 0; i<skills.length; i++){
+              if(skills[i].trained_skill == true){
+                skillsTrained.push(skills[i].skill_name);
+              }
+            }
+            this.addOptionsArr = [...skillsTrained];
+          break;
+        }
+  //  after switch sort the options array alphabetically
+        this.sortArray(this.addOptionsArr);
+        let exoticsArr = [];
+        let proficient = [""];
+        let feats = [...this.level.getHeroFeats()];
+        for (let i =0; i < feats.length; i++){
+          let words = feats[i].split(' ')
+          // console.log("these are current feats", words);
+            if (words[0] == "Weapon" && words[1] == "Proficiency"){
+              let inParan = []
+              for (let i = 2; i<words.length; i++){
+        let len = words.length - 1
+        if ( words.length == 3){     
+          inParan.push(words[2].substring(1).slice(0,-1));
+        } else if(i == 2){
+              inParan.push(words[i].substring(1));
+          }  else if (i == len){
+            inParan.push(words[i].slice(0,-1));
+          } else{
+          inParan.push(words[i]);
+        }
+      }
+        // console.log("no Parans",inParan.join(' '))
+        proficient.push(inParan.join(' '))
+            }
+          }
+          proficient.shift();
+        // need to check feats to see if proficient first.
+        for (let i = 0; i< this.apiWeaponsArr.length; i++){
+          if(this.apiWeaponsArr[i].w_type == 'Exotic Weapons (Ranged)' || this.apiWeaponsArr[i].w_type == 'Exotic Weapons (Melee)'){
+            exoticsArr.push(this.apiWeaponsArr[i].name);
+          }
+        }
+        // this.addOptionsArr = [...proficient];
+      }    
+  // toggles the which section to display
+      if(type == 'regular' && feat != "Force Training"){
+        this.showRegFeatOptions = true;
+      }else{
+        this.showClassFeatOptions = true;
+      }
+    }else{
+      this.showRegFeatOptions = false;
+      this.showClassFeatOptions = false;   
+    }
+    for (let i = 0; i<this.apifeatsArr.length; i++){
+    let split = feat.split(' ');
+    let tempFeat = ((split[0] == 'Weapon' && split[1]=='Proficiency')? 'Weapon Proficiency': "");
+      if (this.apifeatsArr[i].name == feat || this.apifeatsArr[i].name == tempFeat){
+        if (type == 'regular'){
+          this.featName =  (tempFeat == "")?this.apifeatsArr[i].name:feat;
+          this.featDesc = this.apifeatsArr[i].description;
+        }else{
+          this.classFeatName = (tempFeat == "")?this.apifeatsArr[i].name:feat;
+          this.classFeatDesc = this.apifeatsArr[i].description;
+        }
+        break;
+      }else if (this.speciesFeats != undefined ){
+        let keys = Object.keys(this.speciesFeats);
+        let vals:any = Object.values(this.speciesFeats);
+        for (let i=0; i < keys.length; i++){
+          if (keys[i] == feat){
+            if (type == 'regular'){
+              this.featName = keys[i];
+              this.featDesc = vals[i];
+            }else{
+              this.classFeatName = keys[i];
+              this.classFeatDesc = vals[i];
+            }
+            break;
+          }
+        }
+      }
+  }
+  }
+  checkSelections(key: string){
+    switch(key){
+      case "talent":
+        if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.showAbs == false){
+          this.lvlButton = true;
+        }else{
+          this.lvlButton = false;
+        }
+      break;
+      case "feat":
+        if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.showAbs == false){
+          this.lvlButton = true;
+        }else{
+          this.lvlButton = false;
+        }
+      break;
+      case "abs":
+      if (this.increaseAbsCounter == 0){
+        if(this.unrestrictFlag == true && this.unrestrictFeat != "" || this.unrestrictFlag == false){
+            this.lvlButton = true;
+          }
+      }else{
+        this.lvlButton = false;
+      }  
+      break
+    }
+
+  }
 //  used only if adaptable talent was selected to add feat options to talents
-addAdaptFeat(feat: string, talent: string, option: string){
-  if (feat == "Select" || option == "Select" || talent == "Select"){
-    return;
+  addAdaptFeat(feat: string, talent: string, option: string){
+    if (feat == "Select" || option == "Select" || talent == "Select"){
+      return;
+    }
+    (option == 'none')? this.addFeat(feat, talent, 'yes'):this.addFeat(feat, `${talent} (${option})`, 'yes');
   }
-  (option == 'none')? this.addFeat(feat, talent, 'yes'):this.addFeat(feat, `${talent} (${option})`, 'yes');
-}
-addFeat(feat: string, option: string, unrestricted: string){
-  if (feat == "Select" || option == "Select"){
-    return;
-  }
-  let hfs = this.level.getHeroFeats();
-  for (let i=0; i<this.classStartFeatsArr.length; i++){
-    if (hfs.includes(this.classStartFeatsArr[i])){
-      this.classStartFeatsArr.splice(i,1)
+  addFeat(feat: string, option: string, unrestricted: string){
+    if (feat == "Select" || option == "Select"){
+      return;
+    }
+    let hfs = this.level.getHeroFeats();
+    for (let i=0; i<this.classStartFeatsArr.length; i++){
+      if (hfs.includes(this.classStartFeatsArr[i])){
+        this.classStartFeatsArr.splice(i,1)
+      }
+    }
+    if (feat == "Skill Focus" || feat == "Skill Training" ){
+      this.updateSkills = true;
+      this.skillValuetoUpdate = [feat,option];
+    }
+    let tempFeat;
+    if (option == "none"){
+      tempFeat = [feat];
+    }else{
+      tempFeat =[`${feat} (${option})`];
+    }
+    // console.log("current feats:", this.lvlUpObject.feats)
+  // need to get current feats and compare with starting feats should remove feats that character already has
+  if (unrestricted == 'yes'){
+    this.unrestrictFlag = true;
+    this.unrestrictFeat = tempFeat[0];
+    this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?[...this.classStartFeatsArr, ...tempFeat]:[...tempFeat]
+    if (feat == "Adaptable Talent")this.addTalentSelectables(this.lvlUpObject.class, 'talent');
+  }else{
+    this.checkSelections('feat');
+    if (this.unrestrictFlag == true){
+      this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?  [...this.classStartFeatsArr, this.unrestrictFeat, ...tempFeat]:  [this.unrestrictFeat, ...tempFeat];
+    }else{
+      this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?  [...this.classStartFeatsArr, ...tempFeat]:  [...tempFeat];
     }
   }
-  if (feat == "Skill Focus" || feat == "Skill Training" ){
-    this.updateSkills = true;
-    this.skillValuetoUpdate = [feat,option];
+  this.showForcePowers = (feat == "Force Training")? true:false;
+  if (feat != "Force Training"){this.heroservice.checkFeatPower()};
   }
-  let tempFeat;
-  if (option == "none"){
-    tempFeat = [feat];
-  }else{
-    tempFeat =[`${feat} (${option})`];
+  checkTimesLeveled(){
+    let obj = this.level.getHeroClassObj();
+  let vals: Array<number> = Object.values(obj);
+  this.timesLeveled = vals.reduce((prev:any, curr)=> Number(prev) + Number(curr),0);
+    // console.log("number of times", vals,this.timesLeveled)
   }
-  // console.log("current feats:", this.lvlUpObject.feats)
-// need to get current feats and compare with starting feats should remove feats that character already has
-if (unrestricted == 'yes'){
-  this.unrestrictFlag = true;
-  this.unrestrictFeat = tempFeat[0];
-  this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?[...this.classStartFeatsArr, ...tempFeat]:[...tempFeat]
-  if (feat == "Adaptable Talent")this.addTalentSelectables(this.lvlUpObject.class, 'talent');
-}else{
-  this.checkSelections('feat');
-  if (this.unrestrictFlag == true){
-    this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?  [...this.classStartFeatsArr, this.unrestrictFeat, ...tempFeat]:  [this.unrestrictFeat, ...tempFeat];
-  }else{
-    this.lvlUpObject.feats = (this.classStartFeatsArr.length > 0)?  [...this.classStartFeatsArr, ...tempFeat]:  [...tempFeat];
-  }
-}
-this.showForcePowers = (feat == "Force Training")? true:false;
-if (feat != "Force Training"){this.heroservice.checkFeatPower()};
-}
-checkTimesLeveled(){
-  let obj = this.level.getHeroClassObj();
- let vals: Array<number> = Object.values(obj);
- this.timesLeveled = vals.reduce((prev:any, curr)=> Number(prev) + Number(curr),0);
-  // console.log("number of times", vals,this.timesLeveled)
-}
 
 // select a class when first leveling up
-addClassSelection(selection: any){
-  this.resetAllSelections("Select", 'no')
-  this.showTalent = false;
-  this.showClassFeat = false;
-  this.showNoClassFeat = false;
-  this.hpKeyWord = '';
-  if (selection == "Select a Class"){
-    this.lvlUpObject.class = '';
-    return;
+  addClassSelection(selection: any){
+    this.resetAllSelections("Select", 'no')
+    this.showTalent = false;
+    this.showClassFeat = false;
+    this.showNoClassFeat = false;
+    this.hpKeyWord = '';
+    if (selection == "Select a Class"){
+      this.lvlUpObject.class = '';
+      return;
+    }
+    let curClass = Object.keys(this.level.getHeroClassObj());
+    this.classSelection = selection;
+    this.lvlUpObject.class = selection;
+    this.rolledHp = 0;
+    if (curClass.includes(selection)== false){
+      this.addStartFeats(selection);
+      // console.log("class obj:",curClass);
+    }
+    this.addClassFeatOptions(this.lvlUpObject.class);
   }
-  let curClass = Object.keys(this.level.getHeroClassObj());
-  this.classSelection = selection;
-  this.lvlUpObject.class = selection;
-  this.rolledHp = 0;
-  if (curClass.includes(selection)== false){
-    this.addStartFeats(selection);
-    // console.log("class obj:",curClass);
-  }
-  this.addClassFeatOptions(this.lvlUpObject.class);
-}
 // selects one of 2 methods on increasing hp
-selectHPIncrease(selection: string){
-  // console.log("the Selection:", selection);
-  if (selection == "Select"){
-    return;
+  selectHPIncrease(selection: string){
+    // console.log("the Selection:", selection);
+    if (selection == "Select"){
+      return;
+    }
+    this.hpKeyWord = selection;
   }
-  this.hpKeyWord = selection;
-}
 // rolls hp based on die associated with class selected
-rollHP(){
-  let die = 0;
-  for (let i =0; i<this.startingClasses.length; i++){
-    if (this.classSelection == this.startingClasses[i].name){
-      die = this.startingClasses[i].hp
-      break;
+  rollHP(){
+    let die = 0;
+    for (let i =0; i<this.startingClasses.length; i++){
+      if (this.classSelection == this.startingClasses[i].name){
+        die = this.startingClasses[i].hp
+        break;
+      }
     }
-  }
 
- this.rolledHp = Math.floor(Math.random() * die + 1)
-//  console.log("rolled", this.rolledHp, die);
- this.calcHPIncrease(this.rolledHp);
-}
-// calculates the hp based on the roll or the input recieved from user
-calcHPIncrease(value: any){
-let num = (isNaN(value))? value: Math.floor(parseInt(value));
-let con = this.heroservice.getAbilityModifier()["Constitution"];
-this.lvlUpObject.hp = ((num + con) >= 1)? num + con: 1;
-// console.log("new hp", this.lvlUpObject.hp, num)
-this.checkTimesLeveled();
-this.checkHeroLvl();
+  this.rolledHp = Math.floor(Math.random() * die + 1)
+  //  console.log("rolled", this.rolledHp, die);
+  this.calcHPIncrease(this.rolledHp);
+  }
+  // calculates the hp based on the roll or the input recieved from user
+  calcHPIncrease(value: any){
+  let num = (isNaN(value))? value: Math.floor(parseInt(value));
+  let con = this.heroservice.getAbilityModifier()["Constitution"];
+  this.lvlUpObject.hp = ((num + con) >= 1)? num + con: 1;
+  // console.log("new hp", this.lvlUpObject.hp, num)
+  this.checkTimesLeveled();
+  this.checkHeroLvl();
 
-}
-displayCurrentAbs(flag : boolean){
-  this.showAbs = flag;
-  if (flag){
-    this.abilities = this.heroservice.getAbilities();
   }
-}
-increaseAbsCounter: number = 2;
-increaseAbs(e: any, key: any){
-  if (this.lvlUpObject.abilities.includes(key)){
-    this.increaseAbsCounter += 1;
-    let index = this.lvlUpObject.abilities.findIndex((el: any)=> el == key);
-    this.lvlUpObject.abilities.splice(index,1);
-  }else if(this.increaseAbsCounter <= 0){
-    e.target.checked = !e.target.checked
-    // console.log("unchecked", e)
-    return;
-  }else{
-    if (this.lvlUpObject.abilities[0] == ''){
-      this.lvlUpObject.abilities.pop();
-    }
-  if (e.target.checked){
-      this.lvlUpObject.abilities.push(key);
-      this.increaseAbsCounter -= 1;
+  displayCurrentAbs(flag : boolean){
+    this.showAbs = flag;
+    if (flag){
+      this.abilities = this.heroservice.getAbilities();
     }
   }
-  this.checkSelections('abs');
-  // console.log("the abs array", this.lvlUpObject.abilities)
-}
+  increaseAbsCounter: number = 2;
+  increaseAbs(e: any, key: any){
+    if (this.lvlUpObject.abilities.includes(key)){
+      this.increaseAbsCounter += 1;
+      let index = this.lvlUpObject.abilities.findIndex((el: any)=> el == key);
+      this.lvlUpObject.abilities.splice(index,1);
+    }else if(this.increaseAbsCounter <= 0){
+      e.target.checked = !e.target.checked
+      // console.log("unchecked", e)
+      return;
+    }else{
+      if (this.lvlUpObject.abilities[0] == ''){
+        this.lvlUpObject.abilities.pop();
+      }
+    if (e.target.checked){
+        this.lvlUpObject.abilities.push(key);
+        this.increaseAbsCounter -= 1;
+      }
+    }
+    this.checkSelections('abs');
+    // console.log("the abs array", this.lvlUpObject.abilities)
+  }
 //  force powers
-forcePower: any;
-selectedPower(power: any){
-  if (power == "Select a Power" || power == undefined){
-    this.forceName = "";
-    this.forceDesc = "";
-    return;
-  }
-  console.log("Chosen Power:" ,power);
-  for (let i = 0; i< this.forcePowersArr.length; i++){
-    if (this.forcePowersArr[i].name == power){
-      this.forcePower = this.forcePowersArr[i];
-      break;
+  forcePower: any;
+  selectedPower(power: any){
+    if (power == "Select a Power" || power == undefined){
+      this.forceName = "";
+      this.forceDesc = "";
+      return;
     }
-  }
-  for (let i = 0; i< this.saberFormPowers.length; i++){
-    if (this.saberFormPowers[i].name == power){
-      this.forcePower = this.saberFormPowers[i];
-      break;
+    console.log("Chosen Power:" ,power);
+    for (let i = 0; i< this.forcePowersArr.length; i++){
+      if (this.forcePowersArr[i].name == power){
+        this.forcePower = this.forcePowersArr[i];
+        break;
+      }
     }
+    for (let i = 0; i< this.saberFormPowers.length; i++){
+      if (this.saberFormPowers[i].name == power){
+        this.forcePower = this.saberFormPowers[i];
+        break;
+      }
+    }
+        this.forceName = this.forcePower.name;
+        this.forceDesc = this.forcePower.desc;
   }
-      this.forceName = this.forcePower.name;
-      this.forceDesc = this.forcePower.desc;
-}
 
-acceptPower(){
-  if (this.numPowers > 0 && this.heroForceSuite.length < this.maxPowers){
-    this.addPower(this.forcePower)
+  acceptPower(){
+    if (this.numPowers > 0 && this.heroForceSuite.length < this.maxPowers){
+      this.addPower(this.forcePower)
+    }
   }
-}
-addPower(power: any){
-  this.heroForceSuite.push(power);
-  this.numPowers -= 1
-  console.log("the suite: ", this.heroForceSuite)
-}
-deletePower(index: number){
-  this.heroForceSuite.splice(index, 1);
-  this.numPowers += 1
-}
-clearPowers(){
-   while (this.heroForceSuite.length){
-    this.heroForceSuite.pop();
+  addPower(power: any){
+    this.heroForceSuite.push(power);
+    this.numPowers -= 1
+    console.log("the suite: ", this.heroForceSuite)
+  }
+  deletePower(index: number){
+    this.heroForceSuite.splice(index, 1);
     this.numPowers += 1
   }
-  console.log("cleared arr:",  this.heroForceSuite)
-}
-
-
-
-levelUpHero(){
-  let skills = this.heroservice.getSkills();
-  if (this.updateSkills == true){
-    let index = skills.findIndex((el: any)=> el.skill_name == this.skillValuetoUpdate[1])
-    if (this.skillValuetoUpdate[0] == "Skill Focus" ){
-      skills[index].skill_focus = true;
-    }else if (this.skillValuetoUpdate[0] == "Skill Training"){
-      console.log('the index:',index)
-      skills[index].trained_skill = true;
-    }else{
-      skills[index][this.skillValuetoUpdate[0]] = true;
+  clearPowers(){
+    while (this.heroForceSuite.length){
+      this.heroForceSuite.pop();
+      this.numPowers += 1
     }
-    this.heroservice.setSkills(skills);
+    console.log("cleared arr:",  this.heroForceSuite)
   }
-  // (this.heroForceSuite.length > 0)? this.heroservice.addForcePowers(this.heroForceSuite):'nothing';
- // adds the Use the Force skill to the skills array
-//  console.log('the skills',skills);
-  if (this.lvlUpObject.class == "Jedi" && skills.length < 24 || this.lvlUpObject.feats.includes("Force Sensitivity")){
-    let jediSkill = {
-      "skill_name": 'Use the Force',
-      "skill_value": 0, 
-      "default": 'Charisma', 
-      "trained_skill": false,
-      "skill_focus": false,
-      "misc": 0,
+
+  levelUpHero(){
+    let skills = this.heroservice.getSkills();
+    if (this.updateSkills == true){
+      let index = skills.findIndex((el: any)=> el.skill_name == this.skillValuetoUpdate[1])
+      if (this.skillValuetoUpdate[0] == "Skill Focus" ){
+        skills[index].skill_focus = true;
+      }else if (this.skillValuetoUpdate[0] == "Skill Training"){
+        // console.log('the index:',index)
+        skills[index].trained_skill = true;
+      }else{
+        skills[index][this.skillValuetoUpdate[0]] = true;
+      }
+      this.heroservice.setSkills(skills);
     }
-    skills.push(jediSkill);
-    this.heroservice.setSkills(skills);
+    // (this.heroForceSuite.length > 0)? this.heroservice.addForcePowers(this.heroForceSuite):'nothing';
+  // adds the Use the Force skill to the skills array
+  //  console.log('the skills',skills);
+    if (this.lvlUpObject.class == "Jedi" && skills.length < 24 || this.lvlUpObject.feats.includes("Force Sensitivity")){
+      let jediSkill = {
+        "skill_name": 'Use the Force',
+        "skill_value": 0, 
+        "default": 'Charisma', 
+        "trained_skill": false,
+        "skill_focus": false,
+        "misc": 0,
+      }
+      skills.push(jediSkill);
+      this.heroservice.setSkills(skills);
+    }
+    if (this.lvlUpObject.feats.includes("")){
+      // console.log("it's there");
+      this.lvlUpObject.feats.pop();
+    }
+    if (this.lvlUpObject.abilities.length == 2 && this.lvlUpObject.abilities.includes("") == false){
+      this.heroservice.increaseAbilities(this.lvlUpObject.abilities);
+    }
+    // console.log("leveling this", this.lvlUpObject, this.heroForceSuite);
+    this.levelUpModal = false;
+    this.heroLvlUpObj.emit(this.lvlUpObject);
+    this.lvlUpObject = {
+      "class" : "",
+      "BAB" : 0,
+      "hp"  : 0,
+      "feats" : [""],
+      "talents" : {"name" : "", "description": "","alias": ""},
+      "abilities" : [""],
+    }
+  this.resetAllSelections("Select", 'yes')
+  //connect to a service to have the other components update
   }
-  if (this.lvlUpObject.feats.includes("")){
-    // console.log("it's there");
-    this.lvlUpObject.feats.pop();
+  resetAllSelections(reset: string, cs: string){
+    if (cs == 'yes'){
+      this.addClassSelection("Select a Class");
+    }
+    this.selectHPIncrease(reset);
+    this.selectFeat(reset, 'regular');
+    this.addFeat(reset, 'none', 'yes');
+    this.selectTalent(reset, 'talent');
+    this.addTalent(reset, 'none')
+    this.showAbs = false;
+    this.showNoClassFeat = false;
+    this.lvlButton = false;
+    this.unrestrictFlag = false;
+    this.unrestrictFeat = "";
   }
-  if (this.lvlUpObject.abilities.length == 2 && this.lvlUpObject.abilities.includes("") == false){
-    this.heroservice.increaseAbilities(this.lvlUpObject.abilities);
-  }
-  // console.log("leveling this", this.lvlUpObject, this.heroForceSuite);
-  this.levelUpModal = false;
-  this.heroLvlUpObj.emit(this.lvlUpObject);
-  this.lvlUpObject = {
-    "class" : "",
-    "BAB" : 0,
-    "hp"  : 0,
-    "feats" : [""],
-    "talents" : {"name" : "", "description": "","alias": ""},
-    "abilities" : [""],
-  }
- this.resetAllSelections("Select", 'yes')
- //connect to a service to have the other components update
-}
-resetAllSelections(reset: string, cs: string){
-  if (cs == 'yes'){
-    this.addClassSelection("Select a Class");
-  }
-  this.selectHPIncrease(reset);
-  this.selectFeat(reset, 'regular');
-  this.addFeat(reset, 'none', 'yes');
-  this.selectTalent(reset, 'talent');
-  this.addTalent(reset, 'none')
-  this.showAbs = false;
-  this.showNoClassFeat = false;
-  this.lvlButton = false;
-  this.unrestrictFlag = false;
-  this.unrestrictFeat = "";
-}
 }

@@ -158,20 +158,20 @@ calcHeroLevel(num: any){
     let len = numStr.length - 3;
     numStr.substring(0,len);
     let level = 0;
-    let sawedNum = parseInt(numStr.substring(0,len))
+    let savedNum = parseInt(numStr.substring(0,len))
     for (let i =0; i<this.xpChart.length; i++){
-      // console.log("the number to calc", tempNum, numStr, sawedNum, i, this.xpChart.length);
-      if (sawedNum >= this.xpChart[i]){
+      // console.log("the number to calc", tempNum, numStr, savedNum, i, this.xpChart.length);
+      if (savedNum >= this.xpChart[i]){
         
         // console.log("the level", i);
       }else{
-        let num = 0;
+      let num = 0;
       let hc = (this.level.getHeroClassObj() == undefined)? this.savedHero.class: this.level.getHeroClassObj();
       let hcArr: any = Object.values(hc);
-      // console.log("the hc",Object.values(hc));
+      // console.log("the hc",Object.values(hc), num);
       let totalHC = hcArr.reduce((prev: any, curr: any) => prev + curr, num);
-    // console.log("total HC", totalHC);
-        (this.heroLevel < level && this.heroLevel == totalHC)?this.levelUp = true: this.levelUp = false;
+      // console.log("total HC", totalHC, "hero level",this.heroLevel,"level", level);
+        (this.heroLevel < level || this.heroLevel == totalHC)?this.levelUp = true: this.levelUp = false;
         this.heroLevel = level;
         this.nextXp = this.xpChart[i]*1000;
         // this.level.calcBAB();
