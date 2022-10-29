@@ -27,7 +27,7 @@
     right: 0;
 }
 .lvlModal{
-    position: absolute;
+    position: fixed;
     top: 1vh;
     border: 3px solid black;
     border-radius: 10px;
@@ -37,5 +37,5 @@
     width: auto;
     max-width: 50vw;
     right: 0;
-   
+   overflow-y: scroll;
 }

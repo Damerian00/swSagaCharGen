@@ -1,19 +1,33 @@
 .defensesBox{
-    
+    display:none;
 }
 
-.headers{
-    display: flex;
-    justify-content: space-evenly;   
-}
-.blank{
-    visibility: hidden;
-    margin: 0 4vw;
-
-}
 .defense{
     display: flex;
     align-items: center;
+    flex-direction: column;
+    margin:.5rem;
+    border:2px inset  rgb(151, 150, 150);
+    padding:6px;
+    .tb{
+        display: flex;
+        .colbox{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .equals{
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 1rem 0;
+        border: 1px inset black;
+    }
+    .blank{
+        visibility: hidden;
+        
+    
+    }
     label{
         color:black;
         text-align: center;
@@ -22,13 +36,13 @@
         color: black;
         background-color: rgb(151, 150, 150);
         border-radius: 10px;
-        width: 10vw;
+        width: 20ch;
         text-align: left;
         padding: 1rem 0.25rem;
    
     }
     p{
-        margin:0 1rem;
+        margin:0 .2rem;
         text-align: center;
         width: 2vw;
         border: 1px solid black;
@@ -38,7 +52,7 @@
 
     }
     select{
-        color:black;
+       width:8ch;
     }
     input{
         margin:0 1rem;
@@ -49,4 +63,70 @@
         background-color: rgba(20, 20, 20, 0.05);
         padding: 6px 1rem;
     }
+}
+@media (min-width:768px){
+    .smallScreen{display:none;}
+    .defensesBox{display: block;}
+    .headers{
+        display: flex;
+        justify-content: space-evenly;   
+    }
+    .blank{
+        visibility: hidden;
+        margin: 0 4vw;
+    
+    }
+    .defense{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin:0;
+        border:none;
+        padding:0;
+        label{
+            color:black;
+            text-align: center;
+        }
+        .name{
+            color: black;
+            background-color: rgb(151, 150, 150);
+            border-radius: 10px;
+            width: 10vw;
+            text-align: left;
+            padding: 1rem 0.25rem;
+       
+        }
+        p{
+            margin:0 1rem;
+            text-align: center;
+            width: 2vw;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: rgba(20, 20, 20, 0.05);
+            padding: 6px 1rem;
+    
+        }
+        select{
+            color:black;
+        }
+        input{
+            margin:0 1rem;
+            text-align: center;
+            width: 2vw;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: rgba(20, 20, 20, 0.05);
+            padding: 6px 1rem;
+        }
+    }
+
+
+
+
+
+
+
+
+
+    
 }

@@ -1,5 +1,6 @@
 .armorContainer{
     margin: 1vh 3vw;
+    width: 100%;
 }
 .armor{
     display: flex;
@@ -9,7 +10,13 @@
 input{
     accent-color:black;
 }
-
+.tb{
+    display: flex;
+    flex-direction: column;
+    .worn{
+        justify-content: center;
+    }
+}
 .box{
     display: flex;
     flex:1;   
@@ -19,12 +26,25 @@ input{
         margin: 0 .25rem;
         flex:1;
     }
-    label{
-        
+
+}
+.stats{
+    flex-wrap: wrap;
+}
+.name{
+    flex:4;   
+    p{
+        margin:0 1rem;
+        text-align: justify;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(20, 20, 20, 0.05);
+        padding: 6px 5rem 6px 1rem;
     }
-    select{
-        
-    }
+}
+
+.statsContainer{
+    display: flex;  
 }
 .stat-box{
     margin:2px;
@@ -46,20 +66,7 @@ input{
        width: auto;
     }
 }
-.name{
-    flex:4;   
-    p{
-        margin:0 1rem;
-        text-align: justify;
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: rgba(20, 20, 20, 0.05);
-        padding: 6px 5rem 6px 1rem;
-    }
-}
-.tb{
-    margin:1rem;
-}
+
 .notes{
     border:1px solid black;
     align-items: flex-start;
@@ -83,4 +90,18 @@ input{
         width: 25vw;
         height: 4vh;
     }
+}
+
+@media (min-width:768px){
+
+    .tb{
+        
+        .worn{
+            justify-content: flex-start;
+        }
+    }
+    .checkboxes{
+        display: flex;
+    }
+
 }

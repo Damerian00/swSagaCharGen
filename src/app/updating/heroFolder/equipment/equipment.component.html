@@ -1,5 +1,5 @@
 <h6>Equipment</h6>
-<section class="equipment">
+<section id="equips" class="equipment">
     <div *ngFor="let item of inventoryArr let i = index" class="box">
         <div class="tb name">
             <Label>Item Name</Label>
@@ -12,28 +12,30 @@
             <label>Carry</label>
             <input type="checkbox" name="carryBox" #carryBox (change)="toggleCarry(i)" [checked]="item.carry">
         </div>
-        <div class="tb">
-            <label>QTY</label>
-            <input type="number" #qty (change)="adjustQty(i, qty.value)" value="{{item.qty}}" min="1">
+        <div class="specs">
+            <div class="tb">
+                <label>QTY</label>
+                <input type="number" #qty (change)="adjustQty(i, qty.value)" value="{{item.qty}}" min="1">
+            </div>
+            <div class="tb">
+                <label>Weight</label>
+                <p>{{item.weight}}</p>
+            </div>
+            <div class="tb">
+                <label>Total Weight</label>
+                <p>{{item.total_weight}}</p>
+            </div>
+            <div class="tb">
+                <label>Base Cost</label>
+                <p>{{item.cost}}</p>
+            </div>
+            <div class="tb">
+                <label>Total Cost</label>
+                <p>{{item.total_cost}}</p>
+            </div>
         </div>
         <div class="tb">
-            <label>Weight</label>
-            <p>{{item.weight}}</p>
-        </div>
-        <div class="tb">
-            <label>Total Weight</label>
-            <p>{{item.total_weight}}</p>
-        </div>
-        <div class="tb">
-            <label>Base Cost</label>
-            <p>{{item.cost}}</p>
-        </div>
-        <div class="tb">
-            <label>Total Cost</label>
-            <p>{{item.total_cost}}</p>
-        </div>
-        <div class="tb">
-            <div class="box">
+            <div class="box btn_box">
                 <button (click)="toggleItemShow(i)">Modify</button>
                 <button (click)="deleteItem(i)">Delete</button>
             </div>
@@ -89,8 +91,8 @@
             <input type="number" min="0.01" #cusWeight>
             <label>Cost: </label> 
             <input type="number" min="0" #cusCost>
-            <button (click)="createCustomItem(cusName.value, cusQty.value, cusEquipType.value, cusWeight.value, cusCost.value)">Add Item to Inventory</button>
-            <button (click)="buyItem()">Purchase Item</button>
+            <button (click)="createCustomItem(cusName.value, cusQty.value, cusEquipType.value, cusWeight.value, cusCost.value, 'add')">Add Item to Inventory</button>
+            <button (click)="createCustomItem(cusName.value, cusQty.value, cusEquipType.value, cusWeight.value, cusCost.value, 'buy')">Purchase Item</button>
         </div>
         <div *ngIf="selectedType != 'Custom'">
             <label >Choose Category</label>
@@ -98,7 +100,7 @@
                 <option>Select Category</option>
                 <option *ngFor="let cat of equipSubCats">{{cat}}</option>
             </select>
-        </div>
+       
     <label>Choose Item to Add</label>
     <select *ngIf="filteredEquipArr.length != 0" name="filterList" #filterList (change)="loadEquipTable(filterList.value)">
         <option>Select an item</option>
@@ -214,6 +216,7 @@
     </table>
     <button  *ngIf="tableObj.name != undefined" (click)="addItem()">Add {{tableObj.name}} to Inventory</button>
     <button  *ngIf="tableObj.name != undefined" (click)="buyItem()">Purchase {{tableObj.name}}</button>
+</div>
     <span *ngIf="notvalid" class="validator">Error not enough Credits...</span>
     <button (click)="toggleEquipTable()">Cancel</button>
 </aside>

@@ -2,13 +2,38 @@
 // something
     color:black;
 }
+.specs{
+    display: flex;
+    margin: 0.5rem 0;
+    align-items: flex-end;
+    label{
+        margin-left: 1rem;
+    }
+}
+.box{
+    display: flex;
+    flex:1;   
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5vh 1vw;
+    flex-direction: column;
+    p, input{
+        text-align: center;
+        width: 5ch;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgba(20, 20, 20, 0.05);
+        padding: 6px 1rem;
+        margin: 0.25rem 2px;
+    }
+}
+
 .equipTable{
-    position: fixed;
-    top:0;
+    position: absolute;
     background-color: white;
     display: flex;
     flex-direction: column;
-        
+    overflow-y: scroll;    
     table{
         border:3px solid black;
         background-color: rgb(175, 121, 68, 0.7);
@@ -48,7 +73,7 @@
     flex: 1;
     label{
         text-align: center;
-        display: block;
+        
     }
 }
 .headers{
@@ -59,21 +84,7 @@
         text-align: center;
     }
 }
-.box{
-    display: flex;
-    flex:1;   
-    align-items: center;
-    justify-content: space-between;
-    margin: 0.5vh 1vw;
-    p, input{
-        text-align: center;
-        width: 3vw;
-        border: 1px solid black;
-        border-radius: 5px;
-        background-color: rgba(20, 20, 20, 0.05);
-        padding: 6px 1rem;
-    }
-}
+
 .name{
     flex:4;
    p{
@@ -144,4 +155,30 @@
 .validator{
     color:red;
     font-style: italic;
+}
+
+@media (min-width:768px){
+    .box{
+    flex-direction: row;
+        .tb:nth-child(2){
+        margin-left:1rem;
+        }
+    }
+    .specs{
+        label{
+            margin:0;
+        }
+        .tb:nth-child(2){
+            margin:0;
+        }
+    }
+    .btn_box{
+        flex-direction: column;
+        button{
+            margin:.25rem;
+        }
+    }
+
+
+
 }

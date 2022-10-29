@@ -94,7 +94,7 @@ showAdaptOpts: boolean = false;
 //  Numbers & Strings
 levelPts: number = 0;
 currentXp: number = 0;
-nextXp: number = 0;
+nextXp: number = 0; 
 timesLeveled: number = 0;
 hpKeyWord: string = '';
 rolledHp: number = 0;

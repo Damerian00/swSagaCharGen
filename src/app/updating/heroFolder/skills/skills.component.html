@@ -1,7 +1,15 @@
 
- <section class="skillWrapper">
+ <section id="skills" class="skillWrapper">
     <div class="skillsContainer">
         <h6>Skills: </h6>
+            <div class="headers">
+                <label>Name</label>
+                <label>Total</label>
+                <label>Mod</label>
+                <label>T</label>
+                <label>F</label>
+                <label>Misc</label>
+            </div>
             <div class="skillsCloset" *ngFor="let skill of heroSkills; let i = index">
             <p>{{skill.skill_name}}</p>
             <p>{{skill.skill_value}}</p>

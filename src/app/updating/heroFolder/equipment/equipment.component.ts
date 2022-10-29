@@ -244,7 +244,7 @@ loadFilteredList(selection: any){
   } 
 }
 //  function to create a custom item
-createCustomItem(name: string, qty: string, type: string, weight: any, cost: string){
+createCustomItem(name: string, qty: string, type: string, weight: any, cost: string, acquire: string){
   this.notvalid = false;
   if(name == "" || type == "Select which Type" || parseInt(qty) <= 0){
     this.toggleEquipTable();
@@ -279,10 +279,15 @@ let equipObj = {
   showNotes: false,
   notesDisplay: 'show',
 } 
-this.heroservice.calcCredits(equipObj.total_cost, "-");
-if (this.notvalid == false){
+if (acquire == 'buy'){
+  this.heroservice.calcCredits(equipObj.total_cost, "-");
+  if (this.notvalid == false){
+    this.inventoryArr.push(equipObj);
+    this.toggleEquipTable();
+  }
+}else{
   this.inventoryArr.push(equipObj);
-  this.toggleEquipTable();
+    this.toggleEquipTable();
 }
 }
 //  sets the tableObj to the equipObj Object to be used later

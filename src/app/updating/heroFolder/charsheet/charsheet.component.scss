@@ -1,26 +1,58 @@
-.skillsHolder{
-    display: flex;
-    justify-content: space-evenly;
+.heroSelectBox{
+    background-color: black;
+    .heroSelect:nth-child(even){
+        background-color: rgb(211, 211, 211);
+    }
 }
-.lightContainer{
+.heroSelect{
     display: flex;
+    align-items: center;
     border: 1px solid black;
-    border-radius: 5px;
-    background-color: rgba(20, 20, 20, 0.05);
-    padding: 2px 1rem;
-}
-.nav{
-    display: flex;
-    justify-content: space-evenly;
-    a{
-        text-decoration: none;
-        color: blue;
+    background-color: white;
+    label{
+        width:8ch;
+       
+    }
+    button{
+        font-size: .75rem;
+        background: -webkit-linear-gradient(rgb(250, 233, 2), rgb(7, 7, 7));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; 
+        color: rgba(200, 214, 8, 0.89);
+        width:20vw;
+        margin:.25rem;
         &:hover{
            color:rgb(136, 138, 138);
             border: 2px inset rgba(185, 185, 185, 0.836);
-            padding:3px;
-        }
+            cursor: pointer;
+           background: webkit-linear-gradient(rgb(255, 238, 2), rgb(7, 7, 7));
+           -webkit-background-clip: content-box;
+           -webkit-text-fill-color: black;
+           
+        } 
     }
+    .box{
+        display: flex;
+        flex-direction: column;
+        
+        
+    }
+    .box:nth-child(3){
+        flex-direction: row;
+    }
+}
+h1{
+    text-align: center;
+}
+.navbtns{
+    display: flex;
+}
+.modal{
+    background-color: white;
+    border-radius:25px;
+    border: 2px inset rgba(185, 185, 185, 0.836);
+    padding: 10px 0 10px 15px;
+    margin: 0 1rem; 
 }
 .heroBgContainer{
     display:flex;
@@ -29,10 +61,10 @@
     margin-top: 1vh;
     .half-row{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         width:70vw;
-       margin-bottom:1vh;
+        margin-bottom:1vh;
         div.box:nth-child(2){
           flex: 5;  
         }
@@ -43,74 +75,36 @@
 }
 .attrContainer{
     display: flex;
-    justify-content:space-around;
-    .healthBox{
-
+    flex-direction: column;
+    input{
+        width: 2rem;
+        margin-left: 1rem;
+        text-align: center; 
     }
-    .threshBox{
-
-    }
-}
-.levelBox, .box{
-    display: flex;
-}
-.box{
-    align-items: center;
-    justify-content: center;
-    flex:1;
-    p{
-        margin: 0 .25rem;
-       
-    }
-.fps{
-    border: 2px inset black;
-    padding: 5px;
-    border-radius: 10px;
-}
-}
-.split-box{
-    display:flex;
-    justify-content: space-between;
-    div{
-        flex:1;
-    }
-}  
-.half-row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom:1vh;
-   
-}
-.white-board{
-    min-height: 3vh;
-    height: auto;
-    border: 1px solid black;
-    margin-top: -1.5rem;
-    width: 100%;
-    padding: 2vh 0.25rem;
-
-}
-textarea.third-size{
-    margin-top:-1rem;
-    max-width: calc(100vw/3);
-    min-width: calc(100vw/3);
-    min-height: 2vh;
-}
-.third-size{
-    width: calc(100vw/3);
-}
-.classContainer{
-    flex: 1;
-    p{
-        margin: .5rem;
+    .adds{
+        
+        .tb{
+            display: flex;
+            align-items: flex-start;
+        }
+        .box{
+            display: flex;
+            flex-direction: column;
+            margin: 0 .5rem;
+           
+        }
     }
 }
-
 .abilityWrapper{
     display: flex;
-    justify-content: flex-start;
     flex-direction: column;
+    .half-row{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom:1vh;
+       
+    }
     .abilitiesContainer{
         display: flex;
         flex-direction: column;
@@ -153,21 +147,103 @@ textarea.third-size{
         }
       
     }
-    .scoresContainer{
+    .split-box{
         display:flex;
         flex-direction: column;
-        h3{
-            text-align: center;
+        div{
+            
         }
-        p{
-            margin:0 1rem;
-            text-align: center;
+    }  
+    // .scoresContainer{
+    //     display:flex;
+    //     flex-direction: column;
+    //     h3{
+    //         text-align: center;
+    //     }
+    //     p{
+    //         margin:0 1rem;
+    //         text-align: center;
+    //     }
+    // }
+}
+.skillsHolder{
+    display: flex;
+    justify-content: space-evenly;
+}
+.lightContainer{
+    display: flex;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: rgba(20, 20, 20, 0.05);
+    padding: 2px 1rem;
+}
+.nav{
+    display: flex;
+    justify-content: space-evenly;
+    a{
+        text-decoration: none;
+        color: blue;
+        &:hover{
+           color:rgb(136, 138, 138);
+            border: 2px inset rgba(185, 185, 185, 0.836);
+            padding:3px;
         }
     }
 }
-.tb{
-    margin:1rem;
+
+
+.levelBox, .box{
+    display: flex;
 }
+.box{
+    align-items: center;
+    justify-content: center;
+    flex:1;
+    p{
+        margin: 0 .25rem;
+       
+    }
+.fps{
+    border: 2px inset black;
+    padding: 5px;
+    border-radius: 10px;
+}
+}
+
+.half-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:1vh;
+   
+}
+.white-board{
+    min-height: 3vh;
+    height: auto;
+    border: 1px solid black;
+    margin-top: -1.5rem;
+    width: 100%;
+    padding: 2vh 0.25rem;
+
+}
+textarea.third-size{
+    margin-top:-1rem;
+    max-width: calc(100vw/3);
+    min-width: calc(100vw/3);
+    min-height: 2vh;
+}
+.third-size{
+    width: calc(100vw/3);
+}
+.classContainer{
+    flex: 1;
+    p{
+        margin: .5rem;
+    }
+}
+
+
+
 .conditions{
     label{
         margin-left: .5rem;
@@ -205,40 +281,72 @@ h6{
     width: 95vw;
     margin-top: -1rem;
 }
-.heroSelectBox{
-    div:nth-child(even){
-        background-color: rgb(211, 211, 211);
+
+
+//  select hero container
+@media (min-width:768px){
+    .heroSelect{
+        margin: 1rem;
+        justify-content: space-evenly;
+        label{
+            width:auto;  
+        }
+        button{
+            font-size: 1rem;
+            width: auto;
+        }
+        .box{
+            flex-direction: row;
+
+        }
     }
-}
-.heroSelect{
-    display: flex;
-    margin: 1rem;
-    align-items: center;
-    justify-content: space-evenly;
-    border: 1px solid black;
-    background-color: white;
-    label{
-        width:20ch;
-       
+
+    .heroBgContainer{
+        align-items: center;
     }
-    button{
-        
-        font-size: 1rem;
-        background: -webkit-linear-gradient(rgb(250, 233, 2), rgb(7, 7, 7));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent; 
-        color: rgba(200, 214, 8, 0.89);
-        &:hover{
-           color:rgb(136, 138, 138);
-            border: 2px inset rgba(185, 185, 185, 0.836);
-            cursor: pointer;
-           background: webkit-linear-gradient(rgb(255, 238, 2), rgb(7, 7, 7));
-           -webkit-background-clip: content-box;
-           -webkit-text-fill-color: black;
+    .attrContainer{
+        display: flex;
+        justify-content:space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .healthBox{
+    
+        }
+        .threshBox{
+    
+        }
+    }
+    .abilityWrapper{
+        justify-content: flex-start;
+
+
+        .abilitiesContainer{
+            
            
-        } 
+            .abilities {
+               
+                p{
+                    width: auto;                   
+                }
     }
+
+
 }
-.heroSelectBox{
-    background-color: black;
+    }
+
+    .split-box{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        div{
+            flex:1;
+        }
+    }  
+    .tb{
+        margin:1rem;
+    }
+
+
+
 }

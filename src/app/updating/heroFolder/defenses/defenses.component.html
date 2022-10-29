@@ -1,4 +1,41 @@
 <h6>Defenses</h6>
+<section id="defenses" class="smallScreen">
+    <div *ngFor="let defense of heroDefenses; let i= index" class="defense">
+       <div class="tb">
+           <label class="name">{{defense.name}}: </label>
+           <div class="colbox">
+               <label>Total</label>
+               <p>{{defense.total}}</p>
+           </div>
+        </div>
+        <p class="equals">=</p>
+       <div class="tb">
+        <div class="colbox">
+            <p class="blank">hi</p>
+            <span>10 +</span>
+        </div>
+           <div class="colbox">
+            <label>Level/Armor</label>
+            <p>{{defense.level}}</p>
+           </div>
+           <div class="colbox">
+               <label>Class</label>
+               <p>{{defense.class}}</p>
+           </div>
+           <div class="colbox">
+            <label>Mod</label>
+            <select value="selected" id="{{i}}" (change)="collectDefenseMod(i,$event)">
+                <option>Select</option>
+                <option *ngFor="let mod of abModOptions">{{mod}}</option>
+            </select>
+           </div>
+           <div class="colbox">
+            <label>Misc</label>
+            <input type="number" #defenseMisc (change)="collectMisc(i,defenseMisc.value)" value="{{defense.misc}}">
+           </div> 
+       </div>
+    </div>
+</section>
 <section class="defensesBox">
     <div class="headers">
         <p>Total</p>

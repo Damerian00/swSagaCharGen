@@ -1,44 +1,48 @@
 <h6>Armor</h6>
-<section class="armorContainer">
+<section id="armorer" class="armorContainer">
     <div class="armor">
         <div class="tb">
-            <div class="box">
+            <div class="box worn">
                 <label>Armor Worn<input type="checkbox" id="aromorWorn" name="aromorWorn" value="aromorWorn" (change)="checkTheBoxes($event)" [checked]="currentArmor.worn"></label>
             </div>
-            <div class="box">
+            <div class="box stats">
                 <div class="box name">
                     <label>Name: </label>
                     <p>{{currentArmor.armor_name}}</p>
                 </div>
-                <div class="stat-box">
-                    <label>Ref Def Bonus</label>  
-                    <p>{{currentArmor.ref_def_bonus}}</p>                                
-                </div>
-                <div class="stat-box">
-                    <label>Fort Def Bonus</label>
-                    <p>{{currentArmor.fort_def_bonus}}</p>                   
-                </div>
-                <div class="stat-box">
-                    <label>Max Dex Bonus</label>
-                    <p>{{currentArmor.max_def_bonus}}</p>                
-                </div>
-                <div class="stat-box">
-                    <label>Speed</label>
-                    <p>{{currentArmor.speed}}</p>              
+                <div class="statsContainer">
+                    <div class="stat-box">
+                        <label>Ref Def Bonus</label>  
+                        <p>{{currentArmor.ref_def_bonus}}</p>                                
+                    </div>
+                    <div class="stat-box">
+                        <label>Fort Def Bonus</label>
+                        <p>{{currentArmor.fort_def_bonus}}</p>                   
+                    </div>
+                    <div class="stat-box">
+                        <label>Max Dex Bonus</label>
+                        <p>{{currentArmor.max_def_bonus}}</p>                
+                    </div>
+                    <div class="stat-box">
+                        <label>Speed</label>
+                        <p>{{currentArmor.speed}}</p>              
+                    </div>
                 </div>
             </div>
-            <div class="box">
-                <div class="stat-box">
-                    <label>Proficiency</label>
-                    <input type="checkbox" id="proficiency" name="proficiency" value="proficiency" (change)="checkTheBoxes($event)" [checked]="currentArmor.proficient">
-                </div>
-                <div class="stat-box">
-                    <label>Armor Def.</label>
-                    <input type="checkbox" id="armorDef" name="armorDef" value="armorDef" (change)="checkTheBoxes($event)" [checked]="currentArmor.def">
-                </div>
-                <div class="stat-box">
-                    <label>Improved Armor Def.</label>
-                    <input type="checkbox" #improveArmorDef id="improveArmorDef" name="improveArmorDef" value="improveArmorDef" (change)="checkTheBoxes($event)" [disabled]="currentArmor.def == false" [checked]="currentArmor.improved_def">
+            <div class="box stats">
+                <div class="checkboxes">
+                    <div class="stat-box">
+                        <label>Proficiency</label>
+                        <input type="checkbox" id="proficiency" name="proficiency" value="proficiency" (change)="checkTheBoxes($event)" [checked]="currentArmor.proficient">
+                    </div>
+                    <div class="stat-box">
+                        <label>Armor Def.</label>
+                        <input type="checkbox" id="armorDef" name="armorDef" value="armorDef" (change)="checkTheBoxes($event)" [checked]="currentArmor.def">
+                    </div>
+                    <div class="stat-box">
+                        <label>Improved Armor Def.</label>
+                        <input type="checkbox" #improveArmorDef id="improveArmorDef" name="improveArmorDef" value="improveArmorDef" (change)="checkTheBoxes($event)" [disabled]="currentArmor.def == false" [checked]="currentArmor.improved_def">
+                    </div>
                 </div>
                 <div class="stat-box">
                     <label>Armor Type</label>

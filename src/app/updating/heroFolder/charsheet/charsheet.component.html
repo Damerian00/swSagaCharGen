@@ -5,12 +5,14 @@
 
 <section *ngIf="heroPull else reminder">
     <h1>{{savedName}}</h1>
-    <button (click)="updateHero()">Save {{savedName}}</button>
-    <button (click)="deleteHero('delete', savedName)">Delete {{savedName}}</button>
-    <button (click)="openModal('xp')">Add Experience Points</button>
-    <button (click)="switchHero()">Select another hero</button>
+    <div class="navbtns">
+        <button (click)="updateHero()">Save {{savedName}}</button>
+        <button (click)="deleteHero('delete', savedName)">Delete {{savedName}}</button>
+        <button (click)="openModal('xp')">Add Experience Points</button>
+        <button (click)="switchHero()">Select another hero</button>
+    </div>
     <aside *ngIf="xpModalToggle" class="modal">
-        <label>Enter Earned XP amount then click add.</label>
+        <label>Enter Earned XP amount then click Add Points.</label>
         <input type="number"id="xp" name="xp" #xp>
         <button (click)="calcHeroLevel(xp.value)">Add Points</button>
     </aside>
@@ -94,18 +96,18 @@
                         <option>Will Defense</option>
                     </select>
                     <label>Misc.</label>
-                    <input class = "smallBox" name="dtMisc" #dtMisc id="dtMisc" type="number" (change)="setDTMisc(dtMisc.value)">
+                    <input name="dtMisc" #dtMisc id="dtMisc" type="number" (change)="setDTMisc(dtMisc.value)">
                 </div>
                 <div class="reductions">
                     <div>
                         <label>Damage Reduction</label>
-                        <input class="smallBox" type="number" min="0">
+                        <input type="number" min="0">
                     </div>
                     <div>
                         <label>Shield Rating</label>
-                        <input class="smallBox" type="number" min="0">
+                        <input type="number" min="0">
                         <span>/</span>
-                        <input class="smallBox" type="number" min="0">
+                        <input type="number" min="0">
                     </div>
                     <div>
                         <label>Immune</label>
@@ -130,49 +132,55 @@
             <label for="helpless">Helpless</label><br><br>
     
         </section>
-            <section class="adds">
-                <div class="tb">
-                    <div class="box">
-                           <h6>Force Points</h6>
-                            <h6>Destiny Points</h6>              
+        <section class="adds">
+            <div class="tb">
+                <div class="box">
+                    <h6>Force Points</h6> 
+                    <div class="tb">
+                        <input type="number" min="0" placeholder="{{forcePoints}}">
+                        <p>{{forceDice}}</p>
                     </div>
-                    <div class="box">
-                            <input class="smallBox" type="number" min="0" placeholder="{{forcePoints}}">
-                            <p class="smallBox">{{forceDice}}</p>
-                            <input class="smallBox" type="number" min="0">                   
-                    </div>
-                    <div class="box">
-                        <h6>BAB</h6>
-                        <h6>Speed</h6>
-                        <h6>Dak Side Points</h6>
-                    </div>
-                    <div class="box">
-                        <p>{{BAB}}</p>
-                        <p>6</p>
-                        <input class="smallBox" type="number" min="0">
-                    </div>    
-                        <h6>Grapple</h6>       
-                        <div class="box">
-                            <label>Mod</label>
-                            <label>Misc</label>
-                        </div>
-                    <div class="box">
-                            <p class="numbs">{{grapple}}</p>       
-                            <p>=</p>
+                </div>
+                <div class="box">
+                    <h6>Destiny Points</h6>              
+                    <input type="number" min="0">                   
+                </div>
+            </div>
+            <div class="tb">
+                <div class="box">
+                    <h6>BAB</h6>
+                    <p>{{BAB}}</p>           
+                </div>
+                <div class="box">
+                    <h6>Speed</h6>  
+                    <p>6</p>
+                </div>
+                <div class="box">
+                    <h6>Dak Side Points</h6>
+                    <input type="number" min="0">
+                </div>    
+            </div>
+            <div class="tb">
+                <div class="box">
+                    <h6>Grapple</h6> 
+                    <div class="tb">
+                        <p class="numbs">{{grapple}}</p>       
+                        <p>=</p>
                         <div class="box">
                             <select value="selected" #grappleOption (change)="calcGrapple(grappleOption.value)">
                                 <option value= "Strength">STR</option>
                                 <option value="Dexterity">DEX</option>
                             </select>
+                            <label>Mod</label>
                         </div>
-                            <p>+</p>
-                        <div class="box">  
-                           <input class="smallBox" type="number" name="grptMisc" #grpMisc id="grpMisc" (change)="setGrappleMisc(grpMisc.value)">
-                        </div>
-                            
-                    </div>
-                    
+                        <p>+</p>
+                        <div class="box">
+                            <input class="smallBox" type="number" name="grptMisc" #grpMisc id="grpMisc" (change)="setGrappleMisc(grpMisc.value)">
+                            <label>Misc</label>
+                        </div>   
+                    </div>      
                 </div>
+            </div>
         </section>
     </section>
     <div class="split-box">
@@ -278,7 +286,6 @@
 </section>
 <ng-template #reminder>
     <div>
-        <label>File Name:</label>
         <!-- <select *ngIf="savesPulled" #localSaves value="selected" (change)="getHero(localSaves.value)">
             <option>Select a Save File</option>
             <option *ngFor="let hero of savedHeroes">{{hero.name}}</option>
@@ -286,15 +293,25 @@
     </div>
     <h4>In order to generate the correct character sheet please select one of your saved heroes. If there are none to select then you will need to create a new hero first.</h4>
     <aside class="heroSelectBox">
+        <label>File Name:</label>
         <div class="heroSelect" *ngFor="let hero of savedHeroes let i = index">
-            <Label>{{hero.name}}</Label>
-            <button  (click)="getHero(hero.name)">EDIT</button>
-            <label>Species:</label>
-            <p>{{hero.species.species_name}}</p>           
-            <label>Level:</label>
-            <p *ngIf="hero.level >= 1">{{hero.level}}</p>
-            <p *ngIf="hero.level == undefined">1</p>
-            <button  (click)="deleteHero(i, hero.name)">DELETE</button>
+            <div class="box">
+                <Label>Name:</Label>
+                <p>{{hero.name}}</p>
+            </div>
+            <div class="box">
+                <label>Species:</label>
+                <p>{{hero.species.species_name}}</p>
+            </div>
+            <div class="box">
+                <label>Level:</label>
+                <p *ngIf="hero.level >= 1">{{hero.level}}</p>
+                <p *ngIf="hero.level == undefined">1</p>
+            </div>           
+            <div class="box">
+                <button  (click)="getHero(hero.name)">EDIT</button>
+                <button  (click)="deleteHero(i, hero.name)">DELETE</button>
+            </div>
         </div>
     </aside>
    
