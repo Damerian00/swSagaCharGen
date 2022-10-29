@@ -150,21 +150,9 @@ h1{
     .split-box{
         display:flex;
         flex-direction: column;
-        div{
-            
-        }
+       
     }  
-    // .scoresContainer{
-    //     display:flex;
-    //     flex-direction: column;
-    //     h3{
-    //         text-align: center;
-    //     }
-    //     p{
-    //         margin:0 1rem;
-    //         text-align: center;
-    //     }
-    // }
+ 
 }
 .skillsHolder{
     display: flex;
@@ -228,12 +216,12 @@ h1{
 }
 textarea.third-size{
     margin-top:-1rem;
-    max-width: calc(100vw/3);
-    min-width: calc(100vw/3);
+    max-width: 100%;
+    min-width: 100%;
     min-height: 2vh;
 }
 .third-size{
-    width: calc(100vw/3);
+    width: 100%;
 }
 .classContainer{
     flex: 1;
@@ -263,6 +251,7 @@ h6{
 
 .flex-start{
     align-items: flex-start;
+    flex-direction: column;
 }
 
 .notes{
@@ -277,8 +266,11 @@ h6{
     width:100%;
     margin-top: -1rem;;
 }
+.hnotes{
+    justify-content: flex-start;
+}
 #heroNotes{
-    width: 95vw;
+    width: 100%;
     margin-top: -1rem;
 }
 
@@ -309,22 +301,12 @@ h6{
         justify-content:space-around;
         flex-direction: row;
         flex-wrap: wrap;
-        .healthBox{
-    
-        }
-        .threshBox{
-    
-        }
+     
     }
     .abilityWrapper{
         justify-content: flex-start;
-
-
         .abilitiesContainer{
-            
-           
             .abilities {
-               
                 p{
                     width: auto;                   
                 }
@@ -347,6 +329,22 @@ h6{
         margin:1rem;
     }
 
+    .flex-start{
+        flex-direction: row;
+    }
+    .third-size{
+        width: calc(100vw/3);
+    }
+    textarea.third-size{
+        max-width: calc(100vw/3);
+        min-width: calc(100vw/3);
+    }
 
-
+    .hnotes{
+        justify-content: center;
+    }
+    #heroNotes{
+        width: 95vw;
+        
+    }
 }

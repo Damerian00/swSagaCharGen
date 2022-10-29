@@ -1,49 +1,72 @@
 <h6>Attacks</h6>
 <section class="attacks">
-        <div *ngFor="let weapon of weaponsArray; let i=index" class="tb">
-            <div class="box">        
-                <p class="name">{{weapon.name}}</p>
-                <p class="name">{{weapon.wep_type}}</p>
-            </div>
-            <div class="box">
-                <label class="shadow">Attack</label>
-                <p class="blank">Hidden</p>
-                <span class="blank">=</span>
-                <div class="headers">
-                    <label>Total</label>
-                    <p>{{weapon.attack_total}}</p>
-                </div>
-                <span>|</span>
-                <div class="headers">
-                    <label>Mod</label>
-                    <select id="{{i}}" (change)="collectAttackMod(i, $event)">
-                        <option *ngFor="let mod of attackMods">{{mod}}</option>       
-                    </select>
-                </div>
-                <span>+</span>
-                <div class="headers">
-                    <label>Misc</label>
-                    <input class="smallBox" type="number" min="0" #attackMisc (change)="collectAttackmisc(i, attackMisc.value)" >
+        <div *ngFor="let weapon of weaponsArray; let i=index">
+            <div class="tb">
+                <div class="tbrow">
+                    <div class="box name">        
+                        <p>{{weapon.name}}</p>
+                        <p>{{weapon.wep_type}}</p>
+                    </div>
                 </div>
             </div>
-             <div class="box">
-                <label class="shadow">Damage</label>
-                <p>{{weapon.die}}</p>
-                <span>+</span>
-                <p>{{weapon.damage_total}}</p>
-                <span>|</span>
-                <select id="damageMod_type" (change)="collectDamageMod(i, $event)">
-                    <option *ngFor="let mod of damageMods">{{mod}}</option>
-                </select>
-                <span>+</span>
-                <input class="smallBox" type="number" min="0" #dmgMisc (change)="collectDamageMisc(i, dmgMisc.value)">
-             </div>   
-            <div class="box">
-                <h5>Critical Info</h5>
-                <label>Range</label>
-                <input class="smallBox" type="number" min="0" #rangeNumber>
-                <label>Multiplier</label>
-                <input class="smallBox" type="number" min="0" #multNumber>
+            <div class="tb">
+                <div class="tbrow">
+                    <div class="box cols">
+                        <p class="blank">Hidden</p>
+                        <label class="shadow">Attack</label>
+                        <label class="shadow">Damage</label>
+                    </div>
+                    <div class="box cols">
+                        <p class="blank">Hidden</p>
+                        <p class="blank">Hidden</p>
+                        <p>{{weapon.die}}</p>
+                    </div>
+                    <div class="box cols">
+                        <label>Total</label>
+                        <p>{{weapon.attack_total}}</p>
+                        <span>+</span>
+                    </div>
+                    <div class="box cols">
+                        <p class="blank">Hidden</p>
+                        <p class="blank">Hidden</p>
+                        <p>{{weapon.damage_total}}</p>
+                    </div>
+                </div>
+                <div class="tbrow">
+                    <div class="box cols">
+                        <span class="blank">|</span>   
+                        <span>|</span>
+                        <span>|</span>
+                    </div>
+                    <div class="box cols">
+                        <label>Mod</label>
+                        <select id="{{i}}" (change)="collectAttackMod(i, $event)">
+                            <option *ngFor="let mod of attackMods">{{mod}}</option>       
+                        </select>
+                        <select id="damageMod_type" (change)="collectDamageMod(i, $event)">
+                            <option *ngFor="let mod of damageMods">{{mod}}</option>
+                        </select>
+                    </div>
+                    <div class="box cols">
+                        <span class="blank">+</span>
+                        <span>+</span>
+                        <span>+</span>
+                    </div>
+                    <div class="box cols">
+                        <label>Misc</label>
+                        <input class="smallBox" type="number" min="0" #attackMisc (change)="collectAttackmisc(i, attackMisc.value)" >
+                        <input class="smallBox" type="number" min="0" #dmgMisc (change)="collectDamageMisc(i, dmgMisc.value)">
+                    </div>
+                </div>
+            </div>
+            <div class="tbrow">
+                <div class="box">
+                    <h5>Critical Info</h5>
+                    <label>Range</label>
+                    <input class="smallBox" type="number" min="0" #rangeNumber>
+                    <label>Multiplier</label>
+                    <input class="smallBox" type="number" min="0" #multNumber>
+                </div>
             </div>
             <div class="box notes">
                 <label id="attack_notes" name="attack_notes" rows="2" cols="100" placeholder="Attack Notes">Attack Notes:</label>
@@ -82,7 +105,6 @@
                 <button (click)="editForm(-1000)">Cancel</button>
             </div>
         </div> 
-
     <div *ngIf="createWepForm">
         <label>Weapon Type: </label>
         <select #weaponType value="selected" (change)="selectWeaponType(weaponType.value)">

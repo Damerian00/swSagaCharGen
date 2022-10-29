@@ -82,6 +82,7 @@ importHeroAttacks(arr: any){
 }
 // a taoggle for adding weapons form
 createNewWeapon(){
+  
   this.createWepForm = true;
   this.notCustom = true;
 }
@@ -174,7 +175,7 @@ saveCusWep(name: any, type: any, die:any, dmgType: any, attNotes:any, wepNotes: 
     };
   }
   this.weaponsArray.push(newWep);
-  console.log("cus to create", name,type,die,dmgType,attNotes,wepNotes);
+  // console.log("cus to create", name,type,die,dmgType,attNotes,wepNotes);
   this.notCustom = true;
   this.runCalcs();
   this.createWepForm = false;
