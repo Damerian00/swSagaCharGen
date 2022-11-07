@@ -1,3 +1,27 @@
+.side_nav{
+    position: fixed;
+    left:1vw;
+    
+    ul{
+        background-color: white;
+        -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+box-shadow: 5px 5px 15px 5px #000000;
+        border-radius: 25px;
+        border: 2px solid black;
+        padding:1rem;
+        li{
+            list-style: none;
+            a{
+                color:blue;
+                text-align: center;
+                &:hover{
+                    cursor: pointer;
+                    color:rgb(250, 233, 2);
+                }
+            }
+        }
+    }
+}
 .heroSelectBox{
     background-color: black;
     .heroSelect:nth-child(even){
@@ -277,6 +301,9 @@ h6{
 
 //  select hero container
 @media (min-width:768px){
+    .side_nav{
+        display: none;
+    }
     .heroSelect{
         margin: 1rem;
         justify-content: space-evenly;

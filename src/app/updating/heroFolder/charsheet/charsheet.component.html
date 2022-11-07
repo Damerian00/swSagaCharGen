@@ -2,9 +2,30 @@
     <a routerLink="/" routerLinActive="active">Landing Page</a>
     <a routerLink="/new-hero" routerLinActive="active">Create a New Hero</a>
 </nav>
-
 <section *ngIf="heroPull else reminder">
-    <h1>{{savedName}}</h1>
+    <aside class="side_nav">
+        <ul *ngIf="navToggle">
+            <li><a (click)="scrollTo('name_nav')">{{savedName}}</a></li>
+            <li><a (click)="scrollTo('attr_nav')">Attributes</a></li>
+            <li><a (click)="scrollTo('thresh_nav')">Damage Threshold</a></li>
+            <li><a (click)="scrollTo('defenses_nav')">Defenses</a></li>
+            <li><a (click)="scrollTo('armor_nav')">Current Armor</a></li>
+            <li><a (click)="scrollTo('attacks_nav')">Attacks</a></li>
+            <li><a (click)="scrollTo('skills_nav')">Skills</a></li>
+            <li *ngIf="forceUser"><a (click)="scrollTo('powers_nav')">Force Powers</a></li>
+            <li><a (click)="scrollTo('equip_nav')">Equipment</a></li>
+            <li><a (click)="scrollTo('languages_nav')">Languages</a></li>
+            <li><a (click)="scrollTo('exp_nav')">Experience</a></li>
+            <li><a (click)="scrollTo('cred_nav')">Credits</a></li>
+            <li><a (click)="scrollTo('enc_nav')">Encumbrance</a></li>
+            <li><a (click)="scrollTo('feats_nav')">Feats</a></li>
+            <li><a (click)="scrollTo('talents_nav')">Talents</a></li>
+            <li *ngIf="forceUser"><a (click)="scrollTo('force_notes_nav')">Force Notes</a></li>
+            <li><a (click)="scrollTo('notes_nav')">Notes</a></li>
+        </ul>
+        <button (click)="toggleNav()">{{navToggleText}}</button>
+    </aside>
+    <h1 id="name_nav">{{savedName}}</h1>
     <div class="navbtns">
         <button (click)="updateHero()">Save {{savedName}}</button>
         <button (click)="deleteHero('delete', savedName)">Delete {{savedName}}</button>
@@ -53,7 +74,7 @@
     </div>
     <section class="attrContainer">
         <section class="abilityWrapper">
-            <h6>Attributes</h6>
+            <h6 id="attr_nav">Attributes</h6>
             <div class="half-row">
                 <div class="abilitiesContainer">
                     <div class="abilities" *ngFor="let ability of heroAbilities | keyvalue : unsorted">
@@ -83,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tb">
+            <div id="thresh_nav" class="tb">
                 <h6>Threshold</h6>
                 <div class="box">
                     <label>Total</label>
@@ -186,17 +207,17 @@
     <div class="split-box">
         <div class="tb">
             <div class="box">
-                <defenses [heroLevel]="heroLevel" (defenses)="updateDefenses($event)" #defenses></defenses>
+                <defenses id="defenses_nav" [heroLevel]="heroLevel" (defenses)="updateDefenses($event)" #defenses></defenses>
             </div> 
             <div class="box">
-                <armor (savedArmor)="[updateArmor($event), defenses.updateArmor($event), updateSkills.checkWorn($event)]"></armor>
+                <armor id="armor_nav" (savedArmor)="[updateArmor($event), defenses.updateArmor($event), updateSkills.checkWorn($event)]"></armor>
             </div>
             <div class="box">
-                <attacks (savedAttacks)="updateAttacks($event)" [currentHero]="savedHero"></attacks>
+                <attacks id="attacks_nav" (savedAttacks)="updateAttacks($event)" [currentHero]="savedHero"></attacks>
             </div>
         </div>
         <div class="tb">
-            <update-skills [chosenSkills]="skills" #updateSkills></update-skills>
+            <update-skills id="skills_nav" [chosenSkills]="skills" #updateSkills></update-skills>
             <div class="tb">
                 <h6>Attack Options</h6>
                 <textarea (change)="saveNotes('attackOpts', $event)" cols="30" rows="10">{{attackOptsNotes}}</textarea>  
@@ -205,7 +226,7 @@
                 <h6>Special Attacks</h6>
                 <textarea (change)="saveNotes('attackNotes', $event)" cols="30" rows="10">{{specAttackNotes}}</textarea>  
             </div>
-            <div class="tb" *ngIf="forceUser">
+            <div id="powers_nav" class="tb" *ngIf="forceUser">
                 <h6>Force Powers</h6>
                 <!-- need to have it check total of force powers alloted and current ones-->
                 <button *ngIf = "forcePowers.length < totAllotForPow" (click)="showFPs()">Add Force Powers</button>
@@ -223,21 +244,21 @@
     <hr>
     <div class="split-box">
         <div class="tb">
-           <equipment (inventory)="updateInventory($event)"></equipment>
+           <equipment id="equip_nav" (inventory)="updateInventory($event)"></equipment>
         </div>
         <div class="tb">
             <div class="box">
-               <languages [knownLanguages]="heroLanguages" [totalLangs]="langsAllowed" (savedLanguages)="updatelanguages($event)"></languages>
+               <languages id="languages_nav" [knownLanguages]="heroLanguages" [totalLangs]="langsAllowed" (savedLanguages)="updatelanguages($event)"></languages>
             </div>
             <div class="box">
-                <experience [levelUp]="levelUp" (heroLvlUpObj)="levelUpHero($event)"></experience>
+                <experience id="exp_nav" [levelUp]="levelUp" (heroLvlUpObj)="levelUpHero($event)"></experience>
             </div>
             <div class="tb">
-                <h6>Credits</h6>
+                <h6 id="cred_nav">Credits</h6>
                 <credits></credits>
             </div>
             <div class="box">
-               <encumbrance style="width:100%;"></encumbrance>
+               <encumbrance id="enc_nav" style="width:100%;"></encumbrance>
             </div>
         </div>
     </div>
@@ -248,13 +269,13 @@
                 <textarea class="third-size" #specialQualities id="specialQualities" (change)="saveNotes('specQual', $event)" cols="30" rows="10">{{specialQuals}}</textarea>   
         </div>
         <div class="tb third-size">
-            <h6>Feats</h6>
+            <h6 id="feats_nav" >Feats</h6>
             <div class="white-board">
                 <p *ngFor="let feat of startingFeats">{{feat}}</p>
             </div>
         </div>
         <div class="tb third-size">
-            <h6>Talents</h6>
+            <h6 id="talents_nav">Talents</h6>
             <div class="white-board">
                 <div *ngFor="let talent of startingTalents">
                     <p *ngIf="talent.alias == undefined || talent.alias == ''">{{talent.name}} : {{talent.description}}</p>
@@ -263,7 +284,7 @@
             </div>
         </div>
     </div>
-    <div *ngIf="forceUser" class="box flex-start">
+    <div id="force_notes_nav" *ngIf="forceUser" class="box flex-start">
         <div class="tb third-size">
             <h6>Force Techniques</h6>
             <textarea class="third-size" name="forceTechniques" (change)="saveNotes('techniques', $event)" cols="30" rows="10">{{forceTechniques}}</textarea>
@@ -279,7 +300,7 @@
     </div>
     <div class="box hnotes">
         <div class="tb">
-            <h6>Notes</h6>
+            <h6 id="notes_nav">Notes</h6>
            <textarea name="heroNotes" id="heroNotes" cols="100" rows="10" (change)="saveNotes('hero_notes', $event)">{{heroNotes}}</textarea>
         </div>
     </div>

@@ -46,6 +46,7 @@ levelUp : boolean = false;
 showSpecQual: boolean = false;
 forceUser: boolean = false;
 addFPs: boolean = false;
+navToggle: boolean = false;
 //  Numbers & Strings
 savedName: string = "";
 tempId: any;
@@ -86,6 +87,7 @@ starshipNotes: string = '';
 forceTechniques: string = '';
 forceSecrets: string = "";
 forceRegimens: string = "";
+navToggleText: string = "🔽"
 // array to track lvlup changes
 //  Misc
 
@@ -543,4 +545,17 @@ deleteHero(index: any, name: string){
   }
 
 }
+scrollTo(element: any): void {
+  (document.getElementById(element) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+}
+toggleNav(){
+  if (this.navToggleText == "🔽"){
+    this.navToggle = true;
+    this.navToggleText = "🔼"
+  }else{
+    this.navToggle = false;
+    this.navToggleText = "🔽" 
+  }
+}
+
 }

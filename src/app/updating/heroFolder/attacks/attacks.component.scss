@@ -97,6 +97,9 @@
     input{
         width:auto;
     }
+    button{
+        margin:.5rem 0;
+    }
 }
 
 @media (min-width:768px){
@@ -126,6 +129,12 @@
     .btns{
         margin-left: 1rem;
     }
-
+    .wep-edit{
+       
+       
+        button{
+            margin:.5rem;
+        }
+    }
 
 }
