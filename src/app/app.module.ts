@@ -13,18 +13,8 @@ import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CharsheetComponent } from './updating/heroFolder/charsheet/charsheet.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-import { UpdateSkillsComponent } from './updating/heroFolder/skills/skills.component';
-import { DefensesComponent } from './updating/heroFolder/defenses/defenses.component';
-import { ArmorComponent } from './updating/heroFolder/armor/armor.component';
-import { AttacksComponent } from './updating/heroFolder/attacks/attacks.component';
-import { EquipmentComponent } from './updating/heroFolder/equipment/equipment.component';
-import { EncumbranceComponent } from './updating/heroFolder/encumbrance/encumbrance.component';
-import { LanguageComponent } from './updating/heroFolder/languages/language.component';
-import { ExperienceComponent } from './updating/heroFolder/experience/experience.component';
-import { CreditsComponent } from './updating/heroFolder/credits/credits.component';
-import { ForcepowersComponent } from './updating/heroFolder/forcepowers/forcepowers.component';
+import { UpdatemoduleModule } from './updatemodule/updatemodule.module';
 
 
 
@@ -40,18 +30,7 @@ import { ForcepowersComponent } from './updating/heroFolder/forcepowers/forcepow
     TalentsComponent,
     CharSheetComponent,
     MainComponent,
-    CharsheetComponent,
     LandingpageComponent,
-    UpdateSkillsComponent,
-    DefensesComponent,
-    ArmorComponent,
-    AttacksComponent,
-    EquipmentComponent,
-    EncumbranceComponent,
-    LanguageComponent,
-    ExperienceComponent,
-    CreditsComponent,
-    ForcepowersComponent,
    
   ],
   imports: [
@@ -61,6 +40,7 @@ import { ForcepowersComponent } from './updating/heroFolder/forcepowers/forcepow
     [FormsModule,
     ReactiveFormsModule],
     FontAwesomeModule,
+    UpdatemoduleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

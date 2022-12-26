@@ -20,20 +20,20 @@ export class CharsheetComponent implements OnInit {
 //  Arrays
 savedHero: any;
 startingFeats: any;
-savedFeats: Array<any> = [];
 skills: any;
 heroLanguages: any;
 startingTalents: any;
 savedStorage: any;
-savedHeroes:any = [];
-xpChart: Array <any> = [0,1,3,6,10,15,21,28,36,45,55,66,78,91,105,120,136,153,171,190]
-heroAbilities: Object = {};
-savedLanguages: Array <string> = [];
 currentArmor: any;
+savedHeroes:any = [];
+savedFeats: Array<any> = [];
+savedLanguages: Array <string> = [];
 heroInventory: Array<string> = [];
 heroAttacks: Array<string> = [];
 forcePowers: Array<any> = [];
+xpChart: Array <any> = [0,1,3,6,10,15,21,28,36,45,55,66,78,91,105,120,136,153,171,190]
 //  Objects
+heroAbilities: Object = {};
 heroClass: Object = {};
 heroDefenses: any;
 heroSpeciesObj: any;
@@ -78,6 +78,7 @@ langsAllowed: number = 0;
 credits: number = 0;
 attack: number = 0;
 totAllotForPow : number = 0;
+navToggleText: string = "🔽"
 // holds the values for notes user adds
 specialQuals: string = '';
 heroNotes: string = '';
@@ -87,7 +88,6 @@ starshipNotes: string = '';
 forceTechniques: string = '';
 forceSecrets: string = "";
 forceRegimens: string = "";
-navToggleText: string = "🔽"
 // array to track lvlup changes
 //  Misc
 
