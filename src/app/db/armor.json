@@ -1,0 +1,796 @@
+[
+    
+    {
+        "name" : "Armored Flight Suit",
+        "a_type" : "Light Armor",
+        "cost" : "4000",
+        "armorBonus" : "+5",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "10kg",
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Blast Helmet and Vest",
+        "a_type" : "Light Armor",
+        "cost" : "500",
+        "armorBonus" : "+2",
+        "epuipBonus" : "-",
+        "dexBonus" : "+5",
+        "weight" : "3kg",
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Combat Jumpsuit",
+        "a_type" : "Light Armor",
+        "cost" : "1500",
+        "armorBonus" : "+4",
+        "epuipBonus" : "-",
+        "dexBonus" : "+4",
+        "weight" : "8kg",
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Padded Flight Suit",
+        "a_type" : "Light Armor",
+        "cost" : "2000",
+        "armorBonus" : "+3",
+        "epuipBonus" : "+1",
+        "dexBonus" : "+4",
+        "weight" : "5kg",
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Stormtrooper Armor",
+        "a_type" : "Light Armor",
+        "cost" : "8000",
+        "armorBonus" : "+6",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "10kg",
+        "availability" : ["Military", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Energy Shields, Light",
+        "a_type" : "Light Armor",
+        "cost" : "Varies",
+        "armorBonus" : "-",
+        "epuipBonus" : "-",
+        "dexBonus" : "+4",
+        "weight" : "1kg",
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Fiber Armor",
+        "a_type" : "Light Armor",
+        "cost" : "3000",
+        "armorBonus" : "+4",
+        "epuipBonus" : "+1",
+        "dexBonus" : "+2",
+        "weight" : "10kg",
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Light Battle Armor",
+        "a_type" : "Light Armor",
+        "cost" : "3500",
+        "armorBonus" : "+5",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "10kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Light Powered Battle Armor",
+        "a_type" : "Light Armor",
+        "cost" : "6500",
+        "armorBonus" : "+4",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "12kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Mandalorian Combat Suit",
+        "a_type" : "Light Armor",
+        "cost" : "GM",
+        "armorBonus" : "+4",
+        "epuipBonus" : "+1",
+        "dexBonus" : "+5",
+        "weight" : "8kg",
+        "availability" : ["Military", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Neo-Crusader Light Armor",
+        "a_type" : "Light Armor",
+        "cost" : "GM",
+        "armorBonus" : "+6",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "42kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Republic Light Armor",
+        "a_type" : "Light Armor",
+        "cost" : "GM",
+        "armorBonus" : "+4",
+        "epuipBonus" : "+1",
+        "dexBonus" : "+3",
+        "weight" : "7kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Half-Vest",
+        "a_type" : "Light Armor",
+        "cost" : "250",
+        "armorBonus" : "+1",
+        "epuipBonus" : "-",
+        "dexBonus" : "+5",
+        "weight" : "2kg",
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Light Beskar'gam",
+        "a_type" : "Light Armor",
+        "cost" : "33500",
+        "armorBonus" : "+5",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "10kg",
+        "availability" : ["Licensed", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Shadowsuit",
+        "a_type" : "Light Armor",
+        "cost" : "600",
+        "armorBonus" : "+1",
+        "epuipBonus" : "+1",
+        "dexBonus" : "+5",
+        "weight" : "2kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Thinsuit",
+        "a_type" : "Light Armor",
+        "cost" : "900",
+        "armorBonus" : "-",
+        "epuipBonus" : "-",
+        "dexBonus" : "+6",
+        "weight" : "1kg",
+        "availability" : [],
+        "attributes" : ["thin"]
+    
+    },
+    {
+        "name" : "Tracker Utility Vest",
+        "a_type" : "Light Armor",
+        "cost" : "300",
+        "armorBonus" : "+1",
+        "epuipBonus" : "-",
+        "dexBonus" : "+5",
+        "weight" : "0.5kg",
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Galactic Alliance Armor",
+        "a_type" : "Light Armor",
+        "cost" : "6000",
+        "armorBonus" : "+4",
+        "epuipBonus" : "+1",
+        "dexBonus" : "+3",
+        "weight" : "9kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Blinding Helmet",
+        "a_type" : "Light Armor",
+        "cost" : "200",
+        "armorBonus" : "+0",
+        "epuipBonus" : "+0",
+        "dexBonus" : "-",
+        "weight" : "2kg",
+        "availability" : ["Rare"],
+        "attributes" : ["thin"]
+    
+    },
+    {
+        "name" : "Light Dark Armor",
+        "a_type" : "Light Armor",
+        "cost" : "10000",
+        "armorBonus" : "+4",
+        "epuipBonus" : "+3",
+        "dexBonus" : "+3",
+        "weight" : "10kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Light Jedi Battle Armor",
+        "a_type" : "Light Armor",
+        "cost" : "4000",
+        "armorBonus" : "+3",
+        "epuipBonus" : "+3",
+        "dexBonus" : "+4",
+        "weight" : "6kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "KZZ Riot Armor",
+        "a_type" : "Light Armor",
+        "cost" : "2500",
+        "armorBonus" : "+2",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+5",
+        "weight" : "6kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Seatrooper Armor",
+        "a_type" : "Light Armor",
+        "cost" : "6750",
+        "armorBonus" : "+4",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+2",
+        "weight" : "14kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Shield Gauntlet",
+        "a_type" : "Light Armor",
+        "cost" : "1500",
+        "armorBonus" : "-",
+        "epuipBonus" : "-",
+        "dexBonus" : "-",
+        "weight" : "1kg",
+        "availability" : ["Rare"],
+        "attributes" : ["thin"]
+    
+    },
+    {
+        "name" : "Marine Armor",
+        "a_type" : "Light Armor",
+        "cost" : "5000",
+        "armorBonus" : "+5",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "12kg",
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Microbe Armor",
+        "a_type" : "Light Armor",
+        "cost" : "4000",
+        "armorBonus" : "+2",
+        "epuipBonus" : "-",
+        "dexBonus" : "+3",
+        "weight" : "6kg",
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Stun Cloak",
+        "a_type" : "Light Armor",
+        "cost" : "3500",
+        "armorBonus" : "+1",
+        "epuipBonus" : "-",
+        "dexBonus" : "+5",
+        "weight" : "2kg",
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Light Pressure Suit",
+        "a_type" : "Light Armor",
+        "cost" : "4000",
+        "armorBonus" : "+5",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "10kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Battle Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "7000",
+        "armorBonus" : "+8",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+2",
+        "weight" : "16kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Ceremonial Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "5000",
+        "armorBonus" : "+7",
+        "epuipBonus" : "-",
+        "dexBonus" : "+2",
+        "weight" : "13kg",
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Corellian Powersuit",
+        "a_type" : "Medium Armor",
+        "cost" : "10000",
+        "armorBonus" : "+7",
+        "epuipBonus" : "-",
+        "dexBonus" : "+3",
+        "weight" : "20kg",
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Energy Shields, Medium",
+        "a_type" : "Medium Armor",
+        "cost" : "Varies",
+        "armorBonus" : "-",
+        "epuipBonus" : "-",
+        "dexBonus" : "+3",
+        "weight" : "1kg",
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Mandalorian Battle Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "GM",
+        "armorBonus" : "+8",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+2",
+        "weight" : "18kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Mesh Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "6000",
+        "armorBonus" : "+6",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+2",
+        "weight" : "13kg",
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Powered Battle Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "11000",
+        "armorBonus" : "+7",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+2",
+        "weight" : "17kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Republic Combat Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "11000",
+        "armorBonus" : "+6",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+2",
+        "weight" : "14kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Weave Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "5000",
+        "armorBonus" : "+6",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "15kg",
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Medium Beskar'gam",
+        "a_type" : "Medium Armor",
+        "cost" : "37000",
+        "armorBonus" : "+8",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+2",
+        "weight" : "17kg",
+        "availability" : ["Restricted", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Personal Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "16300",
+        "armorBonus" : "+7",
+        "epuipBonus" : "+1",
+        "dexBonus" : "+3",
+        "weight" : "17kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Scout Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "15000",
+        "armorBonus" : "+7",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+2",
+        "weight" : "18kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Camo Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "6000",
+        "armorBonus" : "+5",
+        "epuipBonus" : "-",
+        "dexBonus" : "+3",
+        "weight" : "6kg",
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Cortosis Gauntlet",
+        "a_type" : "Medium Armor",
+        "cost" : "1500",
+        "armorBonus" : "-",
+        "epuipBonus" : "-",
+        "dexBonus" : "-",
+        "weight" : "1kg",
+        "availability" : ["Rare"],
+        "attributes" : ["thin", "speedFree"]
+    
+    },
+    {
+        "name" : "Imperial Knight Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "7000",
+        "armorBonus" : "+8",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "16kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Knighthunter Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "6000",
+        "armorBonus" : "+7",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "13kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Dark Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "15000",
+        "armorBonus" : "+7",
+        "epuipBonus" : "+4",
+        "dexBonus" : "+2",
+        "weight" : "16kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Jedi Battle Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "6000",
+        "armorBonus" : "+5",
+        "epuipBonus" : "+5",
+        "dexBonus" : "+3",
+        "weight" : "12kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Biohazard Suit",
+        "a_type" : "Medium Armor",
+        "cost" : "4000",
+        "armorBonus" : "-",
+        "epuipBonus" : "+3",
+        "dexBonus" : "+0",
+        "weight" : "9kg",
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Camo Scout Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "6000",
+        "armorBonus" : "+6",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+3",
+        "weight" : "12kg",
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Commando Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "30000",
+        "armorBonus" : "+9",
+        "epuipBonus" : "+4",
+        "dexBonus" : "+1",
+        "weight" : "20kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Stalker Armor",
+        "a_type" : "Medium Armor",
+        "cost" : "7500",
+        "armorBonus" : "+7",
+        "epuipBonus" : "-",
+        "dexBonus" : "+3",
+        "weight" : "10kg",
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Medium Pressure Suit",
+        "a_type" : "Medium Armor",
+        "cost" : "7000",
+        "armorBonus" : "+8",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+2",
+        "weight" : "16kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Armored Space Suit",
+        "a_type" : "Heavy Armor",
+        "cost" : "12000",
+        "armorBonus" : "+9",
+        "epuipBonus" : "+3",
+        "dexBonus" : "+1",
+        "weight" : "35kg",
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Heavy Battle Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "15000",
+        "armorBonus" : "+10",
+        "epuipBonus" : "+4",
+        "dexBonus" : "+1",
+        "weight" : "30kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Energy Shields, Heavy",
+        "a_type" : "Heavy Armor",
+        "cost" : "Varies",
+        "armorBonus" : "-",
+        "epuipBonus" : "-",
+        "dexBonus" : "+2",
+        "weight" : "1kg",
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Heavy Powered Battle Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "19000",
+        "armorBonus" : "+9",
+        "epuipBonus" : "+4",
+        "dexBonus" : "+1",
+        "weight" : "32kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Matrix Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "9000",
+        "armorBonus" : "+9",
+        "epuipBonus" : "+3",
+        "dexBonus" : "+1",
+        "weight" : "32kg",
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Neo-Crusader Assault Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "GM",
+        "armorBonus" : "+10",
+        "epuipBonus" : "+4",
+        "dexBonus" : "+1",
+        "weight" : "65kg",
+        "availability" : ["Military", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Republic Heavy Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "GM",
+        "armorBonus" : "+8",
+        "epuipBonus" : "+3",
+        "dexBonus" : "+1",
+        "weight" : "26kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Combat Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "25000",
+        "armorBonus" : "+9",
+        "epuipBonus" : "+4",
+        "dexBonus" : "+1",
+        "weight" : "25kg",
+        "availability" : ["Restricted", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Heavy Beskar'gam",
+        "a_type" : "Heavy Armor",
+        "cost" : "45000",
+        "armorBonus" : "+10",
+        "epuipBonus" : "+4",
+        "dexBonus" : "+1",
+        "weight" : "32kg",
+        "availability" : ["Restricted", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Vacuum Pod",
+        "a_type" : "Heavy Armor",
+        "cost" : "15000",
+        "armorBonus" : "+4",
+        "epuipBonus" : "+1",
+        "dexBonus" : "+0",
+        "weight" : "35kg",
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Venom Assault Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "17000",
+        "armorBonus" : "+10",
+        "epuipBonus" : "+4",
+        "dexBonus" : "+1",
+        "weight" : "38kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Heavy Dark Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "25000",
+        "armorBonus" : "+8",
+        "epuipBonus" : "+5",
+        "dexBonus" : "+1",
+        "weight" : "30kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Orbalisk Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "GM",
+        "armorBonus" : "+10",
+        "epuipBonus" : "+2",
+        "dexBonus" : "+1",
+        "weight" : "26kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Zero-Gravity Stormtrooper Armor",
+        "a_type" : "Heavy Armor",
+        "cost" : "21000",
+        "armorBonus" : "+9",
+        "epuipBonus" : "+3",
+        "dexBonus" : "+0",
+        "weight" : "38kg",
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Heavy Pressure Suit",
+        "a_type" : "Heavy Armor",
+        "cost" : "12000",
+        "armorBonus" : "+9",
+        "epuipBonus" : "+3",
+        "dexBonus" : "+1",
+        "weight" : "35kg",
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    }
+
+]

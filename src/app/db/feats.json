@@ -1,0 +1,2249 @@
+[
+
+    {
+        "name" : "Acrobatic Strike",
+       " prereqs" :{
+            "req1" : ["trained", "Acrobatics"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain +2 competence bonus on next attack against opponent you Tumble past."
+    },
+    {
+        "name" : "Armor Proficiency (Heavy)",
+       " prereqs" :{ 
+            "req1" : ["feat", "Armor Proficiency (Light)"],
+            "req2" : ["feat", "Armor Proficiency (Medium)"]
+        },
+        "ope"  : false, 
+        "description"  : "No penalty on attacks and no Armor Check Penalty while wearing Light Armor, Medium Armor, or Heavy Armor."
+    },
+    {
+        "name" : "Armor Proficiency (Light)",
+       " prereqs" :{
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "No penalty on attacks and no Armor Check Penalty while wearing Light Armor."
+    },
+    {
+        "name" : "Armor Proficiency (Medium)",
+       " prereqs" :{
+            "req1" : ["feat", "Armor Proficiency (Light)"]
+        },
+        "ope"  : false, 
+        "description"  : "No penalty on attacks and no Armor Check Penalty while wearing Light Armor."
+    },
+    {
+        "name" : "Bantha Rush",
+       " prereqs" : {
+            "req1" :  ["Strength", 13],
+            "req2" :   ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "Push opponent 1 square after making a successful melee attack."
+    },
+    {
+        "name" : "Burst Fire",
+       " prereqs" :{ 
+            "req1" : ["feat", "Weapon Proficiency"],
+            "req2" : ["group", "Heavy Weapons"]
+        },
+        "ope"  : false, 
+        "description"  : "When using a ranged weapon with Autofire capability, and that you are Proficient with, in Autofire mode, you may fire a short burst as a single attack against a single target. You take a -5 penalty on your attack roll, but deal +2 dice of damage."
+    },    
+    {
+        "name" : "Careful Shot",
+       " prereqs" :{ 
+            "req1" : ["feat", "Point-Blank Shot"],
+            "req2" : ["BAB", 2]
+        },
+        "ope"  : false, 
+        "description"  : "If you Aim, gain +1 bonus on the attack roll."
+    },   
+      {
+        "name" : "Charging Fire",
+       " prereqs" :{ 
+            "req1" : ["BAB", 4]
+        },
+        "ope"  : false, 
+        "description"  : "Make ranged attack at end of a Charge; take a -2 penalty to Reflex Defense."
+    },
+    {
+        "name" : "Cleave",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13],
+            "req2" : ["feat", "Power Attack"]
+        },
+        "ope"  : false, 
+        "description"  : "If you deal an opponent enough damage to reduce its hit points to 0, you get an immediate extra melee attack against another opponent within your reach. The extra attack is with the same weapon and at the same attack bonus as the attack that dropped the previous opponent. You can use this ability once per round."
+    },
+
+    {
+        "name" : "Combat Reflexes",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When opponents leave themselves open, you may make a number of additional Attacks of Opportunity equal to your Dexterity modifier. With this Feat, you may also make Attacks of Opportunity while Flat-Footed. You can still only make one attack for each triggered Attack of Opportunity."
+    },
+
+    {
+        "name" : "Coordinated Attack",
+       " prereqs" :{ 
+            "req1" : ["BAB", 2]
+        },
+        "ope"  : false, 
+        "description"  : "Automatic success with Aid Another action at Point-Blank Range."
+    },
+
+    {
+        "name" : "Crush",
+       " prereqs" :{ 
+            "req1" :["feat", "Pin"],
+            "req2" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "Deal Unarmed or Claw damage to a Pinned opponent."
+    },
+
+    {
+        "name" : "Cybernetic Surgery",
+       " prereqs" :{ 
+            "req1" : ["trained", "Treat Injury"]
+        },
+        "ope"  : false, 
+        "description"  : "You can install Cybernetic Devices on living beings. The surgical procedure takes 1 hour of uninterrupted work, after which you must make a DC 20 Treat Injury check. If the check succeeds, the Cybernetic Device is installed correctly. If the check fails, the device is not properly installed; however, you can try again after another uninterrupted hour of surgery. Special: You can install a Cybernetic Prosthesis or Energy-Binding Prosthesis on yourself, but you take a -5 penalty on the Treat Injury skill check (you cannot install a Rhen-Orm Biocomputer or a Subelectronic Converter on yourself). If you have the Surgical Expertise Feat, you can install a Cybernetic Device in 10 minutes instead of 1 hour."
+    },
+
+    {
+        "name" : "Deadeye",
+       " prereqs" :{ 
+            "req1" : ["BAB", 4],
+            "req2" : ["feat", "Point-Blank Shot"],
+            "req3" : ["feat", "Precise Shot"]
+        },
+        "ope"  : false, 
+        "description"  : "If you Aim before making a ranged attack and the attack hits, increase the damage you deal by an additional weapon die (3d6 becomes 4d6)."
+    },
+
+    {
+        "name" : "Dodge",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13]
+        },
+        "ope"  : false, 
+        "description"  : "During your turn, you designate an opponent and receive a +1 dodge bonus to your Reflex Defense against attacks from that opponent. You can select a new opponent on any action. A situation that makes you lose your Dexterity bonus to Reflex Defense (if any) also makes you lose dodge bonuses. Also, dodge bonuses stack with each other, unlike most other types of bonuses."
+    },
+
+    {
+        "name" : "Double Attack",
+       " prereqs" :{ 
+            "req1" : ["BAB", 6]
+        },
+        "ope"  : false, 
+        "description"  : "Choose a single Exotic Weapon or weapon group with which you are proficient. When you use the Full Attack action, you may make one additional attack when wielding such a weapon. However, you take a -5 penalty on all attack rolls until your next turn because you're trading precision for speed."
+    },
+    {
+        "name" : "Dreadful Rage",
+       " prereqs" :{ 
+            "req1" : ["trait", "Rage"],
+            "req2" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "While Raging, your Rage bonus on melee attack rolls and melee damage rolls increases to +5."
+    },
+    {
+        "name" : "Dual Weapon Mastery I",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13],
+            "req2" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When you attack with two weapons, or with both ends of a double weapon as part of a Full Attack Action, you take a -5 penalty (Instead of a -10 penalty) on all attack rolls until the start of your next turn. You only gain this reduced penalty if you are wielding a weapon with which you are proficient."
+    },
+    {
+        "name" : "Dual Weapon Mastery II",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 15],
+            "req2" : ["BAB", 6],
+            "req3" : ["feat", "Dual Weapon Mastery I"]
+        },
+        "ope"  : false, 
+        "description"  : "When you attack with two weapons, or with both ends of a double weapon as part of a Full Attack Action, you take a -2 penalty (Instead of a -10 penalty) on all attack rolls until the start of your next turn. You only gain this reduced penalty if you are wielding a weapon with which you are proficient."
+    },
+    {
+        "name" : "Dual Weapon Mastery III",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 17],
+            "req2" : ["BAB", 11],
+            "req3" : ["feat", "Dual Weapon Mastery I"], 
+            "req4" : ["feat", "Dual Weapon Mastery II"]
+        },
+        "ope"  : false, 
+        "description"  : "When you attack with two weapons, or with both ends of a double weapon as part of a Full Attack Action, you take no penalty on your attack rolls. You only gain this benefit if you are wielding a weapon with which you are proficient."
+    },
+    {
+        "name" : "Exotic Weapon Proficiency",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "Select a single weapon from either the Exotic Weapons (Melee) or Exotic Weapons (Ranged) weapon groups; you make attack rolls with the selected weapon without penalty."
+    },
+    {
+        "name" : "Extra Rage",
+       " prereqs" :{ 
+            "req1" : ["trait", "Rage"]
+        },
+        "ope"  : false, 
+        "description"  : "You can Rage one additional time per day."
+    },
+    {
+        "name" : "Extra Second Wind",
+       " prereqs" :{ 
+            "req1" : ["trained", "Endurance"]
+        },
+        "ope"  : false, 
+        "description"  : "You can catch your Second Wind one additional time per day, but you can still only catch a Second Wind once per encounter."
+    },
+    {
+        "name" : "Far Shot",
+       " prereqs" :{ 
+            "req1" : ["feat", "Point-Blank Shot"]
+        },
+        "ope"  : false, 
+        "description"  : "When you use a ranged weapon against targets at Short, Medium, or Long Range, the Range category is considered one less. In other words, you take no penalty on ranged attack rolls made at Short Range, a -2 penalty on ranged attack rolls made against targets at Medium Range, and a -5 penalty on ranged attack rolls made against targets at Long Range."
+    },
+    {
+        "name" : "Force Boon",
+       " prereqs" :{ 
+            "req1" : ["feat", "Force Sensitivity"]
+        },
+        "ope"  : false, 
+        "description"  : "You gain three additional Force Points at each level."
+    },
+    {
+        "name" : "Force Sensitivity",
+       " prereqs" :{ 
+            "req1" : ["!species", "droid"]
+        },
+        "ope"  : false, 
+        "description"  : "You can make Use the Force checks, and Use the Force is considered a Class Skill for you. In addition, whenever you gain a Talent, you have the option of selecting a Force Talent instead. You must meet the prerequisites of the Force Talent to select it."
+    },
+    {
+        "name" : "Force Training",
+       " prereqs" :{ 
+            "req1" : ["feat", "Force Sensitivity"], 
+            "req2" : ["trained", "Use the Force"]
+        },
+        "ope"  : false, 
+        "description"  : "You add to your Force Power Suite a number of Force Powers equal to 1 + your Wisdom modifier (Minimum 1). You can add the same Force Power more than once."
+    },
+    {
+        "name" : "Great Cleave",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13],
+            "req2" : ["feat", "Power Attack"],
+            "req3" : ["feat", "Cleave"],
+            "req4": ["BAB", 4]
+        },
+        "ope"  : false, 
+        "description"  : "You can wield a melee weapon with such power that you can strike multiple times when you drop your opponents and you have no limit to the number of times you can use it per round."
+    },
+    {
+        "name" : "Improved Charge",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13],
+            "req2" : ["feat", "Dodge"], 
+            "req3" : ["feat", "Mobility"]
+        },
+        "ope"  : false, 
+        "description"  : "You can make a Charge without having to move in a straight line, and you can alter your direction when making a Charge to avoid obstacles. All other Charge rules apply."
+    },
+    {
+        "name" : "Improved Defenses",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "You gain a +1 bonus to your Reflex Defense, Fortitude Defense, and Will Defense."
+    },
+    {
+        "name" : "Improved Disarm",
+       " prereqs" :{ 
+            "req1" : ["Intelligence", 13], 
+            "req2" : ["feat", "Melee Defense"]
+        },
+        "ope"  : false, 
+        "description"  : "You gain a +5 bonus on any melee attack roll made to Disarm an opponent. In addition, if you fail to Disarm an opponent, he doesn't get to make a free attack against you."
+    },
+    {
+        "name" : "Improved Damage Threshold",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "You increase your Damage Threshold by 5 points. You may take this Feat more than once. It's effects stack. Each time you take this Feat, increase your Damage Threshold by 5 points."
+    },
+    {
+        "name" : "Linguist",
+       " prereqs" :{ 
+            "req1" : ["Intelligence", 13]
+        },
+        "ope"  : false, 
+        "description"  : "You gain a number of additional Languages equal to 1 + your Intelligence modifier (Minimum 1)."
+    },
+    {
+        "name" : "Martial Arts I",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Damage dealt by your Unarmed Attacks increases by one die step. In addition, you gain a +1 dodge bonus to your Reflex Defense. Additionally, you do not provoke Attacks of Opportunity with Unarmed Attacks."
+    },
+    {
+        "name" : "Martial Arts II",
+       " prereqs" :{ 
+            "req1" : ["feat", "Martial Arts I"],
+            "req2" : ["BAB", 3]
+        },
+        "ope"  : false, 
+        "description"  : "Damage dealt by your Unarmed attacks increases by one die step. In addition, you gain a +1 dodge bonus to your Reflex Defense (Which stacks with the dodge bonus granted by the Martial Arts I Feat)."
+    },
+    {
+        "name" : "Martial Arts III",
+       " prereqs" :{ 
+            "req1" : ["feat", "Martial Arts I"],
+            "req2" : ["feat", "Martial Arts II"],
+            "req3" : ["BAB", 6]
+        },
+        "ope"  : false, 
+        "description"  : "Damage dealt by your Unarmed attacks increases by one die step. In addition, you gain a +1 dodge bonus to your Reflex Defense (Which stacks with the dodge bonuses granted by the Martial Arts I and Martial Arts II Feats)."
+    },
+    {
+        "name" : "Melee Defense",
+       " prereqs" :{ 
+            "req1" : ["Intelligence", 13]
+        },
+        "ope"  : false, 
+        "description"  : "When you use a Standard Action to make a melee attack, you can take a penalty of up to -5 on your attack roll and add the same number (Up to +5) as a dodge bonus to your Reflex Defense. This number may not exceed your Base Attack Bonus. The changes to attack rolls and Reflex Defense last until the start of your next turn."
+    },
+    {
+        "name" : "Mighty Swing",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13]
+        },
+        "ope"  : false, 
+        "description"  : "You can spend two Swift Actions in the same round to deal +1 die of damage on your next melee attack in the same round."
+    },
+    {
+        "name" : "Mobility",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13],
+            "req2" : ["feat", "Dodge"]
+        },
+        "ope"  : false, 
+        "description"  : "You get a +5 dodge bonus to Reflex Defense against Attacks of Opportunity caused when you move out of or into a threatened area."
+    },
+    {
+        "name" : "Pin",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "If you succeed on a Grappling attack and your opponent fails the opposed Grapple check, your opponent is automatically Pinned until the start of your next turn. A Pinned creature can't move or take any Actions while Pinned, and it loses its Dexterity bonus (If any) to Reflex Defense."
+    },
+    {
+        "name" : "Point-Blank Shot",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "You get a +1 bonus on attack and damage rolls with ranged weapons against opponents within Point-Blank Range."
+    },
+    {
+        "name" : "Power Attack",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13]
+        },
+        "ope"  : false, 
+        "description"  : "On your turn, before making an attack roll, you may choose to subtract a number from all melee attack rolls and add the same number to all melee damage rolls. This number may not exceed your Base Attack Bonus. The penalty on attacks and bonus on damage rolls applies until the start of your next turn."
+    },
+    {
+        "name" : "Powerful Charge",
+       " prereqs" :{ 
+            "req1" : ["size", "Medium"],
+            "req2" :  ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When you Charge, you gain an additional +2 bonus on your melee attack roll. If your melee attack hits, you deal additional damage equal to one-half your level."
+    },
+    {
+        "name" : "Precise Shot",
+       " prereqs" :{ 
+            "req1" : ["feat", "Point-Blank Shot"]
+        },
+        "ope"  : false, 
+        "description"  : "You can shoot or Throw a ranged weapon at an opponent engaged in melee combat with one or more of your allies without taking the standard -5 penalty."
+    },
+    {
+        "name" : "Quick Draw",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "You can Draw or Holster a Weapon as a Swift Action instead of a Move Action."
+    },
+    {
+        "name" : "Rapid Shot",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When using a ranged weapon with which you are proficient, you may fire two shots as a single attack against a single target. You take a -2 penalty on your attack roll, but you deal +1 die of damage with a successful attack."
+    },
+    {
+        "name" : "Rapid Strike",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When using a melee weapon with which you are proficient, you may make two strikes as a single attack against a single target. You take a -2 penalty on your attack roll, but deal +1 die of damage with a successful attack."
+    },
+    {
+        "name" : "Running Attack",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13]
+        },
+        "ope"  : false, 
+        "description"  : "When making an attack with a melee or ranged weapon, you can move both before and after the attack, provided that the total distance moved is not greater than your Speed."
+    },    
+    {
+        "name" : "Shake It Off",
+       " prereqs" :{ 
+            "req1" : ["Constitution", 13], 
+            "req2" : ["trained", "Endurance"]
+        },
+        "ope"  : false, 
+        "description"  : "You can spend two Swift Actions instead of three to move +1 step along the Condition Track."
+    }, 
+    {
+        "name" : "Skill Focus",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Choose one Skill in which you are Trained. You gain a +5 competence bonus on all Skill Checks made with that Skill."
+    }, 
+    {
+        "name" : "Skill Training",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Choose one Untrained Skill from your list of Class Skills. You become Trained in that Skill."
+    }, 
+    {
+        "name" : "Sniper",
+       " prereqs" :{ 
+            "req1" : ["feat", "Point-Blank Shot"],
+            "req2" : ["feat", "Precise Shot"],
+            "req3" : ["BAB", 4]
+        },
+        "ope"  : false, 
+        "description"  : "You always ignore Soft Cover (That is, Cover provided by a character, creature, or Droid) when you make a ranged attack."
+    }, 
+    {
+        "name" : "Strong in the Force",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When you spend a Force Point to adjust the result of an attack roll, Skill Check, or Ability Check, you roll d8s instead of d6s."
+    }, 
+    {
+        "name" : "Surgical Expertise",
+       " prereqs" :{ 
+            "req1" : ["trained", "Treat Injury"]
+        },
+        "ope"  : false, 
+        "description"  : "You can perform Surgery in 10 minutes."
+    }, 
+    {
+        "name" : "Throw",
+       " prereqs" :{ 
+            "req1" : ["feat", "Trip"],
+            "req2" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "Throw a Grappled opponent up to 1 square beyond your reach and deal damage."
+    }, 
+    {
+        "name" : "Toughness",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "You gain +1 Hit Point per Character Level."
+    }, 
+    {
+        "name" : "Trip",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "If you succeed on a Grappling attack and your opponent fails the opposed Grapple check, it falls Prone in its space and is no longer considered Grappled. A Prone opponent takes a -5 penalty on melee attack rolls. Melee attacks made against a Prone target gain a +5 bonus, while ranged attack made against a prone target take a -5 penalty."
+    }, 
+    {
+        "name" : "Triple Attack",
+       " prereqs" :{ 
+            "req1" : ["BAB", 11],
+            "req2" : ["feat", "Double Attack"]
+        },
+        "ope"  : false, 
+        "description"  : "Choose a single Exotic Weapon or weapon group. When you use the Full Attack Action, you may make one additional attack when wielding such a Weapon. However, you take a -5 penalty on all attack rolls until your next turn because you're trading precision for speed. The extra attack and penalty stack with those of Double Attack."
+    }, 
+    {
+        "name" : "Triple Crit",
+       " prereqs" :{ 
+            "req1" : ["BAB", 8]
+        },
+        "ope"  : false, 
+        "description"  : "Choose one Weapon with which you are proficient. When you score a Critical Hit with the selected weapon, you deal triple damage. You may select \"Unarmed Attack\" as a Weapon for purposes of this Feat."
+    }, 
+    {
+        "name" : "Vehicular Combat",
+       " prereqs" :{ 
+            "req1" : ["trained", "Pilot"]
+        },
+        "ope"  : false, 
+        "description"  : "Once per round (As a Reaction), when you are piloting a Vehicle or Starship, you may negate a weapon hit by making a successful Pilot check. The DC of the Skill Check is equal to the result of the attack roll you wish to negate. In addition, while you are piloting a Vehicle, you are considered proficient with pilot-operated Vehicle Weapons."
+    }, 
+    {
+        "name" : "Weapon Finesse",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When using a Light Melee Weapon or a Lightsaber, you may use your Dexterity modifier instead of your Strength modifier on attack rolls."
+    }, 
+    {
+        "name" : "Weapon Focus",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Choose a single Exotic Weapon or weapon group, you gain a +1 bonus on all attack rolls you make using the selected Exotic Weapon or weapon group."
+    }, 
+    {
+        "name" : "Weapon Proficiency",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Choose one Weapon Group. You are proficient with all weapons of the selected group."
+    }, 
+    {
+        "name" : "Whirlwind Attack",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13],
+            "req2" : ["Intelligence", 13],
+            "req3" : ["feat", "Melee Defense"], 
+            "req4" : ["BAB", 4]
+        },
+        "ope"  : false, 
+        "description"  : "As a Full-Round Action, you can make an Area Attack with your melee weapon, striking every target within your reach. This Whirlwind Attack uses the Area Attack rules; you make one attack roll and apply the result to every target in range."
+    }, 
+    {
+        "name" : "Starship Designer",
+       " prereqs" :{ 
+            "req1" : ["feat", "Tech Specialist"],
+            "req2" : ["trained", "Mechanics"]
+        },
+        "ope"  : false, 
+        "description"  : "You are trained to design (and redesign) Starships."
+    }, 
+    {
+        "name" : "Starship Tactics",
+       " prereqs" :{ 
+            "req1" : ["feat", "Vehicular Combat"],
+            "req2" : ["trained", "Pilot"]
+        },
+        "ope"  : false, 
+        "description"  : "You add to your Starship Maneuver Suite a number of Starship Maneuvers equal to 1 + your Wisdom modifier (Minimum 1). You can add the same Starship Maneuver more than once."
+    }, 
+    {
+        "name" : "Tactical Genius",
+       " prereqs" :{ 
+            "req1" : ["feat", "Starship Tactics"],
+            "req2" : ["feat", "Vehicular Combat"],
+            "req3" : ["trained", "Pilot"]
+        },
+        "ope"  : false, 
+        "description"  : "You regain all spent Starship Maneuvers at the end of any round in which you roll a Natural 20 on an attack roll."
+    }, 
+    {
+        "name" : "Tech Specialist",
+       " prereqs" :{ 
+            "req1" : ["trained", "Mechanics"]
+        },
+        "ope"  : false, 
+        "description"  : "You can make custom modifications to Armor, Weapons, Vehicles, Droids, and Devices."
+    }, 
+    {
+        "name" : "A Few Maneuvers",
+       " prereqs" :{ 
+            "req1" : ["feat", "Dodge"],
+            "req2" : ["feat", "Vehicular Combat"]
+        },
+        "ope"  : false, 
+        "description"  : "When piloting a Vehicle of Colossal size or smaller, you grant a +2 dodge bonus to your Vehicle's Reflex Defense. Furthermore, if you are the target of a missile or torpedo attack and the attack roll misses by 5 or more, the projectile self-destructs harmlessly."
+    }, 
+    {
+        "name" : "Momentum Strike",
+       " prereqs" :{ 
+            "req1" : ["trained", "or", "Pilot", "Ride"]
+        },
+        "ope"  : false, 
+        "description"  : "When riding a Beast as a Mount or on a Speeder Bike (As a passenger or a Pilot), you add +1 die of damage to any melee attacks if your Mount or Vehicle has already moved at least its speed this turn."
+    }, 
+    {
+        "name" : "Mounted Defense",
+       " prereqs" :{ 
+            "req1" :  ["trained","or", "Pilot", "Ride"]
+        },
+        "ope"  : true, 
+        "description"  : "When riding a Beast as a Mount or on a Speeder Bike (As a passenger or a Pilot), once per encounter you can redirect any attack made against you at your Mount or Vehicle instead. The decision to redirect the attack is made after the result of the attack roll is determined but before damage or other effects are resolved."
+    }, 
+    {
+        "name" : "Suppression Fire",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13],
+            "req2" : ["feat", "Burst Fire"],
+            "req3" : ["feat", "Weapon Proficiency (Heavy Weapons)"]
+        },
+        "ope"  : false, 
+        "description"  : "When you use the Aid Another action to impose a penalty to an enemy's attack rolls and your attack roll exceeds the target's Will Defense, that enemy must end its next turn in a position where it has Cover from you if possible. Targets whose level is equal to or higher than your Character Level are immune to the effect of Suppression Fire. This is a Mind-Affecting Fear effect."
+    }, 
+    {
+        "name" : "Accelerated Strike",
+       " prereqs" :{ 
+            "req1" : ["BAB", 6]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, when using only weapons with which you are proficient, you can take a Full Attack Action as a Standard Action."
+    }, 
+    {
+        "name" : "Conditioning",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13],
+            "req2" : ["Constitution", 13]
+        },
+        "ope"  : true, 
+        "description"  : "You can reroll any Strength-or Constitution-based Skill Checks for Skills that you are Trained in. The result of the reroll must be accepted even if it is worse. Additionally, once per encounter you can add your Strength modifier to your Fortitude Defense as a Reaction; this bonus lasts until the beginning of your next turn."
+    }, 
+    {
+        "name" : "Critical Strike",
+       " prereqs" :{ 
+            "req1" : ["BAB", 9],
+            "req2" : ["feat", "Weapon Focus"]
+            
+        },
+        "ope"  : false, 
+        "description"  : "While wielding a weapon for which you possess the Weapon Focus Feat, you can take two consecutive Swift Actions in the same round to increase the critical threat range of your next melee attack by 1. Thus, if a weapon scores a Critical Hit on a Natural 20, it can score a Critical Hit on a natural roll of 19 or 20 instead. However, any roll other than a Natural 20 is not considered an automatic hit; if you roll a Natural 19 and miss the target, you do not score a Critical Hit. You lose the benefits of Critical Strike if you lose line of sight to your target or if you take any other Action before making your attack."
+    }, 
+    {
+        "name" : "Echani Training",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13],
+            "req2" : ["feat", "Martial Arts I"]
+        },
+        "ope"  : true, 
+        "description"  : "You can double the damage bonus provided by your Strength modifier to Unarmed Attacks (Minimum +1) provided you make only one Unarmed attack this turn. Once per encounter when you deal damage to a target with an Unarmed Attack you may make an immediate Unarmed Attack against the target's Fortitude Defense as a Free Action; if successful you knock your opponent to the ground (Prone) in their current square, provided they are no more than one size larger than you."
+    }, 
+    {
+        "name" : "Flurry",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13]
+        },
+        "ope"  : false, 
+        "description"  : "When wielding only Light weapons or Lightsabers, you can make a flurry of attacks. You take a -5 penalty to your Reflex Defense, but you gain a +2 bonus on your melee attack rolls. This bonus on attacks and penalty to Reflex Defense apply until the start of your next turn."
+    }, 
+    {
+        "name" : "Force Readiness",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Spend Force Points even if it is not your turn."
+    }, 
+    {
+        "name" : "Gearhead",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, you can make Mechanics and Use Computer checks more quickly than normal. A check requiring a Full-Round Action can be attempted as a Standard Action, a check requiring a Standard Action can be attempted as a Move Action, and a check requiring a Move Action can be attempted as a Swift Action. Checks requiring multiple Swift Actions can be reduced by one Swift Action. Checks requiring more than a Full-Round Action can be attempted in one-half the amount of time required at a -10 penalty."
+    }, 
+    {
+        "name" : "Implant Training",
+       " prereqs" :{ 
+            "req1" : ["installed", "Implant"]
+        },
+        "ope"  : false, 
+        "description"  : "You are not moved an extra step down the Condition Track when you would normally be moved down the Condition Track."
+    }, 
+    {
+        "name" : "Improved Rapid Strike",
+       " prereqs" :{ 
+            "req1" : ["feat", "Rapid Strike"]
+        },
+        "ope"  : false, 
+        "description"  : "Trade -5 penalty on attack roll for +2 dice of damage when using a Light Melee Weapon."
+    }, 
+    {
+        "name" : "Increased Agility",
+       " prereqs" :{ 
+            "req1" : ["feat", "Conditioning"]
+        },
+        "ope"  : false, 
+        "description"  : "Increase Climb Speed, Swim Speed, and Jump distance by 2 squares."
+    }, 
+    {
+        "name" : "Mandalorian Training",
+       " prereqs" :{ 
+            "req1" : ["feat", "Charging Fire"]
+        },
+        "ope"  : false, 
+        "description"  : "When using the Charging Fire Feat, you gain a +2 bonus to a ranged attack made at the end of a Charge. As with a normal Charge, you still take a -2 penalty to your Reflex Defense, but you also gain a +2 morale bonus to your Will Defense until the beginning of your next turn."
+    }, 
+    {
+        "name" : "Poison Resistance",
+       " prereqs" :{ 
+            "req1" : ["Constitution", 13]
+        },
+        "ope"  : false, 
+        "description"  : "You gain a +5 bonus to your Fortitude Defense when attacked by Poison. If the attack succeeds, you take only half damage."
+    }, 
+    {
+        "name" : "Power Blast",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13]
+        },
+        "ope"  : false, 
+        "description"  : "As a Swift Action, before making an attack roll, you can choose to subtract a number from all ranged attack rolls and add the same number to all ranged damage rolls. This number cannot exceed your Base Attack Bonus. The penalty on attacks and bonus on damage applies until the start of your next turn but you gain no bonus to damage with Area Attacks or when attacking objects or Vehicles with this Feat."
+    }, 
+    {
+        "name" : "Quick Skill",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, you can Take 10 when rushed on a single Skill Check for a Skill you are Trained in, unless the Skill description explicitly forbids it. Alternatively, you can Take 20 when using a Skill you are Trained in at half the normal time required."
+    }, 
+    {
+        "name" : "Republic Military Training",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, as a Reaction, you gain Damage Reduction 10 against an incoming attack if you have Cover from the attacker. You can gain the Damage Reduction as long as you have Cover, even if your opponent uses Aim to ignore your Cover bonus to Reflex Defense."
+    }, 
+    {
+        "name" : "Sith Military Training",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, as a Reaction when you reduce a target to 0 Hit Points or deal damage the exceeds the target's Damage Threshold, you can activate this Feat to cause all enemies within 6 squares of that target to take a -2 penalty to all Defenses until the end of your next turn. This is a Mind-Affecting effect."
+    }, 
+    {
+        "name" : "Sniper Shot",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When wielding only ranged weapons with which you are proficient, you gain a +2 bonus on all your ranged attacks until the beginning of your next turn, but you take a -5 penalty to Reflex Defense."
+    }, 
+    {
+        "name" : "Tumble Defense",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When an opponent attempts to Tumble through a square you threaten with a melee weapon with which you are proficient, add your Base Attack Bonus to the DC of the Acrobatics check made to Tumble. If the target fails the Acrobatics check to Tumble, you can make an Attack of Opportunity against that opponent as normal."
+    }, 
+    {
+        "name" : "Withdrawal Strike",
+       " prereqs" :{ 
+            "req1" : ["BAB", 5]
+        },
+        "ope"  : false, 
+        "description"  : "When taking this Feat, select a single Exotic Weapon (Melee) or melee weapon group with which you are proficient. When wielding that chosen Exotic Weapon (Melee) or melee weapon from the chosen group, adjacent opponents may not Withdraw from squares you threaten. They may still make Acrobatics checks to Tumble as normal."
+    }, 
+    {
+        "name" : "Advantageous Attack",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When you make a successful attack against an enemy who has not yet acted in combat, you add your full Heroic Level to damage rolls."
+    }, 
+    {
+        "name" : "Advantageous Cover",
+       " prereqs" :{ 
+            "req1" : ["trained", "Stealth"]
+        },
+        "ope"  : false, 
+        "description"  : "When you have Cover, you take no damage from Area Attacks, even if the attack roll exceeds your Reflex Defense."
+    }, 
+    {
+        "name" : "Angled Throw",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13]
+        },
+        "ope"  : false, 
+        "description"  : "When throwing a Grenade or grenadelike weapon, you can attempt to bounce it off a wall or other surface close to your target. If you attack roll exceeds a Reflex Defense of 15, you ignore Cover and Improved Cover (but not Total Cover) with your attack."
+    }, 
+    {
+        "name" : "Bad Feeling",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "You can always take a Move Action during a Surprise Round, even if you are Surprised. If you are not Surprised, you can take this Move Action in addition to any other Actions you are normally allowed to take in the Surprise Round."
+    }, 
+    {
+        "name" : "Blaster Barrage",
+       " prereqs" :{ 
+            "req1" : ["feat", "Coordinated Attack"]
+        },
+        "ope"  : false, 
+        "description"  : "When you make an attack with a weapon set on Autofire that deals damage to at least one target within the designated area, you grant a +2 circumstance bonus on any of your allies' Autofire attacks made against that same target until the beginning of your next turn."
+    }, 
+    {
+        "name" : "Controlled Rage",
+       " prereqs" :{ 
+            "req1" : ["trait", "Rage"]
+        },
+        "ope"  : false, 
+        "description"  : "Enter Rage as a Free Action, and end Rage at will."
+    }, 
+    {
+        "name" : "Crossfire",
+       " prereqs" :{ 
+            "req1" : ["feat", "Point-Blank Shot"],
+            "req2" : ["feat", "Precise Shot"], 
+            "req3" : ["BAB", 6]
+        },
+        "ope"  : false, 
+        "description"  : "If you miss when making a ranged attack against a target that has Soft Cover (That is, Cover provided by another character, creature, or Droid), you can immediately make an attack roll (With the same weapon and at the same attack bonus) against the target that is providing the Soft Cover. You can only use this Feat once per round."
+    }, 
+    {
+        "name" : "Cunning Attack",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain +2 bonus on attack rolls against Flat-Footed enemies."
+    }, 
+    {
+        "name" : "Focused Rage",
+       " prereqs" :{ 
+            "req1" : ["trait", "Rage"],
+            "req2" : ["feat", "Controlled Rage"]
+        },
+        "ope"  : false, 
+        "description"  : "When Raging, use Skills that require patience at a -5 penalty."
+    }, 
+    {
+        "name" : "Improved Bantha Rush",
+       " prereqs" :{ 
+            "req1" : ["feat", "Bantha Rush"],
+            "req2" : ["Strength", 15],
+            "req3" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "Push foes away a number of squares equal to Strength modifier."
+    }, 
+    {
+        "name" : "Informer",
+       " prereqs" :{ 
+            "req1" : ["trained", "Perception"]
+        },
+        "ope"  : false, 
+        "description"  : "You can use your Perception modifier instead of your Gather Information modifier when making Gather Information checks."
+    }, 
+    {
+        "name" : "Mighty Throw",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13]
+        },
+        "ope"  : false, 
+        "description"  : "Add Strength bonus to ranged attack rolls."
+    }, 
+    {
+        "name" : "Natural Leader",
+       " prereqs" :{ "req1" : ["Charisma", 13]
+        },
+        "ope"  : false, 
+        "description"  : "You become the leader of an Organization."
+    },
+    {
+        "name" : "Powerful Rage",
+       " prereqs" :{ 
+            "req1" : ["trait", "Rage"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain a +4 bonus on Strength checks and Strength-based Skill Checks."
+    }, 
+    {
+        "name" : "Rapport",
+       " prereqs" :{ 
+            "req1" : ["Wisdom", 13]
+        },
+        "ope"  : false, 
+        "description"  : "Grant an additional +2 bonus when using the Aid Another action."
+    }, 
+    {
+        "name" : "Recall",
+       " prereqs" :{ 
+            "req1" : ["trained", "Knowledge"]
+        },
+        "ope"  : false, 
+        "description"  : "Reroll Knowledge skill check, keeping the better result."
+    }, 
+    {
+        "name" : "Savage Attack",
+       " prereqs" :{ 
+            "req1" : ["feat", "Double Attack"]   
+        },
+        "ope"  : false, 
+        "description"  : "Choose one weapon groups or Exotic Weapon you have selected for the Double Attack Feat. When you use a Full Attack Action and successfully hit the target with your first attack, you deal +1 die of damage on each successful attack remaining in the Full Attack made against that target."
+    }, 
+    {
+        "name" : "Scavenger",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "You can spend 1 hour scavenging materials from other Vehicles or objects. When you do so, you make a Perception check to determine the value of the parts scavenged. You produce raw materials equal in value to the result of your Perception check x 30 credits. You must apply these raw materials toward the cost of construction of a single object, and you can scavenge parts for only a single object at any given time. Additionally, you can scavenge raw materials only once for any given object you are attempting to build."
+    },
+    {
+        "name" : "Strafe",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When you make an Autofire attack, instead of attacking a 2-square-by-2-square area, you may attack a line 1 square wide and 4 squares long."
+    }, 
+    {
+        "name" : "Swarm",
+       " prereqs" :{ 
+            "req1" : ["feat", "Coordinated Attack"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain +1 bonus on melee attack rolls when allies are adjacent."
+    }, 
+    {
+        "name" : "Unleashed",
+       " prereqs" :{ 
+            "req1" : ["approved", "GM"]
+        },
+        "ope"  : false, 
+        "description"  : "Unlocks Unleashed Abilities."
+    }, 
+    {
+        "name" : "Burst of Speed",
+       " prereqs" :{ 
+            "req1" : ["trained", "Endurance"]
+        },
+        "ope"  : false, 
+        "description"  : "As a Move Action, you can Move up to twice your speed. At the end of your movement, you move -1 step along the Condition Track."
+    }, 
+    {
+        "name" : "Close Combat Escape",
+       " prereqs" :{ 
+            "req1" : ["trained", "Acrobatics"]
+        },
+        "ope"  : false, 
+        "description"  : "When you successfully use Acrobatics to escape a Grapple, you can spend a Swift Action to make a single attack with a melee weapon or an Unarmed attack against the opponent that had Grappled you. If the attack hits, it deals normal damage, and your opponent is considered Flat-Footed until the start of its next turn."
+    },
+    {
+        "name" : "Collateral Damage",
+       " prereqs" :{ 
+            "req1" : ["feat", "Rapid Shot"],
+            "req2" : ["BAB", 6]
+        },
+        "ope"  : false, 
+        "description"  : "When you deal damage with a single, non-Area Attack using the Rapid Shot Feat, once per turn on your turn, you can immediately make a second attack at a -2 penalty against a second target within 2 squares of the first. If this attack hits, you deal half the original attack's damage to that target."
+    },
+    {
+        "name" : "Cornered",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When unable to Withdraw, +2 on attacks against opponents that threaten you."
+    },
+    {
+        "name" : "Deadly Sniper",
+       " prereqs" :{ 
+            "req1" : ["feat", "Sniper"],
+            "req2" : ["trained", "Stealth"], 
+            "req3" : ["BAB", 9]
+        },
+        "ope"  : false, 
+        "description"  : "When you make a ranged attack against a target that is unaware of you, you gain a +2 bonus on your attack roll and deal +1 die of damage on the first attack each turn."
+    },
+    {
+        "name" : "Deceptive Drop",
+       " prereqs" :{ 
+            "req1" : ["trained", "Initiative"]
+        },
+        "ope"  : false, 
+        "description"  : "Flat-Footed targets knocked Prone on Surprise Round if your attack roll exceeds the target's Fortitude Defense. The target adds its size modifier to its Fortitude Defense"
+    },
+    {
+        "name" : "Desperate Gambit",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Once per turn, when you miss on an attack roll, you reroll the attack, but you take a -2 penalty to Reflex Defense until the end of your next turn. If your first attack missed because you rolled a Natural 1, you can still use this Feat, but you take a -5 penalty to Reflex Defense instead. You must accept the result of the second roll, even if it's worse than the first."
+    },
+    {
+        "name" : "Duck and Cover",
+       " prereqs" :{ 
+            "req1" : ["trained", "Stealth"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever you are the target of an Area Attack that misses, once per turn you can Move 2 squares as a Reaction. This movement does not provoke Attacks of Opportunity"
+    },
+    {
+        "name" : "Fleet-Footed",
+       " prereqs" :{ 
+            "req1" : ["feat", "Running Attack"]
+        },
+        "ope"  : false, 
+        "description"  : "If you Move both before and after you make an attack using the Running Attack Feat, your Speed is increased by 2 squares until the end of your turn."
+    },
+    {
+        "name" : "Friends in Low Places",
+       " prereqs" :{ 
+            "req1" : ["trained", "Gather Information"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever you would acquire a license for a Restricted or Military object, you can substitute a Gather Information check for a Knowledge (Bureaucracy) check. Reduce the Black Market cost multiplier of such items by 1."
+    },
+    {
+        "name" : "Hasty Modification",
+       " prereqs" :{ 
+            "req1" : ["feat", "Tech Specialist"]
+        },
+        "ope"  : false, 
+        "description"  : "You can exchange a Trait you have applied to a piece of Equipment or Droid for another one by spending 1 minute to make a DC 20 Mechanics check. If you succeed, the Equipment loses the old Trait and gains a new Trait until the end of the encounter, at which point the device loses all Traits previously acquired through use of the Tech Specialist Feat."
+    },
+    {
+        "name" : "Hideous Visage",
+       " prereqs" :{ 
+            "req1" : ["trait", "Shapeshift"]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, as a Swift Action, you can make a Deception check against one opponent that can see you. If the check equals or exceeds the opponent's Will Defense, you move the target 1 square away from you and it takes a -1 penalty on all attacks until the start of your next turn. This is a Mind-Affecting Fear effect."
+    },
+    {
+        "name" : "Impersonate",
+       " prereqs" :{ 
+            "req1" : ["trait", "Shapeshift"],
+            "req2" : ["feat", "Skill Focus (Deception)"]
+        },
+        "ope"  : false, 
+        "description"  : "You can make a Deception check to alter your features to that of a specific person. This Feat also allows you to change your voice to match the target's. You always treat impersonating a person as a Moderate Deception."
+    },
+    {
+        "name" : "Impetuous Move",
+       " prereqs" :{ 
+            "req1" : ["Constitution", 13]
+        },
+        "ope"  : false, 
+        "description"  : "When you catch a Second Wind, you can choose to regain only half of the Hit Points you normally would with a Second Wind and immediately Move up to half of your Speed. This movement does not provoke Attacks of Opportunity."
+    },
+    {
+        "name" : "Impulsive Flight",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "You can Withdraw one extra square using the Withdraw Action."
+    },
+    {
+        "name" : "Knife Trick",
+       " prereqs" :{ 
+            "req1" : ["feat", "Lightning Draw"],
+            "req2" : ["feat", "Quick Draw"],
+            "req3" : ["trained", "Stealth"]
+        },
+        "ope"  : false, 
+        "description"  : "If you have a concealed weapon, you Threaten squares as though armed with a melee weapon. When you can make an Attack of Opportunity, you can draw a weapon you have successfully concealed on your person and make a single attack against the target."
+    },
+    {
+        "name" : "Lightning Draw",
+       " prereqs" :{ 
+            "req1" : ["feat", "Quick Draw"]
+        },
+        "ope"  : false, 
+        "description"  : "Draw and fire as a Standard Action."
+    },
+    {
+        "name" : "Metamorph",
+       " prereqs" :{ 
+            "req1" : ["Constitution", 13],
+            "req2" : ["trait", "Shapeshift"],
+            "req3" : ["trained", "Deception"]
+        },
+        "ope"  : false, 
+        "description"  : "As a Full-Round Action, you can change your mass when you use your Shapeshift Species Trait, increasing or decreasing your size by one step. You can maintain this form for a number of rounds per day equal to your Constitution score."
+    },
+    {
+        "name" : "Opportunistic Retreat",
+       " prereqs" :{ 
+            "req1" : ["feat", "Combat Reflexes"]
+        },
+        "ope"  : false, 
+        "description"  : "Sacrifice Attack of Opportunity to move at half speed."
+    },
+    {
+        "name" : "Resurgence",
+       " prereqs" :{ 
+            "req1" : ["trained", "Endurance"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain bonus Move Action when you catch your Second Wind."
+    },
+    {
+        "name" : "Signature Device",
+       " prereqs" :{ 
+            "req1" : ["feat", "Tech Specialist"]
+        },
+        "ope"  : false, 
+        "description"  : "You designate a single weapon, suit of armor, vehicle, or other item as your Signature Item. When making Mechanics checks to modify that piece of Equipment, you can Take 10 on the check. In addition, you can allow the device to gain two Traits from the Tech Specialist feat.To install the second Trait, you must succeed on a DC 30 Mechanics check. Once installed, the device can use only one Trait at a time, and switching from one Trait to the other requires a Swift Action to adjust the item's settings. You can have only one Signature Device at a time, but you can designate another device as your Signature Item (the former item loses all benefits gained from this Feat)."
+    },
+    {
+        "name" : "Slippery Maneuver",
+       " prereqs" :{ 
+            "req1" : ["feat", "Dodge"]
+        },
+        "ope"  : false, 
+        "description"  : "You can apply the effects of the Dodge Feat against attacks made from two opponents. In addition, when you use the Withdraw Action to move away from a target against whom you use the Dodge Feat, you can move at your full Speed. You still provoke an Attack of Opportunity if you must move more than 1 square to escape a Threatened Area."
+    },
+    {
+        "name" : "Staggering Attack",
+       " prereqs" :{ 
+            "req1" : ["talent", "Sneak Attack"],
+            "orlogic": ["feat", "or", "Rapid Shot", "Rapid Strike"]
+        },
+        "ope"  : false, 
+        "description"  : "Any time you would deal additional damage from a Feat or Talent that grants one or more extra dice of damage, you can forgo the extra damage to move the target 2 squares per extra die sacrificed. This movement does not provoke Attacks of Opportunity."
+    },
+    {
+        "name" : "Stay Up",
+       " prereqs" :{ 
+            "req1" : ["trained", "Endurance"]
+        },
+        "ope"  : true, 
+        "description"  : "Once per Encounter take Half Damage and move 1 step down Condition Track to reduce damage."
+    },
+    {
+        "name" : "Superior Tech",
+       " prereqs" :{ 
+            "req1" : ["Intelligence", 17],
+            "req2" : ["feat", "Tech Specialist"],
+            "req3" : ["characterLevel", 9]
+        },
+        "ope"  : false, 
+        "description"  : "You are trained to make use of Starship Maneuvers and are skilled at space combat."
+    },
+    {
+        "name" : "Tactical Advantage",
+       " prereqs" :{ 
+            "req1" : ["feat", "Combat Reflexes"]
+        },
+        "ope"  : false, 
+        "description"  : "When you successfully damage an opponent using an Attack of Opportunity, you can immediately move 1 square in any direction."
+    },
+    {
+        "name" : "Wicked Strike",
+       " prereqs" :{ 
+            "req1" : ["feat", "Rapid Strike"],
+            "req2" : ["trained", "Pilot"]
+        },
+        "ope"  : false, 
+        "description"  : "When you damage a target with a single, non-Area Attack using the Rapid Strike Feat, once per turn on your turn, you can immediately make a second attack at a -2 penalty against a second target within your reach. If this attack hits, you deal half of the original attack's damage to that target."
+    },
+    {
+        "name" : "Anointed Hunter",
+       " prereqs" :{ 
+            "req1" : ["species", "Nelvaanian"]
+        },
+        "ope"  : false, 
+        "description"  : "Move 2 or more squares and gain a +1 bonus on attacks with Thrown Weapons until the end of your turn."
+    },
+    {
+        "name" : "Artillery Shot",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When you make an attack with a Burst or Splash weapon with which you are proficient against a target at greater than Point-Blank Range, you can affect two additional squares adjacent to the normal Burst radius or Splash area."
+    },
+    {
+        "name" : "Coordinated Barrage",
+       " prereqs" :{ 
+            "req1" : ["feat", "Coordinated Attack"],
+            "req2" : ["BAB", 5]
+        },
+        "ope"  : false, 
+        "description"  : "When you Aid Another ally's attack, for every 3 points that the ally's attack roll beats the target's Reflex Defense, the attack deals +1 die of damage. The maximum number of bonus damage dice the attack receives is equal to the number of allies with this Feat that aided on the attack roll or +5 dice, whichever is lower."
+    },
+    {
+        "name" : "Droidcraft",
+       " prereqs" :{ 
+            "req1" : ["trained", "Mechanics"]
+        },
+        "ope"  : false, 
+        "description"  : "Repair a Droid in 10 minutes instead of 1 hour."
+    },
+    {
+        "name" : "Droid Hunter",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Deal +2 damage to Droid enemies, or +4 when using an Ion Weapon."
+    },
+    {
+        "name" : "Experienced Medic",
+       " prereqs" :{ 
+            "req1" : ["trained", "Treat Injury"]
+        },
+        "ope"  : false, 
+        "description"  : "Perform Surgery on multiple creatures simultaneously."
+    },
+    {
+        "name" : "Expert Droid Repair",
+       " prereqs" :{ 
+            "req1" : ["trained", "Mechanics"]
+        },
+        "ope"  : false, 
+        "description"  : "Repair multiple Droids simultaneously."
+    },
+    {
+        "name" : "Flash and Clear",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain Concealment against a target you damage with a Burst or Splash weapon."
+    },
+    {
+        "name" : "Flood of Fire",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Ignore enemies' dodge and deflection bonus to Reflex Defense when making Area Attacks with a weapon set on Autofire."
+    },
+    {
+        "name" : "Grand Army of the Republic Training",
+       " prereqs" :{ 
+            "req1" : ["feat", "Armor Proficiency (Light)"]
+        },
+        "ope"  : false, 
+        "description"  : "Apply your armor's Equipment bonus to your Will Defense."
+    },
+    {
+        "name" : "Gunnery Specialist",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "Reroll an attack made with a Vehicle Weapon."
+    },
+    {
+        "name" : "Jedi Familiarity",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain one temporary Force Point when targeted by an ally's Force Power or Force Talent."
+    },
+    {
+        "name" : "Leader of Droids",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever you provide a beneficial, Mind-Affecting effect to your allies, you may select from among these allies a number of Droids equal to your Intelligence modifier (Minimum 1). The Droids you designate ignore their Mind-Affecting immunity with regards to this effect, provided they are willing to ignore this immunity."
+    },
+    {
+        "name" : "Overwhelming Attack",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Any attempt to negate your attack takes a -5 penalty on the attack roll or Skill Check. You must spend two Swift Actions in the same round to activate this Feat."
+    },
+    {
+        "name" : "Pall of the Dark Side",
+       " prereqs" :{ 
+            "req1" : ["Dark Side Score", 1]
+        },
+        "ope"  : false, 
+        "description"  : "Add half your Dark Side Score to Use the Force checks to resist detection from Sense Force."
+    },
+    {
+        "name" : "Separatist Military Training",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain a +1 bonus on an attack roll while adjacent to an ally."
+    },
+    {
+        "name" : "Spray Shot",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When using a weapon set on Autofire, you can reduce the area to 1 square."
+    },
+    {
+        "name" : "Trench Warrior",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When you have Cover against an enemy's ranged attacks, gain a +1 bonus on attack rolls against that enemy."
+    },
+    {
+        "name" : "Unstoppable Force",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain a +5 bonus to Fortitude Defense and Will Defense against any effect requiring a Use the Force check."
+    },
+    {
+        "name" : "Unwavering Resolve",
+       " prereqs" :{ 
+            "req1" : ["trained", "Perception"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain a +5 bonus to Will Defense against Deception and Persuasion checks."
+    },
+    {
+        "name" : "Wary Defender",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain a +2 bonus to Fortitude Defense and Will Defense while Fighting Defensively."
+    },
+    {
+        "name" : "Attack Combo (Fire and Strike)",
+       " prereqs" :{ 
+            "req1" : ["feat", "Attack Combo (Melee)"],
+            "req2" : ["feat", "Attack Combo (Ranged)"],
+            "req3" : ["BAB", 9]
+        },
+        "ope"  : false, 
+        "description"  : "Deal +1 die of damage on Unarmed, melee, or ranged attacks until the end of your next turn after hitting an enemy with two Unarmed, melee, or ranged attacks."
+    },
+    {
+        "name" : "Attack Combo (Melee)",
+       " prereqs" :{ 
+            "req1" : ["BAB", 3]
+        },
+        "ope"  : false, 
+        "description"  : "Deal +1 die of damage on Unarmed or melee attacks until the end of your next turn after hitting an enemy with two Unarmed or melee attacks."
+    },
+    {
+        "name" : "Attack Combo (Ranged)",
+       " prereqs" :{ "req1" : ["BAB", 3]
+        },
+        "ope"  : false, 
+        "description"  : "Deal +1 die of damage on ranged attacks until the end of your next turn after hitting an enemy with two ranged attacks."
+    },
+    {
+        "name" : "Autofire Assault",
+       " prereqs" :{ 
+            "req1" : ["feat", "Weapon Focus"]
+        },
+        "ope"  : false, 
+        "description"  : "When wielding a weapon for which you possess the Weapon Focus Feat, and you target the same area with an Autofire attack that you made an Autofire attack against on you last turn, the penalty on the Autofire attack is reduced to -2 (-1 if using a Braced Autofire-only weapon or the Controlled Burst Talent) and you deal +1 die of damage on a hit."
+    },
+    {
+        "name" : "Autofire Sweep",
+       " prereqs" :{ 
+            "req1" : ["feat", "Weapon Focus"]          
+        },
+        "ope"  : false, 
+        "description"  : "When making an Autofire attack with a weapon with which you possess the Weapon Focus feat, you can attack all targets in a 6-Square Cone. The origin square of the cone can be any square in your line of sight and within Point-Blank Range."
+    },
+    {
+        "name" : "Biotech Specialist",
+       " prereqs" :{ 
+            "req1" : ["approved", "GM"],
+            "req2" : ["trained", "Mechanics"]
+        },
+        "ope"  : false, 
+        "description"  : "You can modify a Biotech device, suit of armor, weapon, or Vehicle so that it gains a specific trait. You can perform only one modification at a time. Unless noted otherwise, you cannot grant more than one benefit to a single device, suit of armor, weapon, or Vehicle, and you cannot apply the same benefit more than once"
+    },
+    {
+        "name" : "Biotech Surgery",
+       " prereqs" :{ 
+            "req1" : ["trained", "Treat Injury"]
+        },
+        "ope"  : false, 
+        "description"  : "You can install Bio-Implants onto a living being. The surgical procedure takes 1 hour of uninterrupted work, after which you must make a DC 20 Treat Injury check. If the check succeeds, the prosthesis is installed correctly. If the check fails, the prosthesis is not installed properly; however, you can try again after another uninterrupted hour of surgery."
+    },
+    {
+        "name" : "Brink of Death",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When you deal sufficient damage on an attack to kill a target, you may instead choose to reduce the target to 0 Hit Points, leaving it Unconscious but alive. Normal rules for being at 0 Hit Points apply."
+    },
+    {
+        "name" : "Fatal Hit",
+       " prereqs" :{ 
+            "req1" : ["Strength",13], 
+            "req2" : ["Dexterity", 13]
+        },
+        "ope"  : false, 
+        "description"  : "You automatically kill an enemy that you reduce to 0 Hit Points, and you can perform a Coup de Grace as a Standard Action."
+    },
+    {
+        "name" : "Feat of Strength",
+       " prereqs" :{ 
+            "req1" : ["Strength",15]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter as a Full-Round Action, you can Take 20 on a Strength check or Strength-based Skill Check (You must be Trained in that Skill), even if distracted or threatened. After using this Feat for the first time in a given encounter, make a DC 15 Endurance check (As a Free Action). If the check succeeds, you can use this Feat once more during the same encounter."
+    },
+    {
+        "name" : "Galactic Alliance Military Training",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "You do not move down the Condition Track the first time an attack exceeds your Damage Threshold in an encounter."
+    },
+    {
+        "name" : "Grapple Resistance",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain a +5 bonus to resist Grab and Grapple attacks."
+    },
+    {
+        "name" : "Knock Heads",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13],
+            "req2" : ["Strength",13],
+            "req3" : ["feat", "Multi-Grab"]
+        },
+        "ope"  : false, 
+        "description"  : "You may knock two opponents' heads together after a successful Multi-Grab."
+    },
+    {
+        "name" : "Multi-Grab",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13]
+        },
+        "ope"  : false, 
+        "description"  : "You may Grab two opponents as a Standard Action."
+    },
+    {
+        "name" : "Rancor Crush",
+       " prereqs" :{ 
+            "req1" : ["Strength",15],
+            "req2" : ["feat", "Crush"],
+            "req3" : ["feat", "Pin"], 
+            "req4" :["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "Move an enemy -1 step down the Condition Track when using the Crush feat."
+    },
+    {
+        "name" : "Return Fire",
+       " prereqs" :{ 
+            "req1" : ["Dexterity",15],
+            "req2" : ["feat", "Quick Draw"],
+            "req3" : ["feat", "Weapon Focus"]
+           
+        },
+        "ope"  : true, 
+        "description"  : "Select one Exotic Weapon or Weapon Group for which you possess the Weapon Focus feat. Once per encounter as a Reaction, you can make a single ranged attack with the chosen weapon against an enemy that misses you with a ranged attack, provided you have line of sight to the enemy."
+    },
+    {
+        "name" : "Returning Bug",
+       " prereqs" :{ 
+            "req1" : ["feat", "Weapon Proficiency (Simple Weapons)"]
+        },
+        "ope"  : false, 
+        "description"  : "Thrown Razor Bugs and Thud Bugs return to your hand immediately."
+    },
+    {
+        "name" : "Vehicle Systems Expertise",
+       " prereqs" :{ 
+            "req1" : ["feat", "Tech Specialist"],
+            "req2" : ["trained", "Mechanics"]
+        },
+        "ope"  : true, 
+        "description"  : "You may use the Recharge Shields or Reroute Power Actions by spending two Swift Actions. Also, once per encounter, you may attempt to use either of these Actions as a single Swift Action by making a DC 30 Mechanics check."
+    },
+    {
+        "name" : "Zero Range",
+       " prereqs" :{ 
+            "req1" : ["feat", "Point-Blank Shot"]
+        },
+        "ope"  : false, 
+        "description"  : "When firing a ranged weapon at a target within or adjacent to your Fighting Space, you gain a +1 bonus on the attack roll and deal +1 die of damage on a hit."
+    },
+    {
+        "name" : "Follow Through",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "If you deal enough damage to your opponent with a melee attack to reduce it to 0 Hit Points, you can immediately move up to your Speed. You can use this ability once per turn."
+    },
+    {
+        "name" : "Force Regimen Mastery",
+       " prereqs" :{ 
+            "req1" : ["feat", "Force Sensitivity"],
+            "req2" : ["trained", "Use the Force"]
+        },
+        "ope"  : false, 
+        "description"  : "Learn a number of Force Regimens equal to 1 + your Wisdom modifier (minimum of 1)."
+    },
+    {
+        "name" : "Long Haft Strike",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When you use a Lightsaber Pike or a Long-Handle Lightsaber, you can attack with both ends of the weapon, treating it as a double weapon."
+    },
+    {
+        "name" : "Relentless Attack",
+       " prereqs" :{ 
+            "req1" : ["feat", "Double Attack"]
+        },
+        "ope"  : false, 
+        "description"  : "Choose one weapon group or Exotic Weapon for which you have the Double Attack Feat. Whenever you miss a target with that weapon, you gain a +2 competence bonus on your next attack roll made before the end of your next turn against the missed target."
+    },
+    {
+        "name" : "Unswerving Resolve",
+       " prereqs" :{ 
+            "req1" : ["BAB", 2]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever you are targeted by a Fear effect or Mind-Affecting effect that fails to affect you, you gain a temporary Force Point. If this Force Point is not used before the end of your next turn, it goes away. If you negate the contingent effect in any way, you do not gain the benefit of this Feat."
+    },
+    {
+        "name" : "Assured Attack",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever you deal damage to a target with an attack and you roll multiple damage dice, you can reroll the lowest damage die but must keep the second result, even if it is worse."
+    },
+    {
+        "name" : "Deft Charge",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Take Swift Actions, Reactions, and Free Actions after you Charge before your turn ends."
+    },
+    {
+        "name" : "Fast Surge",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Catch a Second Wind as a Free Action on your turn."
+    },
+    {
+        "name" : "Imperial Military Training",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, as a Free Action on your turn, you can negate any one Mind-Affecting effect targeting or currently affecting you."
+    },
+    {
+        "name" : "Moving Target",
+       " prereqs" :{ 
+            "req1" : ["feat", "Dodge"]
+        },
+        "ope"  : false, 
+        "description"  : "If you end your turn at least 3 squares away from where you started, you gain a +1 dodge bonus to your Reflex Defense until the start of your next turn."
+    },
+    {
+        "name" : "Prime Shot",
+       " prereqs" :{ 
+            "req1" : ["feat", "Point-Blank Shot"]
+        },
+        "ope"  : false, 
+        "description"  : "If none of your allies are closer to your target than you are when you make a ranged attack, you gain a +1 circumstance bonus to the attack roll. Your target must be at Short Range or closer to gain this bonus."
+    },
+    {
+        "name" : "Rapid Reaction",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, you can use two different Reactions in response to the same trigger. For example, if you use the Deflect Talent and fail to negate the attack, you can also use Negate Energy as a response to the same attack."
+    },
+    {
+        "name" : "Rebel Military Training",
+       " prereqs" :{ 
+            "req1" : ["feat", "Running Attack"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain a +2 dodge bonus to Reflex Defense when using Running Attack."
+    },
+    {
+        "name" : "Recovering Surge",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Move up the Condition Track when you catch a Second Wind."
+    },
+    {
+        "name" : "Unstoppable Combatant",
+       " prereqs" :{ 
+            "req1" : ["feat", "Extra Second Wind"]
+        },
+        "ope"  : false, 
+        "description"  : "Catch more than one Second Wind in an encounter."
+    },
+    {
+        "name" : "Vehicular Surge",
+       " prereqs" :{ 
+            "req1" : ["trained", "Pilot"]
+        },
+        "ope"  : false, 
+        "description"  : "If the Vehicle you Pilot is reduced to fewer than one-half its maximum Hit Points, once per day as a Swift Action your Vehicle gains a number of Bonus Hit Points equal to one-quarter its maximum Hit Point total and any Bonus Hit Points remaining at the end of the encounter are lost. Bonus Hit Points do not stack."
+    },
+    {
+        "name" : "Vitality Surge",
+       " prereqs" :{ 
+            "req1" : ["feat", "Extra Second Wind"]
+        },
+        "ope"  : false, 
+        "description"  : "Catch a Second Wind even when not at or below half Hit Points.."
+    },
+    {
+        "name" : "Bantha Herder",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When you damage a Large or smaller creature with a ranged attack with a weapon you are proficient with, compare the result of your attack roll to the target's Will Defense. If your result equals or exceeds the target's Will Defense, you can move the target 1 square in any direction as a Free Action. If your ranged attack deals damage to multiple eligible creatures, you can use this benefit against all of them. You can't move a target that's being Grabbed or Grappled, and you can't move a target into a solid object or into another creature's Fighting Space."
+    },
+    {
+        "name" : "Battering Attack",
+       " prereqs" :{ 
+            "req1" : ["feat", "Bantha Rush"],
+            "req2" : ["feat", "Trip"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever you successfully move a creature with the Bantha Rush Feat, you also knock that target Prone."
+    },
+    {
+        "name" : "Destructive Force",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When you deal damage to an object or Vehicle that equals or exceeds the target's Damage Threshold and reduces the target to 0 Hit Points, you deal 1 die of damage (of the same type as the damage used in the attack) to all targets, including allies, that are adjacent to the Vehicle or object."
+    },
+    {
+        "name" : "Disabler",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When making a ranged attack with an Ion Weapon with which you are proficient, you gain one of the following benefits, depending on the kind of weapon you use.  Ion Grenade, the Grenade's Burst radius is 3 squares instead of 2 squares. Ion Pistol, the damage dice increase from d6 to d8. You treat the Ion Rifle as an Accurate Weapon."
+    },
+    {
+        "name" : "Dive for Cover",
+       " prereqs" :{ 
+            "req1" : ["trained", "Jump"]
+        },
+        "ope"  : false, 
+        "description"  : "Jump for Cover as a Reaction."
+    },
+    {
+        "name" : "Fight Through Pain",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Use your Will Defense to determine your Damage Threshold."
+    },
+    {
+        "name" : "Forceful Blast",
+       " prereqs" :{ 
+            "req1" : ["feat", "Weapon Proficiency (Simple Weapons)"],
+            "req2" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "Move a target 1 square in any direction as a Free Action that is damaged by your Grenade attack. If the Grenade deals damage to multiple eligible creatures, you can use this benefit against all of them"
+    },
+    {
+        "name" : "Force of Personality",
+       " prereqs" :{ 
+            "req1" : ["Charisma", 13]
+        },
+        "ope"  : false, 
+        "description"  : "Use Wisdom or Charisma to determine Will Defense."
+    },
+    {
+        "name" : "Fortifying Recovery",
+       " prereqs" :{ 
+            "req1" : ["Constitution", 13]
+        },
+        "ope"  : false, 
+        "description"  : "Gain Bonus Hit Points when you Recover."
+    },
+    {
+        "name" : "Mission Specialist",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Choose one Skill in which you are Trained. Allies who are not Trained in that Skill gain a +2 competence bonus to the Skill while they are within 12 squares of you."
+    },
+    {
+        "name" : "Never Surrender",
+       " prereqs" :{ 
+            "req1" : ["trained", "Endurance"]
+        },
+        "ope"  : false, 
+        "description"  : "The first time you would be reduced to 0 Hit Points in an encounter, Make an Endurance check to prevent falling to 0 Hit Points. Instead you fall to 1."
+    },
+    {
+        "name" : "Officer Candidacy Training",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain a +2 bonus to your Rank and Privilege Score."
+    },
+    {
+        "name" : "Opportunistic Shooter",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Gain a +2 bonus to Attacks of Opportunity with ranged weapons."
+    },
+    {
+        "name" : "Pistoleer",
+       " prereqs" :{ 
+            "req1" : ["feat", "Weapon Proficiency (Pistols)"]
+        },
+        "ope"  : false, 
+        "description"  : "When you make a ranged attack with a Pistol with which you are proficient, you gain one of the following benefits, depending on the kind of Pistol you use. Blaster Pistol: You treat the Blaster Pistol as an Accurate Weapon. Heavy Blaster Pistol: You do not treat the Heavy Blaster Pistol as an Inaccurate Weapon. Hold-Out Blaster Pistol: If you fire a Hold-Out Blaster Pistol at a target that has not yet acted in combat, you gain a +2 bonus to your attack rolls with that weapon against that target. this bonus applies to all such attacks until the target attacks."
+    },
+    {
+        "name" : "Predictive Defense",
+       " prereqs" :{ 
+            "req1" : ["Intelligence", 13]
+        },
+        "ope"  : false, 
+        "description"  : "Use Dexterity or Intelligence to determine Reflex Defense."
+    },
+    {
+        "name" : "Resilient Strength",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13]
+        },
+        "ope"  : false, 
+        "description"  : "Use Strength or Constitution to determine Fortitude Defense."
+    },
+    {
+        "name" : "Riflemaster",
+       " prereqs" :{ 
+            "req1" : ["feat", "Weapon Proficiency (Rifles)"]
+        },
+        "ope"  : false, 
+        "description"  : "When you make a ranged attack with a Rifle with which you are proficient, you gain one of the following benefits, depending on the kind of Rifle you use. Blaster Carbine: can Brace and set to Autofire, even though it is not an Autofire-only weapon;  Blaster Rifle: Accurate Weapon;  Heavy Blaster Rifle: damage damage dice increases from d10 to d12; Light Repeating Blaster : Medium size"
+    },
+    {
+        "name" : "Risk Taker",
+       " prereqs" :{ 
+            "req1" : ["trained", "or", "Climb", "Jump"]
+        },
+        "ope"  : false, 
+        "description"  : "You fall only if you fail a Climb check by 10 or more. Additionally, if you make a Jump check and fail to land on a safe or solid surface (Such as if you fall into a pit or fail to clear a stream of lava), you can spend a Force Point as a Free Action and add the result of the Force Point roll to your distance jumped. However, you must land in the first available safe square."
+    },
+    {
+        "name" : "Sport Hunter",
+       " prereqs" :{ 
+            "req1" : ["feat",  "or", "Weapon Proficiency (Pistols)", "Weapon Proficiency (Rifles)"]
+        },
+        "ope"  : false, 
+        "description"  : "When you make a ranged attack with a slugthrower or sporting weapon with which you are proficient, you gain one of the following benefits, depending on the kind of weapon you use. Slugthrower Pistol: at Point-Blank Range deal +1 die of damage; Slugthrower Rifle: damage dice increases from d8 to d12;  Sporting Blaster Rifle: +1 bonus to attack rolls when you Aim."
+    },
+    {
+        "name" : "Staggering Attack",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When using a melee weapon with which you are proficient, you can make an attack that disrupts an enemy's concentration. You take either a -2 or -5 penalty on your attack roll, and if your attack deals damage, the target takes a -2 or -5 penalty to Skill Checks until the end of your next turn."
+    },
+    {
+        "name" : "Steadying Position",
+       " prereqs" :{ 
+            "req1" : ["feat", "Careful Shot"]
+        },
+        "ope"  : false, 
+        "description"  : "Deny target's Dexterity bonus to Reflex Defense when you are Prone and Aiming."
+    },
+    {
+        "name" : "Droid Focus",
+       " prereqs" :{ 
+            "req1" : ["trained", "Mechanics"],
+            "req2" : ["trained", "Use Computer"]
+        },
+        "ope"  : false, 
+        "description"  : "Select a degree of Droid and gain a +1 bonus to Deception, Mechanics, Perception, Persuasion, and Use Computer checks when used on or against a Droid of the selected degree, and a +1 bonus to all Defenses against attack rolls and Skill Checks made by Droids of the selected degree."
+    },
+    {
+        "name" : "Adaptable Talent",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Choose one Talent that you meet the prerequisites for, from a Class you possess. Once per day, after at least 6 hours of rest, you can choose to swap out one of your current Talents for the Talent you chose for this Feat. The Talent you swap out cannot be the prerequisite for any other Talent you have. You can swap back to your original Talent after at least 6 hours of rest."
+    },
+    {
+        "name" : "Bone Crusher",
+       " prereqs" :{ 
+            "req1" : ["feat", "Crush"],
+            "req2" : ["feat", "Pin"]
+        },
+        "ope"  : false, 
+        "description"  : "When you deal damage to a Grappled opponent, the opponent also moves -1 step along the Condition Track."
+    },
+    {
+        "name" : "Brilliant Defense",
+       " prereqs" :{ 
+            "req1" : ["Intelligence", 13]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, you can add your Intelligence modifier to your Reflex Defense as a Reaction; this benefit lasts until the start of your next turn."
+    },
+    {
+        "name" : "Channel Rage",
+       " prereqs" :{ 
+            "req1" : ["trait", "Rage"]
+        },
+        "ope"  : false, 
+        "description"  : "Once per day, instead of entering into a Rage, you gain a +5 bonus to your Will Defense until the end of the encounter. This bonus counts as using your Rage ability for that day."
+    },
+    {
+        "name" : "Cut the Red Tape",
+       " prereqs" :{ 
+            "req1" : ["trained", "Knowledge (Bureaucracy)"]
+        },
+        "ope"  : false, 
+        "description"  : "You can use your Knowledge (Bureaucracy) modifier instead of your Gather Information modifier when making Gather Information checks. If you are entitled to a Gather Information check reroll, you can reroll your Knowledge (Bureaucracy) check instead (subject to the same circumstances and limitations). You are considered Trained in the Gather Information skill for the purposes of this check."
+    },
+    {
+        "name" : "Demoralizing Strike",
+       " prereqs" :{ 
+            "req1" : ["Charisma", 13]
+        },
+        "ope"  : false, 
+        "description"  : "When you successfully deal damage to an opponent with an Attack of Opportunity, you can immediately make a Persuasion check to Intimidate the opponent as a Free Action."
+    },
+    {
+        "name" : "Disturbing Presence",
+       " prereqs" :{ 
+            "req1" : ["trained", "Deception"]
+        },
+        "ope"  : false, 
+        "description"  : " If you succeed on a DC 15 Deception check, you can move through the Threatened area or Fighting Space of an enemy as part of your move action without provoking an attack of opportunity. Each Threatened space or occupied space that you move through in this manner counts as 2 squares of movement."
+    },
+    {
+        "name" : "Expert Briber",
+       " prereqs" :{ 
+            "req1" : ["Charisma", 13]
+        },
+        "ope"  : false, 
+        "description"  : "When using the Haggle or Bribery applications of the Persuasion skill, you reduce the DC to reduce the price of the item haggled over by 10."
+    },
+    {
+        "name" : "Flèche",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When Charging, turn any natural attack roll of 17+ into a Critical Hit."
+    },
+    {
+        "name" : "Forceful Recovery",
+       " prereqs" :{ 
+            "req1" : ["feat", "Force Sensitivity"],
+            "req2" : ["feat", "Force Training"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever you catch a Second Wind, choose one expended Force Power and return that power to your Force Power Suite."
+    },
+    {
+        "name" : "Grazing Shot",
+       " prereqs" :{ 
+            "req1" : ["feat", "Point-Blank Shot"]
+        },
+        "ope"  : false, 
+        "description"  : "When you successfully make a ranged attack at a single target, you can make a second attack roll against an additional target that is in direct line of sight, and no farther than 6 squares from the original target. If the second attack roll succeeds, make a single damage roll, and divide the damage equally between the two targets. If the second attack roll fails, you deal no damage to either target."
+    },
+    {
+        "name" : "Hobbling Strike",
+       " prereqs" :{ 
+            "req1" : ["talent", "Sneak Attack"],
+            "orlogic": ["feat", "or", "Rapid Shot", "Rapid Strike"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever you would deal extra damage by using Sneak Attack, Rapid Shot, or Rapid Strike, you can reduce the target's Speed by 1 square until the end of the encounter, instead of dealing the extra damage."
+    },
+    {
+        "name" : "Improved Opportunistic Trickery",
+       " prereqs" :{ 
+            "req1" : ["feat", "Combat Reflexes"],
+            "req2" : ["feat", "Opportunistic Trickery"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever an opponent provokes an Attack of Opportunity from you, once per turn you can sacrifice the attack to reduce the target's Reflex Defense by 5 until the end of the target's next turn."
+    },
+    {
+        "name" : "Indomitable Personality",
+       " prereqs" :{ 
+            "req1" : ["Charisma", 13]
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, you can add your Charisma modifier to your Will Defense as a Reaction; this benefit lasts until the end of your next turn."
+    },
+    {
+        "name" : "Master of Disguise",
+       " prereqs" :{ 
+            "req1" : ["Charisma", 13],
+            "req2" : ["trained", "Deception"]
+        },
+        "ope"  : false, 
+        "description"  : "You gain a +5 insight bonus to your Deception check when creating a Deceptive Appearance. In addition, you can rush the process by taking a -2 penalty to the Deception check."
+    },
+    {
+        "name" : "Meat Shield",
+       " prereqs" :{ 
+            "req1" : ["feat", "Point-Blank Shot"],
+            "req2" : ["feat", "Precise Shot,"],
+            "req3" : ["BAB", 4]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever an opponent attacks you while in Cover provided by another character, creature, or Droid, you are treated as being in Cover from attacks by that opponent.."
+    },
+    {
+        "name" : "Opportunistic Trickery",
+       " prereqs" :{ 
+            "req1" : ["feat", "Combat Reflexes"],
+            "req2" : ["talent", "Sneak Attack"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever an opponent provokes an Attack of Opportunity from you, once per turn you can sacrifice that attack to reduce the target's Reflex Defense by 2 for the following round."
+    },
+    {
+        "name" : "Recurring Success",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When you select this Feat, choose one Talent or Feat that can normally be used once per encounter. You can use that Talent or Feat one additional time per encounter."
+    },
+    {
+        "name" : "Resolute Stance",
+       " prereqs" :{ 
+            "req1" : ["BAB", 1]
+        },
+        "ope"  : false, 
+        "description"  : "When you Fight Defensively, you gain a +2 morale bonus to your Will Defense. If you make no attacks until your next turn, you gain a +5 morale bonus to your Will Defense until the start of your next turn."
+    },
+    {
+        "name" : "Sadistic Strike",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When you deliver a Coup de Grace to a Helpless creature, all opponents within line of sight move -1 step on the Condition Track until the end of encounter."
+    },
+    {
+        "name" : "Silver Tongue",
+       " prereqs" :{ 
+            "req1" : ["trained", "Persuasion"]
+        },
+        "ope"  : false, 
+        "description"  : "You can Intimidate or Change Attitude as a Standard Action."
+    },
+    {
+        "name" : "Skill Challenge: Catastrophic Avoidance",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Once per Skill Challenge that has a chance of Catastrophic Failure, this Failure occurs only if you fail a Skill Check by 15 or more. In addition, when a Catastrophic Failure occurs, you accrue one Failure in the Skill Challenge, not two."
+    },
+    {
+        "name" : "Skill Challenge: Last Resort",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Once per Skill Challenge, when you or an ally accrues a third Failure (Which would normally end the Skill Challenge), you or the ally can reroll the attempt, keeping the better result."
+    },
+    {
+        "name" : "Skill Challenge: Recovery",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "Once per Skill Challenge, you treat the Skill Challenge as if it had the Recovery effect, even if it does not have that effect."
+    },
+    {
+        "name" : "Stand Tall",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When you take damage, nearby allies (within 6 squares) attack your attacker."
+    },
+    {
+        "name" : "Wookiee Grip",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13]
+        },
+        "ope"  : false, 
+        "description"  : "When using a weapon in which you are proficient and that normally requires two hands, you can wield that weapon with a single hand. You take a -2 penalty to attack rolls with the weapon when it is used in this manner."
+    },
+    {
+        "name" : "Acrobatic Ally",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13],
+            "req2" : ["Strength", 13],
+            "req3" : ["trained", "Acrobatics"]
+        },
+        "ope"  : false, 
+        "description"  : "You can hoist or toss an ally of your size or smaller up to 2 squares. You and your ally must act on the same Initiative Count and start in adjacent squares. If you succeed on a DC 20 Acrobatics check as a Standard Action, your ally ends up in a square of your choosing up to 2 squares above or away from you. This counts as a Free Action for your ally and ends your turn. Your ally can then continue his or her turn. If you fail your check, both you and your ally immediately become Prone in your square. Your turn is ended, but your ally can take his or her turn normally."
+    },
+    {
+        "name" : "Acrobatic Dodge",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13],
+            "req2" : ["feat", "Mobility"],
+            "req3" : ["feat", "Skill Focus (Acrobatics)"]
+            
+        },
+        "ope"  : true, 
+        "description"  : "Once per encounter, as a Reaction, if a melee attack misses you, you can immediately move into an adjacent square without provoking an Attack of Opportunity."
+    },
+    {
+        "name" : "Combat Trickery",
+       " prereqs" :{ 
+            "req1" : ["trained", "Deception"]
+        },
+        "ope"  : false, 
+        "description"  : "You can spend two successive Swift Actions on the same turn to make a Deception check against a target's Will Defense. If the check is successful, the target is Flat-Footed against your next attack made before the end of your next turn. Additionally, you can spend a Force Point to extend your target's penalties until the end of encounter."
+    },
+    {
+        "name" : "Elder's Knowledge",
+       " prereqs" :{ 
+            "req1" : ["feat", "or", "Skill Focus (Knowledge (Social Sciences))", "Skill Focus (Knowledge (Galactic Lore))"]
+        },
+        "ope"  : false, 
+        "description"  : "Substitute a Knowledge (Social Sciences) or Knowledge (Galactic Lore) skill check for a Wisdom-related Skill Check."
+    },
+    {
+        "name" : "Frightening Cleave",
+       " prereqs" :{ 
+            "req1" : ["Strength", 13],
+            "req2" : ["feat", "Cleave"],
+            "req3" : ["feat", "Power Attack"],
+            "req4" : ["BAB", 4]
+        },
+        "ope"  : false, 
+        "description"  : "When you use the Cleave feat, each enemy within 6 squares and line of sight takes a penalty -1 to Reflex Defense, Skill Checks, and attack rolls against you. Can stack up to a -5."
+    },
+    {
+        "name" : "Grab Back",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 13]
+        },
+        "ope"  : false, 
+        "description"  : "You gain a +2 bonus to your Reflex Defense against Grab and Grapple attacks. If an enemy misses you when making a Grab or Grapple attack, you can immediately make your own Grab attack against the same enemy as a Reaction."
+    },
+    {
+        "name" : "Halt",
+       " prereqs" :{ 
+            "req1" : ["feat", "Trip"],
+            "req2" : ["feat", "Weapon Focus"],
+            "req3" : ["BAB", 8]
+        },
+        "ope"  : false, 
+        "description"  : "If you hit with an Attack of Opportunity, while wielding a weapon for which you possess the Weapon Focus Feat, against an enemy of up to one size larger than you, compare the same die roll against the target's Grapple check. If the die roll succeeds against the Grapple check, the target immediately halts all movement and falls Prone in its current square. The target can spend any remaining Actions normally. If your attack exceeds the target's Damage Threshold, the target loses any remaining Actions and ends its turn immediately. Apply damage normally to the target regardless of the results of this Feat."
+    },
+    {
+        "name" : "Heavy Hitter",
+       " prereqs" :{ 
+            "req1" : ["feat", "Weapon Focus (Heavy Weapons)"]
+        },
+        "ope"  : false, 
+        "description"  : "When making an attack roll using a Weapon Emplacement or a Weapon System, you add an additional 1 point of damage for every 5 points you roll above the target's Reflex Defense. If you exceed the target's Damage Threshold, then on its next turn the target cannot attack and its speed is reduced by 2 squares (1 square Starship Scale)."
+    },
+    {
+        "name" : "Hold Together",
+       " prereqs" :{ 
+            "req1" : ["trained", "Mechanics"]
+        },
+        "ope"  : false, 
+        "description"  : "As a Reaction, you can spend a Force Point to delay the effect of damage dealt to a Vehicle you are riding in or piloting until the end of the round. The Vehicle must be of Colossal size or smaller."
+    },
+    {
+        "name" : "Hyperblazer",
+       " prereqs" :{ 
+            "req1" : ["trained", "Use Computer"]
+        },
+        "ope"  : false, 
+        "description"  : "When traversing the Hyperspace Tangle, you reduce by half the calculation time and penalties on Use Computer checks to Astrogate (See Hyperspace Navigation Challenges). You also reduce Hyperspace Mapping time by half when mapping new Hyperspace Routes."
+    },
+    {
+        "name" : "Improved Sleight of Hand",
+       " prereqs" :{ 
+            "req1" : ["Dexterity", 15],
+            "req2" : ["feat", "Skill Focus (Deception)"],
+            "req3" :["trained", "Stealth"]
+        },
+        "ope"  : false, 
+        "description"  : "When using the Sleight of Hand application of the Stealth Skill, you can use your Deception Skill to improve your chances of success. Prior to making the Stealth check, you can make a Deception check as a Swift Action. The opposed Perception check of anyone attempting to notice your action must exceed both your Deception check and your Stealth check. Additionally, you can, as a single Action, use Improved Sleight of Hand to simultaneously draw and palm a weapon two sizes smaller than you. Make a Stealth check as a Free Action when drawing your weapon to successfully conceal it in a position in your hand (Or similar appendage), where you can use it on a following Action. Once the weapon is used, you can attempt to palm it again as a Swift Action."
+    },
+    {
+        "name" : "Improvised Weapon Mastery",
+       " prereqs" :{ 
+            "req1" : ["feat", "Weapon Proficiency (Simple Weapons)"]
+        },
+        "ope"  : false, 
+        "description"  : "You treat all Improvised Weapons as Simple Weapons, and you can use them without penalty and with Talents and Feats designed for use with Simple Weapons. You also deal an additional 1d6 points of damage on a successful hit."
+    },
+    {
+        "name" : "Instinctive Attack",
+       " prereqs" :{ 
+            "req1" : ["!species", "Droid"]
+        },
+        "ope"  : false, 
+        "description"  : "Spend a Force Point to reroll an attack and take the better result."
+    },
+    {
+        "name" : "Instinctive Defense",
+       " prereqs" :{ 
+            "req1" : ["!species", "Droid"]
+        },
+        "ope"  : false, 
+        "description"  : "On your turn, as a Free Action, you can spend a Force Point to increase all of your Defenses by 2 until the start of your next turn."
+    },
+    {
+        "name" : "Intimidator",
+       " prereqs" :{ 
+            "req1" : ["trained", "Persuasion"]
+        },
+        "ope"  : false, 
+        "description"  : "When you successfully use the Intimidate application of the Persuasion skill against a creature, instead of the normal results, the creature takes a -5 penalty to all Skill Checks (including Use the Force) and a -2 penalty to all attacks when you are within its line of sight, until the end of your next turn. If aboard another Vehicle, your enemy must be able to see or detect your Vehicle."
+    },
+    {
+        "name" : "Maniacal Charge",
+       " prereqs" :{ 
+            "req1" : ["none"]
+        },
+        "ope"  : false, 
+        "description"  : "When using the Charge Action, you can make a Persuasion check as a Free Action to Intimidate your target and each enemy you pass within 1 square of. When your check succeeds against an enemy you pass, it cannot make an Attack of Opportunity against you. When your check succeeds against your target, it loses its Dexterity bonus and is considered Flat-Footed until the start of your next turn."
+    },
+    {
+        "name" : "Mounted Combat",
+       " prereqs" :{ 
+            "req1" : ["trained", "Ride"]
+        },
+        "ope"  : false, 
+        "description"  : "You can make a DC 20 Ride check as a Swift Action to spur your living Mount to move faster than its normal speed. If the check fails, your Mount's Speed does not increase and it moves -1 step on the Condition Track. If the check succeeds, your Mount's Speed increases by 2 squares until the start of your next turn. You cannot Take 10 on this check. Your Mount must succeed on a DC 20 Endurance check prior to each subsequent attempt to use this Feat in the same encounter. Additionally, once per round, as a Reaction, when you are riding a Mount, you can negate a weapon hit against either you or the Mount by making a successful Ride check. The DC of the Skill Check is equal to the result of the attack roll you want to negate."
+    },
+    {
+        "name" : "Nikto Survival",
+       " prereqs" :{ 
+            "req1" : ["species", "Nikto"]
+        },
+        "ope"  : false, 
+        "description"  : "Select a Nikto subspecies: Kajain'sa'Nikto (Desert), Kadas'sa'Nikto (Forest), Esral'sa'Nikto (Mountains), Gluss'sa'Nikto (Ocean), M'shento'su,Nikto (Arctic). In addition to the usual Nikto Species Traits, when operating in an environment advantageous to your native subspecies, you can reroll any Survival check, taking the better result."
+    },
+    {
+        "name" : "Targeted Area",
+       " prereqs" :{ 
+            "req1" : ["BAB", 5]
+        },
+        "ope"  : false, 
+        "description"  : "When you make a successful Area Attack with a weapon with which you are proficient, select a target hit by the attack. That target takes an additional 5 points of damage from the attack, before applying the effect of the Evasion Talent."
+    },
+    {
+        "name" : "Trample",
+       " prereqs" :{ 
+            "req1" : ["trained", "Ride"]
+        },
+        "ope"  : false, 
+        "description"  : "When you use the Mounted Charge Action, your Mount can make a single melee attack as a Free Action. While Charging, compare the result to the Reflex Defense of each enemy whose square you Charge through. Each enemy hit by the attack takes Claw, Gore, or Slam damage from the Mount's Natural Weapons plus the Mount's Strength modifier. You or your Mount still can make a regular attack at the end of the Charge."
+    },
+    {
+        "name" : "Wilderness First Aid",
+       " prereqs" :{ 
+            "req1" : ["trained", "Survival"]
+        },
+        "ope"  : false, 
+        "description"  : "Once per day, you can make a DC 20 Survival check. If the check is successful, when you use the Basic Survival application of the Survival skill, you are considered to have a Medpac for any Treat Injury checks made until the end of the day."
+    },
+    {
+        "name" : "Dreadful Countenance",
+       " prereqs" :{ 
+            "req1" : ["Charisma", 13],
+            "req2" : ["member", "Sith"]
+        },
+        "ope"  : false, 
+        "description"  : "Whenever you make a Persuasion check or a Use the Force check to activate a Fear effect, you may reroll the check, but the result of the reroll must be accepted, even if it is worse."
+    },
+    {
+        "name" : "Rapid Assault",
+       " prereqs" :{ 
+            "req1" : ["feat","or","Double Attack","Dual Weapon Mastery I"],
+            "req2" : ["BAB", 6]
+        },
+        "ope"  : false, 
+        "description"  : "If you are wielding two weapons or a weapon with which you can use the Double Attack feat, you may spend a Force Point to make two attacks as a Standard Action.The normal penalties due to attacking with two weapons or using Double Attack still apply, and you cannot make more than two attacks regardless of how many extra attacks you can make during a Full Attack Action."
+    }
+    
+
+]

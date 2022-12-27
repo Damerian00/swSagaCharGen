@@ -1,0 +1,2207 @@
+[
+    {
+		"species_name" : "Human",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,50], "Middle Age" : [51,69], "Old" : [70,79], "Venerable": 80},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution":0, "Intelligence": 0, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"bonuses" : {"feat": "1 additional", "skill": "1 additional"},
+		"languages" : ["Basic"]
+        }
+	},
+	{
+		"species_name" : "Aqualish",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,50], "Middle Age" : [51,69], "Old" : [70,79], "Venerable": 80},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution":2, "Intelligence": 0, "Wisdom": -2, "Charisma" :-2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Toughness", 
+        "Breathe Underwater" : "can't drown in water", 
+        "Expert Swimer": [" may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse.", " may choose to Take 10 on Swim checks, even when distracted or threatened."],
+		"languages" : ["Aqualish", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Bothan",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,50], "Middle Age" : [51,69], "Old" : [70,79], "Venerable": 80},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution":-2, "Intelligence": 0, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 2},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Gather Information", "bonus feat" : "Skill Focus (Gather Information)"}], 
+        "Iron Will" : "Bothans have above-average willpower and gain a +2 Species bonus to their Will Defense.",
+        "Species Feats" : {"Bothan Will" : "Whenever an attack or Skill Check targets your Will Defense and fails to equal or exceed it, you gain a +2 circumstance bonus to your Will Defense until the start of your next turn", 
+        "Confident Success" : "Gain a Force Point when you successfully Learn Secret Information.", 
+        "Lasting Influence" : "Whenever you make a successful Persuasion check against a target's Will Defense, you gain Favourable Circumstances on future Persuasion checks against that target for the next 24 hours."},
+		"languages" : ["Bothese", "Basic"]
+        }
+		
+	},
+    {
+		"species_name" : "Cerean",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,35], "Middle Age" : [36,53], "Old" : [54,64], "Venerable": 65},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution":0, "Intelligence": 2, "Wisdom": 2, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Initiative", "bonus feat" : "Skill Focus (Initiative)"}], 
+        "Intuitive Initiative" : "may choose to reroll any Initiative check, but the result of the reroll must be accepted even if it is worse.",
+        "Species Feats" : {"Binary Mind" : "Enemies must roll twice, keeping the lower result, on Mind-Affecting effects.", 
+        "Mind of Reason" : "Use Wisdom instead of Intelligence for Intelligence-based Skill Checks.", 
+        "Perfect Intuition" : "Reroll Initiative checks, always keeping the better result."},
+		"languages" : ["Cerean", "Basic"]
+        }
+		
+	},
+    {
+		"species_name" : "Duros",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,35], "Middle Age" : [36,49], "Old" : [50,69], "Venerable": 70},
+		"traits" :
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution":-2, "Intelligence": 2, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+        "Expert Pilot" : "may choose to reroll any Pilot check, but the result of the reroll must be accepted even if it is worse.",
+        "Species Feats" : {"Flawless Pilot" : "Reroll Pilot checks, always keeping the better result.", 
+        "Spacer's Surge" : "Gain a temporary Force Point when you roll a Natural 20 on a Pilot check.", 
+        "Veteran Spacer" : "You gain a +5 Species bonus to Use Computer checks made to Astrogate aboard a Starship."},
+		"languages" : ["Durese", "Basic"]
+        }
+		
+	},
+    {
+		"species_name" : "Ewok",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,29], "Middle Age" : [30,44], "Old" : [45,59], "Venerable": 60},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : -2, "Dexterity": 2, "Constitution":0, "Intelligence": 0, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small", 
+		"speed" : 4,
+		"Carry Limit" :  0.75,
+		"Conditional Bonus Feat": [{"trained skill" : "Survival", "bonus feat" : "Skill Focus (Survival)"}], 
+        "Primitive" : "Ewoks do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+        "Scent": "  have a keen sense of smell. At close range (within 10 squares), Ewoks ignore Concealment and Cover for purposes of Perception checks, and take no penalty from poor visibility while Tracking.",
+        "Sneaky" : " may choose to reroll any Stealth check, but the result of the reroll must be accepted even if it is worse.",
+        "Species Feats" : {"Ample Foraging" : "Whenever you make a Survival check for the Basic Survival application of the Skill, each creature that consumes the food you find gains a +2 morale bonus to his or her Fortitude Defense until the start of the next day.", 
+        "Forest Stalker" : "Reroll Stealth checks, always keeping the better result.", 
+        "Keen Scent" : "Increase the range of your Scent ability by 20 squares."},
+		"languages" : ["Ewokese"]
+        }
+		
+	},
+    {
+		"species_name" : "Gamorrean",
+		"age_group" : {"Child" : [1,6], "Young Adult" : [7,12], "Adult" : [13,29], "Middle Age" : [30,39], "Old" : [40,44], "Venerable": 45},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 2, "Dexterity": -2, "Constitution":0, "Intelligence": -2, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 2,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Improved Damage Threshold", 
+        "Great Fortitude" : " Gamorreans gain a +2 Species bonus to their Fortitude Defense, accounting for their great physical resistance.",
+        "Primitive" : "Gamorreans do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+        "Weapon Familiarity (Arg'garok)" : "Gamorreans treat the Arg'garok as an Advanced Melee Weapon, instead of an Exotic Weapons (Melee).",
+        "Species Feats" : {"Increased Resistance" : "Whenever an attack or Skill Check targets your Fortitude Defense and fails to equal or exceed it, you gain a +2 circumstance bonus to your Fortitude Defense until the start of your next turn.", 
+        "Primitive Warrior" : ["Deal +1 die of damage with Simple Weapons (Melee).", {"Simple Weapons (Melee)": 1}], 
+        "Quick Comeback" : "Recover quickly after being moved down the Condition Track by damage."},
+		"languages" : ["Gamorrean", "Basic (can't speak)"]
+        }
+		
+	},
+    {
+		"species_name" : "Gungan",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,15], "Adult" : [16,35], "Middle Age" : [36,54], "Old" : [55,64], "Venerable": 65},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution":0, "Intelligence": -2, "Wisdom": 0, "Charisma" :-2},
+		"Defenses" : {"Reflex Defense" : 2, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Expert Swimer": [" may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse.", " may choose to Take 10 on Swim checks, even when distracted or threatened."], 
+        "Hold Breath" : " Gungans are at home either in air or in water. A Gungan can hold his or her breath for a number of rounds equal to 25 times their Constitution score before they need to make Endurance checks to hold their breath.",
+        "Lightning Reflexes" : "Gungans gain a +2 Species bonus to their Reflex Defense, accounting for their uncanny ability to avoid danger.",
+        "Low-Light Vision" : "Gungans ignore Concealment (But not Total Concealment) from darkness.",
+        "Weapon Familiarity": "Gungans treat the Atlatl, Cesta, and Electropole as Simple Weapons (Melee) instead of Exotic Weapons (Melee).",
+        "Species Feats" : {"Gungan Weapon Master" : "Whenever you spend a Force Point to add to an attack roll with an Atlatl or a Cesta, increase the die type by one step (From d6 to d8, or from d8 to d10).", 
+        "Perfect Swimmer" :"Reroll Swim checks, always keeping the better result.", 
+        "Warrior Heritage" : "You gain a +2 morale bonus to your Will Defense when you wield an Atlatl or a Cesta."},
+		"languages" : ["Gunganese", "Basic"]
+        }
+		
+	},
+    {
+		"species_name" : "Hutt",
+		"age_group" : {"Child" : [1,70], "Young Adult" : [71,90], "Adult" : [91,650], "Middle Age" : [651,844], "Old" : [845,925], "Venerable": 926},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 2, "Dexterity": -6, "Constitution":2, "Intelligence": 2, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : -1, "Fortitude Defense": 0,"Will Defense": 0},
+		"Damage Threshold" : 5,
+		"size" : "Large", 
+		"speed" : 2,
+		"Carry Limit" : 2,
+		"Force Resistance": "A Hutt's sharp mind allows them to resist Force abilities. Ithors receive a +5 bonus to their Will Defense against any use of the Use the Force skill.", 
+        "Supreme Stability" : "A Hutt's sluglike body structure and lack of any kind of legs, allows a Hutt to become completely immune to being knocked Prone.",
+        "Silver Tongued" : "Hutts may be known to be heavy handed in their ventures, but they are equally capable in legal negotiations as they are underground business. A Hutt may choose to reroll any Persuasion check, keeping the better of the two results.",
+		"languages" : ["Huttese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Ithorian",
+		"age_group" : {"Child" : [1,13], "Young Adult" : [14,17], "Adult" : [18,44], "Middle Age" : [45,69], "Old" : [70,84], "Venerable": 85},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution":0, "Intelligence": 0, "Wisdom": 2, "Charisma" :2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 2},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bellow": "As a Standard Action, an Ithorian can open all four of its throats and emit a terrible subsonic Bellow. The Ithorian makes a special attack roll (1d20 + its Character Level) and compares the result to the Fortitude Defense of all creatures and unattended objects in a 6-Square Cone. A successful hit deals 3d6 points of Sonic damage; if the attack misses, the target takes half damage instead. Each use of this ability moves the Ithorian -1 step along the Condition Track. An Ithorian can choose to add more dice (d6s) to the damage it deals with its Bellow, but each additional 1d6 of damage moves the Ithorian another -1 step along the Condition Track. ", 
+		"Conditional Bonus Feat": [{"trained skill" : "Knowledge (Life Sciences)", "bonus feat" : "Skill Focus (Knowledge (Life Sciences))"}],
+		"Iron Will" : "Ithorians have above-average willpower and gain a +2 Species bonus to their Will Defense.", 
+        "Survival Instinct" : "An Ithorian may choose to reroll any Survival check, but the result of the reroll must be accepted, even if it is worse.",
+		"Species Feats" : {"Devastating Bellow" : "Your Bellow attack deals 4d6 points of damage on a hit and half damage on a miss.", 
+        "Nature Specialist" : "Whenever you spend a Force Point to add to a Knowledge (Life Sciences) check, increase the die type by two steps (From d6 to d10, or from d8 to d12).", 
+        "Strong Bellow" : "Use your Bellow ability without moving down the Condition Track."},
+		"languages" : ["Ithorese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Kel Dor",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,15], "Adult" : [16,44], "Middle Age" : [45,59], "Old" : [60,69], "Venerable": 70},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution":-2, "Intelligence": 0, "Wisdom": 2, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Keen Force Sense": "Kel Dor may choose to reroll any Use the Force check made to Search Your Feelings or Sense Force, keeping the better of the two results.", 
+		"Low-Light Vision": "Kel Dor ignore Concealment (but not Total Concealment) from darkness.",
+		"Special Equipment" : "Kel Dor suffer limitations outside their native atmosphere. Without protective goggles, a Kel Dor is considered Blind. Without an Antiox Breath Mask, a Kel Dor begins to Suffocate. A replacement mask costs 2,000 credits (500 on Dorin), and a year's supply of filters costs 200 credits (50 on Dorin). Kel Dor characters begin play with these items at no cost. An Antiox Breath Mask is poisonous to other Species.", 
+		"Species Feats" : {"Justice Seeker" : "Gain a +2 bonus to damage rolls for attacks against targets that have damaged one of your allies since the end of your last turn.", 
+        "Read the Winds" : "You ignore Concealment and Cover for the purposes of Perception checks against targets within 10 squares of you.", 
+        "Scion of Dorin" : "Gain a +5 Species bonus to Fortitude Defense against Natural Atmospheric Hazards."},
+		"languages" : ["Kel Dor", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Mon Calamari",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,40], "Middle Age" : [41,57], "Old" : [58,79], "Venerable": 80},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution":-2, "Intelligence": 2, "Wisdom": 2, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Breathe Underwater": "As amphibious creatures, Mon Calamari can't drown in water.", 
+		"Conditional Bonus Feat": [{"trained skill" : "Perception", "bonus feat" : "Skill Focus (Perception)"}],
+		"Expert Swimmer": "A Mon Calamari may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse. In addition, a Mon Calamari may choose to Take 10 on Swim checks, even when distracted or threatened.",
+		"Low-Light Vision": "Mon Calamari ignore Concealment (but not Total Concealment) from darkness.",
+		"Species Feats" : {"Fast Swimmer" : "Your Swim Speed increases by 2 squares.", 
+        "Mon Calamari Shipwright" : "You need spend only two Swift Actions to move a Vehicle you occupy +1 step on the Condition Track. In addition, you automatically succeed on Mechanics checks to Reroute Power.", 
+        "Sharp Senses" : "Whenever you spend a Force Point to add to a Perception check, increase the die type by two steps"},
+		"languages" : ["Mon Calamarian", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Quarren",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,40], "Middle Age" : [41,57], "Old" : [58,79], "Venerable": 80},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution":2, "Intelligence": 0, "Wisdom": -2, "Charisma" :-2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Breathe Underwater": "As amphibious creatures, Quarren can't drown in water.", 
+		"Conditional Bonus Feat": [{"trained skill" : "Persuasion", "bonus feat" : "Skill Focus (Persuasion)"}],
+		"Expert Swimmer": "A Quarren may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse. In addition, a Quarren may choose to Take 10 on Swim checks, even when distracted or threatened.",
+		"Low-Light Vision": "Quarren ignore Concealment (but not Total Concealment) from darkness.",
+		"Species Feats" : {"Clawed Subspecies" : "You have Natural Weapons in the form of claws. When you make an Unarmed Attack, you can use your claws, dealing 1d6 points of Slashing damage with that attack instead of normal Unarmed damage. You are always considered armed with your Natural Weapons.", 
+        "Deep Sight" : "You gain Darkvision, ignoring Concealment (including Total Concealment) from darkness. You cannot perceive colors in total darkness.", 
+        "Shrewd Bargainer" : "Whenever you make Persuasion checks against a target's Will Defense, the target does not receive the benefit of insight or morale bonuses to its Will Defense."},
+		"languages" : ["Quarrenese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Rodian",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,15], "Adult" : [16,35], "Middle Age" : [36,49], "Old" : [50,59], "Venerable": 60},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution":0, "Intelligence": 0, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Survival", "bonus feat" : "Skill Focus (Survival)"}],
+		"Heightened Awareness": "A Rodian may choose to reroll any Perception check, but the result of the reroll must be accepted, even if it is worse.",
+		"Low-Light Vision": "Rodian ignore Concealment (but not Total Concealment) from darkness.",
+		"Species Feats" : {
+		"Fringe Benefits" : "Whenever you buy goods on the Black Market, reduce the cost multiplier by 2 (For example, from x5 to x3), to a minimum of x1.", 
+        "Hunter's Instincts" : "Reroll Perception checks, always keeping the better result.", 
+        "Master Tracker" : "Whenever you spend a Force Point to add to a Survival check, increase the die type by two steps (From d6 to d10, or from d8 to d12)."
+		},
+		"languages" : ["Rodese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Sullustan",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,39], "Middle Age" : [40,55], "Old" : [56,69], "Venerable": 70},
+		"traits" : 
+        {"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": -2, "Intelligence": 0, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Darkvision": "Sullustans ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Expert Climber": "Sullustans are adept at climbing in their underground homes. A Sullustan may choose to Take 10 on Climb checks even when distracted or threatened.",
+		"Heightened Awareness": "A Sullustan may choose to reroll any Perception check, but the result of the reroll must be accepted, even if it is worse.",
+		"Species Feats" : {
+		"Darkness Dweller" : "Any enemy that makes a Stealth check within 10 squares of you takes a -2 penalty to the check. This penalty does not stack with the same penalty imposed by other characters with this Feat.", 
+        "Disarming Charm" : "Whenever you successfully use the Change Attitude application of the Persuasion Skill to change a target's Attitude, you gain a +2 circumstance bonus to all Deception or Persuasion checks against that target for the next 24 hours.", 
+        "Sure Climber" : ["Whenever you are not distracted or threatened, you gain a natural Climb Speed of 4 squares.", {"Climb Speed": 4}]
+		},
+		"languages" : ["Sullustese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Trandoshan",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,14], "Adult" : [15,34], "Middle Age" : [35,49], "Old" : [50,59], "Venerable": 60},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 2, "Dexterity": -2, "Constitution":0, "Intelligence": 0, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Toughness",
+		"Darkvision": "Trandoshans ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Limb Regeneration": "A Trandoshan regrows a lost limb in 1d10 days. At the end of that time, all Persistent Conditions associated with the loss of the limb are removed.",
+		"Natural Armor": "Trandoshans have thick scales that provide a +1 Natural Armor bonus to their Reflex Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"Species Feats" : {
+		"Pitiless Warrior" : "Whenever you reduce a target to 0 Hit Points, you gain a number of Bonus Hit Points equal to 5 + one-half your Character Level. Damage is subtracted from Bonus Hit Points first, and any Bonus Hit Points remaining at the end of the encounter are lost. Bonus Hit Points do not stack.", 
+        "Regenerative Healing" : "Once per day when you catch a Second Wind, you can regain no Hit Points immediately and instead regain 5 Hit Points at the end of each of your turns until you reach full Hit Points or until the end of the encounter (Whichever comes first).",
+		"Thick Skin" : ["You gain a +2 Species bonus to your Fortitude Defense.", {"Fortitude Defense" : 2}] 
+		},
+		"languages" : ["Dosh", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Twi'lek",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,15], "Adult" : [16,44], "Middle Age" : [45,59], "Old" : [60,79], "Venerable": 80},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 0, "Dexterity": 0, "Constitution":0, "Intelligence": 0, "Wisdom": -2, "Charisma" :2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 2,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Deceptive": "Naturally gifted at manipulation, a Twi'lek may choose to reroll any Deception check, but the result of the reroll must be accepted, even if it is worse.",
+		"Great Fortitude": "Twi'leks gain a +2 Species bonus to their Fortitude Defense. Twi'leks have great health with a natural resistance to toxins and illnesses.",
+		"Low-Light Vision": "Twi'leks ignore Concealment (but not Total Concealment) from darkness.",
+		"Species Feats" : {
+		"Imperceptible Liar" : "Whenever you spend a Force Point to add to a Deception check, increase the die type by two steps (From d6 to d10, or from d8 to d12).", 
+        "Jedi Heritage" : "Your Wisdom score is considered to be 4 points higher for the purpose of determining how many Force Powers you gain from the Force Training Feat, granting you two extra Force Powers for each Force Training Feat.",
+		"Survivor of Ryloth" : ["Once per hour when you and your allies are in an environment of Extreme Heat or Extreme Cold, you can make a Survival check. You and up to 10 allies can use the results of the Survival check in place of your Fortitude Defense when the Extreme Heat or Extreme Cold makes its hourly attack roll against your Fortitude Defenses." , {"requirement" : "Force Sensitivity"}]
+		},
+		"languages" : ["Ryl", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Wookiee",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,17], "Adult" : [18,300], "Middle Age" : [301,350], "Old" : [351,399], "Venerable": 400},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 4, "Dexterity": -2, "Constitution": 2, "Intelligence": 0, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Expert Climber": "Wookiees are great climbers and may choose to Take 10 on Climb checks, even when distracted or threatened.",
+		"Extraordinary Recuperation": "A Wookiee regains Hit Points at double the normal rate.",
+		"Intimidating Presence": "Known to pull off the ears of Gundarks, Wookiees may choose to reroll any Persuasion check made to Intimidate others, but the result of the reroll must be accepted, even if it is worse.",
+		"Rage" : "Once per day, a Wookiee can fly into a Rage as a Swift Action. While Raging, the Wookiee temporarily gains a +2 Rage bonus on melee attack rolls and melee damage rolls, but cannot use Skills that require patience and concentration, such as Mechanics, Stealth, or Use the Force. A fit of Rage lasts for a number of rounds equal to 5 + the Wookiee's Constitution modifier. At the end of its Rage, the Wookiee moves -1 Persistent step along the Condition Track. The penalties imposed by this Persistent Condition persist until the Wookiee takes at least 10 minutes to recuperate, during which time the Wookiee can't engage in any strenuous activity.",
+		"Weapon Familiarity (Bowcaster and Ryyk Blade)" : "Wookiees treat the Bowcaster as a Rifle instead of an Exotic Weapon (Ranged). They additionally treat the Ryyk Blade as an Advanced Melee Weapon instead of an Exotic Weapon (Melee).",
+		"Species Feats" : {
+			"Bowcaster Marksman" : "Whenever you spend a Force Point to add to an attack with a Bowcaster, if you hit the target, you gain a competence bonus to your damage roll equal to the amount added to the attack.", 
+			"Resurgent Vitality" : "Whenever you catch a Second Wind, you regain an additional number of Hit Points equal to twice your Constitution bonus (Minimum +2).",
+			"Wroshyr Rage" : "When you first enter your Rage, you gain a number of Bonus Hit Points equal to 10 + one-half your level. Damage is subtracted from Bonus Hit Points first, and any Bonus Hit Points remaining at the end of the encounter are lost. Bonus Hit Points do not stack."
+			},
+		"languages" : ["Shyriiwook", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Zabrak",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,14], "Adult" : [15,44], "Middle Age" : [45,55], "Old" : [56,69], "Venerable": 70},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 0, "Dexterity": 0, "Constitution":0, "Intelligence": 0, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 1,"Will Defense": 1},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Heightened Awareness": "Having strong survival instincts and quick reactions, a Zabrak may choose to reroll any Perception check, but the result of the reroll must be accepted, even if it is worse.",
+		"Superior Defenses": "Adapted to a very tough and trying environment, Zabrak gain a +1 Species bonus to all their Defenses.",
+		"Species Feats" : {
+			"Inborn Resilience" : "Reduce one Defense bonus but increase another.", 
+			"Instinctive Perception" : "Whenever you reroll a Perception check and take the second result, if your second result is lower than your first result, you gain a temporary Force Point. This Force Point can be spent only to add to the result of a Perception check, and if it is not spent before the end of the encounter, it is lost.",
+			"Unwavering Focus" : "Whenever you are targeted by a Mind-Affecting effect that requires a Skill Check against your Will Defense, as a Reaction you can impose a -2 penalty to that Skill Check."
+			},
+		"languages" : ["Zabrak", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Chistori",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [13,18], "Adult" : [19,44], "Middle Age" : [45,59], "Old" : [60,69], "Venerable": 70},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 2, "Dexterity": -2, "Constitution":0, "Intelligence": 0, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Cold-Blooded": "Chistori are very sensitive to cold climates. A Chistori takes a -5 penalty to their Fortitude Defense to resist Extreme Cold.",
+		"Damage Reduction": "Chistori have thick scales that provide Damage Reduction 2",
+		"Rage" : "Once per day, a Chistori can fly into a Rage as a Swift Action. While raging, the Chistori temporarily gains a +2 Rage bonus on melee attack rolls and melee damage rolls, but cannot use Skills that require patience and concentration, such as Mechanics, Stealth, or Use the Force. A fit of Rage lasts for a number of rounds equal to 5 + the Chistori's Constitution modifier. At the end of it's rage, the Chistori moves -1 Persistent step along the Condition Track. The penalties imposed by this Persistent Condition persist until the Chistori takes at least 10 minutes to recuperate, during which time the Chistori can't engage in any strenuous activity.",
+		"languages" : ["Chistori"]
+        }
+		
+	},
+	{
+		"species_name" : "Utai",
+		"age_group" : {"Child" : [1,6], "Young Adult" : [7,10], "Adult" : [11,35], "Middle Age" : [36,47], "Old" : [48,54], "Venerable": 55},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 4,
+		"Carry Limit" : 0.75,
+		"Animal Handler": "The Utai are naturally gifted when it comes to dealing with Beasts and wild creatures. An Utai can choose to reroll any Ride check, but the result of the reroll must be accepted, even if it is worse. Additionally, an Utai can make Persuasion checks to change the Attitude of an undomesticated creature that has an Intelligence score of 2 or lower.",
+		"Cooperative": "An Utai automatically succeeds when attempting to Aid Another on a Skill Check, as long as the target is adjacent to, and can hear and understand, the Utai.",
+		"Low-Light Vision": "Utais ignore Concealment (but not Total Concealment) from darkness.",
+		"languages" : ["Utapese"]
+        }
+		
+	},
+	{
+		"species_name" : "Arkanian",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,18], "Adult" : [19,44], "Middle Age" : [45,76], "Old" : [77,99], "Venerable": 100},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 0, "Dexterity": 0, "Constitution":0, "Intelligence": 2, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Darkvision": "Arkanians ignore Concealment (Including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Logical Reasoning": "Arkanian prominence in the galaxy makes many individuals more willing to go along with their ideas. An Arkanian can use their Intelligence modifier in place of their Charisma modifier on Persuasion checks.",
+		"Flash of Genius": "Arkanians have moments of brilliance. Once per encounter, an Arkanian can add a +5 circumstance bonus to to the result of one Knowledge, Mechanics, or Use Computer Skill Check.",
+		"languages" : ["Arkanian", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Arkanian Offshoot (str)",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,13], "Adult" : [14,30], "Middle Age" : [31,45], "Old" : [46,55], "Venerable": 56},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 2, "Dexterity": 0, "Constitution":-2, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [
+			{"trained skill" : "Endurance", "bonus feat" : "Skill Focus (Endurance)"},{"trained skill" : "Mechanics", "bonus feat" : "Skill Focus (Mechanics)"},{"trained skill" : "Pilot", "bonus feat" : "Skill Focus (Pilot)"},{"trained skill" : "Survival", "bonus feat" : "Skill Focus (Survival)"}, {"trained skill" : "Treat Injury", "bonus feat" : "Skill Focus (Treat Injury)"}], 
+		"Determination": "Arkanian Offshoots are particularly determined and driven. Once per encounter, an Arkanian Offshoot can reroll one failed Skill Check with a Trained Skill. This reroll can be declared after the success or failure of the roll is known. The Arkanian Offshoot must take the result of the reroll, even if it is worse.",
+		"Logical Reasoning": "Arkanian prominence in the galaxy makes many individuals more willing to go along with their ideas. An Arkanian can use their Intelligence modifier in place of their Charisma modifier on Persuasion checks.",
+		"Flash of Genius": "Arkanians have moments of brilliance. Once per encounter, an Arkanian can add a +5 circumstance bonus to to the result of one Knowledge, Mechanics, or Use Computer Skill Check.",
+		"languages" : ["Arkanian (with distinct accent)", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Arkanian Offshoot (dex)",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,13], "Adult" : [14,30], "Middle Age" : [31,45], "Old" : [46,55], "Venerable": 56},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 0, "Dexterity": 2, "Constitution":-2, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [
+			{"trained skill" : "Endurance", "bonus feat" : "Skill Focus (Endurance)"},{"trained skill" : "Mechanics", "bonus feat" : "Skill Focus (Mechanics)"},{"trained skill" : "Pilot", "bonus feat" : "Skill Focus (Pilot)"},{"trained skill" : "Survival", "bonus feat" : "Skill Focus (Survival)"}, {"trained skill" : "Treat Injury", "bonus feat" : "Skill Focus (Treat Injury)"}], 
+		"Determination": "Arkanian Offshoots are particularly determined and driven. Once per encounter, an Arkanian Offshoot can reroll one failed Skill Check with a Trained Skill. This reroll can be declared after the success or failure of the roll is known. The Arkanian Offshoot must take the result of the reroll, even if it is worse.",
+		"Logical Reasoning": "Arkanian prominence in the galaxy makes many individuals more willing to go along with their ideas. An Arkanian can use their Intelligence modifier in place of their Charisma modifier on Persuasion checks.",
+		"Flash of Genius": "Arkanians have moments of brilliance. Once per encounter, an Arkanian can add a +5 circumstance bonus to to the result of one Knowledge, Mechanics, or Use Computer Skill Check.",
+		"languages" : ["Arkanian (with distinct accent)", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Cathar",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,40], "Middle Age" : [41,62], "Old" : [63,79], "Venerable": 80},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 0, "Dexterity": 2, "Constitution":0, "Intelligence": -2, "Wisdom": 0, "Charisma" :0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 8,
+		"Carry Limit" : 1,
+		"Class Skill" :["Climb", "Stealth"],
+		"Bonus Class Skills": "A Cathar's inherent instincts make them naturally agile and silent, even without specialized training. A Cathar treats the Climb and Stealth skills as Class Skills, regardless of Heroic Class.", 
+		"Natural Weapons": "A Cathar has Natural Weapons, in the form of razor-sharp claws. When a Cathar makes an Unarmed attack, it may choose to use its Natural Weapons, dealing 1d6 points of slashing damage with the attack instead of normal Unarmed damage. Cathar are always considered armed with their Natural Weapons.",
+		"Reactive Claw": "Once per encounter when a Cathar damages an opponent with a melee attack, the Cathar can make a single melee attack with its Natural Weapons against that target as a Swift Action. The Cathar must have one hand free at the time to make this attack (and thus cannot be wielding a two-handed weapon).",
+		"languages" : ["Catharese", "Basic"]
+        }
+		
+	},
+		{
+		"species_name" : "Draethos",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,17], "Adult" : [18,399], "Middle Age" : [400,699], "Old" : [700,780], "Venerable": 781},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 0, "Dexterity": 0, "Constitution":2, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Weapon Proficiency (Advanced Melee Weapons)", 
+		"Low-Light Vision": "Draethos ignore Concealment from darkness (but not Total Concealment).",
+		"Natural Armor": "The Daethos's tough skin provides a +1 Natural Armor bonus to their Reflex Defense.", 
+		"Natural Telepath" : "A Draethos gains a +5 Species bonus using the Telepathy aspect of the Use the Force skill and can make Untrained Use the Force checks to use this application even without the Force Sensitivity feat.",
+		"languages" : ["Draethos", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Feeorin",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,194], "Middle Age" : [195,324], "Old" : [325,399], "Venerable": 400},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 2, "Dexterity": -2, "Constitution": 2, "Intelligence": 0, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 2,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Brutal": "Feeorin are vicious combatants who do not hesitate to strike vulnerable areas or fight dirty. Once per encounter, after making a successful melee attack, a Feeorin may treat its opponent's Damage Threshold as though it were 5 points lower when determining the result of the attack.", 
+		"Great Fortitude": "Feeorin gain a +2 Species bonus to their Fortitude Defense, accounting for their great physical condition.",
+		"Inborn Resilience": "Feeorin are highly resilient to physical attack. A Feeorin can catch a Second Wind even when unconscious (no Action required, but the Second Wind can only be taken when the Feeorin would normally get a turn). Catching a Second Wind while unconscious also move the Feeorin +3 steps on the Condition Track.", 
+		"Low-Light Vision" : "Feeorin ignore Concealment from darkness (but not Total Concealment).",
+		"Stronger by Age" : "At Middle Age, a Feeorin adds a +1 Species bonus to their Strength and Constitution scores. At Old, this bonus increases to +2. Feeorin do not increase their Intelligence, Wisdom, and Charisma; nor decrease their Strength, Dexterity, and Constitution as they Age.",
+		"languages" : ["Feeorin", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Khil",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,49], "Middle Age" : [50,74], "Old" : [75,89], "Venerable": 90},
+		"traits" : 
+        {"Ability Modifiers" : 
+			{"Strength" : 0, "Dexterity": 0, "Constitution": -2, "Intelligence": 2, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Cooperative Spirit": "Khil work with others easily. They can Aid Another on Skill Checks made by adjacent allies as a Swift Action, and others can likewise aid Khil on Skill Checks as Swift Actions when adjacent to the Khil. This ability only applies to Climb, Endurance, Gather Information, Jump, Knowledge, Mechanics, Pilot, Ride, Survival, Swim, Treat Injury, or Use Computer skill checks.", 
+		"Dependable Worker": "Khil reliably achieve good results. Once per encounter, a Khil can treat one Skill Check with certain Skills (Climb, Endurance, Gather Information, Jump, Knowledge, Mechanics, Pilot, Ride, Survival, Swim, Treat Injury, or Use Computer) as though he or she had Taken 10, even after the roll has been made (but before the result of the check is known).",
+		"Self-Sustaining": "Khil are able to absorb nutrition through the tentacles on their faces, called hullepi, drawing nourishment from almost any environment. Khil do not suffer the effect of Starvation, except in sterile environments.", 
+		"languages" : ["Khilese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Kissai",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,30], "Middle Age" : [31,42], "Old" : [43,59], "Venerable": 60},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Inspired": "Kissai make the best use of any inspiration or information provided to them. Whenever a Kissai receives a morale or insight bonus from any source, the bonus increases by +1.", 
+		"Warrior's Awareness": "Kissai grow up in a violent and warlike society, so they constantly watch for threats. Once per encounter as a Reaction, a Kissai can gain the benefit of the Uncanny Dodge I and Uncanny Dodge II Talents until the beginning of the Kissai's next turn.",
+		"Weapon Familiarity": "Kissai treat the Massassi Lanvarok as a Simple Weapon (Ranged) instead of an Exotic Weapon (Ranged).", 
+		"languages" : ["Sith", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Massassi",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,13], "Adult" : [14,25], "Middle Age" : [26,35], "Old" : [36,50], "Venerable": 51},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 4, "Dexterity": 0, "Constitution": 0, "Intelligence": -2, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Survival", "bonus feat" : "Skill Focus (Survival)"}], 
+		"Duty Bound": "Once per encounter when a Massassi receives a morale bonus of any kind from any source, the Massassi gains Bonus Hit Points equal to 4 x the Massassi's Character Level until the end of the encounter.", 
+		"Primitive": "Massassi do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+		"Warrior's Awareness": "Massassi grow up in a violent and warlike society, so they constantly watch for threats. Once per encounter as a Reaction, a Massassi can gain the benefit of the Uncanny Dodge I and Uncanny Dodge II Talents until the beginning of the Massassi's next turn.",
+		"Weapon Familiarity": "Massassi treat the Massassi Lanvarok as a Simple Weapon (Ranged) instead of an Exotic Weapon (Ranged).", 
+		"languages" : ["Sith"]
+        }
+		
+	},
+	{
+		"species_name" : "Miraluka",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,15], "Adult" : [16,44], "Middle Age" : [45,69], "Old" : [70,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution": 0, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Use the Force", "bonus feat" : " Force Training"}], 
+		"Force Sight": "Although blind, Miralukans can \"see\" by using The Force. They act normally, without taking any penalties for blindness when in the presence of living creatures, or life of any kind. This trait enables them to make Perception checks, and read and write as a sighted person. They can ignore the effect of darkness as if they had Darkvision. Miralukans cannot, however, detect creatures that are \"invisible\" to The Force such as the Yuuzhan Vong and the Ysalamiri. These creatures have Total Concealment from Miralukans, as do creatures in areas the dampen or suppress The Force. Additionally, Miralukans ignore all penalties to Perception checks from Cover and Concealment (but not Total Cover or Total Concealment). Miralukans do not increase the DC of Use the Force checks made to Sense Surroundings against targets with Total Cover.", 
+		"languages" : ["Miralukese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Selkath",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,54], "Middle Age" : [55,84], "Old" : [85,99], "Venerable": 100},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Able Healers": "Whenever a Selkath restores Hit Points to another character by any means, or Aids Another who is doing so, the target regains an additional 5 Hit Points. Additionally, once per encounter as a Swift Action, the Selkath can grant an adjacent ally Bonus Hit Points equal to 10 + the Selkath's Character Level, which last until the end of the encounter.", 
+		"Breathe Underwater": "As amphibious creatures, Selkath can't drown in water.",
+		"Expert Swimmer": "A Selkath may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse. In addition, a Selkath may choose to Take 10 on Swim checks, even when distracted or threatened.",
+		"languages" : ["Selkath"]
+        }
+		
+	},
+	{
+		"species_name" : "Snivvian",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,17], "Adult" : [18,49], "Middle Age" : [50,79], "Old" : [80,105], "Venerable": 106},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 4,
+		"Carry Limit" : 0.75,
+		"Cold Resistance": "The Snivvians' thick skin provides protection from extreme cold. Snivvians add a +5 Species bonus to their Fortitude Defense to resist Extreme Cold.", 
+		"Observant": "Snivvians are highly aware of their surroundings, giving them an advantage when dealing with others. Once per encounter, a Snivvian can use their Perception skill modifier in place of their Deception or Persuasion skill modifier.",
+		"languages" : ["Snivvian"]
+        }
+		
+	},
+	{
+		"species_name" : "Aleena",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,18], "Adult" : [19,45], "Middle Age" : [46,60], "Old" : [61,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 4,
+		"Carry Limit" : 0.75,
+		"Energy Surge": "Once per encounter, an Aleena can gain a temporary boost to quickness and reflexes. When this ability is activated as a Swift Action, an Aleena gains a +2 bonus on Dexterity-based Skill Checks, and increases its base speed to 8 squares. The energy lasts for a number of rounds equal to the Aleena's Constitution modifier (minimum 1 round). When the energy is expended, the Aleena moves -1 Persistent step along the Condition Track. The penalties imposed by this condition persist until the Aleena takes at least 10 minutes to recuperate, during which time the creature can't engage in any strenuous activity.", 
+		"Heightened Agility": "Aleena are quite adept at avoiding danger in combat when they can see it coming. An Aleena can choose to reroll any Acrobatics check, but the result of the reroll must be accepted, even if it is worse.",
+		"languages" : ["Aleena", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Caamasi",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,15], "Adult" : [16,49], "Middle Age" : [50,76], "Old" : [77,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 0, "Constitution": -2, "Intelligence": 0, "Wisdom": 4, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Memory Sharing": "Caamasi can create strong, lasting memories and share them with others of their Species through an inborn telepathy. Sharing a memory begins with taking a Full-Round Action to initiate the link between two adjacent Caamasi; transferring a memory requires as much time as the events being recalled. The recipient of a memory must be willing to receive it. Experiencing Memniis not like receiving a photographic memory of those events, but rather a complete, immersive experience. Any character who receives a Memnis from a Caamasi always gains favorable circumstances on Knowledge checks related to that memory. Force-using characters can also receive Memnii from a Caamasi with a successful DC 15 Use the Force check, made as a Reaction.",
+		"Pacifism": "As a Standard Action, a Caamasi can make a Persuasion check against the Will Defense of a single target within line of sight. If the check is successful, the target moves -1 step along the Condition Track if it makes any attacks before the start of the Caamasi's next turn. The target must be able to hear and understand the Caamasi for this ability to have any effect, and any single target can be affected only once at any given time (meaning that multiple Caamasi may not use this ability on the same target at the same time). This is a Mind-Affecting effect", 
+		"Silver Tongued": "Caamasi are skilled negotiators, and patient consulars. A Caamasi can choose to reroll any Persuasion check, using the better result.",
+		"languages" : ["Caamasi", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Felucian",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,19], "Adult" : [20,49], "Middle Age" : [50,70], "Old" : [71,85], "Venerable": 86},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": -2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat" :  "Force Sensitivity",
+		"Breathe Underwater": "As amphibious creatures, Felucians can't drown in water.",
+		"Low-Light Vision": "Felucians ignore Concealment (but not Total Concealment) from darkness.",
+		"Natural Camouflage": "A Felucian can choose to reroll any Stealth check to Sneak, keeping the better of the two results.", 
+		"Force Blast": "Once per encounter a Felucian can make an Untrained Use the Force check to activate the Force Blast Force Power.",
+		"Primitive": "Felucians do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+		"Weapon Familiarity": "Felucians treat the Felucian Skullblade as a Simple Weapon (Melee) instead of an Exotic Weapon (Melee).",
+		"languages" : ["Felucianese"]
+        }
+		
+	},
+	{
+		"species_name" : "Gran",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,40], "Middle Age" : [41,62], "Old" : [63,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": -2, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"feat" : "Point-Blank Shot", "bonus feat" : "Precise Shot"}], 
+		"Darkvision": "Gran ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Innate Accuracy": "Once per encounter, a Gran can Aim by taking a single Swift Action instead of two Swift Actions.", 
+		"Target Awareness": " A Gran takes no distance penalties on Perception checks made to notice targets for the first 50 squares between the Gran and its targets.",
+		"languages" : ["Gran", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Noghri",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,12], "Adult" : [13,44], "Middle Age" : [45,59], "Old" : [60,74], "Venerable": 75},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : -4},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 4,
+		"Carry Limit" : 0.75,
+		"Conditional Bonus Feat": [{"Dexterity" : 13, "bonus feat" : "Running Attack"}], 
+		"Primitive": "Noghri do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+		"Scent": "Noghri have an extremely strong sense of smell. At close range (within 10 squares), Noghri ignore Concealment and Cover for purposes of Perception checks, and take no penalty from poor visibility while Tracking.", 
+		"languages" : ["Honoghran"]
+        }
+		
+	},
+	{
+		"species_name" : "Nosaurian",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,45], "Middle Age" : [46,79], "Old" : [80,99], "Venerable": 100},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Class Skill": ["Climb"],
+		"Bonus Class Skill": "A Nosaurian treats the Climb skill as a Class Skill, regardless of Heroic Class.", 
+		"Natural Weapons": "A Nosaurians has a Natural Weapon, in the form of sharp horns. When a Nosaurian makes an Unarmed attack, it may choose to use its Natural Weapon, dealing 1d6 points of piercing damage with the attack instead of normal Unarmed damage. Nosaurians are always considered armed with their Natural Weapon.",
+		"Survival Instinct": "A Nosaurian can choose to reroll any Survival check, but the result of the reroll must be accepted, even if it is worse.", 
+		"languages" : ["Nosaurian", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Talz",
+		"age_group" : {"Child" : [1,3], "Young Adult" : [4,8], "Adult" : [9,25], "Middle Age" : [26,40], "Old" : [41,52], "Venerable": 53},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": -2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Mechanics", "bonus feat" : "Skill Focus (Mechanics)"}],
+		"Darkvision": "Talz ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.", 
+		"Natural Weapons": "A Talzs has a Natural Weapon, in the form of sharp claws. When a Talz makes an Unarmed attack, it may choose to use its Natural Weapon, dealing 1d6 points of slashing damage with the attack instead of normal Unarmed damage. Talzs are always considered armed with their Natural Weapon.",
+		"languages" : ["Talz"]
+        }
+		
+	},
+	{
+		"species_name" : "Togorian",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,44], "Middle Age" : [45,64], "Old" : [65,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 4, "Dexterity": 0, "Constitution": 0, "Intelligence": -2, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"Damage Threshold" : 5,
+		"size" : "Large",
+		"speed" : 6,
+		"Carry Limit" : 2,
+		"Feline Reflexes": "Togorians gain a +1 Species bonus to their Reflex Defense.",
+		"Low-Light Vision": "Togorian ignore Concealment (but not Total Concealment) from darkness.", 
+		"Physically Intimidating": "When using the Persuasion skill to Intimidate, Togorians use their Strength bonus instead of their Charisma bonus when determining the check modifier.",
+		"languages" : ["Togorian", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Togruta",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,17], "Adult" : [18,54], "Middle Age" : [55,74], "Old" : [75,94], "Venerable": 95},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": -2, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Pack Hunter": "Togrutas deal an additional 2 points of damage on melee attacks against opponents they Flank.",
+		"Sneaky": "A Togruta can choose to reroll any Stealth check to Sneak, but the result of the reroll must be accepted, even if it is worse.", 
+		"Spatial Awareness": "Togrutas can sense their surroundings using passive echolocation. Togrutas ignore all Cover and Concealment when making Perception checks to Notice Targets within 10 squares.",
+		"languages" : ["Togruti", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Whiphid",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,84], "Middle Age" : [85,99], "Old" : [100,249], "Venerable": 250},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 4, "Dexterity": 0, "Constitution": 0, "Intelligence": -2, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : -1, "Fortitude Defense": 0,"Will Defense": 0},
+		"Damage Threshold" : 5,
+		"size" : "Large",
+		"speed" : 6,
+		"Carry Limit" : 2,
+		"Cold Resistance": "Their thick fur gives allows Whiphids to add a +5 Species bonus to their Fortitude Defense to resist Extreme Cold.",
+		"Natural Weapons": "A Whiphid has Natural Weapons, in the form of sharp claws. When a Whiphid makes an Unarmed attack, it may choose to use its Natural Weapons, dealing 1d6 points of slashing damage with that attack, instead of normal Unarmed damage. Whiphid are always considered armed with their Natural Weapons.", 
+		"Scent": "Whiphids have a keen sense of smell. At close range (Within 10 squares), Whiphids ignore Concealment and Cover for purposes of Perception checks, and take no penalty from poor visibility while Tracking.",
+		"languages" : ["Whiphid"]
+        }
+		
+	},
+	{
+		"species_name" : "Yarkora",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,18], "Adult" : [19,64], "Middle Age" : [65,94], "Old" : [95,124], "Venerable": 125},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Class Skill" : ["Gather Information"],
+		"Confusion": "Once per encounter as a Standard Action, a Yarkora can make a Deception check against the Will Defense of all targets within 6 squares. If the Deception check result equals or exceeds a target's Will Defense, that target does not Threaten any squares until the end of the Yarkora's next turn. This is a Mind-Affecting effect.",
+		"Deceptive": "Naturally gifted at manipulation, a Yarkora can choose to reroll any Deception check, but the result of the reroll must be accepted, even if it is worse.",
+		"languages" : ["Yarkora", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Balosar",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,15], "Adult" : [16,39], "Middle Age" : [40,52], "Old" : [53,64], "Venerable": 65},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": -2, "Intelligence": 0, "Wisdom": -2, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Heightened Awareness" : "While their Antennapalps are extended, a Balosar may choose to reroll any Perception check, but the result of the reroll must be accepted, even if it is worse. A Balosar may choose to retract their Antennapalps as a Free Action (extending them is likewise a Free Action) to pass as Human (no Deception check required).",
+		"Mental Fortitude": "Balosars gain a +2 Species bonus to their Will Defense against Deception and Persuasion checks, as they are extremely savvy in a variety of illicit fields.",
+		"Toxic Resistance": "Growing up on a polluted homeworld has given Balosars resistance to toxic substances. Balosars receive a +5 Species bonus to their Fortitude Defense against Poisons and Toxic Atmospheres.",
+		"languages" : ["Balosar", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Blood Carver",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,20], "Adult" : [21,60], "Middle Age" : [61,80], "Old" : [81,100], "Venerable": 101},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Acrobatics", "bonus feat" : "Skill Focus (Acrobatics)"}],
+		"Deathstrike" : "Whenever a Blood Carver makes a melee attack against an opponent that is denied its Dexterity bonus to its Reflex Defense, the Blood Carver's attack, if successful, deals +1 die of damage.",
+		"languages" : ["Batorese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Clawdite",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,15], "Adult" : [16,30], "Middle Age" : [31,49], "Old" : [50,69], "Venerable": 70},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Shapeshift" : "Clawdites are shapechangers and can alter their appearance at will. A Clawdite can Shapeshift into any humanoid Species of Medium size as a Full-Round Action. While Shapeshifted, a Clawdite gains a +10 Species bonus on Deception checks made for Deceptive Appearances to disguise its appearance. Additionally, a Clawdite can perform a Deceptive Appearance to disguise its appearance as a Full-Round Action at no penalty.",
+		"Startle": "Once per encounter, as a Reaction to being attacked, a Clawdite can make a Deception check against the target's Will Defense. If successful, the attacker takes a -5 penalty on their attack roll.",
+		"languages" : ["Clawdite", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Falleen",
+		"age_group" : {"Child" : [1,18], "Young Adult" : [19,36], "Adult" : [37,72], "Middle Age" : [73,139], "Old" : [140,249], "Venerable": 250},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Hold Breath" : "Falleen are at home in air or water. A Falleen can hold their breath for a number of rounds equal to 25 times their Constitution score before they need to start making Endurance checks.",
+		"Pheromones" : "As a Standard Action, a Falleen can make a special attack against any adjacent creature. The attack modifier is equal to the Falleen's Character Level plus their Charisma modifier. If the attack equals or exceeds the target's Fortitude Defense, that target moves -1 step along the Condition Track. If the attack fails to beat the target's Fortitude Defense, the target is immune to the Falleen's Pheromones for 24 hours. When the target is reduced to a total of -5 steps, instead of Falling Unconscious, the target's Attitude improves to Friendly. Pheromones function as an Inhaled Poison. Any creature holding its breath is unaffected (see Endurance for more details). A creature can be affected by Falleen Pheromones only once per round. Multiple exposures to Pheromones from different Falleen in the same round produce no additional effects. A Hostile creature cannot be targeted by this effect.",
+		"Pheromone Acclimation": "Falleen gain a +5 Species bonus to their Fortitude Defense against the Pheromones of other Falleen.",
+		"languages" : ["Falleen", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Gand",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,29], "Middle Age" : [30,45], "Old" : [46,60], "Venerable": 61},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Darkvision": "Gand ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Hardy" : "Gand are tough and resilient, capable of shrugging off injuries that would cripple other Species. Whenever a Gand uses their Second Wind, they regain a number of additional Hit Points equal to 5 + its Character Level.",
+		"Limb Regeneration:" : "A Gand can regrow a lost limb in 1d10 days. At the end of this time, all Persistent penalties associated with the loss of the limb are removed.",
+		"Special Equipment": "The dependence of Gand on the atmosphere of their homeworld restricts their ability to leave without use of specialized equipment. Without a Breathing Apparatus, a Gand would Suffocate. Without a Transliterator, a Gand cannot communicate in any language other than Gand. A Breathing Apparatus costs 2000 credits, and a year's supply of breathing filters cost 200 credits (50 credits on Gand). A Transliterator costs 100 credits. A Gand character begins play with these items at no cost.",
+		"Weapon Familiarity": "Gand do not treat Gand Weapons as Exotic Weapons, instead treating them as a base item (for instance, a Gand Blaster Rifle would still be treated as a Rifle).",
+		"languages" : ["Gand"]
+        }
+		
+	},
+	{
+		"species_name" : "Houk",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,15], "Adult" : [16,44], "Middle Age" : [45, 59], "Old" : [60, 79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": 0, "Constitution": 2, "Intelligence": 0, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Natural Armor": "Houk are thick-boned and thick-skinned. They gain a +1 Natural Armor bonus to their Reflex Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"Physically Intimidating" : "Houk use their Strength modifier instead of their Charisma modifier for Persuasion checks made to Intimidate others.",
+		"languages" : ["Houkese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Jawa",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,39], "Middle Age" : [40,59], "Old" : [60,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 4,
+		"Carry Limit" : 0.75,
+		"Class Skill": ["Mechanics"],
+		"Darkvision": "Jawa ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Desert Dweller" : "When making Survival checks to resist the effects of Extreme Heat, Jawas can reroll the check, keeping the better of the two results.",
+		"Scavenger:" : "Whenever a Jawa armed with an Ion weapon successfully damages a Droid or Vehicle, the Jawa adds half their Character Level in Ion damage.",
+		"Tinkerer": "A Jawa can choose to reroll any Mechanics check, but must keep the second result, even if it is worse. In addition, Mechanics is always a Class Skill for Jawas.",
+		"languages" : ["Jawaese", "Jawa Trade Language"]
+        }
+		
+	},
+	{
+		"species_name" : "Ryn",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,20], "Adult" : [21,40], "Middle Age" : [41,60], "Old" : [61,80], "Venerable": 81},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Connections": "Ryn benefit from an extensive information network that spans the galaxy. Whenever they travel, they can contact other Ryn to learn rumors and guarded information more easily than other races. Whenever a Ryn makes a Gather Information check to Learn Secret Information, they can fogo the credit cost. If this check fails, the Ryn can try again, but must spend the credits as normal.",
+		"Musical Obfuscation": "Ryn can move air through their beaks to create pleasant tunes and notes. A Ryn can reroll any Deception check to convey Deceptive Information, keeping the better of the two results. A Ryn can project their sounds out to a range of 10 squares. As a Swift Action, a Ryn can Create a Diversion to Hide.",
+		"Prehensile Tail" : "Ryn have long tails nearly as strong and flexible as their hands. A Ryn can effectively hold (but not wield) a Small or smaller item with its tail. When holding a Medium or larger item with its tail, the Ryn is Encumbered and considered to be carrying a Heavy Load.",
+		"languages" : ["Ryn", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Toydarian",
+		"age_group" : {"Child" : [1,6], "Young Adult" : [7,14], "Adult" : [15,60], "Middle Age" : [61,75], "Old" : [76,90], "Venerable": 91},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 4,
+		"flySpeed" : 6,
+		"flyAltitude": 2,
+		"Carry Limit" :  0.75,
+		"Conditional Bonus Feat": [{"trained skill" : "Deception", "bonus feat" : "Skill Focus (Deception)"}],
+		"Flight": "Toydarians are capable of flight, but cannot do so if they are carrying a Heavy Load.",
+		"Force Resistance": "Toydarians receive a +5 bonus to their Will Defense against any use of the Use the Force skill.",
+		"languages" : ["Huttese", "Toydarian"]
+        }
+		
+	},
+	{
+		"species_name" : "Ubese",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,15], "Adult" : [16,40], "Middle Age" : [41,60], "Old" : [61,70], "Venerable": 71},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": -2, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Aggressive" : " If an Ubese hits with a Charge attack, the +2 bonus on attack rolls against the target persists for the duration of the encounter.",
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Perception", "bonus feat" : "Skill Focus (Perception)"}],
+		"Survival Instinct": "Ubese are tough and resilient, capable of withstanding the perils of even hostile worlds. An Ubese can reroll Survival checks, but the result of the reroll must be accepted, even if it is worse.",
+		"Special Equipment": "Ubese cannot tolerate the atmospheres of other worlds and must rely on breath masks to survive. Without a breath mask, an Ubese begins to Suffocate. When not on their homeworld, Ubese wear environmental suits to stave of the Hazards found on other planets as well as to hide their appearance. An environmental suit functions as a Combat Jumpsuit that also grants a +2 Equipment bonus to Fortitude Defense. The suit also includes a voice modulator to emulate the voice of a male or female or to mask the Ubese's gender. An Ubese environmental suit with a breath mask and voice modulator costs 2000 credits, and a year's supply of breathing filters costs 200 credits (50 credits on Ubese). Ubese characters begin play with these items at no cost.",
+		"languages" : ["Ubese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Wroonian",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,14], "Adult" : [15,54], "Middle Age" : [55,69], "Old" : [70,74], "Venerable": 75},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": -2, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 2},
+		"size" : "Medium",
+		"speed" : 6,
+		"Iron Will": "Wroonians are stubborn and hard to be deterred, giving them a +2 Species bonus to their Will Defense.",
+		"Carry Limit" : 1,
+		"Soothing Voice": "A Wroonian may choose to reroll any Persuasion check, but the result of the reroll must be accepted, even if it is worse.",
+		"languages" : ["Wroonian", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Dug",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,44], "Middle Age" : [45,59], "Old" : [60,74], "Venerable": 75},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Athletic": "A Dug can reroll any Climb or Jump check, but the result of the reroll must be accepted, even if it is worse. In addition, a Dug can Take 10 on Climb and Jump checks even when distracted or threatened.",
+		"languages" : ["Dug"]
+        }
+		
+	},
+	{
+		"species_name" : "Gen'Dai",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,200], "Adult" : [201,999], "Middle Age" : [1000,1999], "Old" : [2000,3999], "Venerable": 4000},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 4, "Intelligence": 0, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : -1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Large",
+		"speed" : 8,
+		"Carry Limit" : 2,
+		"Fast Healing": "Whenever a Gen'Dai takes its Second Wind, it regains 5 Hit Points every round at the end of its turn until killed, the end of the encounter, or until reaching one-half Hit Points (whichever comes first).",
+		"Hibernation": "A Gen'Dai can enter a state similar to a Hibernation Trance. A Gen'Dai can use the Force Trance application of the Use the Force skill Untrained (and even if not Force-sensitive) and can remain in the trance indefinitely. -A Gen'Dai in such a state ceases to Age, and needs no food, water, or air until it emerges from Hibernation.",
+		"Mental Instability": "As they Age, Gen'Dai begin to lose touch with reality. For each Age Category a Gen'Dai advances past Adult, it takes an additional loss of -1 Wisdom. -Gen'Dai characters never gain increased Wisdom due to Age, though they can increase their Wisdom scores as their Character Level increases.",
+		"Regeneration": "A Gen'Dai can regrow lost body parts- including significant portions of its physical structure and individual limbs- in 1d10 minutes. At the end of that time, all Persistent penalties associated with the loss of one or more limbs are removed.",
+		"Resilient Physiology": "Because of their unique physiology, the Gen'Dai can shrug off the effect of wounds that would be fatal to any other Species. Because of this, a Gen'Dai's Damage Threshold is doubled after adding bonuses for Feats and size when determining whether the Gen'Dai is killed by an attack (but not for any other purpose).",
+		"languages" : ["Gen'Dai", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Geonosian",
+		"age_group" : {"Child" : [1,6], "Young Adult" : [7,10], "Adult" : [11,35], "Middle Age" : [36,50], "Old" : [51,64], "Venerable": 65},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": 0, "Constitution": 0, "Intelligence": -2, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"flySpeed": 6,
+		"climbSpeed": 3,
+		"Carry Limit" : 1,
+		"Flight" : "Geonosians are capable of flight, but cannot do so if they are carrying a Heavy Load.",
+		"Low-Light Vision": "Geonosians ignore Concealment (but not Total Concealment) from darkness.",
+		"Radiation Resistance": "Geonosians receive a +5 Species bonus to their Fortitude Defense against Radiation. In addition, Geonosians never gain a Persistent Condition from the effects of Radiation.",
+		"languages" : ["Geonosian", "Basic"]
+        }
+		
+	},	
+	{
+		"species_name" : "Iktotchi",
+		"age_group" : {"Child" : [1,13], "Young Adult" : [14,18], "Adult" : [19,44], "Middle Age" : [45,70], "Old" : [71,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Natural Armor": "Iktotchi have tough skin that provides a +1 Natural Armor bonus to their Reflex Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"Limited Precognition": "Iktotchi are gifted with limited precognition and are subjected to prophetic dreams. Once per encounter, as a Reaction, an Iktotchi can grant themself or any Vehicle the Iktotchi Pilots a +2 Species bonus to Reflex Defense against any single attack.",
+		"Expert Pilot": "An Iktotchi can reroll any Pilot check, but the result of the reroll must be accepted, even if it is worse.",
+		"languages" : ["Iktotchese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Kaleesh",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,24], "Adult" : [25,40], "Middle Age" : [41,55], "Old" : [56,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution": 2, "Intelligence": -2, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Survival", "bonus feat" : "Skill Focus (Survival)"}],
+		"Darkvision": "Because of the thermoreceptor glands next to their eyes, Kaleesh ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Driven": "Kaleesh are focused individuals who maintain sight of their goals even under adverse conditions. Because of this single-minded drive, they gain a +5 Species bonus to their Will Defense against Mind-Affecting effects.",
+		"Persistent": "A Kaleesh can reroll any Endurance check, but the result of the reroll must be accepted, even if it is worse.",
+		"languages" : ["Kaleesh", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Kaminoan",
+		"age_group" : {"Child" : [1,6], "Young Adult" : [7,10], "Adult" : [11,39], "Middle Age" : [40,59], "Old" : [60,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 2, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 1,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Treat Injury", "bonus feat" : "Skill Focus (Treat Injury)"}],
+		"Resilient": "Scientific refinements to their genetic code makes Kaminoans resistant to hazards that target their physiology. Kaminoans gain a +1 Species bonus to their Fortitude Defense.",
+		"languages" : ["Kaminoan", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Kerkoiden",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,18], "Adult" : [19,45], "Middle Age" : [46,70], "Old" : [71,90], "Venerable": 91},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": -2, "Intelligence": 0, "Wisdom": 2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Predator's Heritage": "Despite their stature, Kerkoiden are descended from predatory beings. Kerkoiden gain a +2 Species bonus on damage rolls against a target that has been damaged since the beginning of the Kerkoiden's last turn.",
+		"Social Cunning": "Kerkoiden may use their Wisdom modifier in place of their Charisma modifier for determining their bonus on Deception and Persuasion checks.",
+		"languages" : ["Kerkoidese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Nautolan",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,40], "Middle Age" : [41,54], "Old" : [55,69], "Venerable": 70},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": -2, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Breathe Underwater": "As amphibious creatures, Nautolans can't drown in water.",
+		"Damage Reduction": "The rubbery hide of a Nautolan provides a Species bonus of Damage Reduction 2.",
+		"Expert Swimmer": "A Nautolan may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse. In addition, a Nautolan may choose to Take 10 on Swim checks, even when distracted or threatened.",
+		"Low-Light Vision": "Nautolans ignore Concealment (but not Total Concealment) from darkness.",
+		"Pheromonal Sensor": "A Nautolan can reroll any Perception check made to Sense Deception or Sense Influence, but the result of the reroll must be accepted, even if it is worse. -If underwater, the Nautolan can take the better of the two results instead.",
+		"languages" : ["Nautila", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Nelvaanian",
+		"age_group" : {"Child" : [1,7], "Young Adult" : [8,20], "Adult" : [21,30], "Middle Age" : [31,45], "Old" : [46,64], "Venerable": 65},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": -2, "Wisdom": 2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Low-Light Vision": "Nautolans ignore Concealment (but not Total Concealment) from darkness.",
+		"Primitive": "Nelvaanians do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+		"Scent": "Nelvaanians have a keen sense of smell. At close range (within 10 squares), Nelvaanians ignore Concealment and Cover for purposes of Perception checks, and take no penalty from poor visibility while Tracking.",
+		"Shadow Swiftness": "If a Nelvaanian begins its turn with Concealment from a target or with the target unaware of it, the Nelvaanian does not provoke Attacks of Opportunity when moving through the target's threatened space until the end of the Nelvaanian's turn.",
+		"Species Feats" : {"Anointed Hunter" : "Move 2 or more squares and gain a +1 bonus on attacks with thrown weapons until the end of your next turn."},
+		"languages" : ["Nelvaanese"]
+        }
+		
+	},
+	{
+		"species_name" : "Republic Clone",
+		"age_group" : {"Child" : [1,5], "Young Adult" : [6,7], "Adult" : [8,20], "Middle Age" : [21,29], "Old" : [30,39], "Venerable": 40},
+		"traits" : 
+        {
+		"Ability Scores" : "Republic Clones begin play with the following Ability Score array: Strength 15, Dexterity 13, Constitution 10, Intelligence 12, Wisdom 10, and Charisma 8. Additionally, a Republic Clone player can choose one Ability Score to increase by 2 at the time of Character Creation.",
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"bonuses" : {"feat": "1 additional", "skill": "1 additional"},
+		"languages" : ["Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Vurk",
+		"age_group" : {"Child" : [1,6], "Young Adult" : [7,14], "Adult" : [15,30], "Middle Age" : [31,49], "Old" : [50,69], "Venerable": 70},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution": 2, "Intelligence": 0, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Breathe Underwater": "As amphibious creatures, Vurks can't drown in water.",
+		"Expert Swimmer": "A Vurk may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse. In addition, a Vurk may choose to Take 10 on Swim checks, even when distracted or threatened.",
+		"Placid": "Vurks are renowned for their ability to remain calm and collected, even in the face of danger. Once per encounter, as a Free Action, a Vurk can remove one Fear effect currently affecting it.",
+		"Survival Instinct": "As nomads, Vurks are accustomed to moving around, even through dangerous places. A Vurk may choose to reroll any Survival check, but the result of the reroll must be accepted even if it is worse.",
+		"languages" : ["Semblan", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Advozse",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,33], "Middle Age" : [34,42], "Old" : [43,54], "Venerable": 55},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution": 2, "Intelligence": 0, "Wisdom": 2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Heightened Awareness": "An Advozse can choose to reroll any Perception check, but the result of the reroll must be accepted, even if it is worse.",
+		"Low-Light Vision": "Advozsec ignore Concealment (but not Total Concealment) from darkness.",
+		"Natural Armor": "Advozsec have a +1 Natural Armor bonus to their Reflex Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"languages" : ["Advb", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Chagrian",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,16], "Adult" : [17,42], "Middle Age" : [43,56], "Old" : [57,75], "Venerable": 76},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": -2, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Breath Underwater": "As amphibious creatures, Chagrians can't drown in water.",
+		"Low-Light Vision": "Chagrians ignore Concealment (but not Total Concealment) from darkness.",
+		"Radiation Resistance": "Chagrians receive a +5 Species bonus to their Fortitude Defense against Radiation. In addition, Chagrians never gain a Persistent Condition from the effects of Radiation.",
+		"languages" : ["Chagri", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Chiss",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,13], "Adult" : [14,50], "Middle Age" : [51,62], "Old" : [63,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"bonuses": {"skill": "1 additional"},
+		"Low-Light Vision": "Chiss ignore Concealment (but not Total Concealment) from darkness.",
+		"languages" : ["Cheunh"]
+        }
+		
+	},
+	{
+		"species_name" : "Codru-Ji",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,12], "Adult" : [13,44], "Middle Age" : [45,60], "Old" : [61,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"Dexterity" : "13", "BAB": 1, "bonus feat" : "Dual Weapon Mastery I"}],
+		"Extra Arms": "Codru-Ji can hold up to four items or Weapons at a time. This ability does not grant extra attacks; however, it does mean a Codru-Ji can wield two two-handed weapons at a time.",
+		"Skilled Grappler": "Due to their extra arms, Codru-Ji gain a +5 Species bonus to both Grab and Grapple checks.",
+		"languages" : ["Codruese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Klatooinian",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,49], "Middle Age" : [50,69], "Old" : [70,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": -2, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 2},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Iron Will": "Klatooinians are resolute individuals and gain a +2 Species bonus to their Will Defense.",
+		"languages" : ["Huttese"]
+        }
+		
+	},
+	{
+		"species_name" : "Sakiyan",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,48], "Middle Age" : [49,74], "Old" : [75,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 2, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Darkvision": "Sakiyans ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Conditional Bonus Feat": [{"trained skill" : "Perception", "bonus feat" : "Skill Focus (Perception)"}],
+		"Lightning Reflexes": "Sakiyans gain a +2 Species bonus to their Reflex Defense",
+		"languages" : ["Sakiyan", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Vahla",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,17], "Adult" : [18,49], "Middle Age" : [50,74], "Old" : [75,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": -2, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Force Sensitivity",
+		"Dark Side Stigma": "Whether they know it or not, each member of the Vahla Species is forever bound to The Dark Side of The Force. Vahla must spend 2 Force Points to reduce their Dark Side Score by 1 (instead of just 1 Force Point).",
+		"Heightened Agility": "Vahla skeletons are primarily made of cartilage instead of bone, giving them a more flexible physique. A Vahla can choose to reroll any Acrobatics check, but the result of the reroll must be accepted, even if it is worse",
+		"languages" : ["Vahla", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Weequay",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,17], "Adult" : [18,49], "Middle Age" : [50,74], "Old" : [75,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": -2, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Endurance", "bonus feat" : "Skill Focus (Endurance)"}],
+		"Natural Armor": "Weequay posses a thick, leathery hide that provides a +1 Natural Armor bonus to his or her Reflex Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"Pheromones": "Weequay communicate silently with other members of their tribe by emitting complex Pheromones. This form of communication has a maximum range of 20 squares. Species with the Scent Species Trait can detect Weequay pheromones by smell, but this does not allow them to understand what the Weequay are communicating.",
+		"languages" : ["Sriluurian"]
+        }
+		
+	},
+	{
+		"species_name" : "Zeltron",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,18], "Adult" : [19,49], "Middle Age" : [50,64], "Old" : [65,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Empathy": "Zeltrons add their Charisma bonus (if any) to Perception checks made to Sense Deception or Sense Influence.",
+		"Pheromones": "A Zeltron gains a +5 Species bonus on Persuasion checks made to change the Attitude of creatures. This bonus does not apply to other Zeltrons, as Zeltrons are acclimated to each other's pheromones.",
+		"languages" : ["Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Celegian",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,20], "Adult" : [21,142], "Middle Age" : [143,210], "Old" : [211,250], "Venerable": 251},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution": 0, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"flySpeed": 6,
+		"swimSpeed": 10,
+		"Carry Limit" : 1,
+		"Flight": "Celegians are capable of flight, but cannot do so if they are carrying a Heavy Load.",
+		"Broadcast Telepath": "Celegians can use the Telepathy application of the Use the Force skill Untrained, even if they do not possess the Force Sensitivity feat. -A Celegian automatically succeeds on this check to communicate with willing targets within 60 squares of it and in its line of sight.",
+		"Expert Swimmer": "A Celegian may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse. In addition, a Celegian may choose to Take 10 on Swim checks, even when distracted or threatened.",
+		"Natural Weapons": "A Celegian has a Natural Weapon, in the form of a powerful Slam attack. When a Celegian makes an Unarmed attack, it may choose to use its Natural Weapon, dealing 1d6 points of bludgeoning damage with the attack instead of normal Unarmed damage. Celegians are always considered armed with their Natural Weapons.",
+		"Special Equipment": "Unless encased in a Celegian Life-Support Chamber, Celegians Suffocate.",
+		"languages" : ["Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Shard",
+		"age_group" : {"droid" : "As inorganic beings, Shards are not affected by the process of Aging."},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Trained Skill": "Use Computer",
+		"Bonus Trained Skill": "Shards gain Use Computer as a bonus Trained Skill, regardless of their Class.",
+		"Droid Shell": "Shards must inhabit Droid Bodies to travel and function in the galaxy at large. In this form, they gain the following traits. -Shards must undergo Maintenance, as per a Droid. -Shards are immune to Poison, Radiation, noncorrosive Atmospheric Hazards, and Vacuum. They can regain Hit Points only through the Repair Droid application of the Mechanics skill. They do not benefit from Natural Healing, unless they have the Force Repair Talent. -Shards are considered cybernetic creatures for the purposes of Ion Damage. -Shards can make use of Droid systems and accessories, subject to some limitations. Shards can have the following Droid Systems, with a Cost Modifier of x1: Appendages,Droid Armor; Communications Systems; Compartment Space; Sensor Systems; Translator Units",
+		"languages" : ["Binary", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Vultan",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,19], "Adult" : [20,59], "Middle Age" : [60,74], "Old" : [75,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 2, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Trained Skill": "A Vultan can choose one additional Trained Skill at 1st level. The Skill must be chosen from the Vultan's list of Class Skills",
+		"Conditional Bonus Feat": [{"trained skill" : "Knowledge", "bonus feat" : "Skill Focus (Knowledge)"}],
+		"languages" : ["Dromnyr", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Barabel",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,15], "Adult" : [16,40], "Middle Age" : [41,59], "Old" : [60,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": -2, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 2, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Darkvision": "Barabels ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Intimidating Presence": "A Barabel may choose to reroll any Persuasion check made to Intimidate others, but the result of the reroll must be accepted, even if it is worse.",
+		"Natural Armor": "A Barabel's thick scaly hide provides a +2 Natural Armor bonus to their Reflex Defense. A Natural Armor bonus stacks with an Armor Bonus.",
+		"Natural Weapons": "A Barabel has Natural Weapons in the form of sharp claws, needle-sharp teeth, and a thick tail. When making an Unarmed attack, a Barabel can choose to use Natural Weapons, dealing 1d6 points of slashing damage (Claws), piercing damage (Bite), or bludgeoning damage (Tail) with that attack instead of normal Unarmed damage. Barabels are always considered armed when attacking with their Natural Weapons.",
+		"Primitive": "Barabels do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+		"Radiation Resistance": "A Barabel's armored hide protects them from hazardous Radiation, granting the Barabel a +5 Species bonus to their Fortitude Defense to resist the effects of Radiation. In addition, Barabels never gain a Persistent Condition from the effects of Radiation.",
+		"Stun Resistance": "A Barabel's reflective scales defuse the effects of Stun weapons, granting them a +5 Species bonus to their Damage Threshold to resist the effects of Stunning.",
+		"languages" : ["Barabel"]
+        }
+		
+	},
+	{
+		"species_name" : "Dashade",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,44], "Middle Age" : [45,69], "Old" : [70,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 2, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Environmental Adaptation": "Because of the unforgiving nature of their homeworld, Dashade gain a +5 Species bonus to their Fortitude Defense against the effects of Extreme Temperatures and Radiation.",
+		"Force Resistance": "Dashade receive a +5 bonus to their Will Defense against any use of the Use the Force skill.",
+		"Frightening Visage": "A Dashade may choose to reroll any Persuasion check made to Intimidate, keeping the better of the two results.",
+		"languages" : ["Dashadi"]
+        }
+		
+	},
+	{
+		"species_name" : "Lurmen",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,18], "Adult" : [19,35], "Middle Age" : [36,60], "Old" : [61,75], "Venerable": 76},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 4,
+		"Carry Limit" :  0.75,
+		"Expert Climber": "Lurmen are great climbers and may choose to Take 10 on Climb checks even when distracted or threatened.",
+		"Mender": "Lurmen have learned to heal wounds rather than create them. A Lurmen Trained in Treat Injury reduces the Treat Injury DC for all applications of the Skill by his or her Wisdom modifier.",
+		"Primitive": "Lurmen do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+		"Roller": " A Lurmen can curl into a ball and quickly roll along the ground. As a Swift Action, a Lurmen can increase his or her base Speed by 4 squares. In this form, the Lurmen can only take the Move, Withdraw, Catch a Second Wind, Drop an Item, Recover, and Run Actions. The Lurmen can also spend a Swift Action to emerge from their rolling form, losing the +4 Speed bonus and regaining access to all Actions he or she can normally take.",
+		"languages" : ["Lurmese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Taung",
+		"age_group" : {"Child" : [1,6], "Young Adult" : [7,12], "Adult" : [13,45], "Middle Age" : [46,64], "Old" : [65,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 1,"Will Defense": 1},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Armor Training": "Taung characters increase the Maximum Dexterity bonus from worn Armor by +1.",
+		"Superior Defenses": "Because they constantly test themselves both physically and mentally in combat well before reaching adulthood, Taung gain a +1 Species bonus to all their Defenses.",
+		"Warrior Culture": "Taung can reroll any Knowledge (Tactics) check, but the result of the reroll must be accepted, even if it is worse.",
+		"languages" : ["Mando'a", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Thakwaash",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,49], "Middle Age" : [50,74], "Old" : [75,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 4, "Dexterity": -2, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Irrepressible Mind": "Once per encounter, as a Free Action at the start of his or her turn, a Thakwaash can negate or remove any Mind-Affecting effects.",
+		"Natural Armor": "Thakwaash gain a +1 Natural Armor bonus to their Reflex Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"languages" : ["Thakwaashi"]
+        }
+		
+	},
+	{
+		"species_name" : "Trianii",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,17], "Adult" : [18,44], "Middle Age" : [45,64], "Old" : [65,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Heightened Agility": "A Trianii can reroll any Acrobatics check, but the result of the reroll must be accepted, even if it is worse.",
+		"Natural Weapons": "A Trianii's sharp claws serve as Natural Weapons. When a Trianii makes an Unarmed attack, it may choose to use its Natural Weapons, dealing 1d6 points of slashing damage with the attack instead of normal Unarmed damage. Trianii are always considered armed with their Natural Weapons.",
+		"Prehensile Tail": "A Trianii's long, flexible tail is dexterous and strong. A Trianii's tail can effectively hold (But not wield) a Small or smaller item. When holding a Medium or larger item with his or her tail, a Trianii is encumbered and is considered to be carrying a Heavy Load.",
+		"languages" : ["Trianii"]
+        }
+		
+	},
+	{
+		"species_name" : "Yevetha",
+		"age_group" : {"Child" : [1,5], "Young Adult" : [6,11], "Adult" : [12,44], "Middle Age" : [45,66], "Old" : [67,80], "Venerable": 81},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Mechanical Aptitude": "Yevetha have a knack for technology. Once per encounter, a Yevetha can treat any single Mechanics check as if the die roll is a Natural 20.",
+		"Natural Weapons": "A Yevetha's retractable claws are Natural Weapons. When a Yevetha makes an Unarmed attack, it may choose to use its Natural Weapons, dealing 1d6 points of Slashing damage with the attack instead of normal Unarmed damage. A Yevetha is always considered armed with their Natural Weapons.",
+		"Xenophobia": "Yevetha have an intense distrust of all Species other than their own, and gain a +2 Species bonus to their Will Defense against Persuasion checks made to improve their Attitude by any creature of a different Species.",
+		"languages" : ["Yevethan"]
+        }
+		
+	},
+	{
+		"species_name" : "Yuzzem",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,15], "Adult" : [16,40], "Middle Age" : [41,59], "Old" : [60,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 4, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : -1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Large",
+		"speed" : 6,
+		"Carry Limit" : 2,
+		"Expert Climber": "A Yuzzem can reroll Climb checks, but the result of the reroll must be accepted, even if it is worse.",
+		"Natural Weapons": "A Yuzzem's large tusks and sharp claws serve as Natural Weapons. When making an Unarmed attack, a Yuzzem can use Natural Weapons, dealing 1d8 points of piercing damage (Bite), or slashing damage (Claws), instead of normal Unarmed damage. Yuzzem are always considered armed with their Natural Weapons.",
+		"Physically Intimidating": "Yuzzem use their Strength modifier instead of their Charisma modifier for Persuasion checks made to Intimidate others.",
+		"Scent": "At close range (Within 10 squares), Yuzzem ignore Concealment and Cover for purposes of Perception checks, and they take no penalty from poor visibility when Tracking.",
+		"languages" : ["Yuzz"]
+        }
+		
+	},
+	{
+		"species_name" : "Zygerrian",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,16], "Adult" : [17,39], "Middle Age" : [40,60], "Old" : [61,80], "Venerable": 81},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": 0, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 2},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Martial Arts I",
+		"Iron Will": "Zygerrians have above-average willpower, gaining a +2 Species bonus to their Will Defense.",
+		"Strength of Conviction": " Zygerrians can use their Charisma modifier in place of their Wisdom modifier when calculating their Will Defense.",
+		"languages" : ["Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Bith",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,15], "Adult" : [16,50], "Middle Age" : [51,70], "Old" : [71,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": -2, "Intelligence": 2, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Evolved Intellect": "Whenever a Bith spends a Force Point for any reason, the Bith gains a temporary Force Point, that can only be spent to add to an Intelligence-based Skill Check. If the temporary Force Point has not been used by the end of the encounter, it is lost.",
+		"Meditative Trance": "Bith can enter into a Trance that lasts for four consecutive hours. At the end of the Trance, they gain the benefits of having rested for eight consecutive hours.",
+		"Scent": " Bith have a keen sense of smell. At close range (within 10 squares), Bith ignore Concealment and  Cover for purposes of Perception checks, and take no penalty from poor visibility while Tracking.",
+		"languages" : ["Bith", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Defel",
+		"age_group" : {"Child" : [1,6], "Young Adult" : [7,10], "Adult" : [11,49], "Middle Age" : [50,74], "Old" : [75,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 0, "Constitution": 0, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 6,
+		"Carry Limit" :  0.75,
+		"Partial Invisibility": "The fur of a Defel helps bend all but ultraviolet light, rendering him or her nearly invisible. A Defel in shadowy illumination or darker conditions is treated as having Total Concealment. Defel are fully visible and gain no Concealment against opponents with Darkvision.",
+		"Special Equipment": "The eyes of Defel have evolved in such a way that they can see only in the ultraviolet spectrum. Defel that leave Af'El must wear special ultraviolet visors to see in normal light. Without such a visor, a Defel is considered Blind. An ultraviolet visor costs 2000 credits. A Defel character begins play with this item at no cost.",
+		"languages" : ["Defel", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Elomin",
+		"age_group" : {"Child" : [1,5], "Young Adult" : [6,12], "Adult" : [13,49], "Middle Age" : [41,60], "Old" : [61,72], "Venerable": 73},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 2, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Driven": "Elomin gain a +5 Species bonus to their Will Defense against Mind-Affecting effects.",
+		"Impose Order": "Elomin are exceptionally focused on order, and strive to ensure that their chaotic companions are in the place where they are supposed to be. Once per encounter, an Elomin can spend a Swift Action to allow each ally within 12 squares to move up to half that ally's Speed as a Reaction. This movement does not provoke Attacks of Opportunity.",
+		"languages" : ["Elomin", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Fosh",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,17], "Adult" : [18,55], "Middle Age" : [56,70], "Old" : [71,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": -2, "Intelligence": 0, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 6,
+		"Carry Limit" :  0.75,
+		"Deceptive": "A Fosh may reroll any Deception check, but must accept the result of the reroll, even if it is worse.",
+		"Healing Glands": "Fosh can exude a powerful fluid from their tear ducts that can aid in the healing process for most Species. A Fosh is always considered to have a Medpac or Medical Kit for the purposes of making Treat Injury checks, and can perform Trained Only applications of the Treat Injury skill even when Untrained.",
+		"languages" : ["Fosh", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Givin",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,14], "Adult" : [15,48], "Middle Age" : [49,64], "Old" : [65,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 0, "Constitution": 0, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 2,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Damage Reduction": "The hard shells of Givin provides a Species bonus of Damage Reduction 2.",
+		"Great Fortitude": "Givin gain a +2 Species bonus to their Fortitude Defense.",
+		"Vacuum Immunity": "Givin have sealed exoskeletons and do not breathe in a conventional sense. They are immune to the effects of Vacuum and to the effects of inhaled chemicals and Poisons.",
+		"languages" : ["Givin", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Gotal",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,12], "Adult" : [13,40], "Middle Age" : [41,60], "Old" : [61,75], "Venerable": 76},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Energy Reading": "Gotals can read the emotions of any sentient being within 6 squares. As a Standard Action, a Gotal can make a Perception check against a target's Will Defense. A successful check reveals the target's emotional state (Such as happy, sad, nervous, or scared).",
+		"Low-Light Vision": "Gotals ignore Concealment (But not Total Concealment) from darkness.",
+		"Sensor Cones": "A Gotal can use the Sense Force and Sense Surroundings applications of the Use the Force skill Untrained.",
+		"languages" : ["Gotal", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Herglic",
+		"age_group" : {"Child" : [1,15], "Young Adult" : [16,19], "Adult" : [20,55], "Middle Age" : [56,79], "Old" : [80,95], "Venerable": 96},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 4, "Dexterity": -4, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : -1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Large",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Gather Information", "bonus feat" : "Skill Focus (Gather Information)"}],
+		"Sturdy": "Herglics are solidly built and literally have tough skin. Whenever a Herglic catches a Second Wind, he or she regains a number of additional Hit Points equal to 5 + one-half its level.",
+		"languages" : ["Herglic", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Neimoidian",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,40], "Middle Age" : [41,57], "Old" : [58,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Deception", "bonus feat" : "Skill Focus (Deception)"},{"trained skill" : "Persuasion", "bonus feat" : "Skill Focus (Persuasion)"}],
+		"languages" : ["Neimoidian", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Nyriaanan",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,40], "Middle Age" : [41,59], "Old" : [60,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Class Skill": ["Survival"],
+		"Bonus Class Skill": "Survival is always considered a Class Skill for Nyriaanans.",
+		"Bonus Feat": "1 additional",
+		"Low-Light Vision": "Nyriaanans ignore Concealment (but not Total Concealment) from darkness.",
+		"languages" : ["Nyriaanan"]
+        }
+		
+	},
+	{
+		"species_name" : "Pa'lowick",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,44], "Middle Age" : [45,59], "Old" : [60,74], "Venerable": 75},
+		"traits" : 
+        {
+		"Ability Modifiers" :{"Strength" : -2, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Expert Swimmer": "A Pa'lowicks may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse. In addition, a Pa'lowicks may choose to Take 10 on Swim checks, even when distracted or threatened.",
+		"Hold Breath": "Pa'lowicks are at home either in air or in water. A Pa'lowick can hold his or her breath for a number of rounds equal to 25 times his or her Constitution score before needing to make Endurance checks to hold his or her breath.",
+		"Primitive": "Pa'lowicks do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+		"languages" : ["Lowickese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Umbaran",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,44], "Middle Age" : [45,69], "Old" : [70,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" :{"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Gather Information", "bonus feat" : "Skill Focus (Gather Information)"}],
+		"Darkvision": "Umbarans ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Sneaky": "An Umbaran can choose to reroll any Stealth check, but the result of the reroll must be accepted, even if it is worse.",
+		"languages" : ["Umbarese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Altiri",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,17], "Adult" : [18,49], "Middle Age" : [50,64], "Old" : [65,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Trained Skill": ["Altiri are versatile and accomplished at many tasks. An Altiri chooses one additional Trained Skill at 1st level. The skill must be chosen from the character's list of Class Skills.", {"trained skill" : "1 additional"}],
+		"Visually Striking": "Altiri have a visually surprising or stunning appearance. An Altiri's Charisma bonus is doubled when they use the Persuasion skill on Humans and Near-Humans.",
+		"languages" : ["Altirish", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Anzati",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,99], "Adult" : [100,649], "Middle Age" : [650,799], "Old" : [800,950], "Venerable": 951},
+		"traits" : 
+        {
+		"Ability Modifiers" :{"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Class Skill": ["Survival", "Stealth"],
+		"Bonus Class Skill": "Stealth and Survival are always Class Skills for Anzati",
+		"Energy Drain": "As a Swift Action once per round, an Anzati can use its proboscis to drain energy from a Grabbed target, moving the target -1 step on the Condition Track as a Persistent Condition, and granting the Anzati Bonus Hit Points equal to 5 + half the Anzati's Character Level.  The Anzati can repeat this action each round until the target escapes the Grab, or until the target is rendered unconscious. If the target survives the feeding attempt, the Persistent Condition is removed after the target rests for 8 hours.",
+		"Low-Light Vision": "Anzati ignore Concealment (but not Total Concealment) from darkness.",
+		"Mesmerize": "As a Standard Action, an Anzati can make a special attack against the Will Defense of a single target within 6 squares of the Anzati. The attack modifier is equal to the Anzati's Character Level plus his or her Charisma modifier. If the attack is successful, the target loses its Standard Action for its next turn. If the attack fails, the target is immune to this effect for 24 hours. This is a Mind-Affecting effect.",
+		"Presence Sense": "The Anzati's acute senses enable them to sense a person's luck. When making a Survival check to Track a living creature, an Anzati gains a Species bonus equal to the quarry's Force Point total.",
+		"languages" : ["Anzat", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Anarrian",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,15], "Adult" : [16,44], "Middle Age" : [45,59], "Old" : [60,69], "Venerable": 70},
+		"traits" : 
+        {
+		"Ability Modifiers" :{"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "1 additional",
+		"Strength Surge": "Once per encounter, an Anarrian can perform one of the following actions. -Reroll one Strength-based Ability Check or Skill Check using a doubled Strength modifier (minimum +1). -Add +2 to one damage roll when making a successful melee attack to which a Strength bonus is normally added (this benefit does not apply when the Weapon Finesse feat is used)",
+		"languages" : ["Anarrese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Chadra-Fan",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,15], "Adult" : [16,40], "Middle Age" : [41,59], "Old" : [60,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" :{"Strength" : 0, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 4,
+		"Carry Limit" :  0.75,
+		"Darkvision": "Chadra-Fans ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Heightened Awareness": "A Chadra-Fan may choose to reroll any Perception check, but the result of the reroll must be accepted, even if it is worse.",
+		"Quality Repairs": "When a Chadra-Fan uses the Repair or Jury-Rig applications of the Mechanics skill, the target Droid or device regains an additional 1d8 Hit Points.",
+		"languages" : ["Chadra-Fan", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Ebruchi",
+		"age_group" : {"Child" : [1,7], "Young Adult" : [8,13], "Adult" : [14,39], "Middle Age" : [40,54], "Old" : [55,64], "Venerable": 65},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 2},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Improved Damage Threshold",
+		"Iron Will": "Ebruchi are headstrong and stubborn. They gain a +2 Species bonus to their Will Defense.",
+		"Unsettling": "Most Species find Ebruchi physical traits and habits unsettling. Once per encounter, when an Ebruchi successfully uses the Persuasion skill to Intimidate a target, the Ebruchi can move the target -1 step on the Condition Track instead of applying one of the standard Intimidation effects. The target must be within 6 squares of the Ebruchi, and the effect lasts until the end of the encounter. This is a Mind-Affecting effect.",
+		"languages" : ["Ebruchese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Ishi Tib",
+		"age_group" : {"Child" : [1,6], "Young Adult" : [7,11], "Adult" : [12,39], "Middle Age" : [40,59], "Old" : [60,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Breathe Underwater": "As amphibious creatures, Ishi Tib can't drown in water.",
+		"Ecological Awareness": "Due to their conscientiousness and drive to protect the natural environment of their homeworld, an Ishi Tib can choose to reroll any Knowledge (Life Sciences) check, keeping the better of the two results.",
+		"Expert Swimmer": "An Ishi Tib may choose to reroll any Swim check, but the result of the reroll must be accepted, even if it is worse. In addition, an Ishi Tib may choose to Take 10 on Swim checks, even when distracted or threatened.",
+		"Low-Light Vision": "Ishi Tib ignore Concealment (but not Total Concealment) from darkness.",
+		"Natural Weapons": "An Ishi Tib has a Natural Weapon, in the form of a sharp beak. When an Ishi Tib makes an Unarmed attack, it may choose to use its Natural Weapons, dealing 1d6 points of piercing damage with the attack instead of normal Unarmed damage. Ishi Tib are always considered armed with their Natural Weapons.",
+		"languages" : ["Tibranese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Krevaaki",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,17], "Adult" : [18,62], "Middle Age" : [63,94], "Old" : [95,129], "Venerable": 130},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 2, "Wisdom": 2, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Climb", "bonus feat" : "Skill Focus (Climb)"}],
+		"Carapace": "Krevaaki gain a +1 Natural Armor bonus to their Reflex Defense and a +1 Natural Armor bonus to their Fortitude Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"Stoic": "Krevaaki physiology and their limited ability to use facial expressions make them difficult for other Species to read accurately. Any creature attempting to use the Sense Deception or Sense Influence applications of the Perception skill on a Krevaaki takes a -5 penalty to the skill check.",
+		"Grasping Tentacles": "Krevaaki use their two dominant tentacles like the arms and hands of a humanoid. Krevaaki gain a +2 Species bonus to Climb checks and a +2 Species bonus to Grab and Grapple checks.",
+		"languages" : ["Kreva", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Lugubraa",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,19], "Adult" : [20,99], "Middle Age" : [100,134], "Old" : [135,149], "Venerable": 150},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": -2, "Constitution": 2, "Intelligence": 0, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Improved Damage Threshold",
+		"Darkvision": "Although Lugubraa cannot see, their echolocation and heat detection abilities grant them the effects of Darkvision. Lugubraa ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Lockbite": "A Lugubraa that makes a successful Grapple attack can automatically latch onto a target with its teeth, giving the Lugubraa a +5 bonus to subsequent Grapple checks against the target.",
+		"Natural Weapons": "A Lugubraa has Natural Weapons, in the form of barbed tentacles. When a Lugubraa makes an Unarmed attack, it may choose to use its Natural Weapons, dealing 1d6 points of damage with the attack instead of normal Unarmed damage. Lugubraa are always considered armed with their Natural Weapons.",
+		"languages" : ["Lugubraal"]
+        }
+		
+	},
+	{
+		"species_name" : "Nikto",
+		"age_group" : {"Child" : [1,10], "Young Adult" : [11,15], "Adult" : [16,35], "Middle Age" : [36,54], "Old" : [55,64], "Venerable": 65},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": 0, "Constitution": 0, "Intelligence": -2, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 2, "Fortitude Defense": 2,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Great Fortitude": "Nikto gain a +2 Species bonus to their Fortitude Defense, having evolved to survive the harsh environment of their homeworld.",
+		"Natural Armor": "A Nikto's tough hide provides a +2 Natural Armor bonus to their Reflex Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"Survival Instinct": "A Nikto can choose to reroll any Survival check, but the result of the reroll must be accepted, even if it is worse.",
+		"languages" : ["Nikto", "or", "Basic", "Huttese"]
+        }
+		
+	},
+	{
+		"species_name" : "O'reenian",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,14], "Adult" : [15,45], "Middle Age" : [46,64], "Old" : [65,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Heightened Awareness": "An O'reenian may choose to reroll any Perception check, but the result of the reroll must be accepted, even if it is worse.",
+		"Persistent": "An O'reenian can reroll any Endurance check, but the result of the reroll must be accepted, even if it is worse.",
+		"languages" : ["O'reenian"]
+        }
+		
+	},
+	{
+		"species_name" : "Shistavanen",
+		"age_group" : {"Child" : [1,9], "Young Adult" : [10,13], "Adult" : [14,40], "Middle Age" : [41,60], "Old" : [61,95], "Venerable": 96},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 2, "Constitution": 0, "Intelligence": -2, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Class Skill": ["Survival"],
+		"Bonus Class Skill": "Survival is always a Class Skill for a Shistavanen.",
+		"Conditional Bonus Feat": [{"trained skill" : "Perception", "bonus feat" : "Skill Focus (Perception)"}],
+		"Intuitive Initiative": "A Shistavanen may choose to reroll any Initiative check, but the result of the reroll must be accepted even if it is worse.",
+		"Low-Light Vision": "Shistavanen ignore Concealment (but not Total Concealment) from darkness.",
+		"Natural Weapons": "A Shistavanen has Natural Weapons, in the form of sharp claws. When a Shistavanen makes an Unarmed attack, it may choose to use its Natural Weapons, dealing 1d6 points of Slashing damage with the attack instead of normal Unarmed damage. A Shistavanen is always considered armed with their Natural Weapons.",
+		"languages" : ["Shistavanen"]
+        }
+		
+	},
+	{
+		"species_name" : "Sluissi",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,14], "Adult" : [15,39], "Middle Age" : [40,59], "Old" : [60,75], "Venerable": 76},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": -2, "Constitution": 0, "Intelligence": 2, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Careful Worker": "A Sluissi who takes twice the normal amount of time required to use the Mechanics skill gains a +10 circumstance bonus to the Mechanics check.",
+		"Conditional Bonus Feat": [{"trained skill" : "Mechanics", "bonus feat" : "Skill Focus (Mechanics)"}],
+		"Low-Light Vision": "Shistavanen ignore Concealment (but not Total Concealment) from darkness.",
+		"Serpentine": "By coiling their serpentine bodies, Sluissi are able to make long jumps without getting a running start. Sluissi are always considered to have a Running Start for Jump checks. They also gain a +5 stability bonus when making Grapple checks against the Trip feat.",
+		"languages" : ["Sluiussese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Squib",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,12], "Adult" : [13,38], "Middle Age" : [39,53], "Old" : [54,64], "Venerable": 65},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 2, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 6,
+		"Carry Limit" :  0.75,
+		"Class Skill": ["Persuasion"],
+		"Natural Diplomat": "A Squib gains a +5 Species bonus to Persuasion checks made to Haggle. Additionally, Persuasion is always a Class Skill for Squibs.",
+		"Tech Savvy": "A Squib can reroll any Knowledge (Technology) check, but the result of the reroll must be accepted, even if it is worse. Additionally, a Squib is not limited to Common Knowledge when making an Untrained Knowledge (Technology) check.",
+		"Weapon Familiarity": "Squibs treat the Squib Tensor Rifle as a Rifle, rather than as an Exotic Weapon (Ranged).",
+		"languages" : ["Squibbian", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Ssi-Ruuk",
+		"age_group" : {"Child" : [1,5], "Young Adult" : [6,10], "Adult" : [11,55], "Middle Age" : [56,90], "Old" : [91,115], "Venerable": 116},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 2, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Force Blind": "Ssi-Ruuk cannot take the Force Sensitivity feat, cannot make Use the Force checks, and never gain Force Points. They can still increase their Dark Side Score and are still affected by Force Powers, Force Talents, and the Use the Force skill as normal.",
+		"Natural Armor": "The naturally tough scales of the Ssi-Ruuk grant them a +2 Natural Armor bonus to their Reflex Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"Silver Tongued": "Ssi-Ruuk use their keen sense of smell to detect changes in a target's emotional state. A Ssi-Ruuk may choose to reroll any Persuasion check, keeping the better of the two results.",
+		"languages" : ["SSsi-Ruuvi"]
+        }
+		
+	},
+	{
+		"species_name" : "Tof",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,74], "Middle Age" : [75,99], "Old" : [100,114], "Venerable": 115},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": -2, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : -1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Large",
+		"speed" : 6,
+		"Carry Limit" : 2,
+		"Bonus Feat": ["Rapid Shot", "or", "Rapid Strike"],
+		"Conditional Bonus Feat": [{"Strength" : 13, "bonus feat" : "Mighty Swing"}],
+		"Fearless": "Tofs are fearless on the battlefield. Tofs gain a +5 Species bonus to their Will Defense to resist Fear effects, as well as against the Intimidate application of the Persuasion skill.",
+		"languages" : ["Tof"]
+        }
+		
+	},
+	{
+		"species_name" : "Vagaari",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,13], "Adult" : [14,96], "Middle Age" : [97,119], "Old" : [120,134], "Venerable": 135},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bioknowledge": "Vagaari have great working knowledge of biology throughout their sphere of influence in The Unknown Regions. A Vagaari may choose to reroll any Knowledge (Life Science) or Treat Injury check, but the result of the reroll must be accepted, even if it is worse.",
+		"Conditional Bonus Feat": [{"trained skill" : "Deception", "bonus feat" : "Skill Focus (Deception)"}],
+		"Fearsome Reputation": "Vagaari spend most of their lives trying to intimidate others by presenting a threatening appearance. A Vagaari may choose to reroll any Persuasion check made to Intimidate, keeping the better of the two results.",
+		"languages" : ["Vagaari", "Sy Bisti"]
+        }
+		
+	},
+	{
+		"species_name" : "Verpine",
+		"age_group" : {"Child" : [1,4], "Young Adult" : [5,9], "Adult" : [10,40], "Middle Age" : [41,60], "Old" : [61,80], "Venerable": 81},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Mechanics", "bonus feat" : "Skill Focus (Mechanics)"}],
+		"Heightened Awareness": "A Verpine can choose to reroll any Perception check, but the result of the reroll must be accepted, even if it is worse.",
+		"Hive Mind": "A Verpine can mentally communicate with any Verpine within a 1-kilometer range.",
+		"Natural Armor": "A Verpine's carapace provides a +1 Natural Armor bonus to their Reflex Defense. A Natural Armor bonus stacks with an Armor bonus.",
+		"Weapon Familiarity": "Verpine treat the Verpine Shattergun as a Pistol instead of an Exotic Weapon (Ranged).",
+		"languages" : ["Verpine", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Amani",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,49], "Middle Age" : [50,76], "Old" : [77,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": 0, "Constitution": 0, "Intelligence": -2, "Wisdom": 0, "Charisma" : -2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 1,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Acceleration": "When using the Run Action, Amanin may roll into a ball to move at greater speed. When Running, Amanin may take a -5 penalty on Perception checks, and have their Speed doubled.",
+		"Expert Climber": "Due to their arboreal background, Amanin may choose to Take 10 on Climb checks even when distracted or threatened.",
+		"Primitive": "Amanin do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+		"Reach": "Unlike most Medium-sized Species, Amanin have a natural Reach of 2 squares.",
+		"Resilient": "Amanin gain a +1 Species bonus to their Fortitude Defense due to their natural resilience.",
+		"languages" : ["Amanese"]
+        }
+		
+	},
+	{
+		"species_name" : "Arcona",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,18], "Adult" : [19,44], "Middle Age" : [45,76], "Old" : [77,99], "Venerable": 100},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": -2, "Charisma" : 2},
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 2,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Great Fortitude": "Arcona gain a +2 Species bonus to their Fortitude Defense. Arcona have adapted to the harsh environment of Cona and can convert many different toxins into harmless chemicals.",
+		"Scent": "Arcona have a keen sense of smell. At close range (within 10 squares), Arcona ignore Concealment and Cover for purposes of Perception checks, and take no penalty from poor visibility while Tracking.",
+		"languages" : ["Arconese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Devaronian",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,17], "Adult" : [18,44], "Middle Age" : [45,64], "Old" : [65,79], "Venerable": 80},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},	
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Deception", "bonus feat" : "Skill Focus (Deception)"}],
+		"Natural Curiosity": "Because of their natural curiosity, Devaronians are very attentive to small details that can reveal weaknesses. Once per encounter as a Standard Action, a Devaronian can make a Perception check against a single target within line of sight (DC 15 or the result of an opposed Stealth check, if the target is actively attempting to hide). If successful, the Devaronian gains a +1 insight bonus on attack rolls against that target.",
+		"languages" : ["Devaronese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Nazren",
+		"age_group" : {"Child" : [1,15], "Young Adult" : [16,30], "Adult" : [31,200], "Middle Age" : [201,275], "Old" : [276,350], "Venerable": 351},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 2, "Dexterity": -2, "Constitution": 2, "Intelligence": 0, "Wisdom": 0, "Charisma" : -2},	
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Resilience": "Once per encounter, when a Nazren would be moved down the Condition Track by taking damage equal to or exceeding the Nazren's Damage Threshold, the Nazren may reduce the number of steps moved down the Condition Track by 1 (to a minimum of 0 steps).",
+		"languages" : ["Nazren", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Pau'an",
+		"age_group" : {"Child" : [1,16], "Young Adult" : [17,30], "Adult" : [31,400], "Middle Age" : [401,500], "Old" : [501,699], "Venerable": 700},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : -2, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 2, "Charisma" : 2},	
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Authority": "As a Species accustomed to being in authority, Pau'ans add a +1 bonus to any insight or morale bonuses they grant to themselves or other characters.",
+		"Conditional Bonus Feat": [{"trained skill" : "Persuasion", "bonus feat" : "Skill Focus (Persuasion)"}],
+		"Low-Light Vision": "Pau'ans ignore Concealment (but not Total Concealment) from darkness.",
+		"languages" : ["Utapese", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Phindian",
+		"age_group" : {"Child" : [1,12], "Young Adult" : [13,16], "Adult" : [17,39], "Middle Age" : [40,54], "Old" : [55,74], "Venerable": 75},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 2, "Wisdom": 0, "Charisma" : -2},	
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Skill Training (Knowledge (Technology))",
+		"Conditional Bonus Feat": [{"trained skill" : "Mechanics", "bonus feat" : "Skill Focus (Mechanics)"}],
+		"languages" : ["Phindian", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Polis Massan",
+		"age_group" : {"Child" : [1,14], "Young Adult" : [15,17], "Adult" : [18,49], "Middle Age" : [50,74], "Old" : [75,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},	
+		"Defenses" : {"Reflex Defense" : 1, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Small",
+		"speed" : 6,
+		"Carry Limit" :  0.75,
+		"Conditional Bonus Feat": [{"trained skill" : "Treat Injury", "bonus feat" : "Skill Focus (Treat Injury)"}],
+		"Darkvision": "Polis Massans ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Limited Telepathy": "In conjunction with their sign language and technological methods of communication, Polis Massans are able to employ a weak form Telepathy that allows them to convey simple feelings and thoughts to any willing recipient within 10 squares. Polis Massans can use the Telepathy aspect of the Use the Force skill Untrained (even if not Force-sensitive). If the target of the Telepathy is within 10 squares, no skill check is required to initiate the telepathic contact.",
+		"Mute": "Polis Massans have no vocal cords, and must rely on a combination of sign language, computers, and Telepathy in order to communicate with others. When they learn new Languages, they can understand but not speak them.",
+		"languages" : ["Massan", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Skakoan",
+		"age_group" : {"Child" : [1,14], "Young Adult" : [15,17], "Adult" : [18,49], "Middle Age" : [50,74], "Old" : [75,84], "Venerable": 85},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 0, "Intelligence": 0, "Wisdom": 0, "Charisma" : 0},	
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Bonus Feat": "Armor Proficiency (Light)",
+		"Conditional Bonus Feat": [{"trained skill" : "Mechanics", "bonus feat" : "Skill Focus (Mechanics)"}],
+		"Mechanical Savant": "Once per encounter, a Skakoan can make a Standard Action Mechanics or Use Computer check as a Swift Action.",
+		"Special Equipment": "Skakoans suffer limitations outside their native atmosphere. Without a Pressure Suit, a Skakoan takes 1d6 points of damage each round and begins to Suffocate. Skakoan characters begin play with a Light Pressure Suit at no cost.",
+		"languages" : ["speak Skakoverbal", "read and write Skakoform", "Basic"]
+        }
+		
+	},
+	{
+		"species_name" : "Stereb",
+		"age_group" : {"Child" : [1,11], "Young Adult" : [12,16], "Adult" : [17,49], "Middle Age" : [50,76], "Old" : [77,89], "Venerable": 90},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 4, "Dexterity": -2, "Constitution": 2, "Intelligence": -2, "Wisdom": 0, "Charisma" : -2},	
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 2,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Conditional Bonus Feat": [{"trained skill" : "Mechanics", "bonus feat" : "Skill Focus (Mechanics)"}],
+		"Darkvision": "Stereb ignore Concealment (including Total Concealment) from darkness. However, they cannot perceive colors in total darkness.",
+		"Great Fortitude": "Stereb gain a +2 Species bonus to their Fortitude Defense. Like the stone they work with, Stereb are physically hardened.",
+		"Primitive": "Stereb do not gain Weapon Proficiency (Heavy Weapons), Weapon Proficiency (Pistols), or Weapon Proficiency (Rifles) as starting Feats at first level, even if their Class normally grants them.",
+		"Survivalist": "Stereb are adapted to a subterranean life and on a successful Survival check made for Basic Survival, can provide food and water for a number of additional beings equal to their Wisdom modifier.",
+		"languages" : ["Stereb"]
+        }
+		
+	},
+	{
+		"species_name" : "Tusken Raider",
+		"age_group" : {"Child" : [1,8], "Young Adult" : [9,13], "Adult" : [14,44], "Middle Age" : [45,60], "Old" : [61,74], "Venerable": 75},
+		"traits" : 
+        {
+		"Ability Modifiers" : {"Strength" : 0, "Dexterity": 0, "Constitution": 2, "Intelligence": -2, "Wisdom": -2, "Charisma" : 0},	
+		"Defenses" : {"Reflex Defense" : 0, "Fortitude Defense": 0,"Will Defense": 0},
+		"size" : "Medium",
+		"speed" : 6,
+		"Carry Limit" : 1,
+		"Sneaky": "A Tusken Raider can choose to reroll any Stealth check to sneak, but the result of the reroll must be accepted, even if it is worse.",
+		"Survival Instinct": "A Tusken Raider may choose to reroll any Survival check, but the result of the reroll must be accepted even if it is worse.",
+		"languages" : ["Tusken"]
+        }
+		
+	}
+]

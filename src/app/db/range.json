@@ -1,0 +1,1884 @@
+[
+    
+    {
+        "name" : "Bow",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "300",
+        "damage" : "1d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1.4kg",
+        "d_type" : ["Piercing"],
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Energy Ball",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Tiny",
+        "cost" : "20",
+        "damage" : "2d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : ".25kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Net",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Large",
+        "cost" : "25",
+        "damage" : "-",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "4.5kg",
+        "d_type" : [],
+        "availability" : [],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Sling",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Small",
+        "cost" : "35",
+        "damage" : "1d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "0.3kg",
+        "d_type" : ["Bludgeoning"],
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Saberdart Launcher",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Tiny",
+        "cost" : "-",
+        "damage" : "1d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "-",
+        "d_type" : ["Piercing"],
+        "availability" : [],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Battering Ram",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Large",
+        "cost" : "3500",
+        "damage" : "5d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "10kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Razor Bug",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Small",
+        "cost" : "800",
+        "damage" : "2d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "0.5kg",
+        "d_type" : ["Slashing"],
+        "availability" : ["Illegal", "Rare"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Thud Bug",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Small",
+        "cost" : "800",
+        "damage" : "2d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "0.5kg",
+        "d_type" : ["Bludgeoning"],
+        "availability" : ["Illegal", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Repeating Crossbow",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "400",
+        "damage" : "1d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1.2kg",
+        "d_type" : ["Piercing"],
+        "availability" : [],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Targeting Laser",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Tiny",
+        "cost" : "50",
+        "damage" : "-",
+        "stun_setting" : [],
+        "rof" : ["S"],
+        "weight" : "0.1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Darter",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "150",
+        "damage" : "1",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "3kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Licensed"],
+        "attributes" : ["limitedRange"]
+    
+    },
+    {
+        "name" : "Crossbow",
+        "w_type" : "Simple Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "300",
+        "damage" : "1d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1.8kg",
+        "d_type" : ["Piercing"],
+        "availability" : [],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    
+    {
+        "name" : "Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "500",
+        "damage" : "3d6",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Heavy Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "750",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1.3kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Hold-Out Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Tiny",
+        "cost" : "300",
+        "damage" : "3d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "0.5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Ion Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "250",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Ion"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Sporting Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "300",
+        "damage" : "3d4",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Sporting Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "300",
+        "damage" : "3d4",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Slugthrower Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "250",
+        "damage" : "2d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1.4kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Sonic Stunner",
+        "w_type" : "Pistols",
+        "size" : "Tiny",
+        "cost" : "450",
+        "damage" : "-",
+        "stun_setting" : ["ONLY", "3d6"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Heavy Sonic Pistol",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "1250",
+        "damage" : "2d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Sonic"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Needler",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "650",
+        "damage" : "2d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Licensed"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Pulse-Wave Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "200",
+        "damage" : "2d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Ripper",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "750",
+        "damage" : "2d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Slashing"],
+        "availability" : ["Licensed"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Sonic Disruptor",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "1000",
+        "damage" : "2d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["Special", "can fire only once every other round"],
+        "weight" : "1kg",
+        "d_type" : ["Sonic"],
+        "availability" : ["Illegal"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Sonic Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "900",
+        "damage" : "2d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Sonic"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Bryar Pistol",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "1350",
+        "damage" : "3d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "3kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Disruptor Pistol",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "3000",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "3kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Subrepeating Blaster",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "750",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["A"],
+        "weight" : "2kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Adjudicator Slugthrower",
+        "w_type" : "Pistols",
+        "size" : "Tiny",
+        "cost" : "325",
+        "damage" : "2d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "0.5kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Defender MicroBlaster",
+        "w_type" : "Pistols",
+        "size" : "Tiny",
+        "cost" : "400",
+        "damage" : "3d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "0.25kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "DH-23 Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "500",
+        "damage" : "3d6",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "DT-12 Heavy Blaster",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "900",
+        "damage" : "4d6",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "2kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Model 434 DeathHammer",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "650",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1.2kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Bluebolt Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "850",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1.6kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Snap-Shot Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Tiny",
+        "cost" : "250",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Ascension Gun",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "1200",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "2kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Sidearm Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "400",
+        "damage" : "3d6",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Sidearm Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "400",
+        "damage" : "3d6",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Snare Pistol",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "600",
+        "damage" : "-",
+        "stun_setting" : ["ONLY", "1d4"],
+        "rof" : ["S"],
+        "weight" : "2kg",
+        "d_type" : ["Bludgeon"],
+        "availability" : ["Licensed"],
+        "attributes" : ["limitedRange"]
+    
+    },
+    {
+        "name" : "Wrist Blaster",
+        "w_type" : "Pistols",
+        "size" : "Tiny",
+        "cost" : "800",
+        "damage" : "3d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "0.5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : ["limitedRange"]
+    
+    },
+    {
+        "name" : "Black-Powder Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "200",
+        "damage" : "2d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1.4kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Rare"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Heavy Slugthrower Pistol",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "400",
+        "damage" : "2d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "2.1kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Stun Pistol",
+        "w_type" : "Pistols",
+        "size" : "Small",
+        "cost" : "550",
+        "damage" : "2d8",
+        "stun_setting" : ["ONLY", "3d6"],
+        "rof" : ["S"],
+        "weight" : "2.1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "S-5 Heavy Blaster Pistol",
+        "w_type" : "Pistols",
+        "size" : "Medium",
+        "cost" : "1000",
+        "damage" : "3d8 or 1d2",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1.3kg",
+        "d_type" : ["Energy", "Piercing"],
+        "availability" : ["Military", "Rare"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    
+    {
+        "name" : "Blaster Carbine",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "900",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S", "A"],
+        "weight" : "2.2kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Blaster Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1000",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S", "A"],
+        "weight" : "4.5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Sporting Blaster Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "800",
+        "damage" : "3d6",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "4kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Ion Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "800",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "3.1kg",
+        "d_type" : ["Ion"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Slugthrower Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "300",
+        "damage" : "2d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S", "A"],
+        "weight" : "4kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Light Repeating Blaster",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "1200",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["A"],
+        "weight" : "6kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Heavy Blaster Rifle",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "2000",
+        "damage" : "3d10",
+        "stun_setting" : ["YES"],
+        "rof" : ["S","A"],
+        "weight" : "6kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Assault Blaster Rifle",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "1750",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S","A"],
+        "weight" : "5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Commando Special Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1250",
+        "damage" : "3d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S","A"],
+        "weight" : "3.3kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Ion Carbine",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "800",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S","A"],
+        "weight" : "3kg",
+        "d_type" : ["Ion"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Pulse-Wave Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "550",
+        "damage" : "2d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S","A"],
+        "weight" : "4kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Repeating Blaster Carbine",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "2000",
+        "damage" : "3d10",
+        "stun_setting" : ["YES"],
+        "rof" : ["A"],
+        "weight" : "6kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Sonic Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "900",
+        "damage" : "2d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S", "A"],
+        "weight" : "5kg",
+        "d_type" : ["Sonic"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Bryar Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1350",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "3kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Disruptor Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "3500",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "6kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Flechette Launcher",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "1100",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "5kg",
+        "d_type" : [ "Piercing"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Incinerator Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "3500",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "5kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Rail Detonator Gun",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "1900",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "5kg",
+        "d_type" : [ "Piercing"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Stokhli Spray Stick",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "14000",
+        "damage" : "-",
+        "stun_setting" : ["3d8"],
+        "rof" : ["S"],
+        "weight" : "4kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Micro Grenade Launcher",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "2500",
+        "damage" : "Varies on Ammo",
+        "stun_setting" : ["Varies on Ammo"],
+        "rof" : ["S"],
+        "weight" : "3kg",
+        "d_type" : [ "Varies on Ammo"],
+        "availability" : ["Illegal"],
+        "attributes" : ["Inaccurate", "AoE"]
+    
+    },
+    {
+        "name" : "Snare Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1200",
+        "damage" : "-",
+        "stun_setting" : ["1d6"],
+        "rof" : ["S"],
+        "weight" : "5kg",
+        "d_type" : [ "Bludgeon"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Sniper Blaster Rifle",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "2000",
+        "damage" : "3d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "8kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "DLT-20A Longblaster",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "1300",
+        "damage" : "3d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S", "A"],
+        "weight" : "6.7kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Adventurer Slugthrower",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "360",
+        "damage" : "2d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "4kg",
+        "d_type" : [ "Piercing"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Firelance Blaster Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1200",
+        "damage" : "3d8",
+        "stun_setting" : ["YES", "4d6"],
+        "rof" : ["S", "A"],
+        "weight" : "2.5kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "ARC-9965 Blaster",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1400",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S", "A"],
+        "weight" : "5kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Double-Barreled Blaster",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1200",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "1.9kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Inaccurate", "AoE"]
+    
+    },
+    {
+        "name" : "Heavy Assault Blaster",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "3000",
+        "damage" : "3d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["A"],
+        "weight" : "7kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Hunting Blaster Carbine",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1000",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "2.1kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Sporting Blaster Carbine",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1000",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "2.6kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "ESPO 500 Riot Gun",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1200",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S", "A"],
+        "weight" : "2.2kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "SG-4 Blaster Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "400",
+        "damage" : "3d8 for blaster or 2d6 for harpoon",
+        "stun_setting" : ["YES", "2d8"],
+        "rof" : ["S", "A"],
+        "weight" : "5kg",
+        "d_type" : [ "Energy", "Piercing"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Interchangeable Rifle System",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "4500",
+        "damage" : "3d8 for blaster 3d10 for sniper 4d6 for anti-armor",
+        "stun_setting" : ["YES", "only for blaster"],
+        "rof" : ["S", "A"],
+        "weight" : "5kg",
+        "d_type" : [ "Energy", "Slashing"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Scattergun",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "275",
+        "damage" : "3d8 for point-blank or 2d8 for short",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "4kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Licensed"],
+        "attributes" : ["limitedRange"]
+    
+    },
+    {
+        "name" : "Variable Blaster",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1300",
+        "damage" : "3d4 (Base), or 3d6 (x5 shots), or 3d8 (x10 shots)",
+        "stun_setting" : ["YES"],
+        "rof" : ["S", "A"],
+        "weight" : "5kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Heavy Variable Blaster",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "2250",
+        "damage" : "3d6 (Base), or 3d8 (x10 shots), or 3d10 (x20 shots)",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "6.5kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Xerrol Nightstinger",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1500",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "4.5kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Concussion Rifle",
+        "w_type" : "Rifles",
+        "size" : "Large",
+        "cost" : "1800",
+        "damage" : "2d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "2.1kg",
+        "d_type" : [ "Sonic"],
+        "availability" : ["Restricted", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Targeting Blaster Rifle",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "1000",
+        "damage" : "3d6 or 3d8 when aiming",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "4kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "DC-19 Stealth Carbine",
+        "w_type" : "Rifles",
+        "size" : "Medium",
+        "cost" : "3500",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "5kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    },
+    
+    {
+        "name" : "Grenade Launcher",
+        "w_type" : "Heavy Weapons",
+        "size" : "Medium",
+        "cost" : "500",
+        "damage" : "Varies on Ammo",
+        "stun_setting" : ["Varies on Ammo"],
+        "rof" : ["S"],
+        "weight" : "5kg",
+        "d_type" : [ "Varies on Ammo"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate", "AOE"]
+    
+    },
+    {
+        "name" : "Heavy Repeating Blaster",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "4000",
+        "damage" : "3d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["A"],
+        "weight" : "12kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Blaster Cannon",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "3000",
+        "damage" : "3d12",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "18kg",
+        "d_type" : [ "Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate", "AOE"]
+    
+    },
+    {
+        "name" : "Missile Launcher",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "1500",
+        "damage" : "6d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "10kg",
+        "d_type" : ["Slashing"],
+        "availability" : ["Military"],
+        "attributes" : ["AOE"]
+    
+    },
+    {
+        "name" : "E-Web Repeating Blaster",
+        "w_type" : "Heavy Weapons",
+        "size" : "Huge",
+        "cost" : "8000",
+        "damage" : "3d12",
+        "stun_setting" : ["NO"],
+        "rof" : ["A"],
+        "weight" : "38kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["tripodMount"]
+    
+    },
+    {
+        "name" : "Light Concussion Missile Launcher",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "4000",
+        "damage" : "4d10 X2",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "18kg",
+        "d_type" : ["Slashing"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Carbonite Rifle",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "1200",
+        "damage" : "-",
+        "stun_setting" : ["YES", "3d10"],
+        "rof" : ["S"],
+        "weight" : "6kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Licensed"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "E-Web Missile Launcher",
+        "w_type" : "Heavy Weapons",
+        "size" : "Huge",
+        "cost" : "9500",
+        "damage" : "6d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "42kg",
+        "d_type" : ["Slashing"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE", "tripodMount" ]
+    
+    },
+    {
+        "name" : "Electronet",
+        "w_type" : "Heavy Weapons",
+        "size" : "Medium",
+        "cost" : "2000",
+        "damage" : "-",
+        "stun_setting" : ["YES", "3d8"],
+        "rof" : ["S"],
+        "weight" : "5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Heavy Blaster Cannon",
+        "w_type" : "Heavy Weapons",
+        "size" : "Huge",
+        "cost" : "4200",
+        "damage" : "4d12",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "22kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE", "tripodMount", "Inaccurate"]
+    
+    },
+    {
+        "name" : "PLX-2M Portable Missile Launcher",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "2250",
+        "damage" : "8d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "48kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Miniature Proton Torpedo Launcher",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "1500",
+        "damage" : "6d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "8kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Flame Cannon",
+        "w_type" : "Heavy Weapons",
+        "size" : "Huge",
+        "cost" : "3000",
+        "damage" : "5d6 (Half Damage on Miss)",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "15kg",
+        "d_type" : ["Fire"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE", "tripodMount"]
+    
+    },
+    {
+        "name" : "Flame Cannon",
+        "w_type" : "Heavy Weapons",
+        "size" : "Huge",
+        "cost" : "3000",
+        "damage" : "5d6 (Half Damage on Miss)",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "15kg",
+        "d_type" : ["Fire"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE", "tripodMount"]
+    
+    },
+    {
+        "name" : "Mortar Launcher",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "2500",
+        "damage" : "Varies on Ammo",
+        "stun_setting" : ["Varies on Ammo"],
+        "rof" : ["S"],
+        "weight" : "20kg",
+        "d_type" : ["Varies on Ammo"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE", "ARC"]
+    
+    },
+    {
+        "name" : "Rotary Blaster Cannon",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "5500",
+        "damage" : "3d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "16kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Tactical Tractor Beam",
+        "w_type" : "Heavy Weapons",
+        "size" : "Huge",
+        "cost" : "8000",
+        "damage" : "-",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "25kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["tripodMount"]
+    
+    },
+    {
+        "name" : "HH-15 Projectile Launcher",
+        "w_type" : "Heavy Weapons",
+        "size" : "Large",
+        "cost" : "2000",
+        "damage" : "6d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "12kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    
+    {
+        "name" : "Frag Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "250",
+        "damage" : "4d6",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : ["Slashing"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Ion Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "250",
+        "damage" : "4d6",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : ["Energy(Ion)"],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Stun Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "250",
+        "damage" : "-",
+        "stun_setting" : ["YES", "4d6"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : ["Energy(Stun)"],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Thermal Detonator",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "2000",
+        "damage" : "8d6",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : ["AoE", "Inaccurate"]
+    
+    },
+    {
+        "name" : "Adhesive Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "200",
+        "damage" : "-",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "CryoBan Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "500",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Remote Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "300",
+        "damage" : "4d6",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "EMP Grenade",
+        "w_type" : "Grenades",
+        "size" : "Small",
+        "cost" : "500",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : ["Energy(Ion)"],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Flash Canister",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "100",
+        "damage" : "-",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Concussion Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "400",
+        "damage" : "8d6",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : ["Bludgeoning"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Gas Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "250",
+        "damage" : "-",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : [],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Power Pack Bomb",
+        "w_type" : "Grenades",
+        "size" : "Small",
+        "cost" : "N/A",
+        "damage" : "Varies on Ammo",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.2kg - 0.5kg",
+        "d_type" : [],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Radiation Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "500",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Smoke Grenade",
+        "w_type" : "Grenades",
+        "size" : "Tiny",
+        "cost" : "100",
+        "damage" : "-",
+        "stun_setting" : [],
+        "rof" : [],
+        "weight" : "0.5kg",
+        "d_type" : [],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    
+    {
+        "name" : "Flamethrower",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "1000",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "7kg",
+        "d_type" : ["Fire"],
+        "availability" : ["Military"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Bowcaster",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Large",
+        "cost" : "1500",
+        "damage" : "3d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "8kg",
+        "d_type" : ["Energy","Piercing"],
+        "availability" : ["Licensed", "Rare"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Aurial Blaster",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "2500",
+        "damage" : "3d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Sonic"],
+        "availability" : ["Restricted"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Massassi Lanvarok",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Large",
+        "cost" : "250",
+        "damage" : "3d4 ranged or 1d8 melee",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "9.8kg",
+        "d_type" : ["Bludgeoning"],
+        "availability" : ["Rare"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Sith Lanvarok",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "4000",
+        "damage" : "3d4",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "5.8kg",
+        "d_type" : ["Bludgeoning"],
+        "availability" : ["Rare"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "CR-1 Blast Cannon",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Large",
+        "cost" : "2000",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "6kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military"],
+        "attributes" : ["Inaccurate", "Splash"]
+    
+    },
+    {
+        "name" : "Deck Sweeper",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Large",
+        "cost" : "5000",
+        "damage" : "-",
+        "stun_setting" : ["YES", "3d6"],
+        "rof" : ["S"],
+        "weight" : "4.5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Neural Inhibitor",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "4200",
+        "damage" : "1d6",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Illegal"],
+        "attributes" : ["Inaccurate"]
+    
+    },
+    {
+        "name" : "Pulse Rifle",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "5000",
+        "damage" : "2d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "2.5kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Wrist Rocket Launcher",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Small",
+        "cost" : "2500",
+        "damage" : "Varies on Ammo",
+        "stun_setting" : ["Varies on Ammo"],
+        "rof" : ["S"],
+        "weight" : "2.5kg",
+        "d_type" : ["Varies on Ammo"],
+        "availability" : ["Restricted"],
+        "attributes" : ["AoE"]
+    
+    },
+    {
+        "name" : "Concealed Dart Launcher",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Small",
+        "cost" : "1900",
+        "damage" : "-",
+        "stun_setting" : ["YES", "3d8"],
+        "rof" : ["S"],
+        "weight" : "0.5kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Illegal"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Discblade",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Small",
+        "cost" : "2000",
+        "damage" : "2d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1.25kg",
+        "d_type" : ["Slashing"],
+        "availability" : ["Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Siang Lance",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "2000",
+        "damage" : "3d8",
+        "stun_setting" : ["YES"],
+        "rof" : ["S"],
+        "weight" : "4kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal", "Rare"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Magna Caster",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "2000",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "4kg",
+        "d_type" : ["Piercing"],
+        "availability" : ["Restricted"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Squib Tensor Rifle",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "10000",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "7.2kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Restricted", "Rare"],
+        "attributes" : []
+    
+    },
+    {
+        "name" : "Verpine Shattergun",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Medium",
+        "cost" : "15000",
+        "damage" : "3d10",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "1kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Illegal", "Rare"],
+        "attributes" : ["Accurate"]
+    
+    },
+    {
+        "name" : "Blast Cannon",
+        "w_type" : "Exotic Weapons (Ranged)",
+        "size" : "Large",
+        "cost" : "2000",
+        "damage" : "3d8",
+        "stun_setting" : ["NO"],
+        "rof" : ["S"],
+        "weight" : "6kg",
+        "d_type" : ["Energy"],
+        "availability" : ["Military", "Rare"],
+        "attributes" : ["Splash"]
+    
+    }
+    
+    ]

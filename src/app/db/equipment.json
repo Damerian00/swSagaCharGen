@@ -1,0 +1,2092 @@
+[
+    {
+        "name" : "Comlink Short-Range",
+        "cost" : "25",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : ["Audio", "Video", "Holo"]
+        },
+        "description" : "Comlinks have a range of 50 kilometers or low orbit, and they can be built into helmets and Armor",
+        "attributes" : ["Optional Addon for Video and Holo"]
+    },
+    {
+        "name" : "Comlink Long-Range",
+        "cost" : "250",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : ["Audio", "Video", "Holo"]
+        },
+        "description" : "A Long-Range Comlink has a range of 200 kilometers or high orbit, and it requires with a backpack-sized Comset. For double the cost, a Long-Range Comlink can be miniaturized to a wrist-sized unit.",
+        "attributes" : ["Optional Addon for Video and Holo"]
+    }, 
+    {
+        "name" : "Pocket Scrambler",
+        "cost" : "400",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : []
+        },
+        "description" : "A simple Addon device that can be attached to any normal Communications Device. It automatically encodes any outgoing message so that it can be read only by a Communications Device equipped with a linked Pocket Scrambler. A DC 30 Use Computer check to decrypt it for whoever intercepts it.",
+        "attributes" : ["Optional Addon"]
+    }, 
+    {
+        "name" : "Vox-Box",
+        "cost" : "200",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : ["Audio"]
+        },
+        "description" : "A Vox-Box is a simple audio playback unit with 12 preprogrammed phrases in Basic, each with its own button. Devices that speak these phrases in other Languages also exist. DC 10 Use Computers to reprogram phrases.",
+        "attributes" : []
+    }, 
+    {
+        "name" : "Visual Wrist Comm",
+        "cost" : "1300",
+        "weight " :"0.25kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : ["Audio", "Video"]
+        },
+        "description" : "The comm is a small, flat, rectangular panel that easily attaches to a glove or other flat surface. The comm sends and receives audio and visual signals, and it can display holographic information, though only as a two-dimensional image. It has a range of up to 75 kilometers while planetside- sufficient to reach orbital range- and runs on a single Energy Cell, which must be replaced after 10 days of continuous use. In addition, the Visual Wrist Comm functions as a Basic Datapad that stores and receives information from Droids, comm signals, direct computer links, and standard Datacards.",
+        "attributes" : []
+    },
+    {
+        "name" : "Hands-Free Comlink",
+        "cost" : "150",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : ["Audio"]
+        },
+        "description" : "The comm is a small, flat, rectangular panel that easily attaches to a glove or other flat surface. The comm sends and receives audio and visual signals, and it can display holographic information, though only as a two-dimensional image. It has a range of up to 75 kilometers while planetside- sufficient to reach orbital range- and runs on a single Energy Cell, which must be replaced after 10 days of continuous use. In addition, the Visual Wrist Comm functions as a Basic Datapad that stores and receives information from Droids, comm signals, direct computer links, and standard Datacards.",
+        "attributes" : []
+    },
+    {
+        "name" : "Com Scrambler",
+        "cost" : "6000",
+        "weight " :"10kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : []
+        },
+        "description" : "Disrupts enemy communication, but it also scrambles friendly communication. Mounted on a backpack frame and can be carried to the front line and even into enemy territory, where it can be connected to a power source and left behind. It covers a 20-kilometer radius, blanketing the area in powerful white noise that disrupts all Comlinks, HoloNet signals, and Droid Remote Receivers within the area. Getting a signal into or out of the affected area requires a Use Computer check against the Com Scarmbler's default Use Computer +10. This check must be made every minute as the Com Scrambler's computer constantly scans and adapts to block any signals it locates.",
+        "attributes" : []
+    },
+    {
+        "name" : "Targeting Beacon",
+        "cost" : "300",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : []
+        },
+        "description" : "The Targeting Beacon is topped with a large light, which can emit a pulse of visible, infrared, or ultraviolet light. The light can be tuned to a specific frequency so that allies who know the proper setting can spot it from a distance without alerting the enemy. Modifying the Targeting Beacon's frequency requires a DC 10 Mechanics check. In clear weather and with unimpeded line of sight, a Targeting Beacon's pulse of visible light can be seen up to 2 kilometers away.",
+        "attributes" : []
+    },
+    {
+        "name" : "Tightbeam Comlink",
+        "cost" : "300",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : ["Audio"]
+        },
+        "description" : "A simple add-on for any Comlink or transceiver. It is worn on a helmet or headpiece and uses special lasers to send and receive encrypted messages from another individual also equipped with a Tightbeam Comlink. Comonly used to ensure that messages are not intercepted on the battlefield. The two characters must be in line of sight with each other, but the Tightbeam Comlink ignores penalties die to Darkness, Smoke, or other Atmospheric Hazards. Communications Scanners and other passive methods of interception cannot pick up Tightbeam Comlink messages, unless the interceptor is directly in the path between individuals using these devices.",
+        "attributes" : []
+    },
+    {
+        "name" : "Earbud Comlink",
+        "cost" : "200",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : ["Audio"]
+        },
+        "description" : "A tiny Comlink fitted for the wearer's ear, allowing unobtrusive private communication for anyone needing to be discreet. The Earbud Comlink's size, shape, and color give the wearer a +5 Equipment bonus to Deception checks for the purpose of hiding its presence. The Earbud Comlink can be programmed to initiate or receive a transmission when the wearer touches his or her ear or even clicks or grinds his or her teeth. Because of its minute size, the Earbud Comlink has the same range as a Comlink (Short-Range)- 50 kilometers or low orbit.",
+        "attributes" : []
+    },
+    {
+        "name" : "Panic Ring",
+        "cost" : "300",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : []
+        },
+        "description" : "This device is available in a variety of shapes and sizes, the most common being a large, ornamental ring. Diplomats, wealthy CEOs, and anyone who fears kidnapping or ambush wear Panic Rings. A secret catch (DC 25 Perception check) reveals a small button that, when pressed, releases an encrypted emergency signal. This signal has a range of 100 kilometers and continually broadcasts a preset signal- usually \"Wearer in danger\"- to local law enforcement, personal security, or any other group designated by the wearer. Changing this signal requires a DC 25 Mechanics check, and failure by 5 or more activates the Panic Ring.",
+        "attributes" : []
+    },
+    {
+        "name" : "Holo Converter",
+        "cost" : "3000",
+        "weight " :"2kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : ["Holo"]
+        },
+        "description" : "This small, blocky device is attached to a Holoprojector and uses powerful algorithms to alter the outgoing signal, modifying the images and sounds received on the other end so that the user's appearance and voice are disguised. The Holo Converter can even disguise the user's gender and Species. Preset with up to 10 different personae, complete with rotating wardrobe, the Holo Converter grants a +5 Equipment bonus to Deception checks for the purposes of making the receiver believe that the user is another person.",
+        "attributes" : []
+    },
+    {
+        "name" : "Signal Wand",
+        "cost" : "300",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Communications Devices",
+            "data_Types" : ["Audio"]
+        },
+        "description" : "The Signal Wand is a 0.25-meter-long stick that has multiple functions. One of its most popular features is its orbital-range broadband Comlink, which can transmit a Tight-Beam signal well beyond a planet's gravity well. If the Signal Wand is connected to a more powerful energy source, the Tight-Beam signal can travel through subspace to reach interstellar distances. However, the user must know exactly where to point the Signal Wand to ensure the beam is on target. The Signal Wand also has a red external light that can be used to transmit signals, such as Mon Calamari blink code.",
+        "attributes" : []
+    },
+    {
+        "name" : "Code Cylinder",
+        "cost" : "500",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "A cmpact en coded security device that accesses computer data via a Droid's Scomp Link or provides entry into restricted facilities. Each cylinder features the user's personal security clearance data. Code Cylinders are storage devices with an Intelligence score of 10, and a Will Defense of 15. Improving your access to a Code Cylinder is difficult because the cylinder has a starting Attitude of Hostile. If your Use Computer check fails by 5 or more, the Code Cylinder's Self-Destruct programming activates and ruins the cylinder.",
+        "attributes" : []
+    },
+    {
+        "name" : "Credit Chip",
+        "cost" : "100",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "The Credit Chip is a small, flat card that features a security codeout and credit algorithm memory stripes. The chip can hold a specified number of credits appropriate to the government that issued it, or it can draw from a specific account held by the user.",
+        "attributes" : []
+    },
+    {
+        "name" : "Blank Datacards (10)",
+        "cost" : "10",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "A data card is a simple storage device with an Intelligence score of 2. Intended solely as external storage for a computer, it has no interface for direct display, editing, or entry of data. The listed cost and weight is for a set of 10 Datacards.",
+        "attributes" : []
+    },
+    {
+        "name" : "Basic Datapad",
+        "cost" : "100",
+        "weight " :"0.3kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "These handheld personal computers serve as notebooks, day planners, calculators, and sketchpads. Datapads can interface with larger computer networks directly or via Comlink. A Datapad is a computer with an Intelligence score of 10 and they have no ability to run programs.",
+        "attributes" : []
+    },
+    {
+        "name" : "Standard Datapad",
+        "cost" : "1000",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "These handheld personal computers serve as notebooks, day planners, calculators, and sketchpads. Datapads can interface with larger computer networks directly or via Comlink. A Datapad is a computer with an Intelligence score of 12.",
+        "attributes" : []
+    },
+    {
+        "name" : "Personal Holoprojector",
+        "cost" : "1000",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "A handheld, personal hologram transmitter can be used to view real-time or recorded three-dimensional images or to pass the information through a Comlink connection. This storage device has an Intelligence score of 2, and enough memory to store about 1 hour of a Holo recording, or 1000 Holo images.",
+        "attributes" : []
+    },
+    {
+        "name" : "Portable Computer",
+        "cost" : "5000",
+        "weight " :"2kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "Compact and light enough to be carried in an attache case or backpack, but powerful enough to run fairly complex programs, Portable Computers are the information technology of choice for anyone who needs access to a lot of data while on the go. A Portable Computer has an Intelligence score of 14.",
+        "attributes" : []
+    },
+    {
+        "name" : "Computer Spike",
+        "cost" : "-",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "Computer Spikes are single-use programs built into a basic piece of computer hardware that plugs directly into another computer system. Designed to bypass computer security and help improve access to protected systems, a Computer Spike interfaces with another computer system and uses untraceable programs to chip away at the target system's defenses. A Computer Spike can be activated as a Swift Action, after which it makes a single Use Computer check (with a bonus of +2 or higher, determined by its cost and quality) that can be used only to Improve Access. All Computer Spikes are considered Illegal. The quality of a Computer Spike is reflected in it's cost, as every +2 bonus to Use Computer checks increases the cost of a Computer Spike by 1,500 credits.",
+        "attributes" : []
+    },
+    {
+        "name" : "HiBaka 2000 Mem-Stik",
+        "cost" : "50",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "A tiny piece of hardware that holds a moderate amount of information without taking up too much space. Though a Mem-Stik does not have enough space to carry computer programs, it can hold simple text, image, and video data (As well as under 1 minute of Holographic data). A Mem-Stik is Fine in size, and can be hidden inside the Power Pack slot of a standard Blaster Pistol (Granting a +10 Equipment bonus to Stealth checks to hide the Mem-Stik). A blaster that has a Mem-Stik in it's Power Pack slot cannot be fired without first reinserting the Power Pack.",
+        "attributes" : []
+    },
+    {
+        "name" : "Lectroticker",
+        "cost" : "-",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "A small electronic device used to bypass low-grade security systems, a Lectroticker consists of several small wires connected to a sense-plate. When the sense-plate is inserted into a standard security lock, the sense-plate is charged with varying amounts of energy, scrambling the signals sent to the electronic lock, and fooling it's systems into thinking that the correct access card has been provided. It can be activated as a Swift Action, after which it makes a single Mechanics check (With a bonus of +2 or higher, determined by it's cost and quality) to disable an electric lock. All Lectrotickers are considered Illegal. The quality of a Lectroticker is reflected in it's cost, as every +2 bonus to Mechanics checks increases the cost of a Lectroticker by 1500 credits",
+        "attributes" : []
+    },
+    {
+        "name" : "Computer Interface Visor",
+        "cost" : "1200",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "Worn across the eyes and connected to a computer system, the Computer Interface Visor provides the wearer with a heads-up display that displays relevant data laid over one's normal vision. A Computer Interface Visor translates complex computer algorithms into easy-to-understand symbols and words, allowing the wearer to attempt Trained-only applications of the Use Computer Skill even if Untrained. The Computer Interface Visor also provides a +2 Equipment bonus on Use Computer checks. A Computer Interface Visor cannot be worn at the same time as Armor with a helmet or any other device worn on the head.",
+        "attributes" : []
+    },
+    {
+        "name" : "Bracer Computer",
+        "cost" : "1300",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "The Bracer Computer is a Datapad worn on the user's forearm. It performs all the same functions as the Standard Datapad, including the ability to read standard Datacards in a slot on the underside of the device. The Bracer Computer also features a holographic screen that displays information as a two-dimensional image about three centimeters above the device. Plus, the keyboard is designed to accommodate one-handed typing. The Bracer Computer is popular among those who need to conserve space with their Equipment, particularly bounty hunters. A Bracer Computer has an Intelligence score of 12.",
+        "attributes" : []
+    },
+    {
+        "name" : "Xcalq-3GA \"Slicer Special\" Portable Computer",
+        "cost" : "7500",
+        "weight " :"2kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "The Xcalq-3GA may be used as a regular Portable Computer and has an Intelligence score of 14. However, when used to slice Galactic Alliance systems and networks, the opposing system is automatically treated as Friendly or Helpful (See Use Computer), granting a +3 Equipment bonus on all Use Computer checks made with that computer. This bonus does not apply to checks made to break through any initial Imperial security installed on the system.",
+        "attributes" : []
+    },
+    {
+        "name" : "Xcalq Stealth Pack",
+        "cost" : "1500",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "Using a computer equipped with this software package, you can slice into a system without being traced, isolated, or cut off by the system's automatic safeguards. If another character attempts to locate, isolate, or cut off your computer, make opposed Use Computer checks. The Stealth Pack grants a +5 Equipment bonus to your check.",
+        "attributes" : []
+    },
+    {
+        "name" : "Triangulation Visor",
+        "cost" : "1400",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Computers and Storage Devices"
+        },
+        "description" : "The Triangulation Visor provides a heads-up display to help wielders of Heavy Weapons to account for wind, gravity, distance, and other effects when targeting shots. The Triangulation Visor works only with Weapons that fire solid rounds, such as Slugthrowers, Mortar Launchers, Missile Launchers, and Grenade Launchers. It does not work with blasters, lasers, or other Energy Weapons. The Triangulation Visor reduces the Range by one category. A Triangulation Visor cannot be worn at the same time as a helmet or any other device worn on the head.",
+        "attributes" : []
+    },
+    {
+        "name" : "Cybernetic Prosthesis",
+        "cost" : "1500",
+        "weight " :"Varies",
+        "equip_type" : {
+            "type" : "Cybernetic Devices",
+            "installCost": "500"  
+        },
+        "description" : "Prosthetic replacements in the Star Wars universe frequently take the form of mechanical simulations powered by tiny high-capacity battery packs and motivated by the recipient's bioelectrical impulses. In effect, someone who loses a limb or an extremity can have an electronic replacement that acts (And in some cases looks) just like the original. Attaching a Cybernetic Prosthesis requires the Cybernetic Surgery Feat. Once attached, the cybernetic replacement performs as well as the original limb or extremity. Common Cybernetic Prosthetics include arms, hands, legs, feet, and various organs. In addition to the cost of the prosthesis, the recipient must also cover the cost of the surgery. Unlike other creatures, a creature with Cybernetic Prosthetics takes full damage from weapons and attacks that deal Ion Damage. Cybernetic Prosthetic take a -1 penalty on Use the Force checks for each prosthetic replacement they possess up to -5.",
+        "attributes" : []
+    },
+    {
+        "name" : "Rhen-Orm Biocomputer",
+        "cost" : "3500",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Cybernetic Devices",
+            "installCost": "10000"  
+        },
+        "description" : "An Anzati creation, the Rhen-Orm Biocomputer is surgically installed into a creatures skull, expanding the user's awareness and allows the user to sense those who have uncommon \"Luck.\" The computer processes information received from a long antenna that protrudes from the user's forehead. The result of this implant is that when the user makes a Survival check to Track an opponent, they add their quarry's Force Point total as an Equipment bonus to their Survival checks. A Rhen-Orm Biocomputer must be installed by a character who possesses the Cybernetic Surgery Feat, and is counted as a Cybernetic Prosthesis.",
+        "attributes" : []
+    },    
+    {
+        "name" : "Energy-Binding Prosthesis",
+        "cost" : "-",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Cybernetic Devices"
+        },
+        "description" : "A unique Cybernetic Prosthesis, the Energy-Binding Prosthesis uses an energy bind in place of a mechanical limb, with a standard cybernetic hand connected to a energy field tied to the wielder's missing limb. The arm has an effective Strength score of 8 at Small size, an effective Strength score of 10 at Medium size, and an effective Strength score of 12 at Large size. By manipulating the energy binding in combat, the wielder can disrupt an opponent's Personal Energy Shield as well as some other force fields. The Energy-Binding Prosthesis requires an Energy Cell to operate, and the Energy Cell must be replaced every 48 hours. Shield Breaker: To disrupt an energy field, the wielder must be adjacent to the target and make a successful Unarmed strike. If the attack hits, Energy Shields with an Shield Rating of 15 or lower are disabled and provide no protection for the rest of the encounter. If the Energy Shield has a Shield Rating greater than 15, the Shield Rating drops by -5, failing once it falls to SR 15 or lower. An Energy-Binding Prosthesis is ineffective against targets more than one size category larger than it.",
+        "attributes" : []
+    },    
+    {
+        "name" : "Subelectronic Converter",
+        "cost" : "23000",
+        "weight " :"Varies",
+        "equip_type" : {
+            "type" : "Cybernetic Devices",
+            "installCost" : "500"  
+        },
+        "description" : "Designed by Imperial scientist Nasdra Magrody, the Subelectronic Converter is a computerized device that, when implanted into a subject's head, allows the subject to control Droids through The Force. A Subelectronic Converter translates the signals from the subject's brain into Binary commands understood by Droids; likewise, it converts Droid signals into a language that the brain can understand. A Subelectronic Converter is just like any other Cybernetic Enhancement, in that it must be installed by a character with the Cybernetic Surgery Feat and imposes a penalty on Use the Force checks. A character with a Subelectronic Converter may use Mind-Affecting Force Powers on Droids, despite the Droids' immunity to Mind-Affecting effects. However, there's a trade off: the recipient of the Subelectronic Converter takes a -2 penalty to their Will Defense due to side effects of the device.",
+        "attributes" : []
+    },
+    {
+        "name" : "Electrobinoculars",
+        "cost" : "1000",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"  
+        },
+        "description" : "This device magnifies distant objects in most lighting conditions. An internal display provides data on range, relative and true azimuths, and elevation. Viewing options include zoom and wide-vision observation. Electrobinoculars also feature radiation sensors and a nightvision mode that grants Darkvision out to the user's normal range of sight. Electrobinoculars reduce the range penalty on Perception checks to -1 for every 10 squares of distance (Instead of -5 for every 10 squares of distance).",
+        "attributes" : []
+    },
+    {
+        "name" : "Glow Rod",
+        "cost" : "10",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "A Glow Rod is a portable illumination device that projects a beam of light up to 6 squares, providing Visibility.",
+        "attributes" : []
+    },
+    {
+        "name" : "Fusion Lantern",
+        "cost" : "25",
+        "weight " :"2kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "A hand-held light source larger than a Glow Rod, the Fusion Lantern produces light and heat. The light spreads out from the lantern, producing illumination in a 6-square radius.",
+        "attributes" : []
+    },
+    {
+        "name" : "Audiorecorder",
+        "cost" : "25",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "This storage device is an Audio recorder with a playback feature. It has an Intelligence score of 1, and 1 memory unit. You can modify a recording with a DC 15 Use Computer check. However, anyone can make an opposed Perception check (If observing the recording), or opposed Use Computer check (If inspecting the data from the recording) to detect any modifications you have made. Editing or modifying a recording without first uploading it to a computer can be difficult: Add the recording unit's Intelligence modifier (-5) to any Use Computer checks you make to change the recording. An Audiorecorder stores 100 hours of high-quality sound.",
+        "attributes" : []
+    },
+    {
+        "name" : "Holorecorder",
+        "cost" : "100",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "This storage device is an Holo-recorder with a playback feature. It has an Intelligence score of 1, and 1 memory unit. You can modify a recording with a DC 15 Use Computer check. However, anyone can make an opposed Perception check (If observing the recording), or opposed Use Computer check (If inspecting the data from the recording) to detect any modifications you have made. Editing or modifying a recording without first uploading it to a computer can be difficult: Add the recording unit's Intelligence modifier (-5) to any Use Computer checks you make to change the recording. A Holorecorder stores 1 hour of high-quality Holos.",
+        "attributes" : []
+    },
+    {
+        "name" : "Videorecorder",
+        "cost" : "50",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "This storage device is an Video recorder with a playback feature. It has an Intelligence score of 1, and 1 memory unit. You can modify a recording with a DC 15 Use Computer check. However, anyone can make an opposed Perception check (If observing the recording), or opposed Use Computer check (If inspecting the data from the recording) to detect any modifications you have made. Editing or modifying a recording without first uploading it to a computer can be difficult: Add the recording unit's Intelligence modifier (-5) to any Use Computer checks you make to change the recording. A Videorecorder stores 10 hours of high-quality video",
+        "attributes" : []
+    },
+    {
+        "name" : "Sensor Pack",
+        "cost" : "1500",
+        "weight " :"9kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "A portable scanning device, the Sensor Pack is a bulky rectangle featuring a variety of dials and switches, a readout display, and a scanning dish. It provides general details on comm signals, life forms, and hazards within 1 kilometer. Operating a Sensor Pack requires a Standard Action, and grants a +5 circumstance bonus on your Perception checks until the end of your next turn.",
+        "attributes" : []
+    },
+    {
+        "name" : "Heat Sensor",
+        "cost" : "250",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "Used primarily to locate fires and damaged components buried behind wall panels and beneath deck plates, a Heat Sensor is a common device in the hands of emergency crew members. A Heat Sensor monitors air temperature out to a distance of 100 meters, and presents color-coded readings on a small screen. In addition to its normal uses, a Heat Sensor can also identify heat signatures generated by hidden creatures, making it a useful tool for rooting out stowaways or alien parasites. A Heat Sensor grants a +2 Equipment bonus to Perception checks made to detect hidden creatures, machines, or hazards that generate heat.",
+        "attributes" : []
+    },
+    {
+        "name" : "Aural Amplifier",
+        "cost" : "2000",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "The Aural Amplifier is a device worn on the head, allowing the wearer to hear from a great distance. By amplifying sound waves originating from the direction of the wearer's interest while dampening ambient noise, the Aural Amplifier grants the wearer a +5 Equipment bonus on Perception checks to Eavesdrop. An Aural Amplifier cannot be worn at the same time as Armor with a helmet or any other device worn on the head.",
+        "attributes" : []
+    },
+    {
+        "name" : "Demolitions Sensor",
+        "cost" : "1000",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "Resembling a pair of goggles, the Demolitions Sensor can detect both the explosives and triggering mechanisms of Mines, Grenades, and other explosive devices, highlighting them in the wearer's vision. The Demolitions Sensor grants the wearer a +5 Equipment bonus on Perception checks made to find Mines and other planted explosives. A Demolitions Sensor cannot be worn at the same time as Armor with a helmet or any other device worn on the head.",
+        "attributes" : []
+    },
+    {
+        "name" : "Motion Sensing Visor",
+        "cost" : "2500",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "The Motion Sensing Visor tracks movement and highlights moving objects with color-coded warnings. This allows the wearer to see moving opponents with ease, even those attempting to be stealthy. The wearer of this visor gains a +5 Equipment bonus to Perception checks against targets that have moved at least one square since the wearer's last turn. However, a Motion Sensing Visor can be disorientating, especially in the heat of combat, and a character must spend two additional Swift Actions to use the Recover Action when attempting to move up the Condition Track. A Motion Sensing Visor cannot be worn at the same time as Armor with a helmet or any other device worn on the head.",
+        "attributes" : []
+    },
+    {
+        "name" : "Neural Band",
+        "cost" : "3500",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "Developed in response to both Sith and Jedi using The Force to manipulate soldiers and security personnel, the Neural Band reinforces various synapses throughout the brain and provides alternative conduits for electrical impulses within the mind, making the wearer's thoughts difficult to affect. Neural Bands grant their wearer's a +2 Equipment bonus to their Will Defense, but lowers the wearer's Damage Threshold by 2 points. A Neural Band cannot be worn at the same time as Armor with a helmet or any other device worn on the head.",
+        "attributes" : []
+    },
+    {
+        "name" : "Stealth Field Generator",
+        "cost" : "5000",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "A small and unobtrusive device worn on the belt, the Stealth Field Generator emits a sound-dampening field around the wearer that makes sneaking up on an opponent easier. Additionally, the Stealth Field Generator uses technology similar to that of a Personal Energy Shield to bend light around the wearer, making them harder to see. The Stealth Field Generator grants Concealment (but not Total Concealment) to the wearer when activated. Activating a Stealth Field Generator is a Swift Action, and it lasts for the duration of the encounter, until the wearer takes damage, or until the wearer attacks or uses a Force Power, whichever comes first. A Stealth Field Generator requires a Power Pack to operate. After 5 uses, the Power Pack must be replaced.",
+        "attributes" : []
+    },
+    {
+        "name" : "Decoy Glow Rod",
+        "cost" : "100",
+        "weight " :"4kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "The Decoy Glow Rod is a piece of Equipment used by enemies of the Empire and smugglers alike. This device is a fully functional Glow Rod with a hollowed-out handle that can be used to hide small objects. A Decoy Glow Rod can hide up to 3 kilograms of Equipment, no one piece of which can be larger than Diminutive in size. This allows the owner to hide everything from Code Cylinders and Datacards to Credit Chips and small Comlinks within the interior. Best of all, since the Decoy Glow Rod is functional, Imperial customs agents almost never suspect that such a device is being used to carry contraband. Hiding an item inside a Decoy Glow Rod grants the user a +10 Equipment bonus on Stealth checks to hide the item.",
+        "attributes" : []
+    },
+    {
+        "name" : "Holoshroud",
+        "cost" : "25000",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "A Holoshroud is an advanced form of Holoprojector that places a stored holographic image of a creature over the form of the creature wearing the Holoshroud. This creates a nearly perfect visual illusion that moves, acts, and reacts with the wearer. It is able to store a single holographic image to disguise the wearer, though it can be changed if the user has access to other holographic images and makes a DC 15 Use Computer check. Using a Holoshroud gives you a +10 Equipment bonus on Deception checks made to produce a Deceptive Appearance that matches the holographic image within the Holoshroud. Creating or removing this Deceptive Appearance is a Swift Action (To turn the Holoshroud on or off), which is not considered a Rushed Deception and does not take a -10 penalty for lacking the proper time.",
+        "attributes" : []
+    },
+    {
+        "name" : "Sound Sponge",
+        "cost" : "3500",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "This small electronic device emits sound waves in frequencies well above and below the normal range of audible sound for most Species in the galaxy, using those sounds to suppress other sounds in the vicinity. A Sound Sponge muffles all sound in a 6-square radius, increasing the Perception check DC to hear noises coming from that area by 10.",
+        "attributes" : []
+    },
+    {
+        "name" : "Halo Lamp",
+        "cost" : "30",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "This device magnifies distant objects in most lighting conditions. An internal display provides data on range, relative and true azimuths, and elevation. Viewing options include zoom and wide-vision observation. Electrobinoculars also feature radiation sensors and a nightvision mode that grants Darkvision out to the user's normal range of sight. Electrobinoculars reduce the range penalty on Perception checks to -1 for every 10 squares of distance (Instead of -5 for every 10 squares of distance).",
+        "attributes" : []
+    },
+    {
+        "name" : "Spy Bug",
+        "cost" : "1300",
+        "weight " :"0.51kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "This Diminutive, bioengineered insect records sights and sounds within 20 squares of it. It can be placed in a hidden area and remains there until retrieved. When the Spy Bug is retrieved, the data that it has absorbed through it's senses for the past 24 hours can be extracted. Requires a but a DC 25 Mechanics check to transmit the data via electronic connectors or Comlink. A Spy Bug functions as a Holorecorder Unit and registers as a life form on sensors, not as an electronic device.",
+        "attributes" : []
+    },
+    {
+        "name" : "Ambient Aural Amplifier",
+        "cost" : "3000",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "Ambient Aural Amplifiers can pick out sounds, analyze them, and amplify only the sounds that are likely to be useful. These devices draw power from the body heat of any warm-blooded creature that wears them, giving the amplifiers an effectively unlimited operation time. (Cold-blooded Species can power the devices by placing them on a warm surface or piece of gear.) The result is a +5 Equipment bonus to Perception checks to Eavesdrop or to hear distant or ambient noises.",
+        "attributes" : []
+    },
+    {
+        "name" : "Communication Scanner",
+        "cost" : "1000",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "A Communication Scanner is a Datapad-sized device used to intercept, analyze, decode, and record Comlink, transceiver, and HoloNet transmissions. Unencrypted broadcasts are automatically picked up. By making a DC 15 Use Computer check, the user can determine the number and types of communication being broadcasted and received within a 50-kilometer radius. A DC 20 Use Computer check reveals the direction and distance of a broadcast. The Communications Scanner grants a +5 Equipment bonus to decipher encrypted messages that it receives. However, it cannot be used to locate the presence of Tightbeam Comlinks unless the Communication Scanner is directly in the path of the Tightbeam Comlink. In addition, the Communication Scanner functions as a Recording Unit for the transmissions it intercepts. ",
+        "attributes" : []
+    },
+    {
+        "name" : "Proximity Flare",
+        "cost" : "50",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "A flare is housed in a small cylinder with a spike on the bottom, allowing it to be securely placed on the ground. Sensors in the cylinder detect nearby shifts in air pressure. When any Small or larger character, creature, Droid, or Vehicle comes within a 3-square radius of the Proximity Flare, the flare launches, creating a stark, bright light illuminating a 10-square radius and eliminating Concealment penalties due to insufficient lighting. Creatures can avoid tripping a Proximity Flare by making a DC 25 Stealth check.",
+        "attributes" : []
+    },
+    {
+        "name" : "Radiation Detector",
+        "cost" : "20",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "Worn on the wrist or on the front of Armor or uniforms, a Radiation Detector alerts the user to the presence of Radiation within 6 squares. The Radiation Detector gives a color code indicating the strength of Radiation and, additionally, can be set to provide either a vibrating or an audible alarm.",
+        "attributes" : []
+    },
+    {
+        "name" : "Surveillance Detector",
+        "cost" : "450",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "A Surveillance Detector is a small, handheld device that scans an area for eavesdropping devices and Surveillance Taggers. When activated, the Surveillance Detector grants a +10 Equipment bonus to Perception checks for locating active or passive Surveillance Devices within 6 squares of the detector. It can be set to either display the presence of eavesdropping or to emit an alarm when such attempts are detected.",
+        "attributes" : []
+    },
+    {
+        "name" : "Surveillance Tagger",
+        "cost" : "450",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "The Surveillance Tagger is a tiny, unassuming tube containing a Fine sized dart and a compressed air canister. When fired, the dart attaches itself to the target with a combination of adhesives and magnetism and activates a homing beacon. The homing beacon has a range of 1 kilometer and enough power to transmit for 40 hours.",
+        "attributes" : []
+    },
+    {
+        "name" : "Veridicator",
+        "cost" : "4000",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "Worn as an inconspicuous bracelet, the Veridicator uses sophisticated sensors to monitor a target's heart rate, pupil dilation, perspiration, and other involuntary stress responses. It compares this information to it's internal database, determining the emotional state of the target and indicating if he or she is lying. The Veridicator then relays this information to the wearer as a series of pulses, temperature variations, or vibrations. Once activated, the Veridicator needs a full round to acquire the data from a single target within 6 squares of the user. Then the Veridicator provides a +5 bonus to Perception checks for the purpose of Sensing Deception or Sensing Influence or for Gambling against other players in games such as sabacc. The Veridicator can be programmed for only a single Species at a time. Changing the settings requires a DC 10 Use Computer check.",
+        "attributes" : []
+    },
+    {
+        "name" : "Vid-Vox Scrambler",
+        "cost" : "3400",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "When activated, this Tiny handheld device emits a low-frequency wave that scrambles all video, audio, and holographic recording within its area of effect, while leaving normal conversation unaffected. It's area of effect includes the squares adjacent to and the square including the device. Anyone eavesdropping or reviewing recordings of targets protected by an interference generator must make a DC 30 Perception or Use Computer check to pick up only scattered words and phrases. A Vid-Vox Scrambler can operate continuously for one week on a single Energy Cell, or it can be connected to a Power Generator or other permanent power source.",
+        "attributes" : []
+    },
+    {
+        "name" : "Sonar Mapper",
+        "cost" : "400",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices"
+        },
+        "description" : "A Sonar Mapper is a specialized sensor system that emits sonar pulses at regular intervals, mapping an area through echolocation. The Sonar Mapper does not provide the detail that a Sensor Pack can, because it's dedicated screen displays only the echolocation. Also, the Sonar Mapper does not have as great a range as a Sensor Pack, because it reads the pulses only up to a range of 100 meters with any degree of accuracy. The Sonar Mapper can internally record up to 12 hours of readings, making a good backup map if the user becomes lost.",
+        "attributes" : []
+    },
+    {
+        "name" : "Ooglith Masquer",
+        "cost" : "-",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Detection and Surveillance Devices",
+            "approval" : "GM"
+        },
+        "description" : "An Ooglith Masquer grants a Yuuzhan Vong a +5 Equipment bonus on Deception checks when disguising themselves as a Human. Putting on or removing an Ooglith Masquer requires a Full-Round Action and moves the wearer -3 steps on the Condition Track. (These steps may be recovered normally).",
+        "attributes" : []
+    },
+    {
+        "name" : "Explosive Charge",
+        "cost" : "1500",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Explosives",  
+            "explosive_type" : "Energy",
+            "damage" : "10d6",
+            "size" : "Diminutive",
+            "availability" : "Restricted"
+        },
+        "description" : "An explosive charge delivers a lot of destructive energy to a specific point, making it perfect for demolishing structures or cleaning rubble. It causes negligible damage beyond its 1-square Burst radius. Of course, collateral damage and subsequent explosions usually accompany the use of an Explosive Charge.",
+        "attributes" : ["1 square Burst"]
+    },
+    {
+        "name" : "Detonite",
+        "cost" : "500",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Explosives",  
+            "explosive_type" : "Energy",
+            "damage" : "5d6",
+            "size" : "Fine",
+            "availability" : "Restricted"
+        },
+        "description" : "Detonite is a contact explosive that comes in tiny claylike blocks. It can be shaped or molded around a target and crammed into small cracks. Detonite is very stable in its normal forms and requires a Timer to be set off. It causes negligible damage beyond its 1-square Burst radius. Of course, collateral damage and subsequent explosions usually accompany the use of Detonite.",
+        "attributes" : ["1 square Burst"]
+    },
+    {
+        "name" : "Timer",
+        "cost" : "250",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Explosives",  
+            "explosive_type" : "-",
+            "damage" : "-",
+            "size" : "Fine",
+            "availability" : "Licensed"
+        },
+        "description" : "Used to set off Detonite. Requires a Mechanics check to activate.",
+        "attributes" : []
+    },
+    {
+        "name" : "Manual Trigger",
+        "cost" : "100",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Explosives",  
+            "explosive_type" : "-",
+            "damage" : "-",
+            "size" : "Fine",
+            "availability" : "Restricted"
+        },
+        "description" : "Manual Triggers can be added to any Explosive, including Mines. As with a Timer, the Manual Trigger must be set with a Mechanics check. If the check is successful, you can detonate the Explosive using the Trigger as a Swift Action from anywhere within 30 squares of the Explosive.",
+        "attributes" : []
+    },
+    {
+        "name" : "Detonite Cord",
+        "cost" : "1000",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Explosives",  
+            "explosive_type" : "Energy",
+            "damage" : "4d6",
+            "size" : "Tiny",
+            "availability" : "Restricted"
+        },
+        "description" : "Detonite Cord- a long, thin cable of explosive Detonite- is used mainly for mining and commercial demolition. Like regular Detonite, Detonite Cord is very stable and requires a Timer or Manual Trigger for detonation. Detonite Cord is sold in reels, each with enough explosive to extend 6 squares. Multiple reels of Detonite Cord can be spliced together for larger explosions. Designed for precise explosions, Detonite Cord causes negligible damage beyond its 1-square Burst radius. Detonite Cord gives a +5 Equipment bonus to a Mechanics check to determine if the explosive ignores the DR of an object the Detonite Cord is attached to.",
+        "attributes" : ["1 square Burst"]
+    },
+      {
+        "name" : "Aquata Breather",
+        "cost" : "350",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Life Support"
+
+        },
+        "description" : "While underwater, an Aquata Breather can provide up to 2 hours of breathable air through its mouthpiece. ",
+        "attributes" : []
+    },
+    {
+        "name" : "Breath Mask",
+        "cost" : "200",
+        "weight " :"2kg",
+        "equip_type" : {
+            "type" : "Life Support"
+
+        },
+        "description" : "This personal atmosphere-filtering system consists of a mask that fits over the nose and mouth and a hose connecting the mask to a portable life support system. A Breath Mask provides 1 hour of breathable atmosphere before the filter and atmosphere canister must be replaced. A functional Breath Mask grants immunity to inhaled Poisons, including poisonous atmospheres. A Breath Mask offers no protection from extreme temperatures or hard vacuum. A Breath Mask system can be built into a suit of Armor; Replacing the Filter or Atmosphere Canister requires a DC 10 Mechanics check.",
+        "attributes" : []
+    },
+    {
+        "name" : "Atmosphere Canister/Filter",
+        "cost" : "25",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Life Support"  
+
+        },
+        "description" : "Atmosphere Canister/Filter that is used in conjunction with a breath mask to provide 1 hour of breathable atmosphere before the filter and atmosphere canister must be replaced.",
+        "attributes" : []
+    },
+    {
+        "name" : "Flight Suit",
+        "cost" : "1000",
+        "weight " :"3kg",
+        "equip_type" : {
+            "type" : "Life Support"  
+
+        },
+        "description" : "The Flight Suit is a one-piece coverall (Plus a helmet) that provides life support, protects the wearer from hostile environments, and prevents the wearer from succumbing to the adverse effects of high-velocity flying. A Flight Suit includes a matching helmet and gloves that seal around the wearer and provides up to 10 hours of life support. As long as you have life support remaining, you are immune to any hostile atmosphere or inhaled Poison hazard. The suit also grants a +1 Equipment bonus to your Fortitude Defense.",
+        "attributes" : []
+    },
+    {
+        "name" : "Space Suit",
+        "cost" : "2000",
+        "weight " :"15kg",
+        "equip_type" : {
+            "type" : "Life Support"
+
+        },
+        "description" : "This bulky coverall contains a sealed life support system that provides everything the wearer needs to survive for 24 hours in the Vacuum of space or any other hostile environment. As long as you have life support remaining, you are immune to any atmosphere or inhaled Poison hazard. The suit also grants a +2 Equipment bonus to your Fortitude Defense.",
+        "attributes" : []
+    },
+    {
+        "name" : "Vacuum Mask",
+        "cost" : "650",
+        "weight " :"0.3kg",
+        "equip_type" : {
+            "type" : "Life Support"
+
+        },
+        "description" : "Worn or carried by individuals who spend a great deal of time aboard Starships and Space Stations, the Vacuum Mask is a short-term solution to a loss of atmosphere while aboard a spacecraft. The Vacuum Mask provides the wearer 10 minutes of breathable air, which automatically begins to flow when sensors on the mask detect a lack of breathable air. Though the Vacuum Mask is no replacement for a Space Suit, it has saved crews trapped in compartments aboard ships after the atmosphere has vented. A Vacuum Mask cannot be worn at the same time as Armor with a helmet or any other device worn on the head.",
+        "attributes" : []
+    },
+    {
+        "name" : "Celegian Life-Support Chamber",
+        "cost" : "6000",
+        "weight " :"50kg",
+        "equip_type" : {
+            "type" : "Life Support"
+
+        },
+        "description" : "Celegians rely on transplastseel life-support chambers to survive away from their homeworld. These chambers are filled with cyanogen gas and held aloft by the Celegian's natural levitation. Celegians retain the use of their tentacles inside the Celegian Life-Support Chamber. A Celegian Life-Support Chamber possesses a Damage Reduction score of 10, with 20 Hit Points. A Celegian encased in a Celegian Life-Support Chamber receives a +5 Equipment bonus to their Fortitude Defense, as well as a +2 square bonus to their Fly Speed.",
+        "attributes" : []
+    },
+    {
+        "name" : "Propulsion Pack",
+        "cost" : "200",
+        "weight " :"10kg",
+        "equip_type" : {
+            "type" : "Life Support",  
+            "availability": "Military"
+        },
+        "description" : "Designed to enhance underwater movement, a Propulsion Pack allows its wearer to Swim much faster. Activating a Propulsion Pack is a Swift Action, and you gain a Swim Speed of 8 squares until the end of your turn. A Propulsion Pack has 10 charges and can run continuously, so no Swift Action is required to activate the Propulsion Pack on subsequent rounds of use. The Propulsion Packs are designed to be worn with Seatrooper Armor; wearing them without the accompanying stabilization fins reduces a character's Swim Speed by 25%.",
+        "attributes" : []
+    },
+    {
+        "name" : "Emergency Vacuum Seal",
+        "cost" : "750",
+        "weight " :"0.9kg",
+        "equip_type" : {
+            "type" : "Life Support" 
+
+        },
+        "description" : "Designed to quickly seal a Starship's interior compartments during a hull breach, the disk-shaped Emergency Vacuum Seal is a biomechanical device. When the seal has been placed at the site of the breach, a series of micromolecular grips keep it lodged firmly in place while a mild electrical current stimulates the colony of microorganisms, causing them to quickly multiply and seal the breach. A neutralizing current is applied once the seal's sensors determine the breach has been sealed. The result is a temporary but durable hull patch that allows a badly damaged Starship to make its way back to port for Repairs. When a character makes a Mechanics check to Jury-Rig a Starship that has suffered a hull breach, the use of an Emergency Vacuum Seal allows the ship to move +1 additional step on the Condition Track.",
+        "attributes" : []
+    },
+    {
+        "name" : "Shipsuit",
+        "cost" : "200",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Life Support"
+
+        },
+        "description" : "Manufactured by Ayelixe/Krongbing Textiles, the Shipsuit is a multipocketed coverall made of a tough Synthmesh fabric, which has been known to last through years of regular use. A fitted coverall can also be used as a Envirosuit in an emergency, although a separate Life Support system such as a Breath Mask is required. A Shipsuit provides enough pockets and pouches to carry up to 24 objects of Small size and weighing no more than 1 kg each. The cumulative weight of the objects is halved for the purpose of calculating the wearer's total Carried Weight. A character wearing a Shipsuit receives a +1 Equipment bonus to his or her Fortitude Defense when resisting Extreme Temperatures.",
+        "attributes" : []
+    },
+    {
+        "name" : "Bacta Tank (Empty)",
+        "cost" : "100000",
+        "weight " :"500kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "This large specialized tank is filled with the powerful healing agent, Bacta, which promotes rapid healing. A Bacta Tank can be used in conjunction with Surgery. If the Treat Injury check is successful, the patient heals a number of hit points equal to it's Character Level, in addition to that provided by Surgery. A Bacta Tank can also be used when treating Disease, Poison, or Radiation in a creature. In this case, the Bacta Tank grants a +5 Equipment bonus on your Treat Injury check. Each hour of treatment consumes one liter of Bacta, which costs 100 credits. A typical Bacta Tank holds up to 300 liters of Bacta, and the Bacta Tank must hold at least 150 liters at all times to provide any benefit. Only one creature can be immersed in the tank at any given time.",
+        "attributes" : []
+    },
+    {
+        "name" : "Bacta (Per liter)",
+        "cost" : "100",
+        "weight " :"2kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "A powerful healing agent which promotes rapid healing.",
+        "attributes" : []
+    },
+    {
+        "name" : "Bacta Tank (Full)",
+        "cost" : "130000",
+        "weight " :"1100kg",
+        "equip_type" : {
+            "type" : "Medical Gear" 
+
+        },
+        "description" : "This large specialized tank is filled with the powerful healing agent, Bacta, which promotes rapid healing. A Bacta Tank can be used in conjunction with Surgery. If the Treat Injury check is successful, the patient heals a number of hit points equal to it's Character Level, in addition to that provided by Surgery. A Bacta Tank can also be used when treating Disease, Poison, or Radiation in a creature. In this case, the Bacta Tank grants a +5 Equipment bonus on your Treat Injury check. Each hour of treatment consumes one liter of Bacta, which costs 100 credits. A typical Bacta Tank holds up to 300 liters of Bacta, and the Bacta Tank must hold at least 150 liters at all times to provide any benefit. Only one creature can be immersed in the tank at any given time.",
+        "attributes" : []
+    },
+    {
+        "name" : "Medical Kit",
+        "cost" : "600",
+        "weight " :"20kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "This backpack-sized Medical Kit includes almost everything a first responder needs to save a life: diagnostic scanners, anti-venom, medicine to counteract the effects of contaminated water and Radiation poisoning, burn treatments, defibrillators, respirators, shock blankets, pressure cuffs, a collapsible repulsorlift stretcher for patient transport (Capable of hovering with 160 kg load), and even limited surgical tools. In addition, a Medical Kit has six external pouches for carrying expendable medical supplies, such as Medpacs. You need a Medical Kit to Revive a dying character, Treat Disease, Treat Poison, or Treat Radiation.",
+        "attributes" : []
+    },
+    {
+        "name" : "Medpac",
+        "cost" : "100",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "Medpacs are compact packages designed to both equip and trained medic for work in the field and allow untrained individuals to apply first aid in emergencies. A Medpac contains bandages, Bacta, synthetic flesh, coagulants, stimulants, and other medicines designed to help an injured patient recover quickly. Once you use a Medpac, its contents are expended even if your Treat Injury check is not successful. Any given creature can only benefit from the use of a Medpac once in a 24-hour period.",
+        "attributes" : []
+    },
+    {
+        "name" : "Surgery Kit",
+        "cost" : "1000",
+        "weight " :"10kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "This small kit contains the instruments a character needs to perform Surgery on a wounded character using the Treat Injury skill. You must be Trained in the Treat Injury skill to perform Surgery using a Surgery Kit.",
+        "attributes" : []
+    },
+    {
+        "name" : "FastFlesh Medpac",
+        "cost" : "600",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "A FastFlesh Medpac offers a broader range of medical instruments and agents than a standard Medpac. Each FastFlesh Medpac has enough materials for a single use. A character who benefits from a FastFlesh Medpac or a standard Medpac cannot again derive benefits from any Medpac for 24 hours. Using a FastFlesh Medpac grants you a +5 Equipment bonus to a Treat Injury check made to perform First Aid. Otherwise, this Medpac functions as a standard Medpac.",
+        "attributes" : []
+    },
+    {
+        "name" : "MDS-50 Medisensor",
+        "cost" : "75",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "Sweeping this small, handheld sensor over the subject's body produces a summary of the patient's vital signs. An MDS-50 Medisensor can be used as a Swift Action on an adjacent creature or character, providing the user with the target's current hit points, its place on the Condition Track, and the presence of (but no specifics on) Diseases, Poison, or Radiation exposure.",
+        "attributes" : []
+    },
+    {
+        "name" : "Medical Interface Visor",
+        "cost" : "1500",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "This visor contains thousands of preprogrammed medical training tutorials. It analyzes visuals and provides tips and assistance in a variety of medical situations. The Medical Interface Visor allows the wearer to attempt Trained-only applications of the Treat Injury Skill even if Untrained, and grants a +2 Equipment bonus on all Treat Injury checks. A Medical Interface Visor cannot be worn at the same time as Armor with a helmet or any other device worn on the head.",
+        "attributes" : []
+    },
+    {
+        "name" : "Bioscanner",
+        "cost" : "3500",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "The Bioscanner is a low-power, handheld scanner used by doctors and medical technicians to help diagnose medical conditions in their patients. One or two passes over the patient collocets biological information. The scanner displays vital statistics and analyzes and diagnoses any anomalies on file in the scanner's medical database. This device grants is user a +2 bonus on all Knowledge (Life Sciences) checks made to identify aliments.",
+        "attributes" : []
+    },
+    {
+        "name" : "8-2A Medical Bundle",
+        "cost" : "200",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "The standard Medical Kit carried by most Jedi, the 8-2A Medical Bundle contains the basic items needed to treat ailments and Diseases in a package small enough to fit in a Utility Belt. Since Jedi can rely on The Force to speed up their healing processes, many common items- such as bacta patches and synthetic flesh- are absent from the Medical Bundle. An 8-2A Medical Bundle counts as a Medical Kit for the purposes of using the Treat Injury Skill, but only on targets currently in a Force Trance.",
+        "attributes" : []
+    },
+    {
+        "name" : "Anti-Rad Dose",
+        "cost" : "50",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "Exposure to Radiation is a fear of ship personnel and soldiers alike. An Anti-Rad Dose comes in a tough hypodermic syringe. The Anti-Rad Dose grants a +10 Equipment bonus to the target's Fortitude Defense against Radiation and grants a +5 Equipment bonus to Treat Injury checks to cure damage caused by Radiation.",
+        "attributes" : []
+    },
+    {
+        "name" : "Cryogenic Pouch",
+        "cost" : "600",
+        "weight " :"1.5kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "A Cryogenic Pouch is a medical device that can stabilize critically wounded soldiers in the field. It comes in a small canister worn on a soldier's belt or stored in a Medical Kit. Opening the canister releases a pouch large enough to hold a single Medium creature. When the pouch is sealed, it releases a cryogenic compound that causes the creature inside to enter suspended animation, stabilizing his or her condition for transport to a proper medical facility. Activating a Cryogenic Pouch and wrapping it around an unconscious creature requires a Full-Round Action. A creature that has been reduced to 0 Hit Points due to Poison, Radiation, or damage surpassing it's Damage Threshold can be stabilized without dying within 1d3 rounds of being placed inside the Cryogenic Pouch. The creature remains unconscious and moves -5 steps on the Condition Track. A Cryogenic Pouch has enough power to keep a creature alive for up to 24 hours, although it can be hooked up to another power source with a DC 10 Mechanics check. Designed for rough handling in battlefield conditions, the Cryogenic Pouch has DR 5, but a single point of damage is enough to breach the seal. If the Cryogenic Pouch is breached, the character inside reverts to its previous state after 1 round.",
+        "attributes" : []
+    },
+    {
+        "name" : "Antitoxin Patch",
+        "cost" : "25",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "This adhesive patch is applied near the stomach (Or similar organ, depending on the Species). It emits a low dose of antitoxin, giving the wearer a +10 Equipment bonus to Fortitude Defense against Ingested Poisons and a +5 Equipment bonus to Fortitude Defense against Inhaled Poisons. An Antitoxin Patch lasts for 24 hours. For each consecutive day that an Antitoxin Patch is worn, the target moves -1 step on the Condition Track.",
+        "attributes" : []
+    },
+    {
+        "name" : "Toxin Detector",
+        "cost" : "700",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "Manufactured by Ayelixe/Krongbing Textiles, the Shipsuit is a multipocketed coverall made of a tough Synthmesh fabric, which has been known to last through years of regular use. A fitted coverall can also be used as a Envirosuit in an emergency, although a separate Life Support system such as a Breath Mask is required. A Shipsuit provides enough pockets and pouches to carry up to 24 objects of Small size and weighing no more than 1 kg each. The cumulative weight of the objects is halved for the purpose of calculating the wearer's total Carried Weight. A character wearing a Shipsuit receives a +1 Equipment bonus to his or her Fortitude Defense when resisting Extreme Temperatures.",
+        "attributes" : []
+    },
+    {
+        "name" : "Antidote Synthesizer",
+        "cost" : "2500",
+        "weight " :"0.8kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "An Antidote Synthesizer is a small, portable device that takes the portability of a Microlab one step farther. If an antidote to a Poison or a toxin is needed and proper medical attention is not immediately available, the Antidote Synthesizer can analyze a small amount of Poison or toxin inserted into the machine's sample tube, and within 1d6 rounds it can create 1d4 doses of antivenom or antitoxin that each grant a +2 bonus to a Treat Injury check made to treat the Poison or toxin. To reproduce an antidote after the doses are expended, however, requires a new sample of the Poison or toxin.",
+        "attributes" : []
+    },
+    {
+        "name" : "Hypoinjector Wristband",
+        "cost" : "350",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "An inconspicuous metal band, the Hypoinjector Wristband can help a wearer avoid succumbing to the effects of Poisons and other harmful chemicals. The refillable wristband stores up to 8 doses of vaccines, antidotes, or other medication. In addition to the Hypoinjector, the Wristband also houses a bioscanner that continually scans the wearer for any foreign chemicals that the device can counteract. When a harmful substance is detected, the Hypoinjector administers the appropriate drug. Refilling the Wristband requires a Standard Action per dose or 4 rounds for the entire set. The device runs on two Energy Cells that must be replaced after 5 days of constant use.",
+        "attributes" : []
+    },
+    {
+        "name" : "Healing Stimulant",
+        "cost" : "-",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Medical Gear"
+
+        },
+        "description" : "The stimulants are used as a part of the Treat Injury skill's First Aid application, and each stimulant used allows the recipient to receive First Aid one additional time per day. However, when a stimulant is used, the recipient moves -1 Persistent step on the Condition Track, and the Persistent Condition can be removed only by resting for 8 hours. The stimulants allow for additional healing, but they put a great deal of strain on the body when active.",
+        "attributes" : []
+    },
+    {
+        "name" : "All-Temperature Cloak",
+        "cost" : "100",
+        "weight " :"1.5kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "This wrap-around cloak protects its wearer from the elements, providing +5 Equipment bonus to its wearer's Fortitude Defense against extreme heat or cold.",
+        "attributes" : []
+    },
+    {
+        "name" : "Chain (3 meters)",
+        "cost" : "25",
+        "weight " :"2.5kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "This 3-meter (2-square) length of Chain has Damage Reduction of 10, and 5 hit points. It has a Strength score of 44, can safely support over 5 metric tons of weight, and it can be broken with a DC 32 Strength check.",
+        "attributes" : []
+    },
+    {
+        "name" : "Field Kit",
+        "cost" : "1000",
+        "weight " :"10kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "Essentially a backpack full of Survival Gear, the typical Field Kit contains two condensing canteens with built-in water purification systems, a sunshield roll, a week's worth of Ration Packs, two Glow Rods, two Breath Masks, 24 Filters, 12 Atmosphere Canisters, and an All-Temperature Cloak. You need a Field Kit to make Survival checks to endure extreme temperatures.",
+        "attributes" : []
+    },
+    {
+        "name" : "Jet Pack",
+        "cost" : "300",
+        "weight " :"30kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "A Jet Pack is a propulsion system that a character can strap on, allowing flight over short distances. Arm and wrist controls are employed for maneuvering. Activating a Jet Pack is a Swift Action, and you gain a fly speed of 6 squares until the end of your turn. A Jet Pack has 10 charges and can be run continuously; no Swift Action is required to activate the Jet Pack on subsequent rounds of use. Routine maneuvers do not require a Pilot check, but you must make a DC 20 Pilot check if you land after moving more than 12 squares during the same turn; on a failure you fall Prone. A Jet Pack can lift up to 180 kg while flying. Replacement fuel cells cost 100 credits.",
+        "attributes" : []
+    },
+    {
+        "name" : "Liquid Cable Dispenser (15 meters)",
+        "cost" : "10",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "Cable Dispensers contain a special liquid that instantly solidifies upon contact with either atmosphere or vacuum to form a tough, lightweight, flexible cable. The dispenser contains enough liquid for 15 meters (10 squares) of cable, and is refillable at authorized outlets. The cable has a Strength score of 28, can safely support up to 560 kg, and it can be broken with a DC 24 Strength check.",
+        "attributes" : []
+    },
+    {
+        "name" : "Ration Pack",
+        "cost" : "5",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "Ration Packs are compact meals that take up little room (You can fit six in a pouch designed to carry a Datapad), but have all the requirements to nourish a person for one day. Each Ration Pack is geared for a range of Species. The food isn't appetizing, and it doesn't include water, but it does prevent malnutrition.",
+        "attributes" : []
+    },
+    {
+        "name" : "Syntherope (45 meters)",
+        "cost" : "20",
+        "weight " :"2..5kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "Although not as compact and convenient as a Liquid Cable Dispenser, Syntherope is stronger and more durable. A coil contains 45 meters (30 squares) of Syntherope, and unlike liquid cable it is meant to be reused. Syntherope has a Strength score of 30, can safely support up to 720 kg, and it can be broken with a DC 25 Strength check.",
+        "attributes" : []
+    },
+    {
+        "name" : "Mandalorian Jet Pack",
+        "cost" : "-",
+        "weight " :"30kg",
+        "equip_type" : {
+            "type" : "Survival Gear",  
+            "approval" : "GM"
+        },
+        "description" : "A Mandalorian Jet Pack functions identically to a standard Jet Pack, but has an integrated Missile Launcher and a magnetic grappling hook (which functions as a Liquid Cable Dispenser). A Mandalorian Jet Pack is considered to have a Military availability. Replacement fuel cells cost 100 credits. Activating a Mandalorian Jet Pack is a Swift Action, and you gain a fly speed of 6 squares until the end of your turn. A Mandalorian Jet Pack has 10 charges and can be run continuously; no Swift Action is required to activate the Mandalorian Jet Pack on subsequent rounds of use. Routine maneuvers do not require a Pilot check, but you must make a DC 20 Pilot check if you land after moving more than 12 squares during the same turn; on a failure you fall Prone.",
+        "attributes" : []
+    },
+    {
+        "name" : "Hush-About Personal Jet Pack",
+        "cost" : "3750",
+        "weight " :"30kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "A light Jet Pack that is engineered to produce little to no noise. A Hush-About Jet Pack uses a small jet engine that produces little noise beyond a high-pitch whine, meaning that the wearer takes no penalty on Stealth checks because of speed when using the Hush-About Jet Pack (Allowing the wearer to double Move or take the Run Action while flying the Hush-About Jet Pack with no penalty on Stealth checks). An Arakyd Hush-About Personal Jet Pack functions in all other ways like a normal Jet Pack, though each fuel cell for the Hush-About Jet Pack carries only 6 charges instead of the normal 10. Replacement fuel cells cost 100 credits.",
+        "attributes" : []
+    },
+    {
+        "name" : "ABC Scrambler",
+        "cost" : "3000",
+        "weight " :"3kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "This device is used to ward off missile attacks. The ABC Scrambler is worn on the belt or attached to a suit of Armor and emits false audio, biological, and chemical signals to confuse missile guidance systems. A character with an ABC Scrambler gains a +5 deflection bonus to their Reflex Defense against Grenade Launchers, Micro Grenade Launchers, and Missile Launchers.",
+        "attributes" : []
+    },
+    {
+        "name" : "Spacer's Chest",
+        "cost" : "200",
+        "weight " :"10kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "A Spacer's Chest is a special container commonly kept by smugglers and pirates to store their most prized possessions. A Spacer's Chest usually carries not only valuables but also emergency items like spare clothes, Credits Sticks, Data Discs, small Tools, concentrated food, and a Hold-Out Blaster Pistol with Energy Cells. A Spacer's Chest has enough consumables to feed one person for 10 days, and has an electronic locking mechanism that has a Will Defense of 30.",
+        "attributes" : []
+    },
+    {
+        "name" : "Camouflage Netting",
+        "cost" : "6000",
+        "weight " :"40kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "Camouflage Netting found on the market is of of two kinds: powered or unpowered. Both kinds, when draped over one or more objects within a 6-square-by-6-square area, bestow a +5 bonus to all Stealth checks while under the netting, and offer partial Concealment.Integrated into the netting of the powered version are overlapping sensor baffle scales that emulate the emission patterns of the surrounding terrain- including light emissions. Thus, powered Camouflage Netting grants an additional +5 bonus to all Stealth checks while under the netting. The netting is carried in a small backpack and takes a Full-Round Action and two people to deploy it.",
+        "attributes" : []
+    },
+        {
+        "name" : "Sith Battle Harness",
+        "cost" : "5000",
+        "weight " :"90kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "When riding large Beasts such as Sith Warbirds, the Sith frequently use special battle harnesses, turning the Beasts into mobile weapon platforms. The Sith Battle Harness features a cockpit that provides the rider Improved Cover, and the special reins grant a +2 Equipment bonus on Ride checks. In addition, the mount gains a +4 Equipment bonus to it's Reflex Defense and it's Fortitude Defense. The Sith Battle Harness also has a built-in Blaster Cannon, powered by an onboard Power Generator providing unlimited ammunition.",
+        "attributes" : []
+    },
+    {
+        "name" : "Camouflage Poncho",
+        "cost" : "125",
+        "weight " :"1.5kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "The Camouflage Poncho is worn over Armor to conceal the wearer from being spotted. Special materials track the surrounding area and alter the pattern of the Camouflage Poncho, smoothing and blending the wearer's silhouette. A Camouflage Poncho grants a +5 Equipment bonus to Stealth checks.",
+        "attributes" : []
+    },
+    {
+        "name" : "Field Camouflage Netting",
+        "cost" : "2000",
+        "weight " :"5kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "This advanced netting uses the same technology as the Camouflage Poncho. Incorporating both light-bending technology and metallic jammers, it conceals objects from both visual and electronic scanning. Field Camouflage Netting comes in a small backpack. Two characters must each spend a Full-Round Action to deploy the netting, or a single character can deploy it on one minute. Once deployed, the Field Camouflage Netting is powered by an internal power cell, which has enough power to last for one month, or the netting can be connected to an external power source. Field Camouflage Netting provides a +5 Equipment bonus to Stealth checks, including Stealth checks against sensors, for an object of Huge size or smaller.",
+        "attributes" : []
+    },
+    {
+        "name" : "Field Food Processor",
+        "cost" : "1500",
+        "weight " :"4kg",
+        "equip_type" : {
+            "type" : "Survival Gear"
+
+        },
+        "description" : "The Field Food Processor is used by soldiers and explorers to provide sustenance from local flora and fauna and is a critical survival tool when other food stores have been exhausted. Up to three pounds of plants, meat, or fungus can be placed inside the Field Food Processor. One minute later, the processor exudes a gray paste that is extremely bland in taste, but is both edible and nutritious- enough to provide a single Medium character with a day's worth of food. The Field Food Processor can be programmed to make appropriate food substances for up to ten different Species. In addition, the Field Food Processor gives a +10 Equipment bonus to the user's Fortitude Defense against any Poison, Toxin, or Radiation that might have been in the initial ingredients. A Field Food Processor requires an Energy Cell, which lasts for one year before needing to be replaced.",
+        "attributes" : []
+    },
+    {
+        "name" : "Personal Field Shelter",
+        "cost" : "500",
+        "weight " :"1.5kg",
+        "equip_type" : {
+            "type" : "Survival Gear"  
+
+        },
+        "description" : "The Personal Field Shelter allows soldiers to have protection from the weather without having to carry a huge amount of weight. When activated, this small package expands to create a small, narrow tent large enough to hold a single Medium character. As long as the character remains sealed inside, the Personal Field Shelter provides a +10 Equipment bonus to the user's Fortitude Defense against Extreme Temperatures. For one hour, the Personal Field Shelter can also provide a breathable atmosphere, protecting against inhaled Poisons, including poisonous Atmospheres. Special filements on the exterior of the Personal Field Shelter help it blend with surroundings, granting a +2 Equipment bonus to Stealth checks.",
+        "attributes" : []
+    },
+    {
+        "name" : "Plasma Bridge",
+        "cost" : "12500",
+        "weight " :"700kg",
+        "equip_type" : {
+            "type" : "Survival Gear"  
+
+        },
+        "description" : "A Plasma Bridge is projected from a single plasma generator, creating a surface 6 squares wide and up to 120 squares long. It can be used to bridge gaps or bypass terrain Hazards (Such as bodies of water or Acid pools). The Plasma Bridge must be hooked up to a Power Generator in order to function. If an active Plasma Bridge is deactivated, of if it's Power Generator is destroyed or disconnected, the Plasma Bridge generator stores enough energy to power the bridge for 2 rounds. After 2 rounds, if the Plasma Bridge is not reactivated or reconnected to a Power Generator, the bridge vanishes, and any character or anything on the bridge begins to fall.",
+        "attributes" : []
+    },
+    {
+        "name" : "Vacuum Survival Pouch",
+        "cost" : "800",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Survival Gear"  
+
+        },
+        "description" : "Carried by spacers of all types, the Vacuum Survival Pouch is a small cylinder typically worn on the character's belt or harness. In the event of a catastrophic loss of pressure, the Vacuum Survival Pouch automatically deploys, enveloping the user in a protective bubble that keeps him or her alive for a few hours. The Meredex Atmospherics EMS-90 Bubble Cloak, which is worn as an article of clothing, is one of several variations of this item. The Vacuum Survival Pouch is large enough to hold a single Medium creature. It provides sufficient air, heat, and pressure for the creature to survive in hard Vacuum for up to 2 hours, but it does not protect against Radiation. The material has 2 Hit Points.",
+        "attributes" : []
+    },
+    {
+        "name" : "Climbing Harness",
+        "cost" : "45",
+        "weight " :"0.7kg",
+        "equip_type" : {
+            "type" : "Survival Gear" 
+
+        },
+        "description" : "Providing a measure of safety for a wide array of climbing activities, the Climbing Harness secures the wearer to a climb line, reducing the chances of falling by providing several attachment points for anchor lines, as well as additional options for securing Equipment. A character using a Climbing Harness when making a Climb check falls only when he or she fails the check by 10 or more.",
+        "attributes" : []
+    },
+    {
+        "name" : "Plastent",
+        "cost" : "300",
+        "weight " :"2.7kg",
+        "equip_type" : {
+            "type" : "Survival Gear" 
+
+        },
+        "description" : "A Plastent is a prefabricated high-grade polymer shelter that can be easily transported from place to place. Fully inflated, a Plastent forms a triangular structure about 2 meters tall, providing enough room for four beings of Medium size. The temporary structure is light enough to be moved easily, and sturdy enough to withstand most weather conditions. In addition to providing shelter, the Plastent can have small pieces of Equipment, such as a sensor array, mounted onto it. Most models come equipped with an inflation unit that can fully inflate the plastent within a few minutes.",
+        "attributes" : []
+    },
+    {
+        "name" : "Portable Beacon",
+        "cost" : "1500",
+        "weight " :"6.8kg",
+        "equip_type" : {
+            "type" : "Survival Gear"  
+
+        },
+        "description" : "Portable Beacons do nothing more than transmit signals that can be received only by sensors. A single Portable Beacon is about 1 meter long. One end is pointed, making the beacon easy to embed in the ground, but a beacon also features a built-in tripod, enabling the beacon up be set up on a hard, flat surface. Able to transmit a signal to a range of 10,000 km from a planet's surface. A Portable Beacon can be reprogrammed to broadcast a warning or a distress signal by connecting it to a Datapad and succeeding on a DC 10 Use Computer check.",
+        "attributes" : []
+    },
+    {
+        "name" : "Riding Saddle",
+        "cost" : "125",
+        "weight " :"4kg",
+        "equip_type" : {
+            "type" : "Survival Gear"  
+
+        },
+        "description" : "Provides a rider with a supportive structure that is fastened to a mount and that often incorporates a means of directing the creature. Saddles must be made to conform to the type of creature for which they are used. Most vendors who sell riding mounts include the cost of a Riding Saddle with the purchase of the creature.",
+        "attributes" : []
+    },
+    {
+        "name" : "Subsonic Field Emitter",
+        "cost" : "120",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Survival Gear"  
+
+        },
+        "description" : "The Subsonic Field Emitter generates a subsonic pulse attuned to the nervous systems of nonsentient insects and other vermin, discouraging them from entering the emitter's 6-meter broadcast radius and allowing beings within the radius to relax without being disturbed by natural pests. Tiny or smaller creatures with an Intelligence score of 2 or less cannot willfully enter the radius of a Subsonic Field Emitter.",
+        "attributes" : []
+    },
+    {
+        "name" : "War Saddle",
+        "cost" : "250",
+        "weight " :"6kg",
+        "equip_type" : {
+            "type" : "Survival Gear"  
+
+        },
+        "description" : "Offers a sturdier platform for the rider, reducing the chances of being knocked off the mount and better enabling the rider to guide the Beast in combat while still fighting effectively. Use of a War Saddle on a mount provides the rider a +2 Equipment bonus to Ride checks made to control the mount in battle, to guide the mount with his or her knees, and to stay in the saddle.",
+        "attributes" : []
+    },
+    {
+        "name" : "Binder Cuffs",
+        "cost" : "50",
+        "weight " :"1.5kg",
+        "equip_type" : {
+            "type" : "Tools" 
+
+        },
+        "description" : "Binder Cuffs are Durasteel restraints designed to lock two limbs of a prisoner together, normally the wrists or ankles, but it is possible to lock one arm to one leg or use the Binder Cuffs to hook a prisoner to a tree. The cuffs have a Damage Reduction score of 10, 20 hit points, and a Strength score of 40. Breaking them requires a DC 30 Strength check, and removing them without the seven-digit release code requires a DC 25 Mechanics check. The Binder Cuffs can be attached to the limbs of any creature of Large, Medium, or Small size.",
+        "attributes" : []
+    },
+    {
+        "name" : "Energy Cell",
+        "cost" : "10",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Tools" 
+
+        },
+        "description" : "This small battery provides power for devices, including certain types of weapons. An Energy Cell appears as a small, flat disk. An Energy Cell can be recharged with a Power Recharger.",
+        "attributes" : []
+    },
+    {
+        "name" : "Fire Extinguisher",
+        "cost" : "50",
+        "weight " :"3kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A full-round blast from this Tool produces a chemical cloud that provides Total Concealment. Those inside the cloud can't see targets outside the cloud, and those outside the cloud can't see targets inside the cloud. The cloud spreads 1 square in all directions for every round it is activated. It dissipates after 3 rounds (No matter how large the cloud). Each full-round blast depletes one-tenth of the Fire Extinguisher's chemical supply. If used for its intended purpose, the extinguisher can put out a fire of up to 10 squares in size, at a rate of 1 square per round before it is depleted. Reloading the Fire Extinguisher is a Full-Round Action. Replacement chemical cartridges for the Fire Extinguisher costs 25 credits each.",
+        "attributes" : []
+    },
+    {
+        "name" : "Mesh Tape",
+        "cost" : "5",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "Mesh Tape adhesive has a Strength score of 15, and can support up to 90 kg indefinitely (And up to 180 kg for up to 5 rounds). Mesh Tape itself has a Strength score of 20 when used to bind another character, and requires a DC 20 Strength check to break. A roll provides 30 meters (20 squares) of Mesh Tape, that is 5 centimeters wide.",
+        "attributes" : []
+    },
+    {
+        "name" : "Power Generator",
+        "cost" : "750",
+        "weight " :"15kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Power Generator is a small fusion reactor that provides continuous power for Heavy Weapons, Vehicles, structures, and machinery. It can power anything up to a Gargantuan Vehicle or structure indefinitely, a Colossal Vehicle or structure for 1 day, and a Vehicle or structure of Colossal (Frigate) size for 1 hour. After that, it is Disabled and must be replaced. If a Power Generator is destroyed while in use, its fusion reactor overloads and explodes, venting plasma into the surrounding area. When a fusion reactor explodes, make an attack roll (1d20+10) against the Reflex Defense of every target within 4 squares. If the attack succeeds, the target takes 8d6 points of energy damage. If the attack misses, the target takes half damage. A target with the Evasion talent takes half damage if the attack succeeds, and no damage if the attack misses.",
+        "attributes" : ["AOE"]
+    },
+    {
+        "name" : "Power Pack",
+        "cost" : "25",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Power Pack is a compact rectangular battery that fits into the grip or barrel of an energy weapon, such as a blaster, to provide the power needed to fire it. A Power Pack can be recharged with a Power Recharger.",
+        "attributes" : []
+    },
+    {
+        "name" : "Power Recharger",
+        "cost" : "100",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Power Recharger is used to recharge a Power Pack or Energy Cell. The recharge process takes 4 hours, and only one Power Pack or Energy Cell may be recharged at a time. A Power Recharger holds enough power to recharge 100 Power Packs or Energy Cells, but is normally connected to a ship's or building's power supply, allowing it unlimited recharge capacity.",
+        "attributes" : []
+    },
+    {
+        "name" : "Security Kit",
+        "cost" : "750",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Security Kit is a set of special tools for bypassing electronic and mechanical locks. It usually includes electronic components and dedicated sensor devices. On most worlds, possession of a Security Kit is illegal for anyone who doesn't have the proper permits, such as members of law enforcement agencies and professional security experts. A Security Kit is required to bypass traps or security systems using the Mechanics skill. A Security Kit contains a Comlink that monitors frequencies typically used by silent alarms, so the user can know if such an alarm has been triggered at any point during the operation.",
+        "attributes" : []
+    },
+    {
+        "name" : "Tool Kit",
+        "cost" : "250",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Tools",  
+            "contents" : {
+                "tool1" : {
+                   "tool" : "Electroshock Probe",
+                   "usage" : "Short out electronic components, Solder wires",
+                   "damage" : "1d8 (Ion)"
+                },
+                "tool2" : {
+                    "tool" : "Fusion Cutter",
+                   "usage" : "Cut apart durasteel or similar materials",
+                   "damage" : "2d6 (Energy)"
+                },
+                "tool3": {
+                    "tool" : "Hydrospanner",
+                    "usage" : "Tighten or loosen screws or fasteners"
+
+                },
+                "tool4": {
+                    "tool" : "Laser Welder",
+                    "usage" : "Connecting things",
+                    "damage" : "1d6 (Energy)"
+                },
+                "tool5": {
+                    "tool" : "Power Calibrator",
+                    "usage" : "Analyze circuitry, Emergency power cell"
+
+                },
+                "tool6": {
+                    "tool" : "Power Prybar",
+                    "usage" : "Force things open",
+                    "damage" : "1d8 (Bludgeoning)" 
+                },
+                "tool7": {
+                    "tool" : "Probe Sensors"
+
+                },
+                "tool8": {
+                    "tool" : "Sonic Welder",
+                    "usage" : "Connect things when you can't afford a fire",
+                    "damage" : "1d8 (Energy)" 
+                },
+                "tool9": {
+                    "tool" : "Various Circuits and Wires"
+ 
+                },
+                "tool10": {
+                    "tool" : "Vibrocutters",
+                    "usage" : "for things that don't call for a Fusion cutter" 
+                },
+                "tool11": {
+                    "tool" : "Welding Goggles",
+                    "usage" : "Don't burn your eyes out"
+                }
+
+            }  
+        },
+        "description" : "The standard Tool Kit represents a broad collection of tools designed to take apart, analyze, modify, and rebuild almost any technological device. Most technicians personalize their Tool Kits over the course of years, but almost all contain the similar tools. Many of these tools can be used as Makeshift Weapons. They all qualify as Simple Weapons, but since they aren't designed for combat, they impose a -5 penalty on attack rolls. (Droids with such Tools on Tool Mounts don't suffer these penalties, since they don't have to deal with the oddly shaped handle.)",
+        "attributes" : []
+    },
+    {
+        "name" : "Utility Belt (empty)",
+        "cost" : "55",
+        "weight " :"0.3kg",
+        "equip_type" : {
+            "type" : "Tools"
+
+        },
+        "description" : "A Utility Belt has 10 pouches containing a standard array of items. Each pouch can carry 0.5 kg.",
+        "attributes" : []
+    },
+    {
+        "name" : "Antisecurity Blades",
+        "cost" : "-",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "These electronic devices allow a user to bypass force fields, and jam security devices with bursts of high-frequency harmonic interference waves. They function as a Security Kit, and grant a +2 Equipment bonus to Mechanics checks made to Disable Devices.",
+        "attributes" : []
+    },
+    {
+        "name" : "Mechanical Interface Visor",
+        "cost" : "1250",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "This visor translates images received through it's visual sensors and scans them for common mechanical designs. The visor then provides the wearer a heads-up display of basic information and tips on dealing with those designs. The Mechanical Interface Visor allows the wearer to attempt Trained-only applications of the Mechanics Skill even if Untrained, and grants a +2 Equipment bonus on all Mechanics checks. A Mechanical Interface Visor cannot be worn at the same time as Armor with a helmet or any other device worn on the head.",
+        "attributes" : []
+    },
+    {
+        "name" : "Repulsor Pad",
+        "cost" : "200",
+        "weight " :"6kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Repulsor Pad is used mostly to ease manual labor. In essence, it is a flat board with four repulsors, one at each corner, that can be used to lift heavy objects for short-range transport. This allows a single worker to move a heavy crate or other object without the need to use a Vehicle or a Binary Load Lifter. Each Repulsor Pad occupies a single square and can be used to lift an object that occupies no more space than a single square; multiple Repulsor Pads can be used to lift larger objects. Activating a Repulsor Pad (Or a group of Repulsor Pads) is a Swift Action, and a Repulsor Pad can move along with a character if that character uses a Swift Action to grab or drag the Repulsor Pad. If two creatures attempt to pull a Repulsor Pad in opposite directions, they make opposed Strength checks, and the Repulsor Pad moves along with the victor.",
+        "attributes" : []
+    },
+    {
+        "name" : "Force Cage",
+        "cost" : "7000",
+        "weight " :"25kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Force Cage is a large (2x2 Squares) cage whose bars are charged with electricity. A Force Cage deals 3d6 energy damage to anyone trying to break into (Or out of) the cage, and the cage can be assembled or disassembled in 5 minutes. A Force Cage has a break DC of 30 and can be deactivated using a remote (Treat as a Portable Computer with an Intelligence score of 16).",
+        "attributes" : []
+    },
+    {
+        "name" : "Lock Breaking Kit",
+        "cost" : "8000",
+        "weight " :"4kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "Highly Illegal a Lock Breaking Kit is like a Tool Kit in many ways but has some very advanced and highly specialized tools. A Lock Breaking Kit grants the user a +5 Equipment bonus on all Mechanics and Use Computer checks to bypass doors and airlocks on a Starship.",
+        "attributes" : []
+    },
+    {
+        "name" : "Man Trap",
+        "cost" : "8000",
+        "weight " :"19kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Man Trap is a reversed repulsor field that draws a target directly down, as though in incredibly high gravity. A Man Trap covers 1 square, and any creature entering the square of a Man Trap is immediately Immobilized (Unable to move voluntarily). A creature can attempt to break out of a Man Trap as a Move Action, requiring a DC 40 Strength check. It can be deactivated using a remote (Treat as a Portable Computer with an Intelligence score of 16).",
+        "attributes" : []
+    },
+    {
+        "name" : "Biotech Tool Kit",
+        "cost" : "450",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "You need a Biotech Tool Kit to modify Yuuzhan Vong Biotech, install a Bio-Implant, or otherwise alter biological devices and Living Vehicles. A standard Biotech Tool Kit consists of a variety of implements and tools that look more at home in a Medical Kit than in a Tool Kit, and unlike a normal Tool Kit, items in a Biotech Tool Kit cannot be doubled as Improvised Weapons.",
+        "attributes" : []
+    },
+    {
+        "name" : "Force Detector",
+        "cost" : "2000",
+        "weight " :"9kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A blanket term used to cover a variety of devices, Force Detectors are pieces of Equipment designed to detect Force Sensitivity, or the potential for it, within a living being. Force Detectors can take many forms; Regardless of the specific form, most Force Detectors function in a similar manner. Using a Force Detector requires 5 rounds and a DC 15 Use Computer check to successfully activate the device. If the target of the Force Detector has the Force Sensitivity Feat, the Force Detector indicates that the target is Force-sensitive.",
+        "attributes" : []
+    },
+    {
+        "name" : "Force Training Aid",
+        "cost" : "25",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "Young Jedi use a variety of Force Training Aids in the course of their studies. These can take many forms, including some that resemble toys and puzzles. Others are designed to clear the mind and make concentration easier, focusing one's connection to The Force by helping to block out other stimuli. The Force Training Aids teach very basic techniques that must be mastered by the time the Master chooses the Padawan. Though Force Training Aids are typically designed to focus on one aspect of Force training, they all follow similar rules. Each Force Training Aid focuses on one of the basic uses of the Use the Force Skill. Any character Untrained in the Skill can spend 1 hour training with a Force Training Aid. After that time, for the next 24 hours, the character can use any one \"Trained Only\" aspect of the Use the Force Skill as though he or she was Trained in the Skill. Force Training Aids confer no bonus on Use the Force checks.",
+        "attributes" : []
+    },
+    {
+        "name" : "Universal Energy Cage",
+        "cost" : "20000",
+        "weight " :"3 Tons",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "The Universal Energy Cage was designed by Umak Leth specifically to contain a Force-user. A vaguely spherical cage with energy flowing throughout its bars, the Universal Energy Cage delivers a shock to prisoners attempting to free themselves. Prisoners in the cage can, however, use The Force at very low levels, such as to heal themselves. The cage's functions are controlled by a handheld remote. The cage has no visible controls, and the only way to open it (Other than using the remote) is to destroy it, which endangers the life of the prisoner within. The reinforced Durasteel cage has DR 20, 150 Hit Points, and a Damage Threshold of 25. The cage is also built with a constant shock field, and every time it takes 15 points of damage or more, the prisoner inside receives a shock that deals 4d8 points of Stun damage.",
+        "attributes" : []
+    },
+    {
+        "name" : "Droid Diagnostic",
+        "cost" : "400",
+        "weight " :"2kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "This handheld device- roughly twice the size of a standard Datapad- diagnoses and analyzes the functions of any Droid connected to it, displaying damage or errors in the Droid's systems. The Droid Diagnostic grants a +2 Equipment bonus on Mechanics checks for a Droid connected to it.",
+        "attributes" : []
+    },
+    {
+        "name" : "Plasma Cutter",
+        "cost" : "10000",
+        "weight " :"110kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "Using a Plasma Cutter, invading forces can penetrate a Magnetically Sealed Door in a matter of seconds as opposed to the several minutes it would take to blast through with conventional weapons. Simply place the Plasma Cutter on the door (A DC 15 Mechanics check), activate the device, and stand clear as it burns through the door in a few rounds (Dealing 30 points of damage to the door each round). When the integrity of the door has been compromised (Meaning that the door has been reduced to 0 Hit Points or moved to the bottom of the Condition Track), the section sliced out by the Plasma Cutter explodes inward, dealing 2d6 points of Energy and Piercing damage to any character standing adjacent to the other side of the door. ",
+        "attributes" : []
+    },
+    {
+        "name" : "Redirection Crystal",
+        "cost" : "500",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Redirection Crystal is filled with Tibanna Gas and has a small blasting tube. Snipers and assassins use them to seemingly bank blaster shots, allowing the shooter to hide in one location while making a shot appear to come from another position. When struck by blaster fire, the gas inside the crystal explodes, directing the shot through the blast tube at the established angle. A Redirection Crystal is Fine sized, giving it a Reflex Defense of 15, plus penalties for distance. If an attack with a blaster weapon successfully hits the Redirection Crystal, make a second attack roll against the intended target, with a -10 penalty and additional Range-increment penalties. The Redirection Crystal is destroyed, leaving only minuscule fragments, requiring a DC 30 Perception check to notice and a DC 30 Knowledge (Technology) check to identify.",
+        "attributes" : []
+    },
+    {
+        "name" : "Shield Cage",
+        "cost" : "10000",
+        "weight " :"20kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Shield Cage is a portable Shield Generator used to trap a target rather than protect it from harm. A Shield Cage is a large flat disk, 2 meters in diameter. It must be connected to a power supply to operate and drains portable Power Generators after 2 hours of continuous use. A Shield Cage produces a shield bubble that fills a single square. Multiple Shield Cages can be linked together, each expanding the shielded area by one additional square. Targets are trapped inside and cannot move until the power is turned off. The shield is air permeable, allowing the target to breathe and communicate verbally, but nothing else can pass through the shield except damage that exceeds the Shield Rating (SR 15).",
+        "attributes" : []
+    },
+    {
+        "name" : "Fire Paste",
+        "cost" : "15",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "Fire Paste is a thick beige substance that can act as a fuel for starting a fire. The paste, once squeezed from its tube, can be placed on virtually any surface, including ice and wet wood. With a single spark, the paste ignites, burning for 3d4 minutes. If applied to a living creature or an object, the burning paste causes 1d6 points of Fire damage as long as it burns and remains in contact with the creature or object. A single squeeze tube contains 5 applications of Fire Paste.",
+        "attributes" : []
+    },
+    {
+        "name" : "Fire Rod",
+        "cost" : "25",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "When a fire is needed and nothing is around to create one, many people turn to a Fire Rod- a 10-cm hollow plastic tube that has two chambers, each filled with a chemical that is inert on it's own. When the two chemicals are mixed, they combine to become a highly volatile substance that ignites within seconds. A Fire Rod burns for 2d8 minutes without any additional fuel. Adding wood or other combustible material keeps the fire burning longer.",
+        "attributes" : []
+    },
+    {
+        "name" : "Microlab",
+        "cost" : "1800",
+        "weight " :"0.8kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "A Microlab is a handheld portable laboratory for analyzing substances. When you need quick identification of a material and you cannot wait for the results of a full analysis from another location, the Microlab works well enough to answer most questions. In some cases, the Microlab's analysis is just as good as a full examination. A sample of the substance in question is placed in a small tube that is then slid into the Microlab. A DC 15 Knowledge (Physical Sciences) check is necessary to complete the examination, and the results are then displayed on the device's small screen.",
+        "attributes" : []
+    },
+    {
+        "name" : "Personal Multitool",
+        "cost" : "100",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "The Personal Multitool is a low-tech device that holds miniature versions of several simple Tools that can be useful in the wilderness. Although the arrangement of the implements can vary, the standard Personal Multitool configuration for beings of Medium size includes a 5-cm vibroblade, a low-power hydrospanner, a small hydrogrip, a toothpick, and a miniature set of eating utensils. These Tools are stored within the 6-cm handle and each fold out on a hinge. The vibroblade, hydrospanner, and hydrogrip are all powered by a single Energy Cell that must be replaced after 50 hours of constant use. The vibroblade can be used as a melee weapon that deals 1d4 points of damage.",
+        "attributes" : []
+    },
+    {
+        "name" : "Personal Translator",
+        "cost" : "2000",
+        "weight " :"0.1kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "Contains the translating abilities of a 3PO-Series Protocol Droid unit into a tiny shell that can be worn around a person's neck or carried in a pocket. A person can carry a Personal Translator unit anywhere without having to rely on a Protocol Droid. The universal translator can translate verbal communications in the owner's language and up to three other languages of the owner's choosing. The device operates at the level of a DC 10 Droid Translator Unit. The translator has no photo receptors or Appendages, so it is not able to interpret nonverbal forms of communication such as sign language.",
+        "attributes" : []
+    },
+    {
+        "name" : "Repulsor Boots",
+        "cost" : "200",
+        "weight " :"2kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "This footwear allows the wearer to float a short distance above the ground. Repulsor Boots use a tiny repulsorlift unit in the sole of each boot to elevate the wearer up to 0.5 meters above the ground. With careful manipulation and positioning of one's feet, the boots can be used to move, but users cannot exceed a movement rate of 2 squares per round with this method. Although they are not an optimal method of travel, Repulsor Boots are a great aid in climbing, granting the wearer a +10 Equipment bonus to Climb checks.",
+        "attributes" : []
+    },
+    {
+        "name" : "Repulsor Hitch",
+        "cost" : "100",
+        "weight " :"3kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "The Repulsor Hitch is a small repulsorlift encased in a durasteel shell that can be attached to a cable or another extension. When activated, a Repulsor Hitch can lift items weighing up to 200 kg, enabling them to be moved. Explorers find that the Repulsor Hitch is especially useful for transporting large creatures. Objects weighing more than 200 kg are not affected by the Repulsor Hitch, since the repulsor field is not strong enough to lift the entire mass. Some Droid Models, such as the MULE Droid, are designed to allow a Repulsor Hitch to be attached to their chassis, allowing the Droids to move heavy objects.",
+        "attributes" : []
+    },
+    {
+        "name" : "Water Extractor",
+        "cost" : "400",
+        "weight " :"3.2kg",
+        "equip_type" : {
+            "type" : "Tools"  
+
+        },
+        "description" : "The Water Extractor can help beings who find themselves on a dry world. Working like a condensing canteen found in a Field Kit, the Water Extractor is a cone-shaped apparatus that attracts water vapor from the air, collecting it in specialized bins at the broad end of the cone. As the water accumulates, contaminants and toxins are filtered out, rendering the water potable. Although the amount of water collected varies depending on the moisture content of the atmosphere, field tests conducted on Tatooine yielded enough water in a period of 16 hours to sustain a humanoid for a full day.",
+        "attributes" : []
+    },
+    {
+        "name" : "Bandolier",
+        "cost" : "100",
+        "weight " :"2kg",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories"  
+
+        },
+        "description" : "A Bandolier has 12 slots that can each hold a single Tiny weapon (Such as a Grenade or knife), or single piece of Equipment weighing up to 0.5 kg. Any item on the Bandolier can be retrieved as a Move Action.",
+        "attributes" : []
+    },
+    {
+        "name" : "Helmet Package",
+        "cost" : "4000",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories" 
+
+        },
+        "description" : "When installed in the helmet of a suit of armor, this electronic package allows the Armor to grant the wearer a +2 Equipment bonus on Perception checks as well as Low-Light Vision. In addition, it includes an integrated hands-free Comlink. Installing the Helmet Package takes 1 hour, and a DC 20 Mechanics check.",
+        "attributes" : []
+    },
+    {
+        "name" : "Concealed Holster",
+        "cost" : "50",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories" 
+
+        },
+        "description" : " A Concealed Holster is designed to help keep a weapon out of sight. On most cases, this is a Shoulder Holster (The weapon fits under the wearer's armpit, presumably beneath a jacket, vest, or cloak). Small or Tiny weapons and single-bladed Lightsabers can be carried in concealed waistband holsters (Often placed inside the wearer's waistband in the small of the back). Tiny weapons and single-bladed Lightsabers can also be carried on ankle, boot, or wrist Holsters. A Concealed Holster allows you to draw a Concealed weapon as a Move Action, instead of a Standard Action, but you take a -5 penalty on your Stealth check to conceal the weapon.",
+        "attributes" : []
+    },
+    {
+        "name" : "Hip Holster",
+        "cost" : "200",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories" 
+
+        },
+        "description" : "This Holster holds the weapon in an easily accessed- and easily seen- location.",
+        "attributes" : []
+    },
+    {
+        "name" : "Targeting Scope (Standard)",
+        "cost" : "100",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "availability" : "Common"  
+
+        },
+        "description" : "A Targeting Scope is a sighting device that makes it easier to hit distant targets. However, it affords a very limited field of view, making it difficult to use. Installing a Targeting Scope on a rifle or pistol requires 10 minutes, and a DC 10 Mechanics check.  A Targeting Scope (Standard) reduces the Range by one category. However, you must Aim at your target to gain this benefit, and you lose the benefit if you change targets or lose line of sight to your target. ",
+        "attributes" : []
+    },
+    {
+        "name" : "Targeting Scope (Enhanced Low-Light)",
+        "cost" : "1000",
+        "weight " :"1.2kg",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "availability" : "Common"
+
+        },
+        "description" : "A Targeting Scope is a sighting device that makes it easier to hit distant targets. However, it affords a very limited field of view, making it difficult to use. Installing a Targeting Scope on a rifle or pistol requires 10 minutes, and a DC 10 Mechanics check. A Targeting Scope (Enhanced Low-Light) functions the same as a Targeting Scope (Standard) in normal light. However, after Aiming at a target, it allows the wielder to ignore Concealment (But not Total Concealment) from darkness, when attacking that target.",
+        "attributes" : []
+    },
+    {
+        "name" : "Armor Reinforcement",
+        "cost" : "3000",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "upgradeType" : "Armor Upgrade",  
+            "upgradePointCost ": 1,
+            "availability" : "Common"
+        },
+        "description" : "The Armor Reinforcement Armor Accessory increases Armor's ability to harmlessly deflect incoming attacks by coating the interior of the Armor with tough materials, adding an extra layer of defense. Reinforced Armor grants the wearer Damage Reduction 2 against Piercing damage.",
+        "attributes" : []
+    },
+    {
+        "name" : "Beam Splitter",
+        "cost" : "1200",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "upgradeType" : "Weapon Upgrade",  
+            "upgradePointCost" : 2,
+            "availability" : "Common"  
+
+        },
+        "description" : "A Weapon Accessory made only to Pistols, Rifles, Heavy Weapons, and Exotic Weapons (Ranged) that deal Energy damage, the Beam Splitter Weapon Accessory makes it easier to fire a powerful energy bolt by increasing the size of the bolt fired. Once per encounter, the wielder of a weapon with a Beam Splitter that uses the Power Blast Feat to modify an attack roll deals 2 points of damage for every 1 point subtracted from the attack bonus.",
+        "attributes" : []
+    },
+    {
+        "name" : "Durasteel Bonding",
+        "cost" : "2000",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "upgradeType" : "Weapon Upgrade",  
+            "upgradePointCost" : 1,
+            "availability" : "Common"
+
+        },
+        "description" : "The Durasteel Bonding Weapon Accessory coats an Advanced Melee Weapon, an Exotic Weapon (Melee), or a Simple Weapon (Melee) with a thin layer of Durasteel, making it more resistant to damage and ensuring that it retains it's keen edge over time. A weapon with Durasteel Bonding increases it's own Damage Reduction by 5 and deals an extra die of damage on a Critical Hit (This die of damage is added after damage is multiplied for the Critical Hit). This Weapon Accessory can only be placed on a weapon that deals Slashing damage.",
+        "attributes" : []
+    },
+    {
+        "name" : "Enhanced Energy Projector",
+        "cost" : "3000",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "upgradeType" : "Weapon Upgrade",  
+            "upgradePointCost" : 1,
+            "availability" : "Common"   
+
+        },
+        "description" : "The Enhanced Energy Projector Weapon Accessory smooths the flow of power to an Advanced Melee Weapon or an Exotic Weapon (Melee) that requires a Power Pack, making it less likely to produce unpredictable results. A weapon with an Enhanced Energy Projector allows the wielder to reroll a natural 1 on any attack roll once per encounter, keeping the second result.",
+        "attributes" : []
+    },
+    {
+        "name" : "Hair Trigger",
+        "cost" : "1200",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "upgradeType" : "Weapon Upgrade",  
+            "upgradePointCost" : 1,
+            "availability" : "Common"   
+
+        },
+        "description" : "A modification made only to Pistols, Rifles, Heavy Weapons, and Exotic Weapons (Ranged) that use a trigger mechanism to fire, the Hair Trigger accessory makes it easier to fire several shots in quick succession by reducing the amount of pressure that must be placed on the trigger. Once per encounter, the wielder of a weapon with a Hair Trigger that uses the Rapid Shot Feat to modify an attack roll may reroll the damage from the attack, keeping the better result.",
+        "attributes" : []
+    },
+    {
+        "name" : "Improved Energy Cell",
+        "cost" : "4000",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "upgradeType" : "Weapon Upgrade",  
+            "upgradePointCost" : 1,
+            "availability" : "Common"   
+
+        },
+        "description" : "A modification made only to Pistols, Rifles, Heavy Weapons, and Exotic Weapons (Ranged) that require a Power Pack, the Improved Energy Cell accessory increases the efficiency of the energy flow between a Power Pack and the weapon's firing mechanism. A weapon with the Improved Energy Cell modification doubles the number of shots it can fire on a single Power Pack. Additionally, if the weapon has the Increased Weapon Damage Modification from the Tech Specialist Feat, the Equipment bonus to damage increases to +3.",
+        "attributes" : []
+    },
+    {
+        "name" : "Mesh Underlay",
+        "cost" : "2500",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "upgradeType" : "Armor Upgrade",  
+            "upgradePointCost" : 2,
+            "availability" : "Common"   
+
+        },
+        "description" : "Designed with the same principals as Mesh Armor, the Mesh Underlay Armor Accessory helps channel certain types of energy away from the wearer's body, reducing the effectiveness of a potentially devastating blow. A character wearing a suit of Armor with the Mesh Underlay Armor Accessory gains a +5 Equipment bonus to their Damage Threshold against Stun damage.",
+        "attributes" : []
+    },
+    {
+        "name" : "Tremor Cell",
+        "cost" : "1000",
+        "weight " :"-",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "upgradeType" : "Weapon Upgrade",  
+            "upgradePointCost" : 1,
+            "availability" : "Common"   
+
+        },
+        "description" : "An Advanced Melee Weapon or an Exotic Weapon (Melee) that requires a Power Pack can be augmented by a Tremor Cell Weapon Accessory, allowing the wielder to subdue rather than kill an opponent by dazing it. A weapon with a Tremor Cell can be set to Stun as a Swift Action, and deals Stun damage equal to it's normal damage. Weapons larger than Medium cannot be fitted with this Weapon Accessory.",
+        "attributes" : []
+    },
+    {
+        "name" : "Computerized Interface Scope",
+        "cost" : "2000",
+        "weight " :"0.5kg",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",  
+            "upgradeType" : "Weapon Upgrade",  
+            "upgradePointCost" : 0,
+            "availability" : "Common"   
+        },
+        "description" : "This item is a small electrobinocular device, mounted onto a Weapon, that projects a targeting image onto a monocle or helmet display worn by the wielder. Additionally, the computer image projected by the scope can be displayed on a Datapad or transmitted by Comlink to a remote location, allowing others to see what the wielder sees. By using this scope, the wielder effectively reduces the Range of the target by one category (To a minimum of Point-Blank Range) when Aiming. The device is otherwise mechanically identical to a Targeting Scope (Standard) and does not stack with a Targeting Scope or with any other device that does not stack with a Targeting Scope.",
+        "attributes" : []
+    },
+    {
+        "name" : "Flash Suppressor/Silencer",
+        "cost" : "400",
+        "weight " :"0.2kg",
+        "equip_type" : {
+            "type" : "Weapon and Armor Accessories",
+            "upgradeType" : "Weapon Upgrade",  
+            "upgradePointCost" : 0,
+            "availability" : "Common"   
+
+        },
+        "description" : "The Merr-Sonn Nonsonic is a typical example of a Flash Suppressor/Silencer. Fitting over the muzzle of any Small or larger Slugthrower, this device reduces both the sound and the muzzle flash when the weapon is fired. A Flash Suppressor/Silencer imposes a -10 penalty to Perception checks to discern the sound or spot the flash of an equipped Slugthrower. It reduces the maximum Range of the weapon by two range increments.",
+        "attributes" : []
+    },
+    {
+        "name" : "BioTech Borg Construct AJ-6",
+        "cost" : "80000",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Advanced Cybernetics",
+            "surgeryCost" : "70000",
+            "rejectionAttackBonus" : "+14",
+            "availability" : "Restricted"
+
+        },
+        "description" : "The BioTech Borg Construct AJ-6 provides a direct cabled or wireless link to computers and networks within a 10-meter range. It allows a cyborg to remotely program and access on-board data through thought alone. The standard model has a built-in cybord/droid interface and up to four BioTech Knowledge Cartridges or standard Datacard ports. Characters wearing a BioTech Borg Construct AJ-6 gain a +2 beneficial circumstance bonus to Use Computer, Knowledge, and other Skills at the discretion of the Gamemaster. They can also use Issue Routine Commands as a Swift Action (Or as a Free Action if they have the Gimmick Talent). Wearers become more computerlike and less able to relate to people, causing them to take a -5 penalty to all Persuasion checks. They also speak less frequently as they grow accustomed to the speed of communicating through electronic networks. ",
+        "attributes" : []
+    },
+    {
+        "name" : "Infrared Sensor Eye",
+        "cost" : "300",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Advanced Cybernetics",
+            "surgeryCost" : "2250",
+            "rejectionAttackBonus" : "+14",
+            "availability" : "Restricted"
+              
+
+        },
+        "description" : "The cybernetic replacement eye includes special infrared sensors that allow the host to see not only visible light but also heat signatures. This grants the host Darkvision.",
+        "attributes" : []
+    },
+    {
+        "name" : "Sensory Enhancement",
+        "cost" : "800",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Advanced Cybernetics",
+            "surgeryCost" : "3000",
+            "rejectionAttackBonus" : "+14",
+            "availability" : "Restricted"  
+
+        },
+        "description" : "The Sensory Enhancement cybernetic package places cybernetic augmentations on nerve endings in various sensory organs, reducing the signal-to-noise ratio and allowing the host to notice what might otherwise have been missed. A character with the Sensor Enhancement cybernetic package reduces by 2 any penalties to Perception checks made to notice a target with Concealment or Total Concealment.",
+        "attributes" : []
+    },
+    {
+        "name" : "Skeletal Reinforcement",
+        "cost" : "10000",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Advanced Cybernetics",
+            "surgeryCost" : "50000",
+            "rejectionAttackBonus" : "+12",
+            "availability" : "Restricted"  
+  
+
+        },
+        "description" : "This cybernetic enhancement package enhances the host's skeleton with high-impact polymers, increasing bone density and the ability to endure high-impact collisions. A character with Skeletal Reinforcement gains a +2 Equipment bonus to their Damage Threshold.",
+        "attributes" : []
+    },
+    {
+        "name" : "Subcutaneous Comlink",
+        "cost" : "4000",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Advanced Cybernetics",
+            "surgeryCost" : "3000",
+            "rejectionAttackBonus" : "+3",
+            "availability" : "Restricted"  
+    
+
+        },
+        "description" : "A Subcutaneous Comlink features special sensors and transmitters attached to the vocal and auditory organs of the host. This allows the creature with this Advanced Cybernetic to hear Comlink transmissions and to send his or her own by making only slight vocal sounds. When a being with a Subcutaneous Comlink wishes, he or she can communicate through this Comlink without making a sound loud enough for others to hear.",
+        "attributes" : []
+    },
+    {
+        "name" : "Targeting Eye",
+        "cost" : "500",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Advanced Cybernetics",
+            "surgeryCost" : "3750",
+            "rejectionAttackBonus" : "+16",
+            "availability" : "Military"  
+    
+
+        },
+        "description" : "This cybernetic replacement eye includes enhanced target-recognition software linked with Weapon packages and Armor targeting packages. The eye creates HUD overlays, augmenting the host's vision to enhance combat prowess. A host with a Targeting Eye is considered to have the benefit of a Helmet Package.",
+        "attributes" : []
+    },
+    {
+        "name" : "Telescopic Eye",
+        "cost" : "500",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Advanced Cybernetics",
+            "surgeryCost" : "3750",
+            "rejectionAttackBonus" : "+9",
+            "availability" : "Restricted"  
+    
+
+        },
+        "description" : "A Telescopic Eye can zoom in on remote targets, granting the bearer a greater range of distant vision. In some cases this is just a result of visual enhancement software and fine-tuned sensors, but in other cases this can mean that the eye literally detaches from the host and hovers on tiny repulsors closer to the target. A Telescopic Eye allows the host to take Range penalties to Perception checks every 20 squares instead of every 10 squares.",
+        "attributes" : []
+    },
+    {
+        "name" : "Tremor Sensor",
+        "cost" : "400",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Advanced Cybernetics",
+            "surgeryCost" : "3750",
+            "rejectionAttackBonus" : "+7",
+            "availability" : "Restricted"  
+    
+
+        },
+        "description" : "A Tremor Sensor is installed in the feet of the host. Connected to the nervous system, the Tremor Sensor detects minute vibrations in the ground, warning the host of approaching enemies. A creature with the Tremor Sensor enhancement takes no penalty to Perception checks to notice targets that have Concealment or Total Concealment, provided the target moved on it's last turn.",
+        "attributes" : []
+    },
+    {
+        "name" : "Bio-Stabilizer Implant",
+        "cost" : "1750",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Implants"  
+
+        },
+        "description" : "The Bio-Stabilizer Implant stores and transmits basic knowledge of various Poisons and Toxins into the mind of it's user, teaching the brain to synthesize antidotes. The user of a Bio-Stabilizer Implant is immune to Poison.",
+        "attributes" : []
+    },
+    {
+        "name" : "Cardio Implant",
+        "cost" : "4000",
+        "weight " :"1kg",
+        "equip_type" : {
+            "type" : "Implants"  
+
+        },
+        "description" : "A Cardio Implant encourages the brain to send vital chemicals to the heart and other organs, revitalizing them and giving the user greater physical reserves. The user of a Cardio Implant gains +1 Hit Point per Character Level.",
+        "attributes" : []
+    },
+    {
+        "name" : "Combat Implant",
+        "cost" : "5000",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Implants"  
+
+        },
+        "description" : "The Combat Implant stores and transmits basic knowledge on a variety of weapons into the mind of its user. A Combat Implant eliminates penalties to attack rolls for weapons the user is not proficient with.",
+        "attributes" : []
+    },
+    {
+        "name" : "Memory Implant",
+        "cost" : "2000",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Implants"  
+
+        },
+        "description" : "A Memory Implant reinforces and augments the synapses in the memory centers of the brain, making it possible to recall knowledge locked away in the user's mind. The user of a Memory Implant can reroll any Knowledge check, keeping the better of the two results.",
+        "attributes" : []
+    },
+    {
+        "name" : "Nerve Reinforcement Implant",
+        "cost" : "5000",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Implants"  
+
+        },
+        "description" : "The Nerve Reinforcement Implant augments the signals sent from the brain through the central nervous system, making the body's senses difficult to overload through conventional means. The user of a Nerve Reinforcement Implant gains a +5 bonus to their Damage Threshold against Stun damage.",
+        "attributes" : []
+    },
+    {
+        "name" : "Regenerative Implant",
+        "cost" : "4250",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Implants"  
+
+        },
+        "description" : "The Regenerative Implant coaxes the healing sections of the brain, causing them to work harder to repair damage. The user of a Regenerative Implant recovers twice as many Hit Points as normal from Natural Healing.",
+        "attributes" : []
+    },
+    {
+        "name" : "Sensory Implant",
+        "cost" : "2500",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Implants"  
+
+        },
+        "description" : "The Sensory Implant augments the mind's natural ability to process visual data, enhancing the user's ability to perceive targets under difficult conditions. The Sensory Implant grants a user Low-Light Vision; if the character already has Low-Light Vision, he or she gains Darkvision from the Implant instead.",
+        "attributes" : []
+    },
+
+    {
+        "name" : "Subelectronic Converter",
+        "cost" : "23000",
+        "weight " :"",
+        "equip_type" : {
+            "type" : "Implants"  
+
+        },
+        "description" : "The Subelectronic Converter is a computerized device that, when implanted into a subject's head, allows the subject to control Droids through The Force. A Subelectronic Converter translates the signals from the subject's brain into Binary commands understood by Droids; likewise, it converts Droid signals into a language that the brain can understand. A Subelectronic Converter is just like any other Cybernetic Enhancement, in that it must be installed by a character with the Cybernetic Surgery Feat and imposes a penalty on Use the Force checks. A character with a Subelectronic Converter may use Mind-Affecting Force Powers on Droids, despite the Droids' immunity to Mind-Affecting effects. However, there's a trade off: the recipient of the Subelectronic Converter takes a -2 penalty to their Will Defense due to side effects of the device.",
+        "attributes" : []
+    }
+
+
+]
