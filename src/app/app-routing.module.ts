@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingpageComponent } from './landingpage/landingpage.component';
-import { MainComponent } from './main/main.component';
+import { LandingpageComponent } from './dashboard/landingpage/landingpage.component';
+import { MainComponent } from './character/main/main.component';
 import { CharsheetComponent } from '../app/updatemodule/components/charsheet/charsheet.component';
 
 const routes: Routes = [

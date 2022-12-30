@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ChoicesSenderService } from '../services/choices-sender.service';
+import { ChoicesSenderService } from '../../services/choices-sender.service';
 import { faCheckSquare, faSquare, faSave, faClose } from '@fortawesome/free-solid-svg-icons';
 import {jsPDF} from "jspdf";
 import html2canvas from 'html2canvas'
-import { LocalstorageService } from '../localstorage.service';
+import { LocalstorageService } from '../../localstorage.service';
 
 
 interface heroObject {

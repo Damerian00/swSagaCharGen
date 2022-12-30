@@ -2,6 +2,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ChoicesSenderService } from 'src/app/services/choices-sender.service';
 import { SwapiService } from 'src/app/services/swapi.service';
+import { SWPsuedoApi } from 'src/app/services/swpsuedoapi.service';
 import { CharSheetComponent } from '../char-sheet/char-sheet.component';
 
 
@@ -13,7 +14,7 @@ import { CharSheetComponent } from '../char-sheet/char-sheet.component';
 })
 
 export class SpeciesComponent implements OnInit {
-  constructor(private swApiService: SwapiService, private choices: ChoicesSenderService) { }
+  constructor(private swApiService: SwapiService, private choices: ChoicesSenderService, private pseudoApi : SWPsuedoApi) { }
   speciesArray: any;
   speciesName: string = "";
   speciesNames: Array<string> = [];
@@ -25,13 +26,18 @@ export class SpeciesComponent implements OnInit {
   @Output () speciesSelected: EventEmitter<string> = new EventEmitter<string>()
   ngOnInit(): void {
 // utilizes swapi service to retriueve the data from the species endpoint
+/*
+    //contains api call for real backend
     this.swApiService.getSpecies().subscribe(payload =>{
-  this.speciesArray = payload;
-  // console.log("Species: ", this.speciesArray);  
-// sorts the array by species name
-  this.speciesArray.sort(this.sortNames("species_name"));
-})
-
+      this.speciesArray = payload;
+      // console.log("Species: ", this.speciesArray);  
+    // sorts the array by species name
+      this.speciesArray.sort(this.sortNames("species_name"));
+    })
+*/
+    this.speciesArray = this.pseudoApi.getSpecies()
+    this.speciesArray.sort(this.sortNames("species_name"));
+    
   }
   // a sorting function to arrange an array of objects by prop parameter
   sortNames(prop: string){

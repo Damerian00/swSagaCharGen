@@ -2,7 +2,7 @@
     {
         "name" : "Comlink Short-Range",
         "cost" : "25",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : ["Audio", "Video", "Holo"]
@@ -13,7 +13,7 @@
     {
         "name" : "Comlink Long-Range",
         "cost" : "250",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : ["Audio", "Video", "Holo"]
@@ -24,7 +24,7 @@
     {
         "name" : "Pocket Scrambler",
         "cost" : "400",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : []
@@ -35,7 +35,7 @@
     {
         "name" : "Vox-Box",
         "cost" : "200",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : ["Audio"]
@@ -46,7 +46,7 @@
     {
         "name" : "Visual Wrist Comm",
         "cost" : "1300",
-        "weight " :"0.25kg",
+        "weight" :"0.25kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : ["Audio", "Video"]
@@ -57,7 +57,7 @@
     {
         "name" : "Hands-Free Comlink",
         "cost" : "150",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : ["Audio"]
@@ -68,7 +68,7 @@
     {
         "name" : "Com Scrambler",
         "cost" : "6000",
-        "weight " :"10kg",
+        "weight" :"10kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : []
@@ -79,7 +79,7 @@
     {
         "name" : "Targeting Beacon",
         "cost" : "300",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : []
@@ -90,7 +90,7 @@
     {
         "name" : "Tightbeam Comlink",
         "cost" : "300",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : ["Audio"]
@@ -101,7 +101,7 @@
     {
         "name" : "Earbud Comlink",
         "cost" : "200",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : ["Audio"]
@@ -112,7 +112,7 @@
     {
         "name" : "Panic Ring",
         "cost" : "300",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : []
@@ -123,7 +123,7 @@
     {
         "name" : "Holo Converter",
         "cost" : "3000",
-        "weight " :"2kg",
+        "weight" :"2kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : ["Holo"]
@@ -134,7 +134,7 @@
     {
         "name" : "Signal Wand",
         "cost" : "300",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Communications Devices",
             "data_Types" : ["Audio"]
@@ -145,7 +145,7 @@
     {
         "name" : "Code Cylinder",
         "cost" : "500",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -155,7 +155,7 @@
     {
         "name" : "Credit Chip",
         "cost" : "100",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -165,7 +165,7 @@
     {
         "name" : "Blank Datacards (10)",
         "cost" : "10",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -175,7 +175,7 @@
     {
         "name" : "Basic Datapad",
         "cost" : "100",
-        "weight " :"0.3kg",
+        "weight" :"0.3kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -185,7 +185,7 @@
     {
         "name" : "Standard Datapad",
         "cost" : "1000",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -195,7 +195,7 @@
     {
         "name" : "Personal Holoprojector",
         "cost" : "1000",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -205,7 +205,7 @@
     {
         "name" : "Portable Computer",
         "cost" : "5000",
-        "weight " :"2kg",
+        "weight" :"2kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -215,7 +215,7 @@
     {
         "name" : "Computer Spike",
         "cost" : "-",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -225,7 +225,7 @@
     {
         "name" : "HiBaka 2000 Mem-Stik",
         "cost" : "50",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -235,7 +235,7 @@
     {
         "name" : "Lectroticker",
         "cost" : "-",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -245,7 +245,7 @@
     {
         "name" : "Computer Interface Visor",
         "cost" : "1200",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -255,7 +255,7 @@
     {
         "name" : "Bracer Computer",
         "cost" : "1300",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -265,7 +265,7 @@
     {
         "name" : "Xcalq-3GA \"Slicer Special\" Portable Computer",
         "cost" : "7500",
-        "weight " :"2kg",
+        "weight" :"2kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -275,7 +275,7 @@
     {
         "name" : "Xcalq Stealth Pack",
         "cost" : "1500",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -285,7 +285,7 @@
     {
         "name" : "Triangulation Visor",
         "cost" : "1400",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Computers and Storage Devices"
         },
@@ -295,7 +295,7 @@
     {
         "name" : "Cybernetic Prosthesis",
         "cost" : "1500",
-        "weight " :"Varies",
+        "weight" :"Varies",
         "equip_type" : {
             "type" : "Cybernetic Devices",
             "installCost": "500"  
@@ -306,7 +306,7 @@
     {
         "name" : "Rhen-Orm Biocomputer",
         "cost" : "3500",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Cybernetic Devices",
             "installCost": "10000"  
@@ -317,7 +317,7 @@
     {
         "name" : "Energy-Binding Prosthesis",
         "cost" : "-",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Cybernetic Devices"
         },
@@ -327,7 +327,7 @@
     {
         "name" : "Subelectronic Converter",
         "cost" : "23000",
-        "weight " :"Varies",
+        "weight" :"Varies",
         "equip_type" : {
             "type" : "Cybernetic Devices",
             "installCost" : "500"  
@@ -338,7 +338,7 @@
     {
         "name" : "Electrobinoculars",
         "cost" : "1000",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"  
         },
@@ -348,7 +348,7 @@
     {
         "name" : "Glow Rod",
         "cost" : "10",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -358,7 +358,7 @@
     {
         "name" : "Fusion Lantern",
         "cost" : "25",
-        "weight " :"2kg",
+        "weight" :"2kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -368,7 +368,7 @@
     {
         "name" : "Audiorecorder",
         "cost" : "25",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -378,7 +378,7 @@
     {
         "name" : "Holorecorder",
         "cost" : "100",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -388,7 +388,7 @@
     {
         "name" : "Videorecorder",
         "cost" : "50",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -398,7 +398,7 @@
     {
         "name" : "Sensor Pack",
         "cost" : "1500",
-        "weight " :"9kg",
+        "weight" :"9kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -408,7 +408,7 @@
     {
         "name" : "Heat Sensor",
         "cost" : "250",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -418,7 +418,7 @@
     {
         "name" : "Aural Amplifier",
         "cost" : "2000",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -428,7 +428,7 @@
     {
         "name" : "Demolitions Sensor",
         "cost" : "1000",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -438,7 +438,7 @@
     {
         "name" : "Motion Sensing Visor",
         "cost" : "2500",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -448,7 +448,7 @@
     {
         "name" : "Neural Band",
         "cost" : "3500",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -458,7 +458,7 @@
     {
         "name" : "Stealth Field Generator",
         "cost" : "5000",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -468,7 +468,7 @@
     {
         "name" : "Decoy Glow Rod",
         "cost" : "100",
-        "weight " :"4kg",
+        "weight" :"4kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -478,7 +478,7 @@
     {
         "name" : "Holoshroud",
         "cost" : "25000",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -488,7 +488,7 @@
     {
         "name" : "Sound Sponge",
         "cost" : "3500",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -498,7 +498,7 @@
     {
         "name" : "Halo Lamp",
         "cost" : "30",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -508,7 +508,7 @@
     {
         "name" : "Spy Bug",
         "cost" : "1300",
-        "weight " :"0.51kg",
+        "weight" :"0.51kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -518,7 +518,7 @@
     {
         "name" : "Ambient Aural Amplifier",
         "cost" : "3000",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -528,7 +528,7 @@
     {
         "name" : "Communication Scanner",
         "cost" : "1000",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -538,7 +538,7 @@
     {
         "name" : "Proximity Flare",
         "cost" : "50",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -548,7 +548,7 @@
     {
         "name" : "Radiation Detector",
         "cost" : "20",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -558,7 +558,7 @@
     {
         "name" : "Surveillance Detector",
         "cost" : "450",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -568,7 +568,7 @@
     {
         "name" : "Surveillance Tagger",
         "cost" : "450",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -578,7 +578,7 @@
     {
         "name" : "Veridicator",
         "cost" : "4000",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -588,7 +588,7 @@
     {
         "name" : "Vid-Vox Scrambler",
         "cost" : "3400",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -598,7 +598,7 @@
     {
         "name" : "Sonar Mapper",
         "cost" : "400",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices"
         },
@@ -608,7 +608,7 @@
     {
         "name" : "Ooglith Masquer",
         "cost" : "-",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Detection and Surveillance Devices",
             "approval" : "GM"
@@ -619,7 +619,7 @@
     {
         "name" : "Explosive Charge",
         "cost" : "1500",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Explosives",  
             "explosive_type" : "Energy",
@@ -633,7 +633,7 @@
     {
         "name" : "Detonite",
         "cost" : "500",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Explosives",  
             "explosive_type" : "Energy",
@@ -647,7 +647,7 @@
     {
         "name" : "Timer",
         "cost" : "250",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Explosives",  
             "explosive_type" : "-",
@@ -661,7 +661,7 @@
     {
         "name" : "Manual Trigger",
         "cost" : "100",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Explosives",  
             "explosive_type" : "-",
@@ -675,7 +675,7 @@
     {
         "name" : "Detonite Cord",
         "cost" : "1000",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Explosives",  
             "explosive_type" : "Energy",
@@ -689,7 +689,7 @@
       {
         "name" : "Aquata Breather",
         "cost" : "350",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Life Support"
 
@@ -700,7 +700,7 @@
     {
         "name" : "Breath Mask",
         "cost" : "200",
-        "weight " :"2kg",
+        "weight" :"2kg",
         "equip_type" : {
             "type" : "Life Support"
 
@@ -711,7 +711,7 @@
     {
         "name" : "Atmosphere Canister/Filter",
         "cost" : "25",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Life Support"  
 
@@ -722,7 +722,7 @@
     {
         "name" : "Flight Suit",
         "cost" : "1000",
-        "weight " :"3kg",
+        "weight" :"3kg",
         "equip_type" : {
             "type" : "Life Support"  
 
@@ -733,7 +733,7 @@
     {
         "name" : "Space Suit",
         "cost" : "2000",
-        "weight " :"15kg",
+        "weight" :"15kg",
         "equip_type" : {
             "type" : "Life Support"
 
@@ -744,7 +744,7 @@
     {
         "name" : "Vacuum Mask",
         "cost" : "650",
-        "weight " :"0.3kg",
+        "weight" :"0.3kg",
         "equip_type" : {
             "type" : "Life Support"
 
@@ -755,7 +755,7 @@
     {
         "name" : "Celegian Life-Support Chamber",
         "cost" : "6000",
-        "weight " :"50kg",
+        "weight" :"50kg",
         "equip_type" : {
             "type" : "Life Support"
 
@@ -766,7 +766,7 @@
     {
         "name" : "Propulsion Pack",
         "cost" : "200",
-        "weight " :"10kg",
+        "weight" :"10kg",
         "equip_type" : {
             "type" : "Life Support",  
             "availability": "Military"
@@ -777,7 +777,7 @@
     {
         "name" : "Emergency Vacuum Seal",
         "cost" : "750",
-        "weight " :"0.9kg",
+        "weight" :"0.9kg",
         "equip_type" : {
             "type" : "Life Support" 
 
@@ -788,7 +788,7 @@
     {
         "name" : "Shipsuit",
         "cost" : "200",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Life Support"
 
@@ -799,7 +799,7 @@
     {
         "name" : "Bacta Tank (Empty)",
         "cost" : "100000",
-        "weight " :"500kg",
+        "weight" :"500kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -810,7 +810,7 @@
     {
         "name" : "Bacta (Per liter)",
         "cost" : "100",
-        "weight " :"2kg",
+        "weight" :"2kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -821,7 +821,7 @@
     {
         "name" : "Bacta Tank (Full)",
         "cost" : "130000",
-        "weight " :"1100kg",
+        "weight" :"1100kg",
         "equip_type" : {
             "type" : "Medical Gear" 
 
@@ -832,7 +832,7 @@
     {
         "name" : "Medical Kit",
         "cost" : "600",
-        "weight " :"20kg",
+        "weight" :"20kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -843,7 +843,7 @@
     {
         "name" : "Medpac",
         "cost" : "100",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -854,7 +854,7 @@
     {
         "name" : "Surgery Kit",
         "cost" : "1000",
-        "weight " :"10kg",
+        "weight" :"10kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -865,7 +865,7 @@
     {
         "name" : "FastFlesh Medpac",
         "cost" : "600",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -876,7 +876,7 @@
     {
         "name" : "MDS-50 Medisensor",
         "cost" : "75",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -887,7 +887,7 @@
     {
         "name" : "Medical Interface Visor",
         "cost" : "1500",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -898,7 +898,7 @@
     {
         "name" : "Bioscanner",
         "cost" : "3500",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -909,7 +909,7 @@
     {
         "name" : "8-2A Medical Bundle",
         "cost" : "200",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -920,7 +920,7 @@
     {
         "name" : "Anti-Rad Dose",
         "cost" : "50",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -931,7 +931,7 @@
     {
         "name" : "Cryogenic Pouch",
         "cost" : "600",
-        "weight " :"1.5kg",
+        "weight" :"1.5kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -942,7 +942,7 @@
     {
         "name" : "Antitoxin Patch",
         "cost" : "25",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -953,7 +953,7 @@
     {
         "name" : "Toxin Detector",
         "cost" : "700",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -964,7 +964,7 @@
     {
         "name" : "Antidote Synthesizer",
         "cost" : "2500",
-        "weight " :"0.8kg",
+        "weight" :"0.8kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -975,7 +975,7 @@
     {
         "name" : "Hypoinjector Wristband",
         "cost" : "350",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -986,7 +986,7 @@
     {
         "name" : "Healing Stimulant",
         "cost" : "-",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Medical Gear"
 
@@ -997,7 +997,7 @@
     {
         "name" : "All-Temperature Cloak",
         "cost" : "100",
-        "weight " :"1.5kg",
+        "weight" :"1.5kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1008,7 +1008,7 @@
     {
         "name" : "Chain (3 meters)",
         "cost" : "25",
-        "weight " :"2.5kg",
+        "weight" :"2.5kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1019,7 +1019,7 @@
     {
         "name" : "Field Kit",
         "cost" : "1000",
-        "weight " :"10kg",
+        "weight" :"10kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1030,7 +1030,7 @@
     {
         "name" : "Jet Pack",
         "cost" : "300",
-        "weight " :"30kg",
+        "weight" :"30kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1041,7 +1041,7 @@
     {
         "name" : "Liquid Cable Dispenser (15 meters)",
         "cost" : "10",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1052,7 +1052,7 @@
     {
         "name" : "Ration Pack",
         "cost" : "5",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1063,7 +1063,7 @@
     {
         "name" : "Syntherope (45 meters)",
         "cost" : "20",
-        "weight " :"2..5kg",
+        "weight" :"2..5kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1074,7 +1074,7 @@
     {
         "name" : "Mandalorian Jet Pack",
         "cost" : "-",
-        "weight " :"30kg",
+        "weight" :"30kg",
         "equip_type" : {
             "type" : "Survival Gear",  
             "approval" : "GM"
@@ -1085,7 +1085,7 @@
     {
         "name" : "Hush-About Personal Jet Pack",
         "cost" : "3750",
-        "weight " :"30kg",
+        "weight" :"30kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1096,7 +1096,7 @@
     {
         "name" : "ABC Scrambler",
         "cost" : "3000",
-        "weight " :"3kg",
+        "weight" :"3kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1107,7 +1107,7 @@
     {
         "name" : "Spacer's Chest",
         "cost" : "200",
-        "weight " :"10kg",
+        "weight" :"10kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1118,7 +1118,7 @@
     {
         "name" : "Camouflage Netting",
         "cost" : "6000",
-        "weight " :"40kg",
+        "weight" :"40kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1129,7 +1129,7 @@
         {
         "name" : "Sith Battle Harness",
         "cost" : "5000",
-        "weight " :"90kg",
+        "weight" :"90kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1140,7 +1140,7 @@
     {
         "name" : "Camouflage Poncho",
         "cost" : "125",
-        "weight " :"1.5kg",
+        "weight" :"1.5kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1151,7 +1151,7 @@
     {
         "name" : "Field Camouflage Netting",
         "cost" : "2000",
-        "weight " :"5kg",
+        "weight" :"5kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1162,7 +1162,7 @@
     {
         "name" : "Field Food Processor",
         "cost" : "1500",
-        "weight " :"4kg",
+        "weight" :"4kg",
         "equip_type" : {
             "type" : "Survival Gear"
 
@@ -1173,7 +1173,7 @@
     {
         "name" : "Personal Field Shelter",
         "cost" : "500",
-        "weight " :"1.5kg",
+        "weight" :"1.5kg",
         "equip_type" : {
             "type" : "Survival Gear"  
 
@@ -1184,7 +1184,7 @@
     {
         "name" : "Plasma Bridge",
         "cost" : "12500",
-        "weight " :"700kg",
+        "weight" :"700kg",
         "equip_type" : {
             "type" : "Survival Gear"  
 
@@ -1195,7 +1195,7 @@
     {
         "name" : "Vacuum Survival Pouch",
         "cost" : "800",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Survival Gear"  
 
@@ -1206,7 +1206,7 @@
     {
         "name" : "Climbing Harness",
         "cost" : "45",
-        "weight " :"0.7kg",
+        "weight" :"0.7kg",
         "equip_type" : {
             "type" : "Survival Gear" 
 
@@ -1217,7 +1217,7 @@
     {
         "name" : "Plastent",
         "cost" : "300",
-        "weight " :"2.7kg",
+        "weight" :"2.7kg",
         "equip_type" : {
             "type" : "Survival Gear" 
 
@@ -1228,7 +1228,7 @@
     {
         "name" : "Portable Beacon",
         "cost" : "1500",
-        "weight " :"6.8kg",
+        "weight" :"6.8kg",
         "equip_type" : {
             "type" : "Survival Gear"  
 
@@ -1239,7 +1239,7 @@
     {
         "name" : "Riding Saddle",
         "cost" : "125",
-        "weight " :"4kg",
+        "weight" :"4kg",
         "equip_type" : {
             "type" : "Survival Gear"  
 
@@ -1250,7 +1250,7 @@
     {
         "name" : "Subsonic Field Emitter",
         "cost" : "120",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Survival Gear"  
 
@@ -1261,7 +1261,7 @@
     {
         "name" : "War Saddle",
         "cost" : "250",
-        "weight " :"6kg",
+        "weight" :"6kg",
         "equip_type" : {
             "type" : "Survival Gear"  
 
@@ -1272,7 +1272,7 @@
     {
         "name" : "Binder Cuffs",
         "cost" : "50",
-        "weight " :"1.5kg",
+        "weight" :"1.5kg",
         "equip_type" : {
             "type" : "Tools" 
 
@@ -1283,7 +1283,7 @@
     {
         "name" : "Energy Cell",
         "cost" : "10",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Tools" 
 
@@ -1294,7 +1294,7 @@
     {
         "name" : "Fire Extinguisher",
         "cost" : "50",
-        "weight " :"3kg",
+        "weight" :"3kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1305,7 +1305,7 @@
     {
         "name" : "Mesh Tape",
         "cost" : "5",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1316,7 +1316,7 @@
     {
         "name" : "Power Generator",
         "cost" : "750",
-        "weight " :"15kg",
+        "weight" :"15kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1327,7 +1327,7 @@
     {
         "name" : "Power Pack",
         "cost" : "25",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1338,7 +1338,7 @@
     {
         "name" : "Power Recharger",
         "cost" : "100",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1349,7 +1349,7 @@
     {
         "name" : "Security Kit",
         "cost" : "750",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1360,7 +1360,7 @@
     {
         "name" : "Tool Kit",
         "cost" : "250",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Tools",  
             "contents" : {
@@ -1424,7 +1424,7 @@
     {
         "name" : "Utility Belt (empty)",
         "cost" : "55",
-        "weight " :"0.3kg",
+        "weight" :"0.3kg",
         "equip_type" : {
             "type" : "Tools"
 
@@ -1435,7 +1435,7 @@
     {
         "name" : "Antisecurity Blades",
         "cost" : "-",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1446,7 +1446,7 @@
     {
         "name" : "Mechanical Interface Visor",
         "cost" : "1250",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1457,7 +1457,7 @@
     {
         "name" : "Repulsor Pad",
         "cost" : "200",
-        "weight " :"6kg",
+        "weight" :"6kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1468,7 +1468,7 @@
     {
         "name" : "Force Cage",
         "cost" : "7000",
-        "weight " :"25kg",
+        "weight" :"25kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1479,7 +1479,7 @@
     {
         "name" : "Lock Breaking Kit",
         "cost" : "8000",
-        "weight " :"4kg",
+        "weight" :"4kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1490,7 +1490,7 @@
     {
         "name" : "Man Trap",
         "cost" : "8000",
-        "weight " :"19kg",
+        "weight" :"19kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1501,7 +1501,7 @@
     {
         "name" : "Biotech Tool Kit",
         "cost" : "450",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1512,7 +1512,7 @@
     {
         "name" : "Force Detector",
         "cost" : "2000",
-        "weight " :"9kg",
+        "weight" :"9kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1523,7 +1523,7 @@
     {
         "name" : "Force Training Aid",
         "cost" : "25",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1534,7 +1534,7 @@
     {
         "name" : "Universal Energy Cage",
         "cost" : "20000",
-        "weight " :"3 Tons",
+        "weight" :"3 Tons",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1545,7 +1545,7 @@
     {
         "name" : "Droid Diagnostic",
         "cost" : "400",
-        "weight " :"2kg",
+        "weight" :"2kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1556,7 +1556,7 @@
     {
         "name" : "Plasma Cutter",
         "cost" : "10000",
-        "weight " :"110kg",
+        "weight" :"110kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1567,7 +1567,7 @@
     {
         "name" : "Redirection Crystal",
         "cost" : "500",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1578,7 +1578,7 @@
     {
         "name" : "Shield Cage",
         "cost" : "10000",
-        "weight " :"20kg",
+        "weight" :"20kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1589,7 +1589,7 @@
     {
         "name" : "Fire Paste",
         "cost" : "15",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1600,7 +1600,7 @@
     {
         "name" : "Fire Rod",
         "cost" : "25",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1611,7 +1611,7 @@
     {
         "name" : "Microlab",
         "cost" : "1800",
-        "weight " :"0.8kg",
+        "weight" :"0.8kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1622,7 +1622,7 @@
     {
         "name" : "Personal Multitool",
         "cost" : "100",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1633,7 +1633,7 @@
     {
         "name" : "Personal Translator",
         "cost" : "2000",
-        "weight " :"0.1kg",
+        "weight" :"0.1kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1644,7 +1644,7 @@
     {
         "name" : "Repulsor Boots",
         "cost" : "200",
-        "weight " :"2kg",
+        "weight" :"2kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1655,7 +1655,7 @@
     {
         "name" : "Repulsor Hitch",
         "cost" : "100",
-        "weight " :"3kg",
+        "weight" :"3kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1666,7 +1666,7 @@
     {
         "name" : "Water Extractor",
         "cost" : "400",
-        "weight " :"3.2kg",
+        "weight" :"3.2kg",
         "equip_type" : {
             "type" : "Tools"  
 
@@ -1677,7 +1677,7 @@
     {
         "name" : "Bandolier",
         "cost" : "100",
-        "weight " :"2kg",
+        "weight" :"2kg",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories"  
 
@@ -1688,7 +1688,7 @@
     {
         "name" : "Helmet Package",
         "cost" : "4000",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories" 
 
@@ -1699,7 +1699,7 @@
     {
         "name" : "Concealed Holster",
         "cost" : "50",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories" 
 
@@ -1710,7 +1710,7 @@
     {
         "name" : "Hip Holster",
         "cost" : "200",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories" 
 
@@ -1721,7 +1721,7 @@
     {
         "name" : "Targeting Scope (Standard)",
         "cost" : "100",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "availability" : "Common"  
@@ -1733,7 +1733,7 @@
     {
         "name" : "Targeting Scope (Enhanced Low-Light)",
         "cost" : "1000",
-        "weight " :"1.2kg",
+        "weight" :"1.2kg",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "availability" : "Common"
@@ -1745,7 +1745,7 @@
     {
         "name" : "Armor Reinforcement",
         "cost" : "3000",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "upgradeType" : "Armor Upgrade",  
@@ -1758,7 +1758,7 @@
     {
         "name" : "Beam Splitter",
         "cost" : "1200",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "upgradeType" : "Weapon Upgrade",  
@@ -1772,7 +1772,7 @@
     {
         "name" : "Durasteel Bonding",
         "cost" : "2000",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "upgradeType" : "Weapon Upgrade",  
@@ -1786,7 +1786,7 @@
     {
         "name" : "Enhanced Energy Projector",
         "cost" : "3000",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "upgradeType" : "Weapon Upgrade",  
@@ -1800,7 +1800,7 @@
     {
         "name" : "Hair Trigger",
         "cost" : "1200",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "upgradeType" : "Weapon Upgrade",  
@@ -1814,7 +1814,7 @@
     {
         "name" : "Improved Energy Cell",
         "cost" : "4000",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "upgradeType" : "Weapon Upgrade",  
@@ -1828,7 +1828,7 @@
     {
         "name" : "Mesh Underlay",
         "cost" : "2500",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "upgradeType" : "Armor Upgrade",  
@@ -1842,7 +1842,7 @@
     {
         "name" : "Tremor Cell",
         "cost" : "1000",
-        "weight " :"-",
+        "weight" :"-",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "upgradeType" : "Weapon Upgrade",  
@@ -1856,7 +1856,7 @@
     {
         "name" : "Computerized Interface Scope",
         "cost" : "2000",
-        "weight " :"0.5kg",
+        "weight" :"0.5kg",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",  
             "upgradeType" : "Weapon Upgrade",  
@@ -1869,7 +1869,7 @@
     {
         "name" : "Flash Suppressor/Silencer",
         "cost" : "400",
-        "weight " :"0.2kg",
+        "weight" :"0.2kg",
         "equip_type" : {
             "type" : "Weapon and Armor Accessories",
             "upgradeType" : "Weapon Upgrade",  
@@ -1883,7 +1883,7 @@
     {
         "name" : "BioTech Borg Construct AJ-6",
         "cost" : "80000",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Advanced Cybernetics",
             "surgeryCost" : "70000",
@@ -1897,7 +1897,7 @@
     {
         "name" : "Infrared Sensor Eye",
         "cost" : "300",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Advanced Cybernetics",
             "surgeryCost" : "2250",
@@ -1912,7 +1912,7 @@
     {
         "name" : "Sensory Enhancement",
         "cost" : "800",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Advanced Cybernetics",
             "surgeryCost" : "3000",
@@ -1926,7 +1926,7 @@
     {
         "name" : "Skeletal Reinforcement",
         "cost" : "10000",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Advanced Cybernetics",
             "surgeryCost" : "50000",
@@ -1941,7 +1941,7 @@
     {
         "name" : "Subcutaneous Comlink",
         "cost" : "4000",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Advanced Cybernetics",
             "surgeryCost" : "3000",
@@ -1956,7 +1956,7 @@
     {
         "name" : "Targeting Eye",
         "cost" : "500",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Advanced Cybernetics",
             "surgeryCost" : "3750",
@@ -1971,7 +1971,7 @@
     {
         "name" : "Telescopic Eye",
         "cost" : "500",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Advanced Cybernetics",
             "surgeryCost" : "3750",
@@ -1986,7 +1986,7 @@
     {
         "name" : "Tremor Sensor",
         "cost" : "400",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Advanced Cybernetics",
             "surgeryCost" : "3750",
@@ -2001,7 +2001,7 @@
     {
         "name" : "Bio-Stabilizer Implant",
         "cost" : "1750",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Implants"  
 
@@ -2012,7 +2012,7 @@
     {
         "name" : "Cardio Implant",
         "cost" : "4000",
-        "weight " :"1kg",
+        "weight" :"1kg",
         "equip_type" : {
             "type" : "Implants"  
 
@@ -2023,7 +2023,7 @@
     {
         "name" : "Combat Implant",
         "cost" : "5000",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Implants"  
 
@@ -2034,7 +2034,7 @@
     {
         "name" : "Memory Implant",
         "cost" : "2000",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Implants"  
 
@@ -2045,7 +2045,7 @@
     {
         "name" : "Nerve Reinforcement Implant",
         "cost" : "5000",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Implants"  
 
@@ -2056,7 +2056,7 @@
     {
         "name" : "Regenerative Implant",
         "cost" : "4250",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Implants"  
 
@@ -2067,7 +2067,7 @@
     {
         "name" : "Sensory Implant",
         "cost" : "2500",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Implants"  
 
@@ -2079,7 +2079,7 @@
     {
         "name" : "Subelectronic Converter",
         "cost" : "23000",
-        "weight " :"",
+        "weight" :"",
         "equip_type" : {
             "type" : "Implants"  
 

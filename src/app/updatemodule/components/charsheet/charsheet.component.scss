@@ -195,7 +195,9 @@ h1{
     a{
         text-decoration: none;
         color: blue;
+        cursor: pointer;
         &:hover{
+        
            color:rgb(136, 138, 138);
             border: 2px inset rgba(185, 185, 185, 0.836);
             padding:3px;

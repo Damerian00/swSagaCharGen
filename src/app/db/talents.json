@@ -6477,20 +6477,6 @@
 
     },
     {
-        "name" : "Sheltering Stance",
-        "preReqs" : {
-            "req1" : ["talent", "or", "Block", ["Deflect", "Vigilance"]]
-        },
-        "effect" : {
-            "effect1" : "none"
-         },
-         "addOption" : ["none"],
-         "TalentTreeId" : "JWTT",
-        "ope" : false,
-         "description" : "Whenever you are adjacent to an ally, you may use the Block or Deflect Talents on attacks that target that ally without the need to spend a Force Point."
-
-    },
-    {
         "name" : "Watchman's Advance",
         "preReqs" : {
             "req1" : ["talent", "Force Warning"]
@@ -7479,20 +7465,6 @@
 
     },
     {
-        "name" : "Set for Stun",
-        "preReqs" : {
-            "req1" : "none"
-        },
-        "effect" : {
-            "effect1" : "none"
-         },
-         "addOption" : ["none"],
-         "TalentTreeId" : "IfTT",
-        "ope" : false,
-         "description" : "You are particularly adept with Stun weapons. If you are using a ranged weapon that deals Stun damage (Including a lethal weapon set to Stun), you can spend two consecutive Swift Actions in the same round to activate this Talent. If the Stun damage on your next attack exceeds the target's Damage Threshold, you move the target -3 steps along the Condition Track, instead of the normal -2 steps."
-
-    },
-    {
         "name" : "Commanding Presence",
         "preReqs" : {
             "req1" : "none"
@@ -7501,7 +7473,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "MeTT",
+         "TalentTreeId" : "MerTT",
         "ope" : true,
          "description" : "Once per encounter, you can activate this Talent as a Swift Action. Until the end of the encounter, all your opponents within 6 squares of you take a -2 penalty to their Will Defense. This is a Mind-Affecting Fear effect. Additionally, Persuasion is now considered a Class Skill for you."
 
@@ -7515,7 +7487,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "MeTT",
+         "TalentTreeId" : "MerTT",
         "ope" : true,
          "description" : "Once per encounter, if you successfully damage an opponent with a melee or ranged attack, you reduce the target's Damage Threshold by 2 points for the remainder of the encounter."
 
@@ -7529,7 +7501,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "MeTT",
+         "TalentTreeId" : "MerTT",
         "ope" : false,
          "description" : "Your abilities on the battlefield are well known and feared. When you reduce an opponent to 0 hit points with an attack, you can make a Persuasion check as a Free Action against all targets within 6 squares. If your Persuasion check exceeds the target's Will Defense, that target takes a -2 penalty on attack rolls for the remainder of the encounter. This Talent affects any given target only once per encounter. This is a Mind-Affecting Fear effect."
 
@@ -7543,7 +7515,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "MeTT",
+         "TalentTreeId" : "MerTT",
         "ope" : false,
          "description" : "Your training makes you confident and disciplined in combat. When you successfully deal damage to an opponent in combat, you gain a +5 morale bonus to Will Defense until the start of your next turn. You lose this bonus to Will Defense if you are Surprised or Flat-Footed for any reason."
 
@@ -7557,7 +7529,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "MeTT",
+         "TalentTreeId" : "MerTT",
         "ope" : false,
          "description" : "When you deal damage to a target with a melee or ranged attack roll that exceeds the target's Damage Threshold, you gain a +2 bonus on damage rolls against that target for the remainder of the encounter."
 
@@ -7571,7 +7543,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "MeTT",
+         "TalentTreeId" : "MerTT",
         "ope" : false,
          "description" : "You gain a +2 bonus to damage rolls on attacks against targets that have been damaged by an ally since the end of your last turn."
 
@@ -7585,7 +7557,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "MeTT",
+         "TalentTreeId" : "MerTT",
         "ope" : false,
          "description" : "As a Free Action, on your turn, you can spend a Force Point to double your speed for 1 round. You must wait 5 rounds between each use of this ability."
 
@@ -7599,7 +7571,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "MeTT",
+         "TalentTreeId" : "MerTT",
         "ope" : false,
          "description" : "When you are affected by any debilitating condition, you can convert the condition's modifier from a penalty to a bonus for 1 round as a Swift Action. At the end of your next turn, move -1 step along the Condition Track."
 
@@ -7614,7 +7586,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "MeTT",
+         "TalentTreeId" : "MerTT",
         "ope" : false,
          "description" : "You gain a +2 bonus to damage rolls for each ally that has damaged your target since the end of your last turn (To a maximum of +10)."
 
@@ -7677,7 +7649,7 @@
 
     },
     {
-        "name" : "Attract Privateer",
+        "name" : "Blaster and Blade III",
         "preReqs" : {
             "req1" : ["feat", "Dual Weapon Mastery I", "Weapon Proficiency (Advanced Melee Weapons)", "Weapon Proficiency (Pistols)"],
             "req2" :  ["talent", "Blaster and Blade I", "Blaster and Blade II"]
@@ -7734,7 +7706,7 @@
 
     },
     {
-        "name" : "Device Jammer",
+        "name" : "Preserving Shot",
         "preReqs" : {
             "req1" : "none"
         },
@@ -7743,6 +7715,20 @@
          },
          "addOption" : ["none"],
          "TalentTreeId" : "PvTT",
+        "ope" : false,
+         "description" : "When you deal damage with a Vehicle Weapon that is equal to or greater than both the target Vehicle's current Hit Points and the target Vehicle's Damage Threshold (that is, when you would deal enough damage to destroy the target Vehicle), you can choose to use this Talent. Instead of dealing full damage, you instead deal half damage to your target and move it -1 step along the Condition Track. In addition, you disable the ship's sublight engines and Hyperdrive. The ship cannot move or make a jump to lightspeed until it receives repairs."
+
+    },
+    {
+        "name" : "Device Jammer",
+        "preReqs" : {
+            "req1" : "none"
+        },
+        "effect" : {
+            "effect1" : "none"
+         },
+         "addOption" : ["none"],
+         "TalentTreeId" : "SbTT",
         "ope" : false,
          "description" : "You can construct a short-range Jammer that affects a specific type of electronic device such as a personal Energy Shields, Comlink, Portable Computer, or Datapad. As a Full-Round Action, you select a particular piece of personal, portable electronic Equipment (Any item listed as equipment excluding Droids, Vehicles and Weapons, that has an electronic component) and make a DC 20 Mechanics check to build the Jammer. If the check is successful, all devices of the chosen type cease to function while within 12 squares of your position for the remainder of the encounter. You may only have one Jammer (Device or Droid) active at a time."
 
@@ -7756,7 +7742,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "PvTT",
+         "TalentTreeId" : "SbTT",
         "ope" : false,
          "description" : "You can construct a short-range Jammer that affects Droids. As a Full-Round Action, you make a Mechanics check to build the Jammer. When a Droid comes within 6 squares of you, compare the result of your Mechanics check to the Droid's Will Defense. If your check result equals or exceeds the Droid's Will Defense, the Droid can only take Swift Actions as long as it remains within the radius of the Jammer. Droids that are immune to the effect of a Restraining Bolt are immune to the effects of this Talent. The Jammer functions for the remainder of the encounter. You may only have one Jammer (Device or Droid) active at a time."
 
@@ -7770,7 +7756,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "PvTT",
+         "TalentTreeId" : "SbTT",
         "ope" : false,
          "description" : "You know how to set large charges and use dozens of charges for extremely large explosives. You increase the Burst radius of any Mines or Explosives by 1 square."
 
@@ -7784,7 +7770,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "PvTT",
+         "TalentTreeId" : "SbTT",
         "ope" : false,
          "description" : "You can place a Mine as a Standard Action instead of a Full-Round Action."
 
@@ -7798,7 +7784,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "PvTT",
+         "TalentTreeId" : "SbTT",
         "ope" : false,
          "description" : "You know how to set charges to direct a blast in a specific direction or manner. You can shape an explosion caused by Explosives or Mines that you set into a line or a cone instead of a radius. The length of the line is equal to 2 x the radius of the explosive Burst; the length of the cone is equal to 3 x the radius of the Burst, and either the line or the cone originates from the square where the Explosives are placed."
 
@@ -7812,7 +7798,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "PvTT",
+         "TalentTreeId" : "SbTT",
         "ope" : false,
          "description" : "You can set off a Detonator as a Swift Action, and your Explosives never go off as the Detonator is being placed, even if you fail the check by 10 or more. You must still roll to determine if the charge otherwise goes off as planned (See Handle Explosives)."
 
@@ -7826,7 +7812,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "SbTT",
+         "TalentTreeId" : "SmTT",
         "ope" : false,
          "description" : "Some smugglers are adept at hiding contraband and weapons, even on their person. When making a Stealth check to Conceal an item, you can Take 10 even under pressure. Additionally, you can Conceal an item as a Swift Action."
 
@@ -7840,7 +7826,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "SbTT",
+         "TalentTreeId" : "SmTT",
         "ope" : false,
          "description" : "Smugglers must be quick to explain discrepancies in their cover stories. Once per day, you can Take 20 on a Deception check as a Standard Action when attempting to Deceive."
 
@@ -7854,7 +7840,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "SbTT",
+         "TalentTreeId" : "SmTT",
         "ope" : false,
          "description" : "If you draw a concealed weapon and, before the end of the same round, make an attack against a target that failed to notice the item, the target is considered Flat-Footed against you. You can draw a concealed item or a stowed item as a Move Action. Additionally, if you have the Quick Draw feat, you can reduce this to a Swift Action."
 
@@ -7868,7 +7854,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "SbTT",
+         "TalentTreeId" : "SmTT",
         "ope" : false,
          "description" : "Smugglers have a knack for locating and negotiating illicit deals. When using Persuasion to Haggle for Restricted, Military, or Illegal goods you may roll twice, keeping the better of the two results."
 
@@ -7882,7 +7868,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "SbTT",
+         "TalentTreeId" : "SmTT",
         "ope" : false,
          "description" : "Sometimes a smuggler has to fight his way out of a bad situation. If you fail any Deception check to convey deceptive information, you can initiate combat and make a single Unarmed attack as a Free Action in the Surprise Round (or with a melee or ranged weapon, if you have the Quick Draw feat); all other combatants are considered Surprised even if they are aware of you."
 
@@ -7896,7 +7882,7 @@
             "effect1" : "none"
          },
          "addOption" : ["none"],
-         "TalentTreeId" : "SmTT",
+         "TalentTreeId" : "SDdTT",
         "ope" : false,
          "description" : "You can use your Persuasion modifier instead of your Use Computer modifier when making Use Computer checks. You are considered Trained in the Use Computer Skill for the purpose of using this Talent. If you are entitled to a Use Computer check reroll, you can reroll your Persuasion check instead (Subject to the same circumstances and limitations)."
 
@@ -11349,20 +11335,6 @@
          "TalentTreeId" : "JWMTT",
         "ope" : false,
          "description" : "Whenever you are wielding a light Lightsaber (Typically a Shoto Lightsaber) and successfully use the Block Talent to negate a melee attack, the attacker can make no further melee attacks until the start of it's next turn or until you are no longer adjacent to it."
-
-    },
-    {
-        "name" : "Channel Vitality",
-        "preReqs" : {
-            "req1" : ["talent", "Twin Weapon Style"]
-        },
-        "effect" : {
-            "effect1" : "none"
-         },
-         "addOption" : ["none"],
-         "TalentTreeId" : "MyTT",
-        "ope" : false,
-         "description" : "You can fuel your mastery of The Force with your own vitality. As a Swift Action, you can move -1 step down the Condition Track to gain a temporary Force Point. This temporary Force Point lasts until the end of your turn, at which point it is lost if it has not been used."
 
     },
     {

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ChoicesSenderService } from 'src/app/services/choices-sender.service';
 import { SwapiService } from 'src/app/services/swapi.service';
+import { SWPsuedoApi } from 'src/app/services/swpsuedoapi.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { SwapiService } from 'src/app/services/swapi.service';
   styleUrls: ['./feats.component.scss']
 })
 export class FeatsComponent implements OnInit {
-  constructor(private swApiService: SwapiService, private choices: ChoicesSenderService) { }
+  constructor(private swApiService: SwapiService, private choices: ChoicesSenderService, private pseudoApi : SWPsuedoApi) { }
 //  ---Variables---
   @Output () heroFeatsSelected: EventEmitter<any> = new EventEmitter<any>()
   @Output () heroSkillTrained: EventEmitter<any> = new EventEmitter<any>()
@@ -163,14 +164,14 @@ export class FeatsComponent implements OnInit {
 */
 
   ngOnInit(): void {
-    this.swApiService.getFeats().subscribe(payload =>{
-      this.featsArray = payload;
-      // console.log("feats: ", this.featsArray);
-    })
-    this.choices.setStartingFeats.subscribe(() => {   
-      this.acquireFeats();
-    });    
-    this.swApiService.getMelees().subscribe(payload=> {
+  /**
+   * old code to work with backend
+   * 
+  this.swApiService.getFeats().subscribe(payload =>{
+    this.featsArray = payload;
+    // console.log("feats: ", this.featsArray);
+  })
+   this.swApiService.getMelees().subscribe(payload=> {
       payload.forEach((el:any)=> {
         if (el.w_type == "Exotic Weapons (Melee)"){
           this.exoticMelee.push(el.name);
@@ -184,6 +185,25 @@ export class FeatsComponent implements OnInit {
         }
       })
     })
+   * 
+   */
+  this.featsArray = this.pseudoApi.getFeats();
+    this.choices.setStartingFeats.subscribe(() => {   
+      this.acquireFeats();
+    });    
+   let meleeArray = this.pseudoApi.getMelees();
+    meleeArray.forEach((el:any)=> {
+      if (el.w_type == "Exotic Weapons (Melee)"){
+      this.exoticMelee.push(el.name);
+      }
+  })
+  let rangedArray = this.pseudoApi.getRanged();
+    rangedArray.forEach((el:any)=> {
+      if (el.w_type == "Exotic Weapons (Ranged)"){
+        this.exoticRange.push(el.name);
+      }
+    })
+
   }
 
  

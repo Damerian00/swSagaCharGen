@@ -13,6 +13,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { CreditsComponent } from './components/credits/credits.component';
 import { ForcepowersComponent } from './components/forcepowers/forcepowers.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateRoutingModule } from './update-routing.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    UpdateRoutingModule,
     FontAwesomeModule,
     [FormsModule,
       ReactiveFormsModule],

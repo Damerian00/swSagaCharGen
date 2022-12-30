@@ -20,7 +20,7 @@
         "name" : "Bounty Hunter Talent Tree",
         "classUsage" : ["Bounty Hunter"],
         "description" : "You are among the finest Bounty Hunters in the galaxy, relying on the element of surprise and your hunter's instincts to catch your prey.",
-        "talents" : []
+        "talents" : ["Hunter's Mark","Hunter's Target","Notorious","Nowhere to Hide","Relentless","Ruthless Negotiator","Detective","Dread","Electronic Trail","Familiar Enemies","Familiar Situation","Fearsome","Jedi Hunter","Nowhere to Run","Quick Cuffs","Revealing Secrets","Signature Item","Tag"]
 
     },
     {
@@ -28,7 +28,7 @@
         "name" : "Brawler Talent Tree",
         "classUsage" : ["Soldier", "Melee Duelist"],
         "description" : "You like to get 'up close and personal' with your enemies and engage them in melee combat.",
-        "talents" : []
+        "talents" : ["Expert Grappler","Gun Club","Melee Smash","Stunning Strike","Unbalance Opponent","Bayonet Master","Cantina Brawler","Counterpunch","Crowd Control","Devastating Melee Smash","Disarm and Engage","Entangler","Experienced Brawler","Grabber","Hammerblow","Make Do","Man Down","Pick a Fight","Reverse Strength","Strong Grab","Sucker Punch","Unrelenting Assault"]
 
     },
     {
@@ -36,7 +36,7 @@
         "name" : "Camouflage Talent Tree",
         "classUsage" : ["Scout", "Elite Trooper", "Infiltrator"],
         "description" : "You learn quickly how to blend in with your environment.",
-        "talents" : []
+        "talents" : ["Hidden Movement","Improved Stealth","Total Concealment","Dig In","Extended Ambush","Ghost Assailant","Hide in Plain Sight","Hunker Down","Shadow Striker","Slip By"]
 
     },
     {
@@ -44,7 +44,7 @@
         "name" : "Commando Talent Tree",
         "classUsage" : ["Soldier", "Elite Trooper","Officer"],
         "description" : "You use advanced combat tactics to take down enemies quickly, shield your comrades, and endure whatever challenges are thrown your way.",
-        "talents" : []
+        "talents" : ["Battle Analysis","Cover Fire","Demolitionist","Draw Fire","Harm's Way","Indomitable","Tough as Nails","Coordinated Effort","Dedicated Guardian","Dedicated Protector","Defensive Position","Hard Target","Keep Them at Bay","Out of Harm's Way"]
 
     },
     {
@@ -52,7 +52,7 @@
         "name" : "Dark Side Devotee Talent Tree",
         "classUsage" : ["Force Adept"],
         "description" : "You can maximize the benefits of wearing Armor while reducing or eliminating some of its drawbacks.",
-        "talents" : []
+        "talents" : ["Channel Aggression","Channel Anger","Crippling Strike","Embrace the Dark Side","Dark Side Talisman","Greater Dark Side Talisman"]
 
     },
     {
@@ -60,7 +60,7 @@
         "name" : "Duelist Talent Tree",
         "classUsage" : ["Imperial Knight", "Jedi Knight", "Jedi Master", "Sith Apprentice"],
         "description" : "Through rigorous training and experience, you become one of the greatest swordfighters in the galaxy.",
-        "talents" : []
+        "talents" : ["Force Fortification","Greater Weapon Focus (Lightsabers)","Greater Weapon Specialization (Lightsabers)","Multiattack Proficiency (Lightsabers)","Severing Strike","Improved Lightsaber Throw","Improved Riposte","Improved Redirect","Lightsaber Form Savant","Thrown Lightsaber Mastery","Shoto Master"]
 
     },
     {
@@ -68,7 +68,7 @@
         "name" : "Expert Pilot Talent Tree",
         "classUsage" : ["Ace Pilot"],
         "description" : "The Ace Pilot relies on finely honed instincts and years of pilot training to outmaneuver and destroy enemy Starships.",
-        "talents" : []
+        "talents" : ["Elusive Dogfighter","Full Throttle","Juke","Keep it Together","Relentless Pursuit","Vehicular Evasion","Blind Spot","Clip","Close Scrape","Improved Attack Run","Master Defender","Renowned Pilot","Roll Out","Shunt Damage","Vehicle Focus","Wingman"]
 
     },
     {
@@ -76,7 +76,7 @@
         "name" : "Force Adept Talent Tree",
         "classUsage" : ["Force Adept", "Force Disciple"],
         "description" : "Force Adepts use The Force to survive on fringe worlds, and they often have signature Force Powers that they use particularly well.",
-        "talents" : []
+        "talents" : ["Force Power Adept","Force Treatment","Fortified Body","Instrument of the Force","Long Call","Mystical Link"]
 
     },
     {
@@ -84,7 +84,7 @@
         "name" : "Force Item Talent Tree",
         "classUsage" : ["Force Adept"],
         "description" : "You can imbue Weapons and objects with the power of The Force.",
-        "talents" : []
+        "talents" : ["Attune Weapon","Empower Weapon","Force Talisman","Greater Force Talisman","Focused Force Talisman","Force Throw","Primitive Block"]
 
     },
     {
@@ -92,7 +92,7 @@
         "name" : "Fortune Talent Tree",
         "classUsage" : ["Scoundrel", "Gunslinger"],
         "description" : "Many Scoundrels like to gamble with destiny, putting everything on the line and trusting fate (or The Force) to bring them fortune, fame, and success.",
-        "talents" : []
+        "talents" : ["Fool's Luck","Fortune's Favor","Gambler","Knack","Lucky Shot","Avert Disaster","Better Lucky than Dead","Dumb Luck","Labyrinthine Mind","Lucky Stop","Ricochet Shot","Uncanny Luck","Unlikely Shot"]
 
     },
     {
@@ -100,7 +100,7 @@
         "name" : "Fringer Talent Tree",
         "classUsage" : ["Scout", "Outlaw"],
         "description" : "You're especially skilled at 'getting by' on backwater worlds.",
-        "talents" : []
+        "talents" : ["Barter","Fringe Savant","Long Stride","Jury-Rigger","Flee","Keep it Together","Sidestep","Surge","Swift Strider"]
 
     },
     {
@@ -108,7 +108,7 @@
         "name" : "Gunner Talent Tree",
         "classUsage" : ["Ace Pilot"],
         "description" : "Many Starship Gunners are skilled both in and out of the cockpit and are deadly with ranged Weapons of any kind.",
-        "talents" : []
+        "talents" : ["Dogfight Gunner","Expert Gunner","Quick Trigger","System Hit","Crippling Hit","Fast Attack Specialist","Great Shot","Overcharged Shot","Synchronized Fire"]
 
     },
     {
@@ -116,7 +116,7 @@
         "name" : "Gunslinger Talent Tree",
         "classUsage" : ["Gunslinger"],
         "description" : "You never travel anywhere without a blaster (or two), and you know how to handle yourself in a gunfight.",
-        "talents" : []
+        "talents" : ["Debilitating Shot","Deceptive Shot","Improved Quick Draw","Knockdown Shot","Multiattack Proficiency (Pistols)","Ranged Disarm","Trigger Work","Blind Shot","Damaging Disarm","Keep Them Honest","Lingering Debilitation","Mobile Attack (Pistols)","Pistol Duelist","Ranged Flank","Retreating Fire","Slowing Shot","Swift Shot"]
 
     },
     {
@@ -124,7 +124,7 @@
         "name" : "Infamy Talent Tree",
         "classUsage" : ["Crime Lord", "Master Privateere"],
         "description" : "You are wanted in multiple systems for criminal acts; and your manner of doing business has earned you an unsavory reputation in the criminal underworld.",
-        "talents" : []
+        "talents" : ["Inspire Fear I","Inspire Fear II","Inspire Fear III","Notorious","Shared Notoriety","Fear Me","Frighten","Master Manipulator","Small Favor","Terrify","Unsavory Reputation"]
 
     },
     {
@@ -132,7 +132,7 @@
         "name" : "Influence Talent Tree",
         "classUsage" : ["Noble", "Crime Lord"],
         "description" : "One of your greatest strengths is your ability to exert influence over your opponents.",
-        "talents" : []
+        "talents" : ["Presence","Demand Surrender","Improved Weaken Resolve","Weaken Resolve","Fluster","Intimidating Defense"]
 
     },
     {
@@ -140,7 +140,7 @@
         "name" : "Inspiration Talent Tree",
         "classUsage" : ["Noble"],
         "description" : "You can often get results out of friends, allies, and followers that other leaders cannot.",
-        "talents" : []
+        "talents" : ["Bolster Ally","Ignite Fervor","Inspire Confidence","Inspire Haste","Inspire Zeal","Ignite Fervor","Beloved","Willpower","Adept Negotiator"]
 
     },
     {
@@ -148,7 +148,7 @@
         "name" : "Jedi Consular Talent Tree",
         "classUsage" : ["Jedi"],
         "description" : "Jedi that follow the path of the consular are skilled negotiators and talented ambassadors.",
-        "talents" : []
+        "talents" : ["Force Persuasion","Master Negotiator","Skilled Advisor","Adversary Lore","Aggressive Negotiator","Cleanse Mind","Collective Visions","Consular's Vitality","Consular's Wisdom","Entreat Aid","Force of Will","Guiding Strikes","Improved Consular's Vitality","Know Weakness","Recall","Renew Vision","Visionary Attack","Visionary Defense","WatchCircle Initiate"]
 
     },
     {
@@ -156,7 +156,7 @@
         "name" : "Jedi Guardian Talent Tree",
         "classUsage" : ["Jedi"],
         "description" : "Jedi that follow the path of the guardian are more combat-oriented than other Jedi, honing their skills to become deadly combatants.",
-        "talents" : []
+        "talents" : ["Acrobatic Recovery","Battle Meditation","Elusive Target","Force Intuition","Resilience","Close Maneuvering","Cover Escape","Defensive Acuity","Exposing Strike","Forceful Warrior","Grenade Defense","Guardian Strike","Hold the Line","Immovable","Improved Battle Meditation","Mobile Combatant"]
 
     },
     {
@@ -164,7 +164,7 @@
         "name" : "Jedi Sentinel Talent Tree",
         "classUsage" : ["Jedi"],
         "description" : "The Jedi that follow the path of the sentinel are the true enemies of The Dark Side, hunting down evil and stopping the spread of darkness wherever they go.",
-        "talents" : []
+        "talents" : ["Clear Mind","Dark Side Sense","Dark Side Scourge","Force Haze","Resist the Dark Side","Dampen Presence","Dark Retaliation","Dark Side Bane","Gradual Resistance","Master of the Great Hunt","Persistent Haze","Prime Targets","Reap Retribution","Sense Primal Force","Sentinel Strike","Sentinel's Gambit","Sentinel's Observation","Steel Resolve","Unseen Eyes"]
 
     },
     {
@@ -172,7 +172,7 @@
         "name" : "Leadership Talent Tree",
         "classUsage" : ["Noble", "Corporate Agent", "Officer"],
         "description" : "A born leader, you know how to change and lead your companions and followers to success.",
-        "talents" : []
+        "talents" : ["Born Leader","Coordinate","Distant Command","Fearless Leader","Rally","Trust","Commanding Presence","Coordinated Leadership","Reactionary Attack","Tactical Savvy","Unwavering Ally"]
 
     },
     {
@@ -180,7 +180,7 @@
         "name" : "Lightsaber Combat Talent Tree",
         "classUsage" : ["Jedi", "Imperial Knight", "Jedi Knight", "Sith Apprentice"],
         "description" : "The Lightsaber is the chosen weapon of the Jedi. Not as clumsy or random as a blaster, the Lightsaber is an elegant weapon for a more civilized combatant.",
-        "talents" : []
+        "talents" : ["Block","Deflect","Lightsaber Defense","Weapon Specialization (Lightsabers)","Lightsaber Throw","Redirect Shot","Cortosis Gauntlet Block","Precise Redirect","Precision","Riposte","Shoto Focus"]
 
     },
     {
@@ -188,7 +188,7 @@
         "name" : "Lightsaber Forms Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "You have refined your knowledge of Lightsaber technique, your blade becoming an extension of yourself.",
-        "talents" : []
+        "talents" : ["Ataru","Djem So","Jar'Kai","Juyo","Makashi","Niman","Shien","Shii-Cho","Sokan","Soresu","Trakata","Vaapad"]
 
     },
     {
@@ -196,7 +196,7 @@
         "name" : "Lineage Talent Tree",
         "classUsage" : ["Noble", "Corporate Agent"],
         "description" : "You lead a privileged life and reap the benefit of an upbringing beyond most citizens of the galaxy.",
-        "talents" : []
+        "talents" : ["Connections","Educated","Spontaneous Skill","Wealth","Engineer","Influential Friends","Powerful Friends"]
 
     },
     {
@@ -204,7 +204,7 @@
         "name" : "Mastermind Talent Tree",
         "classUsage" : ["Crime Lord"],
         "description" : "You have the ability to attract loyal minions and are skilled at redirecting allies on the battlefield.",
-        "talents" : []
+        "talents" : ["Attract Minion","Impel Ally I","Impel Ally II","Attract Superior Minion","Bodyguard I","Bodyguard II","Bodyguard III","Contingency Plan","Impel Ally III","Inspire Wrath","Master's Orders","Shelter","Tactical Superiority","Tactical Withdraw","Urgency","Wealth of Allies"]
 
     },
     {
@@ -212,7 +212,7 @@
         "name" : "Military Tactics Talent Tree",
         "classUsage" : ["Officer"],
         "description" : "You are an expert at leading troops into battle and using the battlefield to your advantage.",
-        "talents" : []
+        "talents" : ["Assault Tactics","Deployment Tactics","Field Tactics","One for the Team","Outmaneuver","Shift Defense I","Shift Defense II","Shift Defense III","Tactical Edge","Commander's Prerogative","Exploit Weakness","Grand Leader","Irregular Tactics","Lead by Example","Turn the Tide","Uncanny Defense"]
 
     },
     {
@@ -220,7 +220,7 @@
         "name" : "Misfortune Talent Tree",
         "classUsage" : ["Scoundrel", "Assassin", "Bounty Hunter", "Saboteur"],
         "description" : "Your mother always said you were trouble. Now your enemies know it, too.",
-        "talents" : []
+        "talents" : ["Dastardly Strike","Disruptive","Skirmisher","Sneak Attack","Walk the Line","Backstabber","Befuddle","Cunning Strategist","Hesitate","Improved Skirmisher","Improved Sneak Attack","Seducer","Seize Object","Sow Confusion","Stymie","Sudden Strike","Weakening Strike"]
 
     },
     {
@@ -228,7 +228,7 @@
         "name" : "Sith Talent Tree",
         "classUsage" : ["Sith Apprentice", "Sith Lord"],
         "description" : "The Sith believes in order through tyranny, conspiring to annihilate The Jedi and everything they stand for.",
-        "talents" : []
+        "talents" : ["Dark Healing","Dark Scourge","Dark Side Adept","Dark Side Master","Force Deception","Improved Dark Healing","Wicked Strike","Affliction","Dark Healing Field","Drain Force","Sith Alchemy","Stolen Form"]
 
     },
     {
@@ -236,7 +236,7 @@
         "name" : "Slicer Talent Tree",
         "classUsage" : ["Scoundrel", "Outlaw", "Saboteur"],
         "description" : "You move like a ghost through The HoloNet and can hack into enemy mainframes and computer systems with astonishing grace.",
-        "talents" : []
+        "talents" : ["Gimmick","Master Slicer","Trace","Electronic Forgery","Electronic Sabotage","Security Slicer","Virus"]
 
     },
     {
@@ -244,7 +244,7 @@
         "name" : "Spacer Talent Tree",
         "classUsage" : ["Scoundrel", "Ace Pilot", "Master Privateer"],
         "description" : "You pron the space lanes seeking wealth, fame, adventure, or something more. You're also pretty good with Vehicles in general.",
-        "talents" : []
+        "talents" : ["Hyperdriven","Spacehound","Starship Raider","Stellar Warrior","Cramped Quarters Fighting","Deep Space Raider","Make a Break for It"]
 
     },
     {
@@ -252,7 +252,7 @@
         "name" : "Survivor Talent Tree",
         "classUsage" : ["Scout", "Enforcer", "Medic", "Outlaw", "Pathfinder", "Vanguard"],
         "description" : "As an explorer of dangerous places, you are trained to react to danger swiftly and adroitly, as well as navigate difficult terrain and reduce damage.",
-        "talents" : []
+        "talents" : ["Evasion","Extreme Effort","Sprint","Surefooted"]
 
     },
     {
@@ -260,7 +260,7 @@
         "name" : "Weapon Master Talent Tree",
         "classUsage" : ["Elite Trooper"],
         "description" : "You are skilled at wielding a variety of weapons and can wield choice Weapons with deadly precision and force.",
-        "talents" : []
+        "talents" : ["Controlled Burst","Exotic Weapon Mastery","Greater Devastating Attack","Greater Penetrating Attack","Greater Weapon Focus","Greater Weapon Specialization","Multiattack Proficiency (Heavy Weapons)","Multiattack Proficiency (Rifles)","Extended Threat","Ferocious Assault","Multiattack Proficiency (Simple Weapons)","Two-For-One Throw"]
 
     },
     {
@@ -268,7 +268,7 @@
         "name" : "Weapon Specialist Talent Tree",
         "classUsage" : ["Soldier", "Melee Duelist"],
         "description" : "You are highly trained at using specific weapons.",
-        "talents" : []
+        "talents" : ["Devastating Attack","Penetrating Attack","Weapon Specialization","Autofire Assault","Crushing Assault","Disarming Attack","Impaling Assault","Improved Suppression Fire","Stinging Assault"]
 
     },
     {
@@ -276,7 +276,7 @@
         "name" : "Naval Officer Talent Tree",
         "classUsage" : ["Officer"],
         "description" : "You are skilled at commanding Starships and small fleets.",
-        "talents" : []
+        "talents" : ["Combined Fire","Fleet Deployment","Fleet Tactics","It's a Trap!"]
 
     },
     {
@@ -284,7 +284,7 @@
         "name" : "Outlaw Tech Talent Tree",
         "classUsage" : ["Scoundrel", "Improviser", "Military Engineer"],
         "description" : "Scoundrels learn a variety of tricks that allow them to squeeze more life out of ailing technology, enhancing their gear in ways the manufacturer never intended.",
-        "talents" : []
+        "talents" : ["Fast Repairs","Hotwire","Quick Fix","Personalized Modifications"]
 
     },
     {
@@ -292,7 +292,7 @@
         "name" : "Squadron Leader Talent Tree",
         "classUsage" : ["Ace Pilot"],
         "description" : "You are an expert at leading a squadron of smaller Vehicles into combat as a unit.",
-        "talents" : []
+        "talents" : ["Begin Attack Run","Regroup","Squadron Maneuvers","Squadron Tactics","Force Commander","Diverse Squadron","Melded Squadron"]
 
     },
     {
@@ -300,7 +300,7 @@
         "name" : "Malkite Poisoner Talent Tree",
         "classUsage" : ["Scoundrel, Assassin"],
         "description" : "You can employ a wide array of lethal toxins with which you can quickly and efficiently destroy your targets.",
-        "talents" : []
+        "talents" : ["Malkite Techniques","Modify Poison","Numbing Poison","Undetectable Poison","Vicious Poison"]
 
     },
     {
@@ -308,7 +308,7 @@
         "name" : "Master of Teräs Käsi Talent Tree",
         "classUsage" : ["Elite Trooper", "Martial Arts Master"],
         "description" : "Teräs Käsi is a powerful and deadly martial arts form that enables its wielder to deal devastating amounts of Unarmed damage.",
-        "talents" : []
+        "talents" : ["Ignore Damage Reduction","Teräs Käsi Basics","Teräs Käsi Mastery","Unarmed Counterstrike","Unarmed Parry"]
 
     },
     {
@@ -316,7 +316,7 @@
         "name" : "Corporate Power Talent Tree",
         "classUsage" : ["Corporate Agent"],
         "description" : "You are an extension of your corporation and wield their power as your own.",
-        "talents" : []
+        "talents" : ["Competitive Drive","Competitive Edge","Corporate Clout","Impose Confusion","Impose Hesitation","Willful Resolve","Wrong Decision"]
 
     },
     {
@@ -324,7 +324,7 @@
         "name" : "Fencing Talent Tree",
         "classUsage" : ["Noble"],
         "description" : "In the days of The Old Republic, a particular style arose mixing martial precision with forceful panache.",
-        "talents" : []
+        "talents" : ["Noble Fencing Style","Demoralizing Defense","Leading Feint","Personal Affront","Transposing Strike"]
 
     },
     {
@@ -332,7 +332,7 @@
         "name" : "Gladiatorial Combat Talent Tree",
         "classUsage" : ["Gladiator"],
         "description" : "You have learned the tricks of fighting in the gladiatorial arena, using a specialized combination of combat and showmanship.",
-        "talents" : []
+        "talents" : ["Brutal Attack","Call Out","Distracting Attack","Exotic Weapons Master","Lockdown Strike","Multiattack Proficiency (Exotic Weapons)","Personal Vendetta","Unstoppable"]
 
     },
     {
@@ -340,7 +340,7 @@
         "name" : "Hyperspace Explorer Talent Tree",
         "classUsage" : ["Scout"],
         "description" : "You are an experienced deep-space explorer who has learned a few tricks along the way that help you survive both in space and planet-side.",
-        "talents" : []
+        "talents" : ["Deep-Space Gambit","Guidance","Hidden Attacker","Hyperspace Savant","Vehicle Sneak","Silent Movement"]
 
     },
     {
@@ -348,7 +348,7 @@
         "name" : "Jedi Battlemaster Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "Jedi Battlemasters are highly trained in Jedi combat techniques, serving combat trainers for Jedi Organizations and as Jedi commanders on the battlefield.",
-        "talents" : []
+        "talents" : ["Defensive Circle","Force Revive","Jedi Battle Commander","Slashing Charge","Mobile Attack (Lightsabers)"]
 
     },
     {
@@ -356,7 +356,7 @@
         "name" : "Jedi Shadow Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "Jedi Shadows are often elite Jedi Sentinels who specialize in abilities that aid them in pursuing Dark Side users in all forms and locations.",
-        "talents" : []
+        "talents" : ["Dark Deception","Improved Sentinel Strike","Improved Sentinel's Gambit","Rebuke the Dark","Taint of the Dark Side"]
 
     },
     {
@@ -364,7 +364,7 @@
         "name" : "Jedi Watchman Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "Jedi Watchmen are elite Jedi tasked with protecting and watching over a specific world or region of space; many beginning as Jedi Consulars.",
-        "talents" : []
+        "talents" : ["Force Warning","Improved Quick Draw (Lightsabers)","Sheltering Stance","Vigilance","Watchman's Advance"]
 
     },
     {
@@ -372,7 +372,7 @@
         "name" : "Mandalorian Warrior Talent Tree",
         "classUsage" : ["Elite Trooper"],
         "description" : "The Mandalorians are talented and ferocious warriors. Their skillful training, warrior culture, and advanced combat abilities make them formidable foes",
-        "talents" : []
+        "talents" : ["Armored Mandalorian","Mandalorian Advance","Mandalorian Ferocity","Mandalorian Glory"]
 
     },
     {
@@ -380,7 +380,7 @@
         "name" : "Melee Duelist Talent Tree",
         "classUsage" : ["Melee Duelist"],
         "description" : "You are lethal when fighting with one or more melee Weapons.",
-        "talents" : []
+        "talents" : ["Advantageous Strike","Dirty Tricks","Dual Weapon Flourish I","Dual Weapon Flourish II","Master of Elegance","Multiattack Proficiency (Advanced Melee Weapons)","Out of Nowhere","Single Weapon Flourish I","Single Weapon Flourish II"]
 
     },
     {
@@ -388,7 +388,7 @@
         "name" : "Rocket Jumper Talent Tree",
         "classUsage" : ["Soldier"],
         "description" : "You are an expert in the use of Jet Packs. You can use this form of transport to perform specialized aerial assaults and maneuvers.",
-        "talents" : []
+        "talents" : ["Jet Pack Training","Burning Assault","Improved Trajectory","Jet Pack Withdraw"]
 
     },
     {
@@ -396,7 +396,7 @@
         "name" : "Run and Gun Talent Tree",
         "classUsage" : ["Scoundrel"],
         "description" : "Scoundrels find ways to slip through fights of any size, even when the odds are against them.",
-        "talents" : []
+        "talents" : ["Cheap Shot","No Escape","Opportunistic Strike","Slippery Strike","Strike and Run"]
 
     },
     {
@@ -404,7 +404,7 @@
         "name" : "Advanced Medicine Talent Tree",
         "classUsage" : ["Medic", "Shaper"],
         "description" : "You are highly trained in medical procedures for all conditions.",
-        "talents" : []
+        "talents" : ["Battlefield Medic","Bring Them Back","Emergency Team","Extra First Aid","Medical Miracle","Natural Healing","Second Chance","Steady Under Pressure"]
 
     },
     {
@@ -412,7 +412,7 @@
         "name" : "Autonomy Talent Tree",
         "classUsage" : ["Independent Droid"],
         "description" : "You are able to resist any attempts to curb your independence and can fight back against anyone that tries to suppress your personality.",
-        "talents" : []
+        "talents" : ["Defensive Electronics","Ion Resistance 10","Soft Reset","Modification Specialist","Repair Self","Just a Droid","Swift Droid"]
 
     },
     {
@@ -420,7 +420,7 @@
         "name" : "Bothan SpyNet Talent Tree",
         "classUsage" : ["Infiltrator"],
         "description" : "You are trained to work within the famed Bothan SpyNet.",
-        "talents" : []
+        "talents" : ["SpyNet Agent","Bothan Resources","Knowledge is Life","Knowledge is Power","Knowledge is Strength","Six Questions"]
 
     },
     {
@@ -428,7 +428,7 @@
         "name" : "Critical Master Talent Tree",
         "classUsage" : ["Elite Trooper"],
         "description" : "Some Elite Troopers know exactly where to strike their foes to deal maximum damage, potentially crippling their enemies in the process.",
-        "talents" : []
+        "talents" : ["Deny Move","Extended Critical Range (Rifles)","Flurry Attack","Knockback","Extended Critical Range (Simple Weapons)"]
 
     },
     {
@@ -436,7 +436,7 @@
         "name" : "Enforcement Talent Tree",
         "classUsage" : ["Enforcer"],
         "description" : "You are a trained investigator who can locate and apprehend a quarry with exceptional speed and prowess.",
-        "talents" : []
+        "talents" : ["Cover Bracing","Intentional Crash","Nonlethal Tactics","Pursuit","Respected Officer","Slowing Stun","Takedown"]
 
     },
     {
@@ -444,7 +444,7 @@
         "name" : "Ideologue Talent Tree",
         "classUsage" : ["Noble"],
         "description" : "A born leader, you know how to change and lead your companions and followers to success.",
-        "talents" : []
+        "talents" : ["Instruction","Idealist","Know Your Enemy","Known Dissident","Lead by Example"]
 
     },
     {
@@ -452,7 +452,7 @@
         "name" : "Imperial Inquisitor Talent Tree",
         "classUsage" : ["Force Adept"],
         "description" : "Trained to hunt down and destroy the remaining Jedi whenever they are found, Imperial Inquisitors are steeped in the lore of The Dark Side.",
-        "talents" : []
+        "talents" : ["Cower Enemies","Force Interrogation","Inquisition","Unsettling Presence"]
 
     },
     {
@@ -460,7 +460,7 @@
         "name" : "Infiltration Talent Tree",
         "classUsage" : ["Infiltrator"],
         "description" : "You are trained to secretly infiltrate enemy strongholds and organizations by force or by guile.",
-        "talents" : []
+        "talents" : ["Always Ready","Concealed Weapon Expert","Creeping Approach","Set for Stun","Silent Takedown"]
 
     },
     {
@@ -468,7 +468,7 @@
         "name" : "Mercenary Talent Tree",
         "classUsage" : ["Soldier"],
         "description" : "Mercenaries are blasters-for-hire who sell their services to the highest bidder. Few types of Soldiers are more capable of operating independently.",
-        "talents" : []
+        "talents" : ["Commanding Presence","Dirty Fighting","Feared Warrior","Focused Warrior","Ruthless","Combined Fire","Mercenary's Determination","Mercenary's Grit","Mercenary's Teamwork"]
 
     },
     {
@@ -476,7 +476,7 @@
         "name" : "Privateer Talent Tree",
         "classUsage" : ["Master Privateer"],
         "description" : "You are a veteran of privateering and have learned the secrets of fighting aboard Starships.",
-        "talents" : []
+        "talents" : ["Armored Spacer","Attract Privateer","Blaster and Blade I","Blaster and Blade II","Blaster and Blade III","Boarder","Ion Mastery","Multiattack Proficiency (Advanced Melee Weapons)","Preserving Shot"]
 
     },
     {
@@ -484,7 +484,7 @@
         "name" : "Sabotage Talent Tree",
         "classUsage" : ["Saboteur"],
         "description" : "You are skilled at improvising Weapons, handling Explosives, and disrupting the enemy.",
-        "talents" : []
+        "talents" : ["Device Jammer","Droid Jammer","Extreme Explosion","Mine Mastery","Shaped Explosion","Skilled Demolitionist"]
 
     },
     {
@@ -492,7 +492,7 @@
         "name" : "Smuggling Talent Tree",
         "classUsage" : ["Scoundrel"],
         "description" : "Smuggling is part skill, part talent, part luck. The most notorious smugglers in the galaxy get along by making use of their quick wits and savvy.",
-        "talents" : []
+        "talents" : ["Art of Concealment","Fast Talker","Hidden Weapons","Illicit Dealings","Surprise Strike"]
 
     },
     {
@@ -500,7 +500,7 @@
         "name" : "Specialized Droid Talent Tree",
         "classUsage" : ["Independent Droid"],
         "description" : "You have become more specialized than other Droids of the same or a similar model.",
-        "talents" : []
+        "talents" : ["Computer Language","Computer Master","Enhanced Manipulation","Hotwired Processor","Power Surge","Skill Conversion","Power Boost"]
 
     },
     {
@@ -508,7 +508,7 @@
         "name" : "Spy Talent Tree",
         "classUsage" : ["Scout", "Infiltrator"],
         "description" : "Scouts are often capable of getting into areas unseen, and they make excellent spies thanks to their survival instincts and aptitude for stealth.",
-        "talents" : []
+        "talents" : ["Blend In","Incognito","Improved Surveillance","Intimate Knowledge","Surveillance","Traceless Tampering"]
 
     },
     {
@@ -516,7 +516,7 @@
         "name" : "Turret Talent Tree",
         "classUsage" : ["Saboteur"],
         "description" : "You can construct small, disposable, automated turrets.",
-        "talents" : []
+        "talents" : ["Blaster Turret I","Blaster Turret II","Blaster Turret III","Ion Turret","Stun Turret", "Turret Self-Destruct"]
 
     },
     {
@@ -524,7 +524,7 @@
         "name" : "Assassin Talent Tree",
         "classUsage" : ["Assassin"],
         "description" : "If ever caught in a straightforward fight, the odds are you are not going to make it, so your best move is to fight dirty and use every trick at your disposal.",
-        "talents" : []
+        "talents" : ["Advantageous Positioning","Get Some Distance","Murderous Arts I","Murderous Arts II","Ruthless","Shift","Sniping Assassin","Sniping Marksman","Sniping Master"]
 
     },
     {
@@ -532,7 +532,7 @@
         "name" : "Blockade Runner Talent Tree",
         "classUsage" : ["Ace Pilot"],
         "description" : "One of the most valued skills a pilot on the fringe can have is the ability to blast past the authorities and not get caught.",
-        "talents" : []
+        "talents" : ["Close Cover","Outrun","Punch Through","Small Target","Watch This"]
 
     },
     {
@@ -540,7 +540,7 @@
         "name" : "Disgrace Talent Tree",
         "classUsage" : ["Noble", "Charlatan"],
         "description" : "Scandal fouls your family name, forcing you to live among the fringes of society and teaching you that honor is overrated when victory is on the line.",
-        "talents" : []
+        "talents" : ["Ambush","Castigate","Dirty Tactics","Misplaced Loyalty","Two-Faced","Unreadable"]
 
     },
     {
@@ -548,7 +548,7 @@
         "name" : "Gand Findsman Talent Tree",
         "classUsage" : ["Bounty Hunter"],
         "description" : "The Gand Findsmen are an ancient order of Force-sensitive Bounty Hunters that interpret signs and portents.",
-        "talents" : []
+        "talents" : ["Findsman Ceremonies","Findsman's Foresight","Omens","Target Visions","Temporal Awareness"]
 
     },
     {
@@ -556,7 +556,7 @@
         "name" : "GenoHaradan Talent Tree",
         "classUsage" : ["Assassin"],
         "description" : "Members of The GenoHaradan are skilled not only in performing assassinations but also in manipulating others.",
-        "talents" : []
+        "talents" : ["Deadly Repercussions","Manipulating Strike","Improved Manipulating Strike","Pulling the Strings"]
 
     },
     {
@@ -564,7 +564,7 @@
         "name" : "Outlaw Talent Tree",
         "classUsage" : ["Outlaw"],
         "description" : "As an Outlaw, you live under a shadow, and everywhere you go, any time you reveal yourself, you risk being noticed and captured.",
-        "talents" : []
+        "talents" : ["Confounding Attack","Double Up","Find an Opening","Opportunistic Defense","Preternatural Senses","Seize the Moment","Tangle Up","Uncanny Instincts"]
 
     },
     {
@@ -572,7 +572,7 @@
         "name" : "Piracy Talent Tree",
         "classUsage" : ["Master Privateer"],
         "description" : "You use devious tactics to capture ships and victims intact.",
-        "talents" : []
+        "talents" : ["Bloodthirsty","Fight to the Death","Keep Them Reeling","Raider's Frenzy","Raider's Surge","Savage Reputation","Take Them Alive"]
 
     },
     {
@@ -580,7 +580,7 @@
         "name" : "Pistoleer Talent Tree",
         "classUsage" : ["Gunslinger"],
         "description" : "You are a master of wielding two Pistols at the same time, and can use both Pistols simultaneously in unusual ways.",
-        "talents" : []
+        "talents" : ["Dash and Blast","Flanking Fire","Guaranteed Shot","Hailfire","Twin Shot"]
 
     },
     {
@@ -588,7 +588,7 @@
         "name" : "Trickery Talent Tree",
         "classUsage" : ["Charlatan"],
         "description" : "Charlatans are masters of misdirection, confusion, and trickery.",
-        "talents" : []
+        "talents" : ["Cunning Distraction","Damaging Deception","Distracting Shout","Improved Soft Cover","Innocuous","Treacherous"]
 
     },
     {
@@ -596,7 +596,7 @@
         "name" : "Collaborator Talent Tree",
         "classUsage" : ["Noble"],
         "description" : "Some Nobles learn to work both sides of the conflict in war and can manipulate their enemies into believing they are allies.",
-        "talents" : []
+        "talents" : ["Double Agent","Enemy Tactics","Feed Information","Friendly Fire","Protection"]
 
     },
     {
@@ -604,7 +604,7 @@
         "name" : "Droid Commander Talent Tree",
         "classUsage" : ["Droid Commander"],
         "description" : "You have learned the quirks and intricacies of commanding Droids, and you can get the most out of even the least sophisticated basic programming.",
-        "talents" : []
+        "talents" : ["Automated Strike","Droid Defense","Droid Mettle","Expanded Sensors","Inspire Competence","Maintain Focus","Overclocked Troops","Reinforce Commands"]
 
     },
     {
@@ -612,7 +612,7 @@
         "name" : "Jedi Archivist Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "You have dedicated your life as a Jedi to preserving knowledge and applying it in times when it is needed.",
-        "talents" : []
+        "talents" : ["Direct","Impart Knowledge","Insight of the Force","Master Advisor","Scholarly Knowledge"]
 
     },
     {
@@ -620,7 +620,7 @@
         "name" : "Jedi Healer Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "You have focused your natural ability with The Force to heal the sick and injured.",
-        "talents" : []
+        "talents" : ["Force Treatment","Healing Boost","Improved Healing Boost","Soothe"]
 
     },
     {
@@ -628,7 +628,7 @@
         "name" : "Loyal Protector Talent Tree",
         "classUsage" : ["Noble"],
         "description" : "As a result of your station, occupation, or even just your natural charisma, you can attract one or more faithful Followers who protect you from harm.",
-        "talents" : []
+        "talents" : ["Inspire Loyalty","Undying Loyalty","Punishing Protection","Protector Actions"]
 
     },
     {
@@ -636,7 +636,7 @@
         "name" : "Melee Specialist Talent Tree",
         "classUsage" : ["Elite Trooper"],
         "description" : "Your skill with hand-to-hand combat is unmatched, and you can wield weapons with lethal accuracy and power.",
-        "talents" : []
+        "talents" : ["Accurate Blow","Close-Quarters Fighter","Ignore Armor","Improved Stunning Strike","Whirling Death"]
 
     },
     {
@@ -644,7 +644,7 @@
         "name" : "Military Engineer Talent Tree",
         "classUsage" : ["Military Engineer"],
         "description" : "You have become skilled at using and manipulating technology on the battlefield. In fact, your fellows rely on your technical expertise in the heat of battle.",
-        "talents" : []
+        "talents" : ["Breach Cover","Breaching Explosive","Droid Expert","Prepared Explosive","Problem Solver","Quick Modifications","Repairs on the Fly","Sabotage Device","Tech Savant","Vehicular Boost"]
 
     },
     {
@@ -652,7 +652,7 @@
         "name" : "Opportunist Talent Tree",
         "classUsage" : ["Scoundrel"],
         "description" : "Profiteers, gunrunners, and privateers can use the chaos of war to make a tidy profit, and you are no exception.",
-        "talents" : []
+        "talents" : ["Advantageous Opening","Retribution","Slip By","Thrive on Chaos","Vindication"]
 
     },
     {
@@ -660,7 +660,7 @@
         "name" : "Reconnaissance Talent Tree",
         "classUsage" : ["Scout"],
         "description" : "You have learned to work well in concert with a team to provide the best reconnaissance and cover as much ground as possible.",
-        "talents" : []
+        "talents" : ["Reconnaissance Team Leader","Close-Combat Assault","Get Into Position","Reconnaissance Actions"]
 
     },
     {
@@ -668,7 +668,7 @@
         "name" : "Republic Commando Talent Tree",
         "classUsage" : ["Elite Trooper"],
         "description" : "You have demonstrated that you are a highly skilled and capable soldier for the Republic and work well in a commando squad.",
-        "talents" : []
+        "talents" : ["Ambush","Higher Yield","Rapid Reload","Shoulder to Shoulder","Strength in Numbers","Weapon Shift"]
 
     },
     {
@@ -676,7 +676,7 @@
         "name" : "Squad Leader Talent Tree",
         "classUsage" : ["Soldier"],
         "description" : "You are a capable military leader who can issue orders to a squad of soldiers with poise and efficiency.",
-        "talents" : []
+        "talents" : ["Commanding Officer","Coordinated Tactics","Fire at Will","Squad Actions"]
 
     },
     {
@@ -684,7 +684,7 @@
         "name" : "Surveillance Talent Tree",
         "classUsage" : ["Scout"],
         "description" : "You have mastered the art of surveillance, transforming the information you gather with scouting into a distinct advantage on the battlefield.",
-        "talents" : []
+        "talents" : ["Advanced Intel","Hidden Eyes","Hunt the Hunter","Seek and Destroy","Spotter"]
 
     },
     {
@@ -692,7 +692,7 @@
         "name" : "Trooper Talent Tree",
         "classUsage" : ["Soldier"],
         "description" : "In war, soldiers stand side by side against deadly foes, and you have learned how to keep yourself and your comrades alive in battle.",
-        "talents" : []
+        "talents" : ["Comrades in Arms","Focused Targeting","Phalanx","Stick Together","Watch Your Back"]
 
     },
     {
@@ -700,7 +700,7 @@
         "name" : "Vanguard Talent Tree",
         "classUsage" : ["Vanguard"],
         "description" : "As an expert in the art of scouting enemy formations, you are a valuable asset to any military force.",
-        "talents" : []
+        "talents" : ["Enhanced Vision","Impenetrable Cover","Invisible Attacker","Mark the Target","Maximize Cover","Shellshock","Soften the Target","Triangulate"]
 
     },
     {
@@ -708,7 +708,7 @@
         "name" : "Brute Squad Talent Tree",
         "classUsage" : ["Soldier"],
         "description" : "Your brutal fighting techniques give you an upper hand when operating in small groups.",
-        "talents" : []
+        "talents" : ["Gang Leader","Melee Assault","Melee Brute","Melee Opportunist","Squad Brutality","Squad Superiority"]
 
     },
     {
@@ -716,7 +716,7 @@
         "name" : "Carbineer Talent Tree",
         "classUsage" : ["Gunslinger"],
         "description" : "Many gunslingers choose to specialize in long arms, especially Blaster Carbines.",
-        "talents" : []
+        "talents" : ["Blowback","Close Contact","Multiattack Proficiency (Rifles)","Old Faithful","Opportunity Fire","Rifle Master","Shoot from the Hip","Snap Shot"]
 
     },
     {
@@ -724,7 +724,7 @@
         "name" : "Force Hunter Talent Tree",
         "classUsage" : ["Bounty Hunter"],
         "description" : "Hunting Jedi is big business during The Legacy Era, and are among the most dangerous prey for Bounty Hunters to pursue.",
-        "talents" : []
+        "talents" : ["Force Blank","Lightsaber Evasion","Precision Fire","Steel Mind","Strong-Willed","Telekinetic Resistance"]
 
     },
     {
@@ -732,7 +732,7 @@
         "name" : "Fugitive Commander Talent Tree",
         "classUsage" : ["Officer"],
         "description" : "When a fighting force is outmanned, outgunned, and constantly on the run, only the skill and acumen of talented officers can keep prevent defeat.",
-        "talents" : []
+        "talents" : ["Disciplined Trickery","Group Perception","Hasty Withdrawal","Stalwart Subordinates","Stay in the Fight","Stealthy Withdrawal"]
 
     },
     {
@@ -740,7 +740,7 @@
         "name" : "Implant Talent Tree",
         "classUsage" : ["Shaper"],
         "description" : "Some Shapers develop implants that can be placed quickly and easily, temporarily boosting the physical prowess of their beneficiaries.",
-        "talents" : []
+        "talents" : ["Adrenaline Implant","Precision Implant","Resilience Implant","Speed Implant","Strength Implant"]
 
     },
     {
@@ -748,7 +748,7 @@
         "name" : "Jedi Refugee Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "In The Legacy Era, The Jedi are once again hunted to near-extinction and must learn to conceal their Force Powers and blend in.",
-        "talents" : []
+        "talents" : ["Cover Your Tracks","Difficult to Sense","Force Veil","Jedi Network"]
 
     },
     {
@@ -756,7 +756,7 @@
         "name" : "Knight's Armor Talent Tree",
         "classUsage" : ["Imperial Knight"],
         "description" : "You are a skilled master of The Force who knows how to get the most out of your Armor.",
-        "talents" : []
+        "talents" : ["Armored Augmentation I","Armored Augmentation II","Armor Mastery","Cortosis Defense","Cortosis Retaliation"]
 
     },
     {
@@ -764,7 +764,7 @@
         "name" : "Knight's Resolve Talent Tree",
         "classUsage" : ["Imperial Knight"],
         "description" : "You have dedicated your life to serving the rightful Emperor, and your devotion knows no bounds.",
-        "talents" : []
+        "talents" : ["Knight's Morale","Oath of Duty","Praetoria Ishu","Praetoria Vonil","Strength of the Empire"]
 
     },
     {
@@ -772,7 +772,7 @@
         "name" : "Protection Talent Tree",
         "classUsage" : ["Elite Trooper"],
         "description" : "You are specially trained to protect those around you, either by taking the brunt of attacks that are aimed at them, or by defusing dangerous situations.",
-        "talents" : []
+        "talents" : ["Armored Guard","Bodyguard's Sacrifice","Guard's Endurance","Lifesaver","Out of Harm's Way","Roll With It","Take the Hit","Ward"]
 
     },
     {
@@ -780,7 +780,7 @@
         "name" : "Provocateur Talent Tree",
         "classUsage" : ["Noble", "Charlatan"],
         "description" : "As a provocateur, you specialize in turning your enemies against one another, giving your allies the advantage through careful use of deception.",
-        "talents" : []
+        "talents" : ["Cast Suspicion","Distress to Discord","Friend or Foe","Seize the Moment","Stolen Advantage","True Betrayal"]
 
     },
     {
@@ -788,7 +788,7 @@
         "name" : "Sith Commander Talent Tree",
         "classUsage" : ["Sith Apprentice"],
         "description" : "The Sith use terror to lead their troops, and Sith commanders have few compunctions about making examples of underlings.",
-        "talents" : []
+        "talents" : ["Desperate Measures","Focus Terror","Incite Rage","Power of Hatred"]
 
     },
     {
@@ -796,7 +796,7 @@
         "name" : "Versatility Talent Tree",
         "classUsage" : ["Scout"],
         "description" : "You are known for your ability to adapt to any situation, heedless of adversity.",
-        "talents" : []
+        "talents" : ["Adapt and Survive","Focus Terror","Adapt and Survive","Defensive Protection","Quick on Your Feet","Ready and Willing","Unbalancing Adaptation"]
 
     },
     {
@@ -804,7 +804,7 @@
         "name" : "Beastwarden Talent Tree",
         "classUsage" : ["Force Adept"],
         "description" : "You have learned to use The Force to touch the minds of the Beasts, soothing them and convincing them to do your bidding.",
-        "talents" : []
+        "talents" : ["Charm Beast","Bonded Mount","Entreat Beast","Soothing Presence","Wild Sense"]
 
     },
     {
@@ -812,7 +812,7 @@
         "name" : "Jedi Artisan Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "You have dedicated yourself to the art of creation, learning how to craft Weapons and other items used by the Jedi with exquisite detail.",
-        "talents" : []
+        "talents" : ["Call Weapon","Lightsaber Specialist","Masterwork Lightsaber","Perfect Attunement","Quick Modification"]
 
     },
     {
@@ -820,7 +820,7 @@
         "name" : "Jedi Instructor Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "The role of teacher is vital to the success and strength of The Jedi Order, and you excel at the art of instruction.",
-        "talents" : []
+        "talents" : ["Apprentice Boon","Share Force Secret","Share Force Technique","Share Talent","Transfer Power"]
 
     },
     {
@@ -828,7 +828,7 @@
         "name" : "Jedi Investigator Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "You are one of The Jedi Order's most trusted investigators, tasked with ferreting out truth through a combination of detective work and Force divination.",
-        "talents" : []
+        "talents" : ["Echoes of the Force","Jedi Quarry","Prepared for Danger","Sense Deception","Unclouded Judgement"]
 
     },
     {
@@ -836,7 +836,7 @@
         "name" : "Jedi Weapon Master Talent Tree",
         "classUsage" : ["Jedi Knight"],
         "description" : "You have learned to use The Force to master a variety of weapons, and have expanded your martial prowess to cover more than just Lightsabers.",
-        "talents" : []
+        "talents" : ["Combat Trance","Improvised Weapon Mastery","Twin Weapon Style","Twin Weapon Mastery","Shoto Pin"]
 
     },
     {
@@ -844,7 +844,7 @@
         "name" : "Mystic Talent Tree",
         "classUsage" : ["Force Adept"],
         "description" : "You have studied The Force in a radically different way from other Force-users, relying on rituals and mystic lore to harness its power.",
-        "talents" : []
+        "talents" : ["Channel Vitality","Closed Mind","Esoteric Technique","Mystic Mastery","Regimen Mastery"]
 
     },
     {
@@ -852,7 +852,7 @@
         "name" : "Sith Alchemy Talent Tree",
         "classUsage" : ["Sith Apprentice"],
         "description" : "You have learned the alchemical arts of the ancient Sith Lords and can fill objects and creatures with the power of The Dark Side.",
-        "talents" : []
+        "talents" : ["Cause Mutation","Rapid Alchemy","Sith Alchemy","Sith Alchemy Specialist"]
 
     },
     {
@@ -860,7 +860,7 @@
         "name" : "Telepath Talent Tree",
         "classUsage" : ["Force Adept"],
         "description" : "You have mastered the art of mental manipulation, using The Force to touch, read, and affect the minds of others with ease.",
-        "talents" : []
+        "talents" : ["Mind Probe","Perfect Telepathy","Psychic Citadel","Psychic Defenses","Telepathic Intruder"]
 
     },
     {
@@ -868,7 +868,7 @@
         "name" : "Ambusher Talent Tree",
         "classUsage" : ["Soldier"],
         "description" : "You specialize in springing ambushes on your enemies.",
-        "talents" : []
+        "talents" : ["Ambush Specialist","Destructive Ambusher","Keep It Going","Keep Them Reeling","Perceptive Ambusher","Spring the Trap"]
 
     },
     {
@@ -876,7 +876,7 @@
         "name" : "Gambling Leader Talent Tree",
         "classUsage" : ["Noble"],
         "description" : "You aren't afraid to take chances when leading your allies, and you risk defeat in exchange for a shot at even the most unlikely victories.",
-        "talents" : []
+        "talents" : ["Assault Gambit","Direct Fire","Face the Foe","Lead From the Front","Luck Favors the Bold"]
 
     },
     {
@@ -884,7 +884,7 @@
         "name" : "Improviser Talent Tree",
         "classUsage" : ["Improviser"],
         "description" : "You can build what you need on the fly, and sometimes your customized gear proves more useful than what you otherwise might have purchased.",
-        "talents" : []
+        "talents" : ["Bigger Bang","Capture Droid","Custom Model","Improved Jury-Rig","Improvised Device"]
 
     },
     {
@@ -892,7 +892,7 @@
         "name" : "Pathfinder Talent Tree",
         "classUsage" : ["Pathfinder"],
         "description" : "You specialize in finding and creating optimal locations from which your allies can fight, and then making sure that they reach those locales safely.",
-        "talents" : []
+        "talents" : ["Bunker Buster","Defensive Measures","Enhance Cover","Escort Fighter","Launch Point","Obscuring Defenses","Relocate","Safe Passage","Safe Zone","Zone of Recuperation"]
 
     },
     {
