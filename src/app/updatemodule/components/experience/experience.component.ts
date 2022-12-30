@@ -5,6 +5,7 @@ import { LevelingService } from '../../services/leveling.service';
 import  forcePowersArr from '../../../db/fpowers.json';
 import saberPowersArr from '../../../db/spowers.json';
 import startClasses from '../../../db/sclasses.json';
+import { SWPsuedoApi } from 'src/app/services/swpsuedoapi.service';
 
 interface forcePowers {
   name:String,
@@ -115,10 +116,12 @@ numPowers: number =  0;
 /*
 0,1,2,3,3,4,5,6,6,7,8,9,9,10,11,12,12,13,14,15
 */
-  constructor(private heroservice : HeroService, private swapi : SwapiService, private level : LevelingService) { }
+  constructor(private heroservice : HeroService, private swapi : SwapiService, private level : LevelingService, private pseudoApi : SWPsuedoApi) { }
 
   ngOnInit(): void {
-    this.swapi.getFeats().subscribe((feats)=> {
+/**
+ * code for original api
+this.swapi.getFeats().subscribe((feats)=> {
       this.apifeatsArr = feats;
       this.apifeatsArr.sort(this.sortNames("name"));
     })
@@ -146,6 +149,26 @@ numPowers: number =  0;
     this.swapi.getTalentTree().subscribe((tree)=> {
       this.apiTree = [...tree];
     })
+ * 
+ */
+    this.apifeatsArr = this.pseudoApi.getFeats();
+    this.apiTalentsArr = this.pseudoApi.getTalents();
+    this.apifeatsArr.sort(this.sortNames("name"));
+    this.apiTalentsArr.sort(this.sortNames("name"));
+    let meleeArray = this.pseudoApi.getMelees();
+    this.apiTree = this.pseudoApi.getTalentTrees();
+    meleeArray.forEach((el:any)=> {
+      if (el.w_type == "Exotic Weapons (Melee)"){
+      this.exoticMelee.push(el.name);
+      }
+  })
+  let rangedArray = this.pseudoApi.getRanged();
+    rangedArray.forEach((el:any)=> {
+      if (el.w_type == "Exotic Weapons (Ranged)"){
+        this.exoticRange.push(el.name);
+      }
+    })
+
     this.level.invokeGetXp.subscribe(() => {
       this.getXp();
     })

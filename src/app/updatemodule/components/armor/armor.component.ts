@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HeroService } from '../../services/hero.service';
+import { SWPsuedoApi } from 'src/app/services/swpsuedoapi.service';
 
 @Component({
   selector: 'armor',
@@ -10,7 +11,7 @@ import { HeroService } from '../../services/hero.service';
 })
 export class ArmorComponent implements OnInit {
 
-  constructor(private swapi : SwapiService, private fb : FormBuilder, private heroservice : HeroService) { }
+  constructor(private swapi : SwapiService, private fb : FormBuilder, private heroservice : HeroService, private pseudoApi : SWPsuedoApi) { }
   // ---Variables---
 @Output () savedArmor: EventEmitter <any> = new EventEmitter <any> ();
 currentSet: boolean = false;
@@ -47,13 +48,21 @@ createCustom: boolean = false;
 
 // recievs data from api and sets it to the arrmor array
 ngOnInit(): void {
-  this.swapi.getArmors().subscribe(payload => {
+/**
+ * code for original api
+ this.swapi.getArmors().subscribe(payload => {
   this.armorArray = payload;
   // console.log("Armors:", this.armorArray);
 
   this.armorArray.sort(this.sortNames("name"));
   this.removeShields();
 })
+ * 
+ */
+this.armorArray = this.pseudoApi.getArmors();
+this.armorArray.sort(this.sortNames("name"));
+  this.removeShields();
+  
     this.currentArmor = Object.assign(this.armorObj);    
 this.heroservice.displayArmor.subscribe((armor :any)=> {
   this.displaySavedArmor(armor);

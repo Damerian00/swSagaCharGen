@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
+import { SWPsuedoApi } from 'src/app/services/swpsuedoapi.service';
 import { HeroService } from '../../services/hero.service';
 import { LevelingService } from '../../services/leveling.service';
 
@@ -35,10 +36,12 @@ notCustom: boolean = false;
 createWepForm: boolean = false;
 dmgTimesTwo: boolean = false;
 wepEdit: boolean = false;
-  constructor(private swapi : SwapiService, private heroservice: HeroService, private level: LevelingService) { }
+  constructor(private swapi : SwapiService, private heroservice: HeroService, private level: LevelingService, private pseudoApi : SWPsuedoApi) { }
 // accesses service to pull in data from api and save it to 2 different arrays
   ngOnInit(): void {
-    this.swapi.getMelees().subscribe(payload => {
+/*
+ * code for original api
+  this.swapi.getMelees().subscribe(payload => {
       this.meleeWeaponsArr = payload;
       // console.log("melee:", this.meleeWeaponsArr);
     
@@ -50,6 +53,13 @@ wepEdit: boolean = false;
     
       this.rangedWeaponsArr.sort(this.sortNames("name"));
     })
+})
+ * 
+ */ 
+   this.meleeWeaponsArr = this.pseudoApi.getMelees();
+   this.meleeWeaponsArr.sort(this.sortNames("name"));
+   this.rangedWeaponsArr = this.pseudoApi.getRanged();
+   this.rangedWeaponsArr.sort(this.sortNames("name"));
   //subscribes to hero service function to update attacks whenever hero level changes
     this.heroservice.createAttacks.subscribe((weapons : any)=> {
       this.importHeroAttacks(weapons);

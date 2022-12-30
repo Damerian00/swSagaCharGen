@@ -106,8 +106,9 @@ getTalents(){
 }
 
 getTalentTrees(){
-    this.assignTrees(this.talentsArray);
-    console.log(this.talenttreeArray)
+    if (this.talenttreeArray[0].Talents.length == 0){
+        this.assignTrees(this.talentsArray);
+    }
     return this.talenttreeArray;
 }
 getArmors(){

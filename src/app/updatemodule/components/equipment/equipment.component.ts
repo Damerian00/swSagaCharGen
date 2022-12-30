@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SwapiService } from 'src/app/services/swapi.service';
+import { SWPsuedoApi } from 'src/app/services/swpsuedoapi.service';
 import { HeroService } from '../../services/hero.service';
 
 @Component({
@@ -29,10 +30,12 @@ tableObj: any = {};
 notvalid: boolean = false;
 
 
-  constructor(private swapi : SwapiService, private heroservice : HeroService) { }
+  constructor(private swapi : SwapiService, private heroservice : HeroService, private pseudoApi : SWPsuedoApi) { }
 //  subscribes to the services and the EventEmitter
   ngOnInit(): void {
-    this.swapi.getMelees().subscribe(payload => {
+/**
+ * code for original api
+ this.swapi.getMelees().subscribe(payload => {
       this.meleeWeaponsArr = payload;
       // console.log("melee:", this.meleeWeaponsArr);
     
@@ -57,6 +60,17 @@ notvalid: boolean = false;
       this.armorsArr.sort(this.sortNames("name"));
      
     })
+ * 
+ */
+    this.meleeWeaponsArr = this.pseudoApi.getMelees();
+    this.rangedWeaponsArr = this.pseudoApi.getRanged();
+    this.equipmentArr = this.pseudoApi.getEquip();
+    this.armorsArr = this.pseudoApi.getArmors();
+    this.meleeWeaponsArr.sort(this.sortNames("name"));
+    this.rangedWeaponsArr.sort(this.sortNames("name"));
+    this.equipmentArr.sort(this.sortNames("name"));
+    this.armorsArr.sort(this.sortNames("name"));
+    
     this.heroservice.packBags.subscribe((bag : any)=> {
       this.importHeroInventory(bag);
     })
