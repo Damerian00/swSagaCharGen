@@ -33,7 +33,7 @@ interface species {
     name: String,
     classUsage: String[],
     description: String,
-    talents: String[]
+    Talents: any
  }
  interface armors {
     name: String,
@@ -104,6 +104,12 @@ getFeats(){
 getTalents(){
     return this.talentsArray;
 }
+
+getTalentTrees(){
+    this.assignTrees(this.talentsArray);
+    console.log(this.talenttreeArray)
+    return this.talenttreeArray;
+}
 getArmors(){
     return this.armorsArray;
 }
@@ -115,6 +121,17 @@ getRanged(){
 }
 getEquip(){
     return this.equipmentsArray;
+}
+
+assignTrees(talents : any){
+    for (let i=0; i< talents.length;i++){
+        for (let j=0; j<talenttrees.length;j++){
+            if (talents[i].TalentTreeId == this.talenttreeArray[j].id){
+                this.talenttreeArray[j].Talents.push(this.talentsArray[i])
+            }
+
+        }
+    }
 }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ChoicesSenderService } from 'src/app/services/choices-sender.service';
 import { SwapiService } from 'src/app/services/swapi.service';
+import { SWPsuedoApi } from 'src/app/services/swpsuedoapi.service';
 
 @Component({
   selector: 'talents',
@@ -9,7 +10,7 @@ import { SwapiService } from 'src/app/services/swapi.service';
 })
 export class TalentsComponent implements OnInit {
 
-  constructor(private swApiService: SwapiService, private choices: ChoicesSenderService) { }
+  constructor(private swApiService: SwapiService, private choices: ChoicesSenderService, private pseudoApi : SWPsuedoApi) { }
 talentsArray: any;
 talentTreeArray: any;
 availableTalents: Array<any> = [];
@@ -26,6 +27,8 @@ hideButton: string = "hide";
 @Output () heroTalentSpecified: EventEmitter<any> = new EventEmitter<any>();
   ngOnInit(): void {
 
+    /**
+     * 
     this.swApiService.getTalents().subscribe(payload => {
       this.talentsArray = payload;
       // console.log("talents: ", this.talentsArray);
@@ -35,6 +38,10 @@ hideButton: string = "hide";
       this.talentTreeArray = payload;
       // console.log("talent tree: ", this.talentTreeArray);
     })
+     * 
+     */
+    this.talentsArray = this.pseudoApi.getTalents();
+    this.talentTreeArray = this.pseudoApi.getTalentTrees();
     this.choices.intiializeTalents.subscribe(() => {
       this.sortAvailable();
     })
