@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ChoicesSenderService } from 'src/app/services/choices-sender.service';
+import {classSkills} from '../../db/heroSkills';
 
 @Component({
   selector: 'skills',
@@ -14,18 +15,7 @@ export class SkillsComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
   //object to hold each class and the skills that are permissable by them
-  availableSkills: object = {
-    "Jedi" : [{"name" : "Acrobatics", "ability" : "(Dex)"},{"name" : "Endurance", "ability" : "(Con)"}, {"name" : "Initiative", "ability" : "(Dex)"}, {"name" : "Jump", "ability" : "(Str)"}, {"name" : "Knowledge (Bureaucracy)", "ability" : "(Int)"}, {"name" : "Knowledge (Galactic Lore)", "ability" : "(Int)"},{"name" : "Knowledge (Life Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Physical Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Social Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Tactics)", "ability" : "(Int)"},{"name" : "Knowledge (Technology)", "ability" : "(Int)"},{"name" : "Mechanics", "ability" : "(Int)"},{"name" : "Perception", "ability" : "(Wis)"} ,{"name" : "Pilot", "ability" : "(Dex)"} ,{"name" : "Use the Force", "ability" : "(Cha)"} 
-  ],
-    "Noble" : [{"name" : "Deception", "ability" : "(Cha)"},{"name" : "Gather Information", "ability" : "(Cha)"},{"name" : "Initiative", "ability" : "(Dex)"} ,{"name" : "Knowledge (Bureaucracy)", "ability" : "(Int)"}, {"name" : "Knowledge (Galactic Lore)", "ability" : "(Int)"},{"name" : "Knowledge (Life Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Physical Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Social Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Tactics)", "ability" : "(Int)"},{"name" : "Knowledge (Technology)", "ability" : "(Int)"}, {"name" : "Perception", "ability" : "(Wis)"},{"name" : "Persuasion", "ability" : "(Cha)"},{"name" : "Pilot", "ability" : "(Dex)"},{"name" : "Ride", "ability" : "(Dex)"},{"name" : "Treat Injury", "ability" : "(Wis)"},{"name" :  "Use Computer", "ability" : "(Int)"}
-  ],
-    "Scoundrel" : [{"name" : "Acrobatics", "ability" : "(Dex)"},{"name" : "Deception", "ability" : "(Cha)"},{"name" : "Gather Information", "ability" : "(Cha)"}, {"name" : "Initiative", "ability" : "(Dex)"} ,{"name" : "Knowledge (Bureaucracy)", "ability" : "(Int)"}, {"name" : "Knowledge (Galactic Lore)", "ability" : "(Int)"},{"name" : "Knowledge (Life Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Physical Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Social Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Tactics)", "ability" : "(Int)"},{"name" : "Knowledge (Technology)", "ability" : "(Int)"}, {"name" : "Mechanics", "ability" : "(Int)"},{"name" : "Perception", "ability" : "(Wis)"},{"name" : "Persuasion", "ability" : "(Cha)"},{"name" : "Pilot", "ability" : "(Dex)"},{"name" : "Stealth", "ability" : "(Dex)"},{"name" :  "Use Computer", "ability" : "(Int)"}
-  ],
-    "Scout" : [{"name" : "Climb", "ability" : "(Str)"}, {"name" : "Endurance", "ability" : "(Con)"}, {"name" : "Initiative", "ability" : "(Dex)"}, {"name" : "Jump", "ability" : "(Str)"}, {"name" : "Knowledge (Bureaucracy)", "ability" : "(Int)"}, {"name" : "Knowledge (Galactic Lore)", "ability" : "(Int)"},{"name" : "Knowledge (Life Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Physical Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Social Sciences)", "ability" : "(Int)"} ,{"name" : "Knowledge (Tactics)", "ability" : "(Int)"},{"name" : "Knowledge (Technology)", "ability" : "(Int)"},{"name" : "Mechanics", "ability" : "(Int)"},{"name" : "Perception", "ability" : "(Wis)"} ,{"name" : "Pilot", "ability" : "(Dex)"},{"name" : "Ride", "ability" : "(Dex)"},{"name" : "Stealth", "ability" : "(Dex)"}, {"name" : "Survival", "ability" : "(Wis)"},{"name" : "Swim", "ability" : "(Str)"}
-  ],
-    "Soldier" : [{"name" : "Climb", "ability" : "(Str)"},{"name" : "Endurance", "ability" : "(Con)"}, {"name" : "Initiative", "ability" : "(Dex)"},{"name" : "Jump", "ability" : "(Str)"},{"name" : "Knowledge (Tactics)", "ability" : "(Int)"} ,{"name" : "Mechanics", "ability" : "(Int)"},{"name" : "Perception", "ability" : "(Wis)"},{"name" : "Pilot", "ability" : "(Dex)"},{"name" : "Swim", "ability" : "(Str)"},{"name" : "Treat Injury", "ability" : "(Wis)"},{"name" : "Use Computer", "ability" : "(Int)"}
-  ],
-  }
+  availableSkills: object = classSkills;
   // clear is a flag
   clear: string = 'ok';
   // array that will dynamically hold the skills that are permissable defaults with a message
@@ -166,7 +156,7 @@ skillTrained(event: any){
         */
         if (this.skillPoints - 1 < 0  ){
           this.skValidator = true;
-          this.skValidatorMessage = `No more skill points availabel to choose ${event.target.value}.`
+          this.skValidatorMessage = `No more skill points available to choose ${event.target.value}.`
           event.target.checked = false;
           // add a validation error here
         }else {

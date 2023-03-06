@@ -3,9 +3,13 @@ header, main{
 }
 li{
     list-style: none;
+    a{
+        padding:.25em;
+    }
 }
 a{
     text-decoration: none;
+    
    
 }
 .mainNav{
@@ -15,6 +19,7 @@ a{
         border:2px solid blue;
         padding: 2px;
         margin: 1rem;
+        cursor: pointer;
 
         &:hover{
             background-color: black;
@@ -33,6 +38,20 @@ a{
         color:rgb(228, 206, 8);
     }
 }
+
+.modal{
+    input{
+        margin: .5em;
+    }
+    .validation p{
+        font-style: italic;
+        color: red;
+    }
+    button{
+        cursor: pointer;
+    }
+}
+
 
 @media (min-width:768px){
    h2{

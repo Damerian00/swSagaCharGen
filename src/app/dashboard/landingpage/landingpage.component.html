@@ -2,13 +2,18 @@
     <p>Version 2.2</p>
     <h3>Please select either "Create a New Hero" or "Modifiy an Existing Hero" to begin.</h3>
     <nav>
-        <ul class="mainNav">
+        <ul class="mainNav" *ngIf="loggedIn; else needLogin">
             <li><a routerLink="/new-hero" routerLinkActive="active">Create a New Hero</a></li>
             <li><a routerLink="/update-hero" routerLinkActive="active">Modifiy an Existing Hero</a></li>
         </ul>
     </nav>
     
-   
+   <ng-template #needLogin>
+    <ul class="mainNav">
+        <li><a routerLink="/new-hero" routerLinkActive="active">Guest</a></li>
+        <li><a (click)="toggleLogin()">Login</a></li>
+    </ul>
+   </ng-template>
 </header>
 <main>
     <h2>Introduction</h2>
@@ -21,4 +26,12 @@
 
     <p>This app utilizes the information that can be found on the <a class="bold" href="https://swse.fandom.com/wiki/Star_Wars_Saga_Edition_Wikia" target="_blank">Star Wars Saga Edition Wiki</a> to help determine what is permissable when creating or updating a character.</p>
 
+    <aside *ngIf="log_in" class="modal">
+        <label>User Name :</label>
+        <input type="text" #userName/>
+        <label>Password :</label>
+        <input type="password" #password/>
+        <button (click)="handleLogin(userName.value, password.value)">Log in</button>
+        <span *ngIf="invalidation" class="validation"><p>Invalid Username or Password!!!</p></span>
+    </aside>
 </main>
