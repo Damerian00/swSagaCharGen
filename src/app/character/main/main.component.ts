@@ -3,7 +3,8 @@ import { ChoicesSenderService } from '../../services/choices-sender.service';
 import { faCheckSquare, faSquare, faSave, faClose } from '@fortawesome/free-solid-svg-icons';
 import {jsPDF} from "jspdf";
 import html2canvas from 'html2canvas'
-import { LocalstorageService } from '../../localstorage.service';
+import { LocalstorageService } from '../../services/localstorage.service';
+import { UserHandlerService } from 'src/app/services/user-handler.service';
 
 
 interface heroObject {
@@ -186,7 +187,7 @@ currentDtType: any = "Fortitude Defense";
 unsorted = (a:any, b:any) => {
   return a;
 }
-  constructor(private choices: ChoicesSenderService, private local: LocalstorageService) { }
+  constructor(private choices: ChoicesSenderService, private local: LocalstorageService, private userDB : UserHandlerService) { }
 
   ngOnInit(): void {
   }
@@ -700,6 +701,12 @@ saveHero(){
     PDF.save(fileName);
   });
   */
+     /*
+    // to save a new hero
+    this.userDB.addHeroSave(body).subscribe((res: any)=>{
+      
+    })
+    */
   console.log("savedHero", nameSaved, savedHero);
   localStorage.setItem(nameSaved, JSON.stringify(savedHero));
   window.location.href = '/index.html';

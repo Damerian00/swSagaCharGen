@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LocalstorageService } from 'src/app/localstorage.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
+import { UserHandlerService } from 'src/app/services/user-handler.service';
 import { HeroService } from '../../services/hero.service';
 import { LevelingService } from '../../services/leveling.service';
 
@@ -14,7 +16,13 @@ export class CharsheetComponent implements OnInit {
     return a;
   }
 
-  constructor(private local: LocalstorageService, private heroservice : HeroService, private level : LevelingService) { }
+  constructor(
+    private local: LocalstorageService, 
+    private heroservice : HeroService, 
+    private level : LevelingService, 
+    private auth: AuthService, 
+    private userDB: UserHandlerService
+    ) { }
 //  ----Variables
 //  Input/Output
 //  Arrays
@@ -33,6 +41,7 @@ heroAttacks: Array<string> = [];
 forcePowers: Array<any> = [];
 xpChart: Array <any> = [0,1,3,6,10,15,21,28,36,45,55,66,78,91,105,120,136,153,171,190]
 //  Objects
+currentUser: any;
 heroAbilities: Object = {};
 heroClass: Object = {};
 heroDefenses: any;
@@ -47,6 +56,7 @@ showSpecQual: boolean = false;
 forceUser: boolean = false;
 addFPs: boolean = false;
 navToggle: boolean = false;
+loggedIn = this.auth.loggedIn;
 //  Numbers & Strings
 savedName: string = "";
 tempId: any;
@@ -79,6 +89,7 @@ credits: number = 0;
 attack: number = 0;
 totAllotForPow : number = 0;
 navToggleText: string = "🔽"
+heroId: any = '';
 // holds the values for notes user adds
 specialQuals: string = '';
 heroNotes: string = '';
@@ -93,18 +104,29 @@ forceRegimens: string = "";
 
 //  ---End Variables---
   ngOnInit(): void {
-    
-    this.savedStorage = Object.keys(localStorage);
-    // console.log(this.savedStorage);
-    if (this.savedStorage.length != 0){
-     this.savedStorage.forEach((el:any) => {
-      if (el != null){
-        let file: any = this.local.getHero(el)
-        this.savedHeroes.push(JSON.parse(file));
-        this.savesPulled = true;
-      }
+    this.currentUser = this.auth.getCurrentUser();
+    if(this.currentUser != undefined){
+      let id = this.auth.getCurrentUser().id
+    this.userDB.getUserSaves(id).subscribe((saves)=>{
+      saves.forEach((el:any)=>{
+        this.userDB.setSaves(el);
+        this.savedHeroes.push(el.heroObj);
+      })
     })
-    // console.log("what is saved",this.savedHeroes);
+    }else{
+      this.savedStorage = Object.keys(localStorage);
+      console.log(this.savedStorage);
+      if (this.savedStorage.length != 0){
+       this.savedStorage.forEach((el:any) => {
+        if (el != null){
+          let file: any = this.local.getHero(el)
+          this.savedHeroes.push(JSON.parse(file));
+          this.savesPulled = true;
+        }
+      })
+      // console.log("what is saved",this.savedHeroes);
+  
+      }
 
     }
     this.heroservice.updateAbs.subscribe(()=>{
@@ -123,21 +145,32 @@ forceRegimens: string = "";
     this.heroservice.forcePowersUpdate.subscribe((powers)=>{
       this.forcePowers = powers;
     })
+    this.auth.checkLogIn.subscribe((status)=> {
+      this.loggedIn = status;
+    })
+    
   }
   //  gets the hero data from the user selection from the local storage/db
-  getHero(name: string){  
+  async getHero(name: string){  
     let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
-    let hero = this.savedStorage[index];
-    // console.log("the name", name, index, hero)
-    if (hero != null){
-      this.tempId = hero;
-      let recieved: any = this.local.getHero(hero);
-      this.savedHero = JSON.parse(recieved);
-      console.log("the hero is", name,this.savedHero)
-      this.updateStats();
-      this.heroPull = true;
-      // this.calcDT(this.currentDtType);
+    if(this.currentUser != undefined){
+      let saves = await this.userDB.getSaves()[index];
+      this.heroId = saves.id;
+      console.log(saves);
+      this.savedHero = saves.heroObj;
+    }else{
+      let hero = this.savedStorage[index];
+      // console.log("the name", name, index, hero)
+      if (hero != null){
+        this.tempId = hero;
+        let recieved: any = this.local.getHero(hero);
+        this.savedHero = JSON.parse(recieved);
+        // console.log("the hero is", name,this.savedHero)
+        // this.calcDT(this.currentDtType);
+      }
     }
+    this.updateStats();
+    this.heroPull = true;
   }
 //  switches the view to the list of saved heroes
 switchHero(){
@@ -529,10 +562,28 @@ async updateHero(){
       "regimens" : "",
     }
   }
-  this.local.removeHero(this.tempId);
-  this.local.saveHerotoStorage(this.tempId, heroObj)
+  if (this.loggedIn){
+    let userId = await this.auth.getCurrentUser().id;
+    let body = {
+      "heroObj": heroObj,
+      "UserId": userId
+    }
+    // to save current hero
+    this.userDB.updateHeroSave(this.heroId, body).subscribe((res: any)=>{
+      
+    });
+     // let index = saves.findIndex((el:any)=>el.name == name)
+    // this.userDB.updateHeroSave("",body)
+    // console.log('saved', heroObj.id)
+    // console.log('saved', body)
+
+  }else{
+    // this.local.removeHero(this.tempId);
+    // this.local.saveHerotoStorage(this.tempId, heroObj)
+    console.log('save to local');
+  }
   // console.log("hero saved", this.tempId, this.savedHero, heroObj);
-  window.location.href = '/index.html';
+  // window.location.href = '/index.html';
 }
 deleteHero(index: any, name: string){
  if (index != 'delete'){

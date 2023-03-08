@@ -5,6 +5,7 @@
         <ul class="mainNav" *ngIf="loggedIn; else needLogin">
             <li><a routerLink="/new-hero" routerLinkActive="active">Create a New Hero</a></li>
             <li><a routerLink="/update-hero" routerLinkActive="active">Modifiy an Existing Hero</a></li>
+            <li><a (click)="logOut()">Log Out</a></li>
         </ul>
     </nav>
     

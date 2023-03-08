@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserHandlerService } from 'src/app/user-handler.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserHandlerService } from 'src/app/services/user-handler.service';
 
 
 @Component({
@@ -9,19 +10,29 @@ import { UserHandlerService } from 'src/app/user-handler.service';
 })
 export class LandingpageComponent implements OnInit {
 
-loggedIn: boolean = false;
+loggedIn = this.auth.loggedIn;
 log_in: boolean = false;
 invalidation: boolean = false;
+token = '';
 currentUser = {
         id: '',
         userName: '',
         permission: '',
         valid: false
 };
-  constructor(private userDB : UserHandlerService) { }
+  constructor(private userDB : UserHandlerService, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.loggedIn = false;
+    // this.userDB.getAllHeroSaves().subscribe((saves)=>{
+    //   console.log(saves);
+    // })
+    
+    this.auth.checkLogIn.subscribe(authStatus=> {
+      this.loggedIn = authStatus;
+    })
+    
+    
+    // this.loggedIn = this.auth.loggedIn();
  
   }
   toggleLogin(){
@@ -35,23 +46,35 @@ currentUser = {
     }
     const body = {
       "name" : userName,
-      "password" : pass
+      "password" : pass,
     }
    this.userDB.loginUser(body).subscribe(payload=>{
+    if(!payload.error){
+      this.token = payload.accessToken
+      sessionStorage.setItem('user', this.token);
+      this.auth.setToken(payload.accessToken);
       this.currentUser = {
         id: payload.user.id,
         userName: payload.user.name,
         permission: payload.user.permission,
         valid: true
       }
-      console.log(`current User: ${payload} payload: ${payload.accessToken}`);
+      this.auth.setCurrentUser(this.currentUser);
+      // console.log(`current User: ${payload} payload: ${payload.accessToken}`);
       this.toggleLogin();
-       return this.loggedIn = true;
+      this.auth.checkToken();
+      return;
+    }  
     });
     if (!this.currentUser.valid){
       this.invalidation = true;
    }
   }
+  logOut(){
+    sessionStorage.removeItem('user');
+    this.loggedIn = false;
+  
 
+  }
 
 }
