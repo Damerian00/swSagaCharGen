@@ -1,6 +1,10 @@
+import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UploadedSavesService } from 'src/app/services/uploaded-saves.service';
 import { UserHandlerService } from 'src/app/services/user-handler.service';
+
 
 
 @Component({
@@ -20,7 +24,7 @@ currentUser = {
         permission: '',
         valid: false
 };
-  constructor(private userDB : UserHandlerService, private auth: AuthService) { }
+  constructor(private userDB : UserHandlerService, private auth: AuthService, private upload: UploadedSavesService, public router: Router) { }
 
   ngOnInit(): void {
     // this.userDB.getAllHeroSaves().subscribe((saves)=>{
@@ -72,9 +76,48 @@ currentUser = {
   }
   logOut(){
     sessionStorage.removeItem('user');
-    this.loggedIn = false;
+    this.auth.checkToken();
+    console.log("logout", this.loggedIn);
   
+  }
 
+  public uploadFileName: string = '';
+  public uploadFileContent:string = '';
+  public saveFileName = "test";
+  public saveFileContent = '{ "name": "test"}';
+  public saveFileExtension = 'json';
+  public names:any;
+  public async onFileSelected(event:any) {
+
+    const file:File = event.target.files[0];
+    this.uploadFileName = file.name;
+    this.uploadFileContent = await file.text(); 
+    let a = await JSON.parse(this.uploadFileContent);
+    this.upload.setSavedHeroes(a);
+    this.names = a
+    this.saveFileContent = JSON.stringify(a);
+    this.toggleLogin();
+    this.router.navigate(['update-hero'])
+    
+    //get object from json file
+    //let obj = JSON.parse(this.uploadFileContent);
+  }
+
+
+  public onSaveFile(): void {
+    let time = new Date();
+    let timeStamp= `${time.getFullYear()}${time.getMonth()+1}${time.getDate()}_${time.getHours()}${time.getMinutes()}`;
+    let fileName = this.saveFileName + timeStamp + '.' + this.saveFileExtension;
+    let fileContent = this.saveFileContent;
+    // let fileContent = JSON.stringify( {name: "test name"} );
+  
+    const file = new Blob([fileContent], { type: "text/plain" });
+  
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = fileName;
+    link.click();
+    link.remove(); 
   }
 
 }

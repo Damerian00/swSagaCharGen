@@ -4,6 +4,7 @@ import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { UserHandlerService } from 'src/app/services/user-handler.service';
 import { HeroService } from '../../services/hero.service';
 import { LevelingService } from '../../services/leveling.service';
+import { UploadedSavesService } from 'src/app/services/uploaded-saves.service';
 
 @Component({
   selector: 'app-charsheet',
@@ -21,7 +22,8 @@ export class CharsheetComponent implements OnInit {
     private heroservice : HeroService, 
     private level : LevelingService, 
     private auth: AuthService, 
-    private userDB: UserHandlerService
+    private userDB: UserHandlerService,
+    private upload : UploadedSavesService
     ) { }
 //  ----Variables
 //  Input/Output
@@ -104,38 +106,45 @@ forceRegimens: string = "";
 
 //  ---End Variables---
   ngOnInit(): void {
-    this.currentUser = this.auth.getCurrentUser();
-    if(this.currentUser != undefined){
-      let id = this.auth.getCurrentUser().id
-    this.userDB.getUserSaves(id).subscribe((saves)=>{
-      saves.forEach((el:any)=>{
-        this.userDB.setSaves(el);
-        this.savedHeroes.push(el.heroObj);
-      })
-    })
-    }else{
-      this.savedStorage = Object.keys(localStorage);
-      console.log(this.savedStorage);
-      if (this.savedStorage.length != 0){
-       this.savedStorage.forEach((el:any) => {
-        if (el != null){
-          let file: any = this.local.getHero(el)
-          this.savedHeroes.push(JSON.parse(file));
-          this.savesPulled = true;
-        }
-      })
-      // console.log("what is saved",this.savedHeroes);
+    // this.currentUser = this.auth.getCurrentUser();
+    // if(this.currentUser != undefined){
+    //   let id = this.auth.getCurrentUser().id
+    // this.userDB.getUserSaves(id).subscribe((saves)=>{
+    //   saves.forEach((el:any)=>{
+    //     this.userDB.setSaves(el);
+    //     this.savedHeroes.push(el.heroObj);
+    //   })
+    // })
+    // }else{
+    //   this.savedStorage = Object.keys(localStorage);
+    //   console.log(this.savedStorage);
+    //   if (this.savedStorage.length != 0){
+    //    this.savedStorage.forEach((el:any) => {
+    //     if (el != null){
+    //       let file: any = this.local.getHero(el)
+    //       this.savedHeroes.push(JSON.parse(file));
+    //       this.savesPulled = true;
+    //     }
+    //   })
+      
+    //   // console.log("what is saved",this.savedHeroes);
   
-      }
+    //   }
 
-    }
+    // }
+    this.upload.getAllSavedHeroes().forEach((el :any)  => {
+      if (el != null){
+        this.savedHeroes.push(el);
+      }
+    });
+
+    
     this.heroservice.updateAbs.subscribe(()=>{
       this.upDateAbs();
     })
     this.level.invokeBABUpdate.subscribe((BAB)=>{
       this.BAB = BAB;
       this.heroservice.reCalcAttacks();
-      
     })
     this.heroservice.distroCredits.subscribe((creds)=>{
       if (creds != "not valid"){
@@ -147,11 +156,46 @@ forceRegimens: string = "";
     })
     this.auth.checkLogIn.subscribe((status)=> {
       this.loggedIn = status;
+      this.showSavedHeroes(status)
     })
     
   }
+  showSavedHeroes(status: boolean){
+    this.savedHeroes = [];
+    console.log(status);
+    if(status){
+      let id = this.auth.getCurrentUser().id
+      this.userDB.getUserSaves(id).subscribe((saves)=>{
+        saves.forEach((el:any)=>{
+          this.userDB.setSaves(el);
+          this.savedHeroes.push(el.heroObj);
+        })
+      })
+    }else{
+      this.savedStorage = Object.keys(localStorage);
+      console.log(this.savedStorage);
+      if (this.savedStorage.length != 0){
+        this.savedStorage.forEach((el:any) => {
+          if (el != null){
+            let file: any = this.local.getHero(el)
+            this.savedHeroes.push(JSON.parse(file));
+            this.savesPulled = true;
+          }
+        })
+        // console.log("what is saved",this.savedHeroes);
+        
+      }
+      
+    }
+    console.log(this.savedHeroes);
+  }
+
   //  gets the hero data from the user selection from the local storage/db
   async getHero(name: string){  
+    let index = this.upload.getAllSavedHeroes().findIndex((el:any)=>el.name == name)
+    this.upload.setCurrentHero(index)
+
+    /*
     let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
     if(this.currentUser != undefined){
       let saves = await this.userDB.getSaves()[index];
@@ -171,6 +215,7 @@ forceRegimens: string = "";
     }
     this.updateStats();
     this.heroPull = true;
+    */
   }
 //  switches the view to the list of saved heroes
 switchHero(){
@@ -568,19 +613,19 @@ async updateHero(){
       "heroObj": heroObj,
       "UserId": userId
     }
-    // to save current hero
+    // to save current hero to DB
     this.userDB.updateHeroSave(this.heroId, body).subscribe((res: any)=>{
       
+      // console.log('save to db');
+      // console.log('saved', this.heroId.toString(),body)
     });
-     // let index = saves.findIndex((el:any)=>el.name == name)
-    // this.userDB.updateHeroSave("",body)
-    // console.log('saved', heroObj.id)
-    // console.log('saved', body)
-
+    
   }else{
-    // this.local.removeHero(this.tempId);
-    // this.local.saveHerotoStorage(this.tempId, heroObj)
-    console.log('save to local');
+
+    // saves current hero to local stoarge if not logged in
+    this.local.removeHero(this.tempId);
+    this.local.saveHerotoStorage(this.tempId, heroObj)
+
   }
   // console.log("hero saved", this.tempId, this.savedHero, heroObj);
   // window.location.href = '/index.html';

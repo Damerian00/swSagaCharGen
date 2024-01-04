@@ -1,5 +1,5 @@
 <header>
-    <p>Version 2.2</p>
+    <p>Version 2.2.1</p>
     <h3>Please select either "Create a New Hero" or "Modifiy an Existing Hero" to begin.</h3>
     <nav>
         <ul class="mainNav" *ngIf="loggedIn; else needLogin">
@@ -11,8 +11,8 @@
     
    <ng-template #needLogin>
     <ul class="mainNav">
-        <li><a routerLink="/new-hero" routerLinkActive="active">Guest</a></li>
-        <li><a (click)="toggleLogin()">Login</a></li>
+        <li><a routerLink="/new-hero" routerLinkActive="active">Create New</a></li>
+        <li><a (click)="toggleLogin()">Open Saved</a></li>
     </ul>
    </ng-template>
 </header>
@@ -27,7 +27,27 @@
 
     <p>This app utilizes the information that can be found on the <a class="bold" href="https://swse.fandom.com/wiki/Star_Wars_Saga_Edition_Wikia" target="_blank">Star Wars Saga Edition Wiki</a> to help determine what is permissable when creating or updating a character.</p>
 
+    <h1> UPLOAD FILE</h1>
+
+
+
+<p>File name: {{uploadFileName}}</p>
+<p *ngFor="let resp of names">File content: {{resp.name}}</p>
+
+
+<h1>SAVE FILE</h1>
+
+<label>File name</label> <input type="text" [(ngModel)]="saveFileName"/> <br/>
+<label>File content:</label> <input type="text" [(ngModel)]="saveFileContent" /> <br/> 
+<label>File extension:</label> <input type="text" [(ngModel)]="saveFileExtension" /> <br/> 
+
+<button 
+(click)="onSaveFile()"> Save file
+</button> 
+    
     <aside *ngIf="log_in" class="modal">
+        <input #fileUpload [accept]="'.json'" type="file" class="file-input" (change)="onFileSelected($event)">
+        <button (click)="fileUpload.click()"> Import file </button> 
         <label>User Name :</label>
         <input type="text" #userName/>
         <label>Password :</label>

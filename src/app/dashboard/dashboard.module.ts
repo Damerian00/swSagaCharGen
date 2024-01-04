@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { ChargenRoutingModule } from '../character/chargen-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,6 +14,7 @@ import { ChargenRoutingModule } from '../character/chargen-routing.module';
   imports: [
     CommonModule,
     ChargenRoutingModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }
