@@ -12,7 +12,9 @@ import { UploadedSavesService } from 'src/app/services/uploaded-saves.service';
   styleUrls: ['./charsheet.component.scss']
 })
 export class CharsheetComponent implements OnInit {
-
+  public saveFileName = "test";
+  public saveFileContent = '{ "name": "test"}';
+  public saveFileExtension = 'json';
   unsorted = (a:any, b:any) => {
     return a;
   }
@@ -194,7 +196,9 @@ forceRegimens: string = "";
   async getHero(name: string){  
     let index = this.upload.getAllSavedHeroes().findIndex((el:any)=>el.name == name)
     this.upload.setCurrentHero(index)
-
+    this.savedHero = this.upload.getCurrentHero();
+    this.updateStats();
+    this.heroPull = true;
     /*
     let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
     if(this.currentUser != undefined){
@@ -627,6 +631,38 @@ async updateHero(){
     this.local.saveHerotoStorage(this.tempId, heroObj)
 
   }
+  let currentName = "SWSEHeroSaves"
+  let time = new Date();
+  let timeStamp= `${time.getFullYear()}${time.getMonth()+1}${time.getDate()}_${time.getHours()}${time.getMinutes()}`;
+  let fileName = currentName + timeStamp + '.' + this.saveFileExtension;
+// need to replace index with the new save before saving it to a JSON
+  /*
+  let currentHero = this.upload.getCurrentHero()
+  let index = this.upload.getAllSavedHeroes().findIndex((el:any)=>el.name == name)
+  
+}
+});
+
+*/
+ let tempJSON:any = [];
+ let currentHero = this.upload.getCurrentHero()
+ this.upload.getAllSavedHeroes().forEach((el:any) => {
+    if (el.id !== currentHero.id){
+      tempJSON.push(el);
+    }else{
+      tempJSON.push(currentHero);
+    }
+  });
+
+  let fileContent = JSON.stringify(tempJSON);
+  const file = new Blob([fileContent], { type: "text/plain" });
+  
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(file);
+  link.download = fileName;
+  link.click();
+  link.remove(); 
+  window.location.href = '/';
   // console.log("hero saved", this.tempId, this.savedHero, heroObj);
   // window.location.href = '/index.html';
 }

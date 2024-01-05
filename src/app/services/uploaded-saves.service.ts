@@ -24,4 +24,5 @@ export class UploadedSavesService {
     this.currentSave= this.savedHeroes[index];
     console.log('current hero is: ', this.currentSave)
   }
+  
 }
