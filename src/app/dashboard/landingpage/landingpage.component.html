@@ -27,11 +27,11 @@
 
     <p>This app utilizes the information that can be found on the <a class="bold" href="https://swse.fandom.com/wiki/Star_Wars_Saga_Edition_Wikia" target="_blank">Star Wars Saga Edition Wiki</a> to help determine what is permissable when creating or updating a character.</p>
 
-    <h1> UPLOAD FILE</h1>
 
 
 
-<p>File name: {{uploadFileName}}</p>
+
+<!-- <p>File name: {{uploadFileName}}</p>
 <p *ngFor="let resp of names">File content: {{resp.name}}</p>
 
 
@@ -39,20 +39,21 @@
 
 <label>File name</label> <input type="text" [(ngModel)]="saveFileName"/> <br/>
 <label>File content:</label> <input type="text" [(ngModel)]="saveFileContent" /> <br/> 
-<label>File extension:</label> <input type="text" [(ngModel)]="saveFileExtension" /> <br/> 
+<label>File extension:</label> <input type="text" [(ngModel)]="saveFileExtension" /> <br/>  -->
 
-<button 
+<!-- <button 
 (click)="onSaveFile()"> Save file
-</button> 
+</button>  -->
     
     <aside *ngIf="log_in" class="modal">
         <input #fileUpload [accept]="'.json'" type="file" class="file-input" (change)="onFileSelected($event)">
-        <button (click)="fileUpload.click()"> Import file </button> 
-        <label>User Name :</label>
+       <p *ngIf="invalidation" class="validation">Unable to find Saves try another file please!!!</p>
+        <!-- <button (click)="fileUpload.click()"> Import file </button>  -->
+        <!-- <label>User Name :</label>
         <input type="text" #userName/>
         <label>Password :</label>
         <input type="password" #password/>
         <button (click)="handleLogin(userName.value, password.value)">Log in</button>
-        <span *ngIf="invalidation" class="validation"><p>Invalid Username or Password!!!</p></span>
+        <span *ngIf="invalidation" class="validation"><p>Invalid Username or Password!!!</p></span> -->
     </aside>
 </main>

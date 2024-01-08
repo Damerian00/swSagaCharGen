@@ -15,6 +15,7 @@ interface heroObject {
   class: Array<string>,
   defenses: Object,
   skills: Array<any>,
+  skillOffset: number,
   feats: Array<string>,
   talents: Array<string>,
   dt: number,
@@ -31,7 +32,9 @@ interface heroObject {
 
 
 export class MainComponent implements OnInit {
-
+  public saveFileName = "test";
+  public saveFileContent = '{ "name": "test"}';
+  public saveFileExtension = 'json';
 /*
  == Objects ==
  */
@@ -677,6 +680,7 @@ saveHero(){
       "will": this.willDefense,
     },
     skills: [...this.heroSkillsTotal],
+    skillOffset: 7,
     feats: [...this.chosenFeats],
     talents: [this.talentSelected],
     dt: this.damageThreshold,
@@ -687,8 +691,18 @@ saveHero(){
   
   let tempName = savedHero.name.split(' ').join('_')
   let nameSaved = tempName + savedHero.id;
-  
-  let fileName = `${nameSaved}.pdf`;
+  let currentName = "SWSEHeroSaves"
+  let time = new Date();
+  let timeStamp= `${time.getFullYear()}${time.getMonth()+1}${time.getDate()}_${time.getHours()}${time.getMinutes()}`;
+  let fileName = currentName + timeStamp + '.' + this.saveFileExtension;
+  let fileContent = JSON.stringify(savedHero);
+  const file = new Blob([fileContent], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(file);
+  link.download = fileName;
+  link.click();
+  link.remove(); 
+  window.location.href = '/';
 /*
   let DATA: any = document.getElementById('contentSaved');
   html2canvas(DATA,{ scale: 3 }).then((canvas) => {

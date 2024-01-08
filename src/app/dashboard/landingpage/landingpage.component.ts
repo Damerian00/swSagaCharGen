@@ -92,32 +92,40 @@ currentUser = {
     const file:File = event.target.files[0];
     this.uploadFileName = file.name;
     this.uploadFileContent = await file.text(); 
-    let a = await JSON.parse(this.uploadFileContent);
-    this.upload.setSavedHeroes(a);
-    this.names = a
-    this.saveFileContent = JSON.stringify(a);
-    this.toggleLogin();
-    this.router.navigate(['update-hero'])
-    
+    let a;
+  
+    try {
+      a = await JSON.parse(this.uploadFileContent);
+      this.upload.setSavedHeroes(a);
+      this.names = a
+      this.saveFileContent = JSON.stringify(a);
+      this.toggleLogin();
+      this.router.navigate(['update-hero'])
+      
+    } catch (err) {
+      this.invalidation=true;
+    }
+    console.log(a);
+ 
     //get object from json file
     //let obj = JSON.parse(this.uploadFileContent);
   }
 
 
-  public onSaveFile(): void {
-    let time = new Date();
-    let timeStamp= `${time.getFullYear()}${time.getMonth()+1}${time.getDate()}_${time.getHours()}${time.getMinutes()}`;
-    let fileName = this.saveFileName + timeStamp + '.' + this.saveFileExtension;
-    let fileContent = this.saveFileContent;
-    // let fileContent = JSON.stringify( {name: "test name"} );
+  // public onSaveFile(): void {
+  //   let time = new Date();
+  //   let timeStamp= `${time.getFullYear()}${time.getMonth()+1}${time.getDate()}_${time.getHours()}${time.getMinutes()}`;
+  //   let fileName = this.saveFileName + timeStamp + '.' + this.saveFileExtension;
+  //   let fileContent = this.saveFileContent;
+  //   // let fileContent = JSON.stringify( {name: "test name"} );
   
-    const file = new Blob([fileContent], { type: "text/plain" });
+  //   const file = new Blob([fileContent], { type: "text/plain" });
   
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(file);
-    link.download = fileName;
-    link.click();
-    link.remove(); 
-  }
+  //   const link = document.createElement("a");
+  //   link.href = URL.createObjectURL(file);
+  //   link.download = fileName;
+  //   link.click();
+  //   link.remove(); 
+  // }
 
 }
