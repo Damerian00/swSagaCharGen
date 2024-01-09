@@ -1,4 +1,7 @@
-
+.validation{
+    color: red;
+    font-style: italic;
+}
 header{
     display: flex;
     justify-content: space-around;
@@ -52,6 +55,21 @@ header{
         height: 5vh;
         margin: 1rem;
     }
+    .fill{
+         height: 20vh;
+         flex-direction: column;
+         background-color: rgba(33, 166, 218, 0.7);
+         border-radius: 10px;
+         padding:1rem;
+        .upload{
+           display:flex;
+           flex-direction: column;
+           p{
+               margin:.1rem;
+           }
+        }
+       
+       }
     .inputBox{
         justify-content: flex-start;
         align-items: center;
@@ -74,6 +92,7 @@ header{
         }
     
 }
+
 main{
     display: flex;
 }

@@ -87,8 +87,9 @@ currentUser = {
   public saveFileContent = '{ "name": "test"}';
   public saveFileExtension = 'json';
   public names:any;
+  
   public async onFileSelected(event:any) {
-
+    this.invalidation = false
     const file:File = event.target.files[0];
     this.uploadFileName = file.name;
     this.uploadFileContent = await file.text(); 
@@ -96,6 +97,11 @@ currentUser = {
   
     try {
       a = await JSON.parse(this.uploadFileContent);
+      this.invalidation = await this.upload.authCheck(a)
+      console.log(this.invalidation)
+      if (this.invalidation == true){
+        return;
+      }
       this.upload.setSavedHeroes(a);
       this.names = a
       this.saveFileContent = JSON.stringify(a);

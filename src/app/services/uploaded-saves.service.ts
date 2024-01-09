@@ -24,5 +24,21 @@ export class UploadedSavesService {
     this.currentSave= this.savedHeroes[index];
     console.log('current hero is: ', this.currentSave)
   }
-  
+  authCheck(file: any){
+    let bool: any = []
+    file.forEach((el: any) => {
+      if (el.skillOffset){
+        bool.push(false);
+      }else{
+        bool.push(true);
+      }  
+  });
+  if (bool.includes(true)){
+    return true;
+  }else{
+    return false;
+}
+}
+
+
 }

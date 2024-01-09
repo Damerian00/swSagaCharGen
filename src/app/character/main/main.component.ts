@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChoicesSenderService } from '../../services/choices-sender.service';
 import { faCheckSquare, faSquare, faSave, faClose } from '@fortawesome/free-solid-svg-icons';
-import {jsPDF} from "jspdf";
-import html2canvas from 'html2canvas'
 import { LocalstorageService } from '../../services/localstorage.service';
 import { UserHandlerService } from 'src/app/services/user-handler.service';
+import { UploadedSavesService } from 'src/app/services/uploaded-saves.service';
+import { Router } from '@angular/router';
 
 
 interface heroObject {
@@ -178,7 +178,9 @@ toggleShow: string = "hiding";
 showAbilities: boolean = false;
 toggleClassesComponent: boolean = false;
 showRest: boolean = false;
-showModal: boolean = false;
+showNameModal: boolean = false;
+showSaveModal: boolean = false;
+invalidation: boolean = false;
 //icons
 faUncheck = faSquare;
 faChecked= faCheckSquare;
@@ -190,7 +192,7 @@ currentDtType: any = "Fortitude Defense";
 unsorted = (a:any, b:any) => {
   return a;
 }
-  constructor(private choices: ChoicesSenderService, private local: LocalstorageService, private userDB : UserHandlerService) { }
+  constructor(private choices: ChoicesSenderService, private local: LocalstorageService, private userDB : UserHandlerService, private upload: UploadedSavesService, public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -637,8 +639,82 @@ calcSkills(skill: string, mod: string, misc: number){
 
 nameHeroToggle(){ 
   (this.disabler == "disabled")? this.disabler = "active": this.disabler = "disabled";
-  this.showModal = !this.showModal;
+  this.showNameModal = !this.showNameModal;
 }
+saveHeroToggle(){ 
+  if (this.heroName == "Name Goes Here..." || Object.keys(this.talentSelected).length == 0){
+    return;
+  }
+  (this.disabler == "disabled")? this.disabler = "active": this.disabler = "disabled";
+  this.showSaveModal = !this.showSaveModal;
+}
+
+public uploadFileName: string = '';
+public uploadFileContent:string = '';
+public names:any;
+saveDisabler = "disabled";
+
+public async onFileSelected(event:any){
+  this.invalidation = false
+  this.saveDisabler = 'disabled';
+  const file:File = event.target.files[0];
+  this.uploadFileName = file.name;
+    this.uploadFileContent = await file.text(); 
+    let a;
+    try {
+      a = await JSON.parse(this.uploadFileContent);
+      this.invalidation = await this.upload.authCheck(a)
+      console.log(this.invalidation)
+      if (this.invalidation == true){
+        return;
+      }
+      this.upload.setSavedHeroes(a);
+      this.names = a
+      this.saveFileContent = JSON.stringify(a);  
+      this.saveDisabler = "active";   
+    } catch (err) {
+      this.invalidation=true;
+    }
+
+   
+}
+saveHerotoFile(){
+  let ranId = this.randomIzer(8);
+  let savedHero: heroObject = {
+    id: ranId,
+    name: this.heroName,
+    species: this.species,
+    abilities: this.abilities,
+    class: [this.class],
+    defenses: {
+      "reflex" : this.reflexDefense,
+      "fort": this.fortitudeDefense,
+      "will": this.willDefense,
+    },
+    skills: [...this.heroSkillsTotal],
+    skillOffset: 7,
+    feats: [...this.chosenFeats],
+    talents: [this.talentSelected],
+    dt: this.damageThreshold,
+    hp: this.healthPoints,
+    bab: this.choices.acquireBab(),
+    forcePowers: [...this.forcePowers],
+  }
+ let tempJSON:any = [...this.names, savedHero];
+  let currentName = "SWSEHeroSaves"
+  let time = new Date();
+  let timeStamp= `${time.getFullYear()}${time.getMonth()+1}${time.getDate()}_${time.getHours()}${time.getMinutes()}`;
+  let fileName = currentName + timeStamp + '.' + this.saveFileExtension;
+  let fileContent = JSON.stringify(tempJSON);
+   const file = new Blob([fileContent], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(file);
+  link.download = fileName;
+  link.click();
+  link.remove(); 
+  
+}
+
 nameHero(name: any){
   // console.log("hero name: ",name);
   if(name == ""){
@@ -689,8 +765,8 @@ saveHero(){
     forcePowers: [...this.forcePowers],
   }
   
-  let tempName = savedHero.name.split(' ').join('_')
-  let nameSaved = tempName + savedHero.id;
+  // let tempName = savedHero.name.split(' ').join('_')
+  // let nameSaved = tempName + savedHero.id;
   let currentName = "SWSEHeroSaves"
   let time = new Date();
   let timeStamp= `${time.getFullYear()}${time.getMonth()+1}${time.getDate()}_${time.getHours()}${time.getMinutes()}`;
@@ -721,9 +797,9 @@ saveHero(){
       
     })
     */
-  console.log("savedHero", nameSaved, savedHero);
-  localStorage.setItem(nameSaved, JSON.stringify(savedHero));
-  window.location.href = '/index.html';
+  // console.log("savedHero", nameSaved, savedHero);
+  // localStorage.setItem(nameSaved, JSON.stringify(savedHero));
+  // window.location.href = '/index.html';
 }
 
 showCharSheet(){

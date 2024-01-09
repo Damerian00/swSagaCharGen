@@ -3,11 +3,11 @@
     <div class="buttonBox">
         <button (click)="nameHeroToggle()" [disabled]="disabler == 'disabled'">Name Hero</button>
         <button (click)="showCharSheet()" class="toggleShow">Show Character Sheet</button>
-        <button (click)="saveHero()" [disabled]="disabler == 'disabled'">Save Hero</button>
+        <button (click)="saveHeroToggle()" [disabled]="disabler == 'disabled'">Save Hero</button>
     </div>
 
 </header>
-<aside *ngIf="showModal" class="modalBox">
+<aside *ngIf="showNameModal" class="modalBox">
     <div class="inputBox">
         <label>Name: </label>
         <input type="text" #changeName placeholder="Hero Name">
@@ -15,6 +15,18 @@
     <div  class="buttonBox">
         <button (click)="nameHero(changeName.value)"><fa-icon [icon]="faSave"></fa-icon> Save Hero Name</button>
         <button (click)="nameHeroToggle()" ><fa-icon [icon]="faClose"></fa-icon> Close Modal</button>
+    </div>
+</aside>
+<aside *ngIf="showSaveModal" class="modalBox">
+       <div class="buttonBox fill">
+        <button (click)="saveHero()"  title="creates new save file"><fa-icon [icon]="faSave"></fa-icon> Save New Hero File</button>
+        <div class="upload">
+            <input #fileUpload [accept]="'.json'" type="file" class="file-input" (change)="onFileSelected($event)"> 
+            <p *ngIf="invalidation" class="validation">Unable to find Saves try another file please!!!</p>
+            <button (click)="saveHerotoFile()"  title="combines heroes into a new file" [disabled]="saveDisabler == 'disabled'"><fa-icon [icon]="faSave"></fa-icon> Add Hero to File</button>
+        </div>
+        
+        <button (click)="saveHeroToggle()" title="close modal"><fa-icon [icon]="faClose"></fa-icon> Close Modal</button>
     </div>
 </aside>
 <main>
