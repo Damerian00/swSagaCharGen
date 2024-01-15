@@ -98,7 +98,6 @@ currentUser = {
     try {
       a = await JSON.parse(this.uploadFileContent);
       this.invalidation = await this.upload.authCheck(a)
-      console.log(this.invalidation)
       if (this.invalidation == true){
         return;
       }
@@ -111,8 +110,6 @@ currentUser = {
     } catch (err) {
       this.invalidation=true;
     }
-    console.log(a);
- 
     //get object from json file
     //let obj = JSON.parse(this.uploadFileContent);
   }

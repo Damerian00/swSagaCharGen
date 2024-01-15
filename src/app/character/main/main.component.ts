@@ -664,7 +664,7 @@ public async onFileSelected(event:any){
     try {
       a = await JSON.parse(this.uploadFileContent);
       this.invalidation = await this.upload.authCheck(a)
-      console.log(this.invalidation)
+      // console.log(this.invalidation)
       if (this.invalidation == true){
         return;
       }
@@ -712,7 +712,7 @@ saveHerotoFile(){
   link.download = fileName;
   link.click();
   link.remove(); 
-  
+  this.router.navigate(['/']);
 }
 
 nameHero(name: any){

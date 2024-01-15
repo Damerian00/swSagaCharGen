@@ -1,7 +1,7 @@
 <nav class="nav">
     <a routerLink="/" routerLinkActive="active">Landing Page</a>
     <a routerLink="/new-hero" routerLinkActive="active">Create a New Hero</a>
-    <a *ngIf="!loggedIn" >Log in</a>
+    <!-- <a *ngIf="!loggedIn" >Log in</a> -->
 </nav>
 <section *ngIf="heroPull else reminder">
     <aside class="side_nav">
@@ -29,7 +29,7 @@
     <h1 id="name_nav">{{savedName}}</h1>
     <div class="navbtns">
         <button (click)="updateHero()">Save {{savedName}}</button>
-        <button (click)="deleteHero('delete', savedName)">Delete {{savedName}}</button>
+        <!-- <button (click)="deleteHero('delete', savedName)">Delete {{savedName}}</button> -->
         <button (click)="openModal('xp')">Add Experience Points</button>
         <button (click)="switchHero()">Select another hero</button>
     </div>

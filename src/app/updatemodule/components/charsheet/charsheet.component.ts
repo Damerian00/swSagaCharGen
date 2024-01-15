@@ -108,6 +108,7 @@ forceRegimens: string = "";
 
 //  ---End Variables---
   ngOnInit(): void {
+    /* --used for Auth service
     // this.currentUser = this.auth.getCurrentUser();
     // if(this.currentUser != undefined){
     //   let id = this.auth.getCurrentUser().id
@@ -134,13 +135,12 @@ forceRegimens: string = "";
     //   }
 
     // }
+    */
     this.upload.getAllSavedHeroes().forEach((el :any)  => {
       if (el != null){
         this.savedHeroes.push(el);
       }
-    });
-
-    
+    }); 
     this.heroservice.updateAbs.subscribe(()=>{
       this.upDateAbs();
     })
@@ -156,12 +156,14 @@ forceRegimens: string = "";
     this.heroservice.forcePowersUpdate.subscribe((powers)=>{
       this.forcePowers = powers;
     })
+    /* used with used DB and Auth Service
     this.auth.checkLogIn.subscribe((status)=> {
       this.loggedIn = status;
       this.showSavedHeroes(status)
     })
-    
+    */
   }
+  /* --used with User DB
   showSavedHeroes(status: boolean){
     this.savedHeroes = [];
     console.log(status);
@@ -184,14 +186,12 @@ forceRegimens: string = "";
             this.savesPulled = true;
           }
         })
-        // console.log("what is saved",this.savedHeroes);
-        
-      }
-      
+        // console.log("what is saved",this.savedHeroes);     
+      }   
     }
     console.log(this.savedHeroes);
   }
-
+*/
   //  gets the hero data from the user selection from the local storage/db
   async getHero(name: string){  
     let index = this.upload.getAllSavedHeroes().findIndex((el:any)=>el.name == name)
@@ -199,7 +199,7 @@ forceRegimens: string = "";
     this.savedHero = this.upload.getCurrentHero();
     this.updateStats();
     this.heroPull = true;
-    /*
+    /*  checks if logged in to use DB if not logged in uses local storage
     let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
     if(this.currentUser != undefined){
       let saves = await this.userDB.getSaves()[index];
@@ -372,7 +372,6 @@ async heroSets(){
   this.heroservice.setClassBonuses(this.heroClass);
   this.heroservice.getCarry();
   this.level.setHeroClassObj(this.heroClass);
-    
 }
 //  gets values for variables by calling the methods
 async heroGets(){
@@ -565,7 +564,6 @@ saveNotes(key: string, value: any){
       this.forceRegimens  = value.target.value;
     break;
   }
-
 }
 
 // saves the current configurations of the hero by removing the item in localstorage and adding it back
@@ -671,11 +669,15 @@ deleteHero(index: any, name: string){
   this.tempId = `${name}${this.savedHeroes[index].id}`
 };
   if (prompt(`Are you sure you want to delete ${name}? If so type heroes name then press ok`) == name){
-    this.local.removeHero(this.tempId);
-    window.location.href = '/update-hero';
+    /*
+    ---to remove from local storage---
+    this.local.removeHero(this.tempId); 
+
+    look at current file if there are others then create save minus this one. if just this one then navigate to landing page
+    */
+    window.location.href = '/';
     // console.log("success")
   }
-
 }
 scrollTo(element: any): void {
   (document.getElementById(element) as HTMLElement).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});

@@ -187,10 +187,8 @@ let con = await this.choices.acquireCon();
         }else{
           tempString = "Armor Proficiency (Light),Armor Proficiency (Medium),Weapon Proficiency (Pistols),Weapon Proficiency (Rifles),Weapon Proficiency (Simple Weapons)";
         }
-       
       break;
     default:
-      
       break;
   }
   //  console.log("temp string",tempString.split(","))
@@ -258,8 +256,7 @@ async checkConditionals(){
                 this.conditionalArray.push(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
               }
             }
-          }
-          
+          }     
     }
     if (species == "Neimoidian"){
      this.conditionalArray = [...neMoArr];
@@ -382,8 +379,7 @@ let BAB = await this.choices.acquireBab();
                 break;    
               }        
             } 
-            }
-        
+            } 
       }
       // if any requirements doesn't meet the minimums it returns nothing and breaks out of the loop and the check
       if (this.validated == false) break;
@@ -422,7 +418,6 @@ if (keys.includes("Species Feats")){
       name: name,
       description: description,
     };
-     
       this.selectableFeats.push(name);
       this.speciesFeatsArray.push(obj);
       // console.log("added speciesFeat", this.speciesFeatsArray);
@@ -430,10 +425,7 @@ if (keys.includes("Species Feats")){
 }
 this.choices.setFeatsArray(this.startingFeats);
 // console.log("what's available: ",this.selectableFeats)
-
 }
-
-
 // function that takes input from the dropdown for feats
 async selected(selection: any, indexNum: number){
   if (indexNum == 0){
@@ -549,10 +541,7 @@ if (selection != "Select a Feat"){
           this.showForcePowers = false;
           this.clearPowers();
         }
-
       }
-
-
     }  
 
 // if no feat is or if user selects Select a feat it removes the feat name anbd description
@@ -574,7 +563,6 @@ if (selection != "Select a Feat"){
   }
 }
 }
-
 // Jedi Force Training Functions
 // tempObject to hold a current selection since the value comes from 2 different arrays and needs saved before passing onto the next function
 forcePower: any;
@@ -584,7 +572,6 @@ selectedPower(power: any){
     this.forceDesc = "";
     return;
   }
-  
   // console.log("Chosen Power:" ,power);
   for (let i = 0; i< this.forcePowersArr.length; i++){
     if (this.forcePowersArr[i].name == power){
@@ -603,7 +590,6 @@ selectedPower(power: any){
 }
 
 acceptPower(){
- 
   if (this.numPowers > 0 && this.heroForceSuite.length < this.maxPowers){
     this.addPower(this.forcePower)
   }
@@ -624,12 +610,9 @@ clearPowers(){
   }
   // console.log("cleared arr:",  this.heroForceSuite)
 }
-
 // End of Jefi Force Powers
-
 // function to check the requirements based on parameters and updates validated variable based on values matching
 async chkReqs (apiValue: any, keyword: string){
-
 let BAB = await this.choices.acquireBab();
 let int = await this.choices.acquireInt();
 let con = await this.choices.acquireCon();
@@ -654,7 +637,6 @@ let trait = await this.choices.acquireSpeciesTraits();
         choice = `${this.submittedValues[0]} (${this.specialOptionSelected[0]})`;
       } 
       (this.startingFeats.includes(apiValue) || choice == apiValue) ? this.validated = true : this.validated = false;
-     
       // console.log(this.startingFeats.includes(apiValue),this.startingFeats, this.validated);
     break;
     case "trained":
@@ -687,7 +669,6 @@ let trait = await this.choices.acquireSpeciesTraits();
     break;
   }
 }
-
 // sets the variable to whatever the drop down has been changed to
 setFeatOption(selected: string, index: number){ 
   this.specialOptionSelected.splice(index,1,selected);
@@ -755,7 +736,6 @@ async submitSpecialFeat(feat: string, indexNum: number) {
         if (feats.includes(word)== false){
           this.specialFeatOptions.push(weaponOptions[i]);
         }
-
       } 
     break;
     case "Exotic Weapon Proficiency":
@@ -853,7 +833,6 @@ async submitSpecialFeat(feat: string, indexNum: number) {
       this.extraSpecialFeatOptions.splice(index,1);
     }
   // console.log("the specials array", this.specialFeatOptions)
-
 }
 focusedSkill: string = "";
 setAdditionalFeat(selection: any){
@@ -990,7 +969,7 @@ submitFinal(selection: any){
   }else{
     featsArr = [...this.startingFeats, selection]
   }
-console.log("final thoughts:",selection, featsArr)
+// console.log("final thoughts:",selection, featsArr)
 this.heroFeatsSelected.emit(featsArr);
 this.choices.startTalentComponent();
 this.heroForcePowers.emit(this.heroForceSuite);
