@@ -16,6 +16,7 @@ export class LocalstorageService {
   }
 
   public removeHero(key: string){
+    console.log("removed: ", key)
     localStorage.removeItem(key)
   }
 

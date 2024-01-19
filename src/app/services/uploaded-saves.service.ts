@@ -25,7 +25,7 @@ export class UploadedSavesService {
   authCheck(file: any){
     let bool: any = []
     file.forEach((el: any) => {
-      if (el.skillOffset){
+      if (el.skillOffset){  
         bool.push(false);
       }else{
         bool.push(true);

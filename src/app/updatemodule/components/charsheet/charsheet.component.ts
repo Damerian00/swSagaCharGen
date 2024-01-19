@@ -176,6 +176,8 @@ forceRegimens: string = "";
         })
       })
     }else{
+
+      // checks localStorage
       this.savedStorage = Object.keys(localStorage);
       console.log(this.savedStorage);
       if (this.savedStorage.length != 0){
@@ -583,6 +585,7 @@ async updateHero(){
     "hp" : [this.currentHp,this.maxHp],
     "class" : this.heroClass,
     "skills" : this.skills,
+    "skillOffset": 7,
     "species" : this.savedHero.species,
     "condition" : this.heroCondition,
     "bab" : this.BAB,

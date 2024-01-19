@@ -2,6 +2,7 @@ import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { UploadedSavesService } from 'src/app/services/uploaded-saves.service';
 import { UserHandlerService } from 'src/app/services/user-handler.service';
 
@@ -13,7 +14,9 @@ import { UserHandlerService } from 'src/app/services/user-handler.service';
   styleUrls: ['./landingpage.component.scss']
 })
 export class LandingpageComponent implements OnInit {
-
+savedStorage: any;  
+savedHeroes:  any = [];
+locals: boolean = false;
 loggedIn = this.auth.loggedIn;
 log_in: boolean = false;
 invalidation: boolean = false;
@@ -24,7 +27,12 @@ currentUser = {
         permission: '',
         valid: false
 };
-  constructor(private userDB : UserHandlerService, private auth: AuthService, private upload: UploadedSavesService, public router: Router) { }
+  constructor(
+    private userDB : UserHandlerService, 
+    private auth: AuthService, 
+    private upload: UploadedSavesService, 
+    private local: LocalstorageService,
+    public router: Router) { }
 
   ngOnInit(): void {
     // this.userDB.getAllHeroSaves().subscribe((saves)=>{
@@ -34,10 +42,26 @@ currentUser = {
     this.auth.checkLogIn.subscribe(authStatus=> {
       this.loggedIn = authStatus;
     })
-    
+;   this.checkLocals();
+  
     
     // this.loggedIn = this.auth.loggedIn();
  
+  }
+  checkLocals(){
+    this.savedStorage = Object.keys(localStorage);
+    if (this.savedStorage.length != 0){
+      this.savedStorage.forEach((el:any) => {
+        if (el != null){
+          let file: any = this.local.getHero(el)
+          this.savedHeroes.push(JSON.parse(file));
+          this.locals = true;
+        }else{
+          this.locals=false;
+        }
+      })
+      // console.log("what is saved",this.savedHeroes);     
+    }
   }
   toggleLogin(){
     this.log_in = !this.log_in;
@@ -80,7 +104,6 @@ currentUser = {
     console.log("logout", this.loggedIn);
   
   }
-
   public uploadFileName: string = '';
   public uploadFileContent:string = '';
   public saveFileName = "test";
@@ -113,7 +136,30 @@ currentUser = {
     //get object from json file
     //let obj = JSON.parse(this.uploadFileContent);
   }
+  dlLocals(){
+     // "skillOffset": 7,
+     this.savedHeroes.forEach((el: any) => {
+      let ran = Math.floor(Math.random() * 10)+1;
+      el.skillOffset = ran;
+    });
+    let currentName = "SWSEHeroSaves"
+    let time = new Date();
+    let timeStamp= `${time.getFullYear()}${time.getMonth()+1}${time.getDate()}_${time.getHours()}${time.getMinutes()}`;
+    let fileName = currentName + timeStamp + '.' + this.saveFileExtension;
+    let fileContent = JSON.stringify(this.savedHeroes);
+    const file = new Blob([fileContent], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = fileName;
+    link.click();
+    link.remove();
+    
+  this.savedHeroes.forEach((el: any) => {
+   this.local.removeHero(el.name+el.id); 
+    });
+    this.checkLocals();
 
+  }
 
   // public onSaveFile(): void {
   //   let time = new Date();

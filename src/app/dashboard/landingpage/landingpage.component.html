@@ -13,6 +13,7 @@
     <ul class="mainNav">
         <li><a routerLink="/new-hero" routerLinkActive="active">Create New</a></li>
         <li><a (click)="toggleLogin()">Open Saved</a></li>
+        <li *ngIf="locals"><a (click)="dlLocals()">Download Local Storage</a></li>
     </ul>
    </ng-template>
 </header>

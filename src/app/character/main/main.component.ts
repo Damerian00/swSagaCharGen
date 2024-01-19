@@ -756,7 +756,7 @@ saveHero(){
       "will": this.willDefense,
     },
     skills: [...this.heroSkillsTotal],
-    skillOffset: 7,
+    skillOffset: Math.floor(Math.random() * 10)+1,
     feats: [...this.chosenFeats],
     talents: [this.talentSelected],
     dt: this.damageThreshold,
