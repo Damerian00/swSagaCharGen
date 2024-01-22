@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/sw-saga-chargen",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
