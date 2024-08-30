@@ -12,17 +12,18 @@ import { ChoicesSenderService } from 'src/app/services/choices-sender.service';
 
 
 export class AbilitiesComponent implements OnInit {
-  // tells it not to sort 
+  // tells it not to sort
   unsorted = (a:any, b:any) => {
     return a;
   }
   // variables used in this component
+  keyAbility:string = ""
   /*
    max amount of points available for abilities which is adjustable
   */
   maxPoints: number = 0;
   abModifierImport: any= {};
-/* 
+/*
 holds the abilities and their values for starting
  */
   charAbilities: any= {
@@ -43,7 +44,7 @@ holds the abilities and their values for starting
     Charisma: 8,
   }
   // validate: boolean = true;
- 
+
   // creates and intializes points setting them to 0
   points = 0;
   toggleButton: boolean = false;
@@ -54,10 +55,10 @@ holds the abilities and their values for starting
   @Output () abilitiesSelected: EventEmitter<any> = new EventEmitter<any>()
   @Output () abilityModifiers: EventEmitter<any> = new EventEmitter<any>()
   ngOnInit(): void {
-    this.choices.invokeAbilitiesFunction.subscribe(() => {   
+    this.choices.invokeAbilitiesFunction.subscribe(() => {
         this.saveAbilities();
-      });    
-          
+      });
+
       this.choices.initializeAbilityPoints.subscribe((pts)=>{
         this.setMaxPoints(pts);
         this.togglePtsBtn();
@@ -72,7 +73,7 @@ togglePtsBtn(){
   (this.toggleBtnText == "Open Points Editor") ? this.toggleBtnText = "Cancel" : this.toggleBtnText = "Open Points Editor";
   this.toggleButton = !this.toggleButton;
 }
-  //sets max points 
+  //sets max points
   setMaxPoints(mxpts: any){
     this.update();
     if (mxpts <= 50 && mxpts >= 25){
@@ -130,7 +131,7 @@ togglePtsBtn(){
   let conA =  this.abModifierImport.Constitution;
   if (conA != 0){
     this.finalAbilities.Constitution += conA;
-  } 
+  }
   let intA =  this.abModifierImport.Intelligence;
   if (intA != 0){
     this.finalAbilities.Intelligence += intA;
@@ -145,7 +146,7 @@ togglePtsBtn(){
        }
 
 // console.log('this is final:',this.finalAbilities) // for testing
- 
+
  }
 
  /*
@@ -409,13 +410,65 @@ togglePtsBtn(){
      break;
    }
    }
-  
+
  }
  */
-/* 
+/*
 adds ability point if it successfully clears the checkpoints function with no errros then emits the changes to main component to be displayed
 */
-addAbility(clicked: any){
+addAbility(clicked:any){
+  this.abValidator = false;
+  this.choices.validate = false;
+  this.abModifierImport = this.choices.speciesAbilityModifiers;
+  this.keyAbility = clicked.key
+    if (this.points > 0){
+     if(this.finalAbilities[this.keyAbility] < 50){
+      this.pointChecker(this.keyAbility, "add");
+      if (this.choices.validate == true){
+         this.charAbilities[this.keyAbility] += 1;
+        this.finalAbilities[this.keyAbility] += 1;
+      }
+     }else{
+      this.choices.validate = true;
+     }
+     this.calcModifier();
+  } else if(clicked == "default"){
+
+  }else{
+    this.abValidator = true;
+      this.abValidatorMessage = `Not enough points available to add to ${this.keyAbility}.`
+
+  }
+
+}
+
+subAbility (clicked: any){
+  this.abValidator = false;
+  this.choices.validate = false;
+  this.abModifierImport = this.choices.speciesAbilityModifiers;
+  this.keyAbility = clicked.key
+    if (this.points < this.maxPoints){
+      this.pointChecker(this.keyAbility, "subtract");
+      if (this.choices.validate == true && this.charAbilities[this.keyAbility] > 8){
+         this.charAbilities[this.keyAbility] -= 1;
+        this.finalAbilities[this.keyAbility] -= 1;
+     }else{
+      this.choices.validate = false;
+     }
+    if (this.choices.validate == false){
+      this.abValidator = true;
+      this.abValidatorMessage = `Can't subtract any more from ${this.keyAbility}.`
+    }
+  this.calcModifier();
+}else{
+  this.abValidator = true;
+  this.abValidatorMessage = `Can't subtract any more from ${this.keyAbility}.`
+}
+
+}
+// old code replaced by addAbility
+/*
+addaAbility(clicked: any){
   this.abValidator = false
   this.choices.validate = false;
   this.abModifierImport = this.choices.speciesAbilityModifiers;
@@ -437,7 +490,7 @@ addAbility(clicked: any){
         this.pointChecker(clicked.key , "add");
         if (this.choices.validate == true){
           this.charAbilities.Dexterity += 1;
-          this.finalAbilities.Dexterity +=1; 
+          this.finalAbilities.Dexterity +=1;
         }
         }
     break;
@@ -487,38 +540,41 @@ addAbility(clicked: any){
   }
   if (this.choices.validate == false){
     this.abValidator = true;
-    this.abValidatorMessage = `Not enough points available to add to ${clicked.key}.`    
-    
+    this.abValidatorMessage = `Not enough points available to add to ${clicked.key}.`
+
   }
  this.calcModifier();
 } else if(clicked == "default"){
- 
+
 }else{
   this.abValidator = true;
-    this.abValidatorMessage = `Not enough points available to add to ${clicked.key}.`    
-   
+    this.abValidatorMessage = `Not enough points available to add to ${clicked.key}.`
+
 }
 
 }
-/* 
+*/
+/*
 subtracts ability point if it successfully clears the checkpoints function with no errros then emits the changes to main component to be displayed
 */
-subAbility(clicked: any){
+
+// old code replaced by subAbility
+/*
+subaAbility(clicked: any){
   this.abValidator = false;
   this.choices.validate = false;
   if (this.points < this.maxPoints){
     switch (clicked.key){
       case "Strength":
         //this.checkPoints(clicked.key, "subtract")
-        this.pointChecker(clicked.key, "subtract")  
+        this.pointChecker(clicked.key, "subtract")
         if (this.choices.validate == true && this.charAbilities.Strength > 8){
           this.charAbilities.Strength -= 1;
           this.finalAbilities.Strength -= 1;
-  
         }else{
           this.choices.validate = false;
         }
-        
+
       break;
       case "Dexterity":
         // this.checkPoints(clicked.key, "subtract")
@@ -526,11 +582,11 @@ subAbility(clicked: any){
         if (this.choices.validate == true && this.charAbilities.Dexterity > 8){
           this.charAbilities.Dexterity -= 1;
           this.finalAbilities.Dexterity -= 1;
-          
+
         }else{
           this.choices.validate = false;
-        }   
-        
+        }
+
         break;
         case "Constitution":
          // this.checkPoints(clicked.key, "subtract")
@@ -538,11 +594,11 @@ subAbility(clicked: any){
           if (this.choices.validate == true && this.charAbilities.Constitution > 8){
             this.charAbilities.Constitution -= 1;
             this.finalAbilities.Constitution -= 1;
-    
+
           }else{
           this.choices.validate = false;
-        }  
-          
+        }
+
         break;
     case "Intelligence":
      // this.checkPoints(clicked.key, "subtract")
@@ -553,10 +609,10 @@ subAbility(clicked: any){
 
       }else{
           this.choices.validate = false;
-        }   
-      
+        }
+
     break;
-   
+
     case "Wisdom":
       //this.checkPoints(clicked.key, "subtract")
       this.pointChecker(clicked.key, "subtract")
@@ -566,8 +622,8 @@ subAbility(clicked: any){
 
       }else{
           this.choices.validate = false;
-        }   
-      
+        }
+
     break;
     case "Charisma":
     //  this.checkPoints(clicked.key, "subtract")
@@ -578,14 +634,14 @@ subAbility(clicked: any){
       }else{
           this.choices.validate = false;
         }
-      
+
     break;
   }
   if (this.choices.validate == false){
       this.abValidator = true;
       this.abValidatorMessage = `Can't subtract any more from ${clicked.key}.`
     }
-  
+
   this.calcModifier();
 
 }else{
@@ -594,12 +650,14 @@ subAbility(clicked: any){
 }
 
 }
+
+*/
 // calls the update function then emits the finalabilities to the main component for evaluation
 saveAbilities(){
   this.update();
   // removing this ensures that at least one ability point is added before intializing classes
   // this.abilitiesSelected.emit(this.finalAbilities);
-  
+
 }
 // same as saveAbilities minus the update function
 calcModifier(){
@@ -615,7 +673,7 @@ pointChecker(selection: string, operand: string){
   let value =  operand === "add" ? 0:-1;
   switch (selection) {
   case "Strength":
-    value += this.charAbilities.Strength; 
+    value += this.charAbilities.Strength;
   break;
   case "Dexterity":
     value += this.charAbilities.Dexterity
@@ -640,7 +698,7 @@ if (this.choices.validate == true){
   this.abValidator = false;
   operand == "add"?  this.points -= pointBuy[value] : this.points += pointBuy[value]
     //  console.log('the points', this.points)
-      }    
+      }
 }
 
 

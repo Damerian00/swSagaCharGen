@@ -1,5 +1,5 @@
 <header>
-    <a routerLink="/update-hero" routerLinkActive="active">Modifiy an Existing Hero</a>
+    <button routerLink="/" routerLinkActive="active">Landing Page</button>
     <div class="buttonBox">
         <button (click)="nameHeroToggle()" [disabled]="disabler == 'disabled'">Name Hero</button>
         <button (click)="showCharSheet()" class="toggleShow">Show Character Sheet</button>
@@ -21,11 +21,11 @@
        <div class="buttonBox fill">
         <button (click)="saveHero()"  title="creates new save file"><fa-icon [icon]="faSave"></fa-icon> Save New Hero File</button>
         <div class="upload">
-            <input #fileUpload [accept]="'.json'" type="file" class="file-input" (change)="onFileSelected($event)"> 
+            <input #fileUpload [accept]="'.json'" type="file" class="file-input" (change)="onFileSelected($event)">
             <p *ngIf="invalidation" class="validation">Unable to find Saves try another file please!!!</p>
             <button (click)="saveHerotoFile()"  title="combines heroes into a new file" [disabled]="saveDisabler == 'disabled'"><fa-icon [icon]="faSave"></fa-icon> Add Hero to File</button>
         </div>
-        
+
         <button (click)="saveHeroToggle()" title="close modal"><fa-icon [icon]="faClose"></fa-icon> Close Modal</button>
     </div>
 </aside>
@@ -40,13 +40,13 @@
         <talents #talents (heroTalentSelected)="updateTalents($event)" (heroTalentSpecified)="updateTalentSpecify($event)"></talents>
     </div>
     <div id="contentSaved" class="display {{toggleShow}}" #contentSaved>
-        <h2>{{heroName}}</h2> 
+        <h2>{{heroName}}</h2>
       <section class="heroIntro">
           <h3> <span>Species:  </span> {{species.species_name}}</h3>
            <h3><span>Class: </span>{{class}} </h3>
            <h3><span>Level: </span>{{heroLevel}}</h3>
-      </section> 
-        <section *ngIf="showAbilities" class="stats">       
+      </section>
+        <section *ngIf="showAbilities" class="stats">
             <div class="defensesBox">
                 <div class="defense">
                     <label>Reflex Defense: </label>
@@ -71,7 +71,7 @@
                         <option>Select</option>
                         <option *ngFor="let mod of abModOptions">{{mod}}</option>
                     </select>
-                </div>             
+                </div>
             </div>
             <div *ngIf="showAbilities" class="healthBox">
                <div class="bContainer">
@@ -80,14 +80,14 @@
               </div>
               <div class="bContainer">
                   <label>Damage Threshold: </label>
-                  <p>{{damageThreshold}}</p> 
+                  <p>{{damageThreshold}}</p>
                   <select value="selected" #dmgThOption (change)="calcDT(dmgThOption.value)">
                     <option>Select Defense</option>
                     <option>Reflex Defense</option>
                     <option>Fortitude Defense</option>
                     <option>Will Defense</option>
-                </select>     
-              </div> 
+                </select>
+              </div>
             </div>
             <div *ngIf="showRest" class="otherStats">
                 <div class="carryBox">
@@ -133,7 +133,7 @@
                     <select value="selected" id={{i}} (change)="collectCalcData(i,$event)">
                         <option>Select</option>
                         <option *ngFor="let mod of abModOptions">{{mod}}</option>
-                    </select>             
+                    </select>
                     <p *ngIf="heroSkill.trained_skill == true"><fa-icon [icon]="faChecked"></fa-icon></p>
                     <p *ngIf="heroSkill.trained_skill == false"><fa-icon [icon]="faUncheck"></fa-icon></p>
                     <p *ngIf="heroSkill.skill_focus == true"><fa-icon [icon]="faChecked"></fa-icon></p>

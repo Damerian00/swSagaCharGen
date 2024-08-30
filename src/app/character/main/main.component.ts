@@ -132,7 +132,7 @@ featFocus: Array<string> = ["", ""];
 languages: Array<any> = [];
 forcePowers: Array<any> = [];
 /*
-== Numbers == 
+== Numbers ==
 */
 intModifier: number = 0;
 healthPoints: number = 0;
@@ -196,9 +196,10 @@ unsorted = (a:any, b:any) => {
 
   ngOnInit(): void {
   }
-/* 
-the below functions are used to display the choices that the user selects on to the character sheet
+/*
+the below functions are used to display the choices that the user selects on the character sheet
 */
+// function to clear out an array
 popArray(arr : Array<any>){
   while (arr.length){
     arr.pop();
@@ -236,13 +237,13 @@ popArray(arr : Array<any>){
     if (this.toggleClassesComponent == false){
       this.toggleClassesComponent = true;
     }
-    
+
   }
- 
+
  async updateClass(chosenClass: string){
   this.class = chosenClass;
   this.calcClassBonuses(chosenClass);
-  // if class isn't jedi and the array doesn't have Use the Force as a value for skill remove Use the force skill from the array 
+  // if class isn't jedi and the array doesn't have Use the Force as a value for skill remove Use the force skill from the array
   // let vals = await Object.values(this.heroSkillsTotal)
   if (chosenClass != "Jedi" && Object.values(this.heroSkillsTotal).length > 24){
     this.heroSkillsTotal.pop();
@@ -254,7 +255,7 @@ popArray(arr : Array<any>){
     },)
     // console.log( "added use force")
 
-  // 
+  //
   }
   // console.log("this is it", this.heroSkillsTotal, vals.lastIndexOf("Use the Force"))
 }
@@ -283,10 +284,10 @@ async updateFeats(feats: Array<string>){
   await this.resetAdjustments();
   this.dmgThreshMod = 0;
   // console.log("recieved feats:", feats);
-  let specArr = ["Skill Focus","Skill Training"] 
+  let specArr = ["Skill Focus","Skill Training"]
   for (let i=0; i<feats.length; i++){
     const splitter = feats[i].split(' (');
-     
+
    if (specArr.includes(splitter[0])){
       // console.log("spec is here",feats[i]);
       (splitter[0] == 'Skill Focus')? this.updateFocusFeats(feats[i]) : this.updateSkillTrained(feats[i]);
@@ -309,7 +310,7 @@ async updateFeats(feats: Array<string>){
         default:
           break;
       }
-    
+
   }
   if (feats.includes("")){
     let index = feats.findIndex((el:any)=> el == "");
@@ -332,8 +333,8 @@ await this.removeAddedSkills();
       }
     //  console.log("trained and added: ", skill, this.heroSkillsTotal[i].trained_skill, this.featSkills)
       break;
-    }  
-  }  
+    }
+  }
 }
 
 updateForcePowers(powersArr : Array<any>){
@@ -358,7 +359,7 @@ async updateFocusFeats(chosenFeat: any){
       break;
     }
   }
-  
+
 }
 removeAddedSkills(){
   if (this.featSkills[0] == ""){
@@ -374,7 +375,7 @@ removeAddedSkills(){
     // console.log("removes:", this.heroSkillsTotal, this.featSkills )
   }
 
-resetFocus(){ 
+resetFocus(){
   for (let i = 0; i<this.heroSkillsTotal.length; i++){
     if (this.heroSkillsTotal[i].skill_focus == true){
       this.heroSkillsTotal[i].skill_focus = false;
@@ -442,7 +443,7 @@ async updateStats(){
   this.heroSkillsTotal.forEach((el: any)=> {
     this.calcSkills(el.skill_name, el.default, 0);
   })
-  
+
   // console.log("hero skills", this.heroSkillsTotal)
 }
 
@@ -481,7 +482,7 @@ calcGrapple(mod: string){
   }else{
     this.grapple = (bab + this.abilityModifier[mod])
   }
- 
+
 }
 // sets the carrying capacity of the hero
 calculateCarryLimit(cl : number, strScore : number){
@@ -506,7 +507,7 @@ async calcHP(heroicClass: string, mod: number){
         case "Jedi":
           this.reflexClassBonus = 1;
           this.fortClassBonus = 1;
-          this.willClassBonus = 1;   
+          this.willClassBonus = 1;
         break;
         case "Noble":
           this.reflexClassBonus = 1;
@@ -530,7 +531,7 @@ async calcHP(heroicClass: string, mod: number){
         break;
       }
   }
- // scalculates damage threshold
+ // calculates damage threshold
  calcDT(defenseType: any){
   if (defenseType == "Select Defense"){
     return;
@@ -554,8 +555,8 @@ async calcHP(heroicClass: string, mod: number){
   }
 // used to add or remove a skill that is added from a feat
   async addRemoveSkill(skillTrained : any){
-   
-    // console.log("recieved input", skillTrained, "length is:", this.chosenSkillsLength, this.chosenSkills) 
+
+    // console.log("recieved input", skillTrained, "length is:", this.chosenSkillsLength, this.chosenSkills)
      // conditional that adds or replaces what was selected
      let species = await this.choices.getSpecies();
     //  if (species === "Human" || species == "Nyriaanan" || species == "Anarrian"){
@@ -563,9 +564,9 @@ async calcHP(heroicClass: string, mod: number){
     //  }
      if (skillTrained != ""){
       if (this.chosenSkills.includes(this.savedSkillValue)){
-        
+
       }
-      const index = this.chosenSkills.findIndex((el: any)=> el.skill_name == skillTrained ) 
+      const index = this.chosenSkills.findIndex((el: any)=> el.skill_name == skillTrained )
       while (this.chosenSkills.length > this.chosenSkillsLength){
          this.chosenSkills.pop();
        }
@@ -581,7 +582,7 @@ async calcHP(heroicClass: string, mod: number){
         // resets savedValue Skill to ""
       } else {
         this.savedSkillValue = "";
-      } 
+      }
   }
 // calculates the ability modifier for each ability score
 calcModifier(){
@@ -605,7 +606,7 @@ calcModifier(){
      if (keys[i] == "Intelligence"){
       this.intModifier = tempScore;
      }
-    //  console.log("the abilities: ", keys[i], tempScore)    
+    //  console.log("the abilities: ", keys[i], tempScore)
   }
   this.choices.setAbilityMods(this.abilityModifier);
 }
@@ -629,7 +630,7 @@ calcSkills(skill: string, mod: string, misc: number){
     this.heroSkillsTotal[i].default = mod;
     this.heroSkillsTotal[i].skill_value = (Math.floor(this.heroLevel/2)) + this.abilityModifier[mod] + t + f + misc;
     if (skill == "Stealth"){
-      this.heroSkillsTotal[i].skill_value =+ this.stealthSizeMod 
+      this.heroSkillsTotal[i].skill_value =+ this.stealthSizeMod
     }
   // console.log("the value computed:",  this.abilityModifier[mod], t,f, misc)
     }
@@ -637,11 +638,11 @@ calcSkills(skill: string, mod: string, misc: number){
   }
 }
 
-nameHeroToggle(){ 
+nameHeroToggle(){
   (this.disabler == "disabled")? this.disabler = "active": this.disabler = "disabled";
   this.showNameModal = !this.showNameModal;
 }
-saveHeroToggle(){ 
+saveHeroToggle(){
   if (this.heroName == "Name Goes Here..." || Object.keys(this.talentSelected).length == 0){
     return;
   }
@@ -659,7 +660,7 @@ public async onFileSelected(event:any){
   this.saveDisabler = 'disabled';
   const file:File = event.target.files[0];
   this.uploadFileName = file.name;
-    this.uploadFileContent = await file.text(); 
+    this.uploadFileContent = await file.text();
     let a;
     try {
       a = await JSON.parse(this.uploadFileContent);
@@ -670,14 +671,13 @@ public async onFileSelected(event:any){
       }
       this.upload.setSavedHeroes(a);
       this.names = a
-      this.saveFileContent = JSON.stringify(a);  
-      this.saveDisabler = "active";   
+      this.saveFileContent = JSON.stringify(a);
+      this.saveDisabler = "active";
     } catch (err) {
       this.invalidation=true;
     }
-
-   
 }
+
 saveHerotoFile(){
   let ranId = this.randomIzer(8);
   let savedHero: heroObject = {
@@ -711,7 +711,7 @@ saveHerotoFile(){
   link.href = URL.createObjectURL(file);
   link.download = fileName;
   link.click();
-  link.remove(); 
+  link.remove();
   this.router.navigate(['/']);
 }
 
@@ -731,7 +731,7 @@ randomIzer(num: number){
      let ran =  Math.floor(Math.random() * ranArr.length);
      id.push(ranArr[ran]);
    }
- 
+
  return id.join('');
  }
 @ViewChild('contentSaved', {static: false}) el!: ElementRef;
@@ -741,7 +741,7 @@ saveHero(){
   if (this.heroName == "Name Goes Here..." || Object.keys(this.talentSelected).length == 0){
     return;
   }
-  
+
   let ranId = this.randomIzer(8);
   // console.log("the id is:",ranId)
   let savedHero: heroObject = {
@@ -764,7 +764,7 @@ saveHero(){
     bab: this.choices.acquireBab(),
     forcePowers: [...this.forcePowers],
   }
-  
+
   // let tempName = savedHero.name.split(' ').join('_')
   // let nameSaved = tempName + savedHero.id;
   let currentName = "SWSEHeroSaves"
@@ -777,7 +777,7 @@ saveHero(){
   link.href = URL.createObjectURL(file);
   link.download = fileName;
   link.click();
-  link.remove(); 
+  link.remove();
   window.location.href = '/';
 /*
   let DATA: any = document.getElementById('contentSaved');
@@ -794,7 +794,7 @@ saveHero(){
      /*
     // to save a new hero
     this.userDB.addHeroSave(body).subscribe((res: any)=>{
-      
+
     })
     */
   // console.log("savedHero", nameSaved, savedHero);

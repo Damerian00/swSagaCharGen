@@ -10,7 +10,7 @@ import {classSkills} from '../../db/heroSkills';
 })
 
 export class SkillsComponent implements OnInit {
-  
+
   static showSkills() {
     throw new Error('Method not implemented.');
   }
@@ -24,13 +24,13 @@ export class SkillsComponent implements OnInit {
   form: FormGroup;
   // sets the number of points that are available for a character
   skillPoints: number = 0;
-  
+
 // sets the new variable equal to the variable in the choices service
   selectedSpecies: string = this.choices.speciesSelected;
- 
+
   // sa flag to show button when abilities are available
   buttonIf: string = "hide";
-  
+
   // utilizes event emitter to emit the skills selected
   skValidator: boolean = false;
   skValidatorMessage: string = '';
@@ -39,23 +39,23 @@ export class SkillsComponent implements OnInit {
   // takes input from the form to to create an array for the items checked
   constructor(private choices: ChoicesSenderService, private fb: FormBuilder) {
     this.form = this.fb.group({selectedSkills: this.fb.array([])})
-    
+
    }
 
-  // recieves the selected class from the class component to be used later 
+  // recieves the selected class from the class component to be used later
   @Input () chosenClass: string = this.choices.selectedClass;
   @Input () intModifier = 0;
   ngOnInit(): void {
-    
+
   }
 
   @ViewChildren("checkboxes") checkboxes:QueryList<ElementRef> | undefined;
   // a function to uncheck the boxes checked
   uncheckAll(){
     this.checkboxes?.toArray().forEach((item)=> {
-      item.nativeElement.checked = false;  
+      item.nativeElement.checked = false;
     })
-    
+
   }
   // calculates skill points that each class would have based on the int modifier
   calcModifier(selection : string){
@@ -84,7 +84,7 @@ export class SkillsComponent implements OnInit {
     if (this.choices.speciesSelected === "Human"){
       this.skillPoints += 1;
     }
-    
+
   }
   /// shows the skills available based on previous choices
   showSkills(selection : string){
@@ -93,8 +93,8 @@ export class SkillsComponent implements OnInit {
       this.buttonIf = "show"
    }
    this.calcModifier(selection);
-    while (this.skillsArray.length) { 
-      this.skillsArray.pop(); 
+    while (this.skillsArray.length) {
+      this.skillsArray.pop();
   }
   let abSkills = [
     ["Acrobatics","(Dex)"],["Climb","(Str)"],["Deception","(Cha)"],["Endurance","(Con)"],["Gather Information","(Cha)"],["Initiative","(Dex)"],["Jump","(Str)"],["Knowledge (Bureaucracy)","(Int)"], ["Knowledge (Galactic Lore)","(Int)"],["Knowledge (Life Sciences)","(Int)"] ,["Knowledge (Physical Sciences)","(Int)"],["Knowledge (Social Sciences)","(Int)"],["Knowledge (Tactics)","(Int)"],["Knowledge (Technology)","(Int)"],["Mechanics","(Int)"],["Perception","(Wis)"],["Persuasion","(Cha)"],["Pilot","(Dex)"],["Ride","(Dex)"],["Stealth","(Dex)"],["Survival","(Wis)"],["Swim","(Str)"],["Treat Injury","(Wis)"],["Use Computer","(Int)"],["Use the Force","(Cha)"]
@@ -111,17 +111,17 @@ export class SkillsComponent implements OnInit {
           if (this.skillsArray.includes(val) == false){
             this.skillsArray.push(val);
           }
-        })      
+        })
       }
       this.clear = "clear";
     }
-    
+
     // console.log('skills:',this.skillsArray)
     this.choices.classSkills = this.skillsArray;
     this.uncheckAll();
-    
+
   }
-  // connects with the service to intitate the starting feats 
+  // connects with the service to intitate the starting feats
 submit(){
   this.choices.setStartFeats();
   this.heroSkillsSelected.emit(this.form.value.selectedSkills)
@@ -134,8 +134,8 @@ skillTrained(event: any){
     this.buttonIf = "show"
   }
   let selectedSkills: FormArray = this.form.get('selectedSkills') as FormArray;
-  
-  /* 
+
+  /*
   ======old code=====
   //if (this.skillPoints <= 0  ){
     // const index = selectedSkills.controls.findIndex(x => x.value === event.target.value);
@@ -145,11 +145,11 @@ skillTrained(event: any){
    // }else {
   */
       if (this.clear == "clear"){
-        selectedSkills.clear(); 
-        this.clear = 'ok';    
+        selectedSkills.clear();
+        this.clear = 'ok';
       }
       this.skValidator = false;
-      // checks of the checkbox is checked
+      // checks if the checkbox is checked
       if (event.target.checked){
         /*
          checks if the skill points remaining will go below 0 when checked if it does then it immediately gets unchecked so skill points never go below 0
@@ -160,7 +160,7 @@ skillTrained(event: any){
           event.target.checked = false;
           // add a validation error here
         }else {
-          /* 
+          /*
           if it doesn't go below 0 then it will remove a skill point and push the item to the array
           */
           selectedSkills.push(new FormControl(event.target.value));
@@ -173,15 +173,15 @@ skillTrained(event: any){
       */
         const index = selectedSkills.controls.findIndex(x => x.value === event.target.value);
         selectedSkills.removeAt(index);
-        
+
         this.skillPoints += 1;
-      
+
   //  }
   }
-  /* 
+  /*
   sets the skill array in the choices service to the array created by the users choices in skills
   */
   this.choices.skills = this.form.value.selectedSkills;
-  
+
 }
 }

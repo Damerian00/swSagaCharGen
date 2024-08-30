@@ -6,7 +6,7 @@
        <label>Max points: <input type="number" #mxPoints value="maxPoints" placeholder="25" min=25 max=50/></label>
         <button *ngIf="toggleButton" class="pointsButton" (click)="setMaxPoints(mxPoints.value)">Save</button>
         <button class="toggleButton" (click)="togglePtsBtn()">{{toggleBtnText}}</button>
-   </div> 
+   </div>
     <section>
         <div class="outsideWrapper">
             <span class="validation" *ngIf="abValidator">{{abValidatorMessage}}</span>
@@ -16,10 +16,9 @@
               <div class="buttonContainer">
                   <button class="addButton" (click)='addAbility(ability)'>+</button>
                   <button class="subButton" (click)='subAbility(ability)'>-</button>
-              </div>  
+              </div>
             </div>
         </div>
     </section>
 </div>
 
- 
