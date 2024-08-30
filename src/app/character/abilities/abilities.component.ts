@@ -423,7 +423,7 @@ addAbility(clicked:any){
   this.keyAbility = clicked.key
     if (this.points > 0){
      if(this.finalAbilities[this.keyAbility] < 50){
-      this.pointChecker(this.keyAbility, "add");
+      this.pointChecker("add");
       if (this.choices.validate == true){
          this.charAbilities[this.keyAbility] += 1;
         this.finalAbilities[this.keyAbility] += 1;
@@ -448,7 +448,7 @@ subAbility (clicked: any){
   this.abModifierImport = this.choices.speciesAbilityModifiers;
   this.keyAbility = clicked.key
     if (this.points < this.maxPoints){
-      this.pointChecker(this.keyAbility, "subtract");
+      this.pointChecker("subtract");
       if (this.choices.validate == true && this.charAbilities[this.keyAbility] > 8){
          this.charAbilities[this.keyAbility] -= 1;
         this.finalAbilities[this.keyAbility] -= 1;
@@ -668,9 +668,11 @@ calcModifier(){
   this.choices.selectedAbilities = this.charAbilities;
 }
 
-pointChecker(selection: string, operand: string){
+pointChecker(operand: string){
   let pointBuy = [-1,-1,-1,-1,-1,-1,-1,0,1,1,1,1,1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10];
   let value =  operand === "add" ? 0:-1;
+  value += this.charAbilities[this.keyAbility]
+  /*
   switch (selection) {
   case "Strength":
     value += this.charAbilities.Strength;
@@ -693,6 +695,7 @@ pointChecker(selection: string, operand: string){
   default:
   break;
 }
+*/
 this.choices.validator(this.points, pointBuy[value], operand, 'abilities');
 if (this.choices.validate == true){
   this.abValidator = false;
