@@ -36,7 +36,7 @@ export class FeatsComponent implements OnInit {
   exoticRange: Array<any> = [];
   forcePowersArr: Array<any> = forcePowers;
   saberFormPowers: Array<any> = saberPowers;
-  
+
   //  booleans
   validated: boolean = true;
   additionalFeatsTrigger: boolean = false;
@@ -76,7 +76,7 @@ export class FeatsComponent implements OnInit {
   ngOnInit(): void {
   /**
    * old code to work with backend
-   * 
+   *
   this.swApiService.getFeats().subscribe(payload =>{
     this.featsArray = payload;
     // console.log("feats: ", this.featsArray);
@@ -95,12 +95,12 @@ export class FeatsComponent implements OnInit {
         }
       })
     })
-   * 
+   *
    */
   this.featsArray = this.pseudoApi.getFeats();
-    this.choices.setStartingFeats.subscribe(() => {   
+    this.choices.setStartingFeats.subscribe(() => {
       this.acquireFeats();
-    });    
+    });
    let meleeArray = this.pseudoApi.getMelees();
     meleeArray.forEach((el:any)=> {
       if (el.w_type == "Exotic Weapons (Melee)"){
@@ -114,14 +114,10 @@ export class FeatsComponent implements OnInit {
       }
     })
   }
-
- 
 // getter for class
 setClass(heroicClass: string){
   this.heroicClass = heroicClass;
 }
-
-
 // checks requirements and class to display starting feats
 async acquireFeats(){
   this.submittedValues = ["",""];
@@ -147,15 +143,15 @@ let con = await this.choices.acquireCon();
 
 // this switch holds the hard coded data for what feats each class gets starting out and based on the user choice will assign them to the user's character.
   switch (heroClass) {
-    case "Jedi":   
+    case "Jedi":
       tempString = "Force Sensitivity,Weapon Proficiency (Lightsabers),Weapon Proficiency (Simple Weapons)";
       break;
     case "Noble":
-      if (int >= 13){ 
+      if (int >= 13){
         tempString = "Linguist,Weapon Proficiency (Pistols),Weapon Proficiency (Simple Weapons)";
       }else if (primitive == "yes") {
         tempString = "Weapon Proficiency (Simple Weapons)";
-      }else{  
+      }else{
         tempString = "Weapon Proficiency (Pistols),Weapon Proficiency (Simple Weapons)";
       }
       break;
@@ -215,9 +211,9 @@ async checkConditionals(){
    const selectedSpeciesTraits = await this.choices.acquireSpeciesTraits();
  // resets additional feats array.
    if (this.additionalFeatsArray.length > 0) {
-     this.clearArray(this.additionalFeatsArray);   
+     this.clearArray(this.additionalFeatsArray);
     };
-    // if the traits includes conditional bonus feat 
+    // if the traits includes conditional bonus feat
   if (Object.keys(selectedSpeciesTraits).includes("Conditional Bonus Feat")){
     // creates empty array to be used later
     let neMoArr = [];
@@ -246,7 +242,7 @@ async checkConditionals(){
             //check if the species includes these 2 since they have special circumstances
             if (species == "Arkanian Offshoot (str)" || species == "Arkanian Offshoot (dex)"){
 
-            // pushes 
+            // pushes
               this.additionalFeatsArray.push(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
               // console.log("the additional feats:",this.additionalFeatsArray)
             }else{
@@ -256,19 +252,19 @@ async checkConditionals(){
                 this.conditionalArray.push(selectedSpeciesTraits["Conditional Bonus Feat"][i]["bonus feat"]);
               }
             }
-          }     
+          }
     }
     if (species == "Neimoidian"){
      this.conditionalArray = [...neMoArr];
     }
-  } 
+  }
 }
 async showAvailable(){
   //checks if the array is empty
   if (this.selectableFeats.length != 0){
   // if it isn't empty we use pop method to empty it out
     this.clearArray(this.selectableFeats);
-  } 
+  }
   if (this.extraSelectableFeats.length != 0){
     this.clearArray(this.extraSelectableFeats);
   }
@@ -290,7 +286,7 @@ let BAB = await this.choices.acquireBab();
       // adds the feat with that name to the array if the size requirement matches
    } else if(this.featsArray[i].name == "Powerful Charge" && this.featsArray[i].prereqs.req1[1] <= BAB && this.choices.acquireSpeciesTraits().size != "Small"){
     (this.additionalFeatsTrigger)? this.extraSelectableFeats.push(this.featsArray[i].name) : this.selectableFeats.push(this.featsArray[i].name);
-   } else if (this.featsArray[i].name == "Staggering Attack" || this.featsArray[i].name =="Hobbling Strike"){ 
+   } else if (this.featsArray[i].name == "Staggering Attack" || this.featsArray[i].name =="Hobbling Strike"){
     let apiValue = this.submittedValues[0];
     // console.log("the apivalue:", apiValue);
       if (apiValue == "Rapid Shot" || apiValue == "Rapid Strike"  || species == "Tof"){
@@ -306,25 +302,27 @@ let BAB = await this.choices.acquireBab();
 /*
     - first for loop will go through each of the different requirements 1-4
     - second loop will to check if any of the keywords are present in the requirements
-    - uses a forEach to break down the multiarray's values "vals" into each index to be checked for the keyword's value to see if the 
+    - uses a forEach to break down the multiarray's values "vals" into each index to be checked for the keyword's value to see if the
     player meets the minimum reqs then it is marked as validated
-*/ 
+*/
     const reqsArray = ["BAB", "feat", "trained", "talent","trait", "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma" ]
-    for (let v = 0; v < vals.length; v++){    
+    for (let v = 0; v < vals.length; v++){
       // j is requirements array
-        for (let j=0; j < reqsArray.length; j++){    
-          //if there is an or in the requirment array  
+        for (let j=0; j < reqsArray.length; j++){
+          //if there is an or in the requirment array
           if (vals[v][0] == reqsArray[j]){
             if (vals[v].includes("or")){
               for (let c=2; c<vals[v].length; c++){
                 this.chkReqs(vals[v][c], vals[v][0]);
                 if (this.validated == true){
-                 break; 
+                 break;
                 }
               }
             }else{
-
               let check = vals[v][1];
+                await this.chkReqs(check, reqsArray[j]);
+                j = reqsArray.length
+/*
               switch (reqsArray[j]){
                 case "BAB":
                   await this.chkReqs(check, "BAB");
@@ -333,7 +331,7 @@ let BAB = await this.choices.acquireBab();
                 break;
                 case "feat":
                   await this.chkReqs(check, "feat");
-                     j = reqsArray.length;              
+                     j = reqsArray.length;
                //  this.startingFeats.includes(check) ? this.validated=true : this.validated = false;
                 break;
                 case "trained":
@@ -345,17 +343,17 @@ let BAB = await this.choices.acquireBab();
                 // humans don't have this
                 await this.chkReqs(check,  "trait");
                   j = reqsArray.length;
-              //    check >= str ? this.validated=true : this.validated = false; 
+              //    check >= str ? this.validated=true : this.validated = false;
                 break;
                 case "Strength":
                 await  this.chkReqs(check,  "Strength");
                   j = reqsArray.length;
-              //    check >= str ? this.validated=true : this.validated = false; 
+              //    check >= str ? this.validated=true : this.validated = false;
                 break;
                 case "Dexterity":
                 await  this.chkReqs(check,  "Dexterity");
                   j = reqsArray.length;
-              //    check >= dex ? this.validated=true : this.validated = false;      
+              //    check >= dex ? this.validated=true : this.validated = false;
                 break;
                 case "Constitution":
                 await  this.chkReqs(check,  "Constitution");
@@ -365,38 +363,38 @@ let BAB = await this.choices.acquireBab();
                 case "Intelligence":
                 await  this.chkReqs(check,  "Intelligence");
                   j = reqsArray.length;
-               //   check >= int ? this.validated=true : this.validated = false   
+               //   check >= int ? this.validated=true : this.validated = false
                 break;
                 case "Wisdom":
                  await this.chkReqs(check,  "Wisdom");
                   j = reqsArray.length;
-                //  check >= wis ? this.validated=true : this.validated = false;         
+                //  check >= wis ? this.validated=true : this.validated = false;
                 break;
                 case "Charisma":
                  await this.chkReqs(check,  "Charisma");
                   j = reqsArray.length;
-                //  check >= chr ? this.validated=true : this.validated = false;         
-                break;    
-              }        
-            } 
-            } 
+                //  check >= chr ? this.validated=true : this.validated = false;
+                break;
+              }  */
+            }
+            }
       }
       // if any requirements doesn't meet the minimums it returns nothing and breaks out of the loop and the check
       if (this.validated == false) break;
       }
-  if(this.validated == true && this.startingFeats.includes(this.featsArray[i].name) == false){ 
+  if(this.validated == true && this.startingFeats.includes(this.featsArray[i].name) == false){
     // console.log('pushed',this.featsArray[i].name);
     (this.additionalFeatsTrigger)? this.extraSelectableFeats.push(this.featsArray[i].name) : this.selectableFeats.push(this.featsArray[i].name);
   }
 }
  }
- 
+
  // if the species matches "Tof" then they have 2 options when it comes to feats that it can have
  if (this.choices.getSpecies() == "Tof"){
   this.clearArray(this.extraSelectableFeats);
   this.extraSelectableFeats.push("Rapid Shot");
   this.extraSelectableFeats.push("Rapid Strike")
-  
+
 }
 // get species traits
 const traits = this.choices.acquireSpeciesTraits();
@@ -407,7 +405,7 @@ let keys = Object.keys(traits);
 if (keys.includes("Species Feats")){
   for (let j=0; j < Object.keys(traits["Species Feats"]).length; j++){
     let name = Object.keys(traits["Species Feats"])[j];
-    let description ="";  
+    let description ="";
       // if the feat contains an array use the first index of the array to describe the feat
       if(Array.isArray(traits["Species Feats"][name])){
         description = traits["Species Feats"][name][0];
@@ -442,7 +440,7 @@ if (selection != "Select a Feat"){
   if (this.choices.getSpecies() == "Zabrak"){
     if (selection == "Inborn Resilience"){
       this.zabrakResil = true
-     }else{ 
+     }else{
       this.zabrakResil = false;
       if (this.tempDef.reflex > 1 || this.tempDef.fort > 1 || this.tempDef.will > 1){
         // console.log("tempDef", this.tempDef)
@@ -479,12 +477,12 @@ if (selection != "Select a Feat"){
     this.selectedFeats.push(selection);
   }
   // finds the  index within the feat array that matches the selection based on the feat name
- 
+
   if (this.speciesFeatsArray.length != 0){
     for (let i=0; i< this.speciesFeatsArray.length; i++){
       if (this.speciesFeatsArray[i].name == selection){
         this.selectedFeatName = this.speciesFeatsArray[i].name;
-      this.selectedFeatDescription =  this.speciesFeatsArray[i].description; 
+      this.selectedFeatDescription =  this.speciesFeatsArray[i].description;
       }
     }
     // console.log("speciesFeats:",this.speciesFeatsArray);
@@ -519,13 +517,13 @@ if (selection != "Select a Feat"){
       if (selection == "Force Training"){
         if (this.selectedFeat[0] == "Force Training"){
           if(this.heroForceSuite.length <= this.maxPowers){
-            this.numPowers +=1 
+            this.numPowers +=1
             // console.log("Why?",this.selectedFeat[0]);
           }else{
             while (this.heroForceSuite.length > this.maxPowers){
                 this.heroForceSuite.pop();
             }
-            this.numPowers = this.maxPowers - this.heroForceSuite.length; 
+            this.numPowers = this.maxPowers - this.heroForceSuite.length;
           }
         }
         this.showForcePowers = true;
@@ -534,7 +532,7 @@ if (selection != "Select a Feat"){
           while (this.heroForceSuite.length > this.maxPowers){
             this.heroForceSuite.pop();
         }
-        this.numPowers = this.maxPowers - this.heroForceSuite.length; 
+        this.numPowers = this.maxPowers - this.heroForceSuite.length;
           this.showForcePowers = true;
         }else{
           // console.log("no more powers")
@@ -542,7 +540,7 @@ if (selection != "Select a Feat"){
           this.clearPowers();
         }
       }
-    }  
+    }
 
 // if no feat is or if user selects Select a feat it removes the feat name anbd description
 }else {
@@ -557,7 +555,7 @@ if (selection != "Select a Feat"){
    this.extraFeatDescription =  "Select a Feat";
    if (this.selectedFeat[0] != "Force Training"){
       this.showForcePowers = false;
-      this.clearPowers(); 
+      this.clearPowers();
     // console.log("no more powers")
    }
   }
@@ -635,7 +633,7 @@ let trait = await this.choices.acquireSpeciesTraits();
         choice = this.submittedValues[0];
       } else {
         choice = `${this.submittedValues[0]} (${this.specialOptionSelected[0]})`;
-      } 
+      }
       (this.startingFeats.includes(apiValue) || choice == apiValue) ? this.validated = true : this.validated = false;
       // console.log(this.startingFeats.includes(apiValue),this.startingFeats, this.validated);
     break;
@@ -643,22 +641,22 @@ let trait = await this.choices.acquireSpeciesTraits();
       skills.includes(apiValue) ? this.validated=true : this.validated = false;
     break;
     case "Strength":
-      apiValue <= str ? this.validated=true : this.validated = false; 
+      apiValue <= str ? this.validated=true : this.validated = false;
     break;
     case "Dexterity":
-      apiValue <= dex ? this.validated=true : this.validated = false;      
+      apiValue <= dex ? this.validated=true : this.validated = false;
     break;
     case "Constitution":
       apiValue <= con ? this.validated=true : this.validated = false;
     break;
     case "Intelligence":
-      apiValue <= int ? this.validated=true : this.validated = false   
+      apiValue <= int ? this.validated=true : this.validated = false
     break;
     case "Wisdom":
-      apiValue <= wis ? this.validated=true : this.validated = false;         
+      apiValue <= wis ? this.validated=true : this.validated = false;
     break;
     case "Charisma":
-      apiValue <= chr ? this.validated=true : this.validated = false;         
+      apiValue <= chr ? this.validated=true : this.validated = false;
     break;
     case "trait":
       let keys = Object.keys(trait);
@@ -670,7 +668,7 @@ let trait = await this.choices.acquireSpeciesTraits();
   }
 }
 // sets the variable to whatever the drop down has been changed to
-setFeatOption(selected: string, index: number){ 
+setFeatOption(selected: string, index: number){
   this.specialOptionSelected.splice(index,1,selected);
 }
 
@@ -717,14 +715,14 @@ async submitSpecialFeat(feat: string, indexNum: number) {
           finalArr.push(this.choices.classSkills[i].name);
         }
       }
-      if (this.submittedValues[0] == "Skill Training" && indexNum == 1){ 
+      if (this.submittedValues[0] == "Skill Training" && indexNum == 1){
      const index = finalArr.findIndex((el: any) => el == this.specialOptionSelected[0])
       finalArr.splice(index,1);
       // console.log("removing an option: ", this.specialOptionSelected[0])
     }
-      // console.log("feats finalArr: ", finalArr)  
+      // console.log("feats finalArr: ", finalArr)
         this.specialFeatOptions = [...finalArr];
-      
+
     break;
     case "Weapon Proficiency":
       this.specifyFeatButtonName = "Select Weapon Group";
@@ -736,7 +734,7 @@ async submitSpecialFeat(feat: string, indexNum: number) {
         if (feats.includes(word)== false){
           this.specialFeatOptions.push(weaponOptions[i]);
         }
-      } 
+      }
     break;
     case "Exotic Weapon Proficiency":
       let exclusiveSpecies = ["Gamorrean","Gungan","Wookiee","Kissai","Massassi","Felucians","Squib","Verpine"];
@@ -798,14 +796,14 @@ async submitSpecialFeat(feat: string, indexNum: number) {
           finalArr.push(this.choices.classSkills[i].name);
         }
       }
-      if (this.submittedValues[0] == "Skill Training" && indexNum == 1){ 
+      if (this.submittedValues[0] == "Skill Training" && indexNum == 1){
      const index = finalArr.findIndex((el: any) => el == this.specialOptionSelected[0])
       finalArr.splice(index,1);
       // console.log("removing an option: ", this.specialOptionSelected[0])
     }
-      // console.log("feats finalArr: ", finalArr)  
+      // console.log("feats finalArr: ", finalArr)
         this.specialFeatOptions = [...finalArr];
-      
+
     }else if (feat == "Weapon Proficiency"){
       this.specifyFeatButtonName = "Select Weapon Group"
       let weaponOptions = ["Simple Weapons", "Pistols", "Rifles", "Lightsabers", "Heavy Weapons", "Advanced Melee Weapons"]
@@ -817,12 +815,12 @@ async submitSpecialFeat(feat: string, indexNum: number) {
           this.specialFeatOptions.push(weaponOptions[i]);
         }
 
-      } 
+      }
       // console.log("the weaponsArray", weaponOptions)
     } */
     this.specialFeatOptions.unshift("Select One")
    if (feat == "Skill Focus" && this.submittedValues[0] == "Skill Training" && indexNum == 1){
-    this.extraSpecialFeatOptions = await [...this.specialFeatOptions, this.specialOptionSelected[0]]  
+    this.extraSpecialFeatOptions = await [...this.specialFeatOptions, this.specialOptionSelected[0]]
     // console.log("time to push", this.extraSpecialFeatOptions)
   }else{
     this.extraSpecialFeatOptions = await [...this.specialFeatOptions]
@@ -865,7 +863,7 @@ let species = this.choices.getSpecies();
       finArr.push(choice);
       // console.log("the choice:", choice, finArr);
     }
-      if (this.additionalFeatsArray.length != 0){   
+      if (this.additionalFeatsArray.length != 0){
         finArr = [...this.additionalFeat, choice];
       }else{
         this.setAdditionalFeat("");
@@ -874,9 +872,9 @@ let species = this.choices.getSpecies();
         if (this.conditionalArray.length != 0){
           finArr = [...this.conditionalArray, ...tempArr]
         }else{
-          
+
         }
-      } 
+      }
       this.submitFinal(finArr);
   }else{
     this.showAvailable();
@@ -900,9 +898,9 @@ let species = this.choices.getSpecies();
       }
     }
   }
-  
+
   // console.log("the submitted:", this.submittedValues, index, this.specialOptionSelected, this.additionalFeat, this.conditionalArray);
-  
+
 }
 async swapDefenses(swap: string, sequence: any){
   let ref, will, fort;
@@ -939,7 +937,7 @@ async swapDefenses(swap: string, sequence: any){
         will = 2;
         fort = 0;
       break;
-          
+
     }
     this.tempDef = {
       "reflex" : ref,
@@ -947,7 +945,7 @@ async swapDefenses(swap: string, sequence: any){
       "will": will,
     };
     console.log(swap, this.tempDef);
-  }else{   
+  }else{
     let r,w,f;
     console.log(swap, this.spec.Defenses, "/",this.spec, this.tempDef);
     this.spec.Defenses["Fortitude Defense"] = this.tempDef.fort;
