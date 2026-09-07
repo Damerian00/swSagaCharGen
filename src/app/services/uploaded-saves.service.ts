@@ -7,9 +7,15 @@ export class UploadedSavesService {
 
   savedHeroes: any;
   currentSave :  any;
+  
 
   constructor() { }
-
+  getJSONSave(){
+    return this.currentSave;
+  }
+  setJSONSave(saved: any){
+    this.savedHeroes = saved;
+  }
   getAllSavedHeroes(){
     return this.savedHeroes;
   }
@@ -24,13 +30,19 @@ export class UploadedSavesService {
   }
   authCheck(file: any){
     let bool: any = []
-    file.forEach((el: any) => {
-      if (el.skillOffset){  
-        bool.push(false);
-      }else{
-        bool.push(true);
-      }  
-  });
+    if (file.skillOffset){  
+         bool.push(false);
+         this.currentSave = file;
+       }else{
+         file.forEach((el: any) => {
+            if (el.skillOffset){  
+              bool.push(false);
+            }else{
+              bool.push(true);
+            }  
+          })
+       };
+    
   if (bool.includes(true)){
     return true;
   }else{

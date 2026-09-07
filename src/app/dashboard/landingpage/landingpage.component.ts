@@ -41,7 +41,7 @@ currentUser = {
     this.auth.checkLogIn.subscribe(authStatus=> {
       this.loggedIn = authStatus;
     })
-;   this.checkLocals();
+;  // this.checkLocals();
   
     
     // this.loggedIn = this.auth.loggedIn();
@@ -119,7 +119,7 @@ currentUser = {
   
     try {
       a = await JSON.parse(this.uploadFileContent);
-      this.invalidation = await this.upload.authCheck(a)
+      this.invalidation = this.upload.authCheck(a)
       if (this.invalidation == true){
         return;
       }
@@ -130,12 +130,13 @@ currentUser = {
       this.router.navigate(['update-hero'])
       
     } catch (err) {
+      console.log(`not valid ${err}`)
       this.invalidation=true;
     }
     //get object from json file
     //let obj = JSON.parse(this.uploadFileContent);
   }
-  dlLocals(){
+ dlLocals(){
      // "skillOffset": 7,
      this.savedHeroes.forEach((el: any) => {
       let ran = Math.floor(Math.random() * 10)+1;

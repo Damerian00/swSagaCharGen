@@ -108,6 +108,11 @@ forceRegimens: string = "";
 
 //  ---End Variables---
   ngOnInit(): void {
+    if(this.upload.getJSONSave() !== undefined){
+      this.getHeroJSON(this.upload.getJSONSave());
+    };
+
+    
     /* --used for Auth service
     // this.currentUser = this.auth.getCurrentUser();
     // if(this.currentUser != undefined){
@@ -136,11 +141,12 @@ forceRegimens: string = "";
 
     // }
     */
-    this.upload.getAllSavedHeroes().forEach((el :any)  => {
+   /* this.upload.getAllSavedHeroes().forEach((el :any)  => {
       if (el != null){
         this.savedHeroes.push(el);
       }
-    }); 
+    }); */
+
     this.heroservice.updateAbs.subscribe(()=>{
       this.upDateAbs();
     })
@@ -195,34 +201,42 @@ forceRegimens: string = "";
   }
 */
   //  gets the hero data from the user selection from the local storage/db
+async getHeroJSON(file : any){
+  this.upload.setJSONSave(file);
+  this.savedHero = this.upload.getCurrentHero()
+  this.updateStats();
+  this.heroPull = true;
+}
+
   async getHero(name: string){  
-    let index = this.upload.getAllSavedHeroes().findIndex((el:any)=>el.name == name)
-    this.upload.setCurrentHero(index)
-    this.savedHero = this.upload.getCurrentHero();
-    this.updateStats();
-    this.heroPull = true;
-    /*  checks if logged in to use DB if not logged in uses local storage
-    let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
-    if(this.currentUser != undefined){
-      let saves = await this.userDB.getSaves()[index];
-      this.heroId = saves.id;
-      console.log(saves);
-      this.savedHero = saves.heroObj;
-    }else{
-      let hero = this.savedStorage[index];
-      // console.log("the name", name, index, hero)
-      if (hero != null){
-        this.tempId = hero;
-        let recieved: any = this.local.getHero(hero);
-        this.savedHero = JSON.parse(recieved);
-        // console.log("the hero is", name,this.savedHero)
-        // this.calcDT(this.currentDtType);
+      let index = this.upload.getAllSavedHeroes().findIndex((el:any)=>el.name == name)
+      this.upload.setCurrentHero(index)
+      this.savedHero = this.upload.getCurrentHero();
+      this.updateStats();
+      this.heroPull = true;
+      /*  checks if logged in to use DB if not logged in uses local storage
+      let index = this.savedHeroes.findIndex((el:any)=>el.name == name)
+      if(this.currentUser != undefined){
+        let saves = await this.userDB.getSaves()[index];
+        this.heroId = saves.id;
+        console.log(saves);
+        this.savedHero = saves.heroObj;
+      }else{
+        let hero = this.savedStorage[index];
+        // console.log("the name", name, index, hero)
+        if (hero != null){
+          this.tempId = hero;
+          let recieved: any = this.local.getHero(hero);
+          this.savedHero = JSON.parse(recieved);
+          // console.log("the hero is", name,this.savedHero)
+          // this.calcDT(this.currentDtType);
+        }
       }
+      this.updateStats();
+      this.heroPull = true;
+      */
     }
-    this.updateStats();
-    this.heroPull = true;
-    */
-  }
+    
 //  switches the view to the list of saved heroes
 switchHero(){
   this.heroPull = false;
@@ -311,6 +325,7 @@ updatelanguages(langs : any){
 async updateStats(){
   //timeout interval to call this function once charactersheet loads properly.
   setTimeout(() => {
+   // console.log(this.savedHero);
     this.heroservice.loadHeroStats(this.savedHero.currentArmor, this.savedHero.equipment, this.savedHero.attacks)
     this.level.displayXp();
     this.heroservice.calcCredits(this.credits, "+");
